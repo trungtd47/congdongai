@@ -11,7 +11,7 @@ const links = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-line py-8 text-[13.5px] text-ink-soft">
+    <footer className="border-t border-line py-8 pb-24 text-[13.5px] text-ink-soft md:pb-8">
       <div className="wrap flex flex-wrap items-center justify-between gap-5">
         <div className="opacity-80">
           © 2026 Cộng Đồng AI — dự án cộng đồng, không đại diện chính thức cho Nous

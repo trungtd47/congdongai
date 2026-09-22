@@ -4,6 +4,8 @@ import { JsonLd, faqJsonLd } from '@/lib/seo';
 import { batDauItems, huongDanItems, libraryItems, homeFaqs } from '@/lib/content';
 import { LibraryForm } from '@/components/LibraryForm';
 import { HomeQA } from '@/components/HomeQA';
+import { TermTip } from '@/components/TermTip';
+import { CompareClosedVsOpen } from '@/components/CompareClosedVsOpen';
 
 export const metadata: Metadata = {
   title: 'Cộng Đồng AI — Học Hermes Agent từ số 0',
@@ -55,9 +57,9 @@ export default function HomePage() {
             việc 24/7 ngay trên máy tính của mình
           </h1>
           <p className="mb-6 mt-4 text-[17px] text-ink-soft">
-            Hermes Agent là trợ lý AI mã nguồn mở: tự nhớ việc, tự học kỹ năng mới, tự
-            chạy tác vụ theo lịch. Ở đây hướng dẫn cài đặt và dùng nó bằng tiếng Việt,
-            từng bước một, cho người hoàn toàn mới.
+            Hermes Agent là trợ lý AI <TermTip term="mã nguồn mở">mã nguồn mở</TermTip>:
+            tự nhớ việc, tự học kỹ năng mới, tự chạy tác vụ theo lịch. Ở đây hướng dẫn
+            cài đặt và dùng nó bằng tiếng Việt, từng bước một, cho người hoàn toàn mới.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/bat-dau" className="btn btn-primary btn-lg">
@@ -131,6 +133,70 @@ export default function HomePage() {
               <p className="text-sm text-ink-soft">{s.desc}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* VÌ SAO CHỌN HERMES */}
+      <section className="wrap py-14">
+        <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
+          Vì sao chọn Hermes
+        </p>
+        <h2 className="mb-2 text-[28px] font-extrabold tracking-[-0.3px]">
+          Trả tiền như đồng hồ điện
+        </h2>
+        <p className="mb-8 max-w-2xl text-[16px] text-ink-soft">
+          Không phí tháng. Dùng bao nhiêu trả bấy nhiêu. Chọn bộ não AI nào tùy bạn.
+        </p>
+
+        <CompareClosedVsOpen />
+
+        <p className="mb-8 mt-6 max-w-2xl text-[14.5px] text-ink-soft">
+          ⚡ Mỗi lần hỏi AI, “đồng hồ” nhích một chút — bạn thấy ngay trong app. Ví dụ
+          minh họa: hỏi vài câu mỗi ngày cho việc cá nhân thì số dư nhỏ dùng được rất lâu;
+          dùng nhiều cho công việc thì nạp thêm, lúc nào cũng thấy rõ đã chi bao nhiêu.
+        </p>
+
+        {/* Chọn model như chọn xe */}
+        <h3 className="mb-2 text-[20px] font-extrabold tracking-[-0.3px]">
+          Chọn model như chọn xe
+        </h3>
+        <p className="mb-6 text-[15px] text-ink-soft">
+          Bạn không cần hiểu kỹ thuật — trong app chỉ là một danh sách thả xuống, thích thì
+          đổi, không hợp thì thôi. Không mất dữ liệu, không tạo tài khoản mới.
+        </p>
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+          <div className="card p-6">
+            <div className="mb-3 text-[26px]">🛵</div>
+            <h4 className="mb-1.5 text-[16px] font-bold">Việc nhẹ hằng ngày</h4>
+            <p className="text-sm text-ink-soft">
+              Tóm tắt tin, viết email, dịch thuật → dùng{' '}
+              <TermTip term="model">model</TermTip> hạng tiết kiệm: nhanh, rẻ, thừa đủ tốt.
+            </p>
+          </div>
+          <div className="card p-6">
+            <div className="mb-3 text-[26px]">🚗</div>
+            <h4 className="mb-1.5 text-[16px] font-bold">Việc cần nghĩ</h4>
+            <p className="text-sm text-ink-soft">
+              Phân tích, lập kế hoạch, viết code → chuyển sang model hạng trung/cao khi
+              cần.
+            </p>
+          </div>
+          <div className="card p-6">
+            <div className="mb-3 text-[26px]">🏎️</div>
+            <h4 className="mb-1.5 text-[16px] font-bold">Việc khó nhất</h4>
+            <p className="text-sm text-ink-soft">
+              Bài toán hóc búa → bật model mạnh nhất, chỉ dùng khi thật sự cần.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-8">
+          <Link
+            href="/bat-dau/vi-sao-dung-openrouter"
+            className="btn btn-ghost"
+          >
+            Hiểu rõ cách trả phí →
+          </Link>
         </div>
       </section>
 

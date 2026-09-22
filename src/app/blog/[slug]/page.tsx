@@ -3,10 +3,11 @@ import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
-import { getAllPostSlugs, getPostBySlug } from '@/lib/posts';
+import { getAllPostSlugs, getPostBySlug, extractToc } from '@/lib/posts';
 import { JsonLd, articleJsonLd, breadcrumbJsonLd } from '@/lib/seo';
 import { canonicalUrl } from '@/lib/site';
 import { CommentsSection } from '@/components/CommentsSection';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -41,6 +42,8 @@ export default async function ArticlePage({ params }: Props) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const toc = extractToc(post.content);
+
   return (
     <article className="wrap max-w-3xl py-12">
       <JsonLd
@@ -61,16 +64,7 @@ export default async function ArticlePage({ params }: Props) {
         ])}
       />
 
-      <nav aria-label="Breadcrumb" className="mb-4 text-[13px] text-ink-soft">
-        <a href="/" className="hover:text-teal-dark">
-          Trang chủ
-        </a>{' '}
-        /{' '}
-        <a href="/blog" className="hover:text-teal-dark">
-          Blog
-        </a>{' '}
-        / <span className="text-ink">{post.title}</span>
-      </nav>
+      <Breadcrumb items={[{ name: 'Blog', href: '/blog' }, { name: post.title }]} />
 
       <div className="mb-3 flex flex-wrap gap-2">
         {post.tags.map((t) => (
@@ -95,6 +89,29 @@ export default async function ArticlePage({ params }: Props) {
           })}
         </time>
       </div>
+
+      {toc.length > 0 && (
+        <div className="toc-box card mb-8 p-5">
+          <p className="mb-2 text-[12px] font-bold uppercase tracking-[1px] text-teal-dark">
+            Mục lục
+          </p>
+          <div className="mb-3 text-[12.5px] text-ink-soft">
+            Bài này dành cho người mới — không cần biết code, đọc từ trên xuống là đủ.
+          </div>
+          <nav>
+            {toc.map((item) => (
+              <a
+                key={item.slug}
+                href={`#${item.slug}`}
+                data-level={item.level}
+                className="py-1 text-[14px]"
+              >
+                {item.text}
+              </a>
+            ))}
+          </nav>
+        </div>
+      )}
 
       <div className="prose-article">
         <MDXRemote

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { libraryItems } from '@/lib/content';
 import { LibraryForm } from '@/components/LibraryForm';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Thư viện miễn phí',
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function ThuVienPage() {
   return (
     <div className="wrap py-12">
+      <Breadcrumb items={[{ name: 'Thư viện' }]} />
       <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
         Thư viện miễn phí
       </p>

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { huongDanItems } from '@/lib/content';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Hướng dẫn sử dụng theo việc',
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function HuongDanPage() {
   return (
     <div className="wrap py-12">
+      <Breadcrumb items={[{ name: 'Hướng dẫn' }]} />
       <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
         Hướng dẫn theo việc
       </p>

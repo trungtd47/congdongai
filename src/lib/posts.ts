@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
+import GithubSlugger from 'github-slugger';
 
 export interface PostMeta {
   slug: string;
@@ -60,4 +61,26 @@ export function getAllPostSlugs(): string[] {
     .readdirSync(contentDir)
     .filter((f) => f.endsWith('.mdx'))
     .map((f) => f.replace(/\.mdx$/, ''));
+}
+
+export interface TocItem {
+  level: 2 | 3;
+  text: string;
+  slug: string;
+}
+
+// Trích xuất mục lục (h2/h3) từ nội dung markdown. Slug được sinh bằng
+// github-slugger — khớp 1:1 với id mà rehype-slug gán cho heading khi render.
+export function extractToc(content: string): TocItem[] {
+  const slugger = new GithubSlugger();
+  const items: TocItem[] = [];
+  for (const line of content.split('\n')) {
+    const m = /^(#{2,3})\s+(.+?)\s*$/.exec(line);
+    if (!m) continue;
+    const level = (m[1].length === 2 ? 2 : 3) as 2 | 3;
+    const text = m[2].replace(/[*_`]/g, '').trim();
+    if (!text) continue;
+    items.push({ level, text, slug: slugger.slug(text) });
+  }
+  return items;
 }

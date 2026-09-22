@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { createPost } from '@/lib/firestore-ops';
 import { isDemoMode } from '@/lib/firebase';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 const DEMO_UID = 'demo-user';
 
@@ -49,6 +50,7 @@ export default function TaoCauHoiPage() {
 
   return (
     <div className="wrap max-w-xl py-12">
+      <Breadcrumb items={[{ name: 'Hỏi đáp', href: '/hoi-dap' }, { name: 'Đặt câu hỏi' }]} />
       <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
         Hỏi đáp
       </p>

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/posts';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -14,6 +15,7 @@ export default function BlogPage() {
 
   return (
     <div className="wrap py-12">
+      <Breadcrumb items={[{ name: 'Blog' }]} />
       <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
         Blog
       </p>

@@ -91,11 +91,33 @@ body {
   color: inherit;
   padding: 0;
 }
+.prose-article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+.prose-article th,
+.prose-article td {
+  border: 1px solid var(--color-line);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+.prose-article th {
+  background: var(--color-teal-soft);
+  color: var(--color-teal-dark);
+  font-weight: 700;
+}
+.prose-article td {
+  color: var(--color-ink-soft);
+}
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
+  min-height: 44px;
   padding: 10px 20px;
   border-radius: 999px;
   font-weight: 600;
@@ -159,4 +181,33 @@ body {
   color: var(--color-ink-soft);
   font-style: italic;
   margin: 1rem 0;
+}
+
+/* TermTip — tooltip giải nghĩa thuật ngữ */
+.term-tip-pop {
+  min-height: 44px;
+}
+.term-tip-pop::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #1c1917;
+}
+
+/* Box mục lục bài viết */
+.toc-box a {
+  display: block;
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  transition: color 0.12s;
+}
+.toc-box a:hover {
+  color: var(--color-teal-dark);
+}
+.toc-box a[data-level='3'] {
+  padding-left: 16px;
+  font-size: 13px;
 }

@@ -6,9 +6,12 @@ export const metadata: Metadata = {
   alternates: { canonical: '/quy-tac-cong-dong' },
 };
 
+import { Breadcrumb } from '@/components/Breadcrumb';
+
 export default function QuyTacPage() {
   return (
     <div className="wrap max-w-2xl py-12">
+      <Breadcrumb items={[{ name: 'Quy tắc cộng đồng' }]} />
       <h1 className="mb-4 text-[32px] font-extrabold tracking-[-0.5px]">Quy tắc cộng đồng</h1>
       <div className="prose-article">
         <p>Cộng đồng tồn tại để giúp đỡ nhau — xin giữ không gian thân thiện.</p>

@@ -8,6 +8,7 @@ import { demoPosts } from '@/lib/demo-data';
 const staticRoutes = [
   '',
   'bat-dau',
+  'bat-dau/vi-sao-dung-openrouter',
   'huong-dan',
   'thu-vien',
   'hoi-dap',

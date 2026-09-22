@@ -77,7 +77,66 @@ Badge "🤖 AI trả lời" (nền teal-soft) khi `isAI=true` — bot Friday s�
 
 **KHÔNG làm trong task này**: Firebase project thật, bot Friday, email/newsletter integration, membership, tools calculator, chatbot. 
 
-## 10. Acceptance criteria
+## 11. Revision 1 (22/09/2026 — feedback trực tiếp từ sếp sau khi xem screenshot)
+### A. UI dễ dùng hơn cho người mới
+- Component `TermTip`: giải nghĩa tooltip inline cho jargon (API key, model, token, VPS, OAuth...) — mọi trang dùng
+- Header: nút "🚀 Bắt đầu tại đây" nổi bật (desktop + sticky mobile)
+- Breadcrumb mọi trang con; trang bài viết thêm box "Mục lục + Dành cho người mới" đầu trang
+- Soát toàn bộ câu chữ: tiếng Việt giản dị, thuật ngữ tiếng Anh phải kèm giải thích; nút to, touch target ≥44px
+### B. Section homepage mới: "Vì sao chọn Hermes?" (đặt sau khối 3 bước) — 3 card giá trị:
+1. **Trả phí theo nhu cầu (OpenRouter)** — nạp bao nhiêu dùng bấy nhiêu, KHÔNG gói tháng cố định, dừng bất cứ lúc nào, chi phí minh bạch từng request
+2. **Tự do chọn model** — hàng trăm model (GPT, Claude, Gemini, DeepSeek, Qwen, Llama...) đổi qua lại không bị khóa vào 1 hãng
+3. **Dữ liệu là của bạn** — agent chạy trên máy bạn, lịch sử chat/file/ghi chú nằm trên máy bạn; KHÔNG đưa dữ liệu lên server hãng thứ 3 như ChatGPT/Gemini web
+### C. Trang mới `/bat-dau/vi-sao-dung-openrouter`
+- Giải thích pay-as-you-go vs subscription (bảng so sánh) + ví dụ chi phí thực tế + cách nạp credit
+- ⚠️ SỐ LIỆU GIÁ: để placeholder `{{PRICE:...}}` — Friday điền số verified sau, TUYỆT ĐỐI không bịa giá
+- Link CTA kèm chỗ đặt OpenRouter referral sau (chưa có — placeholder)
+
+## 12. Acceptance criteria (Revision 1)
+- [ ] Mục 11 A/B/C hoàn thành; `npm run build` pass; trang chủ + /bat-dau/vi-sao-dung-openrouter không 404
+- [ ] Không có số giá bịa — mọi chỗ cần giá là placeholder {{PRICE:...}}
+- [ ] Commit + push origin/main (KHÔNG đụng .github/workflows — token thiếu scope workflow)
+
+## 13. Revision 2 (22/09/2026 — sếp duyệt, THAY THẾ phần giá của Rev1 mục 11C)
+**Nguyên tắc tối thượng:** KHÔNG bảng giá, KHÔNG con số $ cụ thể, KHÔNG placeholder `{{PRICE:...}}` (bỏ hẳn yêu cầu này của Rev1). Chỉ nói **cơ chế + lợi ích**. Nếu cần ví dụ để hình dung → định tính và gắn nhãn "ví dụ minh họa".
+
+### Thông điệp lõi (dùng xuyên suốt)
+> "Không phí tháng. Dùng bao nhiêu trả bấy nhiêu. Chọn bộ não AI nào tùy bạn."
+
+### A. Section trang chủ "Trả tiền như đồng hồ điện" (thay/nâng cấp section B của Rev1)
+Khối so sánh 2 cột (card trái xám = công cụ đóng, card phải teal = Hermes+OpenRouter):
+| 🏢 Công cụ đóng (ChatGPT, Gemini web...) | ⚡ Hermes + OpenRouter |
+|---|---|
+| Trả gói cố định mỗi tháng - dùng ít vẫn mất tiền | Nạp một lần, trừ dần theo từng câu hỏi |
+| Bị khóa vào 1 hãng, 1 model | Hàng trăm model: GPT, Claude, Gemini, DeepSeek, Qwen... đổi trong 1 cú click |
+| Dữ liệu của bạn nằm trên server hãng | Agent chạy trên máy bạn, dữ liệu là của bạn |
+| Muốn dừng? Rắc rối hủy gói | Không dùng nữa thì thôi, số dư vẫn còn đó |
+Hình minh họa: icon đồng hồ điện/cột xăng — "mỗi lần hỏi AI, đồng hồ nhích một chút, thấy ngay trong app". Ví dụ định tính: "Hỏi vài câu mỗi ngày cho việc cá nhân - số dư nhỏ dùng được rất lâu. Dùng nhiều cho công việc thì nạp thêm, lúc nào cũng thấy rõ đã chi bao nhiêu."
+
+### B. Section "Chọn model như chọn xe" — 3 card scenario (không giá, nói HẠNG):
+- 🛵 Việc nhẹ hằng ngày (tóm tắt tin, viết email, dịch) → model hạng tiết kiệm - nhanh, rẻ, thừa đủ tốt
+- 🚗 Việc cần nghĩ (phân tích, lập kế hoạch, code) → model hạng trung/cao khi cần
+- 🏎️ Việc khó nhất → model mạnh nhất, chỉ bật khi thật sự cần
+Chốt: "Bạn không cần hiểu kỹ thuật - trong app chỉ là một danh sách thả xuống, thích thì đổi, không hợp thì thôi. Không mất dữ liệu, không tạo tài khoản mới."
+
+### C. Trang `/bat-dau/vi-sao-dung-openrouter` — cấu trúc:
+1. OpenRouter là gì - 1 câu: "như đồng hồ điện cho AI - một tài khoản, tiếp cận mọi model, trả đúng phần đã dùng"
+2. Khối so sánh 2 cột (tái dùng component từ trang chủ)
+3. 3 bước bắt đầu: Tạo tài khoản → Nạp credit (số dư là của bạn) → Dán key vào Hermes Desktop — mỗi bước 1 card, chừa chỗ screenshot
+4. Chọn model theo nhu cầu — bảng 3 hạng scenario
+5. FAQ người mới: "Nạp bao nhiêu là đủ?" → tùy mức dùng, nạp ít thử trước; "Hết số dư thì sao?" → app dừng lại, không âm tiền; "Có tự động gia hạn không?" → KHÔNG - đó chính là điểm khác gói tháng
+
+### D. Quy tắc copy cho mọi trang
+- Giọng người thường giải thích cho người thường; thuật ngữ Anh luôn kèm nghĩa tiếng Việt
+- Focus: cơ chế trả-theo-nhu-cầu + tự do chọn model + dữ liệu thuộc về người dùng
+
+### Acceptance Rev2
+- [ ] Section so sánh 2 cột + 3 card "chọn model như chọn xe" trên trang chủ
+- [ ] Trang /bat-dau/vi-sao-dung-openrouter đúng cấu trúc 5 phần, không con số giá nào
+- [ ] grep toàn repo không còn `{{PRICE`
+- [ ] `npm run build` pass; push origin/main (không đụng .github/workflows)
+
+## 10. Acceptance criteria (task scaffold gốc)
 - [ ] `npm run build` pass, `out/` serve được, mọi route không 404
 - [ ] Trang chủ đúng design tokens + bố cục mockup (desktop + mobile responsive)
 - [ ] Demo mode chạy không cần env Firebase; có firebase.ts + firestore-ops.ts sẵn sàng cắm config thật

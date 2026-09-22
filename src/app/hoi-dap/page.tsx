@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { JsonLd, faqJsonLd } from '@/lib/seo';
 import { QuestionList } from '@/components/QuestionList';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Hỏi đáp cộng đồng',
@@ -24,6 +25,8 @@ export default function HoiDapPage() {
           },
         ])}
       />
+
+      <Breadcrumb items={[{ name: 'Hỏi đáp' }]} />
 
       <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
         <div>

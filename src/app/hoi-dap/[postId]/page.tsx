@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { JsonLd, breadcrumbJsonLd } from '@/lib/seo';
 import { demoPosts } from '@/lib/demo-data';
 import { QuestionDetail } from '@/components/QuestionDetail';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 interface Props {
   params: Promise<{ postId: string }>;
@@ -34,6 +35,7 @@ export default async function HoiDapDetailPage({ params }: Props) {
           { name: 'Chi tiết câu hỏi', path: `/hoi-dap/${postId}` },
         ])}
       />
+      <Breadcrumb items={[{ name: 'Hỏi đáp', href: '/hoi-dap' }, { name: 'Chi tiết câu hỏi' }]} />
       <QuestionDetail postId={postId} />
     </div>
   );

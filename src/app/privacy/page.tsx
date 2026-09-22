@@ -6,9 +6,12 @@ export const metadata: Metadata = {
   alternates: { canonical: '/privacy' },
 };
 
+import { Breadcrumb } from '@/components/Breadcrumb';
+
 export default function PrivacyPage() {
   return (
     <div className="wrap max-w-2xl py-12">
+      <Breadcrumb items={[{ name: 'Chính sách bảo mật' }]} />
       <h1 className="mb-4 text-[32px] font-extrabold tracking-[-0.5px]">
         Chính sách bảo mật
       </h1>

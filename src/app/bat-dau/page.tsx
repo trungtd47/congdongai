@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { batDauItems } from '@/lib/content';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Bắt đầu với Hermes Agent',
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function BatDauPage() {
   return (
     <div className="wrap py-12">
+      <Breadcrumb items={[{ name: 'Bắt đầu' }]} />
       <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
         Bắt đầu
       </p>
