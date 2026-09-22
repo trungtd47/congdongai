@@ -20,7 +20,7 @@ export function TermTip({ term, children }: TermTipProps) {
     <span className="term-tip relative inline-block">
       <button
         type="button"
-        className="cursor-help border-b border-dotted border-teal font-medium text-inherit"
+        className="tip cursor-help font-medium text-inherit"
         onClick={() => setOpen((v) => !v)}
         onBlur={() => setOpen(false)}
         onMouseEnter={() => setOpen(true)}
@@ -35,7 +35,7 @@ export function TermTip({ term, children }: TermTipProps) {
           open ? 'block' : 'hidden'
         }`}
       >
-        <b className="mb-0.5 block text-[13px] text-teal-300">{term}</b>
+        <b className="mb-0.5 block text-[13px] text-teal-soft">{term}</b>
         {def}
       </span>
     </span>

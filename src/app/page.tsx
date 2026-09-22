@@ -1,11 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { JsonLd, faqJsonLd } from '@/lib/seo';
-import { batDauItems, huongDanItems, libraryItems, homeFaqs } from '@/lib/content';
-import { LibraryForm } from '@/components/LibraryForm';
-import { HomeQA } from '@/components/HomeQA';
 import { TermTip } from '@/components/TermTip';
-import { CompareClosedVsOpen } from '@/components/CompareClosedVsOpen';
+import {
+  pathSteps,
+  memberQuotes,
+  communityStats,
+  worldCases,
+  qaRecent,
+  blogRecent,
+  libraryBooks,
+} from '@/lib/demo-data';
 
 export const metadata: Metadata = {
   title: 'Cộng Đồng AI — Học Hermes Agent từ số 0',
@@ -14,251 +19,192 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 };
 
-const steps = [
+const honestFaqs = [
   {
-    time: '~3 phút',
-    num: '1',
-    title: 'Tải Hermes Desktop',
-    desc: 'Tải file cài đặt chính thức cho Windows hoặc Mac, bấm Next như mọi phần mềm. Có hướng dẫn ảnh từng màn hình, gồm cả cách xử lý khi Windows hiện cảnh báo.',
+    question: 'Phần mềm Hermes giá bao nhiêu?',
+    answer:
+      '0 đồng. Mã nguồn mở hoàn toàn (giấy phép MIT). Không bản "pro", không thu phí, không bao giờ.',
   },
   {
-    time: '~5 phút',
-    num: '2',
-    title: 'Đăng nhập tài khoản AI',
-    desc: 'Dùng Nous Portal: đăng nhập một cái là có sẵn 300+ model AI, không phải cấu hình API key. Hướng dẫn cả cách thanh toán từ thẻ Việt Nam.',
+    question: 'Vậy tiền ở đâu ra?',
+    answer:
+      'Bạn trả cho "điện" AI đã dùng, qua OpenRouter: nạp trước một khoản như nạp điện thoại, mỗi câu hỏi trừ dần — như đồng hồ điện. Không gói tháng, không tự gia hạn.',
   },
   {
-    time: 'ngay!',
-    num: '3',
-    title: 'Chat bằng tiếng Việt',
-    desc: 'Hỏi đáp, giao việc, đặt lịch tự động — bằng tiếng Việt tự nhiên. Thư viện prompt mẫu của Cộng Đồng AI giúp bạn có việc dùng ngay ngày đầu.',
+    question: 'Người mới nên nạp bao nhiêu?',
+    answer:
+      'Nạp ít thử trước — hỏi vài câu mỗi ngày cho việc cá nhân thì một khoản nhỏ dùng được rất lâu. Trong app luôn thấy rõ đã dùng bao nhiêu.',
+  },
+  {
+    question: 'Còn trang này thu phí gì không?',
+    answer:
+      'Không, và sẽ luôn như vậy. Trang sống được nhờ link giới thiệu và gói thành viên tự nguyện. Ở đây không bán khóa học, không bao giờ.',
   },
 ];
 
 export default function HomePage() {
   return (
     <>
-      <JsonLd
-        data={faqJsonLd([
-          { question: 'Hermes Agent có miễn phí không?', answer: 'Phần mềm miễn phí 100%. Bạn chỉ trả tiền cho AI model mình dùng.' },
-          { question: 'Không biết code có dùng được không?', answer: 'Được. Bản Desktop cài như phần mềm thường, mọi thao tác qua giao diện.' },
-          { question: 'Thanh toán từ Việt Nam thế nào?', answer: 'Cần thẻ Visa/Mastercard, hướng dẫn từng bước có trong bài riêng.' },
-        ])}
-      />
+      <JsonLd data={faqJsonLd(honestFaqs)} />
 
-      {/* HERO */}
-      <header className="wrap grid grid-cols-1 items-center gap-12 py-16 md:grid-cols-[1.05fr_0.95fr] md:py-16">
-        <div>
-          <span className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-amber-soft px-3 py-1.5 text-[13px] font-semibold text-amber-900">
-            ⚡ Hướng dẫn tiếng Việt cho người mới — không cần biết code
-          </span>
-          <h1 className="text-[32px] font-extrabold leading-[1.2] tracking-[-0.5px] md:text-[42px]">
-            Bạn có một <span className="whitespace-nowrap text-teal">trợ lý AI</span> làm
-            việc 24/7 ngay trên máy tính của mình
-          </h1>
-          <p className="mb-6 mt-4 text-[17px] text-ink-soft">
-            Hermes Agent là trợ lý AI <TermTip term="mã nguồn mở">mã nguồn mở</TermTip>:
-            tự nhớ việc, tự học kỹ năng mới, tự chạy tác vụ theo lịch. Ở đây hướng dẫn
-            cài đặt và dùng nó bằng tiếng Việt, từng bước một, cho người hoàn toàn mới.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/bat-dau" className="btn btn-primary btn-lg">
-              Bắt đầu trong 10 phút →
-            </Link>
-            <Link href="/thu-vien" className="btn btn-ghost btn-lg">
-              Tải thư viện miễn phí
-            </Link>
+      {/* THƯ NGỎ */}
+      <header className="letter">
+        <div className="wrap letter-grid">
+          <div>
+            <h1>
+              <span style={{ fontFamily: 'var(--font-sans)' }}>👋</span> Chào bạn, mình là
+              Trung —<br />
+              mình muốn đưa <span style={{ color: 'var(--teal)' }}>AI Agent</span> đến gần
+              hơn
+              <br />
+              với tất cả mọi người
+            </h1>
+            <div className="from">
+              <div className="av">T</div>
+              <div>
+                <b>Đức Trung</b>Người khởi xướng · ngày nào cũng dùng Hermes
+              </div>
+            </div>
+            <p>
+              Mình không phải người học chuyên ngành hay có nền tảng công nghệ. Mình kinh
+              doanh, đầu tư tự do — và thích tìm hiểu về công nghệ, về những thứ giúp mình
+              làm việc nhàn hơn. Khi mình bắt đầu tìm hiểu AI Agent, cảm giác của mình chắc
+              cũng y như các bạn bây giờ: choáng ngợp. Toàn tiếng Anh, toàn thuật ngữ, và
+              đâu đâu cũng có người muốn bán cho mình một thứ gì đó.
+            </p>
+            <p>
+              Rồi mình gặp <b>Hermes</b> —{' '}
+              <TermTip term="mã nguồn mở">AI agent mã nguồn mở</TermTip> của Nous Research,
+              hoàn toàn miễn phí. Từ ngày cài nó, mỗi sáng của mình bắt đầu bằng{' '}
+              <b>bản tin thị trường lúc 6h30 do Hermes tự đọc, tự lọc, tự viết</b> — trước cả
+              khi mình kịp pha cà phê. Website mình đang chạy do một &quot;nhân viên AI&quot;
+              tên Tony tự viết code. Mình hiểu ra một điều: thứ này không phải đồ chơi của
+              dân kỹ thuật — nó làm việc thật, cho bất kỳ ai.
+            </p>
+            <p>
+              Và điều làm mình trăn trở: trong khi Hermes miễn phí, ngoài kia người ta bán
+              những khóa học &quot;AI thực chiến&quot; giá{' '}
+              <b>hàng chục, hàng trăm triệu đồng</b>. Sự thật thì sao? Cài đặt chỉ khoảng 10
+              phút, và <b>người dạy bạn chính là Hermes</b> — bạn hỏi bằng tiếng Việt, nó
+              hướng dẫn từng bước, kiên nhẫn 24/7. Bạn không cần trả trăm triệu để bắt đầu.
+            </p>
+            <p>
+              <b>Vì sao trang này miễn phí?</b> Vì mọi thứ mình có hôm nay đều đến từ cộng
+              đồng mã nguồn mở — phần mềm miễn phí, kiến thức miễn phí, từ những người xa lạ
+              khắp thế giới chẳng mong nhận lại gì. Đến lượt mình trao đi, bằng tiếng Việt,
+              cho người Việt. Ở đây không có gì để bán: không khóa học, không &quot;combo AI
+              thực chiến&quot;, không chém gió.
+            </p>
+            <p>
+              Mong muốn của mình rất đơn giản: <b>AI Agent đến gần hơn với mọi người</b> —
+              chị chủ shop, anh văn phòng, các bạn sinh viên, ba mẹ về hưu... ai cũng xứng
+              đáng có một trợ lý của riêng mình. Và cách nhanh nhất là chúng ta dạy nhau:
+              người biết chỉ người chưa biết.
+            </p>
+            <p className="ps">
+              P.S. Nếu bạn hoàn toàn mới, bắt đầu từ bài đầu tiên bên phải nhé — 5 phút đọc
+              thôi. Mình hứa không có thuật ngữ nào mà không được giải thích. Bí chỗ nào cứ
+              đăng vào khu Hỏi &amp; Đáp — mình và mọi người sẽ trả lời.
+            </p>
+            <p style={{ marginTop: '20px', fontFamily: 'var(--font-serif)', fontSize: '17px' }}>
+              — <b>Đức Trung</b> · congdongai.org
+            </p>
+            <div className="letter-links">
+              <Link className="llink primary" href="/bat-dau">
+                📖 Bắt đầu từ con số 0
+              </Link>
+              <Link className="llink" href="/thu-vien">
+                ⬇ Thư viện SOUL.md tiếng Việt
+              </Link>
+            </div>
           </div>
-          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[13px] text-ink-soft">
-            {['Miễn phí', 'Tiếng Việt', 'Windows & Mac', 'Không cần terminal'].map((t) => (
-              <span key={t} className="before:mr-0.5 before:font-bold before:text-teal before:content-['✓_']">
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
 
-        {/* App chat mockup */}
-        <div className="overflow-hidden rounded-[14px] bg-ink shadow-[0_24px_60px_rgba(28,25,23,0.25)]">
-          <div className="flex items-center gap-1.5 bg-stone-800 px-3.5 py-2.5">
-            <span className="h-[11px] w-[11px] rounded-full bg-red-400" />
-            <span className="h-[11px] w-[11px] rounded-full bg-amber-400" />
-            <span className="h-[11px] w-[11px] rounded-full bg-emerald-400" />
-            <span className="ml-2 text-xs text-stone-400">Hermes Desktop</span>
-          </div>
-          <div className="flex min-h-[290px] flex-col gap-3 p-4">
-            <div className="max-w-[85%] self-end rounded-xl rounded-br-[4px] bg-teal-dark px-3.5 py-2.5 text-[13.5px] text-white">
-              Tóm tắt giúp tôi 5 tin công nghệ quan trọng sáng nay bằng tiếng Việt
-            </div>
-            <div className="max-w-[85%] self-start rounded-xl rounded-bl-[4px] bg-stone-800 px-3.5 py-2.5 text-[13.5px] text-stone-200">
-              Xong rồi sếp! Em vừa điểm qua <b className="text-teal-300">32 nguồn tin</b>.
-              Đây là 5 tin đáng chú ý nhất, kèm 1 dòng giải thích vì sao nó quan trọng…
-            </div>
-            <div className="max-w-[85%] self-end rounded-xl rounded-br-[4px] bg-teal-dark px-3.5 py-2.5 text-[13.5px] text-white">
-              Từ mai cứ 7 giờ sáng tự gửi cho tôi nhé
-            </div>
-            <div className="max-w-[85%] self-start rounded-xl rounded-bl-[4px] bg-stone-800 px-3.5 py-2.5 text-[13.5px] text-stone-200">
-              Đã đặt lịch ⏰ <b className="text-teal-300">7:00 mỗi sáng</b>. Em cũng lưu
-              thành kỹ năng &quot;báo cáo buổi sáng&quot; để lần sau làm nhanh hơn.
-            </div>
-            <div className="self-start pl-1.5 text-xs text-stone-500">
-              đang gõ<span className="animate-pulse">…</span>
+          <div>
+            <div className="sidecard">
+              <div className="chat">
+                <div className="msg user">Hermes ơi, mình mới cài bạn xong. Giờ làm gì?</div>
+                <div className="msg ai">
+                  <small>Hermes · chạy trên máy của bạn</small>Chào bạn 🎉 Mình sẽ tự hướng
+                  dẫn bạn nhé. Đầu tiên, thử nói cho mình biết công việc hằng ngày của bạn —
+                  mình sẽ gợi ý những việc mình làm thay được ngay tuần này.
+                </div>
+                <div className="msg user">
+                  Mình bán hàng online, sáng nào cũng phải trả lời tin nhắn cũ...
+                </div>
+                <div className="msg ai">
+                  <small>Hermes</small>Vậy để mình soạn giúp bạn bộ câu trả lời mẫu và nhắc
+                  bạn tin nào chưa hồi mỗi sáng 8h nhé? Mình vừa tự tạo kỹ năng &quot;trực tin
+                  nhắn&quot; — từ mai chạy thử luôn.
+                </div>
+              </div>
+              <div className="community-stats">
+                {communityStats.map((s) => (
+                  <div className="cstat" key={s.label}>
+                    <b>{s.value}</b>
+                    <span>{s.label}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="stats-note">* số liệu minh họa — sẽ là số thật của cộng đồng khi launch</div>
             </div>
           </div>
         </div>
       </header>
 
-      {/* STEPS */}
-      <section className="wrap py-14">
-        <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
-          Bắt đầu
-        </p>
-        <h2 className="mb-2 text-[28px] font-extrabold tracking-[-0.3px]">
-          3 bước là dùng được — thật đấy
-        </h2>
-        <p className="mb-8 text-[16px] text-ink-soft">
-          Không dòng lệnh, không file cấu hình. Làm theo thứ tự, tổng thời gian khoảng
-          10-15 phút.
-        </p>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-          {steps.map((s) => (
-            <div key={s.num} className="card relative p-6">
-              <span className="absolute right-5 top-5 rounded-full bg-amber-soft px-2.5 py-0.5 text-xs font-bold text-amber">
-                {s.time}
-              </span>
-              <div className="mb-3.5 flex h-9 w-9 items-center justify-center rounded-full bg-teal-soft text-base font-extrabold text-teal-dark">
-                {s.num}
-              </div>
-              <h3 className="mb-1.5 text-[17px] font-bold">{s.title}</h3>
-              <p className="text-sm text-ink-soft">{s.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* VÌ SAO CHỌN HERMES */}
-      <section className="wrap py-14">
-        <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
-          Vì sao chọn Hermes
-        </p>
-        <h2 className="mb-2 text-[28px] font-extrabold tracking-[-0.3px]">
-          Trả tiền như đồng hồ điện
-        </h2>
-        <p className="mb-8 max-w-2xl text-[16px] text-ink-soft">
-          Không phí tháng. Dùng bao nhiêu trả bấy nhiêu. Chọn bộ não AI nào tùy bạn.
-        </p>
-
-        <CompareClosedVsOpen />
-
-        <p className="mb-8 mt-6 max-w-2xl text-[14.5px] text-ink-soft">
-          ⚡ Mỗi lần hỏi AI, “đồng hồ” nhích một chút — bạn thấy ngay trong app. Ví dụ
-          minh họa: hỏi vài câu mỗi ngày cho việc cá nhân thì số dư nhỏ dùng được rất lâu;
-          dùng nhiều cho công việc thì nạp thêm, lúc nào cũng thấy rõ đã chi bao nhiêu.
-        </p>
-
-        {/* Chọn model như chọn xe */}
-        <h3 className="mb-2 text-[20px] font-extrabold tracking-[-0.3px]">
-          Chọn model như chọn xe
-        </h3>
-        <p className="mb-6 text-[15px] text-ink-soft">
-          Bạn không cần hiểu kỹ thuật — trong app chỉ là một danh sách thả xuống, thích thì
-          đổi, không hợp thì thôi. Không mất dữ liệu, không tạo tài khoản mới.
-        </p>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-          <div className="card p-6">
-            <div className="mb-3 text-[26px]">🛵</div>
-            <h4 className="mb-1.5 text-[16px] font-bold">Việc nhẹ hằng ngày</h4>
-            <p className="text-sm text-ink-soft">
-              Tóm tắt tin, viết email, dịch thuật → dùng{' '}
-              <TermTip term="model">model</TermTip> hạng tiết kiệm: nhanh, rẻ, thừa đủ tốt.
+      {/* CON ĐƯỜNG CHO NGƯỜI MỚI */}
+      <section style={{ paddingTop: '8px' }}>
+        <div className="wrap">
+          <div className="path">
+            <h2>Con đường cho người mới 🧭</h2>
+            <p className="sub">
+              Đọc lần lượt hay nhảy cóc đều được — bài nào cũng có ảnh chụp màn hình và câu
+              lệnh mẫu copy-paste.
             </p>
-          </div>
-          <div className="card p-6">
-            <div className="mb-3 text-[26px]">🚗</div>
-            <h4 className="mb-1.5 text-[16px] font-bold">Việc cần nghĩ</h4>
-            <p className="text-sm text-ink-soft">
-              Phân tích, lập kế hoạch, viết code → chuyển sang model hạng trung/cao khi
-              cần.
-            </p>
-          </div>
-          <div className="card p-6">
-            <div className="mb-3 text-[26px]">🏎️</div>
-            <h4 className="mb-1.5 text-[16px] font-bold">Việc khó nhất</h4>
-            <p className="text-sm text-ink-soft">
-              Bài toán hóc búa → bật model mạnh nhất, chỉ dùng khi thật sự cần.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-8">
-          <Link
-            href="/bat-dau/vi-sao-dung-openrouter"
-            className="btn btn-ghost"
-          >
-            Hiểu rõ cách trả phí →
-          </Link>
-        </div>
-      </section>
-
-      {/* USE CASES */}
-      <section className="wrap py-14">
-        <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
-          Hướng dẫn theo việc
-        </p>
-        <h2 className="mb-2 text-[28px] font-extrabold tracking-[-0.3px]">
-          Dùng Hermes làm gì trong đời thường?
-        </h2>
-        <p className="mb-8 text-[16px] text-ink-soft">
-          Mỗi bài là một công việc cụ thể: vấn đề → cài đặt → prompt copy-paste được
-          luôn → kết quả thật.
-        </p>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-          {huongDanItems.map((c) => (
-            <Link
-              key={c.slug}
-              href={`/huong-dan/${c.slug}`}
-              className="card card-hover block p-5"
-            >
-              <div className="mb-2.5 text-[26px]">{c.icon}</div>
-              <h3 className="mb-1 text-[15.5px] font-bold">{c.title}</h3>
-              <p className="text-[13.5px] text-ink-soft">{c.description}</p>
-              <div className="mt-3 text-[13px] font-semibold text-teal-dark">
-                Xem hướng dẫn →
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* LIBRARY */}
-      <section className="wrap py-14">
-        <div className="grid grid-cols-1 items-center gap-9 rounded-3xl bg-gradient-to-br from-[#134E4A] to-[#0F766E] p-12 text-white md:grid-cols-2">
-          <div>
-            <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-300">
-              Thư viện miễn phí
-            </p>
-            <h2 className="mb-2 text-[28px] font-extrabold tracking-[-0.3px] text-white">
-              Tải bộ &quot;starter kit&quot; tiếng Việt
-            </h2>
-            <p className="mb-5 text-[15px] text-teal-200">
-              Thứ mà tutorial nước ngoài không có: nhân cách và prompt đã viết sẵn bằng
-              tiếng Việt, tải về là dùng.
-            </p>
-            <LibraryForm />
-            <small className="mt-2.5 block text-xs text-teal-300">
-              Không spam. Mỗi tuần 1 email: mẹo Hermes + tin hệ sinh thái.
-            </small>
-          </div>
-          <div className="flex flex-col gap-3">
-            {libraryItems.map((it) => (
+            {pathSteps.map((s, i) => (
               <div
-                key={it.title}
-                className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/[0.09] px-4 py-3.5 text-sm"
+                className="pitem"
+                key={s.n}
+                style={i === pathSteps.length - 1 ? { borderBottom: '1px dashed var(--line)' } : undefined}
               >
-                <span className="text-xl">{it.icon}</span>
+                <span className="n">{s.n}</span>
                 <div>
-                  <b className="block text-[14.5px]">{it.title}</b>
-                  <span className="text-[12.5px] text-teal-200">{it.description}</span>
+                  <h4>
+                    <Link href="/bat-dau">{s.title}</Link>
+                  </h4>
+                  <p>{s.desc}</p>
+                </div>
+                <span className="t">{s.time}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CHUYỆN CỦA THÀNH VIÊN */}
+      <section>
+        <div className="wrap">
+          <div className="sec-head">
+            <h2>Chuyện của thành viên 🌱</h2>
+            <a className="more" href="#">
+              Kể chuyện của bạn →
+            </a>
+          </div>
+          <p className="sec-sub">
+            Người thật, việc thật, trong cộng đồng của chúng ta. (Ảnh minh họa giai đoạn đầu
+            — về sau là chuyện thành viên gửi lên.)
+          </p>
+          <div className="quotes">
+            {memberQuotes.map((q) => (
+              <div className="quote" key={q.name}>
+                <p>{q.text}</p>
+                <div className="who">
+                  <div className="av" style={{ background: q.color }}>
+                    {q.initial}
+                  </div>
+                  <div>
+                    <b>{q.name}</b>
+                    <span>{q.role}</span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -266,69 +212,215 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* HỎI & ĐÁP CỘNG ĐỒNG */}
-      <HomeQA />
-
-      {/* DIGEST + FAQ */}
-      <section className="wrap py-14">
-        <div className="grid grid-cols-1 gap-9 md:grid-cols-2">
-          <div>
-            <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
-              Hermes tuần này
-            </p>
-            <h2 className="mb-4 text-[28px] font-extrabold tracking-[-0.3px]">
-              Cập nhật hệ sinh thái, mỗi thứ Hai
-            </h2>
-            <div className="card mt-4 p-6">
-              <span className="tag-pill">Số #12 · 22/09/2026</span>
-              <h3 className="my-2.5 text-[17px] font-bold">
-                Bản desktop có gì mới tuần qua?
-              </h3>
-              <ul className="text-sm text-ink-soft">
-                <li className="mb-1.5 ml-4 list-disc">
-                  Hermes v0.21.4 phát hành: sửa lỗi cập nhật trên Windows
-                </li>
-                <li className="mb-1.5 ml-4 list-disc">
-                  Skill mới đáng chú ý: quản lý Apple Notes, dịch đa ngôn ngữ
-                </li>
-                <li className="ml-4 list-disc">
-                  Nous Portal giảm giá Plus $15 cho người mới (dùng mã của Cộng Đồng AI)
-                </li>
-              </ul>
-            </div>
+      {/* NGƯỜI DÙNG HERMES TRÊN THẾ GIỚI */}
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="sec-head">
+            <h2>Người dùng Hermes trên thế giới 🌍</h2>
+            <a className="more" href="#">
+              Xem tất cả case study →
+            </a>
           </div>
-          <div>
-            <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
-              Hỏi đáp nhanh
-            </p>
-            <h2 className="mb-4 text-[28px] font-extrabold tracking-[-0.3px]">
-              Người mới hay hỏi
-            </h2>
-            <div className="mt-4">
-              {homeFaqs.map((f) => (
+          <p className="sec-sub">
+            Toàn bộ có nguồn công khai để bạn tự kiểm chứng — chúng mình không tự bịa lời
+            khen.
+          </p>
+          <div className="world">
+            {worldCases.map((w) => (
+              <div className="witem" key={w.title}>
+                <div className="th">{w.icon}</div>
+                <div>
+                  <h4>{w.title}</h4>
+                  <p>{w.desc}</p>
+                  <div className="srcline">
+                    🔗{' '}
+                    <a href={w.sourceUrl} target="_blank" rel="noopener noreferrer">
+                      {w.sourceLabel}
+                    </a>
+                    {w.secondaryLabel && w.secondaryUrl && (
+                      <>
+                        {' '}
+                        ·{' '}
+                        <a href={w.secondaryUrl} target="_blank" rel="noopener noreferrer">
+                          {w.secondaryLabel}
+                        </a>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CỘNG ĐỒNG ĐANG CHUYỂN ĐỘNG — 2 cột */}
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="two">
+            <div className="panel">
+              <div className="ph">
+                <h3>💬 Hỏi &amp; Đáp gần đây</h3>
+                <Link className="more" href="/hoi-dap">
+                  Vào khu Hỏi &amp; Đáp →
+                </Link>
+              </div>
+              {qaRecent.map((q, i) => (
                 <div
-                  key={f.question}
-                  className="card mb-2.5 rounded-xl px-4 py-4 text-[14.5px]"
+                  className="titem"
+                  key={q.title}
+                  style={i === qaRecent.length - 1 ? { borderBottom: '1px dashed var(--line)' } : undefined}
                 >
-                  <b className="mb-0.5 block">{f.question}</b>
-                  <span className="text-[13.5px] text-ink-soft">{f.answer}</span>
+                  <div className="av" style={{ background: q.color }}>
+                    {q.initial}
+                  </div>
+                  <div className="tb">
+                    <h5>{q.title}</h5>
+                    <div className="meta">
+                      <span className="badge tag">{q.tag}</span>
+                      {q.hasAI && <span className="badge ai">🤖 AI trực đã trả lời</span>}
+                      {q.solved && <span className="badge solved">✓ Đã giải quyết</span>}
+                      <span>{q.meta}</span>
+                    </div>
+                  </div>
                 </div>
               ))}
+            </div>
+            <div className="panel">
+              <div className="ph">
+                <h3>📝 Mới từ cộng đồng</h3>
+                <Link className="more" href="/blog">
+                  Đọc blog →
+                </Link>
+              </div>
+              {blogRecent.map((p, i) => (
+                <div
+                  className="post-item"
+                  key={p.title}
+                  style={i === blogRecent.length - 1 ? { borderBottom: '1px dashed var(--line)' } : undefined}
+                >
+                  <h5>{p.title}</h5>
+                  <div className="meta">{p.meta}</div>
+                </div>
+              ))}
+              <div
+                style={{
+                  marginTop: '16px',
+                  background: 'var(--gold-soft)',
+                  borderRadius: '10px',
+                  padding: '14px 16px',
+                  fontSize: '13.5px',
+                  color: '#6B5518',
+                }}
+              >
+                🤖 <b>AI trực cộng đồng 24/7:</b> câu hỏi mới luôn được trợ lý AI (đã đọc toàn
+                bộ hướng dẫn của trang) trả lời trong vài phút — thành viên có kinh nghiệm sẽ
+                bổ sung và xác nhận sau. Không câu hỏi nào bị bỏ rơi.
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="wrap pb-14">
-        <div className="card mb-2 rounded-3xl p-11 text-center">
-          <h2 className="mb-2 text-[28px] font-extrabold tracking-[-0.3px]">
-            Sẵn sàng có trợ lý AI của riêng mình?
-          </h2>
-          <p className="mb-5 text-ink-soft">10 phút cài đặt. Một lần. Dùng mỗi ngày sau đó.</p>
-          <Link href="/bat-dau" className="btn btn-primary btn-lg">
-            Bắt đầu ngay — miễn phí →
-          </Link>
+      {/* THƯ VIỆN */}
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="sec-head">
+            <h2>Thư viện của chúng ta 📚</h2>
+            <Link className="more" href="/thu-vien">
+              Xem tất cả →
+            </Link>
+          </div>
+          <p className="sec-sub">
+            File mẫu tiếng Việt do thành viên đóng góp — tải về, đưa cho Hermes, nói
+            &quot;nạp file này vào&quot; là dùng được. Ai cũng có thể gửi bản của mình lên.
+          </p>
+          <div className="shelf">
+            {libraryBooks.map((b) => (
+              <div className="book" key={b.title}>
+                <div className="fic" style={{ background: b.color }}>
+                  {b.icon}
+                </div>
+                <div>
+                  <h5>{b.title}</h5>
+                  <p>{b.desc}</p>
+                </div>
+                <a className="dl" href="#">
+                  ⬇ Tải<small>{b.downloads}</small>
+                </a>
+              </div>
+            ))}
+          </div>
+          <div className="shelf-note">
+            💡 <b>Cách dùng:</b> tải file về → mở Hermes → nói{' '}
+            <i>&quot;Hãy nạp file SOUL này vào, từ giờ bạn là trợ lý văn phòng của
+            mình&quot;</i>{' '}
+            → xong. Không cần chỉnh sửa kỹ thuật. (Số lượt tải là minh họa giai đoạn thiết
+            kế.)
+          </div>
+        </div>
+      </section>
+
+      {/* HỎI THẬT ĐÁP THẬT */}
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="honest">
+            <h3>💰 Hỏi thật đáp thật: dùng Hermes tốn bao nhiêu tiền?</h3>
+            <div className="hq">
+              <h5>Phần mềm Hermes giá bao nhiêu?</h5>
+              <p>
+                <b>0 đồng.</b> Mã nguồn mở hoàn toàn (giấy phép MIT). Không bản
+                &quot;pro&quot;, không thu phí, không bao giờ.
+              </p>
+            </div>
+            <div className="hq">
+              <h5>Vậy tiền ở đâu ra?</h5>
+              <p>
+                Bạn trả cho &quot;điện&quot; AI đã dùng, qua{' '}
+                <TermTip term="OpenRouter">OpenRouter</TermTip>: nạp trước một khoản như nạp
+                điện thoại, mỗi câu hỏi trừ dần — <b>như đồng hồ điện</b>. Không gói tháng,
+                không tự gia hạn, không dùng thì số dư nằm yên, là tiền của bạn.
+              </p>
+            </div>
+            <div className="hq">
+              <h5>Người mới nên nạp bao nhiêu?</h5>
+              <p>
+                Nạp ít thử trước — hỏi vài câu mỗi ngày cho việc cá nhân thì một khoản nhỏ
+                dùng được rất lâu. Trong app luôn thấy rõ đã dùng bao nhiêu. Chi tiết từng
+                bước: <Link href="/bat-dau/vi-sao-dung-openrouter">bài hướng dẫn nạp &quot;xăng&quot; từ Việt Nam</Link>.
+              </p>
+            </div>
+            <div className="hq" style={{ borderBottom: '1px dashed var(--line)' }}>
+              <h5>Còn trang này thu phí gì không?</h5>
+              <p>
+                <b>Không, và sẽ luôn như vậy.</b> Mình nói thẳng để các bạn yên tâm: trang
+                sống được nhờ <b>link giới thiệu</b> — bạn cài dịch vụ qua link của mình thì
+                nhà cung cấp trả mình một ít hoa hồng, bạn không phải trả thêm đồng nào. Sau
+                này có thể thêm gói thành viên <i>tự nguyện</i> với quyền lợi phụ trội. Hết. Ở
+                đây không bán khóa học, không bao giờ.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA SỨ MỆNH */}
+      <section className="join-band" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <h2>Mong muốn của mình: AI Agent cho mọi người Việt 🏡</h2>
+          <p>
+            Một mình mình không làm nổi — nhưng chúng ta thì có. Tham gia để hỏi khi bí, để
+            trả lời khi bạn biết, và để gửi lên đây thứ gì đó của riêng bạn. Người hôm nay
+            được giúp, ngày mai giúp lại người khác — cộng đồng lớn lên bằng đúng cách đó.
+          </p>
+          <div className="btns">
+            <Link className="btn-c teal" href="/bat-dau">
+              Tham gia miễn phí
+            </Link>
+            <Link className="btn-c ghost" href="/bat-dau">
+              Đọc hướng dẫn trước đã
+            </Link>
+          </div>
         </div>
       </section>
     </>

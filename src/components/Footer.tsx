@@ -1,39 +1,20 @@
 import Link from 'next/link';
-import { siteConfig } from '@/lib/site';
-
-const links = [
-  { href: '/bat-dau', label: 'Bắt đầu' },
-  { href: '/huong-dan', label: 'Hướng dẫn' },
-  { href: '/thu-vien', label: 'Thư viện' },
-  { href: '/hoi-dap', label: 'Hỏi đáp' },
-  { href: '/quy-tac-cong-dong', label: 'Liên hệ' },
-];
 
 export function Footer() {
   return (
-    <footer className="border-t border-line py-8 pb-24 text-[13.5px] text-ink-soft md:pb-8">
-      <div className="wrap flex flex-wrap items-center justify-between gap-5">
-        <div className="opacity-80">
-          © 2026 Cộng Đồng AI — dự án cộng đồng, không đại diện chính thức cho Nous
-          Research.
-          <br />
-          Một sản phẩm từ{' '}
-          <a
-            href={siteConfig.madeBy.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-teal-dark"
-          >
-            TheMoneyBrew
-          </a>{' '}
-          🍺
+    <footer className="site-footer">
+      <div className="wrap foot">
+        <div>
+          © 2026 CongDongAI.org — cộng đồng miễn phí, xây bằng tinh thần &quot;cho đi&quot;
+          của mã nguồn mở
         </div>
-        <div className="flex flex-wrap gap-[18px]">
-          {links.map((l) => (
-            <Link key={l.href} href={l.href} className="hover:text-teal-dark">
-              {l.label}
-            </Link>
-          ))}
+        <div>
+          Khởi xướng bởi{' '}
+          <a href="https://themoneybrew.org" target="_blank" rel="noopener noreferrer">
+            Đức Trung (TheMoneyBrew)
+          </a>{' '}
+          · <Link href="/quy-tac-cong-dong">Quy tắc cộng đồng</Link> ·{' '}
+          <Link href="/quy-tac-cong-dong">Liên hệ</Link>
         </div>
       </div>
     </footer>

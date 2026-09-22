@@ -118,7 +118,7 @@ export const homeFaqs: Faq[] = [
   {
     question: 'Hermes Agent có miễn phí không?',
     answer:
-      'Phần mềm miễn phí 100%. Bạn chỉ trả tiền cho AI model mình dùng — gói rẻ nhất khoảng $10/tháng, dùng ít thì rẻ hơn.',
+      'Phần mềm miễn phí 100%. Bạn chỉ trả tiền cho AI model mình dùng — trả theo mức dùng như đồng hồ điện, dùng ít thì rẻ hơn.',
   },
   {
     question: 'Không biết code có dùng được không?',
