@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cộng Đồng AI — Thiết kế v2 (canvas duyệt)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAF7; --card:#FFFFFF; --ink:#1C1917; --soft:#57534E;
+  --teal:#0D9488; --teal-dark:#0F766E; --teal-soft:#CCFBF1;
+  --amber:#F59E0B; --amber-soft:#FEF3C7; --red-soft:#FEE2E2; --red-ink:#991B1B;
+  --line:#E7E5E4; --r:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Be Vietnam Pro',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:72px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--teal-soft);color:var(--teal-dark);font-weight:700;font-size:13px;padding:6px 14px;border-radius:999px;margin-bottom:14px}
+h2{font-size:32px;font-weight:800;letter-spacing:-.5px;margin-bottom:10px}
+.sub{color:var(--soft);font-size:17px;max-width:640px;margin-bottom:36px}
+.tip{border-bottom:2px dotted var(--amber);cursor:help;font-weight:600}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(250,250,247,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:28px;padding:14px 24px;max-width:1120px;margin:0 auto}
+.logo{font-weight:800;font-size:19px;display:flex;align-items:center;gap:8px}
+.logo .mark{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--teal),#14B8A6);color:#fff;display:grid;place-items:center;font-size:17px}
+.nav-links{display:flex;gap:22px;margin-left:auto;font-weight:600;font-size:15px;color:var(--soft)}
+.nav-links span:hover{color:var(--teal-dark)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-weight:700;padding:12px 22px;border-radius:999px;font-size:15px;text-decoration:none;box-shadow:0 4px 14px rgba(13,148,136,.25)}
+.btn.big{padding:16px 30px;font-size:17px}
+.btn.ghost{background:transparent;color:var(--teal-dark);border:2px solid var(--teal);box-shadow:none}
+
+/* HERO */
+.hero{padding:84px 0 64px;background:radial-gradient(900px 400px at 15% -10%,var(--teal-soft),transparent),radial-gradient(700px 350px at 95% 0%,var(--amber-soft),transparent)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:44px;line-height:1.18;font-weight:800;letter-spacing:-1px}
+.hero h1 em{font-style:normal;color:var(--teal-dark);background:linear-gradient(transparent 62%,var(--teal-soft) 62%)}
+.hero p{color:var(--soft);font-size:18px;margin:18px 0 26px}
+.trust{display:flex;gap:16px;flex-wrap:wrap;margin-top:22px;font-size:14px;font-weight:600;color:var(--soft)}
+.trust b{color:var(--teal-dark)}
+/* app mockup */
+.app{background:#1C1917;border-radius:18px;padding:14px;box-shadow:0 24px 60px rgba(28,25,23,.28)}
+.app-bar{display:flex;gap:6px;margin-bottom:12px}
+.app-bar i{width:11px;height:11px;border-radius:50%;background:#44403C}
+.app-bar i:first-child{background:#F87171}.app-bar i:nth-child(2){background:#FBBF24}.app-bar i:nth-child(3){background:#34D399}
+.chat{background:#292524;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;font-size:14px}
+.msg{max-width:85%;padding:10px 14px;border-radius:14px;line-height:1.5}
+.msg.user{background:#0D9488;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.msg.ai{background:#3A3533;color:#F5F5F4;align-self:flex-start;border-bottom-left-radius:4px}
+.msg.ai small{display:block;color:#A8A29E;font-size:12px;margin-bottom:4px}
+
+/* SO SÁNH 2 CỘT */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.ccol{border-radius:var(--r);padding:30px}
+.ccol.closed{background:#F5F5F4;border:1px solid var(--line)}
+.ccol.open{background:linear-gradient(160deg,#0F766E,#0D9488);color:#fff;box-shadow:0 18px 44px rgba(13,148,136,.3);position:relative}
+.ccol.open .best{position:absolute;top:-14px;right:20px;background:var(--amber);color:#1C1917;font-weight:800;font-size:13px;padding:6px 14px;border-radius:999px}
+.ccol h3{font-size:20px;font-weight:800;margin-bottom:6px}
+.ccol .cap{font-size:14px;opacity:.75;margin-bottom:18px}
+.crow{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-top:1px solid rgba(0,0,0,.07);font-size:15px}
+.ccol.open .crow{border-top-color:rgba(255,255,255,.18)}
+.crow .ic{flex:0 0 24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800}
+.closed .ic{background:var(--red-soft);color:var(--red-ink)}
+.open .ic{background:rgba(255,255,255,.2);color:#fff}
+.meter{margin-top:20px;background:rgba(255,255,255,.12);border-radius:14px;padding:14px 16px;font-size:14px;display:flex;align-items:center;gap:12px}
+.meter .dial{font-size:26px}
+
+/* CHỌN MODEL NHƯ CHỌN XE */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;text-align:center;transition:.2s}
+.tier:hover{transform:translateY(-4px);border-color:var(--teal);box-shadow:0 12px 30px rgba(0,0,0,.07)}
+.tier .emoji{font-size:44px;margin-bottom:12px}
+.tier h3{font-size:18px;font-weight:800;margin-bottom:4px}
+.tier .tag{display:inline-block;background:var(--teal-soft);color:var(--teal-dark);font-weight:700;font-size:12px;padding:3px 12px;border-radius:999px;margin-bottom:12px}
+.tier p{color:var(--soft);font-size:14.5px}
+.tier-note{margin-top:22px;background:var(--amber-soft);border-radius:14px;padding:16px 20px;font-size:15px;color:#78350F}
+
+/* DỮ LIỆU */
+.data-band{background:#1C1917;color:#F5F5F4;border-radius:28px;padding:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.data-band h2{color:#fff}
+.dpoint .ic{width:48px;height:48px;border-radius:14px;background:rgba(13,148,136,.2);display:grid;place-items:center;font-size:24px;margin-bottom:12px}
+.dpoint h4{font-size:17px;font-weight:700;margin-bottom:4px}
+.dpoint p{font-size:14px;color:#A8A29E}
+
+/* 3 BƯỚC */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;position:relative}
+.step .num{width:44px;height:44px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;font-size:20px;display:grid;place-items:center;margin-bottom:14px}
+.step h3{font-size:18px;font-weight:800;margin-bottom:6px}
+.step p{color:var(--soft);font-size:15px}
+.step .time{position:absolute;top:24px;right:24px;background:var(--amber-soft);color:#92400E;font-weight:700;font-size:12.5px;padding:4px 10px;border-radius:999px}
+.step .shot{margin-top:14px;height:120px;border-radius:12px;background:repeating-linear-linear-gradient(45deg,#F5F5F4,#F5F5F4 10px,#EFEDEA 10px,#EFEDEA 20px);border:1px dashed #D6D3D1;display:grid;place-items:center;color:#A8A29E;font-size:13px;font-weight:600}
+
+/* USE CASE */
+.uses{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.use{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;gap:14px;align-items:flex-start}
+.use .em{font-size:28px}
+.use h4{font-size:16px;font-weight:700;margin-bottom:2px}
+.use p{font-size:13.5px;color:var(--soft)}
+
+/* HOI DAP */
+.qa-list{display:grid;gap:14px;max-width:760px}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 22px;display:flex;gap:14px;align-items:center}
+.qa .av{width:42px;height:42px;border-radius:50%;flex:0 0 42px;display:grid;place-items:center;font-weight:800;color:#fff;font-size:16px}
+.qa .body{flex:1}
+.qa h4{font-size:15.5px;font-weight:700}
+.qa .meta{display:flex;gap:10px;margin-top:5px;flex-wrap:wrap}
+.pill{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.pill.tag{background:#F5F5F4;color:var(--soft)}
+.pill.ai{background:var(--teal-soft);color:var(--teal-dark)}
+.pill.solved{background:#DCFCE7;color:#166534}
+.qa .votes{text-align:center;font-weight:800;color:var(--teal-dark);font-size:15px}
+.qa .votes small{display:block;font-weight:600;color:var(--soft);font-size:11px}
+
+/* THƯ VIỆN */
+.lib{background:linear-gradient(140deg,#0F766E,#115E59);border-radius:28px;padding:56px;color:#fff;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.lib h2{color:#fff}
+.lib p{color:#CCFBF1;margin:10px 0 20px;font-size:16px}
+.lib ul{list-style:none;display:grid;gap:8px;font-size:15px;color:#E7FFFB}
+.lib-form{background:#fff;border-radius:18px;padding:26px;color:var(--ink)}
+.lib-form input{width:100%;padding:13px 16px;border:1.5px solid var(--line);border-radius:12px;font-family:inherit;font-size:15px;margin-bottom:12px}
+.lib-form .btn{width:100%;justify-content:center}
+.lib-form small{display:block;text-align:center;color:var(--soft);margin-top:10px;font-size:12.5px}
+
+/* FAQ */
+.faq{max-width:760px;display:grid;gap:12px}
+.fq{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px}
+.fq h4{font-size:15.5px;font-weight:700;display:flex;justify-content:space-between}
+.fq h4::after{content:'+';color:var(--teal);font-size:20px}
+.fq p{font-size:14.5px;color:var(--soft);margin-top:8px}
+
+/* CTA cuối */
+.final{text-align:center;background:radial-gradient(600px 300px at 50% 120%,var(--teal-soft),transparent)}
+.final h2{font-size:36px}
+.final p{color:var(--soft);margin:10px auto 26px;max-width:520px}
+
+footer{border-top:1px solid var(--line);padding:36px 0;color:var(--soft);font-size:14px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot a{color:var(--teal-dark);font-weight:600;text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div class="logo"><span class="mark">☤</span> Cộng Đồng AI</div>
+    <div class="nav-links">
+      <span>Bắt đầu</span><span>Hướng dẫn</span><span>Hỏi &amp; Đáp</span><span>Thư viện</span><span>Blog</span>
+    </div>
+    <a class="btn" href="#">🚀 Bắt đầu tại đây</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">🇻🇳 Hướng dẫn tiếng Việt cho người mới</span>
+      <h1>Biến máy tính của bạn thành <em>trợ lý AI biết tự làm việc</em> — không cần biết code</h1>
+      <p>Hermes là trợ lý AI chạy ngay trên máy bạn: đọc tin mỗi sáng, soạn email, nhắc việc, nghiên cứu giúp bạn. Trang này chỉ bạn cài và dùng từ A đến Z, bằng tiếng Việt, từng bước một.</p>
+      <a class="btn big" href="#">Cài miễn phí trong 10 phút →</a>&nbsp;&nbsp;
+      <a class="btn ghost big" href="#">Tải thư viện mẫu</a>
+      <div class="trust">
+        <span>✓ <b>Miễn phí</b> mã nguồn mở</span>
+        <span>✓ <b>Không cần biết code</b></span>
+        <span>✓ <b>Dữ liệu ở lại máy bạn</b></span>
+      </div>
+    </div>
+    <div class="app">
+      <div class="app-bar"><i></i><i></i><i></i></div>
+      <div class="chat">
+        <div class="msg user">Sáng nay tóm tắt tin giúp mình nhé ☕</div>
+        <div class="msg ai"><small>Hermes · đang chạy trên máy bạn</small>Mình đã đọc 12 nguồn. Có 3 tin đáng chú ý: (1) ... (2) ... (3) ... Bản đầy đủ mình lưu trong thư mục Báo cáo rồi nhé.</div>
+        <div class="msg user">Đặt lịch 9h sáng mai nhắc mình gửi email cho khách</div>
+        <div class="msg ai"><small>Hermes</small>Đã đặt ✓ Đúng 9:00 sáng mai mình sẽ nhắc bạn kèm bản nháp email luôn.</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TRẢ TIỀN NHƯ ĐỒNG HỒ ĐIỆN -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">⚡ Trả phí theo nhu cầu</span>
+    <h2>Trả tiền như đồng hồ điện — dùng bao nhiêu, trả bấy nhiêu</h2>
+    <p class="sub">Không gói tháng cố định. Bạn nạp sẵn một khoản (như nạp điện thoại), mỗi lần hỏi AI đồng hồ nhích một chút — nhìn thấy ngay. Không dùng nữa thì thôi, <b>số dư vẫn là của bạn</b>.</p>
+    <div class="compare">
+      <div class="ccol closed">
+        <h3>🏢 Công cụ đóng</h3>
+        <div class="cap">ChatGPT, Gemini web và các gói thuê bao</div>
+        <div class="crow"><span class="ic">✕</span>Trả gói cố định mỗi tháng — dùng ít vẫn mất tiền</div>
+        <div class="crow"><span class="ic">✕</span>Bị khóa vào 1 hãng, 1 <span class="tip" title="Mô hình AI — bộ não xử lý câu hỏi của bạn">model</span></div>
+        <div class="crow"><span class="ic">✕</span>Dữ liệu của bạn nằm trên server của hãng</div>
+        <div class="crow"><span class="ic">✕</span>Muốn dừng? Phải đi hủy gói, dễ quên và bị trừ tiếp</div>
+      </div>
+      <div class="ccol open">
+        <span class="best">⚡ Cách của Hermes</span>
+        <h3>Hermes + OpenRouter</h3>
+        <div class="cap">Nạp một lần — trừ dần theo từng câu hỏi</div>
+        <div class="crow"><span class="ic">✓</span>Nạp bao nhiêu dùng bấy nhiêu, không hạn mức theo tháng</div>
+        <div class="crow"><span class="ic">✓</span>Hàng trăm model: GPT, Claude, Gemini, DeepSeek, Qwen... đổi trong 1 cú click</div>
+        <div class="crow"><span class="ic">✓</span>Agent chạy trên máy bạn — dữ liệu là của bạn</div>
+        <div class="crow"><span class="ic">✓</span>Không tự gia hạn. Dừng bất cứ lúc nào, số dư vẫn còn</div>
+        <div class="meter"><span class="dial">🪪</span><span><b>Số dư: còn nguyên khi bạn không dùng.</b><br>Mỗi câu hỏi = một lần đồng hồ nhích, minh bạch từng khoản.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHỌN MODEL NHƯ CHỌN XE -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">🏍️ Tự do chọn "bộ não"</span>
+    <h2>Chọn model như chọn xe — việc nào xe nấy</h2>
+    <p class="sub">Không cần hiểu kỹ thuật. Trong app chỉ là một danh sách thả xuống: thích thì đổi, không hợp thì thôi. Không mất dữ liệu, không phải tạo tài khoản mới.</p>
+    <div class="tiers">
+      <div class="tier">
+        <div class="emoji">🛵</div>
+        <span class="tag">Hạng tiết kiệm</span>
+        <h3>Việc nhẹ hằng ngày</h3>
+        <p>Tóm tắt tin tức, viết email, dịch thuật, hỏi đáp nhanh. Model tiết kiệm xử lý gọn — nhanh và tốn rất ít số dư.</p>
+      </div>
+      <div class="tier">
+        <div class="emoji">🚗</div>
+        <span class="tag">Hạng trung - cao</span>
+        <h3>Việc cần suy nghĩ</h3>
+        <p>Phân tích, lập kế hoạch, viết dài, làm việc với file và code. Cần "đầu to" hơn — bật lên khi việc đòi hỏi.</p>
+      </div>
+      <div class="tier">
+        <div class="emoji">🏎️</div>
+        <span class="tag">Hạng mạnh nhất</span>
+        <h3>Việc khó nhất</h3>
+        <p>Nghiên cứu chuyên sâu, suy luận phức tạp. Model mạnh nhất chỉ bật khi thật sự cần — bạn hoàn toàn chủ động.</p>
+      </div>
+    </div>
+    <div class="tier-note">💡 <b>Ví dụ minh họa:</b> hỏi vài câu mỗi ngày cho việc cá nhân — một khoản nạp nhỏ dùng được rất lâu. Dùng nhiều cho công việc thì nạp thêm. Lúc nào bạn cũng thấy rõ mình đã dùng bao nhiêu, ngay trong app.</div>
+  </div>
+</section>
+
+<!-- DỮ LIỆU LÀ CỦA BẠN -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="data-band">
+      <div>
+        <span class="eyebrow" style="background:rgba(255,255,255,.12);color:#5EEAD4">🔐 Quyền riêng tư</span>
+        <h2 style="font-size:26px">Dữ liệu của bạn<br>ở lại máy bạn</h2>
+      </div>
+      <div class="dpoint">
+        <div class="ic">💻</div>
+        <h4>Chạy trên máy bạn</h4>
+        <p>Hermes là phần mềm cài trên chính máy tính của bạn — không phải trang web của hãng khác.</p>
+      </div>
+      <div class="dpoint">
+        <div class="ic">🗂️</div>
+        <h4>Lịch sử là của bạn</h4>
+        <p>Chat, file, ghi chú nằm trong máy bạn. Không bị "nhốt" trên server của một công ty nào.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 BƯỚC -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">⏱️ Cài đặt siêu đơn giản</span>
+    <h2>3 bước — khoảng 10 phút, không cần biết code</h2>
+    <p class="sub">Mỗi bước đều có bài hướng dẫn kèm ảnh chụp màn hình tiếng Việt. Bấm vào từng bước để xem.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="time">~2 phút</span>
+        <div class="num">1</div>
+        <h3>Tải app Hermes</h3>
+        <p>Bấm tải file cài đặt cho Windows hoặc Mac — như cài bất kỳ phần mềm nào. Có mẹo xử lý cảnh báo bảo mật của Windows.</p>
+        <div class="shot">📸 ảnh chụp bước tải app</div>
+      </div>
+      <div class="step">
+        <span class="time">~5 phút</span>
+        <div class="num">2</div>
+        <h3>Đăng nhập &amp; nạp "xăng"</h3>
+        <p>Tạo tài khoản <span class="tip" title="Cổng kết nối hàng trăm model AI, trả phí theo mức dùng">OpenRouter</span>, nạp một khoản nhỏ dùng dần, dán <span class="tip" title="Chìa khóa riêng của bạn — như mật khẩu để app kết nối AI">API key</span> vào app. Hướng dẫn từng ảnh.</p>
+        <div class="shot">📸 ảnh chụp bước dán key</div>
+      </div>
+      <div class="step">
+        <span class="time">~3 phút</span>
+        <div class="num">3</div>
+        <h3>Hỏi câu đầu tiên</h3>
+        <p>Gõ bằng tiếng Việt như nhắn tin: "Tóm tắt giúp mình 5 tin công nghệ sáng nay". Xong — trợ lý của bạn đã chạy!</p>
+        <div class="shot">📸 ảnh chụp màn hình chat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASE -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">🧰 Làm được gì</span>
+    <h2>Những việc trợ lý AI làm giúp bạn mỗi ngày</h2>
+    <p class="sub">Mỗi ô là một bài hướng dẫn đầy đủ, có sẵn câu lệnh mẫu — bạn chỉ cần copy dán.</p>
+    <div class="uses">
+      <div class="use"><span class="em">📰</span><div><h4>Tóm tắt tin mỗi sáng</h4><p>Tự đọc các nguồn bạn chọn, gửi bản tin gọn gàng đúng giờ cà phê.</p></div></div>
+      <div class="use"><span class="em">✉️</span><div><h4>Soạn &amp; nhắc email</h4><p>Viết nháp email tiếng Việt/Anh, nhắc bạn gửi đúng hạn.</p></div></div>
+      <div class="use"><span class="em">📅</span><div><h4>Nhắc việc thông minh</h4><p>Việc lặp lại hằng ngày/tuần — không cần app ghi chú nào khác.</p></div></div>
+      <div class="use"><span class="em">🌍</span><div><h4>Dịch &amp; học ngoại ngữ</h4><p>Người bản xứ kiên nhẫn nhất bạn từng có, 24/7, miễn phí công hỏi.</p></div></div>
+      <div class="use"><span class="em">🧳</span><div><h4>Lên kế hoạch du lịch</h4><p>Lịch trình phượt, danh sách quán, dự trù chi tiêu theo ý bạn.</p></div></div>
+      <div class="use"><span class="em">🛒</span><div><h4>Nghiên cứu trước khi mua</h4><p>So sánh sản phẩm, đọc đánh giá nhiều nguồn, tóm gọn 1 trang.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CỘNG ĐỒNG HỎI ĐÁP -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">💬 Cộng đồng</span>
+    <h2>Mắc ở đâu, hỏi ở đó — luôn có người trả lời</h2>
+    <p class="sub">Đăng nhập bằng tài khoản Google để đặt câu hỏi và trả lời. Trợ lý AI của cộng đồng trực 24/7 — câu hỏi mới luôn có trả lời trong vài phút, người thật sẽ bổ sung sau.</p>
+    <div class="qa-list">
+      <div class="qa">
+        <div class="av" style="background:#0D9488">M</div>
+        <div class="body">
+          <h4>Cài trên Windows báo "Windows protected your PC" thì làm sao?</h4>
+          <div class="meta"><span class="pill tag">Cài đặt</span><span class="pill ai">🤖 AI đã trả lời</span><span class="pill solved">✓ Đã giải quyết</span></div>
+        </div>
+        <div class="votes">12<small>hữu ích</small></div>
+      </div>
+      <div class="qa">
+        <div class="av" style="background:#F59E0B">H</div>
+        <div class="body">
+          <h4>Thẻ Visa của mình không nạp được OpenRouter, có cách nào khác không?</h4>
+          <div class="meta"><span class="pill tag">Thanh toán</span><span class="pill ai">🤖 AI đã trả lời</span><span class="pill tag">3 trả lời</span></div>
+        </div>
+        <div class="votes">8<small>hữu ích</small></div>
+      </div>
+      <div class="qa">
+        <div class="av" style="background:#0F766E">T</div>
+        <div class="body">
+          <h4>Muốn assistant tự gửi bản tin 7h sáng mỗi ngày thì cài ở đâu?</h4>
+          <div class="meta"><span class="pill tag">Sử dụng</span><span class="pill solved">✓ Đã giải quyết</span><span class="pill tag">5 trả lời</span></div>
+        </div>
+        <div class="votes">15<small>hữu ích</small></div>
+      </div>
+    </div>
+    <br><a class="btn ghost" href="#">Vào khu Hỏi &amp; Đáp →</a>
+  </div>
+</section>
+
+<!-- THƯ VIỆN -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="lib">
+      <div>
+        <h2 style="font-size:28px">📚 Thư viện mẫu miễn phí</h2>
+        <p>Tải về dùng ngay, không cần tự viết:</p>
+        <ul>
+          <li>✓ Bộ "tính cách" trợ lý tiếng Việt (SOUL.md) — dán là dùng</li>
+          <li>✓ 50+ câu lệnh mẫu cho việc hằng ngày</li>
+          <li>✓ Bộ kỹ năng: bản tin sáng, nhắc việc, nghiên cứu</li>
+          <li>✓ Checklist cài đặt 1 trang (in ra được)</li>
+        </ul>
+      </div>
+      <div class="lib-form">
+        <h3 style="font-size:17px;font-weight:800;margin-bottom:4px">Nhận trọn bộ miễn phí</h3>
+        <p style="font-size:13.5px;color:var(--soft);margin-bottom:14px">+ mỗi tuần 1 email mẹo dùng AI dễ hiểu</p>
+        <input placeholder="Email của bạn">
+        <a class="btn" href="#">Gửi cho tôi →</a>
+        <small>Không spam. Hủy bất cứ lúc nào.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">❓ Hỏi nhanh</span>
+    <h2>Người mới hay hỏi</h2>
+    <div class="faq" style="margin-top:24px">
+      <div class="fq"><h4>Nạp bao nhiêu tiền là đủ?</h4><p>Tùy mức bạn dùng — cứ nạp khoản nhỏ thử trước. Hết thì nạp thêm, không bao giờ bị âm tiền hay tự động trừ.</p></div>
+      <div class="fq"><h4>Hết số dư thì chuyện gì xảy ra?</h4><p>App chỉ đơn giản là dừng trả lời và báo cho bạn biết. Không có phí ẩn, không tự gia hạn.</p></div>
+      <div class="fq"><h4>Tôi không biết gì về kỹ thuật, có dùng được không?</h4><p>Được — cả trang này dành cho bạn. Cài đặt chỉ là tải app, dán chìa khóa, rồi nhắn tin bằng tiếng Việt.</p></div>
+      <div class="fq"><h4>Dữ liệu chat của tôi có bị ai đọc không?</h4><p>Không. Trợ lý chạy trên máy bạn, lịch sử nằm trong máy bạn. Chỉ nội dung câu hỏi bạn gửi đi mới tới model AI bạn chọn.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA CUỐI -->
+<section class="final">
+  <div class="wrap">
+    <h2>Sẵn sàng có trợ lý AI của riêng bạn?</h2>
+    <p>Miễn phí, tiếng Việt, dữ liệu ở lại máy bạn. Bắt đầu chỉ với 3 bước.</p>
+    <a class="btn big" href="#">🚀 Bắt đầu tại đây — miễn phí</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 CongDongAI.org — Cộng đồng Hermes Agent tiếng Việt</div>
+    <div>Một sản phẩm từ <a href="https://themoneybrew.org">TheMoneyBrew</a> · <a href="#">Quy tắc cộng đồng</a> · <a href="#">Điều khoản</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
