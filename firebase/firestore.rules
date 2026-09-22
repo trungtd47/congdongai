@@ -1,0 +1,84 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: user đã đăng nhập
+    function signedIn() {
+      return request.auth != null;
+    }
+    function isSelf(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    // ---------- USERS ----------
+    match /users/{uid} {
+      allow read: if true; // hồ sơ công khai
+      allow create: if isSelf(uid) && request.resource.data.role == 'member';
+      allow update: if isSelf(uid) &&
+        !('role' in request.resource.data.diff(resource.data).affectedKeys()) &&
+        request.resource.data.role == resource.data.role;
+      allow delete: if false; // không tự xóa hồ sơ
+    }
+
+    // ---------- POSTS ----------
+    match /posts/{postId} {
+      allow read: if true;
+      allow create: if signedIn()
+        && request.resource.data.authorUid == request.auth.uid
+        && request.resource.data.flagged == false
+        && request.resource.data.solvedAnswerId == null;
+      allow update: if signedIn()
+        && (request.resource.data.authorUid == resource.data.authorUid
+            || (request.auth.uid == resource.data.authorUid));
+      allow delete: if isSelf(resource.data.authorUid);
+
+      // Chỉ author của post được đánh dấu đáp án đúng (isAccepted/solvedAnswerId)
+      match /answers/{answerId} {
+        allow read: if true;
+        allow create: if signedIn()
+          && request.resource.data.authorUid == request.auth.uid
+          && request.resource.data.isAccepted == false
+          && request.resource.data.isAI == false
+          && request.resource.data.flagged == false;
+        allow update: if signedIn()
+          && request.resource.data.isAccepted == false
+          && request.resource.data.isAI == resource.data.isAI;
+        allow delete: if isSelf(resource.data.authorUid);
+      }
+    }
+
+    // ---------- COMMENTS ----------
+    match /articles/{slug}/comments/{cid} {
+      allow read: if true;
+      allow create: if signedIn()
+        && request.resource.data.authorUid == request.auth.uid
+        && request.resource.data.isAI == false
+        && request.resource.data.flagged == false;
+      allow update: if isSelf(resource.data.authorUid)
+        && request.resource.data.isAI == resource.data.isAI;
+      allow delete: if isSelf(resource.data.authorUid);
+    }
+
+    // ---------- NOTIFICATIONS ----------
+    match /notifications/{docId} {
+      allow read: if signedIn() && docId.matches(request.auth.uid + '_.*');
+      allow create, update: if false; // chỉ qua Admin SDK (bot Friday)
+      allow delete: if signedIn() && docId.matches(request.auth.uid + '_.*');
+    }
+
+    // ---------- FLAGS ----------
+    match /flags/{fid} {
+      allow read: if false;
+      allow create: if signedIn()
+        && request.resource.data.reporterUid == request.auth.uid
+        && request.resource.data.status == 'open';
+      allow update, delete: if false; // chỉ mod qua Admin SDK
+    }
+
+    // Chặn mọi thứ khác
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
