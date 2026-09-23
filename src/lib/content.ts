@@ -148,8 +148,13 @@ export const homeFaqs: Faq[] = [
       'Telegram hiện bị chặn tại Việt Nam, còn Zalo chưa được Hermes hỗ trợ. Với người dùng VN, chat thẳng trong app Desktop là cách ổn định nhất.',
   },
   {
-    question: 'Thanh toán từ Việt Nam thế nào?',
-    answer:
-      'Cần thẻ Visa/Mastercard. Hướng dẫn từng bước + các lỗi thẻ hay gặp có trong bài riêng.',
-  },
-];
+      question: 'Thanh toán từ Việt Nam thế nào?',
+      answer:
+        'Cần thẻ Visa/Mastercard. Hướng dẫn từng bước + các lỗi thẻ hay gặp có trong bài riêng.',
+    },
+    {
+      question: 'OpenRouter hay Nous Portal, nên chọn cái nào?',
+      answer:
+        'Thứ tự khuyên dùng: OpenRouter (linh hoạt nhất, trả theo mức dùng) → Nous Portal (dễ nhất, không cần API key) → nối trực tiếp một hãng. Chi tiết có bài riêng.',
+    },
+  ];
