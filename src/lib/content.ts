@@ -135,7 +135,7 @@ export const homeFaqs: Faq[] = [
   {
     question: 'Hermes Agent có miễn phí không?',
     answer:
-      'Phần mềm miễn phí 100%. Bạn chỉ trả tiền cho AI model mình dùng - trả theo mức dùng như đồng hồ điện, dùng ít thì rẻ hơn.',
+      'Phần mềm miễn phí 100%. Bạn chỉ trả tiền cho AI model mình dùng, tính theo số token đã dùng - dùng ít thì rẻ hơn.',
   },
   {
     question: 'Không biết code có dùng được không?',
@@ -155,6 +155,6 @@ export const homeFaqs: Faq[] = [
     {
       question: 'OpenRouter hay Nous Portal, nên chọn cái nào?',
       answer:
-        'Thứ tự khuyên dùng: OpenRouter (linh hoạt nhất, trả theo mức dùng) → Nous Portal (dễ nhất, không cần API key) → nối trực tiếp một hãng. Chi tiết có bài riêng.',
+        'Thứ tự khuyên dùng: OpenRouter (linh hoạt nhất, tính phí theo token) → Nous Portal (dễ nhất, không cần API key) → nối trực tiếp một hãng. Chi tiết có bài riêng.',
     },
   ];

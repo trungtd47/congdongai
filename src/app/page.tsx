@@ -28,7 +28,7 @@ const honestFaqs = [
   {
     question: 'Vậy tiền ở đâu ra?',
     answer:
-      'Bạn trả cho "điện" AI đã dùng, qua OpenRouter: nạp trước một khoản như nạp điện thoại, mỗi câu hỏi trừ dần - như đồng hồ điện. Không gói tháng, không tự gia hạn.',
+      'Bạn trả tiền theo số token đã dùng, qua OpenRouter: nạp trước một khoản, mỗi câu hỏi trừ dần. Không gói tháng, không tự gia hạn.',
   },
   {
     question: 'Người mới nên nạp bao nhiêu?',
@@ -399,10 +399,10 @@ export default function HomePage() {
             <div className="hq">
               <h5>Vậy tiền ở đâu ra?</h5>
               <p>
-                Bạn trả cho &quot;điện&quot; AI đã dùng, qua{' '}
-                <TermTip term="OpenRouter">OpenRouter</TermTip>: nạp trước một khoản như nạp
-                điện thoại, mỗi câu hỏi trừ dần - <b>như đồng hồ điện</b>. Không gói tháng,
-                không tự gia hạn, không dùng thì số dư nằm yên, là tiền của bạn.
+                Bạn trả tiền theo số token đã dùng, qua{' '}
+                                <TermTip term="OpenRouter">OpenRouter</TermTip>: nạp trước một khoản, mỗi câu
+                                hỏi trừ dần. Không gói tháng, không tự gia hạn, không dùng thì số dư nằm yên,
+                                là tiền của bạn.
               </p>
             </div>
             <div className="hq">
@@ -410,7 +410,7 @@ export default function HomePage() {
               <p>
                 Nạp ít thử trước - hỏi vài câu mỗi ngày cho việc cá nhân thì một khoản nhỏ
                 dùng được rất lâu. Trong app luôn thấy rõ đã dùng bao nhiêu. Chi tiết từng
-                bước: <Link href="/bat-dau/vi-sao-dung-openrouter">bài hướng dẫn nạp &quot;xăng&quot; từ Việt Nam</Link>.
+                bước: <Link href="/bat-dau/vi-sao-dung-openrouter">bài hướng dẫn nạp tiền từ Việt Nam</Link>.
               </p>
             </div>
             <div className="hq" style={{ borderBottom: '1px dashed var(--line)' }}>

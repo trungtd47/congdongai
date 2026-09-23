@@ -75,7 +75,7 @@ export const demoPosts: DemoPost[] = [
     answers: [
       {
         id: 'a-1',
-        body: 'Phần mềm Hermes Agent miễn phí 100%. Bạn chỉ trả tiền cho AI model mình dùng, trả theo mức dùng như đồng hồ điện - dùng ít trả ít, dùng nhiều trả nhiều, không gói tháng. Chi tiết mình đã viết ở bài "Thanh toán từ Việt Nam".',
+        body: 'Phần mềm Hermes Agent miễn phí 100%. Bạn chỉ trả tiền cho AI model mình dùng, tính theo số token đã dùng - dùng ít trả ít, dùng nhiều trả nhiều, không gói tháng. Chi tiết mình đã viết ở bài "Thanh toán từ Việt Nam".',
         authorUid: 'ai-friday',
         authorName: 'Friday (AI)',
         createdAt: '2026-09-08',
@@ -678,8 +678,8 @@ export const pathSteps: PathStep[] = [
   },
   {
     n: '3',
-    title: 'Nạp "xăng" cho Hermes: tài khoản OpenRouter từ Việt Nam',
-    desc: 'Trả theo nhu cầu như đồng hồ điện - không gói tháng. Cả cách xử lý khi thẻ Visa không nạp được.',
+    title: 'Nạp tiền cho Hermes: tài khoản OpenRouter từ Việt Nam',
+        desc: 'Trả theo số token đã dùng - không gói tháng. Cả cách xử lý khi thẻ Visa không nạp được.',
     time: '⏱ 8 phút làm',
     slug: '/bat-dau/vi-sao-dung-openrouter',
   },

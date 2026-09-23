@@ -8,7 +8,7 @@ import { JsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/seo';
 export const metadata: Metadata = {
   title: 'Vì sao dùng OpenRouter - trả tiền theo đúng mức dùng',
   description:
-    'OpenRouter như “đồng hồ điện cho AI”: một tài khoản tiếp cận hàng trăm model, trả đúng phần đã dùng, không phí tháng cố định. Giải thích cho người mới kèm các bước bắt đầu.',
+    'OpenRouter: một tài khoản tiếp cận hàng trăm model, tính phí theo token đã dùng, không phí tháng cố định. Giải thích cho người mới kèm các bước bắt đầu.',
   alternates: { canonical: '/bat-dau/vi-sao-dung-openrouter' },
 };
 
@@ -58,9 +58,9 @@ export default function ViSaoDungOpenRouterPage() {
 
       {/* 1. OpenRouter là gì */}
       <p className="mb-8 max-w-2xl text-[16px] text-ink-soft">
-        <TermTip term="OpenRouter">OpenRouter</TermTip> như đồng hồ điện cho AI: một tài
-        khoản duy nhất, tiếp cận mọi <TermTip term="model">model</TermTip>, và chỉ trả
-        đúng phần mình đã dùng.
+        <TermTip term="OpenRouter">OpenRouter</TermTip> tính phí theo{' '}
+                <TermTip term="token">token</TermTip>: một tài khoản duy nhất, tiếp cận mọi{' '}
+                <TermTip term="model">model</TermTip>, và chỉ trả đúng phần mình đã dùng.
       </p>
 
       {/* 2. So sánh 2 cột */}
