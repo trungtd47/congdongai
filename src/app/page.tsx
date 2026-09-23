@@ -38,7 +38,7 @@ const honestFaqs = [
   {
     question: 'Còn trang này thu phí gì không?',
     answer:
-      'Không, và sẽ luôn như vậy. Trang sống được nhờ link giới thiệu và gói thành viên tự nguyện. Ở đây không bán khóa học, không bao giờ.',
+      'Không, và sẽ luôn như vậy. Mình duy trì trang này bằng tiền túi của bản thân, có thể sau này đặt link affiliate nếu nền tảng mình sử dụng có link nhưng không ảnh hưởng đến trải nghiệm, và không bao giờ thu phí thành viên hay bán khóa học.',
   },
 ];
 
@@ -422,11 +422,10 @@ export default function HomePage() {
             <div className="hq" style={{ borderBottom: '1px dashed var(--line)' }}>
               <h5>Còn trang này thu phí gì không?</h5>
               <p>
-                <b>Không, và sẽ luôn như vậy.</b> Mình nói thẳng để các bạn yên tâm: trang
-                sống được nhờ <b>link giới thiệu</b> - bạn cài dịch vụ qua link của mình thì
-                nhà cung cấp trả mình một ít hoa hồng, bạn không phải trả thêm đồng nào. Sau
-                này có thể thêm gói thành viên <i>tự nguyện</i> với quyền lợi phụ trội. Hết. Ở
-                đây không bán khóa học, không bao giờ.
+                <b>Không, và sẽ luôn như vậy.</b> Mình sẽ duy trì trang này bằng tiền túi
+                của bản thân. Có thể sau này mình sẽ đặt link affiliate nếu nền tảng mình sử
+                dụng có link, nhưng sẽ không ảnh hưởng đến trải nghiệm của bạn - và đảm bảo
+                không bao giờ thu phí thành viên hay bán khóa học.
               </p>
             </div>
           </div>
