@@ -7,7 +7,8 @@ import { signInWithGoogle, signOutUser } from '@/lib/auth';
 import { isDemoMode } from '@/lib/firebase';
 
 const links = [
-  { href: '/bat-dau', label: 'Học Hermes' },
+  { href: '/lo-trinh', label: 'Lộ trình' },
+  { href: '/bat-dau', label: 'Bắt đầu' },
   { href: '/hoi-dap', label: 'Hỏi & Đáp' },
   { href: '/thu-vien', label: 'Thư viện' },
   { href: '/blog', label: 'Blog' },
