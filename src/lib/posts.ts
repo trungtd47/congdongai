@@ -20,6 +20,7 @@ export interface Post extends PostMeta {
 
 const contentDir = path.join(process.cwd(), 'src', 'content');
 const batDauDir = path.join(process.cwd(), 'src', 'content', 'bat-dau');
+const huongDanDir = path.join(process.cwd(), 'src', 'content', 'huong-dan');
 
 export function getAllPosts(): PostMeta[] {
   const files = fs.readdirSync(contentDir).filter((f) => f.endsWith('.mdx'));
@@ -86,6 +87,32 @@ export function getBatDauSlugs(): string[] {
   if (!fs.existsSync(batDauDir)) return [];
   return fs
     .readdirSync(batDauDir)
+    .filter((f) => f.endsWith('.mdx'))
+    .map((f) => f.replace(/\.mdx$/, ''));
+}
+
+// Loader riêng cho bài trong khu "Hướng dẫn" (/huong-dan) - đọc thư mục con huong-dan/.
+export function getHuongDanPostBySlug(slug: string): Post | null {
+  const file = path.join(huongDanDir, `${slug}.mdx`);
+  if (!fs.existsSync(file)) return null;
+  const raw = fs.readFileSync(file, 'utf8');
+  const { data, content } = matter(raw);
+  return {
+    slug,
+    title: data.title as string,
+    description: data.description as string,
+    datePublished: data.datePublished as string,
+    dateModified: data.dateModified as string | undefined,
+    authorName: data.authorName as string,
+    tags: (data.tags as string[]) ?? [],
+    content,
+  };
+}
+
+export function getHuongDanSlugs(): string[] {
+  if (!fs.existsSync(huongDanDir)) return [];
+  return fs
+    .readdirSync(huongDanDir)
     .filter((f) => f.endsWith('.mdx'))
     .map((f) => f.replace(/\.mdx$/, ''));
 }
