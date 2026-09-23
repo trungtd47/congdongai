@@ -149,7 +149,7 @@ export const demoPosts: DemoPost[] = [
     createdAt: '2026-09-12',
     upvotes: 5,
     upvoterUids: [],
-    answerCount: 1,
+    answerCount: 2,
     solvedAnswerId: null,
     flagged: false,
     answers: [
@@ -163,6 +163,18 @@ export const demoPosts: DemoPost[] = [
         upvoterUids: [],
         isAccepted: false,
         isAI: true,
+        flagged: false,
+      },
+      {
+        id: 'a-30',
+        body: 'Mình cũng tính vậy nhưng nghe nói Telegram chặn thì bỏ luôn. Giờ mình để Hermes gửi email tổng hợp mỗi sáng thay thế, cũng ổn áp không thua gì.',
+        authorUid: 'u-mai',
+        authorName: 'Mai',
+        createdAt: '2026-09-13',
+        upvotes: 3,
+        upvoterUids: [],
+        isAccepted: false,
+        isAI: false,
         flagged: false,
       },
     ],
@@ -647,6 +659,46 @@ export const demoPosts: DemoPost[] = [
       },
     ],
   },
+  {
+    id: 'p-16',
+    title: 'Cách giao Hermes theo dõi đối thủ và tự gửi báo cáo mỗi tuần?',
+    body: 'Mình kinh doanh nhỏ, muốn Hermes theo dõi vài đối thủ xem họ đổi giá, ra sản phẩm mới ra sao rồi tổng hợp báo cáo hàng tuần cho mình. Nên bắt đầu setup từ đâu?',
+    tags: ['sử dụng', 'kinh doanh'],
+    authorUid: 'u-nam',
+    authorName: 'Nam',
+    createdAt: '2026-09-23',
+    upvotes: 9,
+    upvoterUids: ['u-duc', 'u-quang'],
+    answerCount: 2,
+    solvedAnswerId: 'a-31',
+    flagged: false,
+    answers: [
+      {
+        id: 'a-31',
+        body: 'Không cần công cụ ngoài, chỉ cần nói với Hermes: "Mỗi thứ Hai, xem lại website/fanpage của [tên đối thủ], ghi ra thay đổi về giá và sản phẩm mới, rồi gửi báo cáo ngắn cho mình". Hermes sẽ tự đặt lịch và tự chạy - lần đầu nên ngồi xem thử nó chạy để chỉnh đúng nguồn cần theo dõi.',
+        authorUid: 'ai-friday',
+        authorName: 'Friday (AI)',
+        createdAt: '2026-09-23',
+        upvotes: 7,
+        upvoterUids: ['u-nam'],
+        isAccepted: true,
+        isAI: true,
+        flagged: false,
+      },
+      {
+        id: 'a-32',
+        body: 'Mình làm y vậy cho 3 đối thủ rồi, báo cáo về đúng thứ 2 sáng, đọc 2 phút là biết tuần đó ai đổi gì. Đỡ hẳn cảnh tự mò từng fanpage.',
+        authorUid: 'u-duc',
+        authorName: 'Đức',
+        createdAt: '2026-09-23',
+        upvotes: 4,
+        upvoterUids: [],
+        isAccepted: false,
+        isAI: false,
+        flagged: false,
+      },
+    ],
+  },
 ];
 
 // ============================================================
@@ -697,50 +749,6 @@ export const pathSteps: PathStep[] = [
     time: '⏱ 10 phút làm',
     slug: '/huong-dan/tom-tat-tin-tuc-moi-sang',
   },
-];
-
-export interface MemberQuote {
-  text: string;
-  name: string;
-  role: string;
-  initial: string;
-  color: string;
-}
-
-export const memberQuotes: MemberQuote[] = [
-  {
-    text: 'Trước tối nào mình cũng ngồi rep khách tới 11 giờ. Giờ mỗi sáng Hermes gom hết tin nhắn khách chưa trả lời, soạn sẵn câu theo đúng giọng mình hay nói, đơn nào trễ giao nó tự nhắc. Mình chỉ ngồi duyệt rồi bấm gửi.',
-    name: 'Chị Lan',
-    role: 'Chủ shop online · Hà Nội',
-    initial: 'L',
-    color: 'var(--clay)',
-  },
-  {
-    text: 'Việc mình dùng nhiều nhất là tóm tắt tài liệu với soạn email. Ném cái PDF 30 trang vào, nó ra bản tóm tắt tiếng Việt có sẵn ý chính. Trước mình ngồi đọc cả buổi sáng, giờ tầm 5 phút.',
-    name: 'Kiệt',
-    role: 'Nhân viên văn phòng · TP.HCM',
-    initial: 'K',
-    color: 'var(--teal)',
-  },
-  {
-    text: 'Mình giao Hermes theo dõi 5 đối thủ. Mỗi sáng thứ 2 nó gửi báo cáo ai vừa đổi giá, ai ra sản phẩm mới. Trước mình tự lướt từng fanpage của họ mất cả buổi chiều.',
-    name: 'Anh Hưng',
-    role: 'Kinh doanh tự do · Đà Nẵng',
-    initial: 'H',
-    color: 'var(--gold)',
-  },
-];
-
-export interface CommunityStat {
-  value: string;
-  label: string;
-}
-
-export const communityStats: CommunityStat[] = [
-  { value: '12', label: 'bài hướng dẫn đã đăng' },
-  { value: '0đ', label: 'chi phí tham gia' },
-  { value: 'Mã nguồn mở', label: 'Hermes bạn tự dựng' },
-  { value: 'Tiếng Việt', label: 'viết cho người mới' },
 ];
 
 export interface WorldCase {
@@ -806,77 +814,6 @@ export const worldCases: WorldCase[] = [
     secondaryLabel: 'github.com/aliaihub/awesome-hermes-usecases',
     secondaryUrl: 'https://github.com/aliaihub/awesome-hermes-usecases',
   },
-];
-
-export interface QAItem {
-  id: string;
-  initial: string;
-  color: string;
-  title: string;
-  tag: string;
-  hasAI: boolean;
-  solved: boolean;
-}
-
-export const qaRecent: QAItem[] = [
-  {
-    id: 'p-5',
-    initial: 'M',
-    color: 'var(--teal)',
-    title: 'Cài trên Windows báo "Windows protected your PC" thì làm sao?',
-    tag: 'Cài đặt',
-    hasAI: true,
-    solved: true,
-  },
-  {
-    id: 'p-6',
-    initial: 'H',
-    color: 'var(--clay)',
-    title: 'Thẻ Visa của mình không nạp được OpenRouter, có cách nào khác không?',
-    tag: 'Thanh toán',
-    hasAI: true,
-    solved: false,
-  },
-  {
-    id: 'p-8',
-    initial: 'T',
-    color: 'var(--gold)',
-    title: 'Muốn Hermes tự gửi bản tin 6h30 mỗi sáng thì cài ở đâu?',
-    tag: 'Sử dụng',
-    hasAI: false,
-    solved: true,
-  },
-  {
-    id: 'p-7',
-    initial: 'N',
-    color: '#7C3AED',
-    title: 'Máy mình yếu (8GB RAM) có chạy Hermes nổi không mọi người?',
-    tag: 'Phần cứng',
-    hasAI: false,
-    solved: false,
-  },
-  {
-    id: 'p-9',
-    initial: 'P',
-    color: '#0F766E',
-    title: 'Chia sẻ: mình dùng Hermes quản lý đơn hàng shop hoa thế nào',
-    tag: 'Kinh doanh',
-    hasAI: false,
-    solved: false,
-  },
-];
-
-export interface BlogPost {
-  title: string;
-  meta: string;
-}
-
-export const blogRecent: BlogPost[] = [
-  { title: 'Hermes tuần này: 3 cập nhật đáng chú ý cho người mới', meta: 'Friday tổng hợp · 22/09 · 4 phút đọc' },
-  { title: 'Từ số 0 đến bản tin sáng tự động: hành trình 7 ngày của mình', meta: 'Thành viên Kiệt · 20/09 · 8 phút đọc' },
-  { title: 'SOUL.md là gì? Giải thích bằng ví dụ thuê trợ lý ngoài đời', meta: 'Đức Trung · 18/09 · 6 phút đọc' },
-  { title: 'Vì sao mình KHÔNG mua khóa học AI 30 triệu - và đã làm gì thay thế', meta: 'Đức Trung · 15/09 · 7 phút đọc' },
-  { title: 'Dùng Hermes nhắc uống thuốc cho ba mẹ - setup trong 15 phút', meta: 'Thành viên Lan · 12/09 · 5 phút đọc' },
 ];
 
 export interface Book {

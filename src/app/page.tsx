@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd, faqJsonLd } from "@/lib/seo";
 import { TermTip } from "@/components/TermTip";
-import { pathSteps, qaRecent, libraryBooks } from "@/lib/demo-data";
+import { pathSteps, libraryBooks } from "@/lib/demo-data";
+import { HomeQAPanel } from "@/components/HomeQAPanel";
 import { getAllPosts } from "@/lib/posts";
 import { caseStudies } from "@/lib/case-studies";
 
@@ -49,10 +50,10 @@ export default function HomePage() {
             <h1>
               <span style={{ fontFamily: "var(--font-sans)" }}>👋</span> Chào
               bạn -<br />
-              mình muốn đưa{" "}
-              <span style={{ color: "var(--teal)" }}>AI Agent</span> đến gần hơn
+              đây là cách mình dùng{" "}
+              <span style={{ color: "var(--teal)" }}>AI Agent</span>
               <br />
-              với mọi người
+              vào việc thật mỗi ngày
             </h1>
             <div className="from">
               <div className="av">T</div>
@@ -68,54 +69,40 @@ export default function HomePage() {
               muốn bán cho mình.
             </p>
             <p>
-              AI giờ không chỉ là chatbot - AI Agent mới phát huy hết sức mạnh
-              của các mô hình LLM.
-            </p>
-            <p>
-              Mình bắt đầu ồ à với sức mạnh của OpenClaw, nhưng nó có quá nhiều
-              lỗi và khó dùng. Rồi mình nhờ OpenClaw cài thử <b>Hermes</b>, và
-              cuối cùng nhờ chính <b>Hermes</b> gỡ bỏ OpenClaw - từ đó mình chỉ
-              dùng <b>Hermes</b> thôi.
-            </p>
-            <p>
-              Từ ngày cài nó, mỗi sáng Hermes tự đọc, tự lọc, tự viết{" "}
-              <b>bản tin thị trường lúc 6h30</b> - trước cả khi mình kịp pha cà
-              phê. Website này do một &quot;nhân viên AI&quot; tên Tony viết
-              code, <b>FRIDAY</b> điều phối dự án, <b>Deadpool</b> review hằng
-              tuần.
+              Mình bắt đầu với OpenClaw, nhưng lỗi liên tục và khó dùng - cuối
+              cùng nhờ chính <b>Hermes</b> gỡ bỏ OpenClaw giúp mình. Từ đó mình
+              chỉ dùng Hermes, và nó làm việc thật mỗi ngày: mỗi sáng tự đọc, tự
+              lọc, tự viết <b>bản tin 6h30</b> trước khi mình pha xong cà phê;
+              tự theo dõi vài đối thủ và gửi báo cáo mỗi tuần; và đang giúp mình
+              vận hành chính website này - <b>Tony</b> (một &quot;nhân viên
+              AI&quot;) viết code, <b>FRIDAY</b> điều phối tiến độ dự án,{" "}
+              <b>Deadpool</b> review lại hằng tuần.
             </p>
             <p>
               Mình coi Hermes như một đồng nghiệp: cùng đặt câu hỏi, trao đổi,
-              kiểm chứng thông tin. Với những nhiệm vụ quan trọng, mình còn dựng
-              quy trình kiểm tra chéo lại giữa các AI Agent.
+              kiểm chứng lại thông tin vì model vẫn có lúc ảo giác - với việc
+              quan trọng, mình còn cho nhiều AI Agent kiểm tra chéo nhau. Và
+              mình nhận ra: đây không phải đồ chơi của dân kỹ thuật, nó làm
+              được việc thật, cho bất kỳ ai.
             </p>
             <p>
-              Mình hiểu ra một điều: thứ này không phải đồ chơi của dân kỹ thuật
-              - nó làm việc thật, cho bất kỳ ai. Nó mở khóa ra một thế giới mà
-              chúng ta rút ngắn về việc làm các kỹ năng, những thứ mà chúng ta
-              nghĩ trước đây ta không thể làm được.
-            </p>
-            <p>
-              Và điều làm mình trăn trở: trong khi Hermes miễn phí, ngoài kia
-              người ta bán những khóa học &quot;AI thực chiến&quot; giá{" "}
-              <b>hàng chục, hàng trăm triệu đồng</b>. Sự thật thì sao? Cài đặt
-              chỉ khoảng 10 phút, và <b>người dạy bạn chính là Hermes</b> - bạn
-              hỏi bằng tiếng Việt, nó hướng dẫn từng bước, kiên nhẫn 24/7.
+              Điều làm mình trăn trở: Hermes miễn phí, còn ngoài kia người ta
+              bán khóa học &quot;AI thực chiến&quot; giá{" "}
+              <b>hàng chục, hàng trăm triệu đồng</b>. Sự thật thì cài đặt chỉ
+              khoảng 10 phút, và người dạy bạn chính là Hermes - hỏi bằng tiếng
+              Việt, nó hướng dẫn từng bước, kiên nhẫn 24/7.
             </p>
             <p>
               <b>Vì sao trang này miễn phí?</b> Vì mọi thứ mình có hôm nay đều
-              đến từ cộng đồng mã nguồn mở - phần mềm miễn phí, kiến thức miễn
-              phí, từ những người xa lạ khắp thế giới chẳng mong nhận lại gì.
-              Đến lượt mình trao đi, bằng tiếng Việt, cho người Việt. Ở đây
-              không có gì để bán: không khóa học, không &quot;combo AI thực
-              chiến&quot;, không chém gió.
+              đến từ cộng đồng mã nguồn mở - phần mềm, kiến thức, từ những
+              người xa lạ chẳng mong nhận lại gì. Đến lượt mình trao đi, bằng
+              tiếng Việt, cho người Việt. Ở đây không có gì để bán.
             </p>
             <p>
-              Mong muốn của mình rất đơn giản:{" "}
-              <b>AI Agent đến gần hơn với mọi người</b> - chị chủ shop, anh văn
-              phòng, các bạn sinh viên, ba mẹ về hưu... ai cũng xứng đáng có một
-              trợ lý của riêng mình. Và cách nhanh nhất là chúng ta dạy nhau:
-              người biết chỉ người chưa biết.
+              Mong muốn của mình rất đơn giản: ai cũng xứng đáng có một trợ lý
+              của riêng mình - chị chủ shop, anh văn phòng, các bạn sinh viên,
+              ba mẹ về hưu... Cách nhanh nhất là chúng ta dạy nhau: người biết
+              chỉ người chưa biết.
             </p>
             <p className="ps">
               P.S. Nếu bạn hoàn toàn mới, bắt đầu từ các bước đầu tiên bên dưới
@@ -152,19 +139,19 @@ export default function HomePage() {
                   Hermes ơi, mình mới cài bạn xong. Giờ làm gì?
                 </div>
                 <div className="msg ai">
-                  <small>Hermes · chạy trên máy của bạn</small>Chào bạn 🎉 Mình
-                  sẽ tự hướng dẫn bạn nhé. Đầu tiên, thử nói cho mình biết công
-                  việc hằng ngày của bạn - mình sẽ gợi ý những việc mình làm
-                  thay được ngay tuần này.
+                  <small>Hermes · chạy trên máy của bạn</small>Chào bạn 🎉 Thử
+                  giao mình một việc đang làm dở xem - mình lên kế hoạch từng
+                  bước và tự nhắc tiến độ cho bạn.
                 </div>
                 <div className="msg user">
-                  Mình bán hàng online, sáng nào cũng phải trả lời tin nhắn
-                  cũ...
+                  Mình đang quản lý một dự án nhỏ, với cả theo dõi 3 đối thủ
+                  xem họ ra gì mới.
                 </div>
                 <div className="msg ai">
-                  <small>Hermes</small>Vậy để mình soạn giúp bạn bộ câu trả lời
-                  mẫu và nhắc bạn tin nào chưa hồi mỗi sáng 8h nhé? Mình vừa tự
-                  tạo kỹ năng &quot;trực tin nhắn&quot; - từ mai chạy thử luôn.
+                  <small>Hermes</small>Vậy để mình theo dõi 3 đối thủ đó mỗi
+                  tuần, báo cáo ai đổi giá, ai ra sản phẩm mới. Còn dự án của
+                  bạn, mình lập danh sách đầu việc và nhắc bạn cái nào trễ
+                  tiến độ. Bắt đầu từ tuần này luôn nhé?
                 </div>
               </div>
             </div>
@@ -246,34 +233,7 @@ export default function HomePage() {
                   Vào khu Hỏi &amp; Đáp →
                 </Link>
               </div>
-              {qaRecent.map((q, i) => (
-                <Link
-                  className="titem"
-                  key={q.id}
-                  href={`/hoi-dap/${q.id}`}
-                  style={
-                    i === qaRecent.length - 1
-                      ? { borderBottom: "1px dashed var(--line)" }
-                      : undefined
-                  }
-                >
-                  <div className="av" style={{ background: q.color }}>
-                    {q.initial}
-                  </div>
-                  <div className="tb">
-                    <h5>{q.title}</h5>
-                    <div className="meta">
-                      <span className="badge tag">{q.tag}</span>
-                      {q.hasAI && (
-                        <span className="badge ai">🤖 AI trực đã trả lời</span>
-                      )}
-                      {q.solved && (
-                        <span className="badge solved">✓ Đã giải quyết</span>
-                      )}
-                    </div>
-                  </div>
-                </Link>
-              ))}
+              <HomeQAPanel />
             </div>
             <div className="panel">
               <div className="ph">
