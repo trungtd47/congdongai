@@ -52,12 +52,11 @@ export default function HomePage() {
         <div className="wrap letter-grid">
           <div>
             <h1>
-              <span style={{ fontFamily: 'var(--font-sans)' }}>👋</span> Chào bạn, mình là
-              Trung -<br />
+              <span style={{ fontFamily: 'var(--font-sans)' }}>👋</span> Chào bạn -<br />
               mình muốn đưa <span style={{ color: 'var(--teal)' }}>AI Agent</span> đến gần
               hơn
               <br />
-              với tất cả mọi người
+              với mọi người
             </h1>
             <div className="from">
               <div className="av">T</div>
@@ -78,24 +77,15 @@ export default function HomePage() {
               yếu, và mới phát huy sức mạnh thực sự của các mô hình LLM.
             </p>
             <p>
-              Mình bắt đầu ồ à với sức mạnh của OpenClaw, nhưng OpenClaw có quá nhiều lỗi,
-              mỗi lần cập nhật là lỗi, khó cài đặt, khó sử dụng.
+              Mình bắt đầu ồ à với sức mạnh của OpenClaw, nhưng nó có quá nhiều lỗi và khó
+              dùng. Rồi mình nhờ OpenClaw cài thử <b>Hermes</b>, và cuối cùng nhờ chính{' '}
+              <b>Hermes</b> gỡ bỏ OpenClaw - từ đó mình chỉ dùng <b>Hermes</b> thôi.
             </p>
             <p>
-              Rồi mình yêu cầu OpenClaw cài đặt để dùng thử <b>Hermes</b>, và cuối cùng nhờ
-              chính <b>Hermes</b> để gỡ bỏ đi OpenClaw và từ đó mình chỉ dùng <b>Hermes</b>{' '}
-              thôi.
-            </p>
-            <p>
-              Từ ngày cài nó, mỗi sáng của mình bắt đầu bằng{' '}
-              <b>bản tin thị trường lúc 6h30 do Hermes tự đọc, tự lọc, tự viết</b> - trước cả
-              khi mình kịp pha cà phê. Website mình đang chạy do một &quot;nhân viên AI&quot;
-              tên Tony tự viết code.
-            </p>
-            <p>
-              Điều phối và lập kế hoạch cho các dự án bằng agent mà mình đặt tên là{' '}
-              <b>FRIDAY</b>, và Hermes của mình được review lại hàng tuần bằng agent tên{' '}
-              <b>Deadpool</b> và kiểm tra lỗi chéo và nâng cấp.
+              Từ ngày cài nó, mỗi sáng Hermes tự đọc, tự lọc, tự viết{' '}
+              <b>bản tin thị trường lúc 6h30</b> - trước cả khi mình kịp pha cà phê. Website
+              này do một &quot;nhân viên AI&quot; tên Tony viết code, <b>FRIDAY</b> điều phối
+              dự án, <b>Deadpool</b> review hằng tuần.
             </p>
             <p>
               Mình hiểu ra một điều: thứ này không phải đồ chơi của dân kỹ thuật - nó làm
@@ -108,21 +98,14 @@ export default function HomePage() {
               những khóa học &quot;AI thực chiến&quot; giá{' '}
               <b>hàng chục, hàng trăm triệu đồng</b>. Sự thật thì sao? Cài đặt chỉ khoảng 10
               phút, và <b>người dạy bạn chính là Hermes</b> - bạn hỏi bằng tiếng Việt, nó
-              hướng dẫn từng bước, kiên nhẫn 24/7. Bạn không cần trả trăm triệu để bắt đầu.
-            </p>
-            <p>
-              Không ai có thể hiểu công việc bạn đang làm hơn chính bạn, và với việc coi
-              Hermes như một người đồng nghiệp, một người thầy, một nhân viên, bạn sẽ thảo
-              luận và đồng hành để AI hóa chính các công việc hàng ngày của bạn.
+              hướng dẫn từng bước, kiên nhẫn 24/7.
             </p>
             <p>
               <b>Vì sao trang này miễn phí?</b> Vì mọi thứ mình có hôm nay đều đến từ cộng
               đồng mã nguồn mở - phần mềm miễn phí, kiến thức miễn phí, từ những người xa lạ
-              khắp thế giới chẳng mong nhận lại gì.
-            </p>
-            <p>
-              Đến lượt mình trao đi, bằng tiếng Việt, cho người Việt. Ở đây không có gì để
-              bán: không khóa học, không &quot;combo AI thực chiến&quot;, không chém gió.
+              khắp thế giới chẳng mong nhận lại gì. Đến lượt mình trao đi, bằng tiếng Việt,
+              cho người Việt. Ở đây không có gì để bán: không khóa học, không &quot;combo AI
+              thực chiến&quot;, không chém gió.
             </p>
             <p>
               Mong muốn của mình rất đơn giản: <b>AI Agent đến gần hơn với mọi người</b> -
