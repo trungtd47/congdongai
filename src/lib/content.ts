@@ -96,23 +96,33 @@ export interface LibraryItem {
   icon: string;
   title: string;
   description: string;
+  files: { name: string; href: string }[];
 }
 
 export const libraryItems: LibraryItem[] = [
   {
     icon: '🎭',
     title: 'SOUL.md tiếng Việt',
-    description: 'Biến Hermes thành trợ lý nói tiếng Việt, xưng hô đúng ý bạn',
+    description:
+      '3 bản mẫu sẵn: văn phòng, kinh doanh, gia đình. Tải về, đổi tên của bạn, dán vào là Hermes thành trợ lý đúng ý.',
+    files: [
+      { name: 'Mẫu văn phòng', href: '/thu-vien/soul-mau-van-phong.md' },
+      { name: 'Mẫu kinh doanh', href: '/thu-vien/soul-mau-kinh-doanh.md' },
+      { name: 'Mẫu gia đình', href: '/thu-vien/soul-mau-gia-dinh.md' },
+    ],
   },
   {
     icon: '💬',
     title: '100 prompt theo nghề',
-    description: 'Giáo viên, bán hàng online, kế toán, sinh viên, freelancer…',
+    description:
+      '10 nghề, mỗi nghề 10 prompt: giáo viên, bán hàng online, kế toán, sinh viên, lập trình...',
+    files: [{ name: 'Tải 100 prompt', href: '/thu-vien/100-prompt-theo-nghe.md' }],
   },
   {
     icon: '🧠',
     title: 'Bộ skills chọn lọc',
-    description: 'Kỹ năng cài thêm 1 lệnh: tin tức, thời tiết, dịch thuật, nhắc việc',
+    description: 'Hướng dẫn cài 4 skill hay dùng: tin tức, thời tiết, dịch thuật, nhắc việc.',
+    files: [{ name: 'Tải hướng dẫn skills', href: '/thu-vien/bo-skills-chon-loc.md' }],
   },
 ];
 
