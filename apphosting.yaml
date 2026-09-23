@@ -1,0 +1,33 @@
+# Firebase App Hosting — build-time env vars cho NEXT_PUBLIC_FIREBASE_*
+# (giá trị web config là công khai, bảo mật nằm ở Firestore rules + authorized domains)
+env:
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: "AIzaSyCeBAStBauWdCI2DJEz7BdpROJUUa3Er8g"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    value: "congdongai.firebaseapp.com"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: "congdongai"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    value: "congdongai.firebasestorage.app"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    value: "520023113226"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: "1:520023113226:web:1b9d10fa22624e37dca9f3"
+    availability:
+      - BUILD
+      - RUNTIME
