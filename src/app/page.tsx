@@ -49,10 +49,12 @@ export default function HomePage() {
             <h1>
               <span style={{ fontFamily: "var(--font-sans)" }}>👋</span> Chào
               bạn -<br />
-              mình muốn đưa{" "}
-              <span style={{ color: "var(--teal)" }}>AI Agent</span> đến gần hơn
+              mình dùng <span style={{ color: "var(--teal)" }}>
+                AI Agent
+              </span>{" "}
+              như một
               <br />
-              với mọi người
+              người đồng nghiệp
             </h1>
             <div className="from">
               <div className="av">T</div>
@@ -70,9 +72,10 @@ export default function HomePage() {
               không biết đến đâu, có phù hợp với mình không?
             </p>
             <p>
-              AI giờ không chỉ là chatbot mà việc sử dụng AI Agent tương lai sẽ
-              là điều tất yếu, và mới phát huy sức mạnh thực sự của các mô hình
-              LLM.
+              Mình không rành công nghệ, nhưng thấy một điều rõ ràng: chatbot
+              chỉ biết nói, còn agent thì tự làm việc trên máy. Chính khả năng
+              &quot;làm&quot; đó khiến nó thành một đồng nghiệp thật sự, chứ
+              không chỉ là chỗ để hỏi.
             </p>
             <p>
               Mình bắt đầu ồ à với sức mạnh của OpenClaw, nhưng nó có quá nhiều
@@ -89,9 +92,17 @@ export default function HomePage() {
             </p>
             <p>
               Mình hiểu ra một điều: thứ này không phải đồ chơi của dân kỹ thuật
-              - nó làm việc thật, cho bất kỳ ai. Nó mở khóa ra một thế giới mà
-              chúng ta rút ngắn về việc làm các kỹ năng, những thứ mà chúng ta
-              nghĩ trước đây ta không thể làm được.
+              - nó làm được việc thật. Nhưng nó cũng chẳng thần kỳ gì. Mình coi
+              Hermes là một <b>đồng nghiệp</b>: giao việc rõ ràng, rồi cùng nhìn
+              lại kết quả, chứ không phải đưa lệnh xong là tin ngay.
+            </p>
+            <p>
+              Bởi là đồng nghiệp, nên mình cũng phải soi lại nó. Ít nhiều thì
+              model nào cũng có lúc &quot;ảo giác&quot; - nói trơn tru, nghe hợp
+              lý, nhưng lại sai. Việc quan trọng mình cho hai agent kiểm tra
+              chéo nhau, hoặc tự mình kiểm chứng lại. Vì vậy trang này không chỉ
+              dạy cách cài, mà còn là nơi chúng mình học hỏi lẫn nhau và cùng
+              kiểm chứng những gì AI trả lời.
             </p>
             <p>
               Và điều làm mình trăn trở: trong khi Hermes miễn phí, ngoài kia
@@ -104,16 +115,16 @@ export default function HomePage() {
               <b>Vì sao trang này miễn phí?</b> Vì mọi thứ mình có hôm nay đều
               đến từ cộng đồng mã nguồn mở - phần mềm miễn phí, kiến thức miễn
               phí, từ những người xa lạ khắp thế giới chẳng mong nhận lại gì.
-              Đến lượt mình trao đi, bằng tiếng Việt, cho người Việt. Ở đây
-              không có gì để bán: không khóa học, không &quot;combo AI thực
-              chiến&quot;, không chém gió.
+              Đến lượt mình viết lại bằng tiếng Việt, để ai cần thì tự đọc được.
+              Ở đây không có gì để bán: không khóa học, không &quot;combo AI
+              thực chiến&quot;, không chém gió.
             </p>
             <p>
-              Mong muốn của mình rất đơn giản:{" "}
-              <b>AI Agent đến gần hơn với mọi người</b> - chị chủ shop, anh văn
-              phòng, các bạn sinh viên, ba mẹ về hưu... ai cũng xứng đáng có một
-              trợ lý của riêng mình. Và cách nhanh nhất là chúng ta dạy nhau:
-              người biết chỉ người chưa biết.
+              Mong muốn của mình giờ khá khiêm tốn: thay vì hô &quot;AI thay đổi
+              thế giới&quot;, mình chỉ muốn kể thật cách mình đang dùng nó mỗi
+              ngày - để ai muốn cũng thử được, như mình đã từng. Và cách tự
+              nhiên nhất là dạy nhau: người biết chỉ người chưa biết, cùng kiểm
+              chứng câu trả lời của AI thay vì tin tuyệt đối.
             </p>
             <p className="ps">
               P.S. Nếu bạn hoàn toàn mới, bắt đầu từ các bước đầu tiên bên dưới
@@ -409,12 +420,13 @@ export default function HomePage() {
       {/* CTA SỨ MỆNH */}
       <section className="join-band" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <h2>Mong muốn của mình: AI Agent cho mọi người Việt 🏡</h2>
+          <h2>Chúng mình học cùng nhau 🏡</h2>
           <p>
-            Một mình mình không làm nổi - nhưng chúng ta thì có. Tham gia để hỏi
-            khi bí, để trả lời khi bạn biết, và để gửi lên đây thứ gì đó của
-            riêng bạn. Người hôm nay được giúp, ngày mai giúp lại người khác -
-            cộng đồng lớn lên bằng đúng cách đó.
+            Không có gì to tát ở đây - chỉ là một nhóm người dùng Hermes chia sẻ
+            thật với nhau: cái gì dùng được, cái gì hỏng, câu trả lời nào cần
+            kiểm chứng lại. Bạn hỏi khi bí, trả lời khi biết, và cùng nhau đo
+            lại những gì AI nói. Người được giúp hôm nay, ngày mai giúp lại
+            người khác.
           </p>
           <div className="btns">
             <Link className="btn-c teal" href="/bat-dau">
