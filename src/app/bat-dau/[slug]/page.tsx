@@ -1,14 +1,15 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import remarkGfm from 'remark-gfm';
-import rehypeSlug from 'rehype-slug';
-import { getBatDauPostBySlug, getBatDauSlugs, extractToc } from '@/lib/posts';
-import { JsonLd, articleJsonLd, breadcrumbJsonLd } from '@/lib/seo';
-import { canonicalUrl } from '@/lib/site';
-import { Breadcrumb } from '@/components/Breadcrumb';
-import { TermTip } from '@/components/TermTip';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+import { getBatDauPostBySlug, getBatDauSlugs, extractToc } from "@/lib/posts";
+import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { canonicalUrl } from "@/lib/site";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { TermTip } from "@/components/TermTip";
+import { batDauItems } from "@/lib/content";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: post.description,
     alternates: { canonical: `/bat-dau/${slug}` },
     openGraph: {
-      type: 'article',
+      type: "article",
       title: post.title,
       description: post.description,
       url: canonicalUrl(`/bat-dau/${slug}`),
@@ -44,6 +45,9 @@ export default async function BatDauArticlePage({ params }: Props) {
   if (!post) notFound();
 
   const toc = extractToc(post.content);
+  const idx = batDauItems.findIndex((it) => it.slug === slug);
+  const next = idx >= 0 ? (batDauItems[idx + 1] ?? null) : null;
+  const prev = idx > 0 ? batDauItems[idx - 1] : null;
 
   return (
     <article className="wrap max-w-3xl py-12">
@@ -59,13 +63,15 @@ export default async function BatDauArticlePage({ params }: Props) {
       />
       <JsonLd
         data={breadcrumbJsonLd([
-          { name: 'Trang chủ', path: '/' },
-          { name: 'Bắt đầu', path: '/bat-dau' },
+          { name: "Trang chủ", path: "/" },
+          { name: "Bắt đầu", path: "/bat-dau" },
           { name: post.title, path: `/bat-dau/${slug}` },
         ])}
       />
 
-      <Breadcrumb items={[{ name: 'Bắt đầu', href: '/bat-dau' }, { name: post.title }]} />
+      <Breadcrumb
+        items={[{ name: "Bắt đầu", href: "/bat-dau" }, { name: post.title }]}
+      />
 
       <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
         Bắt đầu
@@ -99,7 +105,10 @@ export default async function BatDauArticlePage({ params }: Props) {
           source={post.content}
           components={{ TermTip }}
           options={{
-            mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug] },
+            mdxOptions: {
+              remarkPlugins: [remarkGfm],
+              rehypePlugins: [rehypeSlug],
+            },
           }}
         />
       </div>
@@ -109,9 +118,20 @@ export default async function BatDauArticlePage({ params }: Props) {
           Làm xong bước này rồi? Xem bước tiếp theo hoặc quay lại danh sách.
         </p>
         <div className="flex flex-wrap gap-3">
-          <Link href="/bat-dau" className="btn btn-primary">
-            Về danh sách Bắt đầu →
-          </Link>
+          {next ? (
+            <Link href={`/bat-dau/${next.slug}`} className="btn btn-primary">
+              Tiếp theo: {next.title} →
+            </Link>
+          ) : (
+            <Link href="/bat-dau" className="btn btn-primary">
+              Về danh sách Bắt đầu →
+            </Link>
+          )}
+          {prev && (
+            <Link href={`/bat-dau/${prev.slug}`} className="btn btn-ghost">
+              ← {prev.title}
+            </Link>
+          )}
           <Link href="/hoi-dap" className="btn btn-ghost">
             Bí chỗ nào? Hỏi ở Hỏi & Đáp
           </Link>

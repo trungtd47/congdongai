@@ -1,32 +1,32 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { Breadcrumb } from '@/components/Breadcrumb';
-import { TermTip } from '@/components/TermTip';
-import { CompareClosedVsOpen } from '@/components/CompareClosedVsOpen';
-import { JsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/seo';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { TermTip } from "@/components/TermTip";
+import { CompareClosedVsOpen } from "@/components/CompareClosedVsOpen";
+import { JsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: 'Vì sao dùng OpenRouter - trả tiền theo đúng mức dùng',
+  title: "Vì sao dùng OpenRouter - trả tiền theo đúng mức dùng",
   description:
-    'OpenRouter: một tài khoản tiếp cận hàng trăm model, tính phí theo token đã dùng, không phí tháng cố định. Giải thích cho người mới kèm các bước bắt đầu.',
-  alternates: { canonical: '/bat-dau/vi-sao-dung-openrouter' },
+    "OpenRouter: một tài khoản tiếp cận hàng trăm model, tính phí theo token đã dùng, không phí tháng cố định. Giải thích cho người mới kèm các bước bắt đầu.",
+  alternates: { canonical: "/bat-dau/vi-sao-dung-openrouter" },
 };
 
 const faqs = [
   {
-    question: 'Nạp bao nhiêu là đủ?',
+    question: "Nạp bao nhiêu là đủ?",
     answer:
-      'Tùy mức dùng của bạn. Người mới nên nạp một khoản nhỏ để thử trước, thấy đủ thì nạp thêm - không bị ép đóng gói tháng.',
+      "Tùy mức dùng của bạn. Người mới nên nạp một khoản nhỏ để thử trước, thấy đủ thì nạp thêm - không bị ép đóng gói tháng.",
   },
   {
-    question: 'Hết số dư thì sao?',
+    question: "Hết số dư thì sao?",
     answer:
-      'App chỉ dừng lại và nhắc bạn nạp thêm, không trừ âm, không phát sinh nợ. Bạn luôn kiểm soát được mình đã chi bao nhiêu.',
+      "App chỉ dừng lại và nhắc bạn nạp thêm, không trừ âm, không phát sinh nợ. Bạn luôn kiểm soát được mình đã chi bao nhiêu.",
   },
   {
-    question: 'Có tự động gia hạn không?',
+    question: "Có tự động gia hạn không?",
     answer:
-      'Không. Đây chính là điểm khác gói tháng cố định - hết tiền thì thôi, không tự động trừ, dừng bất cứ lúc nào.',
+      "Không. Đây chính là điểm khác gói tháng cố định - hết tiền thì thôi, không tự động trừ, dừng bất cứ lúc nào.",
   },
 ];
 
@@ -35,17 +35,20 @@ export default function ViSaoDungOpenRouterPage() {
     <div className="wrap max-w-3xl py-12">
       <JsonLd
         data={breadcrumbJsonLd([
-          { name: 'Trang chủ', path: '/' },
-          { name: 'Bắt đầu', path: '/bat-dau' },
-          { name: 'Vì sao dùng OpenRouter', path: '/bat-dau/vi-sao-dung-openrouter' },
+          { name: "Trang chủ", path: "/" },
+          { name: "Bắt đầu", path: "/bat-dau" },
+          {
+            name: "Vì sao dùng OpenRouter",
+            path: "/bat-dau/vi-sao-dung-openrouter",
+          },
         ])}
       />
       <JsonLd data={faqJsonLd(faqs)} />
 
       <Breadcrumb
         items={[
-          { name: 'Bắt đầu', href: '/bat-dau' },
-          { name: 'Vì sao dùng OpenRouter' },
+          { name: "Bắt đầu", href: "/bat-dau" },
+          { name: "Vì sao dùng OpenRouter" },
         ]}
       />
 
@@ -58,9 +61,10 @@ export default function ViSaoDungOpenRouterPage() {
 
       {/* 1. OpenRouter là gì */}
       <p className="mb-8 max-w-2xl text-[16px] text-ink-soft">
-        <TermTip term="OpenRouter">OpenRouter</TermTip> tính phí theo{' '}
-                <TermTip term="token">token</TermTip>: một tài khoản duy nhất, tiếp cận mọi{' '}
-                <TermTip term="model">model</TermTip>, và chỉ trả đúng phần mình đã dùng.
+        <TermTip term="OpenRouter">OpenRouter</TermTip> tính phí theo{" "}
+        <TermTip term="token">token</TermTip>: một tài khoản duy nhất, tiếp cận
+        mọi <TermTip term="model">model</TermTip>, và chỉ trả đúng phần mình đã
+        dùng.
       </p>
 
       {/* 2. So sánh 2 cột */}
@@ -82,9 +86,9 @@ export default function ViSaoDungOpenRouterPage() {
           <p className="text-[13.5px] text-ink-soft">
             Đăng ký OpenRouter miễn phí, dùng tài khoản Google là nhanh nhất.
           </p>
-          <div className="mt-3 h-20 rounded-lg border border-dashed border-line bg-stone-50 text-center text-[11px] leading-[80px] text-ink-soft">
-            Ảnh minh họa sắp cập nhật
-          </div>
+          <p className="mt-3 rounded-lg bg-stone-50 px-3 py-2 text-[12px] text-ink-soft">
+            💡 Mẹo: đăng nhập bằng Google để khỏi nhớ thêm mật khẩu.
+          </p>
         </div>
         <div className="card p-5">
           <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-teal-soft text-base font-extrabold text-teal-dark">
@@ -92,11 +96,13 @@ export default function ViSaoDungOpenRouterPage() {
           </div>
           <h3 className="mb-1.5 text-[15.5px] font-bold">Nạp credit</h3>
           <p className="text-[13.5px] text-ink-soft">
-            Nạp một khoản vào tài khoản - số dư này là của bạn, trừ dần theo mức dùng.
+            Nạp một khoản vào tài khoản - số dư này là của bạn, trừ dần theo mức
+            dùng.
           </p>
-          <div className="mt-3 h-20 rounded-lg border border-dashed border-line bg-stone-50 text-center text-[11px] leading-[80px] text-ink-soft">
-            Ảnh minh họa sắp cập nhật
-          </div>
+          <p className="mt-3 rounded-lg bg-stone-50 px-3 py-2 text-[12px] text-ink-soft">
+            💡 Mẹo: nạp khoản nhỏ trước để dùng thử, thấy hợp nhu cầu thì nạp
+            thêm.
+          </p>
         </div>
         <div className="card p-5">
           <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-teal-soft text-base font-extrabold text-teal-dark">
@@ -104,12 +110,13 @@ export default function ViSaoDungOpenRouterPage() {
           </div>
           <h3 className="mb-1.5 text-[15.5px] font-bold">Dán key vào Hermes</h3>
           <p className="text-[13.5px] text-ink-soft">
-            Lấy <TermTip term="API key">API key</TermTip> trong mục Keys, dán vào Hermes
-            Desktop là xong.
+            Lấy <TermTip term="API key">API key</TermTip> trong mục Keys, dán
+            vào Hermes Desktop là xong.
           </p>
-          <div className="mt-3 h-20 rounded-lg border border-dashed border-line bg-stone-50 text-center text-[11px] leading-[80px] text-ink-soft">
-            Ảnh minh họa sắp cập nhật
-          </div>
+          <p className="mt-3 rounded-lg bg-stone-50 px-3 py-2 text-[12px] text-ink-soft">
+            💡 Mẹo: đặt tên key theo máy (ví dụ 'Mac văn phòng') để dễ quản lý
+            sau này.
+          </p>
         </div>
       </div>
 
@@ -123,7 +130,8 @@ export default function ViSaoDungOpenRouterPage() {
             <div className="mb-2 text-[24px]">🛵</div>
             <b className="block text-[14.5px]">Việc nhẹ hằng ngày</b>
             <p className="mt-1 text-[13px] text-ink-soft">
-              Tóm tắt tin, viết email, dịch → model hạng tiết kiệm: nhanh, thừa đủ tốt.
+              Tóm tắt tin, viết email, dịch → model vừa tầm là được: nhanh, chất
+              lượng đủ dùng.
             </p>
           </div>
           <div className="bg-card p-5">
@@ -143,8 +151,8 @@ export default function ViSaoDungOpenRouterPage() {
         </div>
       </div>
       <p className="mt-4 text-[14px] text-ink-soft">
-        Trong app chỉ là một danh sách thả xuống - thích thì đổi, không hợp thì thôi. Không
-        mất dữ liệu, không tạo tài khoản mới.
+        Trong app chỉ là một danh sách thả xuống - thích thì đổi, không hợp thì
+        thôi. Không mất dữ liệu, không tạo tài khoản mới.
       </p>
 
       {/* 5. FAQ người mới */}
@@ -164,7 +172,8 @@ export default function ViSaoDungOpenRouterPage() {
       <div className="card mt-10 p-6">
         <h2 className="mb-1 text-[18px] font-bold">Sẵn sàng bắt đầu?</h2>
         <p className="mb-4 text-sm text-ink-soft">
-          Cài Hermes miễn phí, nạp một ít credit để dùng thử - không bị ràng buộc gì.
+          Cài Hermes miễn phí, nạp một ít credit để dùng thử - không bị ràng
+          buộc gì.
         </p>
         <div className="flex flex-wrap gap-3">
           <Link href="/bat-dau" className="btn btn-primary">

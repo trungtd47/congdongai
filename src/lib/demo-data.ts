@@ -421,8 +421,8 @@ export const demoPosts: DemoPost[] = [
   },
   {
     id: 'p-10',
-    title: 'Nên chọn model nào cho người mới, vừa rẻ vừa tốt?',
-    body: 'Mình mới cài Hermes, thấy trong app có cả danh sách model AI dài ngoằng. Mình không biết nên chọn cái nào để chi phí thấp mà vẫn dùng tốt cho việc hằng ngày.',
+    title: 'Nên chọn model nào cho người mới?',
+        body: 'Mình mới cài Hermes, thấy trong app có cả danh sách model AI dài ngoằng. Mình không biết nên chọn cái nào cho phù hợp với việc hằng ngày.',
     tags: ['model', 'chi phí'],
     authorUid: 'u-linh',
     authorName: 'Linh',
@@ -435,7 +435,7 @@ export const demoPosts: DemoPost[] = [
     answers: [
       {
         id: 'a-19',
-        body: 'Với việc nhẹ hằng ngày (tóm tắt tin, viết email, dịch thuật, hỏi đáp), bạn cứ chọn model hạng tiết kiệm là thừa đủ tốt. Khi nào gặp việc khó (phân tích, viết code, lập kế hoạch) thì mới chuyển sang model cao hơn. Quan trọng: đổi model chỉ là một danh sách thả xuống, đổi bao nhiêu lần cũng được, không mất dữ liệu. Cứ thử, thấy chậm hay dở thì đổi.',
+        body: 'Với việc nhẹ hằng ngày (tóm tắt tin, viết email, dịch thuật, hỏi đáp), bạn cứ chọn model phù hợp với việc là được, quan trọng là đầu ra chất lượng. Khi nào gặp việc khó (phân tích, viết code, lập kế hoạch) thì mới chuyển sang model cao hơn. Quan trọng: đổi model chỉ là một danh sách thả xuống, đổi bao nhiêu lần cũng được, không mất dữ liệu. Cứ thử, thấy chậm hay dở thì đổi.',
         authorUid: 'ai-friday',
         authorName: 'Friday (AI)',
         createdAt: '2026-09-19',
@@ -447,7 +447,7 @@ export const demoPosts: DemoPost[] = [
       },
       {
         id: 'a-20',
-        body: 'Mình cứ để model mặc định rẻ rẻ, hỏi mấy việc thường thì nhanh mà tốn ít. Đúng là chỉ cần đổi khi làm việc khó thôi.',
+        body: 'Mình cứ để model mặc định vừa tầm, hỏi mấy việc thường thì nhanh mà tốn ít. Đúng là chỉ cần đổi khi làm việc khó thôi.',
         authorUid: 'u-ngan',
         authorName: 'Ngân',
         createdAt: '2026-09-19',

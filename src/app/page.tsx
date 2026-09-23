@@ -347,7 +347,7 @@ export default function HomePage() {
               <p>
                 Nạp ít thử trước - hỏi vài câu mỗi ngày cho việc cá nhân thì một khoản nhỏ
                 dùng được rất lâu. Trong app luôn thấy rõ đã dùng bao nhiêu. Chi tiết từng
-                bước: <Link href="/bat-dau/vi-sao-dung-openrouter">bài hướng dẫn nạp tiền từ Việt Nam</Link>.
+                                bước: <Link href="/bat-dau/vi-sao-dung-openrouter">bài hướng dẫn nạp credit vào OpenRouter</Link>.
               </p>
             </div>
             <div className="hq" style={{ borderBottom: '1px dashed var(--line)' }}>
