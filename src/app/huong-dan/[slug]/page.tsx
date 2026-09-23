@@ -8,6 +8,7 @@ import { getHuongDanPostBySlug, getHuongDanSlugs, extractToc } from '@/lib/posts
 import { JsonLd, articleJsonLd, breadcrumbJsonLd } from '@/lib/seo';
 import { canonicalUrl } from '@/lib/site';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { TermTip } from '@/components/TermTip';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -96,6 +97,7 @@ export default async function HuongDanArticlePage({ params }: Props) {
       <div className="prose-article">
         <MDXRemote
           source={post.content}
+          components={{ TermTip }}
           options={{
             mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug] },
           }}

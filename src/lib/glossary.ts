@@ -29,8 +29,12 @@ export const glossary: Record<string, string> = {
   OpenRouter:
     'Sàn trung gian để bạn dùng hàng trăm AI model từ một tài khoản duy nhất, trả tiền theo mức dùng.',
   'Nous Portal':
-    'Cổng tài khoản của Nous Research. Đăng nhập một lần là có sẵn hàng trăm model, không cần tự cấu hình.',
-};
+      'Cổng tài khoản của Nous Research. Đăng nhập một lần là có sẵn hàng trăm model, không cần tự cấu hình.',
+    'SOUL.md':
+      'File "linh hồn" của Hermes - nơi bạn viết trợ lý này là ai, nói năng ra sao, nhớ những gì. Chỉnh file này là đổi tính cách trợ lý.',
+    provider:
+      'Nhà cung cấp dịch vụ AI (ví dụ OpenRouter, Nous Portal, Anthropic) - nơi bán quyền dùng model.',
+  };
 
 export function getTerm(term: string): string | undefined {
   const key = term.trim();
