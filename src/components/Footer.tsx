@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="site-footer">
       <div className="wrap foot">
         <div>
-          © 2026 CongDongAI.org — cộng đồng miễn phí, xây bằng tinh thần &quot;cho đi&quot;
+          © 2026 CongDongAI.org - cộng đồng miễn phí, xây bằng tinh thần &quot;cho đi&quot;
           của mã nguồn mở
         </div>
         <div>

@@ -6,7 +6,7 @@ import { CompareClosedVsOpen } from '@/components/CompareClosedVsOpen';
 import { JsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Vì sao dùng OpenRouter — trả tiền theo đúng mức dùng',
+  title: 'Vì sao dùng OpenRouter - trả tiền theo đúng mức dùng',
   description:
     'OpenRouter như “đồng hồ điện cho AI”: một tài khoản tiếp cận hàng trăm model, trả đúng phần đã dùng, không phí tháng cố định. Giải thích cho người mới kèm các bước bắt đầu.',
   alternates: { canonical: '/bat-dau/vi-sao-dung-openrouter' },
@@ -16,7 +16,7 @@ const faqs = [
   {
     question: 'Nạp bao nhiêu là đủ?',
     answer:
-      'Tùy mức dùng của bạn. Người mới nên nạp một khoản nhỏ để thử trước, thấy đủ thì nạp thêm — không bị ép đóng gói tháng.',
+      'Tùy mức dùng của bạn. Người mới nên nạp một khoản nhỏ để thử trước, thấy đủ thì nạp thêm - không bị ép đóng gói tháng.',
   },
   {
     question: 'Hết số dư thì sao?',
@@ -26,7 +26,7 @@ const faqs = [
   {
     question: 'Có tự động gia hạn không?',
     answer:
-      'Không. Đây chính là điểm khác gói tháng cố định — hết tiền thì thôi, không tự động trừ, dừng bất cứ lúc nào.',
+      'Không. Đây chính là điểm khác gói tháng cố định - hết tiền thì thôi, không tự động trừ, dừng bất cứ lúc nào.',
   },
 ];
 
@@ -92,7 +92,7 @@ export default function ViSaoDungOpenRouterPage() {
           </div>
           <h3 className="mb-1.5 text-[15.5px] font-bold">Nạp credit</h3>
           <p className="text-[13.5px] text-ink-soft">
-            Nạp một khoản vào tài khoản — số dư này là của bạn, trừ dần theo mức dùng.
+            Nạp một khoản vào tài khoản - số dư này là của bạn, trừ dần theo mức dùng.
           </p>
           <div className="mt-3 h-20 rounded-lg border border-dashed border-line bg-stone-50 text-center text-[11px] leading-[80px] text-ink-soft">
             Ảnh minh họa sắp cập nhật
@@ -143,7 +143,7 @@ export default function ViSaoDungOpenRouterPage() {
         </div>
       </div>
       <p className="mt-4 text-[14px] text-ink-soft">
-        Trong app chỉ là một danh sách thả xuống — thích thì đổi, không hợp thì thôi. Không
+        Trong app chỉ là một danh sách thả xuống - thích thì đổi, không hợp thì thôi. Không
         mất dữ liệu, không tạo tài khoản mới.
       </p>
 
@@ -164,7 +164,7 @@ export default function ViSaoDungOpenRouterPage() {
       <div className="card mt-10 p-6">
         <h2 className="mb-1 text-[18px] font-bold">Sẵn sàng bắt đầu?</h2>
         <p className="mb-4 text-sm text-ink-soft">
-          Cài Hermes miễn phí, nạp một ít credit để dùng thử — không bị ràng buộc gì.
+          Cài Hermes miễn phí, nạp một ít credit để dùng thử - không bị ràng buộc gì.
         </p>
         <div className="flex flex-wrap gap-3">
           <Link href="/bat-dau" className="btn btn-primary">

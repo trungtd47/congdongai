@@ -70,7 +70,7 @@ export interface TocItem {
 }
 
 // Trích xuất mục lục (h2/h3) từ nội dung markdown. Slug được sinh bằng
-// github-slugger — khớp 1:1 với id mà rehype-slug gán cho heading khi render.
+// github-slugger - khớp 1:1 với id mà rehype-slug gán cho heading khi render.
 export function extractToc(content: string): TocItem[] {
   const slugger = new GithubSlugger();
   const items: TocItem[] = [];

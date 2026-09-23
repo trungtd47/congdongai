@@ -1,6 +1,6 @@
 'use client';
 
-// Firebase Authentication — đăng nhập Google + quản lý phiên.
+// Firebase Authentication - đăng nhập Google + quản lý phiên.
 // Demo mode (chưa có config) → mọi hàm no-op trả về null/undefined an toàn.
 
 import {
@@ -24,7 +24,7 @@ export async function signInWithGoogle(): Promise<User | null> {
     await ensureUserProfile(result.user);
     return result.user;
   } catch {
-    // popup bị chặn / người dùng hủy — bỏ qua
+    // popup bị chặn / người dùng hủy - bỏ qua
     return null;
   }
 }
@@ -71,6 +71,6 @@ async function ensureUserProfile(user: User): Promise<void> {
       });
     }
   } catch {
-    // bỏ qua — hồ sơ sẽ được tạo lần sau
+    // bỏ qua - hồ sơ sẽ được tạo lần sau
   }
 }

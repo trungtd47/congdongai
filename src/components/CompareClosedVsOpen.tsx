@@ -3,7 +3,7 @@
 
 const rows = [
   {
-    closed: 'Trả gói cố định mỗi tháng — dùng ít vẫn mất tiền',
+    closed: 'Trả gói cố định mỗi tháng - dùng ít vẫn mất tiền',
     open: 'Nạp một lần, trừ dần theo từng câu hỏi',
   },
   {

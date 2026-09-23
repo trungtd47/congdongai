@@ -14,7 +14,7 @@ export default function QuyTacPage() {
       <Breadcrumb items={[{ name: 'Quy tắc cộng đồng' }]} />
       <h1 className="mb-4 text-[32px] font-extrabold tracking-[-0.5px]">Quy tắc cộng đồng</h1>
       <div className="prose-article">
-        <p>Cộng đồng tồn tại để giúp đỡ nhau — xin giữ không gian thân thiện.</p>
+        <p>Cộng đồng tồn tại để giúp đỡ nhau - xin giữ không gian thân thiện.</p>
         <h2>Nên làm</h2>
         <ul>
           <li>Hỏi rõ ràng, mô tả đầy đủ vấn đề bạn gặp.</li>

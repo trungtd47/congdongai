@@ -56,19 +56,19 @@ export const huongDanItems: HubItem[] = [
   {
     slug: 'tro-ly-email',
     title: 'Trợ lý email',
-    description: 'Đọc, tóm tắt và soạn trả lời email — bạn chỉ việc duyệt trước khi gửi.',
+    description: 'Đọc, tóm tắt và soạn trả lời email - bạn chỉ việc duyệt trước khi gửi.',
     icon: '📧',
   },
   {
     slug: 'nhac-viec-va-lich',
     title: 'Nhắc việc & lịch',
-    description: 'Nhắc uống nước, họp, đón con, deadline — bằng tiếng Việt, đúng giờ, không sót.',
+    description: 'Nhắc uống nước, họp, đón con, deadline - bằng tiếng Việt, đúng giờ, không sót.',
     icon: '⏰',
   },
   {
     slug: 'hoc-tieng-anh',
     title: 'Luyện tiếng Anh',
-    description: 'Bạn nói — nó nghe, sửa phát âm, giải thích ngữ pháp như gia sư riêng 24/7.',
+    description: 'Bạn nói - nó nghe, sửa phát âm, giải thích ngữ pháp như gia sư riêng 24/7.',
     icon: '🗣️',
   },
   {
@@ -80,7 +80,7 @@ export const huongDanItems: HubItem[] = [
   {
     slug: 'nghien-cuu-truoc-khi-mua',
     title: 'Nghiên cứu trước khi mua',
-    description: 'So sánh giá, đọc review, tóm tắt ưu nhược — trước khi bạn bấm mua bất cứ gì.',
+    description: 'So sánh giá, đọc review, tóm tắt ưu nhược - trước khi bạn bấm mua bất cứ gì.',
     icon: '🛒',
   },
 ];
@@ -118,7 +118,7 @@ export const homeFaqs: Faq[] = [
   {
     question: 'Hermes Agent có miễn phí không?',
     answer:
-      'Phần mềm miễn phí 100%. Bạn chỉ trả tiền cho AI model mình dùng — trả theo mức dùng như đồng hồ điện, dùng ít thì rẻ hơn.',
+      'Phần mềm miễn phí 100%. Bạn chỉ trả tiền cho AI model mình dùng - trả theo mức dùng như đồng hồ điện, dùng ít thì rẻ hơn.',
   },
   {
     question: 'Không biết code có dùng được không?',

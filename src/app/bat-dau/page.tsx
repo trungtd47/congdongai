@@ -18,7 +18,7 @@ export default function BatDauPage() {
         Bắt đầu
       </p>
       <h1 className="mb-2 text-[32px] font-extrabold tracking-[-0.5px]">
-        Cài Hermes Agent — từ số 0
+        Cài Hermes Agent - từ số 0
       </h1>
       <p className="mb-8 max-w-2xl text-[16px] text-ink-soft">
         Làm theo thứ tự dưới đây. Tổng thời gian khoảng 10-15 phút, không cần biết code,

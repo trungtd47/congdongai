@@ -1,5 +1,5 @@
-// ⚠️ MINH HỌA — thay bằng data thật khi launch (Firestore)
-// Dữ liệu cộng đồng demo — dùng khi chưa có Firebase config thật.
+// ⚠️ MINH HỌA - thay bằng data thật khi launch (Firestore)
+// Dữ liệu cộng đồng demo - dùng khi chưa có Firebase config thật.
 // Khi cắm config thật, firestore-ops.ts sẽ đọc/ghi Firestore thay vì mảng này.
 
 export interface DemoUser {
@@ -65,7 +65,7 @@ export const demoPosts: DemoPost[] = [
     answers: [
       {
         id: 'a-1',
-        body: 'Phần mềm Hermes Agent miễn phí 100%. Bạn chỉ trả tiền cho AI model mình dùng, trả theo mức dùng như đồng hồ điện — dùng ít trả ít. Chi tiết mình đã viết ở bài "Thanh toán từ Việt Nam".',
+        body: 'Phần mềm Hermes Agent miễn phí 100%. Bạn chỉ trả tiền cho AI model mình dùng, trả theo mức dùng như đồng hồ điện - dùng ít trả ít. Chi tiết mình đã viết ở bài "Thanh toán từ Việt Nam".',
         authorUid: 'ai-friday',
         authorName: 'Friday (AI)',
         createdAt: '2026-09-10',
@@ -163,7 +163,7 @@ export const demoPosts: DemoPost[] = [
 ];
 
 // ============================================================
-// DỮ LIỆU MINH HỌA TRANG CHỦ (design v7) — thay bằng Firestore khi launch
+// DỮ LIỆU MINH HỌA TRANG CHỦ (design v7) - thay bằng Firestore khi launch
 // ============================================================
 
 export interface PathStep {
@@ -189,7 +189,7 @@ export const pathSteps: PathStep[] = [
   {
     n: '3',
     title: 'Nạp "xăng" cho Hermes: tài khoản OpenRouter từ Việt Nam',
-    desc: 'Trả theo nhu cầu như đồng hồ điện — không gói tháng. Cả cách xử lý khi thẻ Visa không nạp được.',
+    desc: 'Trả theo nhu cầu như đồng hồ điện - không gói tháng. Cả cách xử lý khi thẻ Visa không nạp được.',
     time: '⏱ 8 phút làm',
   },
   {
@@ -201,7 +201,7 @@ export const pathSteps: PathStep[] = [
   {
     n: '5',
     title: 'Việc đầu tiên giao cho Hermes: bản tin sáng tự động',
-    desc: 'Bài "tốt nghiệp" — từ đây bạn tự nghĩ ra việc để giao, hoặc hỏi chính Hermes.',
+    desc: 'Bài "tốt nghiệp" - từ đây bạn tự nghĩ ra việc để giao, hoặc hỏi chính Hermes.',
     time: '⏱ 10 phút làm',
   },
 ];
@@ -264,29 +264,29 @@ export const worldCases: WorldCase[] = [
   {
     icon: '🎥',
     title: 'NetworkChuck (3+ triệu người theo dõi): "Tôi chuyển hẳn sang Hermes"',
-    desc: 'Dựng agent "Ron" làm quản trị IT cho công ty mình — tự kết nối hệ thống mạng, điều khiển studio, và tự viết kỹ năng mới khi gặp việc chưa biết. Tin tưởng đến mức cài cho vợ dùng, chị đặt tên agent là "Honey". Có khóa học Hermes miễn phí tại Academy của Chuck.',
-    sourceLabel: 'YouTube — "I\'m switching to Hermes (goodbye OpenClaw!!)"',
+    desc: 'Dựng agent "Ron" làm quản trị IT cho công ty mình - tự kết nối hệ thống mạng, điều khiển studio, và tự viết kỹ năng mới khi gặp việc chưa biết. Tin tưởng đến mức cài cho vợ dùng, chị đặt tên agent là "Honey". Có khóa học Hermes miễn phí tại Academy của Chuck.',
+    sourceLabel: 'YouTube - "I\'m switching to Hermes (goodbye OpenClaw!!)"',
     sourceUrl: 'https://www.youtube.com/watch?v=QQEgIo4Juxg',
   },
   {
     icon: '🍓',
     title: 'Doanh nghiệp 1 người chạy bằng 7 agent trên chiếc máy tính 35 USD',
-    desc: 'Một người làm kinh doanh solo (bài viết trên Dev.to) chạy 7 agent trên Raspberry Pi: thu thập tin, sản xuất nội dung 2 lần/ngày, duyệt tuân thủ trước khi đăng, trả lời bình luận, phân tích số liệu, một agent "CEO" viết ghi nhớ chiến lược mỗi đêm. Bài viết kể cả những phần từng thất bại — rất đáng đọc trước khi bắt đầu.',
-    sourceLabel: 'Dev.to — "I Automated My One-Person Business With 7 AI Agents"',
+    desc: 'Một người làm kinh doanh solo (bài viết trên Dev.to) chạy 7 agent trên Raspberry Pi: thu thập tin, sản xuất nội dung 2 lần/ngày, duyệt tuân thủ trước khi đăng, trả lời bình luận, phân tích số liệu, một agent "CEO" viết ghi nhớ chiến lược mỗi đêm. Bài viết kể cả những phần từng thất bại - rất đáng đọc trước khi bắt đầu.',
+    sourceLabel: 'Dev.to - "I Automated My One-Person Business With 7 AI Agents"',
     sourceUrl:
       'https://dev.to/ulnit/i-automated-my-one-person-business-with-7-ai-agents-heres-the-exact-setup-including-the-parts-1gai',
   },
   {
     icon: '✍️',
     title: '"Hermes là người vận hành AI phía sau doanh nghiệp của tôi"',
-    desc: 'Review 3 tháng dùng thật của TonyReviewsThings: nghiên cứu, viết code, viết nội dung, xuất bản sản phẩm — kèm cả những điểm Hermes còn vấp, dành cho ai muốn nghe góc nhìn trung thực trước khi cài.',
-    sourceLabel: 'tonyreviewsthings.com — Hermes Agent Review',
+    desc: 'Review 3 tháng dùng thật của TonyReviewsThings: nghiên cứu, viết code, viết nội dung, xuất bản sản phẩm - kèm cả những điểm Hermes còn vấp, dành cho ai muốn nghe góc nhìn trung thực trước khi cài.',
+    sourceLabel: 'tonyreviewsthings.com - Hermes Agent Review',
     sourceUrl: 'https://www.tonyreviewsthings.com/hermes-agent-by-nous-research-review/',
   },
   {
     icon: '📚',
     title: 'Thư viện case study chính thức từ Nous Research + cộng đồng toàn cầu',
-    desc: 'Trang user stories chính chủ (lồng tiếng video, trợ lý vận hành, tự động nghiên cứu...) và repo "Awesome Hermes Use Cases" trên GitHub — mọi case đều dẫn về nguồn gốc, tha hồ đào.',
+    desc: 'Trang user stories chính chủ (lồng tiếng video, trợ lý vận hành, tự động nghiên cứu...) và repo "Awesome Hermes Use Cases" trên GitHub - mọi case đều dẫn về nguồn gốc, tha hồ đào.',
     sourceLabel: 'hermes-agent.nousresearch.com/docs/user-stories',
     sourceUrl: 'https://hermes-agent.nousresearch.com/docs/user-stories',
     secondaryLabel: 'github.com/aliaihub/awesome-hermes-usecases',
@@ -361,8 +361,8 @@ export const blogRecent: BlogPost[] = [
   { title: 'Hermes tuần này: 3 cập nhật đáng chú ý cho người mới', meta: 'Friday tổng hợp · 22/09 · 4 phút đọc' },
   { title: 'Từ số 0 đến bản tin sáng tự động: hành trình 7 ngày của mình', meta: 'Thành viên Kiệt · 20/09 · 8 phút đọc' },
   { title: 'SOUL.md là gì? Giải thích bằng ví dụ thuê trợ lý ngoài đời', meta: 'Đức Trung · 18/09 · 6 phút đọc' },
-  { title: 'Vì sao mình KHÔNG mua khóa học AI 30 triệu — và đã làm gì thay thế', meta: 'Đức Trung · 15/09 · 7 phút đọc' },
-  { title: 'Dùng Hermes nhắc uống thuốc cho ba mẹ — setup trong 15 phút', meta: 'Thành viên Lan · 12/09 · 5 phút đọc' },
+  { title: 'Vì sao mình KHÔNG mua khóa học AI 30 triệu - và đã làm gì thay thế', meta: 'Đức Trung · 15/09 · 7 phút đọc' },
+  { title: 'Dùng Hermes nhắc uống thuốc cho ba mẹ - setup trong 15 phút', meta: 'Thành viên Lan · 12/09 · 5 phút đọc' },
 ];
 
 export interface Book {
@@ -374,10 +374,10 @@ export interface Book {
 }
 
 export const libraryBooks: Book[] = [
-  { icon: '🧑‍💼', color: 'var(--teal)', title: 'SOUL.md — Trợ lý văn phòng', desc: 'Lịch sự, soạn email, nhắc lịch, tóm tắt tài liệu', downloads: '342 lượt' },
-  { icon: '🏪', color: 'var(--clay)', title: 'SOUL.md — Kinh doanh 1 người', desc: 'Trực fanpage, chăm khách, báo cáo sáng', downloads: '289 lượt' },
-  { icon: '👨‍👩‍👧', color: 'var(--gold)', title: 'SOUL.md — Trợ lý gia đình', desc: 'Việc nhà, thực đơn, học hành, du lịch', downloads: '198 lượt' },
-  { icon: '💬', color: '#0F766E', title: '50+ prompt tiếng Việt', desc: 'Câu lệnh mẫu việc hằng ngày — copy dán là chạy', downloads: '411 lượt' },
-  { icon: '⏰', color: '#7C3AED', title: 'Skill — Bản tin sáng tự động', desc: 'Kèm hướng dẫn chỉnh nguồn tin theo gu của bạn', downloads: '167 lượt' },
+  { icon: '🧑‍💼', color: 'var(--teal)', title: 'SOUL.md - Trợ lý văn phòng', desc: 'Lịch sự, soạn email, nhắc lịch, tóm tắt tài liệu', downloads: '342 lượt' },
+  { icon: '🏪', color: 'var(--clay)', title: 'SOUL.md - Kinh doanh 1 người', desc: 'Trực fanpage, chăm khách, báo cáo sáng', downloads: '289 lượt' },
+  { icon: '👨‍👩‍👧', color: 'var(--gold)', title: 'SOUL.md - Trợ lý gia đình', desc: 'Việc nhà, thực đơn, học hành, du lịch', downloads: '198 lượt' },
+  { icon: '💬', color: '#0F766E', title: '50+ prompt tiếng Việt', desc: 'Câu lệnh mẫu việc hằng ngày - copy dán là chạy', downloads: '411 lượt' },
+  { icon: '⏰', color: '#7C3AED', title: 'Skill - Bản tin sáng tự động', desc: 'Kèm hướng dẫn chỉnh nguồn tin theo gu của bạn', downloads: '167 lượt' },
   { icon: '✅', color: '#2B241D', title: 'Checklist cài đặt 1 trang (PDF)', desc: 'In ra được, tick từng bước từ tải app đến câu hỏi đầu', downloads: '255 lượt' },
 ];

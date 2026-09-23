@@ -96,7 +96,7 @@ export default async function ArticlePage({ params }: Props) {
             Mục lục
           </p>
           <div className="mb-3 text-[12.5px] text-ink-soft">
-            Bài này dành cho người mới — không cần biết code, đọc từ trên xuống là đủ.
+            Bài này dành cho người mới - không cần biết code, đọc từ trên xuống là đủ.
           </div>
           <nav>
             {toc.map((item) => (

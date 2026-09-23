@@ -61,7 +61,7 @@ export default function TaoCauHoiPage() {
 
       {isDemoMode() && (
         <div className="mb-4 rounded-lg bg-amber-soft px-4 py-2 text-sm text-amber-900">
-          Chế độ demo — câu hỏi lưu tạm trong phiên, không công khai lâu dài.
+          Chế độ demo - câu hỏi lưu tạm trong phiên, không công khai lâu dài.
         </div>
       )}
 

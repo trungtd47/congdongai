@@ -25,7 +25,7 @@ const lora = Lora({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'Cộng Đồng AI — Học Hermes Agent từ số 0',
+    default: 'Cộng Đồng AI - Học Hermes Agent từ số 0',
     template: '%s | Cộng Đồng AI',
   },
   description: siteConfig.description,
@@ -34,12 +34,12 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: 'Cộng Đồng AI — Học Hermes Agent từ số 0',
+    title: 'Cộng Đồng AI - Học Hermes Agent từ số 0',
     description: siteConfig.description,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cộng Đồng AI — Học Hermes Agent từ số 0',
+    title: 'Cộng Đồng AI - Học Hermes Agent từ số 0',
     description: siteConfig.description,
   },
   robots: {

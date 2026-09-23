@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* v7 design tokens — nền giấy ấm, cộng đồng, không phải SaaS marketing */
+  /* v7 design tokens - nền giấy ấm, cộng đồng, không phải SaaS marketing */
   --color-bg: #FBF7F0;
   --color-card: #FFFFFF;
   --color-ink: #2B241D;
@@ -41,7 +41,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Heading giọng blog/thư — serif Lora */
+/* Heading giọng blog/thư - serif Lora */
 h1, h2, h3, .serif {
   font-family: var(--font-serif);
 }
@@ -112,7 +112,7 @@ a {
   text-decoration: none;
 }
 .nav-btns .join:hover { background: var(--color-teal-dark); }
-/* button (auth) — reset UA default, giữ kiểu như link / nút pill */
+/* button (auth) - reset UA default, giữ kiểu như link / nút pill */
 .nav-btns button { border: none; cursor: pointer; background: transparent; font: inherit; line-height: inherit; }
 .nav-btns button.login { background: transparent; padding: 0; }
 
@@ -264,7 +264,7 @@ footer.site-footer { border-top: 1px solid var(--color-line); padding: 34px 0; c
 .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .foot a { color: var(--color-teal); font-weight: 600; text-decoration: none; }
 
-/* ===== TermTip — gạch chân chấm gold ===== */
+/* ===== TermTip - gạch chân chấm gold ===== */
 .tip { border-bottom: 2px dotted var(--color-gold); cursor: help; }
 .term-tip-pop { min-height: 44px; }
 .term-tip-pop::after {

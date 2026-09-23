@@ -69,7 +69,7 @@ export function CommentsSection({ slug }: { slug: string }) {
 
       {isDemoMode() ? (
         <div className="card p-5 text-sm text-ink-soft">
-          💡 Chế độ demo — bình luận lưu tạm trong phiên. Kết nối Firebase để lưu lâu dài.
+          💡 Chế độ demo - bình luận lưu tạm trong phiên. Kết nối Firebase để lưu lâu dài.
         </div>
       ) : (
         <form onSubmit={submit} className="card flex flex-col gap-3 p-5">

@@ -25,7 +25,7 @@ export function TermTip({ term, children }: TermTipProps) {
         onBlur={() => setOpen(false)}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
-        aria-label={`${term} — giải thích`}
+        aria-label={`${term} - giải thích`}
       >
         {children ?? term}
       </button>
