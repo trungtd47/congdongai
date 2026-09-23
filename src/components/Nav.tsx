@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useState } from 'react';
-import { useAuth } from '@/hooks/useAuth';
-import { signInWithGoogle, signOutUser } from '@/lib/auth';
-import { isDemoMode } from '@/lib/firebase';
+import Link from "next/link";
+import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
+import { signInWithGoogle, signOutUser } from "@/lib/auth";
+import { isDemoMode } from "@/lib/firebase";
 
 const links = [
-  { href: '/lo-trinh', label: 'Lộ trình' },
-  { href: '/bat-dau', label: 'Bắt đầu' },
-  { href: '/hoi-dap', label: 'Hỏi & Đáp' },
-  { href: '/thu-vien', label: 'Thư viện' },
-  { href: '/blog', label: 'Blog' },
+  { href: "/lo-trinh", label: "Lộ trình" },
+  { href: "/bat-dau", label: "Bắt đầu" },
+  { href: "/hoi-dap", label: "Hỏi & Đáp" },
+  { href: "/thu-vien", label: "Thư viện" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export function Nav() {
@@ -33,16 +33,23 @@ export function Nav() {
     setBusy(false);
   };
 
-  const displayName = user?.displayName ?? user?.email?.split('@')[0] ?? 'Thành viên';
-  const initial = (displayName || 'T').charAt(0).toUpperCase();
+  const displayName =
+    user?.displayName ?? user?.email?.split("@")[0] ?? "Thành viên";
+  const initial = (displayName || "T").charAt(0).toUpperCase();
 
   return (
     <nav className="sticky top-0 z-50 border-b border-line bg-[rgba(251,247,240,.95)] backdrop-blur-md">
       <div className="nav-in">
         <Link href="/" className="logo">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/hermes-logo.svg" alt="Hermes" width={30} height={30} className="logo-mark" />
-          Cộng Đồng AI
+          <img
+            src="/hermes-logo.svg"
+            alt="Hermes"
+            width={30}
+            height={30}
+            className="logo-mark"
+          />
+          Cộng Đồng AI.org
         </Link>
 
         <div className="nav-links hidden md:flex">
@@ -56,7 +63,10 @@ export function Nav() {
         <div className="nav-btns ml-auto">
           {user ? (
             <>
-              <span className="hidden items-center gap-2 sm:flex" title={displayName}>
+              <span
+                className="hidden items-center gap-2 sm:flex"
+                title={displayName}
+              >
                 {user.photoURL ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
@@ -91,7 +101,7 @@ export function Nav() {
                 disabled={busy || demo}
                 className="login disabled:opacity-50"
               >
-                {demo ? 'Đăng nhập (demo)' : 'Đăng nhập'}
+                {demo ? "Đăng nhập (demo)" : "Đăng nhập"}
               </button>
               <button
                 type="button"
@@ -110,7 +120,7 @@ export function Nav() {
           onClick={() => setOpen((v) => !v)}
           aria-label="Mở menu"
         >
-          {open ? '✕' : '☰'}
+          {open ? "✕" : "☰"}
         </button>
       </div>
 

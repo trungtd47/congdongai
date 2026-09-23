@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -7,9 +7,15 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/hermes-logo.svg" alt="Hermes" width={20} height={20} className="rounded" />
+            <img
+              src="/hermes-logo.svg"
+              alt="Hermes"
+              width={20}
+              height={20}
+              className="rounded"
+            />
             <span>
-              Giới thiệu{' '}
+              Giới thiệu{" "}
               <a
                 href="https://hermes-agent.nousresearch.com"
                 target="_blank"
@@ -17,21 +23,18 @@ export function Footer() {
                 className="font-semibold text-ink"
               >
                 Hermes Agent
-              </a>{' '}
+              </a>{" "}
               - khung trợ lý AI mã nguồn mở của Nous Research
             </span>
           </div>
           <div className="mt-1.5">
-            © 2026 CongDongAI.org - cộng đồng miễn phí, xây bằng tinh thần &quot;cho đi&quot;
-            của mã nguồn mở
+            © 2026 CongDongAI.org - cộng đồng miễn phí, xây bằng tinh thần
+            &quot;cho đi&quot; của mã nguồn mở
           </div>
         </div>
         <div>
-          Vận hành bởi{' '}
-          <a href="https://themoneybrew.org" target="_blank" rel="noopener noreferrer">
-            Đức Trung (TheMoneyBrew)
-          </a>{' '}
-          · <Link href="/quy-tac-cong-dong">Quy tắc cộng đồng</Link> ·{' '}
+          Admin congdongai.org ·{" "}
+          <Link href="/quy-tac-cong-dong">Quy tắc cộng đồng</Link> ·{" "}
           <Link href="/quy-tac-cong-dong">Liên hệ</Link>
         </div>
       </div>

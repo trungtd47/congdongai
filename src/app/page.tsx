@@ -57,7 +57,7 @@ export default function HomePage() {
             <div className="from">
               <div className="av">T</div>
               <div>
-                <b>Đức Trung</b>Người vận hành · ngày nào cũng dùng Hermes
+                <b>Đức Trung</b>Người ngày nào cũng đang dùng Hermes
               </div>
             </div>
             <p>
@@ -85,9 +85,9 @@ export default function HomePage() {
               tuần.
             </p>
             <p>
-              Mình coi Hermes như một đồng nghiệp chứ không phải cái máy phát ra
-              chân lý: model nào cũng có lúc ảo giác, nên việc quan trọng mình
-              hay cho hai agent kiểm tra chéo nhau, hoặc tự mình kiểm chứng lại.
+              Mình coi Hermes như một đồng nghiệp: cùng đặt câu hỏi, trao đổi,
+              kiểm chứng thông tin. Với những nhiệm vụ quan trọng, mình còn dựng
+              quy trình kiểm tra chéo lại giữa các AI Agent.
             </p>
             <p>
               Mình hiểu ra một điều: thứ này không phải đồ chơi của dân kỹ thuật

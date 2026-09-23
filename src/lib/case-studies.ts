@@ -25,7 +25,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Từ OpenClaw sang Hermes - vì sao mình bỏ OpenClaw',
     teaser:
       'Hành trình thật của người không biết code: thử OpenClaw trước vì nghe quen, rồi nhờ chính nó cài Hermes, và cuối cùng nhờ Hermes gỡ luôn OpenClaw.',
-    sourceLabel: 'Đức Trung - người vận hành congdongai.org',
+    sourceLabel: 'Admin congdongai.org',
     sourceUrl: 'https://congdongai.org',
     body: [
       {
@@ -62,7 +62,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Bản tin thị trường 6h30 mỗi sáng - trước khi mình pha xong cà phê',
     teaser:
       'Mỗi sáng Hermes tự đọc, tự lọc, tự viết bản tin thị trường trước khi mình kịp pha xong cà phê. Không cần mở mười mấy trang web nữa.',
-    sourceLabel: 'Đức Trung - người vận hành congdongai.org',
+    sourceLabel: 'Admin congdongai.org',
     sourceUrl: 'https://congdongai.org',
     body: [
       {
@@ -95,7 +95,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Bộ não thứ hai của mình: ghi vào Obsidian, để Hermes đọc',
     teaser:
       'Mình ghi hết ý tưởng và kiến thức vào Obsidian, rồi để Hermes đọc cả kho đó để gợi ý và viết giúp. Đó là lúc ghi chú sống dậy.',
-    sourceLabel: 'Đức Trung - người vận hành congdongai.org',
+    sourceLabel: 'Admin congdongai.org',
     sourceUrl: 'https://congdongai.org',
     body: [
       {
