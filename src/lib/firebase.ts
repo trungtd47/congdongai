@@ -55,7 +55,7 @@ export function initFirebase() {
   const cfg = readFirebaseConfig()!;
   app = initializeApp(cfg);
   auth = getAuth(app);
-  db = getFirestore(app);
+  db = getFirestore(app, 'congdongai');
 
   return { app, auth, db };
 }
