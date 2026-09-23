@@ -112,6 +112,9 @@ a {
   text-decoration: none;
 }
 .nav-btns .join:hover { background: var(--color-teal-dark); }
+/* button (auth) — reset UA default, giữ kiểu như link / nút pill */
+.nav-btns button { border: none; cursor: pointer; background: transparent; font: inherit; line-height: inherit; }
+.nav-btns button.login { background: transparent; padding: 0; }
 
 /* ===== THƯ NGỎ ===== */
 .letter { padding: 64px 0 48px; }
