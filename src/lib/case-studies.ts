@@ -201,6 +201,108 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
+  {
+    slug: 'milesdeutscher-obsidian',
+    icon: '🧠',
+    title: 'Nối cả doanh nghiệp vào Hermes qua một vault Obsidian',
+    teaser:
+      'Anh gom mọi thứ - ghi chú khách hàng, quy trình chuẩn, biên bản họp, quyết định - vào một vault Obsidian cho agent đọc, để nó tự chạy các việc anh chưa kịp nghĩ ra.',
+    sourceLabel: 'X (Twitter) - @milesdeutscher',
+    sourceUrl: 'https://x.com/milesdeutscher/status/2068133236052730347',
+    body: [
+      {
+        p: `"Tôi nối toàn bộ doanh nghiệp của mình vào Hermes kết hợp Obsidian. Ghi chú khách hàng, quy trình chuẩn (SOP), biên bản họp, các quyết định kinh doanh - tất cả. Giờ agent Hermes chạy các việc tự động mà tôi thậm chí không biết là mình cần, và agent tự tiến hóa theo thời gian."`,
+      },
+      {
+        p: `Mấu chốt ở đây: toàn bộ "bộ nhớ" của doanh nghiệp nằm gọn trong một vault Obsidian. Agent không chỉ trả lời câu hỏi, mà chủ động soi ra việc cần làm và tự giỏi dần lên.`,
+      },
+    ],
+  },
+  {
+    slug: 'emmagine79-landing',
+    icon: '🌐',
+    title: '"Google tôi đi rồi dựng trang web" - agent tự làm hết và nhắn tin báo xong',
+    teaser:
+      'Chỉ một câu lệnh, agent tự tìm kiếm, dựng landing page, SSH lên VPS, đăng lên mạng, rồi nhắn tin báo đã xong.',
+    sourceLabel: 'X (Twitter) - @emmagine79',
+    sourceUrl: 'https://x.com/emmagine79/status/2053360898501468362',
+    body: [
+      {
+        p: `"Tôi bảo nó google về tôi rồi dựng một landing page dựa trên những gì tìm được - và thật sự choáng vì nó tự chạy tìm kiếm, tìm ra các mấu nối, tạo trang, SSH vào VPS của tôi, tải trang lên, rồi nhắn tin báo khi xong. Gì thế?!"`,
+      },
+      {
+        p: `Ví dụ rõ ràng nhất cho câu hỏi "agent khác gì chatbot": nó không chỉ nói, mà thao tác trên máy từ đầu tới cuối một việc thật.`,
+      },
+    ],
+  },
+  {
+    slug: 'fpostigo-dell',
+    icon: '💻',
+    title: 'Chạy ngon trên chiếc Dell 5 năm tuổi, GPU đã hỏng',
+    teaser:
+      'Không cần máy xịn. Một chiếc laptop Dell mua 5 năm trước chỉ để họp Zoom và nghe Spotify vẫn chạy Hermes tốt.',
+    sourceLabel: 'X (Twitter) - @fpostigo',
+    sourceUrl: 'https://x.com/fpostigo/status/2065468128906383452',
+    body: [
+      {
+        p: `"Agent Hermes của tôi chạy trên một chiếc laptop Dell XPS cũ với GPU đã hỏng. Tôi mua nó 5 năm trước chỉ để họp Zoom và nghe Spotify. Nó vẫn chạy tốt."`,
+      },
+      {
+        p: `Thông điệp cho ai lo máy yếu: phần lớn sức mạnh nằm ở model AI trên đám mây, máy của bạn chỉ cần đủ chạy phần mềm và gõ chữ.`,
+      },
+    ],
+  },
+  {
+    slug: 'exm7777-family',
+    icon: '👨‍👩‍👧',
+    title: 'Một Hermes cho cả nhà, ai nấy dùng một kiểu trên WhatsApp',
+    teaser:
+      'Ba thành viên trong một gia đình dùng chung một agent qua WhatsApp, mỗi người một việc - nhờ nó "sống" ngay trong ứng dụng nhắn tin quen thuộc.',
+    sourceLabel: 'X (Twitter) - @EXM7777',
+    sourceUrl: 'https://x.com/EXM7777/status/2049869015221510424',
+    body: [
+      {
+        p: `"Ba tuần trước tôi dựng một agent Hermes cho gia đình (3 thành viên), ai cũng dùng cho việc khác nhau. Nó mở ra cả một thế giới mới cho họ, chỉ vì nó nằm ngay trong WhatsApp và có những hành vi tự chủ động rất hay."`,
+      },
+      {
+        p: `Điểm gây ấn tượng: người thân quen dùng WhatsApp không cần học app mới, agent "ẩn" trong đúng chỗ họ vẫn nhắn tin hằng ngày.`,
+      },
+    ],
+  },
+  {
+    slug: 'nathanwilbanks-100k',
+    icon: '💰',
+    title: 'Ngày 297: hơn 100.000 USD việc cho khách đã thành tự động',
+    teaser:
+      'Gần 300 ngày liên tục, anh này tự động hóa rất nhiều thời gian tính toán và hơn 100.000 USD giá trị công việc cho khách bằng agent.',
+    sourceLabel: 'X (Twitter) - @NathanWilbanks_',
+    sourceUrl: 'https://x.com/NathanWilbanks_/status/2047883176622620934',
+    body: [
+      {
+        p: `"Tôi đang ở ngày 297 của chuỗi liên tục: hơn 900.000 giây thời gian tính toán đã được tự động hóa, hơn 5 tỷ token đã tạo ra, và hơn 100.000 USD giá trị công việc cho khách đã thành tự động."`,
+      },
+      {
+        p: `Con số là của người kể, để bạn thấy quy mô: agent dùng lâu, dùng đều, tích lũy giá trị đo đếm được - chứ không phải trò chơi một lần.`,
+      },
+    ],
+  },
+  {
+    slug: 'kanikabk-self-improve',
+    icon: '⚡',
+    title: 'Sức mạnh thật: những việc nó tự làm mỗi ngày, không cần bạn nhắc',
+    teaser:
+      'Điều đáng giá nhất không phải một phiên chat hay - mà là agent tốt dần lên từng ngày, bản tin ngày càng sắc và gọn mà bạn không cần sửa gì.',
+    sourceLabel: 'X (Twitter) - @KanikaBK',
+    sourceUrl: 'https://x.com/KanikaBK/status/2054572674777797018',
+    body: [
+      {
+        p: `"Sức mạnh thật của Hermes Agent không nằm ở một phiên duy nhất, mà ở những gì nó làm mỗi ngày mà không cần bạn nhắc. Lần chạy đầu tiên của bất kỳ quy trình nào là bản yếu nhất - sau một tháng, các bản tin trở nên sắc hơn, ngắn hơn, đúng trọng tâm hơn mà bạn không cần đổi gì."`,
+      },
+      {
+        p: `Câu này tóm đúng tinh thần khác biệt giữa chatbot và agent: chatbot tốt nhất vẫn phải chờ bạn hỏi; agent tự học và tự làm mỗi ngày.`,
+      },
+    ],
+  },
 ];
 
 export const caseStudyAggregator = {

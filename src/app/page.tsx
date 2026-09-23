@@ -196,7 +196,7 @@ export default function HomePage() {
                   khen.
                 </p>
                 <div className="world">
-                  {caseStudies.map((w) => (
+                  {caseStudies.slice(0, 6).map((w) => (
                     <div className="witem" key={w.slug}>
                       <div className="th">{w.icon}</div>
                       <div>
