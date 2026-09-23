@@ -62,7 +62,7 @@ export default function HomePage() {
             <div className="from">
               <div className="av">T</div>
               <div>
-                <b>Đức Trung</b>Người khởi xướng · ngày nào cũng dùng Hermes
+                <b>Đức Trung</b>Người vận hành · ngày nào cũng dùng Hermes
               </div>
             </div>
             <p>

@@ -27,7 +27,7 @@ export function Footer() {
           </div>
         </div>
         <div>
-          Khởi xướng bởi{' '}
+          Vận hành bởi{' '}
           <a href="https://themoneybrew.org" target="_blank" rel="noopener noreferrer">
             Đức Trung (TheMoneyBrew)
           </a>{' '}
