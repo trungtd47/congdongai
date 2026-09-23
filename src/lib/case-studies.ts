@@ -19,6 +19,109 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: 'kinh-nghiem-tu-openclaw-sang-hermes',
+    icon: '🔁',
+    type: 'long',
+    title: 'Từ OpenClaw sang Hermes - vì sao mình bỏ OpenClaw',
+    teaser:
+      'Hành trình thật của người không biết code: thử OpenClaw trước vì nghe quen, rồi nhờ chính nó cài Hermes, và cuối cùng nhờ Hermes gỡ luôn OpenClaw.',
+    sourceLabel: 'Đức Trung - người vận hành congdongai.org',
+    sourceUrl: 'https://congdongai.org',
+    body: [
+      {
+        p: `Mình không phải dân kỹ thuật. Mình kinh doanh và đầu tư tự do, chỉ thích mày mò công nghệ để làm việc nhàn hơn. Khi bắt đầu tìm hiểu AI agent, mình thử OpenClaw trước, vì nghe nhiều người nhắc tới.`,
+      },
+      { h: 'Vì sao OpenClaw khiến mình bỏ' },
+      {
+        ul: [
+          'Nhiều lỗi vặt, càng dùng càng phải tự sửa.',
+          'Khó dùng với người không rành kỹ thuật như mình.',
+          'Cảm giác nó là một "dự án" chưa hoàn thiện hơn là một sản phẩm.',
+        ],
+      },
+      {
+        p: `Điều may mắn là chính OpenClaw đã giúp mình cài Hermes khi mình nhờ. Từ lúc dùng Hermes, mọi thứ khác hẳn: ít lỗi, hiểu tiếng Việt, và nhất là nó tự nhớ và tự cải thiện theo cách mình làm việc.`,
+      },
+      {
+        p: `Cuối cùng mình nhờ chính Hermes gỡ bỏ OpenClaw ra khỏi máy. Từ đó mình chỉ dùng Hermes thôi.`,
+      },
+      { h: 'Bài học mình rút ra' },
+      {
+        ul: [
+          'Đừng vì một cái tên quen thuộc mà bỏ qua lựa chọn tốt hơn. Cứ thử vài cái rồi chọn cái hợp với mình.',
+          'Với người mới, "ít lỗi khiến mình phải tự sửa" quan trọng hơn "nhiều tính năng".',
+          'Một agent biết tự nhớ và tự dần tốt lên mới đáng dùng lâu dài.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'kinh-nghiem-ban-tin-6h30',
+    icon: '🌅',
+    type: 'long',
+    title: 'Bản tin thị trường 6h30 mỗi sáng - trước khi mình pha xong cà phê',
+    teaser:
+      'Mỗi sáng Hermes tự đọc, tự lọc, tự viết bản tin thị trường trước khi mình kịp pha xong cà phê. Không cần mở mười mấy trang web nữa.',
+    sourceLabel: 'Đức Trung - người vận hành congdongai.org',
+    sourceUrl: 'https://congdongai.org',
+    body: [
+      {
+        p: `Trước đây, mỗi sáng mình mất cả buổi lướt qua mười mấy trang tin và diễn đàn để biết thị trường hôm nay ra sao. Giờ việc đó Hermes làm hết.`,
+      },
+      { h: 'Cách mình dựng' },
+      {
+        ol: [
+          'Nhờ Hermes chạy một quy trình tự động vào mỗi sáng.',
+          'Nó tự đọc các nguồn tin mình quan tâm, tự lọc bỏ nhiễu.',
+          'Rồi tự viết thành một bản tin gọn, đúng trọng tâm mình cần.',
+        ],
+      },
+      {
+        p: `Kết quả: 6h30, lúc mình mới dậy thì bản tin đã có sẵn, ngay trước cả khi mình kịp pha xong cà phê. Mình chỉ cần đọc một chỗ.`,
+      },
+      { h: 'Điều đáng nói nhất' },
+      {
+        p: `Càng chạy lâu, bản tin càng gọn và sắc hơn, vì nó tự học cách mình thích đọc gì mà không cần mình sửa thêm gì.`,
+      },
+      {
+        p: `Đây là thứ một mình mình không làm xuể mỗi ngày, cũng chẳng đáng bỏ tiền thuê người. Một agent chạy nền là đủ.`,
+      },
+    ],
+  },
+  {
+    slug: 'kinh-nghiem-bo-nao-thu-hai',
+    icon: '🧠',
+    type: 'long',
+    title: 'Bộ não thứ hai của mình: ghi vào Obsidian, để Hermes đọc',
+    teaser:
+      'Mình ghi hết ý tưởng và kiến thức vào Obsidian, rồi để Hermes đọc cả kho đó để gợi ý và viết giúp. Đó là lúc ghi chú sống dậy.',
+    sourceLabel: 'Đức Trung - người vận hành congdongai.org',
+    sourceUrl: 'https://congdongai.org',
+    body: [
+      {
+        p: `Não mình không thể nhớ hết mọi thứ đáng nhớ. Nên mình xây một bộ não thứ hai: một thư mục ghi chú trong Obsidian, chia theo việc đang làm, việc theo đuổi lâu dài, và tài liệu tham khảo.`,
+      },
+      { h: 'Vì sao Obsidian' },
+      {
+        ul: [
+          'Ghi chú là file văn bản thường, nằm ngay trên máy mình.',
+          'Mình liên kết các ghi chú với nhau thành một mạng lưới.',
+          'Quan trọng nhất: Hermes đọc được trọn kho này.',
+        ],
+      },
+      {
+        p: `Mỗi khi có ý hay hay bài bổ ích, mình gõ nhanh vào đây. Khi cần, mình nhờ Hermes đọc cả kho để tóm tắt mình đang theo đuổi gì, hoặc tìm các ý liên quan và viết thành một bài.`,
+      },
+      { h: 'Thay đổi thật sự' },
+      {
+        p: `Ghi chú không còn là kho lưu trữ chết nữa. Nó thành bộ nhớ mà agent của mình trực tiếp dùng mỗi ngày. Đó là lúc kiến thức quay lại phục vụ mình, chứ không nằm im.`,
+      },
+      {
+        p: `Bắt đầu không cần hoàn hảo. Cứ ghi, hệ thống tự gọn dần theo thời gian bạn dùng.`,
+      },
+    ],
+  },
+  {
     slug: 'networkchuck',
     icon: '🎥',
     type: 'long',
