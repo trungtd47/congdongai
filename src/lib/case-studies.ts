@@ -122,6 +122,69 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
+    slug: 'reddit-3-months-hermes',
+    icon: '📱',
+    type: 'long',
+    title: 'Ba tháng dùng Hermes - những gì mình ước hiểu sớm hơn',
+    teaser:
+      'Hành trình ba tháng từ một chiếc điện thoại cũ đến "daily driver": hiểu câu trả lời đến từ đâu, và vì sao trí nhớ chỉ hiệu quả khi bạn cấu trúc đúng.',
+    sourceLabel: 'Reddit r/hermesagent',
+    sourceUrl:
+      'https://www.reddit.com/r/hermesagent/comments/1u8fm0t/three_months_with_hermes_agent_what_i_wish_i_had/',
+    body: [
+      {
+        p: `Tác giả bắt đầu từ một chiếc điện thoại cũ, vào lúc "hầu như chưa ai tin tưởng cái gọi là agent mới" này. Sau vài ngày, anh nhận ra nó bắt đầu thành phần mềm anh thấy thú vị, và mua riêng phần cứng phù hợp hơn chỉ để chạy nó.`,
+      },
+      {
+        p: `Khoảng bốn tuần sau, anh ngừng gọi Hermes là một "công cụ". Đó là lúc anh bắt đầu hiểu câu trả lời của nó đến từ đâu, nó đang dùng ngữ cảnh nào, vì sao có kết quả này hoạt động còn kết quả kia thì không.`,
+      },
+      { h: 'Điều anh ước hiểu sớm hơn' },
+      {
+        p: `Hermes "nhớ" những gì anh đã thử trước đó chỉ khi anh cho nó cấu trúc đúng để làm vậy. Nó phản biện lại chỉ khi cách dựng của anh cho phép điều đó. Nói cách khác, trí nhớ và sự chủ động của agent không tự nhiên mà có - chúng phụ thuộc vào cách bạn cấu hình.`,
+      },
+      {
+        p: `Ba tháng, dùng hằng ngày. Anh đã thử mọi memory provider nối được vào Hermes, cộng thêm vài bộ mã nguồn mở khác, để tìm ra cách giữ ngữ cảnh tốt nhất.`,
+      },
+      { h: 'Bài học cho người mới' },
+      {
+        ul: [
+          'Đừng chờ agent "tự khôn" một cách mù mờ. Nó tốt lên đúng bằng cấu trúc bạn dựng.',
+          'Hiểu ngữ cảnh nó đang dùng thì mới hiểu vì sao nó trả lời thế này hay thế kia.',
+          'Dành thời gian đầu để cấu hình trí nhớ đúng, thì ba tháng sau mới có "daily driver" thật.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'hn-homelab-sysadmin',
+    icon: '🖥️',
+    type: 'long',
+    title: 'Hermes làm "sysadmin" cho homelab - sáng nào cũng có báo cáo',
+    teaser:
+      'Một người đổi từ OpenClaw sang Hermes để cai quản homelab: mỗi sáng nhận tin backup chạy chưa, gửi giọng nói qua Telegram rồi nhận ảnh chụp màn hình 30 giây sau.',
+    sourceLabel: 'Hacker News',
+    sourceUrl: 'https://news.ycombinator.com/item?id=48419000',
+    body: [
+      {
+        p: `Anh dùng Hermes ở nhà, đổi từ OpenClaw sang vì Hermes làm việc tốt hơn với ngữ cảnh nhỏ. Không code bằng nó - việc code anh để cho Claude - mà giao cho nó một vai trò khác.`,
+      },
+      { h: 'Cai quản homelab' },
+      {
+        p: `Hermes là "sysadmin" cho homelab của anh. Nó có một MCP server chỉ đọc để kiểm tra trạng thái Kubernetes, và quyền SSH riêng để sửa lỗi - nhưng mỗi thay đổi đều phải được anh duyệt theo từng phiên.`,
+      },
+      {
+        p: `Vì toàn bộ homelab dùng GitOps, anh luôn đảo ngược được bất kỳ thay đổi nào agent gây ra. Đây là lưới an toàn khiến anh yên tâm giao quyền.`,
+      },
+      { h: 'Mỗi sáng một báo cáo' },
+      {
+        p: `Sáng nào anh cũng nhận một bản cập nhật ngắn: backup đã chạy chưa, có pod nào bị kẹt hay có biểu hiện lạ không. Anh đang dần chuyển Nextcloud và lịch từ Google về phần cứng riêng, rồi "gần như không còn phải đụng tay nữa".`,
+      },
+      {
+        p: `Thay vì tự làm, anh gửi nhanh một tin nhắn giọng nói qua Telegram, và khoảng 30 giây sau nhận lại một ảnh chụp màn hình "chứng minh" việc đã xong.`,
+      },
+    ],
+  },
+  {
     slug: 'networkchuck',
     icon: '🎥',
     type: 'long',
