@@ -4,8 +4,6 @@ import { JsonLd, faqJsonLd } from '@/lib/seo';
 import { TermTip } from '@/components/TermTip';
 import {
   pathSteps,
-  memberQuotes,
-  communityStats,
   qaRecent,
   libraryBooks,
 } from '@/lib/demo-data';
@@ -150,14 +148,6 @@ export default function HomePage() {
                   nhắn&quot; - từ mai chạy thử luôn.
                 </div>
               </div>
-              <div className="community-stats">
-                {communityStats.map((s) => (
-                  <div className="cstat" key={s.label}>
-                    <b>{s.value}</b>
-                    <span>{s.label}</span>
-                  </div>
-                ))}
-              </div>
                           </div>
           </div>
         </div>
@@ -186,38 +176,6 @@ export default function HomePage() {
                   <p>{s.desc}</p>
                 </div>
                 <span className="t">{s.time}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CHUYỆN CỦA THÀNH VIÊN */}
-      <section>
-        <div className="wrap">
-          <div className="sec-head">
-            <h2>Chuyện của thành viên 🌱</h2>
-            <Link className="more" href="/hoi-dap">
-                          Kể chuyện của bạn →
-                        </Link>
-          </div>
-          <p className="sec-sub">
-            Người thật, việc thật, trong cộng đồng của chúng ta. (Ảnh minh họa giai đoạn đầu
-            - về sau là chuyện thành viên gửi lên.)
-          </p>
-          <div className="quotes">
-            {memberQuotes.map((q) => (
-              <div className="quote" key={q.name}>
-                <p>{q.text}</p>
-                <div className="who">
-                  <div className="av" style={{ background: q.color }}>
-                    {q.initial}
-                  </div>
-                  <div>
-                    <b>{q.name}</b>
-                    <span>{q.role}</span>
-                  </div>
-                </div>
               </div>
             ))}
           </div>
@@ -280,8 +238,7 @@ export default function HomePage() {
                       <span className="badge tag">{q.tag}</span>
                       {q.hasAI && <span className="badge ai">🤖 AI trực đã trả lời</span>}
                       {q.solved && <span className="badge solved">✓ Đã giải quyết</span>}
-                      <span>{q.meta}</span>
-                    </div>
+                                          </div>
                   </div>
                 </div>
               ))}
