@@ -1,0 +1,64 @@
+---
+title: "Hermes có an toàn không? Bảo mật thông tin cá nhân"
+description: "Bạn lo cài một AI agent chạm được file và lệnh trên máy thì dữ liệu có an toàn không. Đọc 4 lớp bảo vệ Hermes tự bật sẵn và 6 thói quen giúp bạn yên tâm dùng."
+datePublished: "2026-09-23"
+dateModified: "2026-09-23"
+authorName: "Cộng Đồng AI"
+tags: ["bảo mật", "riêng tư", "người mới"]
+---
+
+## Lo lắng của bạn là hợp lý
+
+Hermes là <TermTip term="agent" />, không phải chatbot. Nó đọc và sửa file, chạy lệnh, lướt web trên chính máy bạn. Nghe thì đáng sợ, vì bạn đang giao "chìa khóa máy" cho một AI.
+
+Nhưng cũng vì chạy sát vào máy, Hermes được thiết kế với nhiều lớp bảo vệ ngay từ đầu. Bài này giải thích đơn giản để bạn hiểu dữ liệu của mình đi đâu, và làm gì để yên tâm dùng.
+
+## Điều quan trọng nhất: Hermes chạy trên máy bạn
+
+Hermes không phải "đám mây của hãng" giữ dữ liệu của bạn. Nó là phần mềm cài trên máy bạn:
+
+- File và thao tác của nó nằm ngay trên máy bạn, không gửi lên server trung gian.
+- Là <TermTip term="mã nguồn mở" />: toàn bộ mã nguồn công khai trên GitHub, ai cũng đọc và kiểm chứng được. Không có gì giấu trong hộp đen.
+
+## Dữ liệu nào rời khỏi máy bạn
+
+Đây là câu hỏi ai cũng quan tâm. Chia làm ba phần:
+
+| Dữ liệu | Đi đâu |
+| --- | --- |
+| File, lịch sử trò chuyện, các lệnh chạy | Nằm trên máy bạn |
+| <TermTip term="API key" /> | Lưu trong máy bạn, Hermes không đọc lại được |
+| Nội dung câu bạn gửi cho model AI | Gửi đến nhà cung cấp model (OpenRouter, Nous Portal...) |
+
+Nghĩa là chỉ có đoạn chữ bạn chat cho model mới ra ngoài máy. Đó là bản chất của AI đám mây: bộ não ở xa, nên phải gửi câu hỏi qua mạng.
+
+Muốn giữ 100% không có gì ra ngoài, bạn dùng <TermTip term="Ollama" />: model chạy ngay trên máy, kể cả hỏi đáp cũng không cần mạng. Đây là lựa chọn cho ai làm việc với dữ liệu nhạy cảm.
+
+## 4 lớp bảo vệ Hermes tự bật sẵn
+
+Bạn không cần mò cấu hình. Hermes bật sẵn:
+
+**1. Hỏi bạn trước khi chạy lệnh nguy hiểm.** Xóa dữ liệu, ghi vào hệ thống, đổi quyền file - Hermes sẽ dừng lại và hỏi bạn đồng ý hay không, kèm giải thích lệnh đó làm gì. Bạn luôn là người quyết định sau cùng.
+
+**2. Không bao giờ đụng vào mật khẩu và khóa bảo mật của bạn.** Kể cả khi bạn lỡ bảo nó đọc, Hermes tự chặn truy cập vào thư mục chứa khóa bảo mật (như SSH key), file lưu API key, và các file ".env". Đây là danh sách chặn cứng, không có nút bỏ qua.
+
+**3. Quét "lời nhắc lừa đảo".** Kẻ xấu có thể giấu câu lệnh trong một file hay trang web bạn nhờ Hermes đọc, cố tình lừa nó. Hermes quét và chặn <TermTip term="prompt injection" /> này trước khi làm theo.
+
+**4. Chặn truy cập vào mạng nội bộ.** Theo mặc định Hermes không gọi vào các địa chỉ máy trong mạng riêng của nhà hoặc nơi làm việc bạn, tránh kẻ xấu mượn Hermes để đọc dữ liệu từ thiết bị khác trong mạng.
+
+## 6 thói quen để yên tâm dùng
+
+Bốn lớp trên là của Hermes. Phần còn lại nằm ở thói quen của bạn:
+
+1. **Cài từ nguồn chính thức.** Chỉ tải từ trang chủ hoặc GitHub Nous Research, đừng tải gói lạ từ link không rõ nguồn.
+2. **Giữ chế độ "hỏi trước khi chạy" mặc định.** Đừng tắt, đừng bật chế độ tự chạy hết lệnh (YOLO) khi chưa hiểu hậu quả.
+3. **Đừng dán dữ liệu nhạy cảm vào chat.** Số thẻ, mật khẩu, CCCD - nếu không cần thiết thì đừng gõ vào.
+4. **Việc cực nhạy cảm thì dùng model local.** Dùng Ollama để mọi thứ nằm trong máy.
+5. **Giữ API key riêng tư.** Coi nó như mật khẩu, đừng chia sẻ trên mạng hay nhóm chat.
+6. **Cẩn thận file hoặc lời nhắc từ người lạ.** Nhờ Hermes đọc file tải từ nơi không rõ cũng giống như mở link lạ vậy.
+
+## Tóm lại
+
+Hermes chạy trên máy bạn, mã nguồn mở, và có sẵn lớp bảo vệ: hỏi trước lệnh nguy hiểm, không đụng mật khẩu, quét lời nhắc lừa đảo, chặn mạng nội bộ. Chỉ nội dung bạn chat với model mới ra ngoài - và bạn hoàn toàn bỏ được phần đó bằng cách dùng model local.
+
+Yên tâm cài, dùng đúng thói quen là an toàn. Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap).

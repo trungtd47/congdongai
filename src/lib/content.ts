@@ -85,12 +85,18 @@ export const huongDanItems: HubItem[] = [
     icon: '🧳',
   },
   {
-    slug: 'nghien-cuu-truoc-khi-mua',
-    title: 'Nghiên cứu trước khi mua',
-    description: 'So sánh giá, đọc review, tóm tắt ưu nhược - trước khi bạn bấm mua bất cứ gì.',
-    icon: '🛒',
-  },
-];
+      slug: 'nghien-cuu-truoc-khi-mua',
+      title: 'Nghiên cứu trước khi mua',
+      description: 'So sánh giá, đọc review, tóm tắt ưu nhược - trước khi bạn bấm mua bất cứ gì.',
+      icon: '🛒',
+    },
+    {
+      slug: 'bao-mat-hermes-thong-tin-ca-nhan',
+      title: 'Bảo mật thông tin cá nhân',
+      description: 'Vì sao yên tâm khi cài Hermes trên máy: dữ liệu đi đâu, lớp bảo vệ nào có sẵn, thói quen cần nhớ.',
+      icon: '🔒',
+    },
+  ];
 
 export interface LibraryItem {
   icon: string;

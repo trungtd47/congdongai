@@ -33,8 +33,12 @@ export const glossary: Record<string, string> = {
     'SOUL.md':
       'File "linh hồn" của Hermes - nơi bạn viết trợ lý này là ai, nói năng ra sao, nhớ những gì. Chỉnh file này là đổi tính cách trợ lý.',
     provider:
-      'Nhà cung cấp dịch vụ AI (ví dụ OpenRouter, Nous Portal, Anthropic) - nơi bán quyền dùng model.',
-  };
+          'Nhà cung cấp dịch vụ AI (ví dụ OpenRouter, Nous Portal, Anthropic) - nơi bán quyền dùng model.',
+      Ollama:
+        'Công cụ chạy model AI ngay trên máy bạn, không cần gửi dữ liệu lên mạng. Dùng khi bạn muốn giữ mọi thứ 100% riêng tư.',
+      'prompt injection':
+        'Lời nhắc giấu trong file hoặc trang web, cố tình lừa AI làm việc xấu. Hermes tự quét và chặn loại này.',
+      };
 
 export function getTerm(term: string): string | undefined {
   const key = term.trim();
