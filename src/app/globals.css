@@ -230,6 +230,8 @@ a {
 .titem .tb { flex: 1; min-width: 0; }
 .titem h5 { font-size: 14.5px; font-weight: 600; line-height: 1.4; }
 .titem .meta { font-size: 12.5px; color: var(--color-ink-soft); margin-top: 2px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+a.titem { text-decoration: none; color: inherit; }
+a.titem:hover h5 { color: var(--color-teal); }
 .badge { font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
 .badge.ai { background: var(--color-teal-soft); color: var(--color-teal); }
 .badge.solved { background: #E4F2E4; color: #2F6B32; }

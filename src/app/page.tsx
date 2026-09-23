@@ -224,11 +224,12 @@ export default function HomePage() {
                 </Link>
               </div>
               {qaRecent.map((q, i) => (
-                <div
-                  className="titem"
-                  key={q.title}
-                  style={i === qaRecent.length - 1 ? { borderBottom: '1px dashed var(--line)' } : undefined}
-                >
+                <Link
+                                  className="titem"
+                                  key={q.id}
+                                  href={`/hoi-dap/${q.id}`}
+                                  style={i === qaRecent.length - 1 ? { borderBottom: '1px dashed var(--line)' } : undefined}
+                                >
                   <div className="av" style={{ background: q.color }}>
                     {q.initial}
                   </div>
@@ -239,9 +240,9 @@ export default function HomePage() {
                       {q.hasAI && <span className="badge ai">🤖 AI trực đã trả lời</span>}
                       {q.solved && <span className="badge solved">✓ Đã giải quyết</span>}
                                           </div>
-                  </div>
-                </div>
-              ))}
+                                        </div>
+                                      </Link>
+                                    ))}
             </div>
             <div className="panel">
               <div className="ph">

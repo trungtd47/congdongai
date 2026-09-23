@@ -809,60 +809,60 @@ export const worldCases: WorldCase[] = [
 ];
 
 export interface QAItem {
+  id: string;
   initial: string;
   color: string;
   title: string;
   tag: string;
   hasAI: boolean;
   solved: boolean;
-  meta: string;
 }
 
 export const qaRecent: QAItem[] = [
   {
+    id: 'p-5',
     initial: 'M',
     color: 'var(--teal)',
     title: 'Cài trên Windows báo "Windows protected your PC" thì làm sao?',
     tag: 'Cài đặt',
     hasAI: true,
     solved: true,
-    meta: '12 hữu ích · 2 giờ trước',
   },
   {
+    id: 'p-6',
     initial: 'H',
     color: 'var(--clay)',
     title: 'Thẻ Visa của mình không nạp được OpenRouter, có cách nào khác không?',
     tag: 'Thanh toán',
     hasAI: true,
     solved: false,
-    meta: '3 trả lời · 5 giờ trước',
   },
   {
+    id: 'p-8',
     initial: 'T',
     color: 'var(--gold)',
     title: 'Muốn Hermes tự gửi bản tin 6h30 mỗi sáng thì cài ở đâu?',
     tag: 'Sử dụng',
     hasAI: false,
     solved: true,
-    meta: '5 trả lời · hôm qua',
   },
   {
+    id: 'p-7',
     initial: 'N',
     color: '#7C3AED',
     title: 'Máy mình yếu (8GB RAM) có chạy Hermes nổi không mọi người?',
     tag: 'Phần cứng',
     hasAI: false,
     solved: false,
-    meta: '7 trả lời · hôm qua',
   },
   {
+    id: 'p-9',
     initial: 'P',
     color: '#0F766E',
     title: 'Chia sẻ: mình dùng Hermes quản lý đơn hàng shop hoa thế nào',
     tag: 'Kinh doanh',
     hasAI: false,
     solved: false,
-    meta: '9 trả lời · 2 ngày trước',
   },
 ];
 
