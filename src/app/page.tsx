@@ -6,11 +6,11 @@ import {
   pathSteps,
   memberQuotes,
   communityStats,
-  worldCases,
   qaRecent,
   libraryBooks,
 } from '@/lib/demo-data';
 import { getAllPosts } from '@/lib/posts';
+import { caseStudies } from '@/lib/case-studies';
 
 export const metadata: Metadata = {
   title: 'Cộng Đồng AI - Học Hermes Agent từ số 0',
@@ -226,51 +226,34 @@ export default function HomePage() {
       </section>
 
       {/* NGƯỜI DÙNG HERMES TRÊN THẾ GIỚI */}
-      <section style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <div className="sec-head">
-            <h2>Người dùng Hermes trên thế giới 🌍</h2>
-            <a
-                          className="more"
-                          href="https://hermes-agent.nousresearch.com/docs/user-stories"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Xem tất cả case study →
-                        </a>
-          </div>
-          <p className="sec-sub">
-            Toàn bộ có nguồn công khai để bạn tự kiểm chứng - chúng mình không tự bịa lời
-            khen.
-          </p>
-          <div className="world">
-            {worldCases.map((w) => (
-              <div className="witem" key={w.title}>
-                <div className="th">{w.icon}</div>
-                <div>
-                  <h4>{w.title}</h4>
-                  <p>{w.desc}</p>
-                  <div className="srcline">
-                    🔗{' '}
-                    <a href={w.sourceUrl} target="_blank" rel="noopener noreferrer">
-                      {w.sourceLabel}
-                    </a>
-                    {w.secondaryLabel && w.secondaryUrl && (
-                      <>
-                        {' '}
-                        ·{' '}
-                        <a href={w.secondaryUrl} target="_blank" rel="noopener noreferrer">
-                          {w.secondaryLabel}
-                        </a>
-                      </>
-                    )}
-                  </div>
+            <section style={{ paddingTop: 0 }}>
+              <div className="wrap">
+                <div className="sec-head">
+                  <h2>Người dùng Hermes trên thế giới 🌍</h2>
+                  <Link className="more" href="/cau-chuyen">
+                    Đọc đầy đủ + nguồn →
+                  </Link>
+                </div>
+                <p className="sec-sub">
+                  Toàn bộ có nguồn công khai để bạn tự kiểm chứng - chúng mình không tự bịa lời
+                  khen.
+                </p>
+                <div className="world">
+                  {caseStudies.map((w) => (
+                    <div className="witem" key={w.slug}>
+                      <div className="th">{w.icon}</div>
+                      <div>
+                        <h4>{w.title}</h4>
+                        <p>{w.teaser}</p>
+                        <div className="srcline">
+                          <Link href={`/cau-chuyen#${w.slug}`}>Đọc đầy đủ →</Link>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </section>
 
       {/* CỘNG ĐỒNG ĐANG CHUYỂN ĐỘNG - 2 cột */}
       <section style={{ paddingTop: 0 }}>
