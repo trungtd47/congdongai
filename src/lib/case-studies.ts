@@ -14,12 +14,14 @@ export interface CaseStudy {
   sourceLabel: string;
   sourceUrl: string;
   body: CaseBlock[];
+  type?: 'short' | 'long';
 }
 
 export const caseStudies: CaseStudy[] = [
   {
     slug: 'networkchuck',
     icon: '🎥',
+    type: 'long',
     title: 'NetworkChuck (3 triệu người theo dõi) bỏ hẳn OpenClaw để dùng Hermes',
     teaser:
       'YouTuber công nghệ lớn chuyển toàn bộ từ OpenClaw sang Hermes, dựng agent "Ron" làm quản trị IT cho studio và cài "Honey" cho vợ lo việc nhà.',
@@ -54,6 +56,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: 'devto-7-agents',
     icon: '🍓',
+    type: 'long',
     title: 'Doanh nghiệp 1 người chạy bằng 7 agent trên chiếc Raspberry Pi 35 USD',
     teaser:
       'Một người làm kinh doanh solo tự động hóa gần như toàn bộ để 7 agent lo: thu thập, sản xuất nội dung, duyệt tuân thủ, trả lời bình luận, phân tích và một "CEO" viết memo mỗi đêm.',

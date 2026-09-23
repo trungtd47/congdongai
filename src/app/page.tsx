@@ -203,7 +203,7 @@ export default function HomePage() {
                         <h4>{w.title}</h4>
                         <p>{w.teaser}</p>
                         <div className="srcline">
-                          <Link href={`/cau-chuyen#${w.slug}`}>Đọc đầy đủ →</Link>
+                          <Link href={`/cau-chuyen/${w.slug}`}>Đọc đầy đủ →</Link>
                         </div>
                       </div>
                     </div>
