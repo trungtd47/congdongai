@@ -63,9 +63,9 @@ export default function HomePage() {
             <p>
               Mình không phải người học công nghệ - mình kinh doanh, đầu tư tự
               do, và thích tìm hiểu những thứ giúp mình làm việc nhàn hơn. Khi
-              bắt đầu tìm hiểu AI Agent, mình cũng choáng ngợp y như các bạn bây
-              giờ: toàn thuật ngữ, đâu đâu cũng có người muốn bán cho mình một
-              thứ gì đó.
+              mò tới AI Agent, mình thấy rõ khó khăn của người mới: thông tin
+              nhiễu loạn, toàn thuật ngữ, và đâu đâu cũng có khóa học giá cao
+              muốn bán cho mình.
             </p>
             <p>
               AI giờ không chỉ là chatbot - AI Agent mới phát huy hết sức mạnh
