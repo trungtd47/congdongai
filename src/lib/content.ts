@@ -31,6 +31,13 @@ export const batDauItems: HubItem[] = [
     icon: '🍎',
   },
   {
+    slug: 'chon-nha-cung-cap-api',
+    title: 'Chọn nhà cung cấp API',
+    description: 'OpenRouter, Nous Portal hay trực tiếp? So sánh 3 lựa chọn, xếp theo khuyên dùng.',
+    time: '~5 phút',
+    icon: '🔌',
+  },
+  {
     slug: 'dang-ky-nous-portal',
     title: 'Đăng ký Nous Portal',
     description: 'Một tài khoản là có sẵn 300+ model AI, không cần tự cấu hình API key.',
