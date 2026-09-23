@@ -61,18 +61,15 @@ export default function HomePage() {
               </div>
             </div>
             <p>
-              Mình không phải người học chuyên ngành hay có nền tảng công nghệ.
-              Mình kinh doanh, đầu tư tự do - và thích tìm hiểu về công nghệ, về
-              những thứ giúp mình làm việc nhàn hơn. Khi mình bắt đầu tìm hiểu
-              AI Agent, cảm giác của mình chắc cũng y như các bạn bây giờ:
-              choáng ngợp bởi có quá nhiều thông tin, toàn thuật ngữ, và đâu đâu
-              cũng có người muốn bán cho mình một thứ gì đó mà hiệu quả thì
-              không biết đến đâu, có phù hợp với mình không?
+              Mình không phải người học công nghệ - mình kinh doanh, đầu tư tự
+              do, và thích tìm hiểu những thứ giúp mình làm việc nhàn hơn. Khi
+              bắt đầu tìm hiểu AI Agent, mình cũng choáng ngợp y như các bạn bây
+              giờ: toàn thuật ngữ, đâu đâu cũng có người muốn bán cho mình một
+              thứ gì đó.
             </p>
             <p>
-              AI giờ không chỉ là chatbot mà việc sử dụng AI Agent tương lai sẽ
-              là điều tất yếu, và mới phát huy sức mạnh thực sự của các mô hình
-              LLM.
+              AI giờ không chỉ là chatbot - AI Agent mới phát huy hết sức mạnh
+              của các mô hình LLM.
             </p>
             <p>
               Mình bắt đầu ồ à với sức mạnh của OpenClaw, nhưng nó có quá nhiều
@@ -86,6 +83,11 @@ export default function HomePage() {
               phê. Website này do một &quot;nhân viên AI&quot; tên Tony viết
               code, <b>FRIDAY</b> điều phối dự án, <b>Deadpool</b> review hằng
               tuần.
+            </p>
+            <p>
+              Mình coi Hermes như một đồng nghiệp chứ không phải cái máy phát ra
+              chân lý: model nào cũng có lúc ảo giác, nên việc quan trọng mình
+              hay cho hai agent kiểm tra chéo nhau, hoặc tự mình kiểm chứng lại.
             </p>
             <p>
               Mình hiểu ra một điều: thứ này không phải đồ chơi của dân kỹ thuật
@@ -409,7 +411,7 @@ export default function HomePage() {
       {/* CTA SỨ MỆNH */}
       <section className="join-band" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <h2>Mong muốn của mình: AI Agent cho mọi người Việt 🏡</h2>
+          <h2>Để ai cũng có thể sử dụng AI Agent 🏡</h2>
           <p>
             Một mình mình không làm nổi - nhưng chúng ta thì có. Tham gia để hỏi
             khi bí, để trả lời khi bạn biết, và để gửi lên đây thứ gì đó của
