@@ -8,9 +8,9 @@ import {
   communityStats,
   worldCases,
   qaRecent,
-  blogRecent,
   libraryBooks,
 } from '@/lib/demo-data';
+import { getAllPosts } from '@/lib/posts';
 
 export const metadata: Metadata = {
   title: 'Cộng Đồng AI - Học Hermes Agent từ số 0',
@@ -43,6 +43,7 @@ const honestFaqs = [
 ];
 
 export default function HomePage() {
+  const recentPosts = getAllPosts().slice(0, 5);
   return (
     <>
       <JsonLd data={faqJsonLd(honestFaqs)} />
@@ -181,8 +182,8 @@ export default function HomePage() {
                 <span className="n">{s.n}</span>
                 <div>
                   <h4>
-                    <Link href="/bat-dau">{s.title}</Link>
-                  </h4>
+                                      <Link href={s.slug}>{s.title}</Link>
+                                    </h4>
                   <p>{s.desc}</p>
                 </div>
                 <span className="t">{s.time}</span>
@@ -197,9 +198,9 @@ export default function HomePage() {
         <div className="wrap">
           <div className="sec-head">
             <h2>Chuyện của thành viên 🌱</h2>
-            <a className="more" href="#">
-              Kể chuyện của bạn →
-            </a>
+            <Link className="more" href="/hoi-dap">
+                          Kể chuyện của bạn →
+                        </Link>
           </div>
           <p className="sec-sub">
             Người thật, việc thật, trong cộng đồng của chúng ta. (Ảnh minh họa giai đoạn đầu
@@ -229,9 +230,14 @@ export default function HomePage() {
         <div className="wrap">
           <div className="sec-head">
             <h2>Người dùng Hermes trên thế giới 🌍</h2>
-            <a className="more" href="#">
-              Xem tất cả case study →
-            </a>
+            <a
+                          className="more"
+                          href="https://hermes-agent.nousresearch.com/docs/user-stories"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Xem tất cả case study →
+                        </a>
           </div>
           <p className="sec-sub">
             Toàn bộ có nguồn công khai để bạn tự kiểm chứng - chúng mình không tự bịa lời
@@ -305,16 +311,21 @@ export default function HomePage() {
                   Đọc blog →
                 </Link>
               </div>
-              {blogRecent.map((p, i) => (
-                <div
-                  className="post-item"
-                  key={p.title}
-                  style={i === blogRecent.length - 1 ? { borderBottom: '1px dashed var(--line)' } : undefined}
-                >
-                  <h5>{p.title}</h5>
-                  <div className="meta">{p.meta}</div>
-                </div>
-              ))}
+              {recentPosts.map((p, i) => (
+                              <Link
+                                className="post-item"
+                                key={p.slug}
+                                href={`/blog/${p.slug}`}
+                                style={
+                                  i === recentPosts.length - 1
+                                    ? { borderBottom: '1px dashed var(--line)' }
+                                    : undefined
+                                }
+                              >
+                                <h5>{p.title}</h5>
+                                <div className="meta">{p.datePublished}</div>
+                              </Link>
+                            ))}
               <div
                 style={{
                   marginTop: '16px',
@@ -357,9 +368,9 @@ export default function HomePage() {
                   <h5>{b.title}</h5>
                   <p>{b.desc}</p>
                 </div>
-                <a className="dl" href="#">
-                  ⬇ Tải<small>{b.downloads}</small>
-                </a>
+                <a className="dl" href="/thu-vien">
+                                  ⬇ Tải<small>{b.downloads}</small>
+                                </a>
               </div>
             ))}
           </div>

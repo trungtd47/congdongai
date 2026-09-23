@@ -658,6 +658,7 @@ export interface PathStep {
   title: string;
   desc: string;
   time: string;
+  slug: string;
 }
 
 export const pathSteps: PathStep[] = [
@@ -666,30 +667,35 @@ export const pathSteps: PathStep[] = [
     title: 'Hermes là gì, và vì sao nó khác ChatGPT?',
     desc: '5 phút đọc, không thuật ngữ. Hiểu đúng bản chất "người vận hành" thay vì "người trả lời".',
     time: '⏱ 5 phút đọc',
+    slug: '/bat-dau/hermes-agent-la-gi',
   },
   {
     n: '2',
     title: 'Cài Hermes Desktop trong 10 phút (Windows / Mac)',
     desc: 'Từng ảnh một. Có mẹo xử lý cảnh báo bảo mật SmartScreen của Windows.',
     time: '⏱ 10 phút làm',
+    slug: '/bat-dau/cai-hermes-desktop-windows',
   },
   {
     n: '3',
     title: 'Nạp "xăng" cho Hermes: tài khoản OpenRouter từ Việt Nam',
     desc: 'Trả theo nhu cầu như đồng hồ điện - không gói tháng. Cả cách xử lý khi thẻ Visa không nạp được.',
     time: '⏱ 8 phút làm',
+    slug: '/bat-dau/vi-sao-dung-openrouter',
   },
   {
     n: '4',
     title: 'Câu hỏi đầu tiên & nạp SOUL.md tiếng Việt',
     desc: 'Tải "linh hồn" trợ lý từ thư viện cộng đồng, dán vào là Hermes thành trợ lý của riêng bạn.',
     time: '⏱ 5 phút làm',
+    slug: '/thu-vien',
   },
   {
     n: '5',
     title: 'Việc đầu tiên giao cho Hermes: bản tin sáng tự động',
     desc: 'Bài "tốt nghiệp" - từ đây bạn tự nghĩ ra việc để giao, hoặc hỏi chính Hermes.',
     time: '⏱ 10 phút làm',
+    slug: '/huong-dan/tom-tat-tin-tuc-moi-sang',
   },
 ];
 
