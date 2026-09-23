@@ -1,4 +1,11 @@
 {
+  "firestore": {
+    "databases": {
+      "congdongai": {
+        "rules": "firestore/firestore.rules"
+      }
+    }
+  },
   "hosting": {
     "public": "out",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
