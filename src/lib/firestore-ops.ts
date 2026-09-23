@@ -81,38 +81,56 @@ function demoSummary(p: DemoPost): PostSummary {
 }
 
 // ---------- Public API ----------
+function sortedDemo(sort: PostSort): PostSummary[] {
+  const arr = [...demoStore];
+  if (sort === 'votes') arr.sort((a, b) => b.upvotes - a.upvotes);
+  else if (sort === 'unanswered') arr.sort((a, b) => a.answerCount - b.answerCount);
+  else arr.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
+  return arr.map(demoSummary);
+}
+
+function demoDetail(p: DemoPost): PostDetail {
+  return { ...demoSummary(p), answers: p.answers.map((a) => ({ ...a })) };
+}
+
 export async function listPosts(sort: PostSort = 'new'): Promise<PostSummary[]> {
-  if (isDemoMode()) {
-    const arr = [...demoStore];
-    if (sort === 'votes') arr.sort((a, b) => b.upvotes - a.upvotes);
-    else if (sort === 'unanswered') arr.sort((a, b) => a.answerCount - b.answerCount);
-    else arr.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
-    return arr.map(demoSummary);
-  }
+  if (isDemoMode()) return sortedDemo(sort);
 
   const db = getDbInstance()!;
-  const q = query(collection(db, 'posts'), orderBy('createdAt', 'desc'), limit(100));
-  const snap = await getDocs(q);
-  return snap.docs.map((d) => ({ id: d.id, ...d.data() }) as PostSummary);
+  try {
+    const q = query(collection(db, 'posts'), orderBy('createdAt', 'desc'), limit(100));
+    const snap = await getDocs(q);
+    if (!snap.empty) {
+      return snap.docs.map((d) => ({ id: d.id, ...d.data() }) as PostSummary);
+    }
+  } catch {
+    // Firestore trống hoặc rules chưa deploy → dùng dữ liệu mẫu bên dưới
+  }
+  return sortedDemo(sort);
 }
 
 export async function getPost(postId: string): Promise<PostDetail | null> {
   if (isDemoMode()) {
     const p = demoStore.find((x) => x.id === postId);
-    if (!p) return null;
-    return { ...demoSummary(p), answers: p.answers.map((a) => ({ ...a })) };
+    return p ? demoDetail(p) : null;
   }
 
   const db = getDbInstance()!;
-  const postRef = doc(db, 'posts', postId);
-  const postSnap = await getDoc(postRef);
-  if (!postSnap.exists()) return null;
+  try {
+    const postSnap = await getDoc(doc(db, 'posts', postId));
+    if (postSnap.exists()) {
+      const ansSnap = await getDocs(
+        query(collection(db, 'posts', postId, 'answers'), orderBy('createdAt', 'asc')),
+      );
+      const answers = ansSnap.docs.map((d) => ({ id: d.id, ...d.data() }) as Answer);
+      return { id: postSnap.id, ...postSnap.data(), answers } as PostDetail;
+    }
+  } catch {
+    // fall through → dùng dữ liệu mẫu
+  }
 
-  const ansSnap = await getDocs(
-    query(collection(db, 'posts', postId, 'answers'), orderBy('createdAt', 'asc')),
-  );
-  const answers = ansSnap.docs.map((d) => ({ id: d.id, ...d.data() }) as Answer);
-  return { id: postSnap.id, ...postSnap.data(), answers } as PostDetail;
+  const p = demoStore.find((x) => x.id === postId);
+  return p ? demoDetail(p) : null;
 }
 
 export async function upvotePost(postId: string, uid: string): Promise<void> {

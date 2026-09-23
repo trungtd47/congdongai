@@ -85,6 +85,13 @@ a {
   font-size: 15px;
   flex: 0 0 auto;
 }
+.logo .logo-mark {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
 .nav-links {
   display: flex;
   gap: 20px;

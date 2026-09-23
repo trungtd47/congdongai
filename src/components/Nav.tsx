@@ -40,7 +40,9 @@ export function Nav() {
     <nav className="sticky top-0 z-50 border-b border-line bg-[rgba(251,247,240,.95)] backdrop-blur-md">
       <div className="nav-in">
         <Link href="/" className="logo">
-          <span className="mark">☤</span> Cộng Đồng AI
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/hermes-logo.svg" alt="Hermes" width={30} height={30} className="logo-mark" />
+          Cộng Đồng AI
         </Link>
 
         <div className="nav-links hidden md:flex">

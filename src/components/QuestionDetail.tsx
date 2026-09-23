@@ -12,6 +12,7 @@ import {
   type Answer,
 } from '@/lib/firestore-ops';
 import { isDemoMode } from '@/lib/firebase';
+import { avatarColor } from '@/lib/avatar';
 
 const DEMO_UID = 'demo-user';
 
@@ -128,7 +129,10 @@ export function QuestionDetail({ postId }: { postId: string }) {
         <p className="mb-4 text-[15px] text-ink-soft">{post.body}</p>
         <div className="flex items-center gap-4 text-[13px] text-ink-soft">
           <span className="flex items-center gap-1.5">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-teal-soft text-xs font-bold text-teal-dark">
+            <span
+              className="flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold text-white"
+              style={{ background: avatarColor(post.authorName) }}
+            >
               {post.authorName.charAt(0)}
             </span>
             {post.authorName}
@@ -154,7 +158,10 @@ export function QuestionDetail({ postId }: { postId: string }) {
             className={`card p-5 ${a.isAccepted ? 'border-teal' : ''}`}
           >
             <div className="mb-2 flex items-center gap-2">
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-teal-soft text-xs font-bold text-teal-dark">
+              <span
+                className="flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold text-white"
+                style={{ background: avatarColor(a.authorName) }}
+              >
                 {a.authorName.charAt(0)}
               </span>
               <span className="text-sm font-semibold">{a.authorName}</span>
