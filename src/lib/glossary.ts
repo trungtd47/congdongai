@@ -43,6 +43,8 @@ export const glossary: Record<string, string> = {
     "Nơi bạn ghi lại ý tưởng, kiến thức và việc cần nhớ ra ngoài đầu, để não không phải gánh hết. Thường là một hộp ghi chú có hệ thống.",
   Obsidian:
     "App ghi chú miễn phí, lưu file văn bản ngay trên máy bạn. Nhiều người dùng nó để xây bộ não thứ hai.",
+  "cửa sổ ngữ cảnh":
+    'Giới hạn số token mà model AI "nhìn thấy" trong một lần trả lời. Chat dài vượt giới hạn thì phải rút gọn, nên càng hỏi lâu càng dễ quên phần đầu.',
 };
 
 export function getTerm(term: string): string | undefined {
