@@ -12,7 +12,7 @@ export const batDauItems: HubItem[] = [
   {
     slug: 'hermes-agent-la-gi',
     title: 'Hermes Agent là gì?',
-    description: 'Hiểu trong 3 phút: trợ lý AI này làm được gì, khác gì ChatGPT, có tốn tiền không.',
+    description: 'Hiểu trong 3 phút: khung trợ lý AI này làm được gì, khác gì ChatGPT, có tốn tiền không.',
     time: '~5 phút',
     icon: '🤖',
   },

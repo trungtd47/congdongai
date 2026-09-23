@@ -2,7 +2,7 @@ export const siteConfig = {
   name: 'Cộng Đồng AI',
   url: 'https://congdongai.org',
   description:
-    'Cộng Đồng AI - hub tiếng Việt dạy người dùng phổ thông cài và dùng Hermes Agent, trợ lý AI mã nguồn mở của Nous Research. Không cần biết code.',
+    'Cộng Đồng AI - hub tiếng Việt dạy người dùng phổ thông cài và dùng Hermes Agent, khung trợ lý AI mã nguồn mở của Nous Research. Không cần biết code.',
   ogImage: 'https://congdongai.org/og.png',
   twitterHandle: '@congdongai',
   locale: 'vi_VN',

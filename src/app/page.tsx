@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = {
   title: 'Cộng Đồng AI - Học Hermes Agent từ số 0',
   description:
-    'Hub tiếng Việt dạy người dùng phổ thông cài và dùng Hermes Agent - trợ lý AI mã nguồn mở của Nous Research. Không cần biết code, bắt đầu trong 10 phút.',
+    'Hub tiếng Việt dạy người dùng phổ thông cài và dùng Hermes Agent - khung trợ lý AI mã nguồn mở của Nous Research. Không cần biết code, bắt đầu trong 10 phút.',
   alternates: { canonical: '/' },
 };
 

@@ -18,7 +18,7 @@ export function Footer() {
               >
                 Hermes Agent
               </a>{' '}
-              - trợ lý AI mã nguồn mở của Nous Research
+              - khung trợ lý AI mã nguồn mở của Nous Research
             </span>
           </div>
           <div className="mt-1.5">
