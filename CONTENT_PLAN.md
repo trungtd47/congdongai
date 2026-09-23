@@ -32,33 +32,35 @@ Biến congdongai.org thành cộng đồng tiếng Việt về Hermes Agent ho�
 
 ### Phase 1 - Người mới cài được Hermes (ưu tiên cao nhất)
 Viết nội dung 5 bài /bat-dau để người mới đi hết hành trình cài + dùng:
-1. [x] Hermes Agent là gì (đã có, chuẩn hóa thêm)
-2. [ ] Cài Hermes Desktop trên Windows (SmartScreen, từng ảnh)
-3. [ ] Cài Hermes Desktop trên Mac (Gatekeeper)
-4. [ ] Đăng ký Nous Portal (300+ model, không cần API key)
-5. [ ] Thanh toán từ Việt Nam (thẻ Visa/Mastercard, lỗi thường gặp)
+1. [x] Hermes Agent là gì (chuẩn hóa: Hermes là "khung trợ lý AI", không phải trợ lý đóng hộp)
+2. [x] Cài Hermes Desktop trên Windows
+3. [x] Cài Hermes Desktop trên Mac
+4. [x] Đăng ký Nous Portal
+5. [x] Thanh toán từ Việt Nam
+   [x] Thêm bài "Chọn nhà cung cấp API" (OpenRouter đứng đầu khuyến nghị)
 
-### Phase 2 - Hướng dẫn thực chiến (/huong-dan)
+### Phase 2 - Hướng dẫn thực chiến (/huong-dan) - XONG
 6 bài "việc đầu tiên giao cho Hermes":
-1. [ ] Bản tin buổi sáng tự động (6h30)
-2. [ ] Trợ lý email (đọc, tóm tắt, soạn trả lời)
-3. [ ] Nhắc việc & lịch
-4. [ ] Luyện tiếng Anh
-5. [ ] Lên kế hoạch du lịch
-6. [ ] Nghiên cứu trước khi mua
+1. [x] Bản tin buổi sáng tự động (6h30)
+2. [x] Trợ lý email (đọc, tóm tắt, soạn trả lời)
+3. [x] Nhắc việc & lịch
+4. [x] Luyện tiếng Anh
+5. [x] Lên kế hoạch du lịch
+6. [x] Nghiên cứu trước khi mua
 
-### Phase 3 - Thư viện (/thu-vien)
+### Phase 3 - Thư viện (/thu-vien) - XONG
 Tài nguyên tải về thật (không placeholder):
-1. [ ] SOUL.md tiếng Việt mẫu (văn phòng, kinh doanh, gia đình)
-2. [ ] 100 prompt theo nghề
-3. [ ] Bộ skills chọn lọc (tin tức, thời tiết, dịch, nhắc việc)
+1. [x] SOUL.md tiếng Việt mẫu (văn phòng, kinh doanh, gia đình)
+2. [x] 100 prompt theo nghề
+3. [x] Bộ skills chọn lọc (tin tức, thời tiết, dịch, nhắc việc)
 
-### Phase 4 - Blog định kỳ
-1-2 bài/tuần: hành trình người thật, cập nhật Hermes, SOUL.md giải thích, case study Việt.
+### Phase 4 - Blog định kỳ (đợt đầu XONG - 3 bài)
+[x] SOUL.md là gì / [x] 7 ngày đầu với Hermes / [x] 5 việc lặt vặt giao Hermes. Tiếp: 1-2 bài/tuần.
 
-### Phase 5 - Vận hành cộng đồng
-- Trả lời hỏi đáp dựa trên FAQ bank (references/faq.md).
-- Cập nhật bộ não khi Hermes ra tính năng mới.
+### Phase 5 - Vận hành cộng đồng (khởi động)
+- [x] Bổ sung FAQ bank: chọn nhà cung cấp, bắt đầu từ đâu.
+- [ ] Trả lời hỏi đáp dựa trên FAQ bank (references/faq.md).
+- [ ] Cập nhật bộ não khi Hermes ra tính năng mới.
 
 ## Quy ước thực hiện
 
