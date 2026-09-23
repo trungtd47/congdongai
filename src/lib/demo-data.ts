@@ -737,10 +737,10 @@ export interface CommunityStat {
 }
 
 export const communityStats: CommunityStat[] = [
-  { value: '12', label: 'bài hướng dẫn' },
-  { value: '340', label: 'câu hỏi đã giải đáp' },
-  { value: '128', label: 'thành viên' },
+  { value: '12', label: 'bài hướng dẫn đã đăng' },
   { value: '0đ', label: 'chi phí tham gia' },
+  { value: 'Mã nguồn mở', label: 'Hermes bạn tự dựng' },
+  { value: 'Tiếng Việt', label: 'viết cho người mới' },
 ];
 
 export interface WorldCase {
@@ -888,10 +888,10 @@ export interface Book {
 }
 
 export const libraryBooks: Book[] = [
-  { icon: '🧑‍💼', color: 'var(--teal)', title: 'SOUL.md - Trợ lý văn phòng', desc: 'Lịch sự, soạn email, nhắc lịch, tóm tắt tài liệu', downloads: '342 lượt' },
-  { icon: '🏪', color: 'var(--clay)', title: 'SOUL.md - Kinh doanh 1 người', desc: 'Trực fanpage, chăm khách, báo cáo sáng', downloads: '289 lượt' },
-  { icon: '👨‍👩‍👧', color: 'var(--gold)', title: 'SOUL.md - Trợ lý gia đình', desc: 'Việc nhà, thực đơn, học hành, du lịch', downloads: '198 lượt' },
-  { icon: '💬', color: '#0F766E', title: '50+ prompt tiếng Việt', desc: 'Câu lệnh mẫu việc hằng ngày - copy dán là chạy', downloads: '411 lượt' },
-  { icon: '⏰', color: '#7C3AED', title: 'Skill - Bản tin sáng tự động', desc: 'Kèm hướng dẫn chỉnh nguồn tin theo gu của bạn', downloads: '167 lượt' },
-  { icon: '✅', color: '#2B241D', title: 'Checklist cài đặt 1 trang (PDF)', desc: 'In ra được, tick từng bước từ tải app đến câu hỏi đầu', downloads: '255 lượt' },
+  { icon: '🧑‍💼', color: 'var(--teal)', title: 'SOUL.md - Trợ lý văn phòng', desc: 'Lịch sự, soạn email, nhắc lịch, tóm tắt tài liệu', downloads: 'miễn phí' },
+    { icon: '🏪', color: 'var(--clay)', title: 'SOUL.md - Kinh doanh 1 người', desc: 'Trực fanpage, chăm khách, báo cáo sáng', downloads: 'miễn phí' },
+    { icon: '👨‍👩‍👧', color: 'var(--gold)', title: 'SOUL.md - Trợ lý gia đình', desc: 'Việc nhà, thực đơn, học hành, du lịch', downloads: 'miễn phí' },
+    { icon: '💬', color: '#0F766E', title: '50+ prompt tiếng Việt', desc: 'Câu lệnh mẫu việc hằng ngày - copy dán là chạy', downloads: 'miễn phí' },
+    { icon: '⏰', color: '#7C3AED', title: 'Skill - Bản tin sáng tự động', desc: 'Kèm hướng dẫn chỉnh nguồn tin theo gu của bạn', downloads: 'miễn phí' },
+    { icon: '✅', color: '#2B241D', title: 'Checklist cài đặt 1 trang (PDF)', desc: 'In ra được, tick từng bước từ tải app đến câu hỏi đầu', downloads: 'miễn phí' },
 ];

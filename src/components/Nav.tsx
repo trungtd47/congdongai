@@ -11,7 +11,6 @@ const links = [
   { href: '/hoi-dap', label: 'Hỏi & Đáp' },
   { href: '/thu-vien', label: 'Thư viện' },
   { href: '/blog', label: 'Blog' },
-  { href: '#', label: 'Thành viên' },
 ];
 
 export function Nav() {

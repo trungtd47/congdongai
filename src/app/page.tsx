@@ -158,8 +158,7 @@ export default function HomePage() {
                   </div>
                 ))}
               </div>
-              <div className="stats-note">* số liệu minh họa - sẽ là số thật của cộng đồng khi launch</div>
-            </div>
+                          </div>
           </div>
         </div>
       </header>
@@ -351,9 +350,7 @@ export default function HomePage() {
                   <h5>{b.title}</h5>
                   <p>{b.desc}</p>
                 </div>
-                <a className="dl" href="/thu-vien">
-                                  ⬇ Tải<small>{b.downloads}</small>
-                                </a>
+                <a className="dl" href="/thu-vien">⬇ Tải</a>
               </div>
             ))}
           </div>
@@ -361,8 +358,7 @@ export default function HomePage() {
             💡 <b>Cách dùng:</b> tải file về → mở Hermes → nói{' '}
             <i>&quot;Hãy nạp file SOUL này vào, từ giờ bạn là trợ lý văn phòng của
             mình&quot;</i>{' '}
-            → xong. Không cần chỉnh sửa kỹ thuật. (Số lượt tải là minh họa giai đoạn thiết
-            kế.)
+            → xong. Không cần chỉnh sửa kỹ thuật.
           </div>
         </div>
       </section>
