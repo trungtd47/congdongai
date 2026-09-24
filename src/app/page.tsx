@@ -74,19 +74,18 @@ export default function HomePage() {
               chỉ dùng Hermes, và nó làm việc thật mỗi ngày: mỗi sáng tự đọc, tự
               lọc, tự viết <b>bản tin 6h30</b> trước khi mình pha xong cà phê;
               tự theo dõi vài đối thủ và gửi báo cáo mỗi tuần; tự hệ thống lại
-              kiến thức về sản phẩm, quy trình, dự án của mình vào một
-              &quot;bộ não thứ hai&quot; qua Obsidian để hỏi lại lúc nào cũng
-              có; và đang giúp mình vận hành chính website này - <b>Tony</b>{" "}
-              (một &quot;nhân viên AI&quot;) viết code, <b>FRIDAY</b> điều phối
-              tiến độ dự án,{" "}
+              kiến thức về sản phẩm, quy trình, dự án của mình vào một &quot;bộ
+              não thứ hai&quot; qua Obsidian để hỏi lại lúc nào cũng có; và đang
+              giúp mình vận hành chính website này - <b>Tony</b> (một &quot;nhân
+              viên AI&quot;) viết code, <b>FRIDAY</b> điều phối tiến độ dự án,{" "}
               <b>Deadpool</b> review lại hằng tuần.
             </p>
             <p>
               Mình coi Hermes như một đồng nghiệp: cùng đặt câu hỏi, trao đổi,
               kiểm chứng lại thông tin vì model vẫn có lúc ảo giác - với việc
               quan trọng, mình còn cho nhiều AI Agent kiểm tra chéo nhau. Và
-              mình nhận ra: đây không phải đồ chơi của dân kỹ thuật, nó làm
-              được việc thật, cho bất kỳ ai.
+              mình nhận ra: đây không phải đồ chơi của dân kỹ thuật, nó làm được
+              việc thật, cho bất kỳ ai.
             </p>
             <p>
               Điều làm mình trăn trở: Hermes miễn phí, còn ngoài kia người ta
@@ -96,16 +95,9 @@ export default function HomePage() {
               Việt, nó hướng dẫn từng bước, kiên nhẫn 24/7.
             </p>
             <p>
-              <b>Vì sao trang này miễn phí?</b> Vì mọi thứ mình có hôm nay đều
-              đến từ cộng đồng mã nguồn mở - phần mềm, kiến thức, từ những
-              người xa lạ chẳng mong nhận lại gì. Đến lượt mình trao đi, bằng
-              tiếng Việt, cho người Việt. Ở đây không có gì để bán.
-            </p>
-            <p>
-              Mong muốn của mình rất đơn giản: ai cũng xứng đáng có một trợ lý
-              của riêng mình - chị chủ shop, anh văn phòng, các bạn sinh viên,
-              ba mẹ về hưu... Cách nhanh nhất là chúng ta dạy nhau: người biết
-              chỉ người chưa biết.
+              Mình mong rằng ai cũng có thể có một trợ lý của riêng mình - chị
+              chủ shop, anh văn phòng, các bạn sinh viên, ba mẹ về hưu... Cách
+              nhanh nhất là chúng ta dạy nhau: người biết chỉ người chưa biết.
             </p>
             <p className="ps">
               P.S. Nếu bạn hoàn toàn mới, bắt đầu từ các bước đầu tiên bên dưới
@@ -147,14 +139,14 @@ export default function HomePage() {
                   bước và tự nhắc tiến độ cho bạn.
                 </div>
                 <div className="msg user">
-                  Mình đang quản lý một dự án nhỏ, với cả theo dõi 3 đối thủ
-                  xem họ ra gì mới.
+                  Mình đang quản lý một dự án nhỏ, với cả theo dõi 3 đối thủ xem
+                  họ ra gì mới.
                 </div>
                 <div className="msg ai">
                   <small>Hermes</small>Vậy để mình theo dõi 3 đối thủ đó mỗi
                   tuần, báo cáo ai đổi giá, ai ra sản phẩm mới. Còn dự án của
-                  bạn, mình lập danh sách đầu việc và nhắc bạn cái nào trễ
-                  tiến độ. Bắt đầu từ tuần này luôn nhé?
+                  bạn, mình lập danh sách đầu việc và nhắc bạn cái nào trễ tiến
+                  độ. Bắt đầu từ tuần này luôn nhé?
                 </div>
               </div>
             </div>
