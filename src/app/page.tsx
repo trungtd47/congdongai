@@ -73,9 +73,12 @@ export default function HomePage() {
               cùng nhờ chính <b>Hermes</b> gỡ bỏ OpenClaw giúp mình. Từ đó mình
               chỉ dùng Hermes, và nó làm việc thật mỗi ngày: mỗi sáng tự đọc, tự
               lọc, tự viết <b>bản tin 6h30</b> trước khi mình pha xong cà phê;
-              tự theo dõi vài đối thủ và gửi báo cáo mỗi tuần; và đang giúp mình
-              vận hành chính website này - <b>Tony</b> (một &quot;nhân viên
-              AI&quot;) viết code, <b>FRIDAY</b> điều phối tiến độ dự án,{" "}
+              tự theo dõi vài đối thủ và gửi báo cáo mỗi tuần; tự hệ thống lại
+              kiến thức về sản phẩm, quy trình, dự án của mình vào một
+              &quot;bộ não thứ hai&quot; qua Obsidian để hỏi lại lúc nào cũng
+              có; và đang giúp mình vận hành chính website này - <b>Tony</b>{" "}
+              (một &quot;nhân viên AI&quot;) viết code, <b>FRIDAY</b> điều phối
+              tiến độ dự án,{" "}
               <b>Deadpool</b> review lại hằng tuần.
             </p>
             <p>
@@ -188,6 +191,19 @@ export default function HomePage() {
                 <span className="t">{s.time}</span>
               </div>
             ))}
+            <div style={{ marginTop: "18px", textAlign: "center" }}>
+              <Link
+                href="/lo-trinh"
+                style={{
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  color: "var(--teal)",
+                  textDecoration: "none",
+                }}
+              >
+                Đã quen rồi? Xem lộ trình đầy đủ (kèm phần nâng cao) →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
