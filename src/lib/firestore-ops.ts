@@ -17,11 +17,17 @@ import {
   arrayRemove,
   increment,
   serverTimestamp,
-} from 'firebase/firestore';
-import { isDemoMode, getDbInstance } from './firebase';
-import { demoPosts, type DemoPost, type DemoAnswer } from './demo-data';
+} from "firebase/firestore";
+import { isDemoMode, getDbInstance } from "./firebase";
+import {
+  demoPosts,
+  demoCommentsBySlug,
+  type DemoPost,
+  type DemoAnswer,
+  type DemoComment,
+} from "./demo-data";
 
-export type PostSort = 'new' | 'votes' | 'unanswered';
+export type PostSort = "new" | "votes" | "unanswered";
 
 export interface PostSummary {
   id: string;
@@ -57,7 +63,7 @@ export interface PostDetail extends PostSummary {
 
 // ---------- Demo in-memory store ----------
 let demoStore: DemoPost[] = structuredClone(demoPosts);
-const DEMO_UID = 'demo-user';
+const DEMO_UID = "demo-user";
 
 function demoNow(): string {
   return new Date().toISOString().slice(0, 10);
@@ -83,8 +89,9 @@ function demoSummary(p: DemoPost): PostSummary {
 // ---------- Public API ----------
 function sortedDemo(sort: PostSort): PostSummary[] {
   const arr = [...demoStore];
-  if (sort === 'votes') arr.sort((a, b) => b.upvotes - a.upvotes);
-  else if (sort === 'unanswered') arr.sort((a, b) => a.answerCount - b.answerCount);
+  if (sort === "votes") arr.sort((a, b) => b.upvotes - a.upvotes);
+  else if (sort === "unanswered")
+    arr.sort((a, b) => a.answerCount - b.answerCount);
   else arr.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
   return arr.map(demoSummary);
 }
@@ -93,12 +100,18 @@ function demoDetail(p: DemoPost): PostDetail {
   return { ...demoSummary(p), answers: p.answers.map((a) => ({ ...a })) };
 }
 
-export async function listPosts(sort: PostSort = 'new'): Promise<PostSummary[]> {
+export async function listPosts(
+  sort: PostSort = "new",
+): Promise<PostSummary[]> {
   if (isDemoMode()) return sortedDemo(sort);
 
   const db = getDbInstance()!;
   try {
-    const q = query(collection(db, 'posts'), orderBy('createdAt', 'desc'), limit(100));
+    const q = query(
+      collection(db, "posts"),
+      orderBy("createdAt", "desc"),
+      limit(100),
+    );
     const snap = await getDocs(q);
     if (!snap.empty) {
       return snap.docs.map((d) => ({ id: d.id, ...d.data() }) as PostSummary);
@@ -117,12 +130,17 @@ export async function getPost(postId: string): Promise<PostDetail | null> {
 
   const db = getDbInstance()!;
   try {
-    const postSnap = await getDoc(doc(db, 'posts', postId));
+    const postSnap = await getDoc(doc(db, "posts", postId));
     if (postSnap.exists()) {
       const ansSnap = await getDocs(
-        query(collection(db, 'posts', postId, 'answers'), orderBy('createdAt', 'asc')),
+        query(
+          collection(db, "posts", postId, "answers"),
+          orderBy("createdAt", "asc"),
+        ),
       );
-      const answers = ansSnap.docs.map((d) => ({ id: d.id, ...d.data() }) as Answer);
+      const answers = ansSnap.docs.map(
+        (d) => ({ id: d.id, ...d.data() }) as Answer,
+      );
       return { id: postSnap.id, ...postSnap.data(), answers } as PostDetail;
     }
   } catch {
@@ -148,13 +166,19 @@ export async function upvotePost(postId: string, uid: string): Promise<void> {
   }
 
   const db = getDbInstance()!;
-  const ref = doc(db, 'posts', postId);
+  const ref = doc(db, "posts", postId);
   const snap = await getDoc(ref);
   const upvoterUids: string[] = snap.data()?.upvoterUids ?? [];
   if (upvoterUids.includes(uid)) {
-    await updateDoc(ref, { upvoterUids: arrayRemove(uid), upvotes: increment(-1) });
+    await updateDoc(ref, {
+      upvoterUids: arrayRemove(uid),
+      upvotes: increment(-1),
+    });
   } else {
-    await updateDoc(ref, { upvoterUids: arrayUnion(uid), upvotes: increment(1) });
+    await updateDoc(ref, {
+      upvoterUids: arrayUnion(uid),
+      upvotes: increment(1),
+    });
   }
 }
 
@@ -178,13 +202,19 @@ export async function upvoteAnswer(
   }
 
   const db = getDbInstance()!;
-  const ref = doc(db, 'posts', postId, 'answers', answerId);
+  const ref = doc(db, "posts", postId, "answers", answerId);
   const snap = await getDoc(ref);
   const upvoterUids: string[] = snap.data()?.upvoterUids ?? [];
   if (upvoterUids.includes(uid)) {
-    await updateDoc(ref, { upvoterUids: arrayRemove(uid), upvotes: increment(-1) });
+    await updateDoc(ref, {
+      upvoterUids: arrayRemove(uid),
+      upvotes: increment(-1),
+    });
   } else {
-    await updateDoc(ref, { upvoterUids: arrayUnion(uid), upvotes: increment(1) });
+    await updateDoc(ref, {
+      upvoterUids: arrayUnion(uid),
+      upvotes: increment(1),
+    });
   }
 }
 
@@ -216,7 +246,7 @@ export async function createPost(input: {
   }
 
   const db = getDbInstance()!;
-  const ref = doc(collection(db, 'posts'));
+  const ref = doc(collection(db, "posts"));
   await setDoc(ref, {
     title: input.title,
     body: input.body,
@@ -257,7 +287,7 @@ export async function createAnswer(
   }
 
   const db = getDbInstance()!;
-  const ref = doc(collection(db, 'posts', postId, 'answers'));
+  const ref = doc(collection(db, "posts", postId, "answers"));
   await setDoc(ref, {
     body: input.body,
     authorUid: input.authorUid,
@@ -269,10 +299,13 @@ export async function createAnswer(
     isAI: false,
     flagged: false,
   });
-  await updateDoc(doc(db, 'posts', postId), { answerCount: increment(1) });
+  await updateDoc(doc(db, "posts", postId), { answerCount: increment(1) });
 }
 
-export async function acceptAnswer(postId: string, answerId: string): Promise<void> {
+export async function acceptAnswer(
+  postId: string,
+  answerId: string,
+): Promise<void> {
   if (isDemoMode()) {
     const p = demoStore.find((x) => x.id === postId);
     if (!p) return;
@@ -282,18 +315,118 @@ export async function acceptAnswer(postId: string, answerId: string): Promise<vo
   }
 
   const db = getDbInstance()!;
-  const ansSnap = await getDocs(collection(db, 'posts', postId, 'answers'));
+  const ansSnap = await getDocs(collection(db, "posts", postId, "answers"));
   const batch = ansSnap.docs.map((d) => {
     const isAccepted = d.id === answerId;
     if (d.data().isAccepted !== isAccepted) {
-      return updateDoc(doc(db, 'posts', postId, 'answers', d.id), { isAccepted });
+      return updateDoc(doc(db, "posts", postId, "answers", d.id), {
+        isAccepted,
+      });
     }
     return null;
   });
   await Promise.all(batch.filter(Boolean));
-  await updateDoc(doc(db, 'posts', postId), { solvedAnswerId: answerId });
+  await updateDoc(doc(db, "posts", postId), { solvedAnswerId: answerId });
 }
 
 export function currentDemoUid(): string {
   return DEMO_UID;
+}
+
+// ---------- Article comments (articles/{slug}/comments) ----------
+
+export interface ArticleComment {
+  id: string;
+  body: string;
+  authorUid: string;
+  authorName: string;
+  createdAt: string; // YYYY-MM-DD để hiển thị
+  isAI: boolean;
+}
+
+// Demo store riêng cho comment (in-memory, không persist)
+const demoCommentStore: Record<string, DemoComment[]> =
+  structuredClone(demoCommentsBySlug);
+
+function demoCommentToView(c: DemoComment): ArticleComment {
+  return {
+    id: c.id,
+    body: c.body,
+    authorUid: c.authorUid,
+    authorName: c.authorName,
+    createdAt: c.createdAt,
+    isAI: c.isAI,
+  };
+}
+
+function demoComments(slug: string): ArticleComment[] {
+  return (demoCommentStore[slug] ?? []).map(demoCommentToView);
+}
+
+export async function listComments(slug: string): Promise<ArticleComment[]> {
+  if (isDemoMode()) return demoComments(slug);
+
+  const db = getDbInstance()!;
+  try {
+    const snap = await getDocs(
+      query(
+        collection(db, "articles", slug, "comments"),
+        orderBy("createdAt", "asc"),
+        limit(200),
+      ),
+    );
+    return snap.docs.map((d) => {
+      const data = d.data();
+      const ts = data.createdAt?.toDate ? data.createdAt.toDate() : null;
+      return {
+        id: d.id,
+        body: data.body ?? "",
+        authorUid: data.authorUid ?? "",
+        authorName: data.authorName ?? "Thành viên",
+        createdAt: ts ? ts.toISOString().slice(0, 10) : "",
+        isAI: data.isAI ?? false,
+      } as ArticleComment;
+    });
+  } catch {
+    // Lỗi rules/mạng → fallback về comment seed để trang không bị trống
+    return demoComments(slug);
+  }
+}
+
+export async function createComment(
+  slug: string,
+  input: { body: string; authorUid: string; authorName: string },
+): Promise<ArticleComment> {
+  if (isDemoMode()) {
+    const c: DemoComment = {
+      id: `c-${Date.now()}`,
+      authorUid: input.authorUid || DEMO_UID,
+      authorName: input.authorName || "Khách",
+      body: input.body,
+      createdAt: demoNow(),
+      isAI: false,
+    };
+    if (!demoCommentStore[slug]) demoCommentStore[slug] = [];
+    demoCommentStore[slug].push(c);
+    return demoCommentToView(c);
+  }
+
+  const db = getDbInstance()!;
+  const ref = doc(collection(db, "articles", slug, "comments"));
+  await setDoc(ref, {
+    body: input.body,
+    authorUid: input.authorUid,
+    authorName: input.authorName,
+    createdAt: serverTimestamp(),
+    isAI: false,
+    flagged: false,
+  });
+  return {
+    id: ref.id,
+    body: input.body,
+    authorUid: input.authorUid,
+    authorName: input.authorName,
+    createdAt: demoNow(),
+    isAI: false,
+  };
 }

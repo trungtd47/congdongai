@@ -9,6 +9,7 @@ import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { canonicalUrl } from "@/lib/site";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { TermTip } from "@/components/TermTip";
+import { CommentsSection } from "@/components/CommentsSection";
 import { batDauItems } from "@/lib/content";
 
 interface Props {
@@ -136,6 +137,10 @@ export default async function BatDauArticlePage({ params }: Props) {
             Bí chỗ nào? Hỏi ở Hỏi & Đáp
           </Link>
         </div>
+      </div>
+
+      <div className="mt-10">
+        <CommentsSection slug={`batdau-${post.slug}`} />
       </div>
     </article>
   );

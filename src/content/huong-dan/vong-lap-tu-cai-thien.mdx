@@ -1,0 +1,86 @@
+---
+title: "Vòng lặp tự cải thiện - để Hermes càng dùng càng giỏi"
+description: "5 prompt copy-paste biến Hermes thành đồng nghiệp tự tiến bộ: tự nhớ gu của bạn, tự tạo kỹ năng sau mỗi việc khó, tự rút kinh nghiệm mỗi tối. Không cần biết code."
+datePublished: "2026-09-24"
+dateModified: "2026-09-24"
+authorName: "Cộng Đồng AI"
+tags: ["kinh nghiệm", "sử dụng", "memory", "skill"]
+---
+
+Đa số mọi người dùng AI theo kiểu: mở lên, hỏi, nhận câu trả lời, đóng lại. Lần sau mở lên lại giải thích mọi thứ từ đầu. Hermes chạy được theo một kiểu khác hẳn: càng dùng nó càng hiểu bạn - với điều kiện bạn "nhóm lửa" cho vòng lặp tự cải thiện ngay từ những ngày đầu. Bài này đưa bạn 5 <TermTip term="prompt" /> sẵn, copy dán rồi chỉnh theo ý mình.
+
+## Vấn đề: vì sao dùng mãi mà nó vẫn "lạ"
+
+Nếu bạn dùng Hermes được vài tuần mà mỗi lần giao việc vẫn phải nhắc lại giọng văn, quy trình, những điều bạn không thích... thì không phải AI kém. Lý do là ba tầng "học" của nó chưa được kích hoạt:
+
+- **Memory (trí nhớ)**: những gì nó ghi lại về bạn, giữ qua các phiên chat. Bộ nhớ này có giới hạn dung lượng, nên nó buộc phải chắt lọc thứ quan trọng thay vì nhớ lan man.
+- **<TermTip term="skill" /> (kỹ năng)**: các bước làm việc đã được đúc kết. Lần sau gặp việc tương tự, nó lấy ra áp dụng ngay thay vì mày mò lại.
+- **SOUL.md**: file "tính cách" bạn viết cho nó - cách xưng hô, giọng văn, quy tắc cứng.
+
+Vòng lặp sẽ chạy như sau: bạn giao việc → nó ghi nhận điều học được → đúc kết thành skill và memory → lần sau làm tốt hơn → bạn chỉ cần chỉnh, không cần dạy lại. Năm prompt dưới đây nhóm lửa cho từng mắt xích.
+
+## Cần gì trước
+
+- Hermes đã cài và chat được bình thường. Chưa cài thì làm theo mục [Bắt đầu](/bat-dau) trước, khoảng 10 phút.
+- 15 phút cho lần thiết lập đầu tiên. Về sau mỗi lần chỉ tốn một câu nhắn.
+
+## Cách làm: 5 prompt copy-paste
+
+### 1. Nền tính cách (SOUL.md)
+
+Gửi cho Hermes:
+
+```
+Hãy tạo file SOUL.md cho bạn: gọi mình là "bạn", xưng "mình", trả lời bằng tiếng Việt, ngắn gọn, đi thẳng vào vấn đề, không vòng vo. Hãy hỏi mình 3 câu về công việc và gu làm việc của mình để điền vào file đó. Quy tắc cứng: không tự ý gửi nội dung ra bên ngoài, không xóa file, khi nào cần làm việc nguy hiểm thì phải hỏi mình trước.
+```
+
+Nó sẽ hỏi lại bạn 3 câu. Trả lời càng thật thì tính cách của nó càng "đúng bạn". Sau này muốn đổi gì, cứ nói "sửa SOUL.md: ...".
+
+### 2. Dạy nó nhớ đúng thứ quan trọng
+
+```
+Hãy ghi vào memory: mình làm nghề [nghề của bạn], việc lặp lại hằng ngày là [việc đó]. Khi soạn nội dung cho mình thì dùng giọng [trang trọng / thân thiện / hài hước], số liệu mặc định tính bằng VNĐ, ngày tháng theo kiểu Việt Nam.
+```
+
+Thay phần trong ngoặc vuông bằng thông tin của bạn. Từ đó về sau, bất cứ khi nào có điều muốn nó nhớ lâu dài, chỉ cần nói: "Nhớ giúp mình: ...".
+
+### 3. Xong việc khó, bảo nó tự tạo skill
+
+```
+Việc vừa rồi bạn làm tốt. Hãy đúc kết các bước làm, những chỗ dễ sai và gu của mình thành một skill, để lần sau gặp việc tương tự bạn làm nhanh và chuẩn hơn.
+```
+
+Đây là câu đáng giá nhất bài. Kỹ năng của Hermes sinh ra đúng cách này: tự đúc kết từ việc thật bạn giao, chứ không phải đi tải ở đâu về. Càng giao nhiều việc, kho kỹ năng của nó càng dày.
+
+### 4. Cho nó tự ngẫm mỗi tối
+
+```
+Mỗi tối lúc 22h, hãy xem lại các cuộc trò chuyện trong ngày của chúng ta: trích ra quyết định đã chốt, việc đang làm dở, và sai lầm cần tránh. Ghi bản tóm tắt vào memory để sáng mai làm tiếp không phải kể lại từ đầu.
+```
+
+Nghe quen không? Trong cộng đồng có người cho Hermes làm đúng việc này lúc 3 giờ sáng, và gọi đó là job "Dreaming" - bạn có thể [đọc câu chuyện đó](/cau-chuyen/holmebengt-dreaming-3am). Ban ngày bạn dùng, ban đêm nó tự ngẫm lại một ngày: vòng lặp khép kín mà bạn không phải thức khuya dạy nó.
+
+### 5. "Khám sức khỏe" định kỳ
+
+```
+Mỗi tối Chủ nhật, hãy rà soát lại memory và các skill của bạn: gộp những thứ trùng lặp, bỏ những thứ đã lỗi thời, và kể mình nghe 3 điều bạn mới học được về mình trong tuần qua.
+```
+
+Bước này giữ hai thứ: bộ nhớ không phình to vì rác, và bạn luôn thấy nó đang "hiểu" mình tới đâu để chỉnh ngay khi hiểu sai.
+
+## Kết quả
+
+- Sau khoảng một tuần: bạn thấy rõ mình ít phải nhắc lại hơn.
+- Sau khoảng một tháng: nó thuộc gu - bản nháp ra đã gần đúng ý, bạn chỉ chỉnh nhẹ.
+- Về lâu dài: thay vì một công cụ phải dạy lại mỗi lần, bạn có một đồng nghiệp lớn dần cùng mình.
+
+Những <TermTip term="agent" /> đang vận hành chính website này cũng chạy đúng vòng lặp đó: ban ngày nhận việc, tối đúc kết bài học, hằng tuần có một con khác rà soát lại toàn bộ. Việc chạy ngày càng nhanh và ít lỗi hơn không phải vì model mới, mà vì vòng lặp này.
+
+## Mẹo thêm
+
+- Đừng mong lần chạy đầu hoàn hảo. Lần chạy đầu của mọi quy trình luôn là bản yếu nhất - giá trị nằm ở những lần sửa sau đó.
+- Nó làm sai? Sửa ngay bằng một câu: "Lần sau nhớ là...". Sửa lỗi là cách dạy nhanh nhất.
+- Thỉnh thoảng hỏi: "Bạn đang nhớ những gì về mình?" - thấy sai chỗ nào bảo nó sửa ngay chỗ đó.
+- Muốn chuyển máy hoặc phòng hờ, cứ nói: "Hãy sao lưu toàn bộ cấu hình, memory và skill của bạn" - nó tự lo và chỉ cho bạn file nằm ở đâu.
+
+Bí chỗ nào, hoặc muốn khoe "vòng lặp" riêng của bạn? Đăng vào [Hỏi & Đáp](/hoi-dap) nhé.

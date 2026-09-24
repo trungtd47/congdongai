@@ -22,7 +22,8 @@ export const glossary: Record<string, string> = {
   credit:
     "Số dư nạp trước trong tài khoản, dùng để trả cho từng lần gọi AI. Hết thì nạp thêm.",
   prompt: "Lời bạn nói / viết cho AI để nó biết cần làm gì.",
-  skill: "Gói kỹ năng cài thêm cho Hermes bằng một lệnh đơn giản.",
+  skill:
+    "Kỹ năng Hermes tự đúc kết sau khi làm việc thật (hoặc được cài thêm), để lần sau gặp việc tương tự nó làm nhanh và chuẩn hơn.",
   terminal:
     "Cửa sổ gõ lệnh của máy tính. Với bản Desktop, người mới thường không cần đụng tới.",
   subscription:

@@ -116,6 +116,13 @@ export const huongDanItems: HubItem[] = [
       "Ghi mọi thứ đáng nhớ vào Obsidian rồi để Hermes đọc và chắt lọc giúp. Ghi chú biến thành sức mạnh.",
     icon: "🧠",
   },
+  {
+    slug: "vong-lap-tu-cai-thien",
+    title: "Vòng lặp tự cải thiện",
+    description:
+      "5 prompt copy-paste để Hermes tự nhớ gu của bạn, tự tạo kỹ năng sau mỗi việc khó, tự rút kinh nghiệm mỗi tối - càng dùng càng giỏi.",
+    icon: "🌱",
+  },
 ];
 
 export interface LibraryItem {
@@ -138,6 +145,18 @@ export const libraryItems: LibraryItem[] = [
     ],
   },
   {
+    icon: "🌱",
+    title: "Vòng lặp tự cải thiện",
+    description:
+      "Bộ 5 prompt nền + checklist 7 ngày đầu: để Hermes tự nhớ, tự tạo kỹ năng, tự rút kinh nghiệm - càng dùng càng hiểu bạn.",
+    files: [
+      {
+        name: "Tải bộ prompt vòng lặp",
+        href: "/thu-vien/vong-lap-tu-cai-thien.md",
+      },
+    ],
+  },
+  {
     icon: "💬",
     title: "100 prompt theo nghề",
     description:
@@ -147,13 +166,32 @@ export const libraryItems: LibraryItem[] = [
     ],
   },
   {
+    icon: "⏰",
+    title: "Skill bản tin sáng tự động",
+    description:
+      "Bộ prompt dựng bản tin cá nhân mỗi sáng, kèm cách chỉnh nguồn tin theo gu và 3 lỗi hay gặp.",
+    files: [
+      {
+        name: "Tải bộ prompt bản tin",
+        href: "/thu-vien/skill-ban-tin-sang.md",
+      },
+    ],
+  },
+  {
     icon: "🧠",
     title: "Bộ skills chọn lọc",
     description:
-      "Hướng dẫn cài 4 skill hay dùng: tin tức, thời tiết, dịch thuật, nhắc việc.",
+      "Hướng dẫn cài 4 skill hay dùng: tin tức, thời tiết, dịch thuật, nhắc việc - và cách nhờ Hermes tự tạo skill riêng.",
     files: [
       { name: "Tải hướng dẫn skills", href: "/thu-vien/bo-skills-chon-loc.md" },
     ],
+  },
+  {
+    icon: "✅",
+    title: "Checklist cài đặt 1 trang",
+    description:
+      "In ra được, tick từng bước: tải app từ link gốc, cài, nối AI, câu hỏi đầu tiên, việc thật đầu tiên.",
+    files: [{ name: "Tải checklist", href: "/thu-vien/checklist-cai-dat.md" }],
   },
 ];
 

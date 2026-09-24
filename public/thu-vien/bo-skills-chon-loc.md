@@ -14,6 +14,8 @@ Hãy thêm cho tôi skill để [VIỆC BẠN MUỐN]
 
 Hermes sẽ tự tìm hoặc gợi ý cách thêm. Nhiều skill có sẵn trong kho của Hermes, không cần tự viết.
 
+Điểm hay nhất: Hermes còn TỰ tạo skill mới từ chính việc bạn giao. Làm xong một việc khó, chỉ cần nói "đúc kết việc này thành skill để lần sau làm tốt hơn" - lần sau gặp việc tương tự nó làm nhanh và chuẩn hơn hẳn. Chi tiết xem bài "Vòng lặp tự cải thiện" trong mục Hướng dẫn.
+
 ## 4 skill nên cài trước
 
 ### 1. Tin tức (đọc + tổng hợp)

@@ -1,14 +1,19 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import remarkGfm from 'remark-gfm';
-import rehypeSlug from 'rehype-slug';
-import { getHuongDanPostBySlug, getHuongDanSlugs, extractToc } from '@/lib/posts';
-import { JsonLd, articleJsonLd, breadcrumbJsonLd } from '@/lib/seo';
-import { canonicalUrl } from '@/lib/site';
-import { Breadcrumb } from '@/components/Breadcrumb';
-import { TermTip } from '@/components/TermTip';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+import {
+  getHuongDanPostBySlug,
+  getHuongDanSlugs,
+  extractToc,
+} from "@/lib/posts";
+import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { canonicalUrl } from "@/lib/site";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { TermTip } from "@/components/TermTip";
+import { CommentsSection } from "@/components/CommentsSection";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -28,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: post.description,
     alternates: { canonical: `/huong-dan/${slug}` },
     openGraph: {
-      type: 'article',
+      type: "article",
       title: post.title,
       description: post.description,
       url: canonicalUrl(`/huong-dan/${slug}`),
@@ -59,13 +64,18 @@ export default async function HuongDanArticlePage({ params }: Props) {
       />
       <JsonLd
         data={breadcrumbJsonLd([
-          { name: 'Trang chủ', path: '/' },
-          { name: 'Hướng dẫn', path: '/huong-dan' },
+          { name: "Trang chủ", path: "/" },
+          { name: "Hướng dẫn", path: "/huong-dan" },
           { name: post.title, path: `/huong-dan/${slug}` },
         ])}
       />
 
-      <Breadcrumb items={[{ name: 'Hướng dẫn', href: '/huong-dan' }, { name: post.title }]} />
+      <Breadcrumb
+        items={[
+          { name: "Hướng dẫn", href: "/huong-dan" },
+          { name: post.title },
+        ]}
+      />
 
       <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
         Hướng dẫn theo việc
@@ -99,14 +109,18 @@ export default async function HuongDanArticlePage({ params }: Props) {
           source={post.content}
           components={{ TermTip }}
           options={{
-            mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug] },
+            mdxOptions: {
+              remarkPlugins: [remarkGfm],
+              rehypePlugins: [rehypeSlug],
+            },
           }}
         />
       </div>
 
       <div className="card mt-10 p-6">
         <p className="mb-3 text-sm text-ink-soft">
-          Làm xong việc này rồi? Xem thêm hướng dẫn khác hoặc quay lại danh sách.
+          Làm xong việc này rồi? Xem thêm hướng dẫn khác hoặc quay lại danh
+          sách.
         </p>
         <div className="flex flex-wrap gap-3">
           <Link href="/huong-dan" className="btn btn-primary">
@@ -116,6 +130,10 @@ export default async function HuongDanArticlePage({ params }: Props) {
             Bí chỗ nào? Hỏi ở Hỏi & Đáp
           </Link>
         </div>
+      </div>
+
+      <div className="mt-10">
+        <CommentsSection slug={`huongdan-${post.slug}`} />
       </div>
     </article>
   );

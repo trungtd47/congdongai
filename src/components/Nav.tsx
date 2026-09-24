@@ -9,6 +9,7 @@ import { isDemoMode } from "@/lib/firebase";
 const links = [
   { href: "/lo-trinh", label: "Lộ trình" },
   { href: "/bat-dau", label: "Bắt đầu" },
+  { href: "/bat-dau#tai-hermes", label: "Tải Hermes" },
   { href: "/hoi-dap", label: "Hỏi & Đáp" },
   { href: "/thu-vien", label: "Thư viện" },
   { href: "/blog", label: "Blog" },

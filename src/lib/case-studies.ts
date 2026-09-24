@@ -14,28 +14,28 @@ export interface CaseStudy {
   sourceLabel: string;
   sourceUrl: string;
   body: CaseBlock[];
-  type?: 'short' | 'long';
+  type?: "short" | "long";
 }
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: 'kinh-nghiem-tu-openclaw-sang-hermes',
-    icon: '🔁',
-    type: 'long',
-    title: 'Từ OpenClaw sang Hermes - vì sao mình bỏ OpenClaw',
+    slug: "kinh-nghiem-tu-openclaw-sang-hermes",
+    icon: "🔁",
+    type: "long",
+    title: "Từ OpenClaw sang Hermes - vì sao mình bỏ OpenClaw",
     teaser:
-      'Hành trình thật của người không biết code: thử OpenClaw trước vì nghe quen, rồi nhờ chính nó cài Hermes, và cuối cùng nhờ Hermes gỡ luôn OpenClaw.',
-    sourceLabel: 'Admin congdongai.org',
-    sourceUrl: 'https://congdongai.org',
+      "Hành trình thật của người không biết code: thử OpenClaw trước vì nghe quen, rồi nhờ chính nó cài Hermes, và cuối cùng nhờ Hermes gỡ luôn OpenClaw.",
+    sourceLabel: "Admin congdongai.org",
+    sourceUrl: "https://congdongai.org",
     body: [
       {
         p: `Mình không phải dân kỹ thuật. Mình kinh doanh và đầu tư tự do, chỉ thích mày mò công nghệ để làm việc nhàn hơn. Khi bắt đầu tìm hiểu AI agent, mình thử OpenClaw trước, vì nghe nhiều người nhắc tới.`,
       },
-      { h: 'Vì sao OpenClaw khiến mình bỏ' },
+      { h: "Vì sao OpenClaw khiến mình bỏ" },
       {
         ul: [
-          'Nhiều lỗi vặt, càng dùng càng phải tự sửa.',
-          'Khó dùng với người không rành kỹ thuật như mình.',
+          "Nhiều lỗi vặt, càng dùng càng phải tự sửa.",
+          "Khó dùng với người không rành kỹ thuật như mình.",
           'Cảm giác nó là một "dự án" chưa hoàn thiện hơn là một sản phẩm.',
         ],
       },
@@ -45,41 +45,41 @@ export const caseStudies: CaseStudy[] = [
       {
         p: `Cuối cùng mình nhờ chính Hermes gỡ bỏ OpenClaw ra khỏi máy. Từ đó mình chỉ dùng Hermes thôi.`,
       },
-      { h: 'Bài học mình rút ra' },
+      { h: "Bài học mình rút ra" },
       {
         ul: [
-          'Đừng vì một cái tên quen thuộc mà bỏ qua lựa chọn tốt hơn. Cứ thử vài cái rồi chọn cái hợp với mình.',
+          "Đừng vì một cái tên quen thuộc mà bỏ qua lựa chọn tốt hơn. Cứ thử vài cái rồi chọn cái hợp với mình.",
           'Với người mới, "ít lỗi khiến mình phải tự sửa" quan trọng hơn "nhiều tính năng".',
-          'Một agent biết tự nhớ và tự dần tốt lên mới đáng dùng lâu dài.',
+          "Một agent biết tự nhớ và tự dần tốt lên mới đáng dùng lâu dài.",
         ],
       },
     ],
   },
   {
-    slug: 'kinh-nghiem-ban-tin-6h30',
-    icon: '🌅',
-    type: 'long',
-    title: 'Bản tin thị trường 6h30 mỗi sáng - trước khi mình pha xong cà phê',
+    slug: "kinh-nghiem-ban-tin-6h30",
+    icon: "🌅",
+    type: "long",
+    title: "Bản tin thị trường 6h30 mỗi sáng - trước khi mình pha xong cà phê",
     teaser:
-      'Mỗi sáng Hermes tự đọc, tự lọc, tự viết bản tin thị trường trước khi mình kịp pha xong cà phê. Không cần mở mười mấy trang web nữa.',
-    sourceLabel: 'Admin congdongai.org',
-    sourceUrl: 'https://congdongai.org',
+      "Mỗi sáng Hermes tự đọc, tự lọc, tự viết bản tin thị trường trước khi mình kịp pha xong cà phê. Không cần mở mười mấy trang web nữa.",
+    sourceLabel: "Admin congdongai.org",
+    sourceUrl: "https://congdongai.org",
     body: [
       {
         p: `Trước đây, mỗi sáng mình mất cả buổi lướt qua mười mấy trang tin và diễn đàn để biết thị trường hôm nay ra sao. Giờ việc đó Hermes làm hết.`,
       },
-      { h: 'Cách mình dựng' },
+      { h: "Cách mình dựng" },
       {
         ol: [
-          'Nhờ Hermes chạy một quy trình tự động vào mỗi sáng.',
-          'Nó tự đọc các nguồn tin mình quan tâm, tự lọc bỏ nhiễu.',
-          'Rồi tự viết thành một bản tin gọn, đúng trọng tâm mình cần.',
+          "Nhờ Hermes chạy một quy trình tự động vào mỗi sáng.",
+          "Nó tự đọc các nguồn tin mình quan tâm, tự lọc bỏ nhiễu.",
+          "Rồi tự viết thành một bản tin gọn, đúng trọng tâm mình cần.",
         ],
       },
       {
         p: `Kết quả: 6h30, lúc mình mới dậy thì bản tin đã có sẵn, ngay trước cả khi mình kịp pha xong cà phê. Mình chỉ cần đọc một chỗ.`,
       },
-      { h: 'Điều đáng nói nhất' },
+      { h: "Điều đáng nói nhất" },
       {
         p: `Càng chạy lâu, bản tin càng gọn và sắc hơn, vì nó tự học cách mình thích đọc gì mà không cần mình sửa thêm gì.`,
       },
@@ -89,30 +89,30 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'kinh-nghiem-bo-nao-thu-hai',
-    icon: '🧠',
-    type: 'long',
-    title: 'Bộ não thứ hai của mình: ghi vào Obsidian, để Hermes đọc',
+    slug: "kinh-nghiem-bo-nao-thu-hai",
+    icon: "🧠",
+    type: "long",
+    title: "Bộ não thứ hai của mình: ghi vào Obsidian, để Hermes đọc",
     teaser:
-      'Mình ghi hết ý tưởng và kiến thức vào Obsidian, rồi để Hermes đọc cả kho đó để gợi ý và viết giúp. Đó là lúc ghi chú sống dậy.',
-    sourceLabel: 'Admin congdongai.org',
-    sourceUrl: 'https://congdongai.org',
+      "Mình ghi hết ý tưởng và kiến thức vào Obsidian, rồi để Hermes đọc cả kho đó để gợi ý và viết giúp. Đó là lúc ghi chú sống dậy.",
+    sourceLabel: "Admin congdongai.org",
+    sourceUrl: "https://congdongai.org",
     body: [
       {
         p: `Não mình không thể nhớ hết mọi thứ đáng nhớ. Nên mình xây một bộ não thứ hai: một thư mục ghi chú trong Obsidian, chia theo việc đang làm, việc theo đuổi lâu dài, và tài liệu tham khảo.`,
       },
-      { h: 'Vì sao Obsidian' },
+      { h: "Vì sao Obsidian" },
       {
         ul: [
-          'Ghi chú là file văn bản thường, nằm ngay trên máy mình.',
-          'Mình liên kết các ghi chú với nhau thành một mạng lưới.',
-          'Quan trọng nhất: Hermes đọc được trọn kho này.',
+          "Ghi chú là file văn bản thường, nằm ngay trên máy mình.",
+          "Mình liên kết các ghi chú với nhau thành một mạng lưới.",
+          "Quan trọng nhất: Hermes đọc được trọn kho này.",
         ],
       },
       {
         p: `Mỗi khi có ý hay hay bài bổ ích, mình gõ nhanh vào đây. Khi cần, mình nhờ Hermes đọc cả kho để tóm tắt mình đang theo đuổi gì, hoặc tìm các ý liên quan và viết thành một bài.`,
       },
-      { h: 'Thay đổi thật sự' },
+      { h: "Thay đổi thật sự" },
       {
         p: `Ghi chú không còn là kho lưu trữ chết nữa. Nó thành bộ nhớ mà agent của mình trực tiếp dùng mỗi ngày. Đó là lúc kiến thức quay lại phục vụ mình, chứ không nằm im.`,
       },
@@ -122,15 +122,15 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'reddit-3-months-hermes',
-    icon: '📱',
-    type: 'long',
-    title: 'Ba tháng dùng Hermes - những gì mình ước hiểu sớm hơn',
+    slug: "reddit-3-months-hermes",
+    icon: "📱",
+    type: "long",
+    title: "Ba tháng dùng Hermes - những gì mình ước hiểu sớm hơn",
     teaser:
       'Hành trình ba tháng từ một chiếc điện thoại cũ đến "daily driver": hiểu câu trả lời đến từ đâu, và vì sao trí nhớ chỉ hiệu quả khi bạn cấu trúc đúng.',
-    sourceLabel: 'Reddit r/hermesagent',
+    sourceLabel: "Reddit r/hermesagent",
     sourceUrl:
-      'https://www.reddit.com/r/hermesagent/comments/1u8fm0t/three_months_with_hermes_agent_what_i_wish_i_had/',
+      "https://www.reddit.com/r/hermesagent/comments/1u8fm0t/three_months_with_hermes_agent_what_i_wish_i_had/",
     body: [
       {
         p: `Tác giả bắt đầu từ một chiếc điện thoại cũ, vào lúc "hầu như chưa ai tin tưởng cái gọi là agent mới" này. Sau vài ngày, anh nhận ra nó bắt đầu thành phần mềm anh thấy thú vị, và mua riêng phần cứng phù hợp hơn chỉ để chạy nó.`,
@@ -138,44 +138,44 @@ export const caseStudies: CaseStudy[] = [
       {
         p: `Khoảng bốn tuần sau, anh ngừng gọi Hermes là một "công cụ". Đó là lúc anh bắt đầu hiểu câu trả lời của nó đến từ đâu, nó đang dùng ngữ cảnh nào, vì sao có kết quả này hoạt động còn kết quả kia thì không.`,
       },
-      { h: 'Điều anh ước hiểu sớm hơn' },
+      { h: "Điều anh ước hiểu sớm hơn" },
       {
         p: `Hermes "nhớ" những gì anh đã thử trước đó chỉ khi anh cho nó cấu trúc đúng để làm vậy. Nó phản biện lại chỉ khi cách dựng của anh cho phép điều đó. Nói cách khác, trí nhớ và sự chủ động của agent không tự nhiên mà có - chúng phụ thuộc vào cách bạn cấu hình.`,
       },
       {
         p: `Ba tháng, dùng hằng ngày. Anh đã thử mọi memory provider nối được vào Hermes, cộng thêm vài bộ mã nguồn mở khác, để tìm ra cách giữ ngữ cảnh tốt nhất.`,
       },
-      { h: 'Bài học cho người mới' },
+      { h: "Bài học cho người mới" },
       {
         ul: [
           'Đừng chờ agent "tự khôn" một cách mù mờ. Nó tốt lên đúng bằng cấu trúc bạn dựng.',
-          'Hiểu ngữ cảnh nó đang dùng thì mới hiểu vì sao nó trả lời thế này hay thế kia.',
+          "Hiểu ngữ cảnh nó đang dùng thì mới hiểu vì sao nó trả lời thế này hay thế kia.",
           'Dành thời gian đầu để cấu hình trí nhớ đúng, thì ba tháng sau mới có "daily driver" thật.',
         ],
       },
     ],
   },
   {
-    slug: 'hn-homelab-sysadmin',
-    icon: '🖥️',
-    type: 'long',
+    slug: "hn-homelab-sysadmin",
+    icon: "🖥️",
+    type: "long",
     title: 'Hermes làm "sysadmin" cho homelab - sáng nào cũng có báo cáo',
     teaser:
-      'Một người đổi từ OpenClaw sang Hermes để cai quản homelab: mỗi sáng nhận tin backup chạy chưa, gửi giọng nói qua Telegram rồi nhận ảnh chụp màn hình 30 giây sau.',
-    sourceLabel: 'Hacker News',
-    sourceUrl: 'https://news.ycombinator.com/item?id=48419000',
+      "Một người đổi từ OpenClaw sang Hermes để cai quản homelab: mỗi sáng nhận tin backup chạy chưa, gửi giọng nói qua Telegram rồi nhận ảnh chụp màn hình 30 giây sau.",
+    sourceLabel: "Hacker News",
+    sourceUrl: "https://news.ycombinator.com/item?id=48419000",
     body: [
       {
         p: `Anh dùng Hermes ở nhà, đổi từ OpenClaw sang vì Hermes làm việc tốt hơn với ngữ cảnh nhỏ. Không code bằng nó - việc code anh để cho Claude - mà giao cho nó một vai trò khác.`,
       },
-      { h: 'Cai quản homelab' },
+      { h: "Cai quản homelab" },
       {
         p: `Hermes là "sysadmin" cho homelab của anh. Nó có một MCP server chỉ đọc để kiểm tra trạng thái Kubernetes, và quyền SSH riêng để sửa lỗi - nhưng mỗi thay đổi đều phải được anh duyệt theo từng phiên.`,
       },
       {
         p: `Vì toàn bộ homelab dùng GitOps, anh luôn đảo ngược được bất kỳ thay đổi nào agent gây ra. Đây là lưới an toàn khiến anh yên tâm giao quyền.`,
       },
-      { h: 'Mỗi sáng một báo cáo' },
+      { h: "Mỗi sáng một báo cáo" },
       {
         p: `Sáng nào anh cũng nhận một bản cập nhật ngắn: backup đã chạy chưa, có pod nào bị kẹt hay có biểu hiện lạ không. Anh đang dần chuyển Nextcloud và lịch từ Google về phần cứng riêng, rồi "gần như không còn phải đụng tay nữa".`,
       },
@@ -185,15 +185,16 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'networkchuck',
-    icon: '🎥',
-    type: 'long',
-    title: 'NetworkChuck (3 triệu người theo dõi) bỏ hẳn OpenClaw để dùng Hermes',
+    slug: "networkchuck",
+    icon: "🎥",
+    type: "long",
+    title:
+      "NetworkChuck (3 triệu người theo dõi) bỏ hẳn OpenClaw để dùng Hermes",
     teaser:
       'YouTuber công nghệ lớn chuyển toàn bộ từ OpenClaw sang Hermes, dựng agent "Ron" làm quản trị IT cho studio và cài "Honey" cho vợ lo việc nhà.',
-    image: '/case-study/networkchuck.jpg',
+    image: "/case-study/networkchuck.jpg",
     sourceLabel: 'YouTube - NetworkChuck: "you need to use Hermes RIGHT NOW!!"',
-    sourceUrl: 'https://www.youtube.com/watch?v=QQEgIo4Juxg',
+    sourceUrl: "https://www.youtube.com/watch?v=QQEgIo4Juxg",
     body: [
       {
         p: `Anh chuyển hẳn sang Hermes. Chỉ riêng cái chất và sứ mệnh của dự án cũng đã đủ để anh gật đầu, nhưng thứ khiến anh mắc câu thật sự là ý tưởng agent Hermes lớn dần cùng bạn, ngày thứ 30 tốt hơn ngày đầu tiên. Anh mệt mỏi vì cứ phải sửa mấy con agent OpenClaw của mình, và không chỉ mình anh gặp cảnh đó. Hermes đang là dự án GitHub tăng trưởng nhanh nhất, mức dùng token trên OpenRouter đã vượt qua OpenClaw.`,
@@ -201,14 +202,14 @@ export const caseStudies: CaseStudy[] = [
       {
         p: `Sau một tháng dùng, đây là agent đầu tiên anh cảm thấy đủ tin để đưa cho vợ. Vợ anh đặt tên cho agent của mình là Honey, coi nó như bạn thân. Anh bảo thứ này thật sự khác biệt.`,
       },
-      { h: 'Năm lý do anh chuyển' },
+      { h: "Năm lý do anh chuyển" },
       {
         ol: [
-          'Chất và sứ mệnh. Chỉ nhìn trang chủ Hermes là đã muốn dùng rồi. Nous Research bắt đầu từ một nhóm hacker trên Discord muốn làm AI mã nguồn mở, họ có gu thẩm mỹ riêng và có tâm huyết thật sự đằng sau sản phẩm.',
-          'Trí nhớ. Hermes đặt giới hạn cứng cho file nhớ, USER.md tối đa 1.375 ký tự, MEMORY.md 2.200 ký tự. Điều này buộc agent phải chắt lọc xem điều gì thật sự quan trọng về bạn, thay vì để nó phình to dần vô tội vạ. Cứ khoảng 10 lượt chat, nó lại tự chạy một agent nền để xem có gì cần cập nhật vào bộ nhớ, chủ động hơn hẳn kiểu OpenClaw chỉ cập nhật khi bắt đầu phiên mới.',
-          'Con người và câu chuyện phía sau. Hermes thực ra có trước OpenClaw, ban đầu là công cụ nội bộ để nghiên cứu khả năng tự cải thiện đệ quy. Đội ngũ là các nhà nghiên cứu AI tự huấn luyện model của chính họ. Với họ, AI không phải để thay thế bạn, mà để giúp bạn thành phiên bản tốt hơn của chính mình mỗi ngày.',
-          'Hệ kỹ năng và vòng lặp tự cải thiện. Đây là điểm mạnh nhất. Agent tự tạo skill của chính nó, chắt lọc những gì đã học thành kỹ năng dùng lại được. OpenClaw phải đi tìm skill ở một chợ bên ngoài, còn Hermes đúc skill ngay từ cách bạn làm việc. Nó còn có Curator, một agent chạy nền chuyên rà soát và lưu trữ skill. Cách này cũng an toàn hơn, vì OpenClaw từng dính lỗ hổng do cộng đồng tải lên skill độc hại.',
-          'Nó không hỏng. OpenClaw giống một dự án, càng dùng lâu càng mòn, càng lỗi vặt. Hermes thì giống một sản phẩm thật. Sau một tháng dùng, anh chưa gặp vấn đề nào mà không phải do chính mình gây ra.',
+          "Chất và sứ mệnh. Chỉ nhìn trang chủ Hermes là đã muốn dùng rồi. Nous Research bắt đầu từ một nhóm hacker trên Discord muốn làm AI mã nguồn mở, họ có gu thẩm mỹ riêng và có tâm huyết thật sự đằng sau sản phẩm.",
+          "Trí nhớ. Hermes đặt giới hạn cứng cho file nhớ, USER.md tối đa 1.375 ký tự, MEMORY.md 2.200 ký tự. Điều này buộc agent phải chắt lọc xem điều gì thật sự quan trọng về bạn, thay vì để nó phình to dần vô tội vạ. Cứ khoảng 10 lượt chat, nó lại tự chạy một agent nền để xem có gì cần cập nhật vào bộ nhớ, chủ động hơn hẳn kiểu OpenClaw chỉ cập nhật khi bắt đầu phiên mới.",
+          "Con người và câu chuyện phía sau. Hermes thực ra có trước OpenClaw, ban đầu là công cụ nội bộ để nghiên cứu khả năng tự cải thiện đệ quy. Đội ngũ là các nhà nghiên cứu AI tự huấn luyện model của chính họ. Với họ, AI không phải để thay thế bạn, mà để giúp bạn thành phiên bản tốt hơn của chính mình mỗi ngày.",
+          "Hệ kỹ năng và vòng lặp tự cải thiện. Đây là điểm mạnh nhất. Agent tự tạo skill của chính nó, chắt lọc những gì đã học thành kỹ năng dùng lại được. OpenClaw phải đi tìm skill ở một chợ bên ngoài, còn Hermes đúc skill ngay từ cách bạn làm việc. Nó còn có Curator, một agent chạy nền chuyên rà soát và lưu trữ skill. Cách này cũng an toàn hơn, vì OpenClaw từng dính lỗ hổng do cộng đồng tải lên skill độc hại.",
+          "Nó không hỏng. OpenClaw giống một dự án, càng dùng lâu càng mòn, càng lỗi vặt. Hermes thì giống một sản phẩm thật. Sau một tháng dùng, anh chưa gặp vấn đề nào mà không phải do chính mình gây ra.",
         ],
       },
       {
@@ -220,64 +221,66 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'devto-7-agents',
-    icon: '🍓',
-    type: 'long',
-    title: 'Doanh nghiệp 1 người chạy bằng 7 agent trên chiếc Raspberry Pi 35 USD',
+    slug: "devto-7-agents",
+    icon: "🍓",
+    type: "long",
+    title:
+      "Doanh nghiệp 1 người chạy bằng 7 agent trên chiếc Raspberry Pi 35 USD",
     teaser:
       'Một người làm kinh doanh solo tự động hóa gần như toàn bộ để 7 agent lo: thu thập, sản xuất nội dung, duyệt tuân thủ, trả lời bình luận, phân tích và một "CEO" viết memo mỗi đêm.',
-    sourceLabel: 'Dev.to - "I Automated My One-Person Business With 7 AI Agents"',
+    sourceLabel:
+      'Dev.to - "I Automated My One-Person Business With 7 AI Agents"',
     sourceUrl:
-      'https://dev.to/ulnit/i-automated-my-one-person-business-with-7-ai-agents-heres-the-exact-setup-including-the-parts-1gai',
+      "https://dev.to/ulnit/i-automated-my-one-person-business-with-7-ai-agents-heres-the-exact-setup-including-the-parts-1gai",
     body: [
       {
         p: `Ai cũng nói về AI agent như chuyện của tương lai. Tôi thì đã chạy mấy con này trên một chiếc Raspberry Pi giá 35 đô suốt một tháng qua rồi, và đúng, có một con từng khiến tài khoản của tôi bị giới hạn. Đây là bản kể thật, không tô vẽ.`,
       },
-      { h: 'Bộ công cụ (cố tình nhàm chán)' },
+      { h: "Bộ công cụ (cố tình nhàm chán)" },
       {
         ul: [
-          'Cron scheduler (Hermes Agent), kích hoạt mọi thứ.',
-          'Python script đơn thuần, không framework, không LangChain, không kéo theo 47 dependency.',
-          'SQLite lưu trạng thái cho mọi thứ. Một file, khỏi phải bảo trì gì cả.',
-          'Một CLI cho mỗi nền tảng, cái nào không có CLI thì tôi không tự động hóa.',
+          "Cron scheduler (Hermes Agent), kích hoạt mọi thứ.",
+          "Python script đơn thuần, không framework, không LangChain, không kéo theo 47 dependency.",
+          "SQLite lưu trạng thái cho mọi thứ. Một file, khỏi phải bảo trì gì cả.",
+          "Một CLI cho mỗi nền tảng, cái nào không có CLI thì tôi không tự động hóa.",
         ],
       },
       {
         p: `Mất hai tuần mới thấm được bài học này: framework là để dành cho đội nhóm. Người làm một mình cần những script mà lúc hai giờ sáng có thứ hỏng vẫn đọc hiểu được ngay.`,
       },
-      { h: 'Bảy agent' },
+      { h: "Bảy agent" },
       {
         ol: [
-          'Knowledge collector (mỗi 6 giờ), cào HackerNews, Reddit và arXiv vào SQLite có full-text search. Agent nội dung sẽ truy vấn kho này thay vì tự bịa ra xu hướng.',
-          'Content generator (2 lần mỗi ngày), chọn đề tài từ kho kiến thức, soạn bài kèm ảnh, chạy kiểm tra tuân thủ rồi mới đăng.',
-          'Compliance reviewer, ra đời từ một lần thất bại (kể ở dưới). Nó kiểm tra nội dung theo quy tắc nền tảng trước khi đăng.',
-          'Auto-reply (mỗi 30 phút), theo dõi bình luận, trả lời có ngữ cảnh, biến một bài đăng hay thành cuộc trò chuyện thật.',
-          'Analytics tracker (hằng ngày), kéo số liệu vào SQLite, so tuần này với tuần trước.',
-          'CEO reviewer (22:00 hằng ngày), gom dữ liệu mọi kênh, viết một bản ghi nhớ chiến lược dài một trang. Đúng vậy, tôi tạo hẳn một agent để duyệt việc các agent khác của mình làm.',
-          'Watchdog (mỗi 5 phút), khởi động lại bất cứ thứ gì bị chết. Thời gian hoạt động nhờ vậy tăng từ khoảng 90% lên 99,5%.',
+          "Knowledge collector (mỗi 6 giờ), cào HackerNews, Reddit và arXiv vào SQLite có full-text search. Agent nội dung sẽ truy vấn kho này thay vì tự bịa ra xu hướng.",
+          "Content generator (2 lần mỗi ngày), chọn đề tài từ kho kiến thức, soạn bài kèm ảnh, chạy kiểm tra tuân thủ rồi mới đăng.",
+          "Compliance reviewer, ra đời từ một lần thất bại (kể ở dưới). Nó kiểm tra nội dung theo quy tắc nền tảng trước khi đăng.",
+          "Auto-reply (mỗi 30 phút), theo dõi bình luận, trả lời có ngữ cảnh, biến một bài đăng hay thành cuộc trò chuyện thật.",
+          "Analytics tracker (hằng ngày), kéo số liệu vào SQLite, so tuần này với tuần trước.",
+          "CEO reviewer (22:00 hằng ngày), gom dữ liệu mọi kênh, viết một bản ghi nhớ chiến lược dài một trang. Đúng vậy, tôi tạo hẳn một agent để duyệt việc các agent khác của mình làm.",
+          "Watchdog (mỗi 5 phút), khởi động lại bất cứ thứ gì bị chết. Thời gian hoạt động nhờ vậy tăng từ khoảng 90% lên 99,5%.",
         ],
       },
-      { h: 'Thất bại tôi không giấu' },
+      { h: "Thất bại tôi không giấu" },
       {
         p: `Agent số 2 từng đăng nội dung nhắc tên một sản phẩm bên thứ ba. Nền tảng gắn cờ đó là quảng cáo ngoài và giới hạn tài khoản tôi mấy ngày. Rút ra được hai bài học:`,
       },
       {
         ol: [
-          'AI agent sẽ làm đúng những gì bạn bảo, kể cả phần khiến bạn bị cấm. Tuân thủ phải là một cổng cứng trong quy trình, không thể chỉ hy vọng nó tự ổn.',
-          'Cách sửa là dựng một agent duyệt có blacklist cộng phát hiện tự động. Giờ mọi bài đều phải qua cổng đó, và một loại vi phạm coi như không thể đăng được nữa.',
+          "AI agent sẽ làm đúng những gì bạn bảo, kể cả phần khiến bạn bị cấm. Tuân thủ phải là một cổng cứng trong quy trình, không thể chỉ hy vọng nó tự ổn.",
+          "Cách sửa là dựng một agent duyệt có blacklist cộng phát hiện tự động. Giờ mọi bài đều phải qua cổng đó, và một loại vi phạm coi như không thể đăng được nữa.",
         ],
       },
-      { h: 'Sự thật nhàm chán về thu nhập từ agent' },
+      { h: "Sự thật nhàm chán về thu nhập từ agent" },
       {
         p: `Agent không trực tiếp kiếm tiền. Việc của chúng là xây tài sản, lượng người theo dõi, khối lượng nội dung, sự đều đặn, để đến lúc mình mở lời bán hàng thì mọi thứ đã sẵn sàng. Mạch hiện tại của tôi là: nội dung hằng ngày, dẫn về trang cá nhân, rồi tới trang sản phẩm, rồi mới tới thanh toán.`,
       },
-      { h: 'Lời khuyên cho người mới bắt đầu' },
+      { h: "Lời khuyên cho người mới bắt đầu" },
       {
         ul: [
-          'Bắt đầu với một agent giúp bạn tiết kiệm 1 giờ mỗi ngày. Chọn agent nội dung trước, đừng chọn watchdog.',
-          'SQLite cộng cron cộng script vẫn hơn mọi framework, cho tới khi bạn chạm ngưỡng quy mô thật (mà làm một mình thì khó chạm tới lắm).',
-          'Đặt cổng tuân thủ trước mọi nội dung được đăng. Bạn của tương lai sẽ cảm ơn bạn vì việc đó.',
-          'Theo dõi mọi thứ trong một database. Nếu không trả lời được thứ Ba tuần trước đã xảy ra gì, là bạn đang bay mù rồi.',
+          "Bắt đầu với một agent giúp bạn tiết kiệm 1 giờ mỗi ngày. Chọn agent nội dung trước, đừng chọn watchdog.",
+          "SQLite cộng cron cộng script vẫn hơn mọi framework, cho tới khi bạn chạm ngưỡng quy mô thật (mà làm một mình thì khó chạm tới lắm).",
+          "Đặt cổng tuân thủ trước mọi nội dung được đăng. Bạn của tương lai sẽ cảm ơn bạn vì việc đó.",
+          "Theo dõi mọi thứ trong một database. Nếu không trả lời được thứ Ba tuần trước đã xảy ra gì, là bạn đang bay mù rồi.",
         ],
       },
       {
@@ -286,13 +289,14 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'pacmanpill',
-    icon: '💼',
-    title: 'Thu nhập €2.700 mỗi tháng nhờ cài Hermes cho doanh nghiệp nhỏ ở Pháp',
+    slug: "pacmanpill",
+    icon: "💼",
+    title:
+      "Thu nhập €2.700 mỗi tháng nhờ cài Hermes cho doanh nghiệp nhỏ ở Pháp",
     teaser:
-      'Một người ở Pháp thử dịch vụ cài Hermes cho doanh nghiệp nhỏ, tháng gần nhất thu về khoảng €2.700.',
-    sourceLabel: 'Reddit - u/pacmanpill',
-    sourceUrl: 'https://www.reddit.com/r/hermesagent/comments/1ujduc7/',
+      "Một người ở Pháp thử dịch vụ cài Hermes cho doanh nghiệp nhỏ, tháng gần nhất thu về khoảng €2.700.",
+    sourceLabel: "Reddit - u/pacmanpill",
+    sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1u4l0dj/",
     body: [
       {
         p: `Anh đang thử một dịch vụ nho nhỏ quanh Hermes Agent, nhắm vào các doanh nghiệp nhỏ ở Pháp, và tháng trước nó mang về cho anh khoảng 2.700 euro.`,
@@ -303,13 +307,13 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'godzillaton',
-    icon: '🏗️',
-    title: '11 nhóm WhatsApp công trường, 82 tin nhắn rút còn 3 dòng',
+    slug: "godzillaton",
+    icon: "🏗️",
+    title: "11 nhóm WhatsApp công trường, 82 tin nhắn rút còn 3 dòng",
     teaser:
-      'Một người quản lý công trường cho Hermes đọc 11 nhóm chat công việc, mỗi sáng tóm gọn còn 3 dòng những gì cần lo.',
-    sourceLabel: 'Reddit - u/Godzillaton',
-    sourceUrl: 'https://www.reddit.com/r/hermesagent/comments/1utzz6q/',
+      "Một người quản lý công trường cho Hermes đọc 11 nhóm chat công việc, mỗi sáng tóm gọn còn 3 dòng những gì cần lo.",
+    sourceLabel: "Reddit - u/Godzillaton",
+    sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1uhyift/",
     body: [
       {
         p: `Anh phải theo dõi 11 nhóm WhatsApp ngoài công trường, từ cập nhật cần cẩu, báo cáo QA/QC, đến theo dõi nhân lực và cảnh báo an toàn. Giờ Hermes đọc hết tất cả và tóm tắt lại đúng những gì anh cần biết.`,
@@ -320,13 +324,13 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'rodgezee',
-    icon: '🧠',
+    slug: "rodgezee",
+    icon: "🧠",
     title: 'Bỏ bảng Excel, dựng một "Twin AI" ngay trong SOUL.md',
     teaser:
       'Một chủ cửa hàng nhỏ dùng Hermes làm "bản sao" của chính mình, định nghĩa trong SOUL.md, để không còn là nút thắt của mọi việc.',
-    sourceLabel: 'Reddit - u/rodgezee',
-    sourceUrl: 'https://www.reddit.com/r/hermesagent/comments/1unuk20/',
+    sourceLabel: "Reddit - u/rodgezee",
+    sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1uzqlni/",
     body: [
       {
         p: `Anh đã chạy Hermes Agent như một "Twin AI" được khoảng một tháng nay. Mục tiêu đơn giản thôi: đừng để bản thân trở thành nút thắt cho cuộc sống của chính mình và cho cửa hàng bán sản phẩm vật lý nhỏ mà anh đang làm.`,
@@ -337,13 +341,14 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'kenmazaika',
-    icon: '📬',
-    title: 'Một chiếc Dell OptiPlex 175 USD chạy 24/7, mỗi sáng gửi email nhà thuê',
+    slug: "kenmazaika",
+    icon: "📬",
+    title:
+      "Một chiếc Dell OptiPlex 175 USD chạy 24/7, mỗi sáng gửi email nhà thuê",
     teaser:
-      'Một cỗ máy cũ giá rẻ chạy Hermes suốt ngày đêm, mỗi sáng 8:30 gửi 1-3 tin nhà thuê đã lọc theo trường, đường đi, ánh sáng và ngân sách.',
-    sourceLabel: 'Reddit - u/kenmazaika',
-    sourceUrl: 'https://www.reddit.com/r/hermesagent/comments/1urri8w/',
+      "Một cỗ máy cũ giá rẻ chạy Hermes suốt ngày đêm, mỗi sáng 8:30 gửi 1-3 tin nhà thuê đã lọc theo trường, đường đi, ánh sáng và ngân sách.",
+    sourceLabel: "Reddit - u/kenmazaika",
+    sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1umvy8k/",
     body: [
       {
         p: `Anh mua một chiếc Dell OptiPlex cũ trên Facebook Marketplace, giá 175 đô, 16GB RAM, chạy Linux. Giao diện dùng là Telegram, gần như không cần đụng tới app desktop. Máy này chạy 24/7, không cần Mac Mini hay dàn GPU nào cả.`,
@@ -354,13 +359,13 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'jarvis-for-kid',
-    icon: '🧒',
+    slug: "jarvis-for-kid",
+    icon: "🧒",
     title: 'Ông bố dựng "JARVIS" cho con trai 7 tuổi trong 9 ngày',
     teaser:
       'Một ông bố dựng "Kid Mode" trên Hermes cho con: giao diện giọng nói, nhiệm vụ, huy hiệu, điều khiển nhà và một đường dây nóng gọi thẳng về bố.',
-    sourceLabel: 'Reddit - u/Exciting_Charity7304',
-    sourceUrl: 'https://www.reddit.com/r/hermesagent/comments/1uv2fig/',
+    sourceLabel: "Reddit - u/Exciting_Charity7304",
+    sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1utzz6q/",
     body: [
       {
         p: `Anh dành hẳn chín ngày để dựng Kid Mode trên Hermes Agent cho con trai 7 tuổi của mình.`,
@@ -371,13 +376,13 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'milesdeutscher-obsidian',
-    icon: '🧠',
-    title: 'Nối cả doanh nghiệp vào Hermes qua một vault Obsidian',
+    slug: "milesdeutscher-obsidian",
+    icon: "🧠",
+    title: "Nối cả doanh nghiệp vào Hermes qua một vault Obsidian",
     teaser:
-      'Anh gom mọi thứ - ghi chú khách hàng, quy trình chuẩn, biên bản họp, quyết định - vào một vault Obsidian cho agent đọc, để nó tự chạy các việc anh chưa kịp nghĩ ra.',
-    sourceLabel: 'X (Twitter) - @milesdeutscher',
-    sourceUrl: 'https://x.com/milesdeutscher/status/2068133236052730347',
+      "Anh gom mọi thứ - ghi chú khách hàng, quy trình chuẩn, biên bản họp, quyết định - vào một vault Obsidian cho agent đọc, để nó tự chạy các việc anh chưa kịp nghĩ ra.",
+    sourceLabel: "X (Twitter) - @milesdeutscher",
+    sourceUrl: "https://x.com/milesdeutscher/status/2068133236052730347",
     body: [
       {
         p: `Anh nối toàn bộ doanh nghiệp của mình vào Hermes, kết hợp với Obsidian: ghi chú khách hàng, quy trình chuẩn (SOP), biên bản họp, các quyết định kinh doanh, tất cả nằm ở đó. Giờ agent Hermes tự chạy nhiều việc mà bản thân anh còn chưa nghĩ tới là mình cần, và nó cứ tự tiến bộ dần theo thời gian.`,
@@ -388,13 +393,14 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'emmagine79-landing',
-    icon: '🌐',
-    title: 'Bảo agent "Google tôi rồi dựng trang web", nó tự làm hết và nhắn tin báo xong',
+    slug: "emmagine79-landing",
+    icon: "🌐",
+    title:
+      'Bảo agent "Google tôi rồi dựng trang web", nó tự làm hết và nhắn tin báo xong',
     teaser:
-      'Chỉ một câu lệnh, agent tự tìm kiếm, dựng landing page, SSH lên VPS, đăng lên mạng, rồi nhắn tin báo đã xong.',
-    sourceLabel: 'X (Twitter) - @emmagine79',
-    sourceUrl: 'https://x.com/emmagine79/status/2053360898501468362',
+      "Chỉ một câu lệnh, agent tự tìm kiếm, dựng landing page, SSH lên VPS, đăng lên mạng, rồi nhắn tin báo đã xong.",
+    sourceLabel: "X (Twitter) - @emmagine79",
+    sourceUrl: "https://x.com/emmagine79/status/2053360898501468362",
     body: [
       {
         p: `Cô bảo agent google về mình rồi dựng một landing page dựa trên những gì tìm được. Kết quả khiến cô choáng thật sự: nó tự chạy tìm kiếm, tìm ra các mối liên kết, tạo trang, SSH vào VPS của cô, tải trang lên, rồi nhắn tin báo khi xong việc. Cô chỉ biết thốt lên là gì thế này.`,
@@ -405,13 +411,13 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'fpostigo-dell',
-    icon: '💻',
-    title: 'Chạy ngon trên chiếc Dell 5 năm tuổi, GPU đã hỏng',
+    slug: "fpostigo-dell",
+    icon: "💻",
+    title: "Chạy ngon trên chiếc Dell 5 năm tuổi, GPU đã hỏng",
     teaser:
-      'Không cần máy xịn. Một chiếc laptop Dell mua 5 năm trước chỉ để họp Zoom và nghe Spotify vẫn chạy Hermes tốt.',
-    sourceLabel: 'X (Twitter) - @fpostigo',
-    sourceUrl: 'https://x.com/fpostigo/status/2065468128906383452',
+      "Không cần máy xịn. Một chiếc laptop Dell mua 5 năm trước chỉ để họp Zoom và nghe Spotify vẫn chạy Hermes tốt.",
+    sourceLabel: "X (Twitter) - @fpostigo",
+    sourceUrl: "https://x.com/fpostigo/status/2065468128906383452",
     body: [
       {
         p: `Agent Hermes của anh chạy trên một chiếc laptop Dell XPS cũ, GPU đã hỏng từ lâu. Anh mua nó 5 năm trước chỉ để họp Zoom và nghe Spotify, vậy mà giờ vẫn chạy tốt.`,
@@ -422,13 +428,13 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'exm7777-family',
-    icon: '👨‍👩‍👧',
-    title: 'Một Hermes cho cả nhà, ai nấy dùng một kiểu trên WhatsApp',
+    slug: "exm7777-family",
+    icon: "👨‍👩‍👧",
+    title: "Một Hermes cho cả nhà, ai nấy dùng một kiểu trên WhatsApp",
     teaser:
       'Ba thành viên trong một gia đình dùng chung một agent qua WhatsApp, mỗi người một việc - nhờ nó "sống" ngay trong ứng dụng nhắn tin quen thuộc.',
-    sourceLabel: 'X (Twitter) - @EXM7777',
-    sourceUrl: 'https://x.com/EXM7777/status/2049869015221510424',
+    sourceLabel: "X (Twitter) - @EXM7777",
+    sourceUrl: "https://x.com/EXM7777/status/2049869015221510424",
     body: [
       {
         p: `Ba tuần trước anh dựng một agent Hermes cho cả gia đình (3 người), mỗi người dùng cho một việc khác nhau. Nó mở ra cả một thế giới mới cho mọi người trong nhà, chỉ vì nó nằm ngay trong WhatsApp và có những hành vi chủ động rất hay.`,
@@ -439,13 +445,13 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'nathanwilbanks-100k',
-    icon: '💰',
-    title: 'Ngày 297: hơn 100.000 USD việc cho khách đã thành tự động',
+    slug: "nathanwilbanks-100k",
+    icon: "💰",
+    title: "Ngày 297: hơn 100.000 USD việc cho khách đã thành tự động",
     teaser:
-      'Gần 300 ngày liên tục, anh này tự động hóa rất nhiều thời gian tính toán và hơn 100.000 USD giá trị công việc cho khách bằng agent.',
-    sourceLabel: 'X (Twitter) - @NathanWilbanks_',
-    sourceUrl: 'https://x.com/NathanWilbanks_/status/2047883176622620934',
+      "Gần 300 ngày liên tục, anh này tự động hóa rất nhiều thời gian tính toán và hơn 100.000 USD giá trị công việc cho khách bằng agent.",
+    sourceLabel: "X (Twitter) - @NathanWilbanks_",
+    sourceUrl: "https://x.com/NathanWilbanks_/status/2047883176622620934",
     body: [
       {
         p: `Anh đang ở ngày thứ 297 của một chuỗi chạy liên tục: hơn 900.000 giây thời gian tính toán đã được tự động hóa, hơn 5 tỷ token đã được tạo ra, và hơn 100.000 đô giá trị công việc cho khách đã thành tự động hoàn toàn.`,
@@ -456,13 +462,13 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'kanikabk-self-improve',
-    icon: '⚡',
-    title: 'Sức mạnh thật: những việc nó tự làm mỗi ngày, không cần bạn nhắc',
+    slug: "kanikabk-self-improve",
+    icon: "⚡",
+    title: "Sức mạnh thật: những việc nó tự làm mỗi ngày, không cần bạn nhắc",
     teaser:
-      'Điều đáng giá nhất không phải một phiên chat hay - mà là agent tốt dần lên từng ngày, bản tin ngày càng sắc và gọn mà bạn không cần sửa gì.',
-    sourceLabel: 'X (Twitter) - @KanikaBK',
-    sourceUrl: 'https://x.com/KanikaBK/status/2054572674777797018',
+      "Điều đáng giá nhất không phải một phiên chat hay - mà là agent tốt dần lên từng ngày, bản tin ngày càng sắc và gọn mà bạn không cần sửa gì.",
+    sourceLabel: "X (Twitter) - @KanikaBK",
+    sourceUrl: "https://x.com/KanikaBK/status/2054572674777797018",
     body: [
       {
         p: `Sức mạnh thật của Hermes Agent không nằm ở một phiên chat nào cả, mà ở những gì nó làm mỗi ngày mà chẳng cần ai nhắc. Lần chạy đầu tiên của bất kỳ quy trình nào cũng là bản yếu nhất, nhưng sau một tháng, các bản tin tự nhiên trở nên sắc hơn, ngắn hơn, đúng trọng tâm hơn, mà cô chẳng cần đổi gì cả.`,
@@ -472,10 +478,167 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
+  {
+    slug: "holmebengt-dreaming-3am",
+    icon: "🌙",
+    type: "long",
+    title: '28 cron job, 30+ skill, và job "Dreaming" tự ngẫm lúc 3 giờ sáng',
+    teaser:
+      "Một người dùng Hermes chạy 28 cron job và hơn 30 skill tự dựng. Đáng giá nhất: mỗi đêm lúc 3 giờ sáng, agent tự đọc lại toàn bộ cuộc trò chuyện trong ngày để viết ra ngữ cảnh cho ngày mai.",
+    sourceLabel: "Reddit - u/HolmeBengt",
+    sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1udesr1/",
+    body: [
+      {
+        p: `Anh đang chạy 28 cron job và hơn 30 skill tùy biến. Điều anh nhấn mạnh: mọi thứ đều do Hermes tự dựng cùng anh trong lúc làm việc, không phải tải về từ một chợ skill nào.`,
+      },
+      { h: 'Job "Dreaming" lúc 3 giờ sáng' },
+      {
+        p: `Mỗi đêm lúc 3 giờ, trong lúc anh ngủ, Hermes đọc lại toàn bộ những cuộc trò chuyện hai bên đã có trong ngày. Nó trích ra: những quyết định đã chốt, những dự án đang làm, những lỗi đã truy tìm, những người đã trao đổi, và cả những sai lầm không được phép lặp lại.`,
+      },
+      {
+        p: `Từ bản trích đó, nó tự viết thành "ngữ cảnh của ngày mai". Sáng ra, agent đã sẵn chuyện để tiếp nối, anh không phải kể lại từ đầu.`,
+      },
+      { h: "Vì sao cách này đáng học" },
+      {
+        ul: [
+          'Không cần thức khuya để "dạy" agent - chọn giờ máy rảnh và để nó tự ngẫm lại một ngày.',
+          "Trí nhớ không chỉ lưu cho có: sai lầm được ghi để không lặp lại, quyết định được ghi để không phải hỏi lại.",
+          'Vòng lặp khép kín: dùng ban ngày - đúc kết ban đêm - hôm sau mượt hơn, đúng tinh thần "agent lớn lên cùng bạn".',
+        ],
+      },
+      {
+        p: `Bạn không cần tới 28 cron job. Chỉ cần một job "tự ngẫm cuối ngày" là đã tái hiện được phần đáng giá nhất của câu chuyện này - xem thêm bài "Vòng lặp tự cải thiện" trong mục Hướng dẫn của site.`,
+      },
+    ],
+  },
+  {
+    slug: "uzairansar-ios-app",
+    icon: "📲",
+    title: "Chưa từng viết Swift, vẫn tự dựng app iOS cho agent của mình",
+    teaser:
+      "Chat với agent qua Telegram trên tàu điện ngầm thấy bất tiện - anh nhờ Hermes dựng luôn một app iOS riêng, dù chưa từng làm app và không rành Swift.",
+    sourceLabel: "Reddit - u/uzairansar",
+    sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1ujduc7/",
+    body: [
+      {
+        p: `Anh kể: đang trên tàu điện ngầm ở New York, nói chuyện với agent Hermes của mình qua Telegram. Hermes thì anh thích, còn Telegram thì không - giao diện chat chung không hợp để điều khiển một agent.`,
+      },
+      {
+        p: `Vậy là anh dựng một app iOS cho riêng agent của mình. Điều đáng nói: anh chưa từng làm app iOS bao giờ, và cũng không thật sự biết Swift. Phần code nặng nhọc do Hermes lo, anh lo phần ý tưởng và dùng thử.`,
+      },
+      {
+        p: `Thông điệp cho người không chuyên: rào cản "không biết code" thấp hơn bạn nghĩ. Biết rõ mình muốn gì quan trọng hơn biết viết ngôn ngữ lập trình nào.`,
+      },
+    ],
+  },
+  {
+    slug: "riceinmybelly-job-site",
+    icon: "👷",
+    title:
+      "Một mình dựng app quản lý công trường: agent tự nhận việc, tự deploy",
+    teaser:
+      "Một người dựng app quản lý công trường gần như một mình: Hermes tự ghi task cho chính nó, viết code, chạy QA, deploy và tự giữ tài liệu luôn mới. Việc của anh là duyệt qua Telegram.",
+    sourceLabel: "Reddit - u/riceinmybelly",
+    sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1u9fa2w/",
+    body: [
+      {
+        p: `Dự án là một app quản lý công trường (job-site): frontend Next.js, API NestJS, postgres, redis, pgbouncer, nginx kèm brotli. Anh dựng nó một mình, và Hermes đảm nhận phần lớn việc hiện thực.`,
+      },
+      {
+        p: `Cách anh mô tả: nó tự ghi task cho chính nó, tự viết code, tự chạy QA, tự deploy, và tự giữ cho tài liệu của nó luôn cập nhật. Còn anh phần lớn chỉ duyệt lại mọi thứ qua Telegram.`,
+      },
+      {
+        p: `Điểm đáng học không nằm ở stack kỹ thuật, mà ở cách chia việc: người giữ vai trò duyệt và quyết định, agent giữ vai trò thi công và tự quản lý việc của chính nó.`,
+      },
+    ],
+  },
+  {
+    slug: "ninjapapi-5-dieu-khac-chatgpt",
+    icon: "🆚",
+    title:
+      '"ChatGPT là một tab trình duyệt. Hermes là một tiến trình đang chạy"',
+    teaser:
+      "So sánh gọn nhất về khác biệt giữa chatbot và agent: một bên chờ bạn mở lên để hỏi, một bên chạy nền và tự nhắn tin cho bạn trước cả khi bạn thức dậy.",
+    sourceLabel: "Reddit - u/ninjapapi",
+    sourceUrl:
+      "https://www.reddit.com/r/SideProject/comments/1t6356h/5_things_hermes_does_as_an_ai_agent_that_chatgpt/",
+    body: [
+      {
+        p: `Nguyên văn cách anh so sánh: "ChatGPT là một tab trình duyệt. Hermes là một tiến trình máy chủ đang chạy ngay lúc này, đã âm thầm dựng mô hình về cách bạn làm việc, và vừa nhắn cho bạn một tin Telegram trước cả khi bạn thức dậy."`,
+      },
+      {
+        p: `Anh liệt kê những thứ làm nên khác biệt: nó không dừng lại khi bạn gập laptop; nó chủ động nhắn tin trước; trí nhớ càng dùng càng hữu ích; nó chạy code chứ không chỉ viết code ra; và nó thao tác trực tiếp trong những app bạn vẫn dùng hằng ngày.`,
+      },
+      {
+        p: `Đây là câu trả lời ngắn gọn nhất cho câu hỏi "agent khác gì chatbot": chatbot biết nói, agent biết làm - và vẫn tiếp tục làm khi bạn không ngồi đó.`,
+      },
+    ],
+  },
+  {
+    slug: "jonathan-rivera-obsidian-memory",
+    icon: "🗂️",
+    title: "Sơ đồ Obsidian làm bộ nhớ dài hạn cho Hermes được 794 điểm",
+    teaser:
+      "Bài đăng vẽ cách Hermes ghi các ghi chú markdown có cấu trúc vào vault Obsidian đồng bộ, coi vault như tầng trí nhớ bền vững - sống sót qua mọi lần reset ngữ cảnh. Cộng đồng vote 794 điểm.",
+    sourceLabel: "Reddit - u/Jonathan_Rivera",
+    sourceUrl:
+      "https://www.reddit.com/r/hermesagent/comments/1stz6gd/how_i_use_obsidian_as_the_longterm_memory/",
+    body: [
+      {
+        p: `Anh chia sẻ cách dùng Obsidian làm "xương sống" trí nhớ dài hạn cho Hermes: agent tự viết các ghi chú markdown có cấu trúc vào một vault Obsidian được đồng bộ, và coi vault đó như tầng trí nhớ bền vững - thứ sống sót qua các lần reset ngữ cảnh và cả khi chuyển sang máy khác.`,
+      },
+      {
+        p: `Bài đăng nhận 794 điểm trên subreddit - con số đủ nói lên đây không phải mẹo của một người, mà là hướng cả cộng đồng cùng gật gù.`,
+      },
+      {
+        p: `Nếu bạn đang định dựng "bộ não thứ hai", đây là mảnh ghép tham khảo tốt: phần ghi chú của bạn và phần trí nhớ của agent nằm chung một kho, cùng lớn lên theo thời gian.`,
+      },
+    ],
+  },
+  {
+    slug: "kenmazaika-dictate-y-tuong",
+    icon: "🎙️",
+    title: "Nói ý tưởng lộn xộn vào Telegram, nhận lại tài liệu chỉn chu",
+    teaser:
+      "Quy trình được dùng nhiều nhất của một người dùng Hermes: bắt đầu bằng việc nói các ý còn lộn xộn từ điện thoại, kết thúc bằng một tài liệu chung chỉn chu để chia sẻ - không tốn phút nào gõ văn bản.",
+    sourceLabel: "Reddit - u/kenmazaika",
+    sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1ut8o53/",
+    body: [
+      {
+        p: `Anh gọi đây là quy trình anh dùng nhiều nhất với Hermes: bắt đầu từ điện thoại - anh nói hoặc gõ những ý tưởng còn lộn xộn vào một topic Telegram, và kết thúc bằng một tài liệu có cấu trúc, sẵn sàng chia sẻ với người khác, mà không tốn một phút nào ngồi trong trình soạn thảo văn bản.`,
+      },
+      {
+        p: `Phần "biến mớ lộn xộn thành trật tự" là việc agent làm tốt hơn người ở chỗ: nó không ngại đọc lại, không ngại sắp xếp, và luôn trả về đúng một khuôn tài liệu bạn đã dặn trước.`,
+      },
+      {
+        p: `Gợi ý cho bạn: nếu hay có ý tưởng khi đang chạy xe, đi bộ hay trông con - một kênh nhắn tin nối vào Hermes là đủ để không rơi mất ý nào.`,
+      },
+    ],
+  },
+  {
+    slug: "squishydata-20-tin-hieu",
+    icon: "📡",
+    title: '20 "tín hiệu" tự ghi sổ mỗi ngày, một agent trực phân loại',
+    teaser:
+      "Khoảng 20 cron job nhỏ âm thầm ghi log vào một cuốn sổ ngày; sau đó một agent khác đọc cuốn sổ đó và tóm những gì thật sự quan trọng vào sổ phân loại.",
+    sourceLabel: "Reddit - u/SquishyData",
+    sourceUrl: "https://www.reddit.com/r/aiagents/comments/1umccuo/",
+    body: [
+      {
+        p: `Anh nối khoảng 20 "tín hiệu" vào Hermes - mỗi tín hiệu là một skill chạy thuần bằng cron job. Tất cả cùng ghi log đã định dạng vào một cuốn sổ chung theo ngày.`,
+      },
+      {
+        p: `Phần hay nằm ở lớp thứ hai: một cron job dạng agent sẽ đọc cuốn sổ đó, tự phân loại và chỉ đưa những gì quan trọng vào một cuốn sổ "triage" riêng. Người dùng cuối chỉ cần đọc cuốn sổ mỏng này thay vì dõi theo 20 nguồn.`,
+      },
+      {
+        p: `Mẫu hình đáng học: nhiều con mắt nhỏ âm thầm quan sát, một cái đầu tổng hợp lại. Bạn không cần làm đủ 20 tín hiệu - bắt đầu với 2-3 thứ bạn thật sự quan tâm là đủ.`,
+      },
+    ],
+  },
 ];
 
 export const caseStudyAggregator = {
-  label: 'hermes-agent.nousresearch.com/docs/user-stories',
-  url: 'https://hermes-agent.nousresearch.com/docs/user-stories',
-  note: 'Trang chính chủ của Nous Research gom 326 câu chuyện thật từ Reddit, X, YouTube, Discord, blog... chia 15 nhóm chủ đề, mỗi câu đều dẫn về bài gốc.',
+  label: "hermes-agent.nousresearch.com/docs/user-stories",
+  url: "https://hermes-agent.nousresearch.com/docs/user-stories",
+  note: "Trang chính chủ của Nous Research gom 326 câu chuyện thật từ Reddit, X, YouTube, Discord, blog... chia 15 nhóm chủ đề, mỗi câu đều dẫn về bài gốc.",
 };
