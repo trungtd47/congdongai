@@ -373,6 +373,7 @@ export interface ArticleComment {
   body: string;
   authorUid: string;
   authorName: string;
+  photoURL: string;
   createdAt: string; // YYYY-MM-DD để hiển thị
   isAI: boolean;
 }
@@ -387,6 +388,7 @@ function demoCommentToView(c: DemoComment): ArticleComment {
     body: c.body,
     authorUid: c.authorUid,
     authorName: c.authorName,
+    photoURL: "",
     createdAt: c.createdAt,
     isAI: c.isAI,
   };
@@ -407,13 +409,45 @@ export async function listComments(slug: string): Promise<ArticleComment[]> {
       limit(200),
     ),
   );
-  return snap.docs.map((d) => {
+  // Seed c1/c2/... là lời bình minh họa, không phải tài khoản Google thật.
+  // Chỉ hiển thị chúng trong demo mode; giữ nguyên dữ liệu Firestore để tránh xóa nhầm.
+  const sampleAuthors = new Map(
+    (demoCommentsBySlug[slug] ?? []).map((c) => [c.id, c.authorUid]),
+  );
+  const realDocs = snap.docs.filter(
+    (d) => sampleAuthors.get(d.id) !== d.data().authorUid,
+  );
+  // Bình luận cũ chưa lưu avatar: lấy hồ sơ Google đã tạo khi đăng nhập,
+  // chỉ đọc một lần cho mỗi UID. Lỗi đọc hồ sơ không che mất bình luận.
+  const missingPhotoUids = [
+    ...new Set(
+      realDocs
+        .filter((d) => !d.data().photoURL && d.data().authorUid)
+        .map((d) => d.data().authorUid as string),
+    ),
+  ];
+  const profiles = new Map(
+    await Promise.all(
+      missingPhotoUids.map(async (uid) => {
+        try {
+          const profile = await getDoc(doc(db, "users", uid));
+          return [uid, profile.exists() ? profile.data() : null] as const;
+        } catch {
+          return [uid, null] as const;
+        }
+      }),
+    ),
+  );
+  return realDocs.map((d) => {
     const data = d.data();
+    const profile = profiles.get(data.authorUid);
     return {
       id: d.id,
       body: data.body ?? "",
       authorUid: data.authorUid ?? "",
-      authorName: data.authorName ?? "Thành viên",
+      authorName:
+        profile?.displayName?.trim() || data.authorName || "Thành viên",
+      photoURL: data.photoURL || profile?.photoURL || "",
       createdAt: firestoreDate(data.createdAt),
       isAI: data.isAI ?? false,
     } as ArticleComment;
@@ -422,7 +456,12 @@ export async function listComments(slug: string): Promise<ArticleComment[]> {
 
 export async function createComment(
   slug: string,
-  input: { body: string; authorUid: string; authorName: string },
+  input: {
+    body: string;
+    authorUid: string;
+    authorName: string;
+    photoURL?: string;
+  },
 ): Promise<ArticleComment> {
   if (isDemoMode()) {
     const c: DemoComment = {
@@ -444,6 +483,7 @@ export async function createComment(
     body: input.body,
     authorUid: input.authorUid,
     authorName: input.authorName,
+    photoURL: input.photoURL ?? "",
     createdAt: serverTimestamp(),
     isAI: false,
     flagged: false,
@@ -453,6 +493,7 @@ export async function createComment(
     body: input.body,
     authorUid: input.authorUid,
     authorName: input.authorName,
+    photoURL: input.photoURL ?? "",
     createdAt: demoNow(),
     isAI: false,
   };
