@@ -56,7 +56,7 @@ export default async function HuongDanArticlePage({ params }: Props) {
         data={articleJsonLd({
           headline: post.title,
           description: post.description,
-          slug: post.slug,
+          path: `/huong-dan/${post.slug}`,
           datePublished: post.datePublished,
           dateModified: post.dateModified,
           authorName: post.authorName,

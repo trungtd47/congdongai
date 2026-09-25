@@ -4,9 +4,9 @@ import { batDauItems } from "@/lib/content";
 import { Breadcrumb } from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Bắt đầu với Hermes Agent",
+  title: "Hướng dẫn cài Hermes Agent cho người mới",
   description:
-    "Cài Hermes Agent từ số 0: tải bản Desktop cho Windows hoặc Mac, đăng ký Nous Portal, thanh toán từ Việt Nam. Từng bước, có ảnh, cho người không biết code.",
+    "Cách cài Hermes Agent trên Windows hoặc Mac cho người mới: tải bản Desktop chính thức, chọn nhà cung cấp model và thử giao việc đầu tiên. Không cần biết code.",
   alternates: { canonical: "/bat-dau" },
 };
 
@@ -20,9 +20,13 @@ export default function BatDauPage() {
       <h1 className="mb-2 text-[32px] font-extrabold tracking-[-0.5px]">
         Cài Hermes Agent - từ số 0
       </h1>
+      <h2 className="mb-2 text-[18px] font-bold">
+        Cài Hermes Agent như thế nào?
+      </h2>
       <p className="mb-8 max-w-2xl text-[16px] text-ink-soft">
-        Làm theo thứ tự dưới đây. Tổng thời gian khoảng 10-15 phút, không cần
-        biết code, không cần terminal.
+        Tải bản Desktop chính thức cho Windows hoặc Mac bên dưới, cài trên máy,
+        rồi chọn dịch vụ cung cấp model AI để Hermes xử lý yêu cầu. Các bài ở
+        cuối trang dẫn bạn qua từng bước; không cần biết code hay dùng terminal.
       </p>
 
       <div id="tai-hermes" className="card mb-8 scroll-mt-24 p-6">

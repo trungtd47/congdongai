@@ -56,7 +56,7 @@ export default async function BatDauArticlePage({ params }: Props) {
         data={articleJsonLd({
           headline: post.title,
           description: post.description,
-          slug: post.slug,
+          path: `/bat-dau/${post.slug}`,
           datePublished: post.datePublished,
           dateModified: post.dateModified,
           authorName: post.authorName,

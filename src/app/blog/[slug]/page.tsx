@@ -51,7 +51,7 @@ export default async function ArticlePage({ params }: Props) {
         data={articleJsonLd({
           headline: post.title,
           description: post.description,
-          slug: post.slug,
+          path: `/blog/${post.slug}`,
           datePublished: post.datePublished,
           dateModified: post.dateModified,
           authorName: post.authorName,
@@ -65,7 +65,9 @@ export default async function ArticlePage({ params }: Props) {
         ])}
       />
 
-      <Breadcrumb items={[{ name: 'Blog', href: '/blog' }, { name: post.title }]} />
+      <Breadcrumb
+        items={[{ name: 'Blog', href: '/blog' }, { name: post.title }]}
+      />
 
       <div className="mb-3 flex flex-wrap gap-2">
         {post.tags.map((t) => (
@@ -97,7 +99,8 @@ export default async function ArticlePage({ params }: Props) {
             Mục lục
           </p>
           <div className="mb-3 text-[12.5px] text-ink-soft">
-            Bài này dành cho người mới - không cần biết code, đọc từ trên xuống là đủ.
+            Bài này dành cho người mới - không cần biết code, đọc từ trên xuống
+            là đủ.
           </div>
           <nav>
             {toc.map((item) => (
@@ -116,10 +119,13 @@ export default async function ArticlePage({ params }: Props) {
 
       <div className="prose-article">
         <MDXRemote
-                  source={post.content}
-                  components={{ TermTip }}
-                  options={{
-            mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug] },
+          source={post.content}
+          components={{ TermTip }}
+          options={{
+            mdxOptions: {
+              remarkPlugins: [remarkGfm],
+              rehypePlugins: [rehypeSlug],
+            },
           }}
         />
       </div>

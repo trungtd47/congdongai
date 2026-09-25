@@ -8,9 +8,9 @@ import { getAllPosts } from "@/lib/posts";
 import { caseStudies } from "@/lib/case-studies";
 
 export const metadata: Metadata = {
-  title: "Cộng Đồng AI - Học Hermes Agent từ số 0",
+  title: "Cộng đồng Hermes Agent Tiếng Việt | Cộng Đồng AI",
   description:
-    "Hub tiếng Việt dạy người dùng phổ thông cài và dùng Hermes Agent - khung trợ lý AI mã nguồn mở của Nous Research. Không cần biết code, bắt đầu trong 10 phút.",
+    "Cộng đồng Hermes Agent Tiếng Việt: bắt đầu từ cách cài, giao việc thật đến kinh nghiệm người dùng. Hướng dẫn miễn phí, có nơi hỏi đáp khi bạn gặp khó.",
   alternates: { canonical: "/" },
 };
 
@@ -162,6 +162,12 @@ export default function HomePage() {
             <p className="sub">
               Đọc lần lượt hay nhảy cóc đều được - bài nào cũng có ảnh chụp màn
               hình và câu lệnh mẫu copy-paste.
+            </p>
+            <p className="sub">
+              Cộng Đồng AI là cộng đồng Hermes Agent Tiếng Việt: bắt đầu từ
+              cách cài, thử giao một việc thật, rồi hỏi đáp và đối chiếu kinh
+              nghiệm với người dùng khác. Đây là cộng đồng người dùng, không
+              phải trang chính thức của Nous Research.
             </p>
             {pathSteps.map((s, i) => (
               <div

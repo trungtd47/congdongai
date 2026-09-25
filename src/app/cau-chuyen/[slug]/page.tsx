@@ -74,7 +74,7 @@ export default async function CauChuyenDetailPage({ params }: Props) {
         data={articleJsonLd({
           headline: c.title,
           description: c.teaser,
-          slug: c.slug,
+          path: `/cau-chuyen/${c.slug}`,
           datePublished: '2026-09-22',
           dateModified: '2026-09-22',
           authorName: 'Cộng Đồng AI',
@@ -89,7 +89,10 @@ export default async function CauChuyenDetailPage({ params }: Props) {
       />
 
       <Breadcrumb
-        items={[{ name: 'Câu chuyện thật', href: '/cau-chuyen' }, { name: c.title }]}
+        items={[
+          { name: 'Câu chuyện thật', href: '/cau-chuyen' },
+          { name: c.title },
+        ]}
       />
 
       <div className="mb-3 flex items-center gap-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">

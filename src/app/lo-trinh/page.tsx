@@ -4,9 +4,9 @@ import { batDauItems, huongDanItems } from '@/lib/content';
 import { Breadcrumb } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
-  title: 'Lộ trình học Hermes Agent',
+  title: 'Học Hermes Agent từ số 0 - Lộ trình thực hành',
   description:
-    'Khung 3 cấp độ từ số 0 đến thành thạo: bắt đầu, nâng cao, và học từ kinh nghiệm thật. Đi đúng lộ trình, ai cũng theo được.',
+    'Học Hermes Agent theo lộ trình 3 bước: hiểu và cài, giao việc thật, rồi tham khảo kinh nghiệm người dùng có nguồn. Dành cho người mới, không cần biết code.',
   alternates: { canonical: '/lo-trinh' },
 };
 
@@ -28,18 +28,37 @@ export default function LoTrinhPage() {
         Lộ trình
       </p>
       <h1 className="mb-3 text-[32px] font-extrabold tracking-[-0.5px]">
-        Từ số 0 đến thành thạo, theo 3 cấp độ
+        Học Hermes Agent từ số 0 theo 3 cấp độ
       </h1>
+      <h2 className="mb-2 text-[18px] font-bold">
+        Học Hermes Agent bắt đầu từ đâu?
+      </h2>
       <p className="mb-10 max-w-2xl text-[16px] text-ink-soft">
-        Không cần biết code. Đi đúng lộ trình dưới đây: bắt đầu bằng hiểu và cài, rồi
-        giao việc, rồi học hỏi từ người dùng thật để tiến xa hơn.
+        Bắt đầu bằng việc{' '}
+        <Link
+          href="/bat-dau/hermes-agent-la-gi"
+          className="text-teal-dark underline"
+        >
+          hiểu Hermes Agent là gì
+        </Link>{' '}
+        và cài bản Desktop. Sau đó thử một việc thật trong mục{' '}
+        <Link href="/huong-dan" className="text-teal-dark underline">
+          Hướng dẫn
+        </Link>
+        ; khi đã quen, đọc{' '}
+        <Link href="/cau-chuyen" className="text-teal-dark underline">
+          câu chuyện có nguồn
+        </Link>{' '}
+        để xem người khác vận hành ra sao. Không cần biết code trước.
       </p>
 
       {/* CẤP 1 */}
       <section className="mb-12">
         <div className="mb-4 flex items-center gap-3">
           <LevelTag level="Cấp 1 · Bắt đầu" className="bg-teal" />
-          <span className="text-sm text-ink-soft">cho người chưa biết gì về AI agent</span>
+          <span className="text-sm text-ink-soft">
+            cho người chưa biết gì về AI agent
+          </span>
         </div>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {batDauItems.map((item, i) => (
@@ -71,7 +90,9 @@ export default function LoTrinhPage() {
       <section className="mb-12">
         <div className="mb-4 flex items-center gap-3">
           <LevelTag level="Cấp 2 · Nâng cao" className="bg-clay" />
-          <span className="text-sm text-ink-soft">đã cài xong, giờ giao việc thật cho nó</span>
+          <span className="text-sm text-ink-soft">
+            đã cài xong, giờ giao việc thật cho nó
+          </span>
         </div>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {huongDanItems.map((item, i) => (
@@ -96,29 +117,39 @@ export default function LoTrinhPage() {
       <section>
         <div className="mb-4 flex items-center gap-3">
           <LevelTag level="Cấp 3 · Kinh nghiệm" className="bg-gold" />
-          <span className="text-sm text-ink-soft">học từ người dùng thật để tiến xa hơn</span>
+          <span className="text-sm text-ink-soft">
+            học từ người dùng thật để tiến xa hơn
+          </span>
         </div>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           <Link href="/cau-chuyen" className="card card-hover p-6">
             <div className="mb-2 text-2xl">🌍</div>
-            <h2 className="mb-1 text-[17px] font-bold">Câu chuyện thật của người dùng</h2>
+            <h2 className="mb-1 text-[17px] font-bold">
+              Câu chuyện thật của người dùng
+            </h2>
             <p className="text-sm text-ink-soft">
-              13 case study dịch từ nguồn gốc (Reddit, X, YouTube, blog), có link kiểm chứng
-              cuối trang.
+              Case study dịch từ nguồn gốc công khai, có cách vận hành và link
+              để tự kiểm chứng ở cuối từng bài.
             </p>
           </Link>
           <Link href="/blog" className="card card-hover p-6">
             <div className="mb-2 text-2xl">📝</div>
-            <h2 className="mb-1 text-[17px] font-bold">Blog kinh nghiệm &amp; tâm sự</h2>
+            <h2 className="mb-1 text-[17px] font-bold">
+              Blog kinh nghiệm &amp; tâm sự
+            </h2>
             <p className="text-sm text-ink-soft">
-              Hành trình thật, bài học đúc kết sau thời gian dùng - không chém gió.
+              Hành trình thật, bài học đúc kết sau thời gian dùng - không chém
+              gió.
             </p>
           </Link>
           <Link href="/thu-vien" className="card card-hover p-6">
             <div className="mb-2 text-2xl">🧰</div>
-            <h2 className="mb-1 text-[17px] font-bold">SOUL.md &amp; skills tiếng Việt</h2>
+            <h2 className="mb-1 text-[17px] font-bold">
+              SOUL.md &amp; skills tiếng Việt
+            </h2>
             <p className="text-sm text-ink-soft">
-              Tải "linh hồn" trợ lý và bộ skills mẫu, đổi tên của bạn là dùng được ngay.
+              Tải "linh hồn" trợ lý và bộ skills mẫu, đổi tên của bạn là dùng
+              được ngay.
             </p>
           </Link>
         </div>

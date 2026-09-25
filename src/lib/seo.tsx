@@ -1,11 +1,14 @@
 import type { ReactNode } from 'react';
+import { canonicalUrl, siteConfig } from '@/lib/site';
 
 // JSON-LD structured data (AEO). Render trong <head> qua component server.
 export function JsonLd({ data }: { data: Record<string, unknown> }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data).replace(/</g, '\\u003c'),
+      }}
     />
   );
 }
@@ -19,14 +22,14 @@ export function websiteJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Cộng Đồng AI',
-    url: 'https://congdongai.org',
-    description:
-      'Hub tiếng Việt dạy người dùng phổ thông cài và dùng Hermes Agent của Nous Research.',
+    name: siteConfig.name,
+    url: siteConfig.url,
+    description: siteConfig.description,
     inLanguage: 'vi',
     publisher: {
       '@type': 'Organization',
-      name: 'Cộng Đồng AI',
+      name: siteConfig.name,
+      url: siteConfig.url,
     },
   };
 }
@@ -47,7 +50,7 @@ export function breadcrumbJsonLd(items: BreadcrumbItem[]) {
 export function articleJsonLd(input: {
   headline: string;
   description: string;
-  slug: string;
+  path: string;
   datePublished: string;
   dateModified?: string;
   authorName: string;
@@ -57,7 +60,7 @@ export function articleJsonLd(input: {
     '@type': 'Article',
     headline: input.headline,
     description: input.description,
-    url: `https://congdongai.org/blog/${input.slug}/`,
+    url: canonicalUrl(input.path),
     datePublished: input.datePublished,
     dateModified: input.dateModified ?? input.datePublished,
     inLanguage: 'vi',
@@ -72,7 +75,7 @@ export function articleJsonLd(input: {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://congdongai.org/blog/${input.slug}/`,
+      '@id': canonicalUrl(input.path),
     },
   };
 }
@@ -110,7 +113,9 @@ export function jsonLdScript(data: Record<string, unknown>): ReactNode {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data).replace(/</g, '\\u003c'),
+      }}
     />
   );
 }

@@ -4,9 +4,9 @@ import { huongDanItems } from '@/lib/content';
 import { Breadcrumb } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
-  title: 'Hướng dẫn sử dụng theo việc',
+  title: 'Cách dùng Hermes Agent cho việc thật mỗi ngày',
   description:
-    'Các hướng dẫn dùng Hermes Agent cho việc cụ thể: bản tin buổi sáng, trợ lý email, nhắc việc, luyện tiếng Anh, lên kế hoạch du lịch, nghiên cứu trước khi mua.',
+    'Hướng dẫn sử dụng Hermes Agent vào việc cụ thể: bản tin buổi sáng, email, nhắc lịch, nghiên cứu và ghi chú. Có prompt mẫu để bạn thử và tự kiểm tra kết quả.',
   alternates: { canonical: '/huong-dan' },
 };
 
@@ -18,11 +18,12 @@ export default function HuongDanPage() {
         Hướng dẫn theo việc
       </p>
       <h1 className="mb-2 text-[32px] font-extrabold tracking-[-0.5px]">
-        Dùng Hermes làm gì trong đời thường?
+        Dùng Hermes Agent làm gì trong đời thường?
       </h1>
       <p className="mb-8 max-w-2xl text-[16px] text-ink-soft">
-        Mỗi bài là một công việc cụ thể: vấn đề → cài đặt → prompt copy-paste được luôn
-        → kết quả thật.
+        Hermes Agent có thể giúp tổng hợp tin, soạn email để bạn duyệt, nhắc
+        lịch và nghiên cứu trước khi mua. Chọn một việc đang cần làm, thử prompt
+        trong bài hướng dẫn rồi kiểm tra đầu ra trước khi dùng.
       </p>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
         {huongDanItems.map((c) => (

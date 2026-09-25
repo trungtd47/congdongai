@@ -19,72 +19,31 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "kinh-nghiem-tu-openclaw-sang-hermes",
-    icon: "🔁",
-    type: "long",
-    title: "Từ OpenClaw sang Hermes - vì sao mình bỏ OpenClaw",
-    teaser:
-      "Hành trình thật của người không biết code: thử OpenClaw trước vì nghe quen, rồi nhờ chính nó cài Hermes, và cuối cùng nhờ Hermes gỡ luôn OpenClaw.",
-    sourceLabel: "Admin congdongai.org",
-    sourceUrl: "https://congdongai.org",
-    body: [
-      {
-        p: `Mình không phải dân kỹ thuật. Mình kinh doanh và đầu tư tự do, chỉ thích mày mò công nghệ để làm việc nhàn hơn. Khi bắt đầu tìm hiểu AI agent, mình thử OpenClaw trước, vì nghe nhiều người nhắc tới.`,
-      },
-      { h: "Vì sao OpenClaw khiến mình bỏ" },
-      {
-        ul: [
-          "Nhiều lỗi vặt, càng dùng càng phải tự sửa.",
-          "Khó dùng với người không rành kỹ thuật như mình.",
-          'Cảm giác nó là một "dự án" chưa hoàn thiện hơn là một sản phẩm.',
-        ],
-      },
-      {
-        p: `Điều may mắn là chính OpenClaw đã giúp mình cài Hermes khi mình nhờ. Từ lúc dùng Hermes, mọi thứ khác hẳn: ít lỗi, hiểu tiếng Việt, và nhất là nó tự nhớ và tự cải thiện theo cách mình làm việc.`,
-      },
-      {
-        p: `Cuối cùng mình nhờ chính Hermes gỡ bỏ OpenClaw ra khỏi máy. Từ đó mình chỉ dùng Hermes thôi.`,
-      },
-      { h: "Bài học mình rút ra" },
-      {
-        ul: [
-          "Đừng vì một cái tên quen thuộc mà bỏ qua lựa chọn tốt hơn. Cứ thử vài cái rồi chọn cái hợp với mình.",
-          'Với người mới, "ít lỗi khiến mình phải tự sửa" quan trọng hơn "nhiều tính năng".',
-          "Một agent biết tự nhớ và tự dần tốt lên mới đáng dùng lâu dài.",
-        ],
-      },
-    ],
-  },
-  {
     slug: "kinh-nghiem-ban-tin-6h30",
     icon: "🌅",
     type: "long",
-    title: "Bản tin thị trường 6h30 mỗi sáng - trước khi mình pha xong cà phê",
+    title: "Mỗi sáng 6h30 có sẵn bản tin thị trường để đọc cùng cà phê",
     teaser:
-      "Mỗi sáng Hermes tự đọc, tự lọc, tự viết bản tin thị trường trước khi mình kịp pha xong cà phê. Không cần mở mười mấy trang web nữa.",
+      "Thay vì tự lướt nhiều nguồn tin, mình giao Hermes gom và lọc thành một bản đọc buổi sáng. Phần quan trọng không phải đọc thật nhiều, mà là biết mình cần xem gì.",
     sourceLabel: "Admin congdongai.org",
     sourceUrl: "https://congdongai.org",
     body: [
       {
-        p: `Trước đây, mỗi sáng mình mất cả buổi lướt qua mười mấy trang tin và diễn đàn để biết thị trường hôm nay ra sao. Giờ việc đó Hermes làm hết.`,
+        p: "Có một việc mình từng làm gần như theo quán tính: vừa thức dậy đã mở lần lượt các trang tin và diễn đàn để xem thị trường có gì mới. Đọc hết thì mất thời gian, đọc lướt lại sợ bỏ sót điều quan trọng. Mình muốn bắt đầu ngày bằng một bản tổng hợp duy nhất, không phải thêm một danh sách link để tự mở tiếp.",
       },
-      { h: "Cách mình dựng" },
+      { h: "Giao việc theo đúng đầu ra mình muốn" },
       {
-        ol: [
-          "Nhờ Hermes chạy một quy trình tự động vào mỗi sáng.",
-          "Nó tự đọc các nguồn tin mình quan tâm, tự lọc bỏ nhiễu.",
-          "Rồi tự viết thành một bản tin gọn, đúng trọng tâm mình cần.",
-        ],
+        p: "Mình nhờ Hermes chạy theo lịch mỗi sáng: đọc các nguồn mình quan tâm, lọc những tin trùng hoặc không liên quan, rồi viết thành bản tin ngắn theo trọng tâm của mình. Nó không thay mình quyết định đầu tư; nó chuẩn bị thông tin để mình tự đọc và kiểm tra. Lịch 6h30 là mốc mình chọn vì lúc đó mình thường bắt đầu ngày mới.",
       },
       {
-        p: `Kết quả: 6h30, lúc mình mới dậy thì bản tin đã có sẵn, ngay trước cả khi mình kịp pha xong cà phê. Mình chỉ cần đọc một chỗ.`,
+        p: "Khi đọc thấy mục nào thừa hoặc thiếu, mình phản hồi để điều chỉnh cách lọc cho lần sau. Điểm thực tế ở đây là phải có danh sách nguồn và tiêu chí ưu tiên rõ ràng; chỉ bảo agent “tóm tắt thị trường” thì rất dễ nhận lại một bài điểm tin chung chung.",
       },
-      { h: "Điều đáng nói nhất" },
+      { h: "Thứ thay đổi trong buổi sáng" },
       {
-        p: `Càng chạy lâu, bản tin càng gọn và sắc hơn, vì nó tự học cách mình thích đọc gì mà không cần mình sửa thêm gì.`,
+        p: "Bản tin chờ sẵn trước khi mình pha xong cà phê. Mình đọc một chỗ trước, rồi chỉ mở bài gốc của những tin cần đào sâu. Quy trình này gỡ công đoạn gom và sàng lọc lặp lại mỗi ngày, còn việc xác minh và ra quyết định vẫn do mình giữ.",
       },
       {
-        p: `Đây là thứ một mình mình không làm xuể mỗi ngày, cũng chẳng đáng bỏ tiền thuê người. Một agent chạy nền là đủ.`,
+        p: "Nếu thử làm theo, hãy bắt đầu với vài nguồn thật sự có ích và yêu cầu agent kèm link cho các tin quan trọng. Chạy thử một buổi, xem chỗ nào nhiễu rồi mới đặt lịch hằng ngày. Đây là cách mình dùng, không phải lời hứa rằng bản tin tự động sẽ luôn đúng.",
       },
     ],
   },
@@ -92,32 +51,25 @@ export const caseStudies: CaseStudy[] = [
     slug: "kinh-nghiem-bo-nao-thu-hai",
     icon: "🧠",
     type: "long",
-    title: "Bộ não thứ hai của mình: ghi vào Obsidian, để Hermes đọc",
+    title: "Ghi ý tưởng vào Obsidian, để Hermes nối lại khi cần làm việc",
     teaser:
-      "Mình ghi hết ý tưởng và kiến thức vào Obsidian, rồi để Hermes đọc cả kho đó để gợi ý và viết giúp. Đó là lúc ghi chú sống dậy.",
+      "Mình giữ ghi chú trong file trên máy; Hermes đọc đúng phần liên quan khi cần tóm tắt, nối ý và soạn bài. Kho ghi chú có ích vì nó quay lại đúng lúc cần, không phải vì nó được sắp xếp thật đẹp.",
     sourceLabel: "Admin congdongai.org",
     sourceUrl: "https://congdongai.org",
     body: [
       {
-        p: `Não mình không thể nhớ hết mọi thứ đáng nhớ. Nên mình xây một bộ não thứ hai: một thư mục ghi chú trong Obsidian, chia theo việc đang làm, việc theo đuổi lâu dài, và tài liệu tham khảo.`,
+        p: "Mình có nhiều ý tưởng, tài liệu và việc đang theo đuổi cùng lúc. Nếu chỉ lưu để đó thì vài tuần sau chính mình cũng không nhớ chúng nằm ở đâu. Mình dùng Obsidian như một thư mục ghi chú trên máy, chia theo việc đang làm, mảng theo đuổi lâu dài và tài liệu tham khảo.",
       },
-      { h: "Vì sao Obsidian" },
+      { h: "File ghi chú là nguyên liệu, không phải phép màu" },
       {
-        ul: [
-          "Ghi chú là file văn bản thường, nằm ngay trên máy mình.",
-          "Mình liên kết các ghi chú với nhau thành một mạng lưới.",
-          "Quan trọng nhất: Hermes đọc được trọn kho này.",
-        ],
+        p: "Khi bắt gặp một ý hay, mình ghi nhanh vào kho này. Lúc cần viết hoặc nhìn lại một dự án, mình nhờ Hermes đọc những ghi chú liên quan, chỉ ra các mối nối và phác thảo một bản nháp. Vì ghi chú là file văn bản, mình vẫn tự mở, sửa và mang đi được; agent không giữ độc quyền nội dung của mình.",
       },
       {
-        p: `Mỗi khi có ý hay hay bài bổ ích, mình gõ nhanh vào đây. Khi cần, mình nhờ Hermes đọc cả kho để tóm tắt mình đang theo đuổi gì, hoặc tìm các ý liên quan và viết thành một bài.`,
+        p: "Ví dụ, thay vì bắt đầu bài viết từ trang trắng, mình yêu cầu Hermes tìm các ý đã ghi về cùng chủ đề, nêu phần nào còn mâu thuẫn, rồi xếp thành dàn ý. Mình đọc lại nguồn ghi chú và sửa bản nháp trước khi dùng. Nếu kho chứa thông tin cũ hoặc ghi chép quá sơ sài, bản nháp cũng sẽ lộ đúng những lỗ hổng ấy.",
       },
-      { h: "Thay đổi thật sự" },
+      { h: "Cách bắt đầu ít tốn sức nhất" },
       {
-        p: `Ghi chú không còn là kho lưu trữ chết nữa. Nó thành bộ nhớ mà agent của mình trực tiếp dùng mỗi ngày. Đó là lúc kiến thức quay lại phục vụ mình, chứ không nằm im.`,
-      },
-      {
-        p: `Bắt đầu không cần hoàn hảo. Cứ ghi, hệ thống tự gọn dần theo thời gian bạn dùng.`,
+        p: "Không cần dựng sẵn một hệ thư mục hoàn hảo. Bắt đầu bằng một thư mục cho dự án đang làm và một chỗ hứng ý tưởng mới; ghi nguồn hoặc ngữ cảnh ngay khi lưu. Sau đó nhờ Hermes tìm và tổng hợp một câu hỏi thật bạn đang cần trả lời. Khi một ghi chú đã giúp ích lần đầu, bạn mới biết nên sắp xếp kho này theo cách nào.",
       },
     ],
   },
@@ -176,28 +128,25 @@ export const caseStudies: CaseStudy[] = [
     slug: "hn-homelab-sysadmin",
     icon: "🖥️",
     type: "long",
-    title: 'Hermes làm "sysadmin" cho homelab - sáng nào cũng có báo cáo',
+    title: "Giao Hermes trực homelab, nhưng chỉ cho sửa lỗi sau khi duyệt",
     teaser:
-      "Một người đổi từ OpenClaw sang Hermes để cai quản homelab: mỗi sáng nhận tin backup chạy chưa, gửi giọng nói qua Telegram rồi nhận ảnh chụp màn hình 30 giây sau.",
+      "Một người dùng Hermes kiểm tra backup, pod Kubernetes và báo cáo mỗi sáng. Agent có lối đọc trạng thái riêng; muốn can thiệp qua SSH phải được duyệt, còn GitOps giúp đảo ngược thay đổi.",
     sourceLabel: "Hacker News",
     sourceUrl: "https://news.ycombinator.com/item?id=48419000",
     body: [
       {
-        p: `Anh dùng Hermes ở nhà, đổi từ OpenClaw sang vì Hermes làm việc tốt hơn với ngữ cảnh nhỏ. Không code bằng nó - việc code anh để cho Claude - mà giao cho nó một vai trò khác.`,
+        p: "Người chia sẻ trên Hacker News không giao việc lập trình cho Hermes. Anh dùng nó như người trực hệ thống tại nhà, nơi có Kubernetes, bản sao lưu và các dịch vụ cá nhân cần theo dõi. Việc dễ bị quên nhất không phải sửa một lỗi lớn, mà là mỗi sáng nhớ kiểm tra xem đêm qua backup có chạy và pod nào có biểu hiện lạ hay không.",
       },
-      { h: "Cai quản homelab" },
+      { h: "Cho đọc rộng, cho sửa có điều kiện" },
       {
-        p: `Hermes là "sysadmin" cho homelab của anh. Nó có một MCP server chỉ đọc để kiểm tra trạng thái Kubernetes, và quyền SSH riêng để sửa lỗi - nhưng mỗi thay đổi đều phải được anh duyệt theo từng phiên.`,
-      },
-      {
-        p: `Vì toàn bộ homelab dùng GitOps, anh luôn đảo ngược được bất kỳ thay đổi nào agent gây ra. Đây là lưới an toàn khiến anh yên tâm giao quyền.`,
-      },
-      { h: "Mỗi sáng một báo cáo" },
-      {
-        p: `Sáng nào anh cũng nhận một bản cập nhật ngắn: backup đã chạy chưa, có pod nào bị kẹt hay có biểu hiện lạ không. Anh đang dần chuyển Nextcloud và lịch từ Google về phần cứng riêng, rồi "gần như không còn phải đụng tay nữa".`,
+        p: "Anh nối Hermes với một MCP server chỉ đọc để xem trạng thái Kubernetes. Khi cần sửa, agent có lối SSH riêng, nhưng mỗi thay đổi phải được anh duyệt trong phiên đó. Homelab chạy theo GitOps nên nếu một thay đổi gây sự cố, anh có đường quay lại cấu hình trước. Đó là ranh giới khiến việc giao cho agent kiểm tra hằng ngày trở nên khả thi, thay vì đưa luôn quyền quản trị không giới hạn.",
       },
       {
-        p: `Thay vì tự làm, anh gửi nhanh một tin nhắn giọng nói qua Telegram, và khoảng 30 giây sau nhận lại một ảnh chụp màn hình "chứng minh" việc đã xong.`,
+        p: "Mỗi sáng anh nhận một bản báo cáo ngắn: backup đã chạy hay chưa, pod nào kẹt, chuyện gì đáng nhìn thêm. Với những việc có thể giao từ xa, anh gửi tin nhắn thoại qua Telegram và nhận ảnh chụp màn hình chứng minh kết quả sau đó. Anh nói có lần khoảng 30 giây sau đã nhận được ảnh; con số này là trải nghiệm của anh, không phải thời gian bảo đảm cho mọi việc.",
+      },
+      { h: "Bài học nằm ở quyền truy cập" },
+      {
+        p: "Điểm có thể học theo không phải “đưa cả server cho AI”. Hãy bắt đầu từ quyền đọc và một báo cáo về thứ bạn vẫn tự kiểm tra; tách riêng con đường sửa lỗi, bắt agent trình bày thay đổi để mình duyệt, và chuẩn bị sẵn cách hoàn tác. Như vậy agent giúp bạn đỡ phải canh hệ thống, còn quyền quyết định khi có rủi ro vẫn nằm trong tay người vận hành.",
       },
     ],
   },
@@ -205,35 +154,29 @@ export const caseStudies: CaseStudy[] = [
     slug: "networkchuck",
     icon: "🎥",
     type: "long",
-    title:
-      "NetworkChuck (3 triệu người theo dõi) bỏ hẳn OpenClaw để dùng Hermes",
+    title: "NetworkChuck giao một agent trông studio, một agent giúp việc nhà",
     teaser:
-      'YouTuber công nghệ lớn chuyển toàn bộ từ OpenClaw sang Hermes, dựng agent "Ron" làm quản trị IT cho studio và cài "Honey" cho vợ lo việc nhà.',
+      "Ron xử lý việc IT ở studio qua Telegram, tự dựng skill cho mạng và nhà thông minh; Honey được vợ anh dùng cho việc học của con và bữa ăn. Hai vai trò riêng thay vì một agent ôm tất cả.",
     image: "/case-study/networkchuck.jpg",
     sourceLabel: 'YouTube - NetworkChuck: "you need to use Hermes RIGHT NOW!!"',
     sourceUrl: "https://www.youtube.com/watch?v=QQEgIo4Juxg",
     body: [
       {
-        p: `Anh chuyển hẳn sang Hermes. Chỉ riêng cái chất và sứ mệnh của dự án cũng đã đủ để anh gật đầu, nhưng thứ khiến anh mắc câu thật sự là ý tưởng agent Hermes lớn dần cùng bạn, ngày thứ 30 tốt hơn ngày đầu tiên. Anh mệt mỏi vì cứ phải sửa mấy con agent OpenClaw của mình, và không chỉ mình anh gặp cảnh đó. Hermes đang là dự án GitHub tăng trưởng nhanh nhất, mức dùng token trên OpenRouter đã vượt qua OpenClaw.`,
+        p: "NetworkChuck kể rằng sau thời gian phải sửa các agent OpenClaw của mình, anh chuyển sang Hermes. Thứ đáng xem trong câu chuyện không phải quyết định đổi sản phẩm, mà là cách gia đình anh chia việc: Ron lo hệ thống studio, còn Honey phục vụ nhịp sinh hoạt ở nhà. Anh không dựng một trợ lý chung rồi hy vọng nó tự đoán mọi ngữ cảnh.",
+      },
+      { h: "Ron nhận việc IT từ Telegram" },
+      {
+        p: "Ron chạy trên VPS để anh nhắn từ xa qua Telegram. Khi được giao việc liên quan Twingate và thiết bị mạng UniFi, nó tạo các skill cho những thao tác đó; sau đó anh còn cho nó cấu hình Home Assistant để bật tắt đèn, đổi màu đèn và kéo rèm. Đây là những việc trên thiết bị thật, không phải chỉ đưa ra hướng dẫn trong cửa sổ chat.",
       },
       {
-        p: `Sau một tháng dùng, đây là agent đầu tiên anh cảm thấy đủ tin để đưa cho vợ. Vợ anh đặt tên cho agent của mình là Honey, coi nó như bạn thân. Anh bảo thứ này thật sự khác biệt.`,
+        p: "Với hệ thống mạng và thiết bị trong nhà, điều cần học không phải bật mọi quyền truy cập ngay từ đầu. Hãy tách vai trò studio khỏi vai trò gia đình, xem lại những skill agent tạo ra và xác nhận thao tác trước khi để nó chạy lặp lại. Video của anh kể về những gì Ron đã làm; nó không cung cấp một quy trình an toàn áp dụng nguyên xi cho mọi mạng.",
       },
-      { h: "Năm lý do anh chuyển" },
+      { h: "Honey đi vào lịch sinh hoạt gia đình" },
       {
-        ol: [
-          "Chất và sứ mệnh. Chỉ nhìn trang chủ Hermes là đã muốn dùng rồi. Nous Research bắt đầu từ một nhóm hacker trên Discord muốn làm AI mã nguồn mở, họ có gu thẩm mỹ riêng và có tâm huyết thật sự đằng sau sản phẩm.",
-          "Trí nhớ. Hermes đặt giới hạn cứng cho file nhớ, USER.md tối đa 1.375 ký tự, MEMORY.md 2.200 ký tự. Điều này buộc agent phải chắt lọc xem điều gì thật sự quan trọng về bạn, thay vì để nó phình to dần vô tội vạ. Cứ khoảng 10 lượt chat, nó lại tự chạy một agent nền để xem có gì cần cập nhật vào bộ nhớ, chủ động hơn hẳn kiểu OpenClaw chỉ cập nhật khi bắt đầu phiên mới.",
-          "Con người và câu chuyện phía sau. Hermes thực ra có trước OpenClaw, ban đầu là công cụ nội bộ để nghiên cứu khả năng tự cải thiện đệ quy. Đội ngũ là các nhà nghiên cứu AI tự huấn luyện model của chính họ. Với họ, AI không phải để thay thế bạn, mà để giúp bạn thành phiên bản tốt hơn của chính mình mỗi ngày.",
-          "Hệ kỹ năng và vòng lặp tự cải thiện. Đây là điểm mạnh nhất. Agent tự tạo skill của chính nó, chắt lọc những gì đã học thành kỹ năng dùng lại được. OpenClaw phải đi tìm skill ở một chợ bên ngoài, còn Hermes đúc skill ngay từ cách bạn làm việc. Nó còn có Curator, một agent chạy nền chuyên rà soát và lưu trữ skill. Cách này cũng an toàn hơn, vì OpenClaw từng dính lỗ hổng do cộng đồng tải lên skill độc hại.",
-          "Nó không hỏng. OpenClaw giống một dự án, càng dùng lâu càng mòn, càng lỗi vặt. Hermes thì giống một sản phẩm thật. Sau một tháng dùng, anh chưa gặp vấn đề nào mà không phải do chính mình gây ra.",
-        ],
+        p: "Vợ anh đặt tên agent riêng là Honey và dùng nó để hỗ trợ việc học tại nhà, lên kế hoạch bữa ăn và quán xuyến việc cho sáu người con. Chi tiết đáng chú ý là công cụ đi vào những việc đã có sẵn trong ngày, chứ không bắt cả nhà học một danh sách tính năng AI trước rồi mới tìm lý do để dùng.",
       },
       {
-        p: `Anh dựng một agent tên Ron, lấy cảm hứng từ Harry Potter, để làm quản trị IT cho studio của mình. Ron chạy trên một VPS, nói chuyện qua Telegram, tự tạo skill Twingate client operations và UniFi network operation ngay khi được giao việc, rồi tự cấu hình Home Assistant để bật tắt đèn, đổi màu đèn và kéo rèm theo lệnh.`,
-      },
-      {
-        p: `Vợ anh dùng Honey để lo chuyện học ở nhà cho các con, lên kế hoạch ăn uống và quán xuyến việc nhà cho 6 con.`,
+        p: "Hai môi trường có nhu cầu và rủi ro khác nhau: một bên là hạ tầng, một bên là gia đình. Cách phân vai ấy hữu ích hơn việc chạy theo một agent biết làm tất cả. Nguồn là trải nghiệm NetworkChuck tự kể trong video, không phải số liệu kiểm chứng độc lập về hiệu quả.",
       },
     ],
   },
@@ -307,28 +250,27 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "pacmanpill",
+    type: "long",
     icon: "💼",
-    title:
-      "Thu nhập €2.700 mỗi tháng nhờ cài Hermes cho doanh nghiệp nhỏ ở Pháp",
+    title: "Bán dịch vụ cài Hermes cho doanh nghiệp nhỏ: phần khó là bảo trì",
     teaser:
-      "Mô hình kinh doanh gọn: phí cài đặt một lần + phí bảo trì hằng tháng, công ty tự trả tiền model. Và phần bình luận biến bài viết thành điểm tập hợp của cả một nhóm freelancer nói tiếng Pháp.",
+      "Một freelancer ở Pháp thu phí lắp đặt rồi tính phí duy trì, còn khách trả trực tiếp tiền model. Giá trị anh bán là quy trình chạy được và có người chịu trách nhiệm khi nó trục trặc.",
     sourceLabel: "Reddit - u/pacmanpill",
     sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1u4l0dj/",
     body: [
       {
-        p: `Anh thử nghiệm một dịch vụ đơn giản quanh Hermes Agent cho các doanh nghiệp nhỏ ở Pháp, và tháng gần nhất nó mang về khoảng 2.700 euro. Bài đăng nhận 345 điểm và 159 bình luận.`,
+        p: "Một người dùng Reddit ở Pháp thử làm dịch vụ lắp Hermes cho các doanh nghiệp nhỏ. Anh công bố một tháng thu về khoảng 2.700 euro; đó là số anh tự báo, không phải mức thu nhập mẫu ai cũng đạt được. Điều thực tế hơn con số ấy là cách anh chia trách nhiệm giữa mình và khách hàng.",
+      },
+      { h: "Không bán một bản cài đặt rồi biến mất" },
+      {
+        p: "Anh thu phí ban đầu để cài và cấu hình, sau đó tính khoảng 200 euro mỗi tháng cho hosting, giám sát, cập nhật, chỉnh nhẹ quy trình và hỗ trợ. Khách tự trả tiền sử dụng model/API vào tài khoản của họ, nên anh không phải đoán trước hay gánh hộ lượng token phát sinh. Đổi lại, khoản thu hằng tháng gắn với công việc bảo trì thật, không phải thu nhập thụ động.",
       },
       {
-        p: `Mô hình kinh doanh rất thẳng: thu phí cài đặt - cấu hình một lần; sau đó khoảng 200 euro mỗi tháng cho bảo trì, cập nhật, giám sát, chỉnh nhẹ quy trình và hosting. Công ty tự trả trực tiếp tiền dùng model/API của họ - nghĩa là anh không ôm rủi ro chi phí token.`,
+        p: "Để một công ty dùng được, anh không chỉ cài chương trình: còn nối vào Telegram hoặc Slack, dựng tự động hóa phù hợp, viết prompt và skill theo việc nhân viên đang làm. Với người không rành kỹ thuật, câu hỏi quyết định là “sáng mai có dùng được không, ai sửa khi hỏng?”, không phải agent có bao nhiêu tính năng.",
       },
+      { h: "Một cách đọc thận trọng" },
       {
-        p: `Phần lớn giá trị, theo anh, không nằm ở việc "cài một AI agent", mà ở việc khớp nó vào quy trình thật của từng công ty: nối vào Telegram/Slack, dựng các tự động hóa, viết prompt và skill dùng được ngay, và đảm bảo một người không rành kỹ thuật cũng thật sự dùng được. Doanh nghiệp Pháp muốn tự động hóa bằng AI nhưng không muốn tự quản server, API, nhà cung cấp model hay cấu hình agent - anh bán đúng phần họ không muốn đụng vào.`,
-      },
-      {
-        p: `Phần thật thà: "Đây không phải thu nhập thụ động hoàn toàn, vì bảo trì và hỗ trợ vẫn tốn thời gian. Nhưng một khi quy trình lắp đặt đã được chuẩn hóa, khoản phí hằng tháng lặp lại trở nên rất hấp dẫn."`,
-      },
-      {
-        p: `Điều thú vị nhất nằm ở bình luận: bài viết thành điểm tập hợp của giới freelancer nói tiếng Pháp - một kỹ sư hạ tầng - bảo mật - AI nhắn "hợp tác khi nào bạn muốn", một chuyên gia về gia cố an ninh mạng chào dịch vụ, có người hỏi "nhóm đã lập chưa để vào", và cả những tiếng nói từ Martinique vùng Caribe hay Brazil hỏi cách nhân rộng mô hình ở nước họ. Một ý tưởng dịch vụ hóa ra đang là nhu cầu của cả một cộng đồng.`,
+        p: "Nếu muốn thử mô hình này, hãy chọn một quy trình nhỏ mà khách đang phải lặp lại, xác định ai duyệt đầu ra và ai chịu trách nhiệm khi hệ thống lỗi, rồi mới bàn phí bảo trì. Phần bình luận dưới bài cho thấy nhiều freelancer quan tâm hợp tác, nhưng chưa phải bằng chứng rằng nhu cầu thị trường ở nơi khác sẽ giống ở Pháp.",
       },
     ],
   },
@@ -535,189 +477,7 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
-  {
-    slug: "milesdeutscher-obsidian",
-    icon: "🧠",
-    type: "long",
-    title: "Nối cả doanh nghiệp vào Hermes qua một vault Obsidian",
-    teaser:
-      "Ghi chú khách hàng, quy trình chuẩn, biên bản họp, quyết định kinh doanh - tất cả vào một vault Obsidian cho agent đọc. Bài hướng dẫn 3 bước kèm prompt nguyên văn, 504 lượt thích.",
-    sourceLabel: "X (Twitter) - @milesdeutscher",
-    sourceUrl: "https://x.com/milesdeutscher/status/2068133236052730347",
-    body: [
-      {
-        p: `"Tôi nối toàn bộ doanh nghiệp của mình vào Hermes x Obsidian. Ghi chú khách hàng, SOP, nhật ký cuộc họp, quyết định kinh doanh - tất cả. Agent Hermes của tôi giờ chạy những tự động hóa mà tôi còn không biết là mình cần, và nó tự tiến hóa theo thời gian." Bài viết của anh nhận 504 lượt thích và 43,9 nghìn lượt xem. Và đây là đúng 3 bước anh bày lại, nguyên văn.`,
-      },
-      { h: "Bước 1. Tạo vault doanh nghiệp trong Obsidian" },
-      {
-        p: `Tải app từ obsidian.md, tạo một vault mới tên "Business Brain" (Bộ não doanh nghiệp), rồi đổ hết vào đó: ghi chú khách hàng và dữ liệu CRM, quy trình chuẩn (SOP), biên bản họp và việc cần làm, mục tiêu kinh doanh và OKR, dữ liệu tài chính và các quyết định - nói chung là mọi ngữ cảnh bạn muốn agent biết. Nguyên tắc của anh: "Càng cho nó ăn nhiều, nó càng mạnh."`,
-      },
-      { h: "Bước 2. Nối Hermes vào vault bằng một câu prompt" },
-      {
-        p: `Mở app Hermes desktop và dán đúng prompt này: "I want to connect you to my business Obsidian vault, and have you act as my business orchestrator - do everything necessary to set up that connection now." (Tôi muốn nối bạn vào vault Obsidian doanh nghiệp của tôi, và để bạn đóng vai nhạc trưởng điều hành - hãy làm mọi thứ cần thiết để thiết lập kết nối đó ngay.) Từ đây Hermes có quyền truy cập trực tiếp vào toàn bộ ngữ cảnh doanh nghiệp.`,
-      },
-      { h: "Bước 3. Để nó tự xây" },
-      {
-        p: `Mỗi lần bạn thêm một ghi chú mới, Hermes tự động "tiêu hóa" nó; theo thời gian việc này xây nên một ký ức sống về toàn bộ doanh nghiệp. Bắt đầu hỏi agent những câu kiểu: "Dựa trên mọi thứ bạn biết về doanh nghiệp của tôi, ta nên xây tự động hóa nào trước?" Thậm chí giao hẳn: "Mỗi đêm trong lúc tôi ngủ, hãy nạp dữ liệu từ vault doanh nghiệp và tự chủ xây các tự động hóa." Anh gọi đây là một trong những tự động hóa mạnh nhất mà lại đơn giản nhất bạn có thể chạy - và khuyên lưu bài lại kẻo quên.`,
-      },
-    ],
-  },
-  {
-    slug: "emmagine79-landing",
-    icon: "🌐",
-    title:
-      'Bảo agent "Google tôi rồi dựng trang web", nó tự làm hết và nhắn tin báo xong',
-    teaser:
-      "Chỉ một câu lệnh, agent tự tìm kiếm, dựng landing page, SSH lên VPS, đăng lên mạng, rồi nhắn tin báo đã xong - câu chuyện được trang user-stories chính chủ của Hermes chọn đăng.",
-    sourceLabel: "X (Twitter) - @emmagine79",
-    sourceUrl: "https://x.com/emmagine79/status/2053360898501468362",
-    body: [
-      {
-        p: `Anh kể trên Discord, nguyên văn: "Tôi bảo nó google về tôi rồi dựng một landing page dựa trên những gì tìm được, và chuyện đó thật sự làm tôi choáng - vì nó tự chạy các lượt tìm kiếm, tìm ra các đường link, tạo trang, SSH vào VPS của tôi, tải trang lên, rồi nhắn tin cho tôi khi xong. Cái gì vậy?!" Câu chuyện được trang user-stories chính chủ của Hermes chọn đăng.`,
-      },
-      {
-        p: `Đây là ví dụ rõ nhất cho câu hỏi agent khác gì chatbot: chatbot sẽ trả lời bạn bằng... hướng dẫn dựng trang web; còn agent tự làm cả chuỗi - tìm kiếm, tổng hợp, viết trang, đăng lên server thật, rồi quay lại báo cáo. Không một bước nào cần anh ngồi canh.`,
-      },
-      {
-        p: `Cũng trong những ngày đó, anh đăng thêm một bài khác gây tiếng vang lớn hơn (509 lượt thích, hơn 64 nghìn lượt xem): "hermes + discord với gpt 5.5/deepseek v4 thật sự đã thay đổi cuộc sống tôi! đây là vài thứ nó làm cho tôi trong tuần này" - kèm danh sách những việc agent tự làm trong một tuần. Bộ đôi đáng chú ý trong setup của anh: Hermes làm khung agent, Discord làm nơi trò chuyện, và model thì trộn theo việc.`,
-      },
-      {
-        p: `Điểm đáng học: anh không phải dân dựng hệ chuyên nghiệp - thứ anh làm là giao một việc có mục tiêu rõ ("trang web về tôi, đăng lên VPS của tôi") rồi để agent tự tìm đường. Khi kết quả về tận điện thoại kèm tin nhắn báo xong, phần việc của người dùng chỉ còn là nghiệm thu.`,
-      },
-    ],
-  },
-  {
-    slug: "fpostigo-dell",
-    icon: "💻",
-    type: "long",
-    title: "Chạy ngon trên chiếc Dell 5 năm tuổi, GPU đã hỏng",
-    teaser:
-      '"Tôi không có máy mạnh hay GPU, tôi không dùng được agent!" - Không ai nói bạn cần cả. Agent của anh chạy trên chiếc laptop Dell XPS mua 5 năm trước chỉ để họp Zoom và nghe Spotify, GPU đã hỏng.',
-    sourceLabel: "X (Twitter) - @fpostigo",
-    sourceUrl: "https://x.com/fpostigo/status/2065468128906383452",
-    body: [
-      {
-        p: `Bài viết của anh mở đầu bằng câu anh hay nghe nhất: "Tôi không có máy tính mạnh hay GPU, tôi không dùng được agent!" Trả lời của anh: "Không ai nói là bạn cần." Agent Hermes của anh chạy trên một chiếc laptop Dell XPS cũ, GPU đã hỏng; anh mua nó 5 năm trước chỉ để gọi Zoom và nghe Spotify - vậy mà nó vẫn chạy, và các agent của anh vẫn chạy trên đó mỗi ngày. "Chúng chạy được trên Mac, Windows, Linux - chúng chỉ đang chờ bạn thôi!"`,
-      },
-      { h: "Nghĩ về agent cho đúng: robot phiên bản của chính bạn" },
-      {
-        p: `Cách anh hình dung: máy tính của bạn chỉ chạy những việc thường ngày của bạn; còn agent là một phiên bản robot của chính bạn, làm đúng những việc bạn vẫn làm - chỉ khác là nó được gắn bộ não AI tăng lực. Nó nghĩ cho bạn, lập kế hoạch cho bạn, thực thi cho bạn - giống như khi bạn nói chuyện với AI yêu thích nhưng đi xa hơn một bước: bạn nhờ nó sửa email? Nó sẽ viết và gửi luôn. Nhờ phân tích dữ liệu? Nó dựng luôn dashboard hoặc bài thuyết trình, không còn copy-paste. Nhờ lên kế hoạch du lịch? Nó đặt chỗ và xếp luôn vào lịch. Nhờ tìm cách dỗ con nín khóc? "Cái này thì chưa - trừ phi bạn dựng cho bọn trẻ một con robot nhỏ để chúng tương tác, mà chuyện đó bạn hoàn toàn làm được!"`,
-      },
-      { h: "Ví von Netflix: máy bạn chỉ là cái màn hình" },
-      {
-        p: `Anh ví von: như Netflix - bạn đâu cần lưu toàn bộ phim của họ trong tivi mới xem được; bạn chỉ stream đúng phần cần xem. Agent cũng vậy: bạn giao việc, phần "nghĩ nặng" diễn ra trên các máy chủ đám mây (OpenAI, Anthropic, Nous Research, Fireworks - hãng nào bạn chọn), rồi agent mang kết quả về hành động ngay trên máy của bạn. "Máy tính của bạn chỉ là giao diện. Phần việc nặng diễn ra ở nơi khác."`,
-      },
-      { h: "Đừng để ai dụ mua máy mới" },
-      {
-        p: `Chốt lại, nguyên văn: "Đừng để ai đẩy bạn đi mua một chiếc Mac Mini hay bất kỳ cái 'máy tính AI' nào - hãy dùng những gì bạn đang có. Nếu máy tính của bạn bật lên được, bạn có đủ rồi." Về model chạy local: có ưu có nhược (anh hứa mổ xẻ ở bài khác), "nhưng kể cả như vậy, Mac Mini có lẽ vẫn không phải câu trả lời - và chắc chắn bạn không cần nó để bắt đầu."`,
-      },
-    ],
-  },
-  {
-    slug: "exm7777-family",
-    icon: "👨‍👩‍🧒",
-    title: "Một Hermes cho cả nhà, ai nấy dùng một kiểu trên WhatsApp",
-    teaser:
-      "Ba tuần dựng một agent cho gia đình 3 người, mỗi người một kiểu dùng, một gói thuê bao ChatGPT là quá đủ - bài đăng 350 lượt thích, 34 nghìn lượt xem.",
-    sourceLabel: "X (Twitter) - @EXM7777",
-    sourceUrl: "https://x.com/EXM7777/status/2049869015221510424",
-    body: [
-      {
-        p: `Nguyên văn bài đăng của anh: "3 tuần trước tôi quyết định dựng một agent Hermes cho gia đình mình (3 người). Ai cũng dùng nó cho những việc khác nhau, một gói thuê bao ChatGPT 200 USD là quá đủ. Nó mở ra cả một thế giới mới cho họ - chỉ vì nó sống ngay trong WhatsApp và có những hành vi chủ động như có phép màu." Bài đăng nhận 350 lượt thích và hơn 34 nghìn lượt xem.`,
-      },
-      {
-        p: `Hai chữ đắt nhất trong bài là "sống trong WhatsApp": người nhà vốn quen nhắn tin ở đó, không phải học app mới, không phải nhớ câu lệnh - agent ẩn mình đúng chỗ họ vẫn trò chuyện mỗi ngày. Và "hành vi chủ động": nó không chờ được hỏi, mà tự lên tiếng khi có việc - thứ khiến người không rành công nghệ cũng dùng được.`,
-      },
-      {
-        p: `Điểm đáng học: bắt đầu từ nhu cầu của cả nhà thay vì của riêng mình - mỗi thành viên một use case, dùng chung một hạ tầng. Chi phí vận hành quy về đúng một gói thuê bao model, còn lại là công sức bỏ ra một lần khi dựng.`,
-      },
-    ],
-  },
-  {
-    slug: "nathanwilbanks-100k",
-    icon: "💰",
-    title: "Ngày 297: hơn 100.000 USD việc cho khách đã thành tự động",
-    teaser:
-      "Cùng một agent chạy 24/7 từ tháng 7: 993.115 giây tính toán tự động, hơn 5 tỷ token, 127.743 workflow, 605.292 lần thực thi công cụ - và hơn 100.000 USD giá trị việc khách hàng.",
-    sourceLabel: "X (Twitter) - @NathanWilbanks_",
-    sourceUrl: "https://x.com/NathanWilbanks_/status/2047883176622620934",
-    body: [
-      {
-        p: `Anh trả lời thẳng bài đăng của Teknium (đồng sáng lập Nous Research): "Hôm nay là ngày thứ 297 trong chuỗi của tôi" - chuỗi ở đây là số ngày chạy liên tục cùng một agent AI, 24/7, kể từ tháng 7.`,
-      },
-      {
-        p: `Bảng số liệu anh tự thống kê, nguyên văn: 297 ngày chạy 24/7; 993.115 giây thời gian tính toán đã được tự động hóa; 5.020.623.362 token đã sinh ra; 127.743 workflow đã chạy; 605.292 lần thực thi công cụ; và hơn 100.000 USD giá trị công việc cho khách hàng đã thành tự động.`,
-      },
-      {
-        p: `Số liệu do người kể tự đưa ra, chưa qua kiểm chứng độc lập - nhưng thông điệp thì rõ: giá trị của agent không nằm ở một buổi demo, mà ở việc dùng đều mỗi ngày. Gần 300 ngày không tắt, con số tự nó kể chuyện tích lũy: hơn nửa triệu lần công cụ được chạy thay cho người ngồi đó bấm.`,
-      },
-      {
-        p: `Chi tiết đáng chú ý nhất với người làm dịch vụ: phần giá trị lớn nhất không phải "agent biết chat", mà là những workflow lặp lại trong việc của khách - thứ một khi đã dựng xong thì chạy mãi, đếm được bằng tiền.`,
-      },
-    ],
-  },
-  {
-    slug: "kanikabk-self-improve",
-    icon: "⚡",
-    type: "long",
-    title: "12 workflow biến Hermes thành bộ máy tự chạy mỗi ngày",
-    teaser:
-      "Bài X Article tổng hợp 12 workflow tự động hóa kèm prompt nguyên văn: bản tin sáng, phân loại email, review tuần, tình báo đối thủ, canh server, tự review PR... và insight đắt nhất: lần chạy đầu tiên luôn là bản yếu nhất.",
-    sourceLabel: "X (Twitter) - @KanikaBK",
-    sourceUrl: "https://x.com/KanikaBK/status/2054572674777797018",
-    body: [
-      {
-        p: `Kanika (@KanikaBK) - người tự giới thiệu là "test công cụ và agent AI mỗi ngày" - viết hẳn một bài X Article dài: "12 workflow tốt nhất để tự động hóa việc hằng ngày với Hermes Agent", kèm prompt nguyên văn cho từng cái. Luận điểm mở đầu: sức mạnh thật của Hermes không nằm ở một phiên chat đơn lẻ, mà ở những gì nó làm mỗi ngày mà không cần bạn nhắc. "Một khi workflow đã được lên lịch, Hermes tự chạy nó, tự học từ nó, và tự giỏi dần lên theo thời gian."`,
-      },
-      { h: "Ba khối xây dựng của mọi tự động hóa" },
-      {
-        ul: [
-          "Lập lịch cron: mô tả lịch trình bằng tiếng người, Hermes tự tạo job - không cần đụng tới crontab.",
-          "Skills: theo quan sát của cô, cứ mỗi 15 lần gọi công cụ Hermes lại tự viết những gì học được thành một file skill tái sử dụng - workflow lặp lại thì tự nhanh hơn và khôn hơn.",
-          "Subagents: việc lớn thì Hermes tự tách thành tối đa 3 agent chạy song song qua delegate_task.",
-        ],
-      },
-      { h: "Bốn workflow chạy mỗi ngày" },
-      {
-        ul: [
-          'Bản tin sáng (workflow nhập môn phổ biến nhất): 7 giờ mỗi sáng gửi qua Telegram/Slack/WhatsApp thời tiết, 3 tin AI hoặc tin ngành đáng chú ý nhất, lịch hôm nay, và tin nhắn được đánh dấu khẩn. Prompt mẫu: "Every morning at 7am, send me a briefing with: today\'s weather, top 3 AI or industry news headlines, my calendar events for the day, and any messages flagged as urgent."',
-          "Phân loại và tóm tắt email: 8 giờ sáng quét hộp thư, đánh dấu email cần trả lời ngay trong ngày, nhóm theo độ khẩn, gửi tóm tắt một dòng mỗi email quan trọng. Vài phiên sau nó tự học người gửi nào là ưu tiên của bạn và ngừng làm ồn.",
-          'Chuẩn bị khối tập trung (deep work): 8h30 mỗi ngày làm việc, kéo 3 việc hàng đầu từ trình quản lý task, kiểm tra việc nào đang bị chặn, xem hôm qua bạn làm gì, gửi một mẩu ghi chú "sẵn sàng làm việc" kèm việc quan trọng nhất nên bắt đầu.',
-          "Nghi thức tắt máy cuối ngày: 18 giờ mỗi ngày làm việc, nó hỏi đúng 3 câu - hôm nay hoàn thành gì, chưa xong gì, ngày mai điều gì quan trọng nhất - rồi lưu câu trả lời vào memory và tạo ghi chú ngắn cho bản tin sáng mai.",
-        ],
-      },
-      { h: "Bốn workflow chạy mỗi tuần" },
-      {
-        ul: [
-          'Review và lập kế hoạch tuần (8 giờ thứ Hai): kéo lịch và các cuộc họp tuần trước; kiểm tra GitHub/Linear xem gì đang chặn, quá hạn, cần bạn quyết; giao một subagent tóm tắt hoạt động mới trong các kênh Slack chính; sinh tài liệu kế hoạch (tuần qua cái gì nhích được, cái gì kẹt, ưu tiên tuần tới); đăng vào Slack DM; và "lưu thành skill mới mỗi khi tìm thấy một mẫu đáng lặp lại".',
-          "Tình báo đối thủ (9 giờ thứ Hai): tìm tin tức về 2-3 đối thủ, tóm nước đi chính, thay đổi sản phẩm, giá, dư luận; so với phát hiện tuần trước, đánh dấu mọi thứ vừa đổi, gửi về Telegram. Workflow này cộng dồn rất nhanh vì mỗi tuần nó hiểu thêm điều bạn thật sự quan tâm.",
-          "Chuẩn bị đường ống nội dung (19 giờ Chủ nhật): nghiên cứu chủ đề đang lên trong ngách của bạn 7 ngày qua, đề xuất 5 ý bài kèm tiêu đề, góc tiếp cận và một câu hook cho mỗi ý.",
-          "Nghiên cứu newsletter theo lô (14 giờ thứ Sáu): quét 5 diễn biến đáng chú ý nhất trong ngành tuần này, viết tóm tắt 3 câu cho mỗi cái, xuất thành file newsletter-draft-[ngày].md.",
-        ],
-      },
-      { h: "Bốn workflow luôn bật" },
-      {
-        ul: [
-          "Canh sức khỏe server: mỗi 2 giờ kiểm tra CPU, RAM, ổ đĩa trên server chính; vượt 85% là bắn cảnh báo Telegram ngay; 17 giờ thứ Sáu dọn staging và xoay vòng log cũ - tất cả không cần bạn SSH tay.",
-          "Tự review PR trên GitHub: mỗi khi repo mở pull request mới, nó đọc diff, đối chiếu quy ước code của team, và đăng thẳng bình luận review có cấu trúc: gì ổn, gì cần xem lại, còn câu hỏi nào.",
-          "Canh RSS và paper nghiên cứu: 7h30 mỗi sáng quét feed hoặc mục arXiv bạn theo dõi, lọc thứ thật liên quan, tóm 3 bài hàng đầu mỗi bài 4 câu kèm link nguồn. Vài tuần sau nó học đúng gu của bạn và ngừng đẩy thứ không liên quan.",
-          "Thông báo subscriber/lead mới: có người đăng ký newsletter (Beehiiv, Substack, form...) là ping Telegram kèm tên và email; mỗi giờ gửi một digest nhanh: subscriber mới hôm nay, tỷ lệ mở, link được bấm nhiều nhất.",
-        ],
-      },
-      { h: "Điều khiển tất cả bằng lệnh chat" },
-      {
-        p: `Khi các tự động hóa đã chạy, cô quản chúng ngay trong Telegram bằng lệnh thường: /cron list để xem toàn bộ job đang chạy, /cron run <job_id> để kích ngay một job phục vụ test, /cron pause để tạm dừng mà không xóa, /cron edit để đổi lịch hoặc đổi prompt, /cron remove để xóa hẳn.`,
-      },
-      { h: "Insight đắt nhất: vòng lặp lãi kép" },
-      {
-        p: `Nguyên văn: "Lần chạy đầu tiên của bất kỳ workflow nào cũng là phiên bản yếu nhất của nó." Mỗi lần chạy, Hermes đọc lại memory của chính nó, cập nhật hiểu biết về sở thích của bạn, và thỉnh thoảng tự viết ra một skill đã tinh chỉnh. Sau một tháng chạy bản tin sáng, bản tin sắc hơn, ngắn hơn, trúng hơn ngày đầu - "mà bạn không phải đổi gì cả." Cô chốt: "Đó là vòng lặp lãi kép mà chưa ai xây vào một agent mã nguồn mở. Hầu hết công cụ sẽ đi ngang. Hermes thì tăng tốc."`,
-      },
-      { h: "Bắt đầu từ đâu" },
-      {
-        p: `Lời khuyên của cô: đừng dựng cả 12 cái một lúc. Bắt đầu với một - và lựa chọn tốt nhất cho đa số mọi người là bản tin sáng: đơn giản, hữu ích ngay lập tức, và cho Hermes đủ ngữ cảnh để bắt đầu dựng mô hình về các ưu tiên hằng ngày của bạn. Sau đó mỗi tuần thêm đúng một workflow mới. Trong một tháng, bạn sẽ có một trợ lý biết rõ hệ thống, lịch trình và ưu tiên của mình - "mà bạn không phải giải thích lại bất cứ thứ gì nữa."`,
-      },
-    ],
-  },
+
   {
     slug: "holmebengt-dreaming-3am",
     icon: "🌙",
@@ -781,29 +541,7 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
-  {
-    slug: "uzairansar-ios-app",
-    icon: "📲",
-    title: "Chưa từng viết Swift, vẫn tự dựng app iOS cho agent của mình",
-    teaser:
-      "Chat với agent qua Telegram trên tàu điện ngầm thấy bất tiện, anh tìm app iOS cho Hermes - không có - nên tự dựng một cái bằng chính AI, dù lần cuối anh viết app là cái máy tính bỏ túi năm 15 tuổi. Bài viết 344 điểm, app sau đó mở mã nguồn.",
-    sourceLabel: "Reddit - u/uzairansar",
-    sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1ujduc7/",
-    body: [
-      {
-        p: `Chuyện bắt đầu trên tàu điện ngầm ở New York: anh đang chat với agent Hermes của mình qua Telegram. Hermes thì anh mê, còn Telegram thì không. Ý nghĩ lóe lên: "Sẽ đã thế nào nếu được giao tiếp với agent của mình qua một app mượt như app ChatGPT?" Anh đi tìm một app iOS cho Hermes - không tồn tại. Vậy là anh quyết tự dựng.`,
-      },
-      {
-        p: `Lý do anh tự chạy agent riêng, nguyên văn: "vì nó là CỦA TÔI: server, dữ liệu, luật lệ - và vì nó làm được việc thật." Còn hành trang iOS của anh: chưa từng dựng app bao giờ, không thật sự biết Swift; lần cuối anh thử làm app là một cái máy tính bỏ túi hồi 15 tuổi. "Nhưng tôi muốn cái app này đủ nhiều để dùng chính AI mò ra toàn bộ - xây một client AI bằng AI. Nước đi thiên tài."`,
-      },
-      {
-        p: `App đó tên Hermex: "cảm giác như app ChatGPT, nhưng trỏ vào agent Hermes của chính tôi" - và giờ với phần lớn mọi việc, anh với tay tìm Hermex trước cả app ChatGPT. Bài đăng nhận 344 điểm và 143 bình luận; sau đó anh mở mã nguồn toàn bộ app trên GitHub (repo uzairansaruzi/hermex) và biến phần bình luận thành quầy hỗ trợ kỹ thuật: hướng dẫn kiểm tra địa chỉ webui dashboard trước khi đăng nhập, cách nối qua tunnel cho người chạy server ở nhà, gỡ lỗi cho người dùng reverse proxy. Có người hưởng ứng: "Tôi cũng vừa làm y vậy! Còn vài lỗi nhưng chạy được!"`,
-      },
-      {
-        p: `Bài học cho người không chuyên: rào cản "không biết code" thấp hơn bạn nghĩ - biết rõ mình muốn cái gì (một app trỏ vào agent của chính mình, dữ liệu của chính mình) quan trọng hơn biết viết ngôn ngữ lập trình nào.`,
-      },
-    ],
-  },
+
   {
     slug: "riceinmybelly-job-site",
     icon: "👷",
@@ -854,39 +592,7 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
-  {
-    slug: "ninjapapi-5-dieu-khac-chatgpt",
-    icon: "🆚",
-    title:
-      '"ChatGPT là một tab trình duyệt. Hermes là một tiến trình đang chạy"',
-    teaser:
-      "So sánh gọn nhất về khác biệt giữa chatbot và agent: một bên chờ bạn mở lên để hỏi, một bên chạy nền, dựng mô hình về cách bạn làm việc và tự nhắn tin cho bạn trước cả khi bạn thức dậy.",
-    sourceLabel: "Reddit - u/ninjapapi",
-    sourceUrl:
-      "https://www.reddit.com/r/SideProject/comments/1t6356h/5_things_hermes_does_as_an_ai_agent_that_chatgpt/",
-    body: [
-      {
-        p: `Nguyên văn câu mở đầu của anh: "ChatGPT là một tab trình duyệt. Hermes là một tiến trình máy chủ đang chạy ngay lúc này, đã âm thầm dựng mô hình về cách bạn làm việc suốt vài tuần qua, và vừa nhắn cho bạn một tin Telegram trước cả khi bạn thức dậy."`,
-      },
-      { h: "5 khác biệt thật sự, theo danh sách của anh" },
-      {
-        ol: [
-          "Không dừng lại khi bạn gập laptop: agent sống trên server, không phải trong một phiên trình duyệt - nó chạy liên tục dù bạn có đang nhìn hay không.",
-          'Nó nhắn tin trước: bản tin Telegram gửi đúng giờ bạn đặt, không cần bạn gõ câu nào - "không chatbot nào trên đời làm được điều đó".',
-          "Trí nhớ càng dùng càng hữu ích: tới tuần thứ tư, thứ năm, nó biết loại việc nào bạn luôn từ chối, email bạn thích soạn theo khuôn nào, liên hệ nào bạn trả lời nhanh - và ngữ cảnh đó lãi kép.",
-          'Chạy code và lệnh thật, không chỉ viết ra: commit đẩy lên GitHub, file được di chuyển, script được kích hoạt - không phải "đây là code" mà là "việc đã xong".',
-          "Thao tác trong chính các app bạn dùng: email được gửi đi, sự kiện lịch được tạo, form được điền - \"khoảng cách giữa 'đây là bản nháp' và 'tôi đã gửi rồi' chính là toàn bộ giá trị\".",
-        ],
-      },
-      { h: "Phần bình luận đáng đọc không kém" },
-      {
-        p: `Về chi phí, anh giải thích: bạn tự mang API key nên trỏ được vào Claude, GPT, Gemini hay bất kỳ model nào; đa số mọi người chạy model nhỏ rẻ cho việc thường ngày và dành model nặng cho việc phức tạp. Một người bình luận chốt đúng ý nhất: "Ngày đầu tiên và tuần thứ sáu với một agent thật là hai sản phẩm khác nhau - nó bắt đầu đoán việc bạn cần trước khi bạn hỏi, mà phần lớn mọi người không kiên trì ở lại đủ lâu để thấy điều đó." Người khác kể: "Agent của tôi nhắn tin TRƯỚC cho tôi kèm bản tóm tắt lịch ngày mới, lúc tôi còn chưa ra khỏi giường - mất vài giây để hiểu chuyện gì vừa xảy ra, và bạn thôi không còn nghĩ nó là công cụ nữa."`,
-      },
-      {
-        p: `Còn đây là câu trả lời gọn nhất cho "agent khác gì chatbot": chatbot biết nói, agent biết làm - và vẫn tiếp tục làm khi bạn không ngồi đó. Anh cũng nhắc một điểm hay bị bỏ qua: các bản demo chạy thử tại chỗ thường gây hiểu lầm - bản chất của công cụ này nằm ở một hệ chạy thường trực.`,
-      },
-    ],
-  },
+
   {
     slug: "jonathan-rivera-obsidian-memory",
     icon: "🗂️",
@@ -939,47 +645,55 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "kenmazaika-dictate-y-tuong",
+    type: "long",
     icon: "🎙️",
-    title: "Nói ý tưởng lộn xộn vào điện thoại, nhận lại tài liệu chỉn chu",
+    title:
+      "Nói ý tưởng lộn xộn vào điện thoại, xử lý hai lượt rồi mới viết tài liệu",
     teaser:
-      "Quy trình anh dùng nhiều nhất với Hermes: đọc ý nghĩ lộn xộn thành lời, một topic Telegram hứng trọn, agent biến nó thành đề cương có cấu trúc rồi thành tài liệu hoàn chỉnh - không một phút ngồi trong trình soạn thảo.",
+      "Một người dùng Hermes không bắt agent viết bài ngay từ lời nói thô. Anh giữ bản gốc, sắp xếp lại ý thành đề cương, xem các liên hệ gợi ra rồi mới duyệt để ra tài liệu.",
     sourceLabel: "Reddit - u/kenmazaika",
     sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1ut8o53/",
     body: [
       {
-        p: `Cả chuỗi của anh đi như sau: đọc ý nghĩ thành lời trên điện thoại bằng app đọc chính tả (Wispr Flow - tự cắt từ thừa, giữ mạch, vẫn nghe ra giọng của anh); một topic Telegram chuyên biệt hứng trọn "bức tường chữ" đó và Hermes tự động xử lý; nó nắn mớ ý thô thành một đề cương có cấu trúc, kèm một mục "riff" chứa những mối liên hệ mà chính anh chưa nhìn ra; toàn bộ output lưu thành file markdown cục bộ để tham chiếu chéo giữa các topic; cuối cùng anh thả file đó vào topic chung và xin một tài liệu "Proof doc" hoàn chỉnh - nó tự sinh ra hết.`,
+        p: "Có những ý tưởng chỉ xuất hiện lúc đang đi đường, không tiện ngồi mở trình soạn thảo. Tác giả đọc chính tả vào điện thoại, gửi phần chữ ấy tới một topic Telegram dành riêng cho ý tưởng. Anh dùng Wispr Flow để chép lời gọn hơn, nhưng đầu vào vẫn là dòng suy nghĩ đang đổi hướng, có lặp và có đoạn chưa rõ.",
+      },
+      { h: "Đừng bắt agent nhảy thẳng từ lời nói sang bản cuối" },
+      {
+        p: "Hermes xử lý lượt đầu thành ba lớp: giữ lại bản thô để đối chiếu; sắp xếp những gì anh thực sự nói thành markdown có cấu trúc; và thêm một phần riêng cho các mối liên hệ mới mà agent gợi ra. Phần gợi ý không bị trộn lẫn với lời tác giả, nên anh biết ý nào là của mình, ý nào cần cân nhắc thêm.",
       },
       {
-        p: `Phần làm anh ngạc nhiên nhất: Hermes không chỉ giỏi tóm và tổng hợp ý, mà còn xây tiếp LÊN TRÊN những gì anh vừa nói. Còn đây là cú chuyển tư duy anh đúc kết: "Hermes không phải để tự động hóa mọi thứ. Nó để bắt lấy ý định lộn xộn và biến thành thứ có cấu trúc, trong khi tôi vẫn nằm trong vòng phán xét. Tự động hóa 97% - đừng giết cả dự án vì cố tự động hóa 3% cuối cùng."`,
+        p: "Bản có cấu trúc được lưu thành file cục bộ. Khi cần một tài liệu hoàn chỉnh, anh đưa file ấy sang topic chung rồi yêu cầu Hermes viết “Proof doc”. Đó là lượt thứ hai, sau khi ý thô đã được tổ chức. Trong bình luận, anh nhấn mạnh chính việc cố tình làm hai lượt - thay vì một prompt “viết ngay đi” - là bí quyết để không đánh mất ý định ban đầu.",
       },
+      { h: "Chỗ con người vẫn phải giữ" },
       {
-        p: `Ở phần bình luận, anh bật mí kỹ thuật lõi: "Bí quyết không nằm ở làm một phát ăn ngay, mà ở cố tình làm HAI phát." Thay vì ra lệnh một lượt kiểu "đây là ý tưởng, làm cho tôi cái đề cương", quy trình bắt-ý của anh trả về ba lớp: bản thô nguyên gốc, bản lời anh nói được sắp xếp lại thành markdown (gỡ những chỗ anh đổi ý giữa chừng nhưng vẫn trung thành với ý thật), và phần liên hệ mở rộng thêm. Anh còn quay video demo cảnh đọc chính tả 20 phút hóa thành đề cương có cấu trúc theo thời gian thực.`,
-      },
-      {
-        p: `Bình luận cho thấy mẫu hình này đang lan rộng: người làm app tự băm video YouTube rồi cho Hermes tóm tắt, cất vào wiki nội bộ, mỗi tuần nhận một bản digest kèm các mối liên hệ "trực giác" giữa những video đã nạp; người ghi âm trên đồng hồ Apple Watch để bản ghi tự đồng bộ về Mac mini rồi hóa thành lời nhắc việc (Whisper bị loại vì ảo giác quá nhiều với giọng anh ta, đang dùng Scribe 2); người đọc chính tả lúc lái xe qua webhook, về tới nhà là có sẵn kế hoạch hành động. Cảm động nhất là một độc giả 55 tuổi, bắt đầu từ chiếc kính Ray-Ban Meta: "Tôi gõ không nhanh bằng tốc độ tôi nghĩ - đây là hệ đầu tiên cho tôi tuôn ý ra ở tốc độ suy nghĩ, không phải chạm bàn phím."`,
+        p: "Anh không muốn tự động hóa nốt phần phán xét cuối cùng. Một bản ghi lời nói có thể nghe nhầm; một liên hệ do agent tìm ra có thể rất hay nhưng cũng có thể đi quá xa. Đọc lại bản thô, sửa dàn ý và duyệt bản cuối là ba điểm kiểm soát đơn giản. Quy trình này hữu ích cho người nghĩ nhanh hơn tốc độ gõ, kể cả khi tài liệu cuối chỉ là ghi chú nội bộ chứ không phải bài đăng công khai.",
       },
     ],
   },
   {
     slug: "squishydata-20-tin-hieu",
+    type: "long",
     icon: "📡",
-    title: '20 "tín hiệu" tự ghi sổ mỗi ngày, một agent trực phân loại',
+    title:
+      "Nhiều luồng theo dõi, một bản thông báo: lọc trước khi làm phiền người dùng",
     teaser:
-      "Khoảng 20 cron job nhỏ âm thầm ghi log vào một cuốn sổ ngày; sau đó một agent khác đọc cuốn sổ đó và tóm những gì thật sự quan trọng vào sổ phân loại - mô hình 'tín hiệu - phân loại - thông báo' anh nói mình không thể sống thiếu.",
+      "Khoảng 20 job nhỏ ghi tín hiệu vào sổ theo ngày; một agent khác phân loại rồi chỉ báo việc đáng xử lý. Có thể bắt đầu với hai nguồn thay vì dựng cả hệ thống.",
     sourceLabel: "Reddit - u/SquishyData",
     sourceUrl: "https://www.reddit.com/r/aiagents/comments/1umccuo/",
     body: [
       {
-        p: `Anh gọi hệ của mình là "Tín hiệu - Phân loại - Thông báo" (Signal - Triage - Notify), dựng ra vì nhu cầu thật và giờ "không thể sống thiếu" để quản lý độ phức tạp của một thế giới đầy agent. Triết lý của anh nghe rất con người: (1) cho agent quyền truy cập rộng vào thế giới số của chính nó, như cách con người xử lý vô thức khối lượng kích thích khổng lồ mỗi ngày; (2) để tự agent quyết định thứ gì quan trọng - giống ta thấy đau hay bị một thứ gì đó giật lấy sự chú ý; (3) cuối cùng là "than phiền về nó, hoặc hát về nó!" - tức thông báo cho đúng người.`,
+        p: "Người kể phải theo nhiều thứ cùng lúc: email, sự kiện sắp tới, dự án GitHub và website. Nếu nguồn nào cũng nhắn trực tiếp vào điện thoại, anh lại mất công lọc thông báo thay vì làm việc. Anh gọi cách xử lý của mình là “Tín hiệu - Phân loại - Thông báo”.",
+      },
+      { h: "Gom trước, quyết định sau" },
+      {
+        p: "Anh chạy khoảng 20 job nhỏ theo lịch, mỗi job phụ trách một tín hiệu và ghi kết quả có cấu trúc vào sổ chung theo ngày. Một job dạng agent đọc cuốn sổ ấy, chọn mục quan trọng rồi ghi sang sổ phân loại. Chỉ ở lớp cuối hệ thống mới gửi tin: email hoặc lịch cần chú ý, repo GitHub có cập nhật, website có dấu hiệu cần cứu. Bài gốc chỉ vẽ chi tiết 7 trong khoảng 20 tín hiệu, không công bố đầy đủ từng job.",
       },
       {
-        p: `Cụ thể: khoảng 20 "tín hiệu" - mỗi cái là một skill chạy thuần bằng cron job - âm thầm ghi log đã định dạng vào một cuốn sổ chung theo ngày. Lớp thứ hai là một cron job dạng agent: đọc cuốn sổ đó, tự phân loại và chỉ đưa những gì thật sự quan trọng vào một cuốn sổ "triage" riêng. Lớp cuối: thông báo - tự nhắn tin cho anh về email hay sự kiện lịch sắp tới, báo dự án GitHub nào vừa cập nhật, website nào đang cần cứu; và chuyển tiếp tới bất kỳ ai có thể giúp hoặc cần biết.`,
+        p: "Một kết nối anh thấy đáng giá là Paperless NGX: hóa đơn và thư từ có hạn xử lý cũng đi vào hệ thống, thay vì nằm ở một ứng dụng riêng dễ bị quên. Mấu chốt không nằm ở số job, mà ở việc thông báo có qua một lớp sàng lọc hay không.",
       },
+      { h: "Bắt đầu nhỏ để biết cái gì đáng báo" },
       {
-        p: `Nối anh thấy "đáng đồng tiền" nhất là Paperless NGX (phần mềm quản lý giấy tờ): nhờ nó agent biết cả hóa đơn, thư từ và deadline - những thứ con người hay quên nhất. Trong bài anh mới vẽ sơ đồ 7 trong số 20 tín hiệu, và hứa sẵn sàng chia sẻ cả phần kỹ thuật lẫn... triết học.`,
-      },
-      {
-        p: `Mẫu hình đáng học: nhiều con mắt nhỏ âm thầm quan sát, một cái đầu tổng hợp lại, rồi mới đến tai bạn. Không cần làm đủ 20 tín hiệu - bắt đầu với 2-3 thứ bạn thật sự quan tâm là đủ.`,
+        p: "Có thể thử với hai nguồn bạn thực sự hay bỏ sót, chẳng hạn lịch và hóa đơn: cho job ghi lại những gì tìm thấy, để agent tóm và chỉ nhắn khi có mục cần hành động. Sau vài ngày hãy kiểm tra cả những mục nó bỏ qua; nếu chỉ đọc thông báo mà không xem lại sổ gốc, bạn sẽ khó phát hiện lần phân loại sai. Đây là gợi ý áp dụng từ mô hình của tác giả, không phải một chức năng anh đã chứng minh chạy hoàn hảo.",
       },
     ],
   },
@@ -988,5 +702,5 @@ export const caseStudies: CaseStudy[] = [
 export const caseStudyAggregator = {
   label: "hermes-agent.nousresearch.com/docs/user-stories",
   url: "https://hermes-agent.nousresearch.com/docs/user-stories",
-  note: "Trang chính chủ của Nous Research gom 326 câu chuyện thật từ Reddit, X, YouTube, Discord, blog... chia 15 nhóm chủ đề, mỗi câu đều dẫn về bài gốc.",
+  note: "Danh mục chuyện người dùng do Nous Research tổng hợp để tham khảo thêm. Nguồn gốc của từng bài nằm ở cuối bài đó.",
 };
