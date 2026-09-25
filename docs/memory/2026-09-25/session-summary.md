@@ -9,10 +9,13 @@
 - Sửa bình luận: trước đó đã push `6672b12` nhưng hiểu sai và ẩn comment seed. Sếp yêu cầu giữ comment mẫu, chỉnh tên/avatar của chúng; đã khôi phục hiển thị, gán họ tên đầy đủ cho 71 comment của 14 UID và avatar chân dung SVG minh họa xen monogram có màu ổn định. Script chỉ cập nhật trường `authorName` của 71/71 seed trong named DB và đọc lại, không đụng comment thật/rules. Build 74 trang qua.
 
 ## In Progress
-- Chưa push bản sửa theo yêu cầu mới; sau push kiểm live khi App Hosting deploy xong.
+- Không có. Chưa thử đăng bình luận thật bằng tài khoản Google.
 
 ## Next Steps
-- Push bản sửa comment mẫu, xác minh remote và trang live.
+- Nếu cần kiểm thao tác bình luận thật, đăng nhập Google trên trang live và gửi một bình luận thử (không dùng tài khoản giả).
+
+## Deployment
+- Push `8b74159` lên `origin/main`; đã xác nhận SHA remote trùng local. Kiểm CDN live trả HTTP 200, JS chunk bài blog chứa tên mới và `sampleKey` (avatar mới). Firestore đã cập nhật và đọc lại 71/71 tên seed.
 
 ## Open Issues
 - Cần sếp cho phép trước khi sửa Firebase rules: đánh dấu đáp án đúng bị chặn bởi rule `isAccepted == false`; rule update post có nguy cơ cho phép người đăng nhập sửa post của người khác.
