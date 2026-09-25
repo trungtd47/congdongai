@@ -1,26 +1,42 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { listPosts, type PostSort, type PostSummary } from '@/lib/firestore-ops';
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import {
+  listPosts,
+  type PostSort,
+  type PostSummary,
+} from "@/lib/firestore-ops";
 
 const sortOptions: { key: PostSort; label: string }[] = [
-  { key: 'new', label: 'Mới nhất' },
-  { key: 'votes', label: 'Nhiều vote' },
-  { key: 'unanswered', label: 'Chưa trả lời' },
+  { key: "new", label: "Mới nhất" },
+  { key: "votes", label: "Nhiều vote" },
+  { key: "unanswered", label: "Chưa trả lời" },
 ];
 
 export function QuestionList() {
-  const [sort, setSort] = useState<PostSort>('new');
+  const [sort, setSort] = useState<PostSort>("new");
   const [posts, setPosts] = useState<PostSummary[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
+    let active = true;
     setLoading(true);
-    listPosts(sort).then((arr) => {
-      setPosts(arr);
-      setLoading(false);
-    });
+    setError(false);
+    listPosts(sort)
+      .then((arr) => {
+        if (active) setPosts(arr);
+      })
+      .catch(() => {
+        if (active) setError(true);
+      })
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+    return () => {
+      active = false;
+    };
   }, [sort]);
 
   return (
@@ -32,8 +48,8 @@ export function QuestionList() {
             onClick={() => setSort(o.key)}
             className={`rounded-full px-4 py-1.5 text-sm font-semibold transition ${
               sort === o.key
-                ? 'bg-teal text-white'
-                : 'border border-line bg-card text-ink-soft hover:border-teal'
+                ? "bg-teal text-white"
+                : "border border-line bg-card text-ink-soft hover:border-teal"
             }`}
           >
             {o.label}
@@ -43,6 +59,13 @@ export function QuestionList() {
 
       {loading ? (
         <p className="text-sm text-ink-soft">Đang tải…</p>
+      ) : error ? (
+        <div
+          role="alert"
+          className="card p-8 text-center text-sm text-ink-soft"
+        >
+          Chưa tải được câu hỏi. Kiểm tra kết nối và thử tải lại trang.
+        </div>
       ) : posts.length === 0 ? (
         <div className="card p-8 text-center text-sm text-ink-soft">
           Chưa có câu hỏi nào. Hãy là người đầu tiên đặt câu hỏi!
@@ -67,8 +90,12 @@ export function QuestionList() {
                   </span>
                 )}
               </div>
-              <h2 className="mb-1 text-[16px] font-bold leading-snug">{p.title}</h2>
-              <p className="mb-3 line-clamp-2 text-sm text-ink-soft">{p.body}</p>
+              <h2 className="mb-1 text-[16px] font-bold leading-snug">
+                {p.title}
+              </h2>
+              <p className="mb-3 line-clamp-2 text-sm text-ink-soft">
+                {p.body}
+              </p>
               <div className="flex items-center gap-4 text-[13px] text-ink-soft">
                 <span>{p.authorName}</span>
                 <span>💬 {p.answerCount}</span>

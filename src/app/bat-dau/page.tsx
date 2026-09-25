@@ -79,6 +79,48 @@ export default function BatDauPage() {
         </div>
       </div>
 
+      <section className="mb-8" aria-labelledby="chon-model">
+        <h2 id="chon-model" className="mb-2 text-[22px] font-extrabold">
+          Cài xong, chọn model theo thứ bạn đã có
+        </h2>
+        <p className="mb-4 max-w-2xl text-sm text-ink-soft">
+          Không cần trả tiền cho hai nơi ngay từ đầu. Chọn một đường, thử một
+          việc nhỏ rồi mới thêm nguồn thứ hai nếu cần.
+        </p>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <Link
+            href="/bat-dau/chon-nha-cung-cap-api#da-co-chatgpt"
+            className="card card-hover block p-5"
+          >
+            <h3 className="mb-2 font-bold">Đã có gói ChatGPT trả phí?</h3>
+            <p className="text-sm text-ink-soft">
+              Thử đăng nhập Codex trong Hermes bằng tài khoản đang có. Nếu tài
+              khoản dùng được, chưa cần nạp thêm OpenRouter để bắt đầu.
+            </p>
+            <span className="mt-3 inline-block text-sm font-semibold text-teal-dark">
+              Xem cách kết nối →
+            </span>
+          </Link>
+          <Link
+            href="/bat-dau/chon-nha-cung-cap-api#bat-dau-openrouter"
+            className="card card-hover block p-5"
+          >
+            <h3 className="mb-2 font-bold">Chưa có hoặc muốn nhiều model?</h3>
+            <p className="text-sm text-ink-soft">
+              Bắt đầu với OpenRouter, chọn model vừa đủ và trả theo token đã
+              dùng. Có thể thêm Codex sau, không phải cài lại Hermes.
+            </p>
+            <span className="mt-3 inline-block text-sm font-semibold text-teal-dark">
+              Xem cách bắt đầu →
+            </span>
+          </Link>
+        </div>
+        <p className="mt-3 text-sm text-ink-soft">
+          Gói ChatGPT và số dư OpenRouter tính riêng; Codex có hạn mức và còn
+          tùy quyền dùng của tài khoản.
+        </p>
+      </section>
+
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {batDauItems.map((item, i) => (
           <Link

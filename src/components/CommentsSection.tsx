@@ -15,6 +15,7 @@ export function CommentsSection({ slug }: { slug: string }) {
   const demo = isDemoMode();
   const [comments, setComments] = useState<ArticleComment[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [body, setBody] = useState("");
   const [name, setName] = useState("");
   const [busy, setBusy] = useState(false);
@@ -23,12 +24,13 @@ export function CommentsSection({ slug }: { slug: string }) {
   useEffect(() => {
     let alive = true;
     setLoading(true);
+    setLoadError(false);
     listComments(slug)
       .then((cs) => {
         if (alive) setComments(cs);
       })
       .catch(() => {
-        if (alive) setComments([]);
+        if (alive) setLoadError(true);
       })
       .finally(() => {
         if (alive) setLoading(false);
@@ -80,6 +82,10 @@ export function CommentsSection({ slug }: { slug: string }) {
       {loading ? (
         <div className="card mb-6 p-4 text-sm text-ink-soft">
           Đang tải bình luận…
+        </div>
+      ) : loadError ? (
+        <div role="alert" className="card mb-6 p-4 text-sm text-ink-soft">
+          Chưa tải được bình luận. Kiểm tra kết nối và thử tải lại trang.
         </div>
       ) : comments.length === 0 ? (
         <div className="card mb-6 p-4 text-sm text-ink-soft">

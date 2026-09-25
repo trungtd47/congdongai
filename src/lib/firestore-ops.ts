@@ -17,6 +17,7 @@ import {
   arrayRemove,
   increment,
   serverTimestamp,
+  type DocumentData,
 } from "firebase/firestore";
 import { isDemoMode, getDbInstance } from "./firebase";
 import {
@@ -86,12 +87,58 @@ function demoSummary(p: DemoPost): PostSummary {
   };
 }
 
+function firestoreDate(value: unknown): string {
+  if (typeof value === "string") return value.slice(0, 10);
+  if (
+    value &&
+    typeof value === "object" &&
+    "toDate" in value &&
+    typeof value.toDate === "function"
+  ) {
+    return (value.toDate() as Date).toISOString().slice(0, 10);
+  }
+  return "";
+}
+
+function firestorePost(id: string, data: DocumentData): PostSummary {
+  return {
+    id,
+    title: data.title ?? "",
+    body: data.body ?? "",
+    tags: data.tags ?? [],
+    authorUid: data.authorUid ?? "",
+    authorName: data.authorName ?? "Thành viên",
+    createdAt: firestoreDate(data.createdAt),
+    upvotes: data.upvotes ?? 0,
+    upvoterUids: data.upvoterUids ?? [],
+    answerCount: data.answerCount ?? 0,
+    solvedAnswerId: data.solvedAnswerId ?? null,
+    flagged: data.flagged ?? false,
+  };
+}
+
+function firestoreAnswer(id: string, data: DocumentData): Answer {
+  return {
+    id,
+    body: data.body ?? "",
+    authorUid: data.authorUid ?? "",
+    authorName: data.authorName ?? "Thành viên",
+    createdAt: firestoreDate(data.createdAt),
+    upvotes: data.upvotes ?? 0,
+    upvoterUids: data.upvoterUids ?? [],
+    isAccepted: data.isAccepted ?? false,
+    isAI: data.isAI ?? false,
+    flagged: data.flagged ?? false,
+  };
+}
+
 // ---------- Public API ----------
 function sortedDemo(sort: PostSort): PostSummary[] {
-  const arr = [...demoStore];
+  const arr =
+    sort === "unanswered"
+      ? demoStore.filter((p) => p.answerCount === 0)
+      : [...demoStore];
   if (sort === "votes") arr.sort((a, b) => b.upvotes - a.upvotes);
-  else if (sort === "unanswered")
-    arr.sort((a, b) => a.answerCount - b.answerCount);
   else arr.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
   return arr.map(demoSummary);
 }
@@ -106,20 +153,16 @@ export async function listPosts(
   if (isDemoMode()) return sortedDemo(sort);
 
   const db = getDbInstance()!;
-  try {
-    const q = query(
-      collection(db, "posts"),
-      orderBy("createdAt", "desc"),
-      limit(100),
-    );
-    const snap = await getDocs(q);
-    if (!snap.empty) {
-      return snap.docs.map((d) => ({ id: d.id, ...d.data() }) as PostSummary);
-    }
-  } catch {
-    // Firestore trống hoặc rules chưa deploy → dùng dữ liệu mẫu bên dưới
-  }
-  return sortedDemo(sort);
+  const q = query(
+    collection(db, "posts"),
+    orderBy("createdAt", "desc"),
+    limit(100),
+  );
+  const snap = await getDocs(q);
+  const posts = snap.docs.map((d) => firestorePost(d.id, d.data()));
+  if (sort === "votes") return posts.sort((a, b) => b.upvotes - a.upvotes);
+  if (sort === "unanswered") return posts.filter((p) => p.answerCount === 0);
+  return posts;
 }
 
 export async function getPost(postId: string): Promise<PostDetail | null> {
@@ -129,26 +172,16 @@ export async function getPost(postId: string): Promise<PostDetail | null> {
   }
 
   const db = getDbInstance()!;
-  try {
-    const postSnap = await getDoc(doc(db, "posts", postId));
-    if (postSnap.exists()) {
-      const ansSnap = await getDocs(
-        query(
-          collection(db, "posts", postId, "answers"),
-          orderBy("createdAt", "asc"),
-        ),
-      );
-      const answers = ansSnap.docs.map(
-        (d) => ({ id: d.id, ...d.data() }) as Answer,
-      );
-      return { id: postSnap.id, ...postSnap.data(), answers } as PostDetail;
-    }
-  } catch {
-    // fall through → dùng dữ liệu mẫu
-  }
-
-  const p = demoStore.find((x) => x.id === postId);
-  return p ? demoDetail(p) : null;
+  const postSnap = await getDoc(doc(db, "posts", postId));
+  if (!postSnap.exists()) return null;
+  const ansSnap = await getDocs(
+    query(
+      collection(db, "posts", postId, "answers"),
+      orderBy("createdAt", "asc"),
+    ),
+  );
+  const answers = ansSnap.docs.map((d) => firestoreAnswer(d.id, d.data()));
+  return { ...firestorePost(postSnap.id, postSnap.data()), answers };
 }
 
 export async function upvotePost(postId: string, uid: string): Promise<void> {
@@ -367,30 +400,24 @@ export async function listComments(slug: string): Promise<ArticleComment[]> {
   if (isDemoMode()) return demoComments(slug);
 
   const db = getDbInstance()!;
-  try {
-    const snap = await getDocs(
-      query(
-        collection(db, "articles", slug, "comments"),
-        orderBy("createdAt", "asc"),
-        limit(200),
-      ),
-    );
-    return snap.docs.map((d) => {
-      const data = d.data();
-      const ts = data.createdAt?.toDate ? data.createdAt.toDate() : null;
-      return {
-        id: d.id,
-        body: data.body ?? "",
-        authorUid: data.authorUid ?? "",
-        authorName: data.authorName ?? "Thành viên",
-        createdAt: ts ? ts.toISOString().slice(0, 10) : "",
-        isAI: data.isAI ?? false,
-      } as ArticleComment;
-    });
-  } catch {
-    // Lỗi rules/mạng → fallback về comment seed để trang không bị trống
-    return demoComments(slug);
-  }
+  const snap = await getDocs(
+    query(
+      collection(db, "articles", slug, "comments"),
+      orderBy("createdAt", "asc"),
+      limit(200),
+    ),
+  );
+  return snap.docs.map((d) => {
+    const data = d.data();
+    return {
+      id: d.id,
+      body: data.body ?? "",
+      authorUid: data.authorUid ?? "",
+      authorName: data.authorName ?? "Thành viên",
+      createdAt: firestoreDate(data.createdAt),
+      isAI: data.isAI ?? false,
+    } as ArticleComment;
+  });
 }
 
 export async function createComment(

@@ -117,16 +117,22 @@ export function Nav() {
         </div>
 
         <button
-          className="ml-2 flex h-11 w-11 items-center justify-center rounded-lg border border-line text-ink md:hidden"
+          type="button"
+          className="ml-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-line text-ink md:hidden"
           onClick={() => setOpen((v) => !v)}
-          aria-label="Mở menu"
+          aria-label={open ? "Đóng menu" : "Mở menu"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
         >
           {open ? "✕" : "☰"}
         </button>
       </div>
 
       {open && (
-        <div className="border-t border-line bg-card px-5 py-4 md:hidden">
+        <div
+          id="mobile-navigation"
+          className="max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-line bg-card px-5 py-4 md:hidden"
+        >
           <div className="flex flex-col gap-3">
             {links.map((l) => (
               <Link
@@ -156,9 +162,10 @@ export function Nav() {
                   handleLogin();
                   setOpen(false);
                 }}
-                className="flex min-h-[44px] items-center text-sm font-semibold text-teal"
+                disabled={demo || busy}
+                className="flex min-h-[44px] items-center text-sm font-semibold text-teal disabled:opacity-50"
               >
-                Đăng nhập / Tham gia miễn phí
+                {demo ? "Đăng nhập (demo)" : "Đăng nhập / Tham gia miễn phí"}
               </button>
             )}
           </div>

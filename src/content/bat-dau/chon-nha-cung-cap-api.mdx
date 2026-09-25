@@ -1,65 +1,70 @@
 ---
-title: "Chọn nhà cung cấp API cho Hermes - OpenRouter, Nous Portal hay trực tiếp?"
-description: "Hermes cần một nhà cung cấp model để có não. So sánh 3 lựa chọn chính, xếp theo khuyên dùng: OpenRouter linh hoạt nhất, Nous Portal dễ nhất, provider trực tiếp cho ai rành."
+title: "Chọn model cho Hermes: OpenRouter, tài khoản Codex hay Nous Portal?"
+description: "Dùng Hermes với OpenRouter theo token, kết nối thêm tài khoản ChatGPT/Codex qua OAuth, hoặc chọn Nous Portal. Cách dùng hai nguồn linh hoạt mà vẫn theo dõi chi phí."
 datePublished: "2026-09-22"
-dateModified: "2026-09-22"
+dateModified: "2026-09-25"
 authorName: "Cộng Đồng AI"
-tags: ["model", "openrouter", "chi phí"]
+tags: ["model", "openrouter", "codex", "chi phí"]
 ---
 
-Hermes muốn "suy nghĩ" thì cần một <TermTip term="model">model AI</TermTip> (bộ não), và model đó đến từ một nhà cung cấp (<TermTip term="provider">provider</TermTip>). Bạn có 3 lựa chọn chính. Dưới đây xếp theo thứ tự **khuyên dùng** - không cần phân vân quá, cứ đọc rồi chọn.
+Hermes cần một <TermTip term="model">model AI</TermTip> để xử lý yêu cầu. Người mới không cần mua nhiều dịch vụ cùng lúc: **cài Hermes trước, chọn một nguồn để thử, rồi chỉ thêm nguồn thứ hai khi thấy cần**. Mình dùng cả OpenRouter lẫn tài khoản ChatGPT/Codex, nhưng đó là cách mình vận hành sau khi đã biết việc nào hợp với nguồn nào.
 
-## 1. OpenRouter - khuyên dùng nhất
+## Bước 1: Bạn đã có gói ChatGPT trả phí chưa?
 
-<TermTip term="OpenRouter">OpenRouter</TermTip> là một "chợ model": một tài khoản duy nhất, một <TermTip term="API key">API key</TermTip>, là bạn tiếp cận được hàng trăm model từ nhiều hãng khác nhau (Anthropic, Google, Meta, DeepSeek, Nous Research...).
+<div id="da-co-chatgpt" className="scroll-mt-24" />
 
-**Vì sao đứng đầu:**
+### Đã có tài khoản ChatGPT trả phí
 
-- **Linh hoạt nhất** - đổi model chỉ là một danh sách thả xuống, không cần tạo tài khoản mới.
-- Trả theo <TermTip term="token">token</TermTip> - dùng ít trả ít, không gói tháng.
-- **Tự chuyển hãng** - nếu một hãng bị lỗi, nó tự chuyển sang hãng khác (tính năng provider routing).
+Mở mục chọn model trong Hermes Desktop, tìm **ChatGPT or Codex Subscription**; nếu không thấy, mở terminal và chạy `hermes model` để vào trình thiết lập rồi chọn mục đó. Hermes sẽ đưa đường dẫn và mã đăng nhập thiết bị; **bạn tự mở trang OpenAI chính thức và nhập mã tại đó**, không gửi mã cho người khác. Chọn một model Codex rồi thử một việc nhỏ. Nếu tài khoản dùng được, bắt đầu bằng thứ đã có thay vì vội nạp thêm tiền ở nơi khác. Đây là đăng nhập bằng tài khoản ChatGPT qua OAuth, không phải dán mật khẩu hay API key.
 
-**Dành cho:** đa số mọi người - muốn linh hoạt và dùng lâu dài.
+<div id="bat-dau-openrouter" className="scroll-mt-24" />
 
-Đọc chi tiết cách dùng OpenRouter ở bài [Vì sao dùng OpenRouter](/bat-dau/vi-sao-dung-openrouter).
+### Chưa có hoặc Codex không dùng được
 
-## 2. Nous Portal - dễ nhất cho người mới
+Bắt đầu với <TermTip term="OpenRouter">OpenRouter</TermTip>:
 
-<TermTip term="Nous Portal">Nous Portal</TermTip> là tài khoản chính thức của chính Nous Research (nhà làm ra Hermes). Đăng ký một lần là có sẵn hơn 300 model, không cần tự dán <TermTip term="API key">API key</TermTip> - lại kèm sẵn 4 công cụ (tìm web, sinh ảnh, đọc văn bản, lướt web).
+1. Vào [OpenRouter](https://openrouter.ai/), tạo tài khoản của bạn.
+2. Vào [mục API keys](https://openrouter.ai/keys) để tạo key. Mở mục chọn model trong Hermes Desktop và chọn OpenRouter để kết nối; nếu giao diện không hiện phần thêm nhà cung cấp, chạy `hermes model` trong terminal. Nhập key **vào phần thiết lập Hermes**, không gửi trong chat.
+3. Chọn một model vừa đủ, xem mức tính phí theo <TermTip term="token">token</TermTip> trên OpenRouter. Nếu model cần số dư, vào [Credits](https://openrouter.ai/credits) để nạp một khoản nhỏ, rồi thử một yêu cầu ngắn. Xem số dư và lịch sử dùng sau khi thử.
 
-**Ưu:** dễ nhất, cấu hình nhanh, kèm sẵn công cụ.
+Bạn cũng có thể dùng lệnh `hermes auth add openrouter --type oauth` để đăng nhập OpenRouter qua trình duyệt thay vì tạo rồi dán key thủ công; cách này phù hợp khi đã quen dùng terminal. Đọc thêm [Vì sao dùng OpenRouter](/bat-dau/vi-sao-dung-openrouter). Không cần mua gói ChatGPT chỉ để cài Hermes.
 
-**Nhược:** gắn với hệ Nous, ít lựa chọn model bên ngoài hơn.
+**Muốn một tài khoản do chính Nous Research cung cấp:** <TermTip term="Nous Portal">Nous Portal</TermTip> là một lựa chọn khác, có nhiều model và công cụ đi kèm, đăng nhập bằng tài khoản thay vì dán API key. Theo [tài liệu Hermes](https://hermes-agent.nousresearch.com/docs/integrations/providers/), Portal hiện là dịch vụ **theo gói đăng ký**, không phải số dư OpenRouter tính theo token. Xem [cách dùng Nous Portal](/bat-dau/dang-ky-nous-portal) và điều kiện gói chính thức trước khi quyết định.
 
-**Dành cho:** người mới muốn nhanh gọn nhất, không muốn động tới API key.
+## Bước 2: Chạy thử một việc thật trước khi thêm nguồn thứ hai
 
-Chi tiết ở bài [Đăng ký Nous Portal](/bat-dau/dang-ky-nous-portal).
+Sau khi kết nối nguồn đầu tiên, nhờ Hermes tóm tắt một tài liệu ngắn hoặc soạn một email nháp rồi tự kiểm tra kết quả. Đăng nhập thành công chưa có nghĩa là model đã chạy được hoặc hạn mức gói còn đủ. Nếu bị từ chối, xem thông báo lỗi và tình trạng tài khoản trước khi thử đường khác.
 
-## 3. Provider trực tiếp - cho ai rành
+**Tài khoản ChatGPT trả phí không phải credit API OpenAI và cũng không trả hộ OpenRouter.** OpenRouter vẫn tính phí riêng mỗi khi bạn chọn model qua OpenRouter. Tài liệu Hermes hiện chưa xác nhận đầy đủ gói ChatGPT nào đủ điều kiện và mức dùng trong Hermes sẽ trừ vào hạn mức Codex như thế nào; đừng hứa rằng một gói cụ thể sẽ dùng không giới hạn.
 
-Nối thẳng tài khoản của **một hãng cụ thể** (Anthropic, OpenAI, Google...).
+## Bước 3: Nếu cần linh hoạt hơn, thêm OpenRouter bên cạnh Codex
 
-**Ưu:** tối ưu chi phí hoặc tốc độ nếu bạn chỉ trung thành với một hãng.
+Khi đã quen một nguồn, bạn có thể kết nối nguồn còn lại: OpenRouter để thử nhiều model và trả theo mức dùng; Codex để dùng các model Codex qua tài khoản ChatGPT nếu tài khoản được phép. Mình dùng model vừa đủ trên OpenRouter cho việc thường, và **chủ động chuyển** sang Codex khi làm việc code hoặc việc hợp với model đó. Cách này có thể tận dụng gói đã trả tiền, nhưng **không đảm bảo rẻ hơn**: hãy xem lượng dùng và kết quả thực tế của chính bạn.
 
-**Nhược:** tự quản API key riêng từng hãng, phức tạp hơn.
+Trong phiên chat Hermes, `/model` chuyển giữa những nguồn **đã cấu hình**. Nếu chưa thấy nguồn muốn dùng, `hermes model` trong terminal là trình thiết lập provider và đăng nhập. Sau khi thêm nguồn mới, thử lại một yêu cầu ngắn để chắc mình đang dùng đúng model. Bạn không cần cài Codex CLI chỉ để thêm provider Codex cho Hermes.
 
-**Dành cho:** người đã rành, có nhu cầu đặc thù.
+Nếu muốn Hermes tự chuyển khi một nguồn **lỗi hoặc chạm hạn mức**, có thể cấu hình `hermes fallback` sau khi cả hai nguồn đã hoạt động. Đây là **dự phòng khi lỗi**, không phải tính năng tự chọn model rẻ nhất cho mỗi câu hỏi. Nguồn được chuyển tới có thể tính phí riêng, nên kiểm tra chuỗi dự phòng trước khi bật.
 
-## So sánh nhanh
+## Bạn nên chọn gì ngay bây giờ?
 
-| | OpenRouter | Nous Portal | Trực tiếp |
-| --- | --- | --- | --- |
-| Độ khó | Trung bình | Dễ nhất | Khó nhất |
-| Linh hoạt model | Cao nhất | Trung bình | Thấp |
-| Trả theo token | Có | Có | Tùy hãng |
-| Cần tự dán API key | Có | Không | Có |
+- **Đã trả tiền gói ChatGPT:** thử Codex trong Hermes trước, nếu tài khoản của bạn được phép. Dùng được rồi mới cân nhắc thêm OpenRouter cho những model hoặc việc Codex không phù hợp.
+- **Chưa có gói ChatGPT:** bắt đầu với OpenRouter, chọn một model vừa đủ và nạp ít để thử. Không cần mua thêm một gói chỉ vì muốn dùng Hermes.
+- **Muốn gọn và hợp với gói của Nous:** tìm hiểu Nous Portal, kiểm tra điều kiện gói trước khi quyết định.
 
-## Chọn thế nào cho nhanh?
+## Khi nguồn đầu tiên đã chạy, nhờ Hermes hướng dẫn thêm nguồn thứ hai
 
-- **Mới bắt đầu, muốn gọn:** chọn **Nous Portal** - xong trong vài phút.
-- **Muốn linh hoạt, dùng lâu dài:** chọn **OpenRouter** - khuyên dùng nhất.
-- **Đã rành, chỉ dùng một hãng:** nối **trực tiếp**.
+**Đừng gửi prompt này khi chưa kết nối được model nào:** Hermes cần một nguồn đang hoạt động để trả lời bạn. Sau khi chạy thử thành công, bạn có thể hỏi Hermes cách thêm nguồn còn lại; **bạn tự xác nhận đăng nhập OAuth** khi màn hình chính thức hiện ra:
 
-Hai lựa chọn đầu đều tính phí theo số token dùng, không bị ràng buộc gói tháng. Cách nạp tiền từ Việt Nam xem ở bài [Thanh toán từ Việt Nam](/bat-dau/thanh-toan-tu-viet-nam).
+```text
+Mình đã kết nối một model và thử chat thành công. Hãy kiểm tra model/provider
+hiện có, rồi chỉ mình cách thêm nguồn còn lại: nếu Codex dùng được với
+tài khoản ChatGPT của mình thì hướng dẫn đăng nhập OAuth chính thức;
+nếu chưa có OpenRouter thì chỉ mình mở tài khoản, kết nối và chọn model
+vừa đủ. Mình sẽ tự nhập mật khẩu, mã đăng nhập hoặc API key tại màn hình
+chính thức, không gửi những thông tin đó trong chat. Chưa bật fallback
+hay đổi model mặc định khi mình chưa đồng ý.
+```
 
-Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap).
+Khi dùng OpenRouter, tạo key trong tài khoản của **chính bạn** và nhập vào giao diện cấu hình của Hermes; không đăng key lên diễn đàn hay gửi cho người lạ. Nếu cần tìm hiểu thêm, đọc [tài liệu provider chính thức của Hermes](https://hermes-agent.nousresearch.com/docs/integrations/providers/), [fallback](https://hermes-agent.nousresearch.com/docs/user-guide/features/fallback-providers/) và [phân biệt hóa đơn ChatGPT với API](https://help.openai.com/en/articles/9039756-managing-billing-for-chatgpt-and-the-api-platform).
+
+Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap), nhớ che thông tin đăng nhập và số dư.

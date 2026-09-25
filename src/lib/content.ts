@@ -35,17 +35,17 @@ export const batDauItems: HubItem[] = [
   },
   {
     slug: "chon-nha-cung-cap-api",
-    title: "Chọn nhà cung cấp API",
+    title: "Chọn model: ChatGPT/Codex hay OpenRouter?",
     description:
-      "OpenRouter, Nous Portal hay trực tiếp? So sánh 3 lựa chọn, xếp theo khuyên dùng.",
+      "Đã có gói ChatGPT thì thử Codex trước; chưa có thì dùng OpenRouter. Khi cần, kết nối cả hai để chọn theo việc.",
     time: "~5 phút",
     icon: "🔌",
   },
   {
     slug: "dang-ky-nous-portal",
-    title: "Đăng ký Nous Portal",
+    title: "Tùy chọn: Nous Portal",
     description:
-      "Một tài khoản là có sẵn 300+ model AI, không cần tự cấu hình API key.",
+      "Dùng gói của Nous Research nếu phù hợp; xem điều kiện gói trước khi đăng ký.",
     time: "~5 phút",
     icon: "🔑",
   },
@@ -222,8 +222,8 @@ export const homeFaqs: Faq[] = [
       "Cần thẻ Visa/Mastercard. Hướng dẫn từng bước + các lỗi thẻ hay gặp có trong bài riêng.",
   },
   {
-    question: "OpenRouter hay Nous Portal, nên chọn cái nào?",
+    question: "Đã có ChatGPT trả phí thì cần OpenRouter nữa không?",
     answer:
-      "Thứ tự khuyên dùng: OpenRouter (linh hoạt nhất, tính phí theo token) → Nous Portal (dễ nhất, không cần API key) → nối trực tiếp một hãng. Chi tiết có bài riêng.",
+      "Hãy thử kết nối Codex qua tài khoản ChatGPT trong Hermes trước; quyền dùng và hạn mức phụ thuộc tài khoản. Nếu cần thêm model hoặc dự phòng, kết nối OpenRouter sau và trả riêng theo token đã dùng. Chi tiết có trong bài chọn model.",
   },
 ];
