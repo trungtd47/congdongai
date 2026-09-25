@@ -10,7 +10,15 @@ import {
   type ArticleComment,
 } from "@/lib/firestore-ops";
 
-function CommentAvatar({ name, photoURL }: { name: string; photoURL: string }) {
+function CommentAvatar({
+  name,
+  photoURL,
+  sampleKey,
+}: {
+  name: string;
+  photoURL: string;
+  sampleKey?: string;
+}) {
   const [broken, setBroken] = useState(false);
   let googlePhoto: string | null = null;
   try {
@@ -40,6 +48,72 @@ function CommentAvatar({ name, photoURL }: { name: string; photoURL: string }) {
         onError={() => setBroken(true)}
         className="h-9 w-9 shrink-0 rounded-full border border-line object-cover"
       />
+    );
+  }
+  // Avatar mẫu tự vẽ: đa dạng như ảnh hồ sơ, nhưng không dùng ảnh người thật.
+  if (sampleKey) {
+    const hash =
+      [...sampleKey].reduce((n, ch) => n * 31 + ch.charCodeAt(0), 7) >>> 0;
+    const colors = [
+      "#8B5E3C",
+      "#326F74",
+      "#9A5B65",
+      "#596987",
+      "#816747",
+      "#547360",
+      "#765B82",
+    ];
+    const color = colors[hash % colors.length];
+    if (hash % 4 === 0) {
+      const words = name.trim().split(/\s+/);
+      return (
+        <span
+          aria-hidden="true"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold text-white"
+          style={{ backgroundColor: color }}
+        >
+          {`${words[0]?.charAt(0) ?? ""}${words.at(-1)?.charAt(0) ?? ""}`.toLocaleUpperCase(
+            "vi-VN",
+          )}
+        </span>
+      );
+    }
+    const skin = ["#E9BA91", "#DDA77E", "#C88B65", "#F1C5A0"][hash % 4];
+    const hair = ["#302720", "#4D3428", "#261F24", "#543F35"][
+      Math.floor(hash / 4) % 4
+    ];
+    return (
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 36 36"
+        width="36"
+        height="36"
+        className="h-9 w-9 shrink-0 rounded-full border border-line"
+      >
+        <circle cx="18" cy="18" r="18" fill="#EAE3D8" />
+        <ellipse cx="18" cy="37" rx="16" ry="12" fill={color} />
+        <rect x="15" y="24" width="6" height="6" rx="2" fill={skin} />
+        <circle cx="9" cy="19" r="2" fill={skin} />
+        <circle cx="27" cy="19" r="2" fill={skin} />
+        <ellipse cx="18" cy="18" rx="9" ry="11" fill={skin} />
+        <path
+          d={
+            hash % 3 === 0
+              ? "M9 19Q5 4 18 5Q30 4 27 20L25 12Q18 10 10 13Z"
+              : "M9 19Q6 5 18 5Q30 5 27 19L26 14Q18 13 14 10Q12 15 10 15Z"
+          }
+          fill={hair}
+        />
+        <circle cx="14.5" cy="19" r="0.9" fill="#302720" />
+        <circle cx="21.5" cy="19" r="0.9" fill="#302720" />
+        <path
+          d="M15.5 24Q18 26 20.5 24"
+          fill="none"
+          stroke="#905D55"
+          strokeWidth="0.8"
+          strokeLinecap="round"
+        />
+      </svg>
     );
   }
   return (
@@ -139,7 +213,11 @@ export function CommentsSection({ slug }: { slug: string }) {
           {comments.map((c) => (
             <div key={c.id} className="card p-4">
               <div className="mb-2 flex flex-wrap items-center gap-2">
-                <CommentAvatar name={c.authorName} photoURL={c.photoURL} />
+                <CommentAvatar
+                  name={c.authorName}
+                  photoURL={c.photoURL}
+                  sampleKey={c.isSample && !c.isAI ? c.authorUid : undefined}
+                />
                 <span className="min-w-0 break-words text-sm font-semibold text-ink">
                   {c.authorName}
                 </span>

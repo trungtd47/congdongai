@@ -376,6 +376,7 @@ export interface ArticleComment {
   photoURL: string;
   createdAt: string; // YYYY-MM-DD để hiển thị
   isAI: boolean;
+  isSample?: boolean;
 }
 
 // Demo store riêng cho comment (in-memory, không persist)
@@ -391,6 +392,7 @@ function demoCommentToView(c: DemoComment): ArticleComment {
     photoURL: "",
     createdAt: c.createdAt,
     isAI: c.isAI,
+    isSample: c.authorUid.startsWith("u-") || c.authorUid === "ai-friday",
   };
 }
 
@@ -409,20 +411,26 @@ export async function listComments(slug: string): Promise<ArticleComment[]> {
       limit(200),
     ),
   );
-  // Seed c1/c2/... là lời bình minh họa, không phải tài khoản Google thật.
-  // Chỉ hiển thị chúng trong demo mode; giữ nguyên dữ liệu Firestore để tránh xóa nhầm.
-  const sampleAuthors = new Map(
-    (demoCommentsBySlug[slug] ?? []).map((c) => [c.id, c.authorUid]),
+  // Nhận diện comment seed theo cả document ID và UID để giữ tên nhất quán
+  // với demo-data, nhưng không thay đổi danh tính của comment người dùng thật.
+  const samples = new Map(
+    (demoCommentsBySlug[slug] ?? []).map((c) => [c.id, c]),
   );
-  const realDocs = snap.docs.filter(
-    (d) => sampleAuthors.get(d.id) !== d.data().authorUid,
-  );
-  // Bình luận cũ chưa lưu avatar: lấy hồ sơ Google đã tạo khi đăng nhập,
-  // chỉ đọc một lần cho mỗi UID. Lỗi đọc hồ sơ không che mất bình luận.
+  const sampleFor = (id: string, uid: string) => {
+    const sample = samples.get(id);
+    return sample?.authorUid === uid ? sample : undefined;
+  };
+  // Bình luận thật cũ chưa lưu avatar: lấy hồ sơ Google đã tạo khi đăng nhập,
+  // chỉ đọc một lần cho mỗi UID. Bỏ qua profile seed có tên ngắn cũ.
   const missingPhotoUids = [
     ...new Set(
-      realDocs
-        .filter((d) => !d.data().photoURL && d.data().authorUid)
+      snap.docs
+        .filter(
+          (d) =>
+            !sampleFor(d.id, d.data().authorUid) &&
+            !d.data().photoURL &&
+            d.data().authorUid,
+        )
         .map((d) => d.data().authorUid as string),
     ),
   ];
@@ -438,18 +446,23 @@ export async function listComments(slug: string): Promise<ArticleComment[]> {
       }),
     ),
   );
-  return realDocs.map((d) => {
+  return snap.docs.map((d) => {
     const data = d.data();
-    const profile = profiles.get(data.authorUid);
+    const sample = sampleFor(d.id, data.authorUid);
+    const profile = sample ? undefined : profiles.get(data.authorUid);
     return {
       id: d.id,
       body: data.body ?? "",
       authorUid: data.authorUid ?? "",
       authorName:
-        profile?.displayName?.trim() || data.authorName || "Thành viên",
+        sample?.authorName ||
+        profile?.displayName?.trim() ||
+        data.authorName ||
+        "Thành viên",
       photoURL: data.photoURL || profile?.photoURL || "",
       createdAt: firestoreDate(data.createdAt),
       isAI: data.isAI ?? false,
+      isSample: Boolean(sample),
     } as ArticleComment;
   });
 }

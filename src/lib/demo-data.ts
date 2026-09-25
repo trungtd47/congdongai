@@ -974,7 +974,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-minh",
-      authorName: "Minh",
+      authorName: "Nguyễn Hoàng Minh",
       body: 'Mình dùng ChatGPT hơn năm nay, đọc tới đoạn "chatbot biết nói, agent biết làm" mới hiểu vì sao con agent này chạy được việc thật. Tuần này cài thử xem sao.',
       createdAt: "2026-09-16",
       isAI: false,
@@ -982,7 +982,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-lan",
-      authorName: "Lan",
+      authorName: "Trần Thị Lan",
       body: "Bài giải thích token dễ hiểu ghê. Mình cứ tưởng dùng AI là trả tiền tháng, hóa ra nạp trước một khoản rồi trừ dần theo mức dùng.",
       createdAt: "2026-09-17",
       isAI: false,
@@ -1000,7 +1000,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-thao",
-      authorName: "Thảo",
+      authorName: "Lê Thu Thảo",
       body: "Hèn gì con Hermes của mình trả lời cộc lốc, hóa ra chưa viết SOUL.md. Mình tải mẫu trong Thư viện về đổi tên, thêm vài dòng mô tả công việc của mình là giọng nó khác hẳn.",
       createdAt: "2026-09-18",
       isAI: false,
@@ -1008,7 +1008,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-quang",
-      authorName: "Quang",
+      authorName: "Phạm Đức Quang",
       body: 'Cho mình hỏi SOUL.md với AGENTS.md khác gì nhau? Mình thấy cả hai file đều giống kiểu "dạy" agent.',
       createdAt: "2026-09-19",
       isAI: false,
@@ -1026,7 +1026,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-trang",
-      authorName: "Trang",
+      authorName: "Nguyễn Thùy Trang",
       body: "Mình giao việc tóm tắt tin tức mỗi sáng từ tuần trước, ngủ dậy là có sẵn bản tin. Đáng nhất là không phải mở năm sáu trang web như trước nữa.",
       createdAt: "2026-09-17",
       isAI: false,
@@ -1034,7 +1034,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-huy",
-      authorName: "Huy",
+      authorName: "Trần Quốc Huy",
       body: "Mấy bạn mới để ý vụ lịch chạy nha: máy phải đang bật thì nó mới chạy đúng giờ. Mình toàn tắt máy ban đêm nên sáng ra nó chạy bù, báo cáo ra trễ.",
       createdAt: "2026-09-18",
       isAI: false,
@@ -1042,7 +1042,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c3",
       authorUid: "u-mai",
-      authorName: "Mai",
+      authorName: "Hoàng Anh Mai",
       body: "Mình dùng thêm việc nhắc lịch: nối với lịch có sẵn ổn áp. Nhớ nói rõ múi giờ Việt Nam cho nó khỏi nhầm giờ họp.",
       createdAt: "2026-09-20",
       isAI: false,
@@ -1052,7 +1052,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-linh",
-      authorName: "Linh",
+      authorName: "Đỗ Mỹ Linh",
       body: 'Làm theo đúng lộ trình 7 ngày, tới ngày thứ tư thì con agent bắt đầu "hiểu" mình thật. Cái cảm giác không phải giải thích lại từ đầu đáng tiền lắm các bạn.',
       createdAt: "2026-09-19",
       isAI: false,
@@ -1060,7 +1060,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-tuan",
-      authorName: "Tuấn",
+      authorName: "Bùi Minh Tuấn",
       body: 'Ngày thứ hai mình bị lỗi thẻ không nạp được. Đọc bài "Thanh toán từ Việt Nam" trong mục Bắt đầu mới biết phải bật thanh toán quốc tế trước.',
       createdAt: "2026-09-20",
       isAI: false,
@@ -1068,7 +1068,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c3",
       authorUid: "u-duc",
-      authorName: "Đức",
+      authorName: "Vũ Anh Đức",
       body: "Góp ý nhỏ: nên sao lưu SOUL.md với memory ra một chỗ riêng. Mình lỡ tay để agent dọn file làm mất bản SOUL.md đang ngon, phải dựng lại từ đầu.",
       createdAt: "2026-09-21",
       isAI: false,
@@ -1080,7 +1080,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-trang",
-      authorName: "Trang",
+      authorName: "Nguyễn Thùy Trang",
       body: "Tóm gọn đúng ý mình cần: cài một lần, nó nằm trên máy mình, giao việc là nó tự làm. Đọc xong đỡ rối hơn hẳn mấy bài tiếng Anh.",
       createdAt: "2026-09-15",
       isAI: false,
@@ -1088,7 +1088,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-linh",
-      authorName: "Linh",
+      authorName: "Đỗ Mỹ Linh",
       body: "Đoạn so sánh với ChatGPT nên đọc trước khi cài nha mọi người. Mình tưởng hai cái giống nhau, hóa ra một cái chỉ chat, một cái làm được việc thật trên máy.",
       createdAt: "2026-09-17",
       isAI: false,
@@ -1098,7 +1098,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-ngan",
-      authorName: "Ngân",
+      authorName: "Phan Thị Ngân",
       body: 'Cảm ơn bài viết, mình qua được màn hình xanh SmartScreen nhờ đoạn "More info rồi Run anyway". Trước toàn tưởng file có virus rồi xóa đi cài lại mãi.',
       createdAt: "2026-09-16",
       isAI: false,
@@ -1106,7 +1106,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-huy",
-      authorName: "Huy",
+      authorName: "Trần Quốc Huy",
       body: "Máy mình Windows bản cũ cài vẫn chạy tốt nhé. Lưu ý ổ C còn trống vài GB là ổn.",
       createdAt: "2026-09-18",
       isAI: false,
@@ -1124,7 +1124,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-phuong",
-      authorName: "Phương",
+      authorName: "Lê Thanh Phương",
       body: "Mac chip M1 cài theo bài này mấy phút là xong. Đoạn mở khóa Gatekeeper làm đúng như hướng dẫn là không bị chặn nữa.",
       createdAt: "2026-09-17",
       isAI: false,
@@ -1132,7 +1132,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-lan",
-      authorName: "Lan",
+      authorName: "Trần Thị Lan",
       body: "Cả nhà lưu ý vụ Apple Silicon nha: MacBook của mình chip Intel nên không cài được bản Desktop, phải chạy bản dòng lệnh theo hướng dẫn trong bài.",
       createdAt: "2026-09-19",
       isAI: false,
@@ -1142,7 +1142,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-minh",
-      authorName: "Minh",
+      authorName: "Nguyễn Hoàng Minh",
       body: "Mình chọn OpenRouter theo khuyến nghị của bài, được cái đổi model không cần cài lại. Lúc sắp hết số dư nó báo rõ ràng chứ không trừ âm.",
       createdAt: "2026-09-16",
       isAI: false,
@@ -1150,7 +1150,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-thao",
-      authorName: "Thảo",
+      authorName: "Lê Thu Thảo",
       body: "Ai như mình không, lúc đầu cứ sợ phức tạp chứ thật ra nạp tiền xong dán key vào là chạy. Tổng thời gian chắc mười phút.",
       createdAt: "2026-09-18",
       isAI: false,
@@ -1160,7 +1160,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-nam",
-      authorName: "Nam",
+      authorName: "Trần Khánh Nam",
       body: "Portal tiện cho ai lười cấu hình như mình. Được cái khỏi phải nghĩ chọn model nào, cứ thế chat.",
       createdAt: "2026-09-17",
       isAI: false,
@@ -1168,7 +1168,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-quang",
-      authorName: "Quang",
+      authorName: "Phạm Đức Quang",
       body: "Mình đọc thêm thì thấy Portal có sẵn cả tìm kiếm web với tạo ảnh, khỏi cần key mấy dịch vụ rời. Bạn nào cần mấy vụ đó thì cân nhắc.",
       createdAt: "2026-09-20",
       isAI: false,
@@ -1178,7 +1178,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-tuan",
-      authorName: "Tuấn",
+      authorName: "Bùi Minh Tuấn",
       body: "Bài này cứu mình. Thẻ của mình bị từ chối vì chưa bật thanh toán quốc tế, gọi lên tổng đài ngân hàng bật là nạp được luôn.",
       createdAt: "2026-09-16",
       isAI: false,
@@ -1186,7 +1186,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-huong",
-      authorName: "Hương",
+      authorName: "Phạm Ngọc Hương",
       body: "Mẹo nhỏ: nạp ít thôi rồi dùng thử, xem mỗi ngày tốn bao nhiêu token đã. Như mình hỏi han linh tinh mỗi ngày mà cả tháng chưa hết mức nạp đầu tiên.",
       createdAt: "2026-09-19",
       isAI: false,
@@ -1194,7 +1194,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c3",
       authorUid: "u-ngan",
-      authorName: "Ngân",
+      authorName: "Phan Thị Ngân",
       body: "Cho mình hỏi thẻ ghi nợ nội địa có dùng được không, hay bắt buộc phải Visa/Master?",
       createdAt: "2026-09-21",
       isAI: false,
@@ -1214,7 +1214,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-mai",
-      authorName: "Mai",
+      authorName: "Hoàng Anh Mai",
       body: 'Đặt lịch 6h30 như bài, chạy được hai tuần nay. Mẹo của mình: dặn nó "chỉ lấy tin có ảnh hưởng tới tiền của mình" là bản tin gọn hẳn.',
       createdAt: "2026-09-16",
       isAI: false,
@@ -1222,7 +1222,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-huy",
-      authorName: "Huy",
+      authorName: "Trần Quốc Huy",
       body: "Mình để ý bản tin tuần sau hay hơn tuần trước thật. Chắc do nó nhớ dần gu đọc của mình.",
       createdAt: "2026-09-18",
       isAI: false,
@@ -1230,7 +1230,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c3",
       authorUid: "u-duc",
-      authorName: "Đức",
+      authorName: "Vũ Anh Đức",
       body: "Bạn nào bản tin ra trễ thì kiểm tra giờ hệ thống của máy nhé. Máy mình lệch múi giờ nên lịch chạy sai, chỉnh lại là chuẩn.",
       createdAt: "2026-09-20",
       isAI: false,
@@ -1240,7 +1240,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-thao",
-      authorName: "Thảo",
+      authorName: "Lê Thu Thảo",
       body: "Dùng cho hộp thư công việc ổn. Mình bắt nó chỉ SOẠN trả lời, còn gửi thì mình tự bấm, yên tâm hơn hẳn.",
       createdAt: "2026-09-17",
       isAI: false,
@@ -1248,7 +1248,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-phuong",
-      authorName: "Phương",
+      authorName: "Lê Thanh Phương",
       body: "Lưu ý cho ai dùng Gmail: lần đầu cấp quyền nó hỏi kỹ lắm, đọc từng dòng rồi hãy bấm cho phép.",
       createdAt: "2026-09-19",
       isAI: false,
@@ -1258,7 +1258,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-ngan",
-      authorName: "Ngân",
+      authorName: "Phan Thị Ngân",
       body: "Nhắc đón con chuẩn từng phút. Được cái nó nhắn bằng tiếng Việt đầy đủ dấu, đọc phát hiểu ngay.",
       createdAt: "2026-09-16",
       isAI: false,
@@ -1266,7 +1266,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-tuan",
-      authorName: "Tuấn",
+      authorName: "Bùi Minh Tuấn",
       body: "Mình nối thêm lịch theo gợi ý cuối bài, giờ nó tự nhắc trước cuộc họp 15 phút kèm tóm tắt nội dung họp luôn.",
       createdAt: "2026-09-18",
       isAI: false,
@@ -1276,7 +1276,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-linh",
-      authorName: "Linh",
+      authorName: "Đỗ Mỹ Linh",
       body: "Con mình học cấp hai, tối nào cũng luyện nói với nó. Nó sửa phát âm kiên nhẫn hơn cả gia sư thật, hỏi đi hỏi lại không cáu.",
       createdAt: "2026-09-17",
       isAI: false,
@@ -1284,7 +1284,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-huong",
-      authorName: "Hương",
+      authorName: "Phạm Ngọc Hương",
       body: 'Mẹo: bảo nó "sửa lỗi và giải thích bằng tiếng Việt" thì người mới học dễ theo hơn nhiều.',
       createdAt: "2026-09-20",
       isAI: false,
@@ -1294,7 +1294,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-trang",
-      authorName: "Trang",
+      authorName: "Nguyễn Thùy Trang",
       body: "Test thử Đà Lạt 3 ngày 2 đêm như ví dụ, lịch trình ra chi tiết hơn mình tự tìm. Thích nhất là nó kèm giờ mở cửa từng điểm.",
       createdAt: "2026-09-16",
       isAI: false,
@@ -1302,7 +1302,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-nam",
-      authorName: "Nam",
+      authorName: "Trần Khánh Nam",
       body: "Nhớ dặn ngân sách và dặn tính tiền bằng VNĐ nhé, không nó ra kết quả lẫn lộn tiền nước ngoài khó so lắm.",
       createdAt: "2026-09-19",
       isAI: false,
@@ -1312,7 +1312,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-quang",
-      authorName: "Quang",
+      authorName: "Phạm Đức Quang",
       body: "Vụ so sánh này hữu ích. Mình mua cái máy lọc không khí, nó đọc review cả nguồn khen lẫn nguồn chê nên quyết định đỡ cảm tính.",
       createdAt: "2026-09-18",
       isAI: false,
@@ -1320,7 +1320,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-mai",
-      authorName: "Mai",
+      authorName: "Hoàng Anh Mai",
       body: 'Mình dặn thêm "liệt kê cả nhược điểm người dùng phàn nàn", ra được mấy lỗi mà trang bán hàng không bao giờ nói.',
       createdAt: "2026-09-21",
       isAI: false,
@@ -1330,7 +1330,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-huy",
-      authorName: "Huy",
+      authorName: "Trần Quốc Huy",
       body: "Đọc bài này xong mình mới biết có lớp hỏi trước khi chạy lệnh nguy hiểm. Trước cứ lo nó âm thầm phá máy mình.",
       createdAt: "2026-09-17",
       isAI: false,
@@ -1338,7 +1338,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-duc",
-      authorName: "Đức",
+      authorName: "Vũ Anh Đức",
       body: "Góp ý: nên nhấn mạnh thêm vụ đừng dán mật khẩu vào khung chat. Mình thấy nhiều bạn mới vẫn làm vậy.",
       createdAt: "2026-09-19",
       isAI: false,
@@ -1356,7 +1356,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-phuong",
-      authorName: "Phương",
+      authorName: "Lê Thanh Phương",
       body: "Dùng cách này ba tuần, kho ghi chú của mình giờ hỏi gì nó cũng tra được. Mấu chốt đúng như bài nói: ghi đều đặn mỗi ngày một chút.",
       createdAt: "2026-09-18",
       isAI: false,
@@ -1364,7 +1364,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-linh",
-      authorName: "Linh",
+      authorName: "Đỗ Mỹ Linh",
       body: "Ai chưa quen Obsidian thì cứ coi nó là một thư mục file văn bản thường cũng được, không cần học gì nhiều. Mình ban đầu cũng tưởng phức tạp.",
       createdAt: "2026-09-20",
       isAI: false,
@@ -1374,7 +1374,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-thao",
-      authorName: "Thảo",
+      authorName: "Lê Thu Thảo",
       body: 'Đã thử prompt "tóm tắt cuối ngày" trong bài, sau một tuần nó nhớ gu làm việc của mình thật, đỡ phải nhắc lại hẳn.',
       createdAt: "2026-09-23",
       isAI: false,
@@ -1382,7 +1382,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-duc",
-      authorName: "Đức",
+      authorName: "Vũ Anh Đức",
       body: 'Phần "nhờ nó tự tạo skill sau mỗi việc khó" là đáng giá nhất: cùng một việc mà lần hai nó làm nhanh hơn lần một rõ rệt.',
       createdAt: "2026-09-23",
       isAI: false,
@@ -1394,7 +1394,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-minh",
-      authorName: "Minh",
+      authorName: "Nguyễn Hoàng Minh",
       body: "Giống hệt trải nghiệm của mình. Cũng từ OpenClaw qua, đỡ phải tự sửa lỗi vặt hẳn.",
       createdAt: "2026-09-22",
       isAI: false,
@@ -1402,7 +1402,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-huy",
-      authorName: "Huy",
+      authorName: "Trần Quốc Huy",
       body: "Đoạn nhờ chính nó cài Hermes rồi gỡ luôn OpenClaw nghe buồn cười mà hợp lý. Đúng là cách nhàn nhất cho người không rành kỹ thuật.",
       createdAt: "2026-09-23",
       isAI: false,
@@ -1412,7 +1412,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-trang",
-      authorName: "Trang",
+      authorName: "Nguyễn Thùy Trang",
       body: "Mình cũng dựng bản tin sáng theo bài này mà đặt 7h. Ngủ dậy có sẵn, uống cà phê đọc là vừa.",
       createdAt: "2026-09-22",
       isAI: false,
@@ -1420,7 +1420,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-mai",
-      authorName: "Mai",
+      authorName: "Hoàng Anh Mai",
       body: "Cho mình hỏi nguồn tin đưa vào là loại nào vậy? Mình muốn thêm cả nguồn tiếng Việt mà chưa biết cách dặn nó.",
       createdAt: "2026-09-23",
       isAI: false,
@@ -1430,7 +1430,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-phuong",
-      authorName: "Phương",
+      authorName: "Lê Thanh Phương",
       body: "Kho ghi chú của mình cũng chia ba nhóm như bài: việc đang làm, việc dài hạn, tham khảo. Hỏi lại cái gì cũng ra.",
       createdAt: "2026-09-22",
       isAI: false,
@@ -1440,7 +1440,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-duc",
-      authorName: "Đức",
+      authorName: "Vũ Anh Đức",
       body: 'Câu "đừng chờ agent tự khôn một cách mù mờ" đáng giá nhất bài. Nó tốt lên đúng bằng cấu trúc mình dựng cho nó.',
       createdAt: "2026-09-22",
       isAI: false,
@@ -1450,7 +1450,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-huy",
-      authorName: "Huy",
+      authorName: "Trần Quốc Huy",
       body: 'Mô hình "mọi thay đổi đều phải duyệt theo từng phiên" này anh em quản trị hệ thống tại nhà nên học. An toàn hơn nhiều so với cho agent toàn quyền.',
       createdAt: "2026-09-22",
       isAI: false,
@@ -1460,7 +1460,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-thao",
-      authorName: "Thảo",
+      authorName: "Lê Thu Thảo",
       body: "Xem video gốc rồi, đoạn vợ ổng đặt tên agent là Honey dễ thương thiệt. Người không rành công nghệ mà dùng được mới là thước đo thật.",
       createdAt: "2026-09-22",
       isAI: false,
@@ -1468,7 +1468,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-quang",
-      authorName: "Quang",
+      authorName: "Phạm Đức Quang",
       body: 'Ý "giới hạn cứng cho bộ nhớ buộc agent phải chắt lọc" hay đó. Bộ nhớ phình to chưa chắc đã tốt.',
       createdAt: "2026-09-23",
       isAI: false,
@@ -1478,7 +1478,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-nam",
-      authorName: "Nam",
+      authorName: "Trần Khánh Nam",
       body: 'Bài này thật ở chỗ dám kể vụ bị nền tảng gắn cờ. Mấy bài "AI kiếm tiền khủng" khác toàn giấu phần thất bại.',
       createdAt: "2026-09-22",
       isAI: false,
@@ -1488,7 +1488,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-huong",
-      authorName: "Hương",
+      authorName: "Phạm Ngọc Hương",
       body: 'Ý "giá trị nằm ở việc chỉnh agent cho khớp quy trình thật của từng công ty" đúng với cả thị trường Việt Nam. Ai rành nghiệp vụ ngành nào thì làm dịch vụ cài agent cho ngành đó.',
       createdAt: "2026-09-22",
       isAI: false,
@@ -1498,7 +1498,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-tuan",
-      authorName: "Tuấn",
+      authorName: "Bùi Minh Tuấn",
       body: "82 tin nhắn còn 3 dòng là con số biết nói. Sáng nào mình cũng ngập trong tin nhắn nhóm công việc, phải áp dụng mô hình này mới được.",
       createdAt: "2026-09-22",
       isAI: false,
@@ -1508,7 +1508,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-lan",
-      authorName: "Lan",
+      authorName: "Trần Thị Lan",
       body: '"Bản sao AI định nghĩa trong SOUL.md" nghe phức tạp mà ngẫm lại đúng: mình viết rõ ranh giới nó được làm gì thì mới dám giao việc.',
       createdAt: "2026-09-23",
       isAI: false,
@@ -1518,7 +1518,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-ngan",
-      authorName: "Ngân",
+      authorName: "Phan Thị Ngân",
       body: "Một cái máy cũ chạy suốt ngày đêm thay vì mua máy xịn - mình đang tính kiếm con máy bộ cũ y vậy cho tiết kiệm.",
       createdAt: "2026-09-22",
       isAI: false,
@@ -1528,7 +1528,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-linh",
-      authorName: "Linh",
+      authorName: "Đỗ Mỹ Linh",
       body: 'Ông bố này dựng nguyên "đường dây nóng gọi về bố" cho con, chi tiết mình thích nhất. Trẻ con dùng AI mà có người lớn đỡ sau lưng vẫn hơn.',
       createdAt: "2026-09-22",
       isAI: false,
@@ -1538,7 +1538,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-phuong",
-      authorName: "Phương",
+      authorName: "Lê Thanh Phương",
       body: "Thêm một người nối kho ghi chú vào Hermes. Kho của công ty mình giờ để nó tự đọc biên bản họp và nhắc việc tồn đọng.",
       createdAt: "2026-09-23",
       isAI: false,
@@ -1548,7 +1548,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-quang",
-      authorName: "Quang",
+      authorName: "Phạm Đức Quang",
       body: "Nó tự đăng trang lên máy chủ rồi nhắn tin báo xong - đọc vừa nể vừa hơi sợ. Chắc phải đặt ranh giới kỹ như bài bảo mật mới dám cho làm vậy.",
       createdAt: "2026-09-22",
       isAI: false,
@@ -1558,7 +1558,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-huy",
-      authorName: "Huy",
+      authorName: "Trần Quốc Huy",
       body: "Chuẩn, máy mình cũng đời cũ, chỉ cần mạng ổn định là chạy. Phần nặng nằm ở model trên mây thật.",
       createdAt: "2026-09-22",
       isAI: false,
@@ -1568,7 +1568,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-mai",
-      authorName: "Mai",
+      authorName: "Hoàng Anh Mai",
       body: "Cả nhà dùng chung một agent nghe hợp lý với gia đình Việt. Mẹ mình mà học app mới thì chịu, nhưng nhắn tin như chat hằng ngày thì được.",
       createdAt: "2026-09-23",
       isAI: false,
@@ -1578,7 +1578,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-nam",
-      authorName: "Nam",
+      authorName: "Trần Khánh Nam",
       body: 'Con số do người kể tự đưa ra, như bài đã ghi rõ. Nhưng ý "dùng đều thì giá trị tích lũy" thì mình tin: bản tin sáng của mình sau một tháng cũng khác hẳn tuần đầu.',
       createdAt: "2026-09-22",
       isAI: false,
@@ -1588,7 +1588,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-thao",
-      authorName: "Thảo",
+      authorName: "Lê Thu Thảo",
       body: '"Lần chạy đầu tiên của bất kỳ quy trình nào cũng là bản yếu nhất" - câu này nên dán ở đầu máy cho ai mới dùng agent hay nản.',
       createdAt: "2026-09-23",
       isAI: false,
@@ -1598,7 +1598,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-duc",
-      authorName: "Đức",
+      authorName: "Vũ Anh Đức",
       body: 'Job "Dreaming" lúc 3 giờ sáng là ý hay nhất mình đọc được gần đây. Về dựng cho con agent của mình một job tự ngẫm cuối ngày mới được.',
       createdAt: "2026-09-23",
       isAI: false,
@@ -1606,7 +1606,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c2",
       authorUid: "u-trang",
-      authorName: "Trang",
+      authorName: "Nguyễn Thùy Trang",
       body: "Hơn 30 skill đều do Hermes tự dựng cùng người dùng chứ không tải về - chi tiết này đáng giá cho ai đang nghĩ phải đi tìm skill ở đâu đó.",
       createdAt: "2026-09-23",
       isAI: false,
@@ -1616,7 +1616,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-huy",
-      authorName: "Huy",
+      authorName: "Trần Quốc Huy",
       body: "Không biết Swift mà dựng được app iOS nhờ agent. Rào cản giờ nằm ở ý tưởng chứ không phải kỹ thuật thật.",
       createdAt: "2026-09-23",
       isAI: false,
@@ -1626,7 +1626,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-quang",
-      authorName: "Quang",
+      authorName: "Phạm Đức Quang",
       body: '"Người duyệt, agent thi công" - đúng mô hình mình đang tập làm với mấy dự án nhỏ. Quan trọng nhất là kỷ luật duyệt lại từng thứ như anh này.',
       createdAt: "2026-09-23",
       isAI: false,
@@ -1636,7 +1636,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-linh",
-      authorName: "Linh",
+      authorName: "Đỗ Mỹ Linh",
       body: 'Câu "ChatGPT là tab trình duyệt, Hermes là tiến trình đang chạy" giải thích cho bố mẹ mình hiểu còn nhanh hơn cả bảng so sánh tính năng.',
       createdAt: "2026-09-23",
       isAI: false,
@@ -1646,7 +1646,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-phuong",
-      authorName: "Phương",
+      authorName: "Lê Thanh Phương",
       body: "794 điểm không phải dạng vừa. Cộng đồng cùng chọn hướng dùng kho ghi chú làm bộ nhớ dài hạn thì người mới cứ thế mà theo, khỏi phân vân.",
       createdAt: "2026-09-23",
       isAI: false,
@@ -1656,7 +1656,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-ngan",
-      authorName: "Ngân",
+      authorName: "Phan Thị Ngân",
       body: "Mình cũng toàn có ý tưởng lúc đang chạy xe. Phải dựng một kênh nhắn tin để nói vào đó như anh này mới được, đỡ mất ý.",
       createdAt: "2026-09-23",
       isAI: false,
@@ -1666,7 +1666,7 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
     {
       id: "c1",
       authorUid: "u-mai",
-      authorName: "Mai",
+      authorName: "Hoàng Anh Mai",
       body: 'Mô hình "nhiều mắt quan sát, một đầu tổng hợp" dễ áp dụng: mình bắt đầu với hai tín hiệu (giá và tin đối thủ) rồi một job gộp lại mỗi tối.',
       createdAt: "2026-09-23",
       isAI: false,
