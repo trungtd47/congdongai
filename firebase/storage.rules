@@ -1,0 +1,19 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Ảnh đính kèm do người dùng đã đăng nhập tải lên, ai cũng đọc được.
+    match /comment-images/{uid}/{filename} {
+      allow read: if true;
+      allow write: if request.auth != null
+        && request.auth.uid == uid
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/(jpeg|png|webp|gif)');
+    }
+
+    // Mọi thứ khác bị chặn.
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

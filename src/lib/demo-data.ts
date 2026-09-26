@@ -14,6 +14,7 @@ export interface DemoUser {
 export interface DemoAnswer {
   id: string;
   body: string;
+  imageURL?: string;
   authorUid: string;
   authorName: string;
   createdAt: string;
@@ -28,6 +29,7 @@ export interface DemoPost {
   id: string;
   title: string;
   body: string;
+  imageURL?: string;
   tags: string[];
   authorUid: string;
   authorName: string;
@@ -964,6 +966,8 @@ export interface DemoComment {
   authorUid: string;
   authorName: string;
   body: string;
+  imageURL?: string;
+  parentId?: string | null;
   createdAt: string;
   isAI: boolean;
 }

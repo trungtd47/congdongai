@@ -15,6 +15,7 @@ import { isDemoMode } from "@/lib/firebase";
 import { useAuth } from "@/hooks/useAuth";
 import { signInWithGoogle } from "@/lib/auth";
 import { avatarColor } from "@/lib/avatar";
+import { ImageUpload } from "@/components/ImageUpload";
 
 const DEMO_UID = "demo-user";
 
@@ -27,6 +28,7 @@ export function QuestionDetail({ postId }: { postId: string }) {
   const [notFound, setNotFound] = useState(false);
   const [loadError, setLoadError] = useState(false);
   const [answerBody, setAnswerBody] = useState("");
+  const [answerImage, setAnswerImage] = useState("");
   const [busy, setBusy] = useState(false);
   const [flash, setFlash] = useState("");
 
@@ -118,12 +120,14 @@ export function QuestionDetail({ postId }: { postId: string }) {
     try {
       await createAnswer(postId, {
         body: answerBody.trim(),
+        imageURL: answerImage,
         authorUid: uid,
         authorName: demo
           ? "Bạn"
           : (user?.displayName ?? user?.email?.split("@")[0] ?? "Thành viên"),
       });
       setAnswerBody("");
+      setAnswerImage("");
       setPost(await getPost(postId));
     } catch {
       setFlash("Chưa gửi được câu trả lời. Kiểm tra kết nối rồi thử lại nhé.");
@@ -177,6 +181,15 @@ export function QuestionDetail({ postId }: { postId: string }) {
           {post.title}
         </h1>
         <p className="mb-4 text-[15px] text-ink-soft">{post.body}</p>
+        {post.imageURL && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={post.imageURL}
+            alt="Ảnh đính kèm"
+            referrerPolicy="no-referrer"
+            className="mb-4 max-h-72 max-w-full rounded-lg border border-line object-contain"
+          />
+        )}
         <div className="flex items-center gap-4 text-[13px] text-ink-soft">
           <span className="flex items-center gap-1.5">
             <span
@@ -236,6 +249,16 @@ export function QuestionDetail({ postId }: { postId: string }) {
               </span>
             </div>
             <p className="mb-3 text-sm text-ink-soft">{a.body}</p>
+            {a.imageURL && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={a.imageURL}
+                alt="Ảnh đính kèm"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+                className="mb-3 max-h-64 max-w-full rounded-lg border border-line object-contain"
+              />
+            )}
             <div className="flex items-center gap-3">
               <button
                 type="button"
@@ -296,6 +319,12 @@ export function QuestionDetail({ postId }: { postId: string }) {
             aria-label="Nội dung câu trả lời"
             placeholder="Chia sẻ cách bạn giải quyết…"
             className="rounded-lg border border-line px-3 py-2 text-sm outline-none focus:border-teal"
+          />
+          <ImageUpload
+            uid={uid ?? ""}
+            imageURL={answerImage}
+            onChange={setAnswerImage}
+            disabled={busy}
           />
           <button
             type="submit"

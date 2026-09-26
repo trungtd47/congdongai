@@ -9,6 +9,7 @@ import {
   createComment,
   type ArticleComment,
 } from "@/lib/firestore-ops";
+import { ImageUpload } from "@/components/ImageUpload";
 
 function CommentAvatar({
   name,
@@ -126,16 +127,75 @@ function CommentAvatar({
   );
 }
 
+function CommentCard({
+  c,
+  onReply,
+  canReply,
+}: {
+  c: ArticleComment;
+  onReply?: () => void;
+  canReply?: boolean;
+}) {
+  return (
+    <div className="card border-line p-4">
+      <div className="mb-2 flex flex-wrap items-center gap-2">
+        <CommentAvatar
+          name={c.authorName}
+          photoURL={c.photoURL}
+          sampleKey={c.isSample && !c.isAI ? c.authorUid : undefined}
+        />
+        <span className="min-w-0 break-words text-sm font-semibold text-ink">
+          {c.authorName}
+        </span>
+        {c.isAI && (
+          <span className="inline-flex items-center gap-1 rounded-full bg-teal-soft px-2 py-0.5 text-[11px] font-semibold text-teal-dark">
+            🤖 AI trả lời
+          </span>
+        )}
+        <span className="ml-auto text-xs text-ink-soft">{c.createdAt}</span>
+      </div>
+      <p className="whitespace-pre-wrap text-sm text-ink-soft">{c.body}</p>
+      {c.imageURL && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={c.imageURL}
+          alt="Ảnh đính kèm"
+          loading="lazy"
+          referrerPolicy="no-referrer"
+          className="mt-3 max-h-64 max-w-full rounded-lg border border-line object-contain"
+        />
+      )}
+      {onReply && (
+        <button
+          type="button"
+          onClick={onReply}
+          disabled={!canReply}
+          className="mt-3 inline-flex items-center gap-1 rounded-full border border-line px-3 py-1 text-xs font-semibold text-ink-soft transition-colors hover:border-teal hover:text-teal disabled:opacity-50"
+        >
+          ↩ Trả lời
+        </button>
+      )}
+    </div>
+  );
+}
+
 export function CommentsSection({ slug }: { slug: string }) {
   const { user } = useAuth();
   const demo = isDemoMode();
   const displayName =
     user?.displayName?.trim() || user?.email?.split("@")[0] || "Thành viên";
+  const uid = demo ? "demo-user" : (user?.uid ?? "");
+  const canComment = demo || !!user;
+
   const [comments, setComments] = useState<ArticleComment[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [body, setBody] = useState("");
   const [name, setName] = useState("");
+  const [imageURL, setImageURL] = useState("");
+  const [replyingTo, setReplyingTo] = useState<string | null>(null);
+  const [replyBody, setReplyBody] = useState("");
+  const [replyImage, setReplyImage] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
@@ -158,23 +218,25 @@ export function CommentsSection({ slug }: { slug: string }) {
     };
   }, [slug]);
 
+  const authorName = demo ? name.trim() || "Khách" : displayName;
+
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!body.trim() || busy || (!demo && !user)) return;
+    if (!body.trim() || busy || !canComment) return;
     setBusy(true);
     setError("");
     try {
-      const authorName = demo ? name.trim() || "Khách" : displayName;
-      const authorUid = demo ? "demo-user" : user!.uid;
       const c = await createComment(slug, {
         body: body.trim(),
-        authorUid,
+        authorUid: demo ? "demo-user" : user!.uid,
         authorName,
+        imageURL,
         photoURL: demo ? "" : (user?.photoURL ?? ""),
       });
       setComments((prev) => [...prev, c]);
       setBody("");
       setName("");
+      setImageURL("");
     } catch {
       setError(
         "Chưa gửi được bình luận. Bạn thử đăng nhập lại rồi gửi lần nữa nhé.",
@@ -183,12 +245,48 @@ export function CommentsSection({ slug }: { slug: string }) {
     setBusy(false);
   }
 
+  async function submitReply(e: React.FormEvent, parentId: string) {
+    e.preventDefault();
+    if (!replyBody.trim() || busy || !canComment) return;
+    setBusy(true);
+    setError("");
+    try {
+      const c = await createComment(slug, {
+        body: replyBody.trim(),
+        authorUid: demo ? "demo-user" : user!.uid,
+        authorName,
+        imageURL: replyImage,
+        parentId,
+        photoURL: demo ? "" : (user?.photoURL ?? ""),
+      });
+      setComments((prev) => [...prev, c]);
+      setReplyBody("");
+      setReplyImage("");
+      setReplyingTo(null);
+    } catch {
+      setError(
+        "Chưa gửi được trả lời. Bạn thử đăng nhập lại rồi gửi lần nữa nhé.",
+      );
+    }
+    setBusy(false);
+  }
+
+  function startReply(id: string) {
+    setReplyingTo(id);
+    setReplyBody("");
+    setReplyImage("");
+    setError("");
+  }
+
   async function handleLogin() {
     if (busy) return;
     setBusy(true);
     await signInWithGoogle();
     setBusy(false);
   }
+
+  const topLevel = comments.filter((c) => !c.parentId);
+  const repliesFor = (id: string) => comments.filter((c) => c.parentId === id);
 
   return (
     <section aria-label="Bình luận">
@@ -210,27 +308,57 @@ export function CommentsSection({ slug }: { slug: string }) {
         </div>
       ) : (
         <div className="mb-6 flex flex-col gap-3">
-          {comments.map((c) => (
-            <div key={c.id} className="card p-4">
-              <div className="mb-2 flex flex-wrap items-center gap-2">
-                <CommentAvatar
-                  name={c.authorName}
-                  photoURL={c.photoURL}
-                  sampleKey={c.isSample && !c.isAI ? c.authorUid : undefined}
-                />
-                <span className="min-w-0 break-words text-sm font-semibold text-ink">
-                  {c.authorName}
-                </span>
-                {c.isAI && (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-teal-soft px-2 py-0.5 text-[11px] font-semibold text-teal-dark">
-                    🤖 AI trả lời
-                  </span>
-                )}
-                <span className="ml-auto text-xs text-ink-soft">
-                  {c.createdAt}
-                </span>
-              </div>
-              <p className="text-sm text-ink-soft">{c.body}</p>
+          {topLevel.map((c) => (
+            <div key={c.id} className="flex flex-col gap-3">
+              <CommentCard
+                c={c}
+                onReply={() => startReply(c.id)}
+                canReply={canComment}
+              />
+              {replyingTo === c.id && canComment && (
+                <form
+                  onSubmit={(e) => submitReply(e, c.id)}
+                  className="card ml-6 flex flex-col gap-3 border-line p-4 sm:ml-10"
+                >
+                  <textarea
+                    value={replyBody}
+                    onChange={(e) => setReplyBody(e.target.value)}
+                    placeholder={`Trả lời ${c.authorName}…`}
+                    rows={3}
+                    className="rounded-lg border border-line px-3 py-2 text-sm outline-none focus:border-teal"
+                  />
+                  <ImageUpload
+                    uid={uid}
+                    imageURL={replyImage}
+                    onChange={setReplyImage}
+                    disabled={busy}
+                  />
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="submit"
+                      className="btn btn-primary"
+                      disabled={busy || !replyBody.trim()}
+                    >
+                      {busy ? "Đang gửi…" : "Gửi trả lời"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setReplyingTo(null)}
+                      className="btn btn-ghost"
+                    >
+                      Hủy
+                    </button>
+                  </div>
+                </form>
+              )}
+              {repliesFor(c.id).map((r) => (
+                <div
+                  key={r.id}
+                  className="ml-6 border-l-2 border-line pl-3 sm:ml-10 sm:pl-4"
+                >
+                  <CommentCard c={r} />
+                </div>
+              ))}
             </div>
           ))}
         </div>
@@ -250,6 +378,12 @@ export function CommentsSection({ slug }: { slug: string }) {
             placeholder="Viết bình luận…"
             rows={3}
             className="rounded-lg border border-line px-3 py-2 text-sm outline-none focus:border-teal"
+          />
+          <ImageUpload
+            uid={uid}
+            imageURL={imageURL}
+            onChange={setImageURL}
+            disabled={busy}
           />
           <button
             type="submit"
@@ -277,6 +411,12 @@ export function CommentsSection({ slug }: { slug: string }) {
             placeholder="Viết bình luận… (góp ý, hỏi thêm, hoặc chia sẻ kinh nghiệm của bạn)"
             rows={3}
             className="rounded-lg border border-line px-3 py-2 text-sm outline-none focus:border-teal"
+          />
+          <ImageUpload
+            uid={uid}
+            imageURL={imageURL}
+            onChange={setImageURL}
+            disabled={busy}
           />
           {error && <p className="text-xs text-clay">{error}</p>}
           <button

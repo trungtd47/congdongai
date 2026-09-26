@@ -34,6 +34,7 @@ export interface PostSummary {
   id: string;
   title: string;
   body: string;
+  imageURL: string;
   tags: string[];
   authorUid: string;
   authorName: string;
@@ -48,6 +49,7 @@ export interface PostSummary {
 export interface Answer {
   id: string;
   body: string;
+  imageURL: string;
   authorUid: string;
   authorName: string;
   createdAt: string;
@@ -75,6 +77,7 @@ function demoSummary(p: DemoPost): PostSummary {
     id: p.id,
     title: p.title,
     body: p.body,
+    imageURL: p.imageURL ?? "",
     tags: p.tags,
     authorUid: p.authorUid,
     authorName: p.authorName,
@@ -105,6 +108,7 @@ function firestorePost(id: string, data: DocumentData): PostSummary {
     id,
     title: data.title ?? "",
     body: data.body ?? "",
+    imageURL: data.imageURL ?? "",
     tags: data.tags ?? [],
     authorUid: data.authorUid ?? "",
     authorName: data.authorName ?? "Thành viên",
@@ -121,6 +125,7 @@ function firestoreAnswer(id: string, data: DocumentData): Answer {
   return {
     id,
     body: data.body ?? "",
+    imageURL: data.imageURL ?? "",
     authorUid: data.authorUid ?? "",
     authorName: data.authorName ?? "Thành viên",
     createdAt: firestoreDate(data.createdAt),
@@ -144,7 +149,10 @@ function sortedDemo(sort: PostSort): PostSummary[] {
 }
 
 function demoDetail(p: DemoPost): PostDetail {
-  return { ...demoSummary(p), answers: p.answers.map((a) => ({ ...a })) };
+  return {
+    ...demoSummary(p),
+    answers: p.answers.map((a) => ({ ...a, imageURL: a.imageURL ?? "" })),
+  };
 }
 
 export async function listPosts(
@@ -254,6 +262,7 @@ export async function upvoteAnswer(
 export async function createPost(input: {
   title: string;
   body: string;
+  imageURL?: string;
   tags: string[];
   authorUid: string;
   authorName: string;
@@ -264,6 +273,7 @@ export async function createPost(input: {
       id,
       title: input.title,
       body: input.body,
+      imageURL: input.imageURL ?? "",
       tags: input.tags,
       authorUid: input.authorUid,
       authorName: input.authorName,
@@ -283,6 +293,7 @@ export async function createPost(input: {
   await setDoc(ref, {
     title: input.title,
     body: input.body,
+    imageURL: input.imageURL ?? "",
     tags: input.tags,
     authorUid: input.authorUid,
     authorName: input.authorName,
@@ -298,7 +309,12 @@ export async function createPost(input: {
 
 export async function createAnswer(
   postId: string,
-  input: { body: string; authorUid: string; authorName: string },
+  input: {
+    body: string;
+    imageURL?: string;
+    authorUid: string;
+    authorName: string;
+  },
 ): Promise<void> {
   if (isDemoMode()) {
     const p = demoStore.find((x) => x.id === postId);
@@ -306,6 +322,7 @@ export async function createAnswer(
     p.answers.push({
       id: `a-${Date.now()}`,
       body: input.body,
+      imageURL: input.imageURL ?? "",
       authorUid: input.authorUid,
       authorName: input.authorName,
       createdAt: demoNow(),
@@ -323,6 +340,7 @@ export async function createAnswer(
   const ref = doc(collection(db, "posts", postId, "answers"));
   await setDoc(ref, {
     body: input.body,
+    imageURL: input.imageURL ?? "",
     authorUid: input.authorUid,
     authorName: input.authorName,
     createdAt: serverTimestamp(),
@@ -374,6 +392,8 @@ export interface ArticleComment {
   authorUid: string;
   authorName: string;
   photoURL: string;
+  imageURL: string;
+  parentId?: string | null;
   createdAt: string; // YYYY-MM-DD để hiển thị
   isAI: boolean;
   isSample?: boolean;
@@ -390,6 +410,8 @@ function demoCommentToView(c: DemoComment): ArticleComment {
     authorUid: c.authorUid,
     authorName: c.authorName,
     photoURL: "",
+    imageURL: c.imageURL ?? "",
+    parentId: c.parentId ?? null,
     createdAt: c.createdAt,
     isAI: c.isAI,
     isSample: c.authorUid.startsWith("u-") || c.authorUid === "ai-friday",
@@ -460,6 +482,8 @@ export async function listComments(slug: string): Promise<ArticleComment[]> {
         data.authorName ||
         "Thành viên",
       photoURL: data.photoURL || profile?.photoURL || "",
+      imageURL: data.imageURL ?? "",
+      parentId: data.parentId ?? null,
       createdAt: firestoreDate(data.createdAt),
       isAI: data.isAI ?? false,
       isSample: Boolean(sample),
@@ -474,6 +498,8 @@ export async function createComment(
     authorUid: string;
     authorName: string;
     photoURL?: string;
+    imageURL?: string;
+    parentId?: string | null;
   },
 ): Promise<ArticleComment> {
   if (isDemoMode()) {
@@ -482,6 +508,8 @@ export async function createComment(
       authorUid: input.authorUid || DEMO_UID,
       authorName: input.authorName || "Khách",
       body: input.body,
+      imageURL: input.imageURL ?? "",
+      parentId: input.parentId ?? null,
       createdAt: demoNow(),
       isAI: false,
     };
@@ -497,6 +525,8 @@ export async function createComment(
     authorUid: input.authorUid,
     authorName: input.authorName,
     photoURL: input.photoURL ?? "",
+    imageURL: input.imageURL ?? "",
+    parentId: input.parentId ?? null,
     createdAt: serverTimestamp(),
     isAI: false,
     flagged: false,
@@ -507,6 +537,8 @@ export async function createComment(
     authorUid: input.authorUid,
     authorName: input.authorName,
     photoURL: input.photoURL ?? "",
+    imageURL: input.imageURL ?? "",
+    parentId: input.parentId ?? null,
     createdAt: demoNow(),
     isAI: false,
   };

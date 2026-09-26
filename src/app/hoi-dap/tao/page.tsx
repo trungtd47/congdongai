@@ -7,6 +7,7 @@ import { isDemoMode } from "@/lib/firebase";
 import { useAuth } from "@/hooks/useAuth";
 import { signInWithGoogle } from "@/lib/auth";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { ImageUpload } from "@/components/ImageUpload";
 
 const DEMO_UID = "demo-user";
 
@@ -16,6 +17,7 @@ export default function TaoCauHoiPage() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [tags, setTags] = useState("");
+  const [imageURL, setImageURL] = useState("");
   const [postId, setPostId] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -29,6 +31,7 @@ export default function TaoCauHoiPage() {
       const id = await createPost({
         title: title.trim(),
         body: body.trim(),
+        imageURL,
         tags: tags
           .split(",")
           .map((t) => t.trim())
@@ -123,6 +126,17 @@ export default function TaoCauHoiPage() {
               rows={5}
               placeholder="Mô tả bạn đã thử gì, lỗi hiện ra thế nào…"
               className="w-full rounded-lg border border-line px-3 py-2 text-sm outline-none focus:border-teal"
+            />
+          </div>
+          <div>
+            <label className="mb-1 block text-sm font-semibold">
+              Ảnh đính kèm (không bắt buộc)
+            </label>
+            <ImageUpload
+              uid={demo ? DEMO_UID : (user?.uid ?? "")}
+              imageURL={imageURL}
+              onChange={setImageURL}
+              disabled={busy}
             />
           </div>
           <div>

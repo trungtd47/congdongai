@@ -18,6 +18,7 @@ const links = [
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const { user } = useAuth();
   const demo = isDemoMode();
 
@@ -63,37 +64,123 @@ export function Nav() {
 
         <div className="nav-btns ml-auto">
           {user ? (
-            <>
-              <span
-                className="hidden items-center gap-2 sm:flex"
-                title={displayName}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setMenuOpen((v) => !v)}
+                className="flex items-center gap-2 rounded-full border border-line bg-card py-1 pl-1 pr-2 transition-colors hover:border-teal"
+                aria-haspopup="menu"
+                aria-expanded={menuOpen}
+                aria-label="Menu tài khoản"
               >
                 {user.photoURL ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={user.photoURL}
                     alt={displayName}
-                    className="h-7 w-7 rounded-full border border-line object-cover"
                     referrerPolicy="no-referrer"
+                    className="h-7 w-7 rounded-full border border-line object-cover"
                   />
                 ) : (
                   <span className="flex h-7 w-7 items-center justify-center rounded-full bg-clay text-[13px] font-bold text-white">
                     {initial}
                   </span>
                 )}
-                <span className="max-w-[120px] truncate text-[13px] font-semibold text-ink">
+                <span className="hidden max-w-[120px] truncate text-[13px] font-semibold text-ink sm:inline">
                   {displayName}
                 </span>
-              </span>
-              <button
-                type="button"
-                onClick={handleLogout}
-                disabled={busy}
-                className="login text-[13px] font-semibold disabled:opacity-50"
-              >
-                Đăng xuất
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  aria-hidden="true"
+                  className="text-ink-soft"
+                >
+                  <path
+                    d="M6 9l6 6 6-6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </button>
-            </>
+
+              {menuOpen && (
+                <>
+                  <button
+                    type="button"
+                    aria-label="Đóng menu tài khoản"
+                    onClick={() => setMenuOpen(false)}
+                    className="fixed inset-0 z-10 cursor-default"
+                  />
+                  <div
+                    role="menu"
+                    className="absolute right-0 top-full z-20 mt-2 w-64 overflow-hidden rounded-xl border border-line bg-card shadow-lg"
+                  >
+                    <div className="flex items-center gap-3 border-b border-line px-4 py-3">
+                      {user.photoURL ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={user.photoURL}
+                          alt=""
+                          referrerPolicy="no-referrer"
+                          className="h-10 w-10 shrink-0 rounded-full object-cover"
+                        />
+                      ) : (
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-clay text-base font-bold text-white">
+                          {initial}
+                        </span>
+                      )}
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-bold text-ink">
+                          {displayName}
+                        </p>
+                        {user.email && (
+                          <p className="truncate text-xs text-ink-soft">
+                            {user.email}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={handleLogout}
+                      disabled={busy}
+                      className="flex w-full items-center gap-2 px-4 py-3 text-left text-sm font-semibold text-clay transition-colors hover:bg-clay/10 disabled:opacity-50"
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M16 17l5-5-5-5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M21 12H9"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      Đăng xuất
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
           ) : (
             <>
               <button
