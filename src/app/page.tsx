@@ -50,10 +50,10 @@ export default function HomePage() {
             <h1>
               <span style={{ fontFamily: "var(--font-sans)" }}>👋</span> Chào
               bạn -<br />
-              đây là cách mình dùng{" "}
-              <span style={{ color: "var(--teal)" }}>AI Agent</span>
+              mình muốn đưa{" "}
+              <span style={{ color: "var(--teal)" }}>AI Agent</span> đến gần hơn
               <br />
-              vào việc thật mỗi ngày
+              với mọi người
             </h1>
             <div className="from">
               <div className="av">T</div>
@@ -164,10 +164,10 @@ export default function HomePage() {
               hình và câu lệnh mẫu copy-paste.
             </p>
             <p className="sub">
-              Cộng Đồng AI là cộng đồng Hermes Agent Tiếng Việt: bắt đầu từ
-              cách cài, thử giao một việc thật, rồi hỏi đáp và đối chiếu kinh
-              nghiệm với người dùng khác. Đây là cộng đồng người dùng, không
-              phải trang chính thức của Nous Research.
+              Cộng Đồng AI là cộng đồng Hermes Agent Tiếng Việt: bắt đầu từ cách
+              cài, thử giao một việc thật, rồi hỏi đáp và đối chiếu kinh nghiệm
+              với người dùng khác. Đây là cộng đồng người dùng, không phải trang
+              chính thức của Nous Research.
             </p>
             {pathSteps.map((s, i) => (
               <div
