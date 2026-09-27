@@ -22,12 +22,12 @@ const honestFaqs = [
       '0 đồng. Mã nguồn mở hoàn toàn (giấy phép MIT). Không bản "pro", không thu phí, không bao giờ.',
   },
   {
-    question: "Vậy tiền ở đâu ra?",
+    question: "Vậy bạn phải trả tiền cho gì?",
     answer:
-      "Bạn trả tiền theo số token đã dùng, qua OpenRouter: nạp trước một khoản, mỗi câu hỏi trừ dần. Không gói tháng, không tự gia hạn.",
+      "Hermes miễn phí, nhưng bạn cần kết nối một nguồn model AI. Dùng OpenRouter thì trả theo số token đã dùng. Nếu đã có ChatGPT Plus hoặc tài khoản có quyền dùng Codex, bạn có thể thử đăng nhập tài khoản đó trong Hermes; quyền dùng và hạn mức tùy tài khoản.",
   },
   {
-    question: "Người mới nên nạp bao nhiêu?",
+    question: "Nếu dùng OpenRouter, nên nạp bao nhiêu?",
     answer:
       "Nạp ít thử trước - hỏi vài câu mỗi ngày cho việc cá nhân thì một khoản nhỏ dùng được rất lâu. Trong app luôn thấy rõ đã dùng bao nhiêu.",
   },
@@ -346,16 +346,17 @@ export default function HomePage() {
               </p>
             </div>
             <div className="hq">
-              <h5>Vậy tiền ở đâu ra?</h5>
+              <h5>Vậy bạn phải trả tiền cho gì?</h5>
               <p>
-                Bạn trả tiền theo số token đã dùng, qua{" "}
-                <TermTip term="OpenRouter">OpenRouter</TermTip>: nạp trước một
-                khoản, mỗi câu hỏi trừ dần. Không gói tháng, không tự gia hạn,
-                không dùng thì số dư nằm yên, là tiền của bạn.
+                Hermes miễn phí, nhưng bạn cần kết nối một nguồn model AI. Dùng{" "}
+                <TermTip term="OpenRouter">OpenRouter</TermTip> thì trả theo số
+                token đã dùng. Nếu đã có ChatGPT Plus hoặc tài khoản có quyền
+                dùng Codex, bạn có thể thử đăng nhập tài khoản đó trong Hermes;
+                quyền dùng và hạn mức tùy tài khoản.
               </p>
             </div>
             <div className="hq">
-              <h5>Người mới nên nạp bao nhiêu?</h5>
+              <h5>Nếu dùng OpenRouter, nên nạp bao nhiêu?</h5>
               <p>
                 Nạp ít thử trước - hỏi vài câu mỗi ngày cho việc cá nhân thì một
                 khoản nhỏ dùng được rất lâu. Trong app luôn thấy rõ đã dùng bao
