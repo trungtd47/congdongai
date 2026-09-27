@@ -1,5 +1,9 @@
 # Session Summary - 2026-09-27
 
+## Mobile UX follow-up
+- Sửa CSS mobile header tràn ngang do `.nav-links` ghi đè Tailwind hidden; logo không wrap, hamburger sát phải; xử lý overflow card sách/code/bảng.
+- Build 75 trang thành công; screenshot local ở 320px và 390px xác nhận header gọn, không tràn ngang. Hai file untracked scripts không liên quan được giữ nguyên.
+
 ## Completed
 - Kiểm tra repo, memory gần nhất, Friday profile mặc định, vault và Discord. Repo chưa có AGENTS.md/INDEX.md nhưng có memory.
 - Baseline `npm run build` thành công 74 trang trước khi sửa.
