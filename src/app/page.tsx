@@ -4,6 +4,7 @@ import { JsonLd, faqJsonLd } from "@/lib/seo";
 import { TermTip } from "@/components/TermTip";
 import { pathSteps, libraryBooks } from "@/lib/demo-data";
 import { HomeQAPanel } from "@/components/HomeQAPanel";
+import { JoinGoogleButton } from "@/components/JoinGoogleButton";
 import { getAllPosts } from "@/lib/posts";
 import { caseStudies } from "@/lib/case-studies";
 
@@ -392,9 +393,7 @@ export default function HomePage() {
             cộng đồng lớn lên bằng đúng cách đó.
           </p>
           <div className="btns">
-            <Link className="btn-c teal" href="/bat-dau">
-              Tham gia miễn phí
-            </Link>
+            <JoinGoogleButton />
             <Link className="btn-c ghost" href="/bat-dau">
               Đọc hướng dẫn trước đã
             </Link>
