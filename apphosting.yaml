@@ -1,6 +1,11 @@
 # Firebase App Hosting — build-time env vars cho NEXT_PUBLIC_FIREBASE_*
 # (giá trị web config là công khai, bảo mật nằm ở Firestore rules + authorized domains)
 env:
+  # Server-only allowlist; API also requires a verified Google identity.
+  - variable: CONGDONG_ADMIN_UIDS
+    value: "PSgMcPSnABa4HRE6ZOJv7fHKDZH3"
+    availability:
+      - RUNTIME
   - variable: NEXT_PUBLIC_FIREBASE_API_KEY
     value: "AIzaSyCeBAStBauWdCI2DJEz7BdpROJUUa3Er8g"
     availability:

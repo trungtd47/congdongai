@@ -7,7 +7,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "node --test scripts/friday/tests.mjs",
+    "friday:doctor": "node scripts/friday/cli.mjs doctor",
+    "friday:qa": "node scripts/friday/cli.mjs qa --dry-run",
+    "friday:qa-execute": "node scripts/friday/cli.mjs qa --execute",
+    "friday:audit": "node scripts/friday/cli.mjs audit --dry-run",
+    "friday:notify": "node scripts/friday/cli.mjs notify --dry-run",
+    "friday:prepare": "node scripts/friday/cli.mjs prepare --dry-run"
   },
   "dependencies": {
     "firebase": "^11.4.0",
@@ -21,6 +28,7 @@
     "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^4.0.1",
     "@tailwindcss/postcss": "^4.1.4",
     "@types/node": "^22.14.0",
     "@types/react": "^19.1.0",

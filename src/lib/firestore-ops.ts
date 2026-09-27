@@ -17,6 +17,7 @@ import {
   arrayRemove,
   increment,
   serverTimestamp,
+  writeBatch,
   type DocumentData,
 } from "firebase/firestore";
 import { isDemoMode, getDbInstance } from "./firebase";
@@ -338,7 +339,8 @@ export async function createAnswer(
 
   const db = getDbInstance()!;
   const ref = doc(collection(db, "posts", postId, "answers"));
-  await setDoc(ref, {
+  const batch = writeBatch(db);
+  batch.set(ref, {
     body: input.body,
     imageURL: input.imageURL ?? "",
     authorUid: input.authorUid,
@@ -350,7 +352,8 @@ export async function createAnswer(
     isAI: false,
     flagged: false,
   });
-  await updateDoc(doc(db, "posts", postId), { answerCount: increment(1) });
+  batch.update(doc(db, "posts", postId), { answerCount: increment(1), lastAnswerId: ref.id });
+  await batch.commit();
 }
 
 export async function acceptAnswer(
@@ -367,17 +370,14 @@ export async function acceptAnswer(
 
   const db = getDbInstance()!;
   const ansSnap = await getDocs(collection(db, "posts", postId, "answers"));
-  const batch = ansSnap.docs.map((d) => {
+  if (!ansSnap.docs.some(d => d.id === answerId)) throw new Error("Không tìm thấy câu trả lời.");
+  const batch = writeBatch(db);
+  ansSnap.docs.forEach(d => {
     const isAccepted = d.id === answerId;
-    if (d.data().isAccepted !== isAccepted) {
-      return updateDoc(doc(db, "posts", postId, "answers", d.id), {
-        isAccepted,
-      });
-    }
-    return null;
+    if (d.data().isAccepted !== isAccepted) batch.update(d.ref, {isAccepted});
   });
-  await Promise.all(batch.filter(Boolean));
-  await updateDoc(doc(db, "posts", postId), { solvedAnswerId: answerId });
+  batch.update(doc(db, "posts", postId), { solvedAnswerId: answerId });
+  await batch.commit();
 }
 
 export function currentDemoUid(): string {

@@ -1,11 +1,7 @@
 {
-  "firestore": {
-    "databases": {
-      "congdongai": {
-        "rules": "firestore/firestore.rules"
-      }
-    }
-  },
+  "firestore": [
+    { "database": "congdongai", "rules": "firebase/firestore.rules" }
+  ],
   "storage": {
     "rules": "firebase/storage.rules"
   },
