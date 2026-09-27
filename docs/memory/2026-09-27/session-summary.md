@@ -17,9 +17,8 @@
 - Chưa commit/push, chưa deploy rules, chưa tạo lịch chạy.
 
 ## Next Steps
-- Review artifact và chạy test/build tích hợp sau khi agent trả kết quả.
-- Tích hợp runner Friday có model riêng, không đổi model mặc định của Friday.
-- Nhận credential Firebase từ sếp; xác minh project/rules/auth rồi mới bật kết nối live.
+- Bật lịch chạy Friday (cron) sau khi sếp xác nhận UI + rules đã ổn.
+- Nối render case study do Friday sinh vào `/cau-chuyen` (loader `friday-case-data.ts` chưa nhập vào `case-studies.ts`).
 
 ## Open Issues
 - Không còn service-account congdongai trong cache/documents; sếp nói file ở máy UM và sẽ gửi. File google_service_account.json của profile mặc định thuộc youtube-api-271809, không sử dụng nhầm.
