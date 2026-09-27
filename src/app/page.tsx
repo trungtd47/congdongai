@@ -33,7 +33,7 @@ const honestFaqs = [
   {
     question: "Còn trang này thu phí gì không?",
     answer:
-      "Không, và sẽ luôn như vậy. Mình duy trì trang này bằng tiền túi của bản thân. Những gì mình nhận được từ cộng đồng và mã nguồn mở đều miễn phí, nên mình cũng muốn chia sẻ lại miễn phí. Mình sẽ không bao giờ thu phí thành viên hay bán khóa học.",
+      "Không, và sẽ luôn như vậy. Mình duy trì trang này bằng tiền túi của bản thân. Những gì mình nhận được từ cộng đồng và mã nguồn mở đều miễn phí, nên mình muốn chia sẻ lại kinh nghiệm mà thôi. Mọi người có thể sử dụng trang này hoàn toàn miễn phí.",
   },
 ];
 
@@ -373,8 +373,8 @@ export default function HomePage() {
               <p>
                 <b>Không, và sẽ luôn như vậy.</b> Mình duy trì trang này bằng
                 tiền túi của bản thân. Những gì mình nhận được từ cộng đồng và
-                mã nguồn mở đều miễn phí, nên mình cũng muốn chia sẻ lại miễn
-                phí. Mình sẽ không bao giờ thu phí thành viên hay bán khóa học.
+                mã nguồn mở đều miễn phí, nên mình muốn chia sẻ lại kinh nghiệm
+                mà thôi. Mọi người có thể sử dụng trang này hoàn toàn miễn phí.
               </p>
             </div>
           </div>
