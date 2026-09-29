@@ -7,13 +7,13 @@
 - Sửa sitemap dùng `canonicalUrl()` để URL khớp canonical có dấu `/` cuối. Build 79/79, kiểm HTML/JSON-LD/sitemap/link và quét ký tự cấm, nguồn ngoài; push `b88b04c` + `7b3b092` lên main.
 - Production: đọc lại 4 bài live HTTP 200, canonical + JSON-LD + sitemap khớp, hub có link mới; repo remote SHA `7b3b092`.
 - Ghi decision vào vault và bổ sung skill congdongai-site cho ranh giới nội dung công vụ.
+- Sau góp ý của sếp, xóa hẳn case mô phỏng (không redirect), viết bài `hermes-giup-cong-chuc-lam-gi` về báo cáo/việc lặp lại/văn bản mới và hướng dẫn `bo-nao-van-ban-phap-ly` về kho file cục bộ có nguồn. Phân biệt kho file với memory hữu hạn, model cloud với model tại máy. Build 80/80; push `262b570`; đọc lại hai URL mới live 200 và case cũ 404, sitemap/canonical/JSON-LD/link hub khớp.
 
 ## In Progress
 - Không có.
 
 ## Next Steps
-- Nếu có trải nghiệm triển khai Hermes thực từ cán bộ/cơ quan và được phép công bố, phỏng vấn, xin nguồn và duyệt trước khi đưa vào `/cau-chuyen`; không biến bài mô phỏng thành case thật.
-- Bài case mô phỏng ở `/blog` được sếp nhận xét chưa hay, thay bằng bài gợi ý công việc công vụ và hướng dẫn kho văn bản pháp lý ở cùng ngày (xem `giai-phap-cong-vu-bo-nao-phap-ly.md`); xóa slug cũ, không redirect.
+- Nếu có trải nghiệm triển khai Hermes thực từ cán bộ/cơ quan và được phép công bố, phỏng vấn, xin nguồn và duyệt trước khi đưa vào `/cau-chuyen`; không biến gợi ý thành case thật.
 
 ## Open Issues
 - Chưa kiểm thử workflow Hermes trong một môi trường cơ quan nhà nước thực tế; không tuyên bố tính tuân thủ hay kết quả áp dụng.
