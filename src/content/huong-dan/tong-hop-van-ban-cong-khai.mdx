@@ -1,0 +1,58 @@
+---
+title: "Nhờ Hermes tổng hợp văn bản công khai, có nguồn để đối chiếu"
+description: "Hướng dẫn cán bộ, công chức dùng Hermes lập bảng kiểm từ nguồn công khai, không bịa điều khoản và không đưa hồ sơ nội bộ vào model."
+datePublished: "2026-09-29"
+dateModified: "2026-09-29"
+authorName: "Cộng Đồng AI"
+tags: ["công vụ", "nghiên cứu", "nguồn công khai"]
+---
+
+## Vấn đề
+
+Một câu hỏi từ đồng nghiệp có thể kéo theo vài trang văn bản và nhiều ý cần kiểm. Hermes giúp lập bảng rà soát từ nguồn công khai để bạn tiết kiệm công đoạn gom ý. Nó **không** xác định thay bạn văn bản nào còn hiệu lực hay quyết định cách áp dụng vào một hồ sơ cụ thể.
+
+Bài này dùng [bài đăng về Công văn 557/BKHCN-CĐSQG trên Cổng TTĐT Chính phủ](https://xaydungchinhsach.chinhphu.vn/huong-dan-su-dung-chatbot-ai-ho-tro-can-bo-cong-chuc-nguoi-lao-dong-trong-cong-viec-119250405175138265.htm) làm nguồn thử: văn bản đã được công bố công khai, nội dung nói về nguyên tắc dùng AI trong công việc. Không dùng hồ sơ cá nhân để chạy thử.
+
+## Cần gì trước
+
+- [Hermes đã cài và kết nối model](/bat-dau/chon-nha-cung-cap-api); đã đọc [ranh giới an toàn khi dùng trong công vụ](/huong-dan/hermes-cong-vu-an-toan).
+- Một URL công khai bạn đã tự mở được. Nếu dùng tài liệu trên máy, chỉ chọn bản công khai và được phép xử lý, không phải tài liệu nội bộ.
+- Không nối Hermes với tài khoản công vụ, hệ thống quản lý văn bản hay cổng tiếp nhận hồ sơ khi chưa được cơ quan cho phép.
+
+## Cách làm
+
+### 1. Giao bảng kiểm thay vì yêu cầu kết luận
+
+Dán prompt sau vào Hermes. Nó chỉ cần đọc trang công khai; bạn không cần viết script hay cài plugin:
+
+```text
+Đọc duy nhất trang công khai này:
+https://xaydungchinhsach.chinhphu.vn/huong-dan-su-dung-chatbot-ai-ho-tro-can-bo-cong-chuc-nguoi-lao-dong-trong-cong-viec-119250405175138265.htm
+
+Tạo bảng 3 cột: nguyên tắc được nêu / đoạn nguồn ngắn / phần cần tôi tự kiểm.
+Tách rõ yêu cầu về dữ liệu đầu vào, kiểm tra đầu ra và quyền truy cập.
+Chỉ dùng nội dung trang đó. Không tự thêm điều luật, số điều hay kết luận pháp lý.
+Nếu không mở được nguồn, báo lỗi thay vì viết theo trí nhớ.
+Không đọc file trên máy, không truy cập tài khoản, không gửi hay xuất bản gì.
+```
+
+Nếu bạn thay bằng nguồn khác, nhờ Hermes ghi rõ tên, đường dẫn, cơ quan công bố và ngày của tài liệu **nếu nguồn có nêu**. Trường nào thiếu phải để trống, không tự điền ngày.
+
+### 2. Soát bảng bằng mắt
+
+Mở lại trang gốc, tìm từng đoạn trích. Đối chiếu ít nhất phần không chia sẻ tài liệu nội bộ/dữ liệu cá nhân, phần kiểm tra kết quả và phần trách nhiệm của người sử dụng. Nếu câu trả lời gộp hai ý thành một quy định mới hoặc trích nhầm nơi, sửa trực tiếp từ nguồn. Đây chỉ là bảng làm việc để tham khảo, không phải ý kiến chính thức của cơ quan.
+
+### 3. Nếu cần so sánh nhiều nguồn
+
+Đưa **danh sách URL công khai do bạn chọn**, yêu cầu tách cột theo từng nguồn và ghi điểm chưa thống nhất. Với văn bản quy phạm pháp luật, mở bản gốc và kiểm tra hiệu lực ở cổng chính thức trước khi viện dẫn. Không yêu cầu Hermes tự đưa ra phương án xử lý cho người dân từ một bản tóm tắt.
+
+## Kết quả
+
+Một bảng có dấu vết về nguồn để người phụ trách đọc nhanh rồi kiểm lại. Nếu chỉ nhận một đoạn văn trôi chảy nhưng không có trích dẫn kiểm được, xem như chưa xong việc.
+
+## Mẹo thêm
+
+- Trang web cũng có thể chứa nội dung lừa agent làm khác yêu cầu. Giữ phạm vi công việc ở mức đọc, không giao quyền thay đổi file, gửi email hay tải dữ liệu từ hệ thống nội bộ. [Hermes giải thích các lớp bảo vệ](https://hermes-agent.nousresearch.com/docs/user-guide/security/).
+- Thử [soạn thông báo mẫu từ dữ liệu giả lập](/huong-dan/soan-thong-bao-mau-cong-vu) sau khi đã làm quen với bước kiểm nguồn.
+
+Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap) với URL công khai, không dán hồ sơ thật.

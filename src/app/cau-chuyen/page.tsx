@@ -58,6 +58,28 @@ export default function CauChuyenPage() {
         </div>
       </section>
 
+      {/* PHÂN BIỆT: CHUYỆN THẬT VÀ BÀI MÔ PHỎNG */}
+      <section className="mt-10" aria-labelledby="mo-phong-heading">
+        <h2
+          id="mo-phong-heading"
+          className="mb-2 text-[18px] font-bold tracking-[-0.3px]"
+        >
+          Chuyện thật và bài mô phỏng
+        </h2>
+        <p className="max-w-2xl text-sm text-ink-soft">
+          Các bài phía trên là câu chuyện thật, có nguồn công khai ở cuối bài để
+          bạn đối chiếu. Riêng{" "}
+          <Link
+            href="/blog/tinh-huong-mo-phong-cong-vu-hermes"
+            className="font-semibold text-teal-dark underline decoration-[var(--gold)] underline-offset-2"
+          >
+            bài mô phỏng công vụ
+          </Link>{" "}
+          là ví dụ giả định, không phải chuyện thật của ai - đọc để hình dung
+          cách làm, đừng coi là kết quả đã kiểm chứng.
+        </p>
+      </section>
+
       {/* NGUỒN */}
       <section className="mt-12 border-t border-[var(--line)] pt-6">
         <h2 className="mb-3 text-[18px] font-bold">Nguồn</h2>

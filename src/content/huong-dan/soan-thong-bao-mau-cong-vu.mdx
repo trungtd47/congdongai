@@ -1,0 +1,60 @@
+---
+title: "Soạn thông báo mẫu với Hermes, giữ quyền duyệt ở người"
+description: "Ví dụ giả lập cho cán bộ, công chức: nhờ Hermes tạo bản nháp thông báo từ dữ kiện tự tạo, kiểm từng câu trước khi dùng."
+datePublished: "2026-09-29"
+dateModified: "2026-09-29"
+authorName: "Cộng Đồng AI"
+tags: ["công vụ", "soạn thảo", "tình huống mô phỏng"]
+---
+
+## Vấn đề
+
+Viết một thông báo ngắn thường không khó, nhưng mất thời gian sắp ý và rà xem có nói quá dữ kiện hay không. Hermes có thể soạn **bản nháp** từ thông tin bạn đã xác nhận là công khai. Bài này là tình huống mô phỏng, không phải mẫu văn bản hành chính chính thức hay trường hợp đã triển khai ở cơ quan nào.
+
+## Cần gì trước
+
+- Đã [cài Hermes và kết nối model](/bat-dau), đọc [ranh giới an toàn cho công vụ](/huong-dan/hermes-cong-vu-an-toan).
+- Chỉ dùng dữ liệu bịa hoàn toàn để tập: không tên người dân, số điện thoại, mã hồ sơ, tài liệu nội bộ hay lịch họp chưa công bố.
+- Nếu làm việc thật, cần xác nhận thông tin nào được phép công khai, mẫu/luồng phê duyệt do đơn vị quy định và người chịu trách nhiệm phát hành.
+
+## Cách làm
+
+### 1. Tập với dữ liệu giả lập
+
+Đoạn dưới là **ví dụ do mình tự dựng**, không phản ánh một địa phương hay cơ quan thật. Dán nguyên prompt vào Hermes:
+
+```text
+Tình huống giả lập để tập soạn văn bản, không phải thông tin cơ quan thật.
+Một buổi hướng dẫn sử dụng cổng thông tin công khai được dự kiến vào ngày
+15/10, từ 9:00 đến 10:00, tại phòng trực tuyến Mẫu A. Đối tượng: người
+muốn học cách tra cứu thông tin công khai. Đường dẫn tham gia chưa có.
+
+Hãy tạo BẢN NHÁP thông báo ngắn bằng tiếng Việt, gồm: mục đích,
+thời gian, hình thức tham gia, mục cần bổ sung trước khi đăng.
+Giữ nguyên dữ kiện, đừng bịa tên cơ quan, số văn bản, người ký,
+địa chỉ hay đường dẫn. Dùng [CHỜ XÁC NHẬN] cho chỗ thiếu.
+Sau bản nháp, lập bảng: câu trong bản nháp / dữ kiện gốc tương ứng.
+Không mở file, không kết nối tài khoản, không gửi, không đăng tải.
+```
+
+Prompt yêu cầu bảng đối chiếu để bạn thấy câu nào có nguồn và câu nào chỉ là lời văn. Ngày trong ví dụ là dữ liệu tập, **không phải lịch của một sự kiện có thật**.
+
+### 2. Duyệt như với một bản nháp do người khác soạn
+
+Gạch bỏ mọi chi tiết Hermes tự thêm. Kiểm ngày, giờ, phạm vi người nhận và sự phù hợp của câu chữ. Đối với việc thật, đối chiếu mẫu thể thức, quy trình lưu trữ và trình ký nội bộ; người có thẩm quyền chỉnh sửa, phê duyệt và phát hành trên hệ thống chính thức. Đừng nhờ agent tự gửi hoặc đăng công khai.
+
+### 3. Nếu đầu vào thiếu
+
+Hỏi Hermes liệt kê các câu hỏi cần bạn xác nhận **trước** khi viết tiếp, thay vì cho nó đoán. Nếu bạn chưa được phép dùng dữ liệu thật trong môi trường này, dừng ở bản tập; không dán tài liệu nội bộ để lấp chỗ trống.
+
+## Kết quả
+
+Bạn có bản nháp và bảng đối chiếu từng ý để rà soát. Kết quả đạt khi không có thông tin tự sinh ngoài dữ kiện đầu vào và mọi chỗ còn thiếu được đánh dấu rõ ràng. Bản nháp chưa phải văn bản có giá trị ban hành.
+
+## Mẹo thêm
+
+- Nếu cần tìm căn cứ từ tài liệu đã công bố, làm riêng bước [tổng hợp nguồn công khai](/huong-dan/tong-hop-van-ban-cong-khai), rồi tự kiểm văn bản gốc trước khi đưa vào dự thảo.
+- Bộ Khoa học và Công nghệ yêu cầu không đưa thông tin nhạy cảm lên chatbot AI và kiểm tra kỹ đầu ra. [Xem bài công bố Công văn 557/BKHCN-CĐSQG](https://xaydungchinhsach.chinhphu.vn/huong-dan-su-dung-chatbot-ai-ho-tro-can-bo-cong-chuc-nguoi-lao-dong-trong-cong-viec-119250405175138265.htm).
+- Đọc [case study mô phỏng trọn quy trình](/blog/tinh-huong-mo-phong-cong-vu-hermes) nếu muốn xem bước kiểm nguồn và lập bản nháp nối với nhau.
+
+Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap), chỉ dùng tình huống giả lập hoặc nguồn đã công khai.

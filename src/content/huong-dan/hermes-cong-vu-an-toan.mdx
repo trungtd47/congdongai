@@ -1,0 +1,58 @@
+---
+title: "Dùng Hermes trong công vụ: bắt đầu từ dữ liệu công khai"
+description: "Lộ trình thử Hermes Agent cho cán bộ, công chức với tài liệu công khai, không kết nối hệ thống cơ quan, có bước kiểm tra nguồn và duyệt đầu ra."
+datePublished: "2026-09-29"
+dateModified: "2026-09-29"
+authorName: "Cộng Đồng AI"
+tags: ["công vụ", "an toàn", "Hermes"]
+---
+
+## Vấn đề
+
+Bạn muốn nhờ Hermes soạn nháp hay rà văn bản, nhưng công việc có hồ sơ người dân, tài liệu nội bộ và quy trình phê duyệt. Cách bắt đầu không phải mở cả thư mục cơ quan cho agent đọc, mà là thử một việc nhỏ với **văn bản đã công khai** hoặc dữ liệu giả lập.
+
+Hermes là khung agent biết đọc file, tìm trên web và tạo bản nháp; khác chatbot chỉ trả lời. Vì có thể thao tác trên máy, phạm vi bạn giao cho nó quan trọng không kém câu hỏi bạn đặt.
+
+## Cần gì trước
+
+- [Cài Hermes và kết nối một model](/bat-dau). Nếu chưa kết nối model thì prompt bên dưới chưa chạy được.
+- Chọn **một thư mục làm việc riêng** chỉ chứa dữ liệu công khai hoặc dữ liệu giả lập. Nhờ Hermes tạo thư mục thử nghiệm trước khi đưa tài liệu vào; không cấp quyền vào ổ mạng, hộp thư công vụ hay hệ thống nghiệp vụ.
+- Xin ý kiến đơn vị phụ trách an toàn thông tin và tuân thủ quy định của cơ quan trước khi dùng vào việc thật. Bài này không thay thế quy trình nội bộ.
+
+**Ranh giới dữ liệu:** Công văn 557/BKHCN-CĐSQG của Bộ Khoa học và Công nghệ hướng dẫn không chia sẻ với chatbot AI bí mật nhà nước, dữ liệu cá nhân, tài liệu nội bộ và thông tin nhạy cảm; đồng thời yêu cầu kiểm tra kết quả trước khi sử dụng. Với Hermes kết nối model bên ngoài, nội dung yêu cầu gửi tới nhà cung cấp model. Cài Hermes trên máy **không** đồng nghĩa mọi xử lý đều ở trong máy. Ngay cả khi chọn model chạy nội bộ, vẫn phải theo phân quyền và quy định cơ quan, không tự ý nối vào hệ thống công vụ. [Đọc hướng dẫn trên Cổng TTĐT Chính phủ](https://xaydungchinhsach.chinhphu.vn/huong-dan-su-dung-chatbot-ai-ho-tro-can-bo-cong-chuc-nguoi-lao-dong-trong-cong-viec-119250405175138265.htm).
+
+## Cách làm
+
+### 1. Khoanh vùng việc thử
+
+Bắt đầu bằng một bài viết đã đăng công khai trên cổng cơ quan hoặc một mẫu thông báo do bạn tự tạo. Đừng dán hồ sơ thật rồi trông chờ Hermes tự xóa thông tin nhạy cảm: chỉ cần thiếu một tên, địa chỉ hoặc mã hồ sơ là dữ liệu đã rời khỏi phạm vi kiểm soát. Dữ liệu giả lập phải là dữ liệu **bịa hoàn toàn**, không phải hồ sơ thật đổi tên.
+
+### 2. Giao một việc đọc và lập bảng kiểm
+
+Sau khi nguồn model hoạt động, dán prompt này vào Hermes. Thay URL bằng trang công khai bạn đã kiểm tra và được phép sử dụng:
+
+```text
+Chỉ đọc trang công khai này: [URL TRANG CÔNG KHAI].
+Không mở file trên máy, không truy cập ổ mạng, hộp thư hay tài khoản nào.
+Liệt kê 5 ý chính theo bảng: ý / trích đoạn ngắn / URL nguồn.
+Điều gì không thấy trong nguồn thì ghi "chưa xác minh", không đoán.
+Đây là bản nháp để tôi kiểm tra, không gửi, đăng hay cập nhật dữ liệu ở đâu.
+```
+
+Nếu trang chặn truy cập hoặc Hermes không đọc được, dừng ở đó. Bạn có thể chọn một nguồn công khai khác; đừng bảo agent vượt quyền truy cập.
+
+### 3. Kiểm trước khi dùng
+
+Mở từng URL gốc, đối chiếu câu trích và ngày cập nhật. Nếu là văn bản pháp luật, tự kiểm tra hiệu lực và bản gốc trên cổng văn bản chính thức; đừng lấy tóm tắt của AI làm căn cứ pháp lý. Người có thẩm quyền vẫn là người duyệt, ký và phát hành.
+
+## Kết quả
+
+Đầu ra đúng là **bản nháp có liên kết đối chiếu**, không phải công văn đã được phê duyệt. Bạn có thể bỏ toàn bộ kết quả nếu nguồn không đủ rõ. Nếu Hermes tự mở file ngoài phạm vi, tự đề nghị gửi mail hoặc không chỉ ra nguồn, hãy dừng và thu hẹp quyền trước khi thử tiếp.
+
+## Mẹo thêm
+
+- Giữ chế độ duyệt lệnh nguy hiểm; đừng bật chế độ bỏ qua xác nhận để tiện thao tác. [Tài liệu bảo mật Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/security/).
+- Model chạy nội bộ là một lựa chọn kỹ thuật, không phải giấy phép xử lý tài liệu mật; [xem khả năng và điều kiện của model nội bộ](https://hermes-agent.nousresearch.com/docs/user-guide/local-models).
+- Thử tiếp [tổng hợp văn bản công khai có trích nguồn](/huong-dan/tong-hop-van-ban-cong-khai) hoặc [soạn thông báo mẫu](/huong-dan/soan-thong-bao-mau-cong-vu). Những bài này dùng tình huống giả lập, không phải hồ sơ thật.
+
+Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap), nhưng đừng đưa tài liệu nội bộ hay thông tin người dân lên diễn đàn.

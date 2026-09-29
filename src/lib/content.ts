@@ -6,6 +6,7 @@ export interface HubItem {
   description: string;
   time?: string;
   icon?: string;
+  group?: string;
 }
 
 export const batDauItems: HubItem[] = [
@@ -122,6 +123,30 @@ export const huongDanItems: HubItem[] = [
     description:
       "5 prompt copy-paste để Hermes tự nhớ gu của bạn, tự tạo kỹ năng sau mỗi việc khó, tự rút kinh nghiệm mỗi tối - càng dùng càng giỏi.",
     icon: "🌱",
+  },
+  {
+    slug: "hermes-cong-vu-an-toan",
+    title: "Dùng Hermes an toàn trong công vụ",
+    description:
+      "Bắt đầu từ tài liệu công khai, không kết nối hệ thống cơ quan: có bước kiểm tra nguồn và duyệt đầu ra trước khi dùng.",
+    icon: "🔐",
+    group: "cong-vu",
+  },
+  {
+    slug: "tong-hop-van-ban-cong-khai",
+    title: "Tổng hợp văn bản công khai",
+    description:
+      "Lập bảng kiểm từ văn bản công khai có nguồn đối chiếu, không bịa điều khoản và không đưa hồ sơ nội bộ vào model.",
+    icon: "📄",
+    group: "cong-vu",
+  },
+  {
+    slug: "soan-thong-bao-mau-cong-vu",
+    title: "Soạn thông báo giả lập với Hermes",
+    description:
+      "Tập tạo bản nháp bằng dữ kiện bịa hoàn toàn, kiểm từng câu và giữ quyền duyệt ở người trước khi dùng.",
+    icon: "✍️",
+    group: "cong-vu",
   },
 ];
 

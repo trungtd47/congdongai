@@ -1,0 +1,61 @@
+---
+title: "Case study mô phỏng: từ nguồn công khai đến bản nháp công vụ"
+description: "Tình huống giả lập cho cán bộ, công chức Việt Nam: dùng Hermes đọc hướng dẫn công khai, lập bảng kiểm và soạn bản nháp, có người xác minh. Không phải triển khai thực tế."
+datePublished: "2026-09-29"
+dateModified: "2026-09-29"
+authorName: "Cộng Đồng AI"
+tags: ["công vụ", "case study mô phỏng", "Hermes Agent"]
+---
+
+**Đây là case study mô phỏng do mình dựng để minh họa quy trình, không phải câu chuyện của một cán bộ hay một cơ quan đã triển khai Hermes.** Không có số liệu tiết kiệm thời gian hay kết quả vận hành để báo cáo. Nếu muốn đọc chuyện có nguồn người dùng thật, xem [Câu chuyện thật](/cau-chuyen).
+
+## Bối cảnh giả định
+
+Một cán bộ được giao chuẩn bị nội dung cho buổi trao đổi nội bộ về việc dùng chatbot AI. Thay vì đưa biên bản hoặc kế hoạch nội bộ vào agent, họ chọn **bài công khai về Công văn 557/BKHCN-CĐSQG** trên Cổng TTĐT Chính phủ làm tài liệu nghiên cứu. Mục tiêu thử nghiệm là một bảng kiểm để trao đổi, không phải quy định mới của cơ quan.
+
+Nguồn công khai nói rõ không chia sẻ dữ liệu cá nhân, tài liệu nội bộ hay bí mật nhà nước với chatbot AI; yêu cầu kiểm tra đầu ra và không phụ thuộc hoàn toàn vào nó. Công văn hướng dẫn dùng chatbot AI; áp dụng giới hạn đó cho thử nghiệm với Hermes là lựa chọn thận trọng, không phải khẳng định Hermes đã được cơ quan nhà nước phê duyệt. [Đọc nguồn gốc tại Cổng TTĐT Chính phủ](https://xaydungchinhsach.chinhphu.vn/huong-dan-su-dung-chatbot-ai-ho-tro-can-bo-cong-chuc-nguoi-lao-dong-trong-cong-viec-119250405175138265.htm).
+
+## Cách thử, từng chặng
+
+### Chặng 1: chỉ đọc nguồn đã chọn
+
+Cán bộ mở trang nguồn bằng tay trước, kiểm tra cơ quan đăng và nội dung có truy cập công khai. Sau khi [kết nối một model với Hermes](/bat-dau/chon-nha-cung-cap-api), họ giao việc:
+
+```text
+Chỉ đọc trang công khai sau: [URL BÀI CÔNG BỐ CÔNG VĂN 557].
+Lập bảng: nguyên tắc / đoạn trích ngắn / URL để tự kiểm.
+Không mở file trong máy, không đi tìm hồ sơ nội bộ, không tự bổ sung
+quy định. Nếu không đọc được trang, nói rõ không đọc được.
+```
+
+Với model cung cấp qua dịch vụ ngoài, câu hỏi và nội dung được gửi cho nhà cung cấp model; việc cài Hermes trên máy không biến model đám mây thành xử lý nội bộ. Vì vậy đầu vào chỉ gồm URL và yêu cầu không nhạy cảm. Nếu môi trường cơ quan không cho phép dùng dịch vụ này, quy trình dừng ở đây.
+
+### Chặng 2: soi bảng trước khi chuyển thành lời văn
+
+Cán bộ mở từng đoạn được trích, kiểm xem Hermes có bỏ sót điều kiện, nhầm vai trò người dùng với cơ quan hay tự thêm yêu cầu không có trong nguồn. Dòng không dẫn được về đoạn gốc bị đánh dấu **chưa xác minh**, không đi vào bản nháp. Nếu muốn áp dụng cho văn bản quy phạm pháp luật, phải kiểm bản gốc và hiệu lực tại nguồn chính thức; bài báo tóm tắt không thay thế văn bản pháp lý.
+
+### Chặng 3: viết một bản nháp chỉ từ ý đã kiểm
+
+Lúc này mới giao Hermes một việc khác, vẫn không dùng dữ liệu nội bộ:
+
+```text
+Từ các ý TÔI ĐÃ XÁC MINH ở dưới, soạn dàn ý buổi trao đổi về
+an toàn khi dùng AI. Viết 3 mục: dữ liệu không được đưa vào,
+cách kiểm đầu ra, việc nào phải để người chịu trách nhiệm quyết định.
+Chỗ nào thiếu dữ kiện thì để [CHỜ XÁC NHẬN]. Không đặt tên cơ quan,
+người ký, ngày họp hay số văn bản. Không gửi hoặc đăng bản nháp.
+[CHỈ DÁN CÁC Ý ĐÃ XÁC MINH TỪ NGUỒN CÔNG KHAI]
+```
+
+Người phụ trách rà từng câu, sửa theo quy trình của đơn vị rồi quyết định có sử dụng không. Hermes không được cấp quyền phát hành, kết nối tài khoản hoặc viết vào kho hồ sơ.
+
+## Kết quả và giới hạn
+
+**Kết quả kỳ vọng của bài tập**, không phải kết quả đo được ở cơ quan: một bảng có liên kết nguồn và một dàn ý còn ghi rõ chỗ cần kiểm. Nếu nguồn không truy cập được, có chi tiết tự sinh hoặc không được phép dùng model, kết quả hợp lệ là **dừng lại**, không cố làm cho đủ bản nháp. Không có bước nào tự động ra quyết định hành chính, trả lời hồ sơ của người dân hay gửi văn bản.
+
+Điểm đáng học không nằm ở câu chữ bóng bẩy. Với agent có thể **làm** trên máy, giữ phạm vi đọc một nguồn công khai và buộc đầu ra đối chiếu được quan trọng hơn việc tìm một prompt nghe hay. Muốn tự thử theo từng bước, bắt đầu ở [Dùng Hermes trong công vụ an toàn](/huong-dan/hermes-cong-vu-an-toan), rồi xem [bài lập bảng từ nguồn công khai](/huong-dan/tong-hop-van-ban-cong-khai). Bí chỗ nào thì hỏi ở [Hỏi & Đáp](/hoi-dap) bằng dữ liệu giả lập, không đăng tài liệu nội bộ.
+
+### Nguồn đối chiếu
+
+- [Bộ KH&CN - Hướng dẫn sử dụng chatbot AI hỗ trợ cán bộ, công chức, người lao động (Công văn 557/BKHCN-CĐSQG)](https://xaydungchinhsach.chinhphu.vn/huong-dan-su-dung-chatbot-ai-ho-tro-can-bo-cong-chuc-nguoi-lao-dong-trong-cong-viec-119250405175138265.htm).
+- [Hermes Agent - Security](https://hermes-agent.nousresearch.com/docs/user-guide/security/).
