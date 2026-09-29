@@ -1,0 +1,73 @@
+---
+title: "Dựng bộ não thứ hai cho văn bản pháp lý công khai"
+description: "Một prompt để nhờ Hermes sắp xếp kho văn bản công khai và ghi chú ngay trên máy, tìm lại kèm nguồn và kiểm hiệu lực trước khi viện dẫn."
+datePublished: "2026-09-29"
+dateModified: "2026-09-29"
+authorName: "Cộng Đồng AI"
+tags: ["công vụ", "văn bản pháp lý", "ghi chú"]
+---
+
+## Vấn đề
+
+Bạn từng đọc một văn bản hữu ích, nhưng tới lúc cần lại chỉ nhớ mang máng tên hoặc không biết nó đã được sửa đổi chưa. Một thư mục gồm văn bản công khai và ghi chú có nguồn trên máy giúp Hermes tìm lại đúng thứ bạn đã xem, thay vì trả lời theo trí nhớ của model. Đây là **kho tra cứu cá nhân**, không phải cơ sở dữ liệu pháp lý chính thức.
+
+## Cần gì trước
+
+- [Cài Hermes và kết nối model](/bat-dau). Muốn giữ cả nội dung trao đổi trên máy thì phải cấu hình **model chạy nội bộ**; model đám mây vẫn nhận nội dung yêu cầu dù file nguồn nằm trên máy. [Tài liệu model nội bộ](https://hermes-agent.nousresearch.com/docs/user-guide/local-models).
+- Chọn vài URL văn bản **đã công bố công khai** trên cổng chính thức, đã tự mở và kiểm tra. Không đưa bí mật nhà nước, hồ sơ người dân, file nội bộ hoặc bản scan chưa được phép công bố vào thư mục này; không đồng bộ thư mục lên cloud khi chưa hiểu cấu hình của ứng dụng lưu trữ.
+- Tạo phạm vi riêng, không cho Hermes truy cập ổ mạng hay hệ thống nghiệp vụ. Nếu là máy/tài khoản cơ quan, hỏi bộ phận phụ trách an toàn thông tin trước khi dùng.
+
+Bộ nhớ mặc định của Hermes lưu những thông tin ngắn về bạn và cách làm việc, **không phải chỗ để chép cả luật**. Kho văn bản nằm trong các file bạn chọn; Hermes đọc lại từ đó khi có câu hỏi. Vì file ở máy, bạn có thể tự xem, sao lưu và xóa; nhưng nơi model xử lý câu hỏi tùy cấu hình mà bạn chọn.
+
+## Cách làm
+
+### 1. Nhờ Hermes dựng kho từ nguồn công khai
+
+Sau khi đã kết nối model và chuẩn bị vài URL công khai, dán prompt này. Bạn tự chọn đường dẫn thư mục cá nhân, không dùng thư mục chung của cơ quan:
+
+```text
+Hãy giúp mình dựng một kho tra cứu cá nhân trong thư mục [ĐƯỜNG DẪN
+THƯ MỤC RIÊNG]. Chỉ dùng các URL công khai mình liệt kê dưới đây:
+[DÁN 2-3 URL VĂN BẢN CÔNG KHAI TRÊN CỔNG CHÍNH THỨC]
+
+Trước khi ghi file, cho mình xem cấu trúc dự kiến và hỏi xác nhận.
+Với từng nguồn đọc được, tạo một ghi chú gồm: tên văn bản, số/ký hiệu,
+cơ quan ban hành, URL gốc, ngày mình tra cứu, chủ đề, 3 ý chính
+kèm đoạn trích để kiểm. Chỉ ghi ngày ban hành/hiệu lực nếu nhìn thấy
+trong nguồn; chưa xác minh thì ghi rõ [CHƯA XÁC MINH].
+Tạo một bảng mục lục nối tới các ghi chú. Không tự kết luận văn bản
+còn hiệu lực hoặc văn bản nào thay thế văn bản nào.
+Không mở các thư mục khác, ổ mạng, email hay hệ thống công vụ;
+không gửi hoặc đồng bộ dữ liệu ở đâu. Nếu nguồn không mở được thì báo lỗi.
+```
+
+Hermes có thể viết file Markdown trong thư mục được cho phép; bạn không cần cài phần mềm ghi chú khác để bắt đầu. Nếu thích Obsidian, có thể mở chính thư mục Markdown ấy bằng Obsidian sau khi [xem cách nhờ Hermes dựng kho ghi chú](/huong-dan/bo-nao-thu-hai-obsidian). Không bắt buộc dùng Obsidian.
+
+### 2. Tra cứu lại bằng câu hỏi có giới hạn
+
+```text
+Chỉ tìm trong kho văn bản công khai [ĐƯỜNG DẪN THƯ MỤC RIÊNG].
+Cho mình biết ghi chú nào liên quan tới [CHỦ ĐỀ]. Với mỗi ý, chỉ ra
+tên file, đoạn trích và URL gốc. Tách rõ thông tin có trong nguồn
+với suy luận của bạn. Nếu chưa thấy hoặc chưa kiểm được hiệu lực,
+hãy nói "chưa xác minh", đừng tự trả lời thay nguồn.
+Không sửa file, không gửi dữ liệu ra nơi khác ngoài model đã cấu hình.
+```
+
+**Lưu ý:** Dòng cuối chỉ giới hạn công cụ/tác vụ của agent, không thể ngăn việc gửi nội dung cần xử lý đến provider nếu đang dùng model đám mây. Muốn không gửi nội dung xử lý cho provider đám mây, hãy chọn và kiểm thực tế cấu hình model chạy nội bộ, đồng thời xem các tích hợp ngoài đang bật.
+
+### 3. Duy trì kho, nhưng không tự quyết hiệu lực
+
+Khi thấy nguồn mới, nhờ Hermes tạo ghi chú và ghi ngày bạn tra cứu. Định kỳ nhờ nó lập danh sách URL cần mở lại. Trước lúc trích dẫn trong công việc, bạn phải đọc bản gốc trên cổng chính thức và kiểm hiệu lực, sửa đổi/bãi bỏ bằng nguồn có thẩm quyền. Nếu cơ quan có kho tài liệu được quản lý riêng, hãy theo đúng quy trình đó, không thay bằng thư mục cá nhân.
+
+## Kết quả
+
+Bạn có thư mục ghi chú đọc được bằng bất kỳ trình soạn thảo nào, mỗi mục trỏ về văn bản công khai đã chọn. Kiểm một lượt: mở mục lục, tìm một ghi chú, đối chiếu một đoạn trích với nguồn gốc. Nếu Hermes không đọc được nguồn hoặc điền số/ngày không có trong văn bản, xóa chi tiết ấy và yêu cầu làm lại từ nguồn đã xác minh.
+
+## Mẹo thêm
+
+- Hermes có thể nhớ **cách bạn muốn tra cứu** và kỹ năng lập bảng; để nội dung văn bản ở file thay vì nhồi vào memory mặc định. [Tài liệu bộ nhớ Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/features/memory/).
+- Có thể thử [theo dõi văn bản mới theo lịch](/blog/hermes-giup-cong-chuc-lam-gi), nhưng chỉ phát danh sách cần kiểm, không tự thông báo hiệu lực.
+- Bộ KH&CN hướng dẫn không chia sẻ dữ liệu cá nhân, tài liệu nội bộ hoặc bí mật nhà nước với chatbot AI. [Xem bản công bố Công văn 557/BKHCN-CĐSQG](https://xaydungchinhsach.chinhphu.vn/huong-dan-su-dung-chatbot-ai-ho-tro-can-bo-cong-chuc-nguoi-lao-dong-trong-cong-viec-119250405175138265.htm).
+
+Bí chỗ nào thì hỏi ở [Hỏi & Đáp](/hoi-dap) bằng link công khai, không đăng tài liệu của cơ quan.

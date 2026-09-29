@@ -125,6 +125,14 @@ export const huongDanItems: HubItem[] = [
     icon: "🌱",
   },
   {
+    slug: "bo-nao-van-ban-phap-ly",
+    title: "Bộ não thứ hai cho văn bản pháp lý",
+    description:
+      "Nhờ Hermes lập kho văn bản công khai và ghi chú trên máy; tra lại có nguồn, kiểm hiệu lực trước khi viện dẫn.",
+    icon: "🧠",
+    group: "cong-vu",
+  },
+  {
     slug: "hermes-cong-vu-an-toan",
     title: "Dùng Hermes an toàn trong công vụ",
     description:

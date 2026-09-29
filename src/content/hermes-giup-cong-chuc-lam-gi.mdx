@@ -1,0 +1,56 @@
+---
+title: "Hermes có thể giúp cán bộ, công chức làm những việc gì?"
+description: "Gợi ý dùng Hermes để nhớ văn bản pháp lý công khai, soạn báo cáo nháp, làm việc lặp lại và theo dõi văn bản mới; hiểu rõ dữ liệu lưu ở đâu và cách chọn model."
+datePublished: "2026-09-29"
+dateModified: "2026-09-29"
+authorName: "Cộng Đồng AI"
+tags: ["công vụ", "văn bản pháp lý", "Hermes Agent"]
+---
+
+Có một việc tốn sức mà ít ai ghi vào báo cáo công việc: hôm nay tra lại văn bản đã đọc tuần trước, ngày mai nhớ xem quy định nào mới, cuối tháng lại gom các ghi chú rời thành một bản báo cáo. Hermes có thể giúp ở phần **tìm, sắp xếp, nhắc và soạn nháp** ấy. Nó không thay người kiểm hiệu lực văn bản, quyết định cách áp dụng hay ký phát hành.
+
+Hermes là khung để bạn tự dựng một agent trên máy mình. Khác với việc chỉ hỏi một chatbot rồi đóng tab, bạn có thể giao Hermes đọc một thư mục được chọn, ghi chú lại những điều đã kiểm và tiếp tục dùng ở phiên sau. Nhưng đừng biến nó thành lời hứa rằng AI "nhớ hết luật". Bộ nhớ mặc định của Hermes có giới hạn; kho văn bản nên là **các file và đường dẫn nguồn trên máy** mà Hermes tìm đọc khi cần, không phải nhồi nguyên văn mọi nghị định vào MEMORY.md.
+
+## Một bộ não thứ hai cho văn bản pháp lý
+
+Giả sử bạn theo dõi một mảng việc nhất định. Tạo một thư mục riêng trên máy cá nhân cho **văn bản đã công bố công khai** và ghi chú của riêng bạn: mỗi văn bản có tên, số/ký hiệu, cơ quan ban hành, URL bản gốc, ngày tra cứu, chủ đề và các chỗ cần kiểm tra. Bạn có thể nhờ Hermes sắp xếp, tạo bảng tra cứu, tìm các văn bản nhắc tới một chủ đề và nối các ghi chú liên quan. Lần sau hỏi "trong kho công khai của mình có văn bản nào nói về chủ đề này?", Hermes có chỗ để tìm lại thay vì trả lời theo trí nhớ của model.
+
+Điểm đáng giá là **dấu vết nguồn**: câu nào lấy từ file nào, link gốc nào, ngày bạn đối chiếu là khi nào. Kho trên máy chỉ là công cụ tra cứu, không tự động bảo đảm văn bản còn hiệu lực, đã được sửa đổi hay phù hợp với một vụ việc cụ thể. Khi cần viện dẫn, hãy mở văn bản gốc trên cổng chính thức và kiểm tra tình trạng hiệu lực, văn bản sửa đổi/thay thế trước khi dùng.
+
+Bạn có thể bắt đầu bằng [hướng dẫn dựng kho văn bản công khai với Hermes](/huong-dan/bo-nao-van-ban-phap-ly). Chưa cần nối vào cơ sở dữ liệu của cơ quan hay cấp quyền đọc toàn ổ đĩa.
+
+## Báo cáo và bản nháp: làm nhanh phần gom, giữ người ở khâu duyệt
+
+Hermes có thể đọc **số liệu giả lập hoặc dữ liệu đã được đơn vị cho phép sử dụng**, đối chiếu các bảng, nhắc bạn cột còn thiếu và tạo dàn ý báo cáo tuần/tháng. Chẳng hạn, từ một bảng hoạt động công khai, yêu cầu nó liệt kê xu hướng, dẫn về ô nguồn và đặt `[CHỜ XÁC NHẬN]` cho số chưa đủ căn cứ. Người làm báo cáo kiểm lại từng số, sửa nhận định rồi mới đi theo quy trình trình ký.
+
+Với nguồn văn bản công khai, Hermes còn giúp lập bảng: yêu cầu nào được nêu ở đâu, chỗ nào cần người phụ trách làm rõ. Đừng giao nó tự kết luận một trường hợp của người dân thuộc diện nào hoặc tự viết căn cứ pháp lý khi không có nguồn. Xem [bài tổng hợp văn bản công khai có trích nguồn](/huong-dan/tong-hop-van-ban-cong-khai) và [bài soạn thông báo với dữ liệu giả lập](/huong-dan/soan-thong-bao-mau-cong-vu).
+
+## Việc lặp lại: tạo quy trình, không tự động hóa mù
+
+Một bảng kiểm đầu tuần, dàn ý họp định kỳ, danh sách đầu việc cần theo dõi hay mẫu báo cáo có cùng cấu trúc mỗi tháng đều là việc có thể nhờ Hermes ghi thành **quy trình tái sử dụng**. Bạn chỉ dẫn một lần: lấy đúng nguồn nào, xuất bảng theo cột nào, chỗ nào phải hỏi lại; Hermes có thể lưu hướng dẫn thành skill và dùng lại cho lần sau. Nếu cần, nó cũng có chức năng đặt lịch chạy việc định kỳ.
+
+Bắt đầu bằng chế độ **chạy thử và duyệt**: cho agent làm bản nháp trong thư mục riêng, báo bạn xem, không tự gửi email, cập nhật hệ thống hay công bố. Lịch tự chạy chỉ có ích nếu nguồn, quyền truy cập và cách kiểm lỗi đã rõ; máy tắt, trang nguồn đổi cấu trúc hoặc model không truy cập được thì phải báo lỗi, không tự điền cho đủ. [Tài liệu tác vụ định kỳ của Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron/).
+
+## Theo dõi văn bản mới mà không nhận một danh sách tin vô căn cứ
+
+Bạn có thể chỉ định các trang công bố văn bản **chính thức, công khai** phù hợp lĩnh vực mình theo dõi và nhờ Hermes kiểm tra định kỳ. Đầu ra nên là bảng gồm tên, ký hiệu, ngày công bố nếu nguồn nêu, URL gốc, điều gì có thể ảnh hưởng đến công việc và trạng thái **chưa xác minh**. Nếu không truy cập được trang hoặc chưa xác định văn bản mới có thay thế văn bản cũ không, nó phải nói rõ.
+
+Đây là danh sách để người phụ trách đọc và kiểm lại, không phải thông báo tự động rằng quy định đã có hiệu lực. Ngày công bố, ngày có hiệu lực và ngày bạn phát hiện một trang mới là ba thông tin khác nhau; đừng gộp chúng thành một.
+
+## Vì sao chọn Hermes thay vì chỉ dùng chatbot?
+
+- **Kho làm việc do bạn giữ:** Hermes và các file ghi chú có thể nằm trên máy cá nhân do bạn quản lý. Bạn quyết định thư mục nào được đọc, có thể sao lưu hay chuyển kho sang máy khác. Đây không có nghĩa mọi dữ liệu đã xử lý đều ở máy: **nếu chọn model đám mây, nội dung gửi cho model vẫn đi tới nhà cung cấp đó**. Một URL công khai cũng có thể bị dịch vụ ghi nhận khi bạn yêu cầu xử lý.
+- **Chọn model theo điều kiện của mình:** Hermes hỗ trợ nhiều nguồn model; bạn có thể đổi model/provider thay vì bị khóa vào một lựa chọn. Nếu cần xử lý nội bộ về mặt kỹ thuật, có thể tìm hiểu model chạy trên máy, với điều kiện máy đủ tài nguyên và cấu hình phù hợp. Chất lượng trả lời, tốc độ và khả năng truy cập web tùy model/cấu hình, không phải cứ đổi model là có mọi tính năng. [Xem cách chọn model](https://hermes-agent.nousresearch.com/docs/user-guide/configuring-models) và [model chạy tại máy](https://hermes-agent.nousresearch.com/docs/user-guide/local-models).
+- **Làm được việc theo quy trình:** ngoài trả lời, Hermes có thể đọc/ghi file trong phạm vi bạn giao, tìm nguồn công khai, tạo bản nháp và chạy việc theo lịch. Chính vì có thể thao tác, hãy giữ quyền duyệt và chỉ mở những thứ cần thiết.
+
+## Ranh giới không nên bỏ qua
+
+Theo [hướng dẫn của Bộ KH&CN về dùng chatbot AI trong cơ quan nhà nước (Công văn 557/BKHCN-CĐSQG)](https://xaydungchinhsach.chinhphu.vn/huong-dan-su-dung-chatbot-ai-ho-tro-can-bo-cong-chuc-nguoi-lao-dong-trong-cong-viec-119250405175138265.htm), không chia sẻ bí mật nhà nước, dữ liệu cá nhân, tài liệu nội bộ và thông tin nhạy cảm với chatbot AI; cần kiểm kỹ kết quả và không kết nối trái phép hệ thống công vụ. Tài liệu này hướng dẫn việc dùng chatbot AI, **không phải văn bản phê duyệt Hermes**. Lưu file trên máy hay chạy model nội bộ cũng không tự cho phép bạn đưa tài liệu cơ quan vào công cụ cá nhân. Hãy hỏi đơn vị phụ trách an toàn thông tin trước khi thử với công việc thật, và chỉ dùng dữ liệu công khai hoặc giả lập trong các bài tập trên site.
+
+Nếu muốn giao việc đầu tiên, hãy thử một văn bản đã công khai và yêu cầu Hermes trả về **đoạn trích + URL gốc + câu hỏi còn chưa rõ**. Đọc lại nguồn rồi mới nghĩ tới tự động hóa. [Bắt đầu với hướng dẫn an toàn](/huong-dan/hermes-cong-vu-an-toan) hoặc hỏi ở [Hỏi & Đáp](/hoi-dap) bằng dữ liệu giả lập, không đăng hồ sơ thật.
+
+### Nguồn tham khảo
+
+- [Hermes Agent - Persistent Memory](https://hermes-agent.nousresearch.com/docs/user-guide/features/memory/): bộ nhớ ngắn xuyên phiên, không phải kho nguyên văn tài liệu pháp lý.
+- [Hermes Agent - Configuring Models](https://hermes-agent.nousresearch.com/docs/user-guide/configuring-models), [Local Models](https://hermes-agent.nousresearch.com/docs/user-guide/local-models), [Scheduled Tasks](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron/).
+- [Bộ KH&CN - Hướng dẫn sử dụng chatbot AI hỗ trợ cán bộ, công chức](https://xaydungchinhsach.chinhphu.vn/huong-dan-su-dung-chatbot-ai-ho-tro-can-bo-cong-chuc-nguoi-lao-dong-trong-cong-viec-119250405175138265.htm).

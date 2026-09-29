@@ -37,9 +37,10 @@ export default function HuongDanPage() {
           Công việc công vụ
         </h2>
         <p className="mb-5 max-w-2xl text-[14px] text-ink-soft">
-          Dành cho cán bộ, công chức muốn đưa Hermes vào việc soạn thảo và tổng
-          hợp văn bản: chỉ dùng tài liệu công khai, giữ an toàn thông tin và
-          luôn duyệt kết quả trước khi dùng.
+          Dành cho cán bộ, công chức muốn giữ kho văn bản công khai trên máy,
+          làm bản nháp báo cáo và tra cứu có nguồn. Bạn chọn model phù hợp; nếu
+          dùng model đám mây, nội dung yêu cầu vẫn gửi tới nhà cung cấp. Luôn
+          kiểm kết quả trước khi dùng.
         </p>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           {congVuItems.map((c) => (
@@ -58,15 +59,14 @@ export default function HuongDanPage() {
           ))}
         </div>
         <p className="mt-5 text-[13.5px] text-ink-soft">
-          Muốn xem một ví dụ cụ thể?{" "}
+          Chưa biết nên bắt đầu từ việc nào?{" "}
           <Link
-            href="/blog/tinh-huong-mo-phong-cong-vu-hermes"
+            href="/blog/hermes-giup-cong-chuc-lam-gi"
             className="font-semibold text-teal-dark underline decoration-[var(--gold)] underline-offset-2"
           >
-            Bài mô phỏng công vụ
+            Xem gợi ý Hermes giúp công chức làm việc gì
           </Link>{" "}
-          là tình huống giả định mình viết để bạn hình dung, không phải câu
-          chuyện thật.
+          rồi chọn một hướng dẫn để thử bằng dữ liệu công khai.
         </p>
       </section>
 
