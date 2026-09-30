@@ -158,7 +158,12 @@ export const huongDanItems: HubItem[] = [
   },
 ];
 
+export type LibraryGroup =
+  "Bắt đầu" | "Cá nhân hóa" | "Giao việc" | "Học từ thực tế";
+
 export interface LibraryItem {
+  id: string;
+  group: LibraryGroup;
   icon: string;
   title: string;
   description: string;
@@ -167,64 +172,87 @@ export interface LibraryItem {
 
 export const libraryItems: LibraryItem[] = [
   {
-    icon: "🎭",
-    title: "SOUL.md tiếng Việt",
-    description:
-      "3 bản mẫu sẵn: văn phòng, kinh doanh, gia đình. Tải về, đổi tên của bạn, dán vào là Hermes thành trợ lý đúng ý.",
-    files: [
-      { name: "Mẫu văn phòng", href: "/thu-vien/soul-mau-van-phong.md" },
-      { name: "Mẫu kinh doanh", href: "/thu-vien/soul-mau-kinh-doanh.md" },
-      { name: "Mẫu gia đình", href: "/thu-vien/soul-mau-gia-dinh.md" },
-    ],
-  },
-  {
-    icon: "🌱",
-    title: "Vòng lặp tự cải thiện",
-    description:
-      "Bộ 5 prompt nền + checklist 7 ngày đầu: để Hermes tự nhớ, tự tạo kỹ năng, tự rút kinh nghiệm - càng dùng càng hiểu bạn.",
-    files: [
-      {
-        name: "Tải bộ prompt vòng lặp",
-        href: "/thu-vien/vong-lap-tu-cai-thien.md",
-      },
-    ],
-  },
-  {
-    icon: "💬",
-    title: "100 prompt theo nghề",
-    description:
-      "10 nghề, mỗi nghề 10 prompt: giáo viên, bán hàng online, kế toán, sinh viên, lập trình...",
-    files: [
-      { name: "Tải 100 prompt", href: "/thu-vien/100-prompt-theo-nghe.md" },
-    ],
-  },
-  {
-    icon: "⏰",
-    title: "Skill bản tin sáng tự động",
-    description:
-      "Bộ prompt dựng bản tin cá nhân mỗi sáng, kèm cách chỉnh nguồn tin theo gu và 3 lỗi hay gặp.",
-    files: [
-      {
-        name: "Tải bộ prompt bản tin",
-        href: "/thu-vien/skill-ban-tin-sang.md",
-      },
-    ],
-  },
-  {
-    icon: "🧠",
-    title: "Bộ skills chọn lọc",
-    description:
-      "Hướng dẫn cài 4 skill hay dùng: tin tức, thời tiết, dịch thuật, nhắc việc - và cách nhờ Hermes tự tạo skill riêng.",
-    files: [
-      { name: "Tải hướng dẫn skills", href: "/thu-vien/bo-skills-chon-loc.md" },
-    ],
-  },
-  {
+    id: "cai-va-thu",
+    group: "Bắt đầu",
     icon: "✅",
-    title: "Checklist cài đặt 1 trang",
+    title: "Cài và thử một việc thật",
     description:
-      "In ra được, tick từng bước: tải app từ link gốc, cài, nối AI, câu hỏi đầu tiên, việc thật đầu tiên.",
-    files: [{ name: "Tải checklist", href: "/thu-vien/checklist-cai-dat.md" }],
+      "Checklist: cài Desktop, kết nối một model, thử việc nhỏ và kiểm đầu ra.",
+    files: [
+      { name: "Checklist cài đặt", href: "/thu-vien/checklist-cai-dat.md" },
+    ],
+  },
+  {
+    id: "chon-model",
+    group: "Bắt đầu",
+    icon: "🔌",
+    title: "Chọn nguồn và model",
+    description:
+      "Codex, OpenRouter, Nous Portal hay model tại máy: chọn theo quyền dùng, việc và dữ liệu.",
+    files: [
+      { name: "Bản đồ chọn model", href: "/thu-vien/chon-model-hermes.md" },
+    ],
+  },
+  {
+    id: "soul-mau",
+    group: "Cá nhân hóa",
+    icon: "🎭",
+    title: "SOUL.md mẫu, không ghi đè mù",
+    description:
+      "Ba bối cảnh để tùy chỉnh giọng và quy tắc; nhờ Hermes cho xem diff trước khi lưu.",
+    files: [
+      { name: "Công việc", href: "/thu-vien/soul-mau-van-phong.md" },
+      { name: "Kinh doanh", href: "/thu-vien/soul-mau-kinh-doanh.md" },
+      { name: "Gia đình", href: "/thu-vien/soul-mau-gia-dinh.md" },
+    ],
+  },
+  {
+    id: "ghi-nho-va-skill",
+    group: "Cá nhân hóa",
+    icon: "🧠",
+    title: "Ghi nhớ và tạo skill",
+    description:
+      "Phân biệt SOUL, memory, skill và thư mục tài liệu; chỉ lưu điều đã kiểm và cần dùng lại.",
+    files: [
+      { name: "Ghi nhớ đúng chỗ", href: "/thu-vien/vong-lap-tu-cai-thien.md" },
+      { name: "Skill khi nào cần", href: "/thu-vien/bo-skills-chon-loc.md" },
+    ],
+  },
+  {
+    id: "mau-giao-viec",
+    group: "Giao việc",
+    icon: "📋",
+    title: "Mẫu giao việc có bước kiểm",
+    description:
+      "Ít prompt nhưng rõ đầu vào, phạm vi, đầu ra, điều kiện dừng và cách đối chiếu.",
+    files: [
+      { name: "Tải mẫu giao việc", href: "/thu-vien/100-prompt-theo-nghe.md" },
+    ],
+  },
+  {
+    id: "viec-theo-lich",
+    group: "Giao việc",
+    icon: "⏰",
+    title: "Bản tin theo lịch",
+    description:
+      "Chạy thử từ nguồn công khai trước, kiểm lỗi và nơi nhận rồi mới đặt lịch.",
+    files: [
+      { name: "Quy trình bản tin", href: "/thu-vien/skill-ban-tin-sang.md" },
+    ],
+  },
+  {
+    id: "nguoi-dung-that",
+    group: "Học từ thực tế",
+    icon: "🔎",
+    title: "Người dùng thật và cách nghĩ về agent",
+    description:
+      "Kinh nghiệm của admin, cộng đồng X, NetworkChuck, Karpathy và Simon Willison - có nguồn gốc và giới hạn áp dụng.",
+    files: [
+      {
+        name: "Bản đọc có nguồn",
+        href: "/thu-vien/kinh-nghiem-cong-dong-agent.md",
+      },
+    ],
   },
 ];
 

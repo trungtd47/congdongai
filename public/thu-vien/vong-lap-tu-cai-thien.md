@@ -1,53 +1,58 @@
-# Bộ prompt "Vòng lặp tự cải thiện" - copy gửi Hermes
+# Ghi nhớ đúng chỗ - vòng lặp cải thiện Hermes
 
-> 5 prompt nền để Hermes tự nhớ, tự tạo kỹ năng, tự rút kinh nghiệm - càng dùng càng hiểu bạn.
-> Giải thích chi tiết từng bước: mục Hướng dẫn → bài "Vòng lặp tự cải thiện" trên congdongai.org.
+> Hermes không tự "học mãi mãi" chỉ nhờ trò chuyện. Bộ nhớ USER.md/MEMORY.md mặc định **ngắn và có giới hạn**. Sau mỗi việc, hãy chọn đúng thứ đáng giữ và kiểm lại. Nguồn: https://hermes-agent.nousresearch.com/docs/user-guide/features/memory/
 
-## Prompt 1 - Nền tính cách (SOUL.md)
+## Bốn nơi lưu, bốn việc khác nhau
 
-```
-Hãy tạo file SOUL.md cho bạn: gọi mình là "bạn", xưng "mình", trả lời bằng tiếng Việt, ngắn gọn, đi thẳng vào vấn đề, không vòng vo. Hãy hỏi mình 3 câu về công việc và gu làm việc của mình để điền vào file đó. Quy tắc cứng: không tự ý gửi nội dung ra bên ngoài, không xóa file, khi nào cần làm việc nguy hiểm thì phải hỏi mình trước.
-```
+| Muốn giữ | Nơi phù hợp | Ví dụ |
+| --- | --- | --- |
+| Cách Hermes nói và giới hạn hành vi | SOUL.md | Trả lời tiếng Việt, hỏi trước khi đăng |
+| Vài thói quen ổn định của bạn và môi trường | USER.md / MEMORY.md | Thích báo cáo có nguồn, dùng múi giờ nào |
+| Quy trình lặp lại có bước kiểm | Skill | Cách tạo bản tin nguồn công khai |
+| Nhiều văn bản, ghi chú, bảng biểu | Thư mục file riêng trên máy | Kho văn bản pháp lý công khai có URL và ngày tra |
 
-## Prompt 2 - Dạy nó nhớ đúng thứ quan trọng
+Memory mặc định **không** chứa cả luật, toàn bộ lịch sử chat hay hàng nghìn trang PDF. File ở máy thuộc quyền kiểm soát của bạn, nhưng nếu chọn model cloud thì nội dung được đưa cho model vẫn có thể ra ngoài.
 
-```
-Hãy ghi vào memory: mình làm nghề [NGHỀ CỦA BẠN], việc lặp lại hằng ngày là [VIỆC ĐÓ]. Khi soạn nội dung cho mình thì dùng giọng [TRANG TRỌNG / THÂN THIỆN / HÀI HƯỚC], số liệu mặc định tính bằng VNĐ, ngày tháng theo kiểu Việt Nam.
-```
+## 1. Lưu thói quen ngắn, không lưu dữ liệu nhạy cảm
 
-Từ nay về sau, có gì muốn nó nhớ lâu dài chỉ cần nói: "Nhớ giúp mình: ...".
+Chỉ gửi sau khi Hermes đã kết nối model:
 
-## Prompt 3 - Xong việc khó, bảo nó tự tạo skill
-
-```
-Việc vừa rồi bạn làm tốt. Hãy đúc kết các bước làm, những chỗ dễ sai và gu của mình thành một skill, để lần sau gặp việc tương tự bạn làm nhanh và chuẩn hơn.
-```
-
-## Prompt 4 - Cho nó tự ngẫm mỗi tối
-
-```
-Mỗi tối lúc 22h, hãy xem lại các cuộc trò chuyện trong ngày của chúng ta: trích ra quyết định đã chốt, việc đang làm dở, và sai lầm cần tránh. Ghi bản tóm tắt vào memory để sáng mai làm tiếp không phải kể lại từ đầu.
+```text
+Hãy nhớ rằng mình muốn các bản tổng hợp bằng tiếng Việt, kèm URL nguồn
+và đánh dấu phần chưa xác minh. Chỉ lưu điều này nếu memory còn chỗ;
+cho mình xem chính xác nội dung sẽ lưu, không ghi dữ liệu cá nhân.
 ```
 
-## Prompt 5 - "Khám sức khỏe" định kỳ
+Kiểm lại ở phiên mới: hỏi "Bạn đang ghi nhớ những thói quen nào của mình?". Nếu sai hoặc lỗi thời, yêu cầu sửa đúng một mục. Không xem câu trả lời của agent là bằng chứng file đã ghi: khi quan trọng, nhờ nó chỉ ra nơi lưu và xác nhận nội dung trên máy.
 
+## 2. Từ một việc thật, mới tạo skill
+
+Sau khi làm thử, sửa lỗi và biết bước kiểm cuối, gửi:
+
+```text
+Quy trình bản tin vừa rồi đã làm thử. Hãy đề xuất một skill gồm:
+nguồn công khai được phép đọc, đầu vào, các bước, lỗi thường gặp và
+cách kiểm đầu ra. Cho mình xem bản nháp trước, chưa tạo/sửa file skill
+khi mình chưa duyệt. Không đưa token, mật khẩu hoặc dữ liệu riêng vào skill.
 ```
-Mỗi tối Chủ nhật, hãy rà soát lại memory và các skill của bạn: gộp những thứ trùng lặp, bỏ những thứ đã lỗi thời, và kể mình nghe 3 điều bạn mới học được về mình trong tuần qua.
+
+Skill là tài liệu hướng dẫn nạp khi cần, **không phải ứng dụng cài thêm**; một số skill có kèm công cụ hoặc yêu cầu dependency/quyền truy cập. Không cần cài hàng loạt skill thời tiết, dịch thuật, nhắc việc khi Hermes đã có công cụ đáp ứng. Tự tạo một skill đúng việc của mình thường hữu ích hơn. Xem https://hermes-agent.nousresearch.com/docs/user-guide/features/skills/
+
+## 3. Rà lại sau vài lần chạy
+
+```text
+Hãy liệt kê memory và các skill liên quan tới [VIỆC]. Chỉ ra mục
+trùng/lỗi thời, đề xuất sửa từng mục kèm lý do và ảnh hưởng. Chưa
+xóa hoặc ghi đè gì. Sau khi mình duyệt, sửa từng mục và báo kết quả.
 ```
 
-## Checklist 7 ngày đầu
+Không yêu cầu cron tự đọc toàn bộ cuộc trò chuyện mỗi tối rồi nhồi vào memory. Việc lặp lại nếu cần lịch hãy thiết kế theo **nguồn, đầu ra, điều kiện lỗi và nơi nhận** riêng; chạy thử một lần trước. Không đưa lịch tự động ra kênh ngoài khi chưa hiểu quyền truy cập và chi phí model.
 
-- [ ] Ngày 1: cài Hermes xong, gửi Prompt 1, trả lời 3 câu nó hỏi.
-- [ ] Ngày 1: gửi Prompt 2 (điền nghề và gu của bạn).
-- [ ] Ngày 2: giao việc thật đầu tiên (bản tin sáng hoặc tóm tắt tài liệu).
-- [ ] Ngày 3: nó làm sai? Sửa bằng một câu: "Lần sau nhớ là...".
-- [ ] Ngày 4: xong một việc khó, gửi Prompt 3.
-- [ ] Ngày 5: gửi Prompt 4 để nó tự ngẫm mỗi tối.
-- [ ] Ngày 7: hỏi "Bạn đang nhớ những gì về mình?" và chỉnh chỗ nó hiểu sai.
-- [ ] Chủ nhật: Prompt 5 chạy lần đầu tiên.
+## Tự kiểm
 
-## Ba mẹo đáng nhớ
+- [ ] SOUL.md ngắn, không chứa hồ sơ cá nhân.
+- [ ] Memory chứa thói quen bền, không phải bản sao tài liệu hay log tạm.
+- [ ] Skill có bước kiểm, ghi rõ khi nào phải hỏi con người.
+- [ ] Tài liệu dài nằm ở thư mục được kiểm soát, có nguồn và cách sao lưu.
 
-1. Lần chạy đầu của mọi quy trình luôn là bản yếu nhất - giá trị nằm ở những lần sửa sau.
-2. Mỗi tuần thêm một việc mới, đừng dồn dập nhiều thứ một lúc.
-3. Thỉnh thoảng hỏi nó đang nhớ gì về bạn - thấy sai là sửa ngay.
+Hướng dẫn dựng kho file văn bản công khai: https://congdongai.org/huong-dan/bo-nao-van-ban-phap-ly/

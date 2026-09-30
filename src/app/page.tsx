@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd, faqJsonLd } from "@/lib/seo";
 import { TermTip } from "@/components/TermTip";
-import { pathSteps, libraryBooks } from "@/lib/demo-data";
+import { pathSteps } from "@/lib/demo-data";
+import { libraryItems } from "@/lib/content";
 import { HomeQAPanel } from "@/components/HomeQAPanel";
 import { JoinGoogleButton } from "@/components/JoinGoogleButton";
 import { getAllPosts } from "@/lib/posts";
@@ -302,33 +303,49 @@ export default function HomePage() {
             </Link>
           </div>
           <p className="sec-sub">
-            File mẫu tiếng Việt do thành viên đóng góp - tải về, đưa cho Hermes,
-            nói &quot;nạp file này vào&quot; là dùng được. Ai cũng có thể gửi
-            bản của mình lên.
+            Sáu bộ tài liệu theo lộ trình: cài và chọn model, chỉnh cách Hermes
+            làm việc, rồi giao việc có bước kiểm. Tải miễn phí, đọc mẫu trước
+            khi dùng. Còn có{" "}
+            <Link href="/thu-vien#nguoi-dung-that">
+              kinh nghiệm từ người dùng và cộng đồng X
+            </Link>{" "}
+            kèm nguồn gốc để đối chiếu.
           </p>
           <div className="shelf">
-            {libraryBooks.map((b) => (
-              <div className="book" key={b.title}>
-                <div className="fic" style={{ background: b.color }}>
-                  {b.icon}
+            {libraryItems
+              .filter((item) => item.group !== "Học từ thực tế")
+              .map((item, index) => (
+                <div className="book" key={item.id}>
+                  <div
+                    className="fic"
+                    style={{
+                      background: [
+                        "var(--teal)",
+                        "var(--clay)",
+                        "var(--gold)",
+                        "#0E7C71",
+                        "#0F766E",
+                        "#7C3AED",
+                      ][index],
+                    }}
+                  >
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h5>{item.title}</h5>
+                    <p>{item.description}</p>
+                  </div>
+                  <Link className="dl" href={`/thu-vien#${item.id}`}>
+                    Xem bộ
+                  </Link>
                 </div>
-                <div>
-                  <h5>{b.title}</h5>
-                  <p>{b.desc}</p>
-                </div>
-                <a className="dl" href="/thu-vien">
-                  ⬇ Tải
-                </a>
-              </div>
-            ))}
+              ))}
           </div>
           <div className="shelf-note">
-            💡 <b>Cách dùng:</b> tải file về → mở Hermes → nói{" "}
-            <i>
-              &quot;Hãy nạp file SOUL này vào, từ giờ bạn là trợ lý văn phòng
-              của mình&quot;
-            </i>{" "}
-            → xong. Không cần chỉnh sửa kỹ thuật.
+            💡 <b>Cách dùng:</b> chọn một bộ phù hợp, tải file Markdown rồi nhờ
+            Hermes xem và đề xuất cách áp dụng. Với SOUL.md hay skill, đọc bản
+            nháp trước khi cho ghi vào cấu hình; không dán key hoặc tài liệu
+            nhạy cảm vào chat.
           </div>
         </div>
       </section>

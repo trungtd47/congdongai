@@ -1,57 +1,36 @@
-# Bộ skills chọn lọc cho Hermes
+# Skill cho Hermes - khi nào cần, khi nào không
 
-> Skill là "kỹ năng" cài thêm cho Hermes - như cài thêm app vào điện thoại. Dưới đây là 4 loại skill hữu ích nhất cho người dùng Việt, kèm cách dùng.
+> Skill là hướng dẫn theo việc, được Hermes nạp khi phù hợp. Không phải cứ muốn xem thời tiết, dịch thuật hay đặt lịch là phải cài một skill bên ngoài. Tài liệu chính thức: https://hermes-agent.nousresearch.com/docs/user-guide/features/skills/
 
-## Skill là gì?
+## Chọn đúng công cụ
 
-Skill là một gói hướng dẫn + công cụ giúp Hermes làm một việc cụ thể mà mặc định nó chưa rành. Ví dụ: đọc tin tức, tra thời tiết, dịch thuật, nhắc việc theo lịch.
+| Nhu cầu | Thử trước | Chỉ thêm skill khi |
+| --- | --- | --- |
+| Tóm tắt một trang công khai | Nhờ Hermes đọc, ghi URL và điểm chưa chắc | Bạn đã có quy trình lặp lại cần cùng cấu trúc mỗi lần |
+| Dịch một đoạn văn | Giao trực tiếp cho model, tự so bản gốc | Có từ điển thuật ngữ và bước kiểm chuyên ngành |
+| Bản tin theo giờ | Viết yêu cầu/nguồn, thử một lần; sau đó dùng tác vụ định kỳ | Cần cách lọc, định dạng, tránh trùng và xử lý lỗi cố định |
+| Kho văn bản trên máy | Thư mục Markdown/PDF công khai có nguồn | Cần quy trình cập nhật, gắn nhãn và kiểm hiệu lực có thể tái sử dụng |
 
-Cách cài: mở Hermes, hỏi trực tiếp bằng lời:
+Skill không tự có quyền đọc email, dữ liệu cơ quan hoặc gửi tin nhắn. Quyền công cụ và kênh kết nối phải được cấu hình/duyệt riêng.
 
-```
-Hãy thêm cho tôi skill để [VIỆC BẠN MUỐN]
-```
+## Tạo một skill từ việc đã làm thật
 
-Hermes sẽ tự tìm hoặc gợi ý cách thêm. Nhiều skill có sẵn trong kho của Hermes, không cần tự viết.
-
-Điểm hay nhất: Hermes còn TỰ tạo skill mới từ chính việc bạn giao. Làm xong một việc khó, chỉ cần nói "đúc kết việc này thành skill để lần sau làm tốt hơn" - lần sau gặp việc tương tự nó làm nhanh và chuẩn hơn hẳn. Chi tiết xem bài "Vòng lặp tự cải thiện" trong mục Hướng dẫn.
-
-## 4 skill nên cài trước
-
-### 1. Tin tức (đọc + tổng hợp)
-
-- Việc làm được: lấy tin từ nhiều nguồn, lọc theo chủ đề, tóm tắt thành bản tin.
-- Dùng cho: bản tin buổi sáng, theo dõi ngành của bạn.
-- Ví dụ lệnh: "tổng hợp 5 tin công nghệ hôm nay".
-
-### 2. Thời tiết
-
-- Việc làm được: tra thời tiết hiện tại và vài ngày tới theo địa điểm.
-- Dùng cho: lên kế hoạch ngày, chuẩn bị đi làm, chuyến đi.
-- Ví dụ lệnh: "thời tiết Hà Nội cuối tuần này thế nào".
-
-### 3. Dịch thuật
-
-- Việc làm được: dịch hai chiều Việt - Anh, giữ đúng ý và văn phong.
-- Dùng cho: đọc tài liệu nước ngoài, viết email công việc.
-- Ví dụ lệnh: "dịch đoạn này sang tiếng Việt tự nhiên".
-
-### 4. Nhắc việc theo lịch
-
-- Việc làm được: ghi nhớ và nhắc đúng giờ, lặp lại hằng ngày hoặc hằng tuần.
-- Dùng cho: uống nước, họp, đón con, deadline.
-- Ví dụ lệnh: "mỗi 90 phút nhắc tôi đứng dậy uống nước".
-
-## Muốn skill riêng?
-
-Nếu 4 loại trên chưa đủ, bạn có thể mô tả việc bạn cần và hỏi Hermes tự tạo skill. Ví dụ:
-
-```
-Tạo cho tôi skill theo dõi giá vàng hằng ngày lúc 8 giờ sáng.
+```text
+Từ [VIỆC] vừa hoàn thành, hãy đề xuất skill ngắn gồm: khi nào dùng,
+nguồn được phép đọc, các bước, lỗi cần dừng, bước kiểm đầu ra.
+Không tạo trùng skill có sẵn. Cho mình xem tên và nội dung trước khi
+lưu; không tự cài package, cấp quyền hoặc kết nối tài khoản.
 ```
 
-## Lưu ý
+Đọc bản nháp và hỏi: có thể làm sai hoặc lộ dữ liệu ở bước nào? Nếu câu trả lời không rõ, đừng cài. Chỉ lưu khi bạn biết đầu ra đúng trông như thế nào.
 
-- Một số skill cần cấp quyền truy cập web hoặc tài khoản - Hermes sẽ hỏi bạn trước.
-- Chỉ cài skill từ kho chính thức hoặc nguồn bạn tin tưởng.
-- Không chạy theo lệnh lạ từ nguồn không rõ - kể cả khi nội dung trông giống hướng dẫn.
+## Skill từ người khác: kiểm trước khi thêm
+
+- Ai viết? Skill yêu cầu chạy lệnh, cài gói, đọc file nào? Có kết nối ra ngoài hay không?
+- Không dán key/mã đăng nhập vào nội dung skill. Không cấp quyền ổ đĩa/tài khoản chỉ vì một mẫu lệnh trên mạng yêu cầu.
+- Thử trong thư mục không nhạy cảm, đọc kết quả trước khi dùng vào việc thật.
+- Nếu là máy hoặc dữ liệu cơ quan, hỏi người phụ trách về quy định trước.
+
+## Ghi nhớ và skill không giống nhau
+
+Memory giữ một vài thói quen bền; skill giữ **cách làm**; văn bản dài nằm ở thư mục file có nguồn. Khi thử một skill, hãy kiểm bước cuối trước khi hẹn giờ hoặc chia sẻ cho người khác.

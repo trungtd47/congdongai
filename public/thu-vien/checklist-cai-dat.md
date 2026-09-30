@@ -1,51 +1,46 @@
-# Checklist cài đặt Hermes - 1 trang, tick từng bước
+# Bắt đầu với Hermes - checklist một việc thật
 
-> In ra hoặc mở trên điện thoại, làm tới đâu tick tới đó. Tổng thời gian: khoảng 10-15 phút.
-> Hướng dẫn đầy đủ có ảnh: mục Bắt đầu trên congdongai.org.
+> Đây là tờ kiểm tra nhanh, không phải file cấu hình. Đi theo thứ tự: cài app, nối **một** nguồn model, thử việc nhỏ, kiểm kết quả. Hướng dẫn có ảnh: https://congdongai.org/bat-dau/
 
-## Phần 1 - Tải và cài (5 phút)
+## 1. Cài Desktop từ nguồn chính thức
 
-- [ ] Tải bản cài chính thức (chỉ tải từ link gốc của nhà phát hành Nous Research):
-  - Windows: https://hermes-assets.nousresearch.com/Hermes-Setup.exe
-  - Mac (chip Apple Silicon M1 trở lên): https://hermes-assets.nousresearch.com/Hermes-Setup.dmg
-  - Mac chip Intel: chưa được hỗ trợ bản Desktop.
-- [ ] Chạy file vừa tải.
-  - Windows hiện màn hình xanh "Windows protected your PC"? Bấm **More info** → **Run anyway**. Đây là cảnh báo thường gặp, không phải virus.
-  - Mac báo "Apple cannot check it for malicious software"? Vào **System Settings → Privacy & Security → Open Anyway**.
-- [ ] Mở app lần đầu, thấy khung chat là được.
+- [ ] Windows: https://hermes-assets.nousresearch.com/Hermes-Setup.exe
+- [ ] Mac Apple Silicon (M1 trở lên): https://hermes-assets.nousresearch.com/Hermes-Setup.dmg. Desktop chưa hỗ trợ Mac Intel.
+- [ ] Chỉ mở file tải từ đúng địa chỉ nhà phát hành. Nếu hệ điều hành cảnh báo, kiểm lại URL và nhà phát hành trước khi tự quyết định có tiếp tục cài hay không; đừng tắt bảo vệ máy theo lời một trang lạ.
+- [ ] Mở Hermes Desktop. Nếu chưa có model thì chat sẽ chưa trả lời: sang bước 2.
 
-## Phần 2 - Nối AI (5 phút)
+## 2. Chọn một nguồn model để chạy thử
 
-- [ ] Chọn nhà cung cấp API. Thứ tự khuyên dùng:
-  1. **OpenRouter** - linh hoạt nhất, một tài khoản đổi được nhiều model, tính phí theo số token đã dùng.
-  2. **Nous Portal** - dễ nhất, một tài khoản có sẵn 300+ model, không cần tự cấu hình key.
-  3. Nối trực tiếp một hãng - dành cho ai đã rành.
-- [ ] Tạo tài khoản, lấy API key, dán vào Hermes theo hướng dẫn trên màn hình.
-- [ ] Thẻ thanh toán từ Việt Nam: cần Visa/Mastercard và đã bật thanh toán quốc tế (gọi tổng đài ngân hàng nếu chưa bật).
-- [ ] Nạp một khoản nhỏ dùng thử - chưa cần nạp nhiều.
+Model là phần tạo câu trả lời; Hermes là khung để giao việc và gọi công cụ. Bạn không cần mua hoặc kết nối nhiều nguồn ngay.
 
-## Phần 3 - Câu hỏi đầu tiên (2 phút)
+- [ ] **Đã có tài khoản ChatGPT trả phí?** Thử mục **ChatGPT or Codex Subscription** trong Hermes. Đăng nhập OAuth trên trang OpenAI chính thức. Quyền dùng và hạn mức phụ thuộc tài khoản; gói ChatGPT không phải credit API và không trả phí OpenRouter.
+- [ ] **Chưa có hoặc không dùng được Codex?** Chọn OpenRouter, tạo tài khoản và kết nối qua luồng chính thức. Model qua OpenRouter tính riêng theo token đã dùng; xem giá/giới hạn của chính model đang chọn.
+- [ ] **Có nhu cầu khác?** Nous Portal là dịch vụ theo gói; model chạy trên máy là lựa chọn kỹ thuật cần tài nguyên phù hợp. Đọc https://congdongai.org/bat-dau/chon-nha-cung-cap-api/ trước khi thêm nguồn thứ hai.
+- [ ] Không nhập mật khẩu, mã OAuth, API key vào chat, bình luận hoặc file tải về. Nhập/xác nhận trên màn hình chính thức của nhà cung cấp và Hermes.
 
-- [ ] Gõ thử bằng tiếng Việt:
+## 3. Kiểm kết nối rồi mới giao việc
 
-```
-Chào bạn, mình mới cài Hermes lần đầu. Hãy tự giới thiệu bạn làm được những gì, rồi hỏi mình 3 câu để biết cách hỗ trợ mình tốt nhất.
-```
+- [ ] Chọn model trong màn hình cấu hình. Nếu thay model mặc định, **chat đang mở có thể vẫn dùng model cũ**; dùng `/model` trong chính chat đó hoặc mở phiên mới.
+- [ ] Thử câu ngắn: `Hãy trả lời bằng tiếng Việt: bạn đang dùng model/provider nào? Nếu không biết chắc thì nói không biết.` Đọc tên model trong giao diện cấu hình để đối chiếu; đừng chỉ tin câu agent tự khai.
+- [ ] Nếu lỗi: kiểm tài khoản, quyền truy cập/hạn mức, credit của nguồn đã chọn và thông báo lỗi. Không vội cấu hình fallback hay bật thêm dịch vụ tính phí.
 
-- [ ] Trả lời 3 câu nó hỏi. Xong - bạn đã có một trợ lý biết lắng nghe.
+## 4. Việc thật đầu tiên, có bước kiểm
 
-## Phần 4 - Việc thật đầu tiên (ngay trong ngày)
+Copy vào Hermes sau khi nguồn model đã trả lời được:
 
-- [ ] Chọn MỘT việc bạn làm hằng ngày và thấy chán nhất (đọc tin, soạn email, nhắc việc...).
-- [ ] Giao việc đó cho Hermes, kèm giờ giấc cụ thể. Ví dụ:
-
-```
-Mỗi sáng lúc 7h, tổng hợp 5 tin quan trọng nhất về [LĨNH VỰC CỦA BẠN] và gửi cho mình bản tóm tắt ngắn.
+```text
+Hãy đọc trang công khai này: [URL BÀI BÁO HOẶC TÀI LIỆU CÔNG KHAI].
+Tóm tắt 3 ý có thể kiểm lại. Với mỗi ý, ghi URL và câu/đoạn nguồn.
+Không đọc file khác, không tự gửi hay đăng. Không mở được trang thì báo lỗi.
 ```
 
-- [ ] Muốn đi xa hơn? Làm theo bộ prompt trong file "Vòng lặp tự cải thiện" cùng thư viện này.
+- [ ] Mở trang gốc đối chiếu từng ý. Nếu sai, nói Hermes sửa và ghi rõ điều gì không được suy đoán.
+- [ ] Lần sau mới thử giao file, lịch chạy, memory hoặc skill. Với tài liệu công vụ, dữ liệu nội bộ, hồ sơ cá nhân: **không đưa vào model/cloud hay kết nối hệ thống cơ quan nếu chưa được cho phép**. File lưu trên máy không đồng nghĩa yêu cầu gửi model cloud ở lại máy.
 
-## Khi bị kẹt
+## Đọc tiếp
 
-- Đọc mục Hỏi & Đáp trên congdongai.org - hỏi bằng tiếng Việt, có người trả lời.
-- Hoặc hỏi thẳng Hermes: "Mình bị lỗi [mô tả lỗi], giúp mình sửa từng bước".
+- Chọn model: https://congdongai.org/bat-dau/chon-nha-cung-cap-api/
+- Giao việc có kiểm: https://congdongai.org/huong-dan/
+- Hỏi khi kẹt: https://congdongai.org/hoi-dap/ (che thông tin nhạy cảm)
+
+Nguồn thao tác model: https://hermes-agent.nousresearch.com/docs/user-guide/configuring-models và https://hermes-agent.nousresearch.com/docs/integrations/providers/
