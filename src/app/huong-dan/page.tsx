@@ -66,7 +66,14 @@ export default function HuongDanPage() {
           >
             Xem gợi ý Hermes giúp công chức làm việc gì
           </Link>{" "}
-          rồi chọn một hướng dẫn để thử bằng dữ liệu công khai.
+          rồi chọn một hướng dẫn để thử bằng dữ liệu công khai. Xem thêm{" "}
+          <Link
+            href="/cong-vu"
+            className="font-semibold text-teal-dark underline decoration-[var(--gold)] underline-offset-2"
+          >
+            trang tổng hợp cho cán bộ, công chức
+          </Link>
+          .
         </p>
       </section>
 

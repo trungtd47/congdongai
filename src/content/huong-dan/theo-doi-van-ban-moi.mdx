@@ -1,0 +1,117 @@
+---
+title: "Theo dõi văn bản mới từ cổng thông tin chính phủ"
+description: "Nhờ Hermes kiểm tra định kỳ các trang công bố văn bản công khai; nhận bảng có tên, ký hiệu, URL gốc và đánh dấu phần chưa xác minh."
+datePublished: "2026-09-30"
+dateModified: "2026-09-30"
+authorName: "Đức Trung"
+tags: ["cong-vu", "văn bản pháp lý", "cron", "Hermes Agent"]
+---
+
+## Vấn đề
+
+Mỗi tuần có hàng chục văn bản mới được đăng trên các cổng thông tin chính phủ. Bạn không thể ngồi F5 từng trang để xem có gì mới, nhưng cũng không muốn bỏ sót văn bản ảnh hưởng tới mảng việc mình phụ trách.
+
+Hermes có thể kiểm tra định kỳ vài trang bạn chọn, trả về một bảng ngắn để bạn tự mở link gốc kiểm tra. Nó không tự kết luận văn bản nào còn hiệu lực hay thay thế văn bản nào.
+
+## Cần gì trước
+
+- Hermes Desktop đã cài và kết nối ít nhất một model. Nếu chưa, làm theo [checklist cài đặt](/thu-vien/checklist-cai-dat.md).
+- Chọn một model phù hợp: nếu dùng model cloud, nội dung yêu cầu vẫn gửi tới nhà cung cấp. Không dùng model cloud để xử lý tài liệu nội bộ hoặc hồ sơ cá nhân. Xem [hướng dẫn chọn model](/thu-vien/chon-model-hermes.md).
+- Đọc [ranh giới an toàn cho công vụ](/huong-dan/hermes-cong-vu-an-toan) trước khi thử với dữ liệu công khai.
+
+## Cách làm
+
+### Bước 1: Chọn 1-2 trang nguồn để thử
+
+Chọn trang công bố văn bản **công khai, chính thức** trong lĩnh vực bạn theo dõi. Ví dụ: cổng thông tin của bộ/ngành, trang văn bản quy phạm pháp luật, hoặc chuyên mục tin tức trên cổng chính phủ.
+
+Không chọn trang yêu cầu đăng nhập, trang nội bộ cơ quan, hoặc trang chứa hồ sơ cá nhân.
+
+### Bước 2: Chạy thử một lần
+
+Copy prompt này vào Hermes, thay `[URL TRANG NGUỒN]` bằng trang bạn đã chọn:
+
+```text
+Đọc trang [URL TRANG NGUỒN]. Tìm các văn bản hoặc thông báo
+mới trong 7 ngày gần nhất.
+
+Trả về bảng gồm các cột:
+- Tên văn bản / tiêu đề
+- Số/ký hiệu (nếu trang có)
+- Ngày đăng hoặc ngày công bố (nếu trang có)
+- URL dẫn tới trang chi tiết (nếu trang có)
+- Ghi chú: điều gì có thể liên quan tới [LĨNH VỰC CỦA BẠN]
+
+Với mỗi mục:
+- Nếu thiếu thông tin (không có số, không có URL riêng),
+  ghi [CHƯA XÁC MINH] vào ô đó. Không đoán ngày, số hiệu
+  hoặc đường dẫn.
+- Nếu không truy cập được trang, báo lỗi, không bịa nội dung.
+
+Chỉ đọc trang được chỉ định, không mở trang khác hoặc file khác.
+Không gửi kết quả đi đâu. Không tự kết luận văn bản nào thay thế
+văn bản nào.
+```
+
+### Bước 3: Kiểm kết quả
+
+Mở từng URL gốc mà Hermes trả về. Đối chiếu:
+- Tên và số văn bản có khớp không?
+- Ngày đăng có đúng không?
+- Có văn bản nào bị bỏ sót không?
+- Có mục nào Hermes tự bịa ra không?
+
+Đây là bước bắt buộc. Nếu bỏ qua, bạn có thể đang định kỳ nhận một bảng có dữ liệu sai.
+
+### Bước 4: Sửa tiêu chí, chạy lại
+
+Nếu bảng có quá nhiều mục không liên quan, thu hẹp tiêu chí trong prompt:
+
+```text
+Chỉ lấy văn bản thuộc lĩnh vực [TÊN LĨNH VỰC CỤ THỂ],
+bỏ qua các tin sự kiện, lịch họp và thông báo không
+có số/ký hiệu.
+```
+
+Chạy lại bước 2-3 cho tới khi bảng gọn và đúng.
+
+### Bước 5: Đặt lịch định kỳ
+
+Sau khi bản thử đã được bạn duyệt vài lần, hãy nhờ Hermes đặt lịch:
+
+```text
+Bản tin văn bản mới đã được mình kiểm và duyệt. Hãy đề xuất
+một lịch chạy mỗi [THỨ / NGÀY], lúc [GIỜ] theo múi giờ [MÚI GIỜ].
+
+Yêu cầu:
+- Chỉ đọc các URL đã được mình duyệt.
+- Nếu có lỗi (không truy cập được trang, model hết hạn mức),
+  báo cho mình qua [KÊNH ĐÃ CẤU HÌNH], không thử lại tự động
+  đến khi hết hạn mức.
+- Ghi ngày giờ chạy và số mục tìm thấy vào một file log riêng
+  trong thư mục làm việc.
+- Cho mình xem toàn bộ cấu hình lịch trước khi tạo. Chưa tạo
+  lịch khi mình chưa đồng ý.
+```
+
+Sau khi lịch được tạo, kiểm tra lần chạy đầu tiên có thực sự ra kết quả không. Đừng tin dòng "đã tạo lịch thành công" nếu chưa thấy bảng đến tay bạn.
+
+## Kết quả
+
+Sau khi làm theo các bước trên, bạn có:
+- Một bảng văn bản mới theo lịch, có URL gốc để kiểm tra.
+- Quy trình rõ ràng: nguồn nào, tiêu chí nào, ai kiểm, lỗi thì báo ai.
+- Không có dữ liệu nội bộ hoặc tài liệu mật nào được gửi qua model.
+
+## Mẹo thêm
+
+- **Bắt đầu với một trang, một lĩnh vực.** Đừng giao Hermes theo dõi 10 cổng thông tin cùng lúc trước khi một trang đã chạy ổn.
+- **Phân biệt ngày công bố và ngày hiệu lực.** Prompt trên chỉ lấy ngày đăng từ trang nguồn. Việc xác định hiệu lực và văn bản thay thế là việc của bạn, không phải của model.
+- **Không dùng chung lịch cho nhiều người.** Mỗi người có lĩnh vực và tiêu chí khác nhau; tạo lịch riêng cho từng nhu cầu.
+- **Nếu trang nguồn thay đổi cấu trúc**, bảng có thể sai. Kiểm tra định kỳ, không "cài một lần rồi quên".
+
+## Bí thì hỏi
+
+- [Hỏi & Đáp](/hoi-dap) - nhớ dùng tình huống giả lập, không đăng hồ sơ thật.
+- [Dùng Hermes an toàn trong công vụ](/huong-dan/hermes-cong-vu-an-toan)
+- [Dựng kho văn bản pháp lý công khai](/huong-dan/bo-nao-van-ban-phap-ly)

@@ -156,6 +156,14 @@ export const huongDanItems: HubItem[] = [
     icon: "✍️",
     group: "cong-vu",
   },
+  {
+    slug: "theo-doi-van-ban-moi",
+    title: "Theo dõi văn bản mới từ cổng thông tin",
+    description:
+      "Nhờ Hermes kiểm tra trang công bố văn bản công khai theo lịch; nhận bảng có URL gốc, tự kiểm ngày hiệu lực trước khi viện dẫn.",
+    icon: "📡",
+    group: "cong-vu",
+  },
 ];
 
 export type LibraryGroup =
