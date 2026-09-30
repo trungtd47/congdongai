@@ -3,16 +3,19 @@
 ## Completed
 - Viết lại Thư viện theo bốn nhóm; đồng bộ danh mục tải, kệ sách trang chủ và bản thiết kế v7. Giữ URL file cũ khi đổi lời hứa "100 prompt" thành mẫu giao việc có bước kiểm.
 - Thêm bản chọn model, nghiên cứu kinh nghiệm người dùng thật và góc nhìn AI Agent có nguồn từ admin, NetworkChuck, cộng đồng X, Karpathy, Simon Willison. Tách rõ ai dùng Hermes, ai chỉ bàn về agent.
-- Build 80/80, kiểm 10 file tải có thật và 7 anchor trang chủ, kiểm URL docs/tải Desktop và ranh giới dữ liệu công vụ/cloud.
-- Ghi repo memory và quyết định vào vault.
+- Tạo hub `/cong-vu/` cho cán bộ công chức: lộ trình 3 bước, 5 hướng dẫn thực hành, tài liệu tải về và ranh giới bảo mật.
+- Viết guide mới "Theo dõi văn bản mới từ cổng thông tin chính phủ" — 5 bước có prompt copy-paste, đăng ký vào huongDanItems và sitemap.
+- Cập nhật blog `hermes-giup-cong-chuc-lam-gi` dẫn sang hub và guide mới.
+- Build 82/82, kiểm 10 file tải + 7 anchor + sitemap + 5 mục cong-vu trên `/huong-dan/`. Ba commit (`1ec414a`, `d718e99`, `9396835`) đã push và xác minh live HTTP 200.
+- Ghi repo memory, vault decision (production-verified) và execution traces.
 
 ## In Progress
-- Đưa code lên `origin/main` để Firebase App Hosting tự deploy; chưa xác nhận HTML/file live tại lúc ghi summary.
+- Không còn việc dở.
 
 ## Next Steps
-- Chỉ stage file Thư viện, không stage hai file lạ ở `scripts/`; commit/push rồi đọc lại `/thu-vien/`, `/` và các file mới trên site live.
-- Sau deploy, cập nhật trạng thái quyết định vault theo bằng chứng production.
+- Nếu có trải nghiệm triển khai thật từ cán bộ/cơ quan được phép công bố, phỏng vấn và xin nguồn để đưa vào `/cau-chuyen`; không dựng case giả.
+- Audit các bài hướng dẫn cũ ngoài Thư viện còn dùng lời hứa quá mạnh về memory/skill; xử lý riêng từng bài.
 
 ## Open Issues
 - Chưa kiểm workflow agent trên dữ liệu cơ quan thật; không tuyên bố tuân thủ hay hiệu quả định lượng.
-- Các bài hướng dẫn cũ ngoài Thư viện vẫn có thể dùng lời hứa quá mạnh về memory/skill; xử lý bằng audit riêng thay vì refactor tràn phạm vi.
+- Hai file untracked `scripts/hermes-logo.svg` và `scripts/og-template.html` không thuộc phạm vi task, giữ nguyên.
