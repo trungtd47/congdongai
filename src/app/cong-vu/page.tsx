@@ -4,9 +4,9 @@ import { huongDanItems } from "@/lib/content";
 import { Breadcrumb } from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Hermes Agent cho cán bộ, công chức nhà nước - bắt đầu an toàn",
+  title: "AI cho cán bộ, công chức: dùng Hermes trong hành chính công",
   description:
-    "Trang dành cho cán bộ công chức Việt Nam muốn dùng Hermes Agent để tra cứu văn bản công khai, soạn báo cáo nháp và theo dõi văn bản mới. Có hướng dẫn từng bước, lưu ý bảo mật và đường dẫn tài liệu miễn phí.",
+    "AI cho cán bộ, công chức trong hành chính công: thử Hermes với văn bản công khai, soạn báo cáo nháp và theo dõi văn bản mới. Có hướng dẫn, kiểm nguồn và lưu ý dữ liệu.",
   alternates: { canonical: "/cong-vu" },
 };
 
@@ -20,14 +20,14 @@ export default function CongVuPage() {
         Dành cho cán bộ, công chức
       </p>
       <h1 className="mb-2 text-[32px] font-extrabold tracking-[-0.5px]">
-        Hermes giúp việc công vụ: bắt đầu từ đâu?
+        AI cho cán bộ, công chức: bắt đầu với Hermes thế nào?
       </h1>
       <p className="mb-8 max-w-2xl text-[16px] text-ink-soft">
-        Bạn muốn dùng AI để bớt việc tra cứu thủ công, soạn nháp nhanh hơn và
-        không bỏ sót văn bản mới - nhưng công việc có quy trình duyệt, tài liệu
-        nội bộ và yêu cầu bảo mật. Trang này gom mọi thứ bạn cần để bắt đầu an
-        toàn: từ cài Hermes, chọn model, tới các hướng dẫn thực hành có bước
-        kiểm.
+        Bạn muốn thử AI trong hành chính công để bớt việc tra cứu thủ công, soạn
+        nháp và theo dõi văn bản mới? Hermes là khung agent có thể làm việc qua
+        nhiều bước, không chỉ trả lời câu hỏi. Trang này chỉ cách bắt đầu với dữ
+        liệu công khai hoặc giả lập, từ cài đặt tới kiểm nguồn và duyệt bản
+        nháp. Công cụ không thay quy trình hoặc thẩm quyền của cơ quan.
       </p>
 
       {/* Lộ trình */}
@@ -77,6 +77,31 @@ export default function CongVuPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section
+        className="mb-12 max-w-3xl"
+        aria-labelledby="chon-cong-cu-heading"
+      >
+        <h2
+          id="chon-cong-cu-heading"
+          className="mb-3 text-[20px] font-bold tracking-[-0.3px]"
+        >
+          Dùng chatbot hay AI agent cho công việc hành chính?
+        </h2>
+        <p className="mb-3 text-[14px] text-ink-soft">
+          Nếu chỉ cần hỏi một câu từ tài liệu công khai, công cụ hỏi đáp có
+          nguồn có thể đã đủ. Nếu cần đọc nhiều nguồn được chỉ định, lập bảng,
+          lưu bản nháp và lặp lại một quy trình có người kiểm, bạn có thể thử
+          Hermes trên dữ liệu công khai. Memory của agent không phải kho hồ sơ
+          và skill không thay bước rà soát chuyên môn.
+        </p>
+        <Link
+          href="/blog/hermes-giup-cong-chuc-lam-gi"
+          className="text-[14px] font-semibold text-teal-dark underline underline-offset-2"
+        >
+          Đọc ví dụ và cách tự đánh giá việc thử →
+        </Link>
       </section>
 
       {/* Hướng dẫn thực hành */}
@@ -198,7 +223,7 @@ export default function CongVuPage() {
           href="/blog/hermes-giup-cong-chuc-lam-gi"
           className="text-teal-dark underline"
         >
-          Hermes có thể giúp cán bộ, công chức làm những việc gì?
+          AI cho cán bộ, công chức: Hermes giúp việc hành chính công gì?
         </Link>{" "}
         ·{" "}
         <Link href="/hoi-dap" className="text-teal-dark underline">

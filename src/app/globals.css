@@ -219,6 +219,12 @@ a {
 .witem p { font-size: 14px; color: var(--color-ink-soft); margin-top: 2px; }
 .witem .srcline { font-size: 13px; margin-top: 4px; }
 .witem .srcline a { font-weight: 700; text-decoration: none; }
+.case-more { border-top: 1px solid var(--color-line); }
+.case-more summary { cursor: pointer; list-style: none; padding: 17px 0; text-align: center; color: var(--color-teal-dark); font-size: 14px; font-weight: 700; }
+.case-more summary::-webkit-details-marker { display: none; }
+.case-more summary:focus-visible { outline: 2px solid var(--color-teal-dark); outline-offset: 3px; }
+.case-more-open, .case-more[open] .case-more-closed { display: none; }
+.case-more[open] .case-more-open { display: inline; }
 
 /* ===== 2 CỘT FORUM ===== */
 .two { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 32px; }
@@ -317,6 +323,22 @@ footer.site-footer { border-top: 1px solid var(--color-line); padding: 34px 0; c
 .prose-article td { border: 1px solid var(--color-line); padding: 8px 10px; text-align: left; vertical-align: top; }
 .prose-article th { background: var(--color-teal-soft); color: var(--color-teal-dark); font-weight: 700; }
 .prose-article td { color: var(--color-ink-soft); }
+.article-diagram { max-width: 720px; margin: 1.25rem 0 2rem; }
+.article-diagram svg { display: block; width: 100%; height: auto; border-radius: 14px; }
+.article-diagram figcaption { margin-top: 0.45rem; color: var(--color-ink-soft); font-size: 0.78rem; }
+.article-diagram-mobile { display: none; }
+.prose-article h2, .prose-article h3 { scroll-margin-top: 6rem; }
+.prose-article a { text-underline-offset: 3px; }
+.prose-article pre { line-height: 1.65; }
+.prose-article table { background: var(--color-card); }
+@media (max-width: 480px) {
+  .article-diagram svg { display: none; }
+  .article-diagram-mobile { display: grid; gap: 8px; list-style: none; padding: 12px; margin: 0; border: 1px solid var(--color-line); border-radius: 14px; background: var(--color-bg); }
+  .article-diagram-mobile li { display: flex; align-items: center; gap: 12px; padding: 10px; border: 1px solid var(--color-line); border-radius: 10px; background: var(--color-card); font-size: 0.88rem; font-weight: 600; }
+  .article-diagram-mobile span { display: grid; place-items: center; flex: 0 0 30px; height: 30px; border-radius: 50%; color: white; background: var(--color-teal); }
+  .prose-article h2 { font-size: 1.32rem; line-height: 1.35; }
+}
+
 .prose-article blockquote {
   border-left: 3px solid var(--color-teal);
   padding-left: 16px;

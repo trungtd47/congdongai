@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { caseStudies, type CaseBlock } from '@/lib/case-studies';
-import { Breadcrumb } from '@/components/Breadcrumb';
-import { CommentsSection } from '@/components/CommentsSection';
-import { JsonLd, articleJsonLd, breadcrumbJsonLd } from '@/lib/seo';
-import { canonicalUrl } from '@/lib/site';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { caseStudies, type CaseBlock } from "@/lib/case-studies";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { CommentsSection } from "@/components/CommentsSection";
+import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { canonicalUrl } from "@/lib/site";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: c.teaser,
     alternates: { canonical: `/cau-chuyen/${slug}` },
     openGraph: {
-      type: 'article',
+      type: "article",
       title: c.title,
       description: c.teaser,
       url: canonicalUrl(`/cau-chuyen/${slug}`),
@@ -66,7 +66,7 @@ export default async function CauChuyenDetailPage({ params }: Props) {
   if (!c) notFound();
   const prev = caseStudies[idx - 1];
   const next = caseStudies[idx + 1];
-  const isLong = c.type === 'long';
+  const isLong = c.type === "long";
 
   return (
     <div className="wrap max-w-3xl py-12">
@@ -75,29 +75,29 @@ export default async function CauChuyenDetailPage({ params }: Props) {
           headline: c.title,
           description: c.teaser,
           path: `/cau-chuyen/${c.slug}`,
-          datePublished: '2026-09-22',
-          dateModified: '2026-09-22',
-          authorName: 'Cộng Đồng AI',
+          datePublished: c.datePublished ?? "2026-09-22",
+          dateModified: c.datePublished ?? "2026-09-22",
+          authorName: "Cộng Đồng AI",
         })}
       />
       <JsonLd
         data={breadcrumbJsonLd([
-          { name: 'Trang chủ', path: '/' },
-          { name: 'Câu chuyện thật', path: '/cau-chuyen' },
+          { name: "Trang chủ", path: "/" },
+          { name: "Câu chuyện thật", path: "/cau-chuyen" },
           { name: c.title, path: `/cau-chuyen/${slug}` },
         ])}
       />
 
       <Breadcrumb
         items={[
-          { name: 'Câu chuyện thật', href: '/cau-chuyen' },
+          { name: "Câu chuyện thật", href: "/cau-chuyen" },
           { name: c.title },
         ]}
       />
 
       <div className="mb-3 flex items-center gap-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
         <span className="text-2xl">{c.icon}</span>
-        <span>{isLong ? 'Chia sẻ kinh nghiệm' : 'Câu chuyện thật'}</span>
+        <span>{isLong ? "Chia sẻ kinh nghiệm" : "Câu chuyện thật"}</span>
       </div>
       <h1 className="mb-3 text-[32px] font-extrabold leading-[1.2] tracking-[-0.5px]">
         {c.title}
@@ -116,8 +116,19 @@ export default async function CauChuyenDetailPage({ params }: Props) {
         {c.body.map(caseBlock)}
       </div>
 
+      {c.slug === "hermes-nghien-cuu-token-bo-nao-thu-hai" && (
+        <div className="mt-6 rounded-lg border border-[var(--line)] p-4">
+          <Link
+            href="/huong-dan/nghien-cuu-token-voi-hermes"
+            className="font-semibold text-teal-dark underline decoration-[var(--gold)] underline-offset-2"
+          >
+            Thử nghiên cứu một token theo hướng dẫn có mẫu giao việc →
+          </Link>
+        </div>
+      )}
+
       <div className="mt-8 rounded-lg border border-[var(--line)] bg-stone-50 p-4 text-sm text-ink-soft">
-        Nguồn:{' '}
+        Nguồn:{" "}
         <a
           href={c.sourceUrl}
           target="_blank"

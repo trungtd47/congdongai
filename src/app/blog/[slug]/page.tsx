@@ -1,14 +1,15 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import remarkGfm from 'remark-gfm';
-import rehypeSlug from 'rehype-slug';
-import { getAllPostSlugs, getPostBySlug, extractToc } from '@/lib/posts';
-import { JsonLd, articleJsonLd, breadcrumbJsonLd } from '@/lib/seo';
-import { canonicalUrl } from '@/lib/site';
-import { CommentsSection } from '@/components/CommentsSection';
-import { Breadcrumb } from '@/components/Breadcrumb';
-import { TermTip } from '@/components/TermTip';
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+import { getAllPostSlugs, getPostBySlug, extractToc } from "@/lib/posts";
+import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { canonicalUrl } from "@/lib/site";
+import { CommentsSection } from "@/components/CommentsSection";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { TermTip } from "@/components/TermTip";
+import { ArticleDiagram } from "@/components/ArticleDiagram";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: post.description,
     alternates: { canonical: `/blog/${slug}` },
     openGraph: {
-      type: 'article',
+      type: "article",
       title: post.title,
       description: post.description,
       url: canonicalUrl(`/blog/${slug}`),
@@ -59,14 +60,14 @@ export default async function ArticlePage({ params }: Props) {
       />
       <JsonLd
         data={breadcrumbJsonLd([
-          { name: 'Trang chủ', path: '/' },
-          { name: 'Blog', path: '/blog' },
+          { name: "Trang chủ", path: "/" },
+          { name: "Blog", path: "/blog" },
           { name: post.title, path: `/blog/${slug}` },
         ])}
       />
 
       <Breadcrumb
-        items={[{ name: 'Blog', href: '/blog' }, { name: post.title }]}
+        items={[{ name: "Blog", href: "/blog" }, { name: post.title }]}
       />
 
       <div className="mb-3 flex flex-wrap gap-2">
@@ -85,13 +86,15 @@ export default async function ArticlePage({ params }: Props) {
         <span>{post.authorName}</span>
         <span>·</span>
         <time dateTime={post.datePublished}>
-          {new Date(post.datePublished).toLocaleDateString('vi-VN', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
+          {new Date(post.datePublished).toLocaleDateString("vi-VN", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
           })}
         </time>
       </div>
+
+      <ArticleDiagram slug={slug} />
 
       {toc.length > 0 && (
         <div className="toc-box card mb-8 p-5">

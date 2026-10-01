@@ -62,6 +62,14 @@ export const batDauItems: HubItem[] = [
 
 export const huongDanItems: HubItem[] = [
   {
+    slug: "nghien-cuu-token-voi-hermes",
+    title: "Nghiên cứu token và lưu ghi chú",
+    description:
+      "Mẫu 12 điểm có nguồn, cách kiểm sai sót và lưu luận điểm thành file để đọc lại. Không giao Hermes quyết định giao dịch.",
+    icon: "📊",
+    group: "tai-chinh",
+  },
+  {
     slug: "tom-tat-tin-tuc-moi-sang",
     title: "Bản tin buổi sáng",
     description:

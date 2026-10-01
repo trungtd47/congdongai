@@ -2,7 +2,7 @@
 title: "Hermes Agent là gì? Hiểu trước khi cài"
 description: "Hermes Agent là bộ khung mã nguồn mở để bạn tự dựng trợ lý AI của riêng mình, do Nous Research phát triển, phần mềm miễn phí. Bài này giải thích nó là gì và khác gì ChatGPT cho người mới."
 datePublished: "2026-09-20"
-dateModified: "2026-09-20"
+dateModified: "2026-09-30"
 authorName: "Cộng Đồng AI"
 tags: ["khái niệm", "người mới"]
 ---
@@ -13,18 +13,18 @@ Nếu bạn từng ước "giá có ai đó thay mình làm mấy việc lặt v
 
 Hermes Agent là một **bộ khung mã nguồn mở để bạn tự dựng trợ lý AI của riêng mình**, chạy ngay trên máy tính của bạn. Nó do Nous Research - một tổ chức nghiên cứu AI mã nguồn mở - phát triển. Phần mềm miễn phí.
 
-Khác ChatGPT ở chỗ: ChatGPT là **chatbot** - bạn hỏi, nó trả lời trong ô chat rồi hết, không thể tự làm gì trên máy. Còn Hermes là **agent** - nó tự **thao tác trên máy tính**: đọc và sửa file, chạy lệnh, mở ứng dụng, lướt web. Bạn nói "mỗi sáng 7 giờ tóm tắt tin công nghệ gửi tôi", nó ghi nhớ, tự đặt lịch, và sáng hôm sau tự chạy - không cần nhắc lại.
+Khác biệt ở đây là Hermes có thể dùng công cụ để **thao tác trên máy tính**: đọc và sửa file, chạy lệnh, mở ứng dụng, lướt web. Nhiều chatbot hiện nay cũng có công cụ và lịch hẹn ở mức độ khác nhau; đừng hiểu là chỉ Hermes mới làm được. Với Hermes, bạn có thể yêu cầu dựng một bản tin sáng, xem và xác nhận lịch chạy rồi kiểm kết quả của lần đầu tiên. Lịch cần máy/gateway hoạt động, model còn quyền dùng và kênh nhận phù hợp.
 
 ## Khác hẳn chatbot ở đâu
 
 1. **Tự thao tác trên máy.** Chatbot chỉ biết nói; Hermes biết làm: đọc và sửa file, chạy lệnh, mở ứng dụng, lướt web. Bạn giao việc, nó tự động thực thi rồi báo kết quả.
-2. **Tự nhớ việc.** Nó nhớ bạn là ai, thích gì, đang làm dự án gì. Lần sau không cần giải thích lại từ đầu.
-3. **Tự học kỹ năng mới.** Muốn nó đọc tin, dịch, nhắc việc? Cài thêm <TermTip term="skill">skill</TermTip> tương ứng là xong.
-4. **Tự chạy theo lịch.** Đến giờ tự thức dậy làm việc rồi báo cáo - đúng nghĩa "trợ lý", không phải "công cụ chat".
+2. **Giữ những ghi chú quan trọng qua phiên.** Memory có giới hạn và cần kiểm lại; tài liệu dài nên để trong file để đọc khi cần.
+3. **Tái sử dụng cách làm.** <TermTip term="skill">Skill</TermTip> là hướng dẫn cho việc lặp lại, không phải cài một file là kết quả luôn đúng.
+4. **Chạy việc đã đặt lịch.** Tạo lịch, xem cấu hình và kiểm lần chạy đầu, không nhầm lời hứa trong chat với một lịch đã hoạt động.
 
 ## Có miễn phí không?
 
-**Phần mềm miễn phí hoàn toàn.** Chi phí duy nhất là tiền cho <TermTip term="model">model AI</TermTip> mà nó dùng để "suy nghĩ" - tính theo số <TermTip term="token">token</TermTip> đã dùng, không gói tháng cố định.
+**Phần mềm mã nguồn mở và miễn phí.** Nguồn model có cơ chế riêng: OpenRouter thường tính theo <TermTip term="token">token</TermTip>, Nous Portal theo gói, còn đăng nhập ChatGPT/Codex phụ thuộc quyền dùng của tài khoản. Model chạy trên máy cần tài nguyên phần cứng; các dịch vụ bổ sung cũng có thể có phí. [Xem cách chọn model](/bat-dau/chon-nha-cung-cap-api).
 
 ## Người không biết code dùng được không?
 
@@ -33,7 +33,7 @@ Khác ChatGPT ở chỗ: ChatGPT là **chatbot** - bạn hỏi, nó trả lời 
 ## Bắt đầu từ đâu?
 
 1. Cài bản Desktop cho hệ điều hành của bạn: [Windows](/bat-dau/cai-hermes-desktop-windows) hoặc [Mac](/bat-dau/cai-hermes-desktop-mac).
-2. Đăng ký [Nous Portal](/bat-dau/dang-ky-nous-portal) để có model AI.
-3. Hỏi một việc đơn giản đầu tiên.
+2. [Chọn một nguồn model](/bat-dau/chon-nha-cung-cap-api) theo tài khoản bạn đã có, chưa cần mua thêm gói.
+3. Hỏi một việc đơn giản, kiểm xem model đã trả lời được chưa.
 
 Chưa cần hiểu hết. Cứ cài xong, dùng thử một việc thật, phần còn lại sẽ dần quen.

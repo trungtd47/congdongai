@@ -98,6 +98,12 @@ nav{border-bottom:1px solid var(--line);background:rgba(251,247,240,.95);backdro
 .witem p{font-size:14px;color:var(--soft);margin-top:2px}
 .witem .srcline{font-size:13px;margin-top:4px}
 .witem .srcline a{font-weight:700;text-decoration:none}
+.case-more{border-top:1px solid var(--line)}
+.case-more summary{cursor:pointer;list-style:none;padding:17px 0;text-align:center;color:var(--teal);font-size:14px;font-weight:700}
+.case-more summary::-webkit-details-marker{display:none}
+.case-more summary:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.case-more-open,.case-more[open] .case-more-closed{display:none}
+.case-more[open] .case-more-open{display:inline}
 
 /* 2 CỘT: HỎI ĐÁP + BLOG (forum vibe) */
 .two{display:grid;grid-template-columns:1.15fr .85fr;gap:32px}
@@ -245,8 +251,8 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--soft);font-si
 <!-- NGƯỜI THẬT TRÊN THẾ GIỚI -->
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head"><h2>Người dùng Hermes trên thế giới 🌍</h2><a class="more" href="#">Xem tất cả case study →</a></div>
-    <p class="sec-sub">Toàn bộ có nguồn công khai để bạn tự kiểm chứng — chúng mình không tự bịa lời khen.</p>
+    <div class="sec-head"><h2>Người dùng Hermes trên thế giới 🌍</h2><a class="more" href="/cau-chuyen">Đọc đầy đủ + nguồn →</a></div>
+    <p class="sec-sub">Toàn bộ có nguồn công khai để bạn tự kiểm chứng - chúng mình không tự bịa lời khen.</p>
     <div class="world">
       <div class="witem">
         <div class="th">🎥</div>
@@ -281,6 +287,13 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--soft);font-si
         </div>
       </div>
     </div>
+    <!-- Design minh họa trạng thái mở; trang thật lấy mục còn lại từ caseStudies. -->
+    <details class="case-more">
+      <summary><span class="case-more-closed">Xem thêm câu chuyện ↓</span><span class="case-more-open">Thu gọn câu chuyện ↑</span></summary>
+      <div class="world">
+        <div class="witem"><div class="th">📊</div><div><h4>Mình dùng Hermes nghiên cứu token theo 12 bước và giữ lại điều đã học</h4><p>Từ câu hỏi về token đến bản phân tích có nguồn và ghi chú đọc lại được.</p><div class="srcline"><a href="/cau-chuyen/hermes-nghien-cuu-token-bo-nao-thu-hai">Đọc đầy đủ →</a></div></div></div>
+      </div>
+    </details>
   </div>
 </section>
 

@@ -1,17 +1,17 @@
 ---
 title: "Thanh toán từ Việt Nam - thẻ gì, lỗi gì, xử lý ra sao"
-description: "Dùng Hermes cần nạp tiền cho model qua thẻ Visa/Mastercard. Bài này hướng dẫn thẻ nào dùng được, các lỗi thanh toán thường gặp và cách xử lý từng bước."
+description: "Nếu chọn OpenRouter, xem cách kiểm tra phương thức thanh toán, số dư và lỗi thẻ. Hermes cũng có các nguồn model không đòi nạp tiền trước."
 datePublished: "2026-09-21"
-dateModified: "2026-09-21"
+dateModified: "2026-09-30"
 authorName: "Cộng Đồng AI"
 tags: ["thanh toán", "chi phí"]
 ---
 
-Hermes miễn phí phần mềm, nhưng để "có não" bạn cần nạp tiền cho <TermTip term="model">model AI</TermTip>. Người Việt dùng được hoàn toàn, chỉ cần một chiếc thẻ quốc tế. Bài này gom mọi thứ bạn cần.
+Hermes miễn phí phần mềm, còn nguồn <TermTip term="model">model AI</TermTip> có cách thanh toán khác nhau. **Bài này chỉ dành cho bạn nếu chọn OpenRouter và model yêu cầu số dư.** Nếu đã có quyền dùng ChatGPT/Codex thì thử [đăng nhập nguồn đó](/bat-dau/chon-nha-cung-cap-api) trước; Nous Portal có điều kiện gói riêng. Không phải ai dùng Hermes cũng cần thẻ quốc tế.
 
 ## Cần thẻ gì?
 
-- **Visa** hoặc **Mastercard** đều được.
+- **Visa** hoặc **Mastercard** quốc tế thường được chấp nhận, nhưng còn tùy ngân hàng và trang thanh toán.
 - **Thẻ debit quốc tế** (thẻ ghi nợ, trừ thẳng tiền trong tài khoản) vẫn dùng được - không bắt buộc thẻ tín dụng.
 - Quan trọng nhất: thẻ phải **bật thanh toán online quốc tế** (giao dịch online / giao dịch nước ngoài).
 
@@ -19,7 +19,7 @@ Nếu chưa bật, mở app ngân hàng tìm mục "thanh toán online" hoặc g
 
 ## Nạp bao nhiêu là đủ?
 
-Nạp trước một khoản **nhỏ** để thử là an toàn nhất. Chi phí tính theo số <TermTip term="token">token</TermTip> bạn dùng: dùng bao nhiêu trừ bấy nhiêu, hết thì nạp thêm, không bị trừ âm, không tự gia hạn.
+Nếu chọn OpenRouter, kiểm [trang Credits và điều kiện thanh toán chính thức](https://openrouter.ai/credits), rồi thử với khoản nhỏ. Model có mức tính theo <TermTip term="token">token</TermTip> khác nhau; kiểm lịch sử dùng và thiết lập nạp tự động nếu có trước khi xác nhận, không mặc định rằng số dư hết là mọi khoản phí đều tự dừng.
 
 ## Các lỗi thường gặp và cách xử lý
 
@@ -41,7 +41,7 @@ Có thể do hết hạn mức, hoặc ngân hàng nghi ngờ giao dịch lạ. 
 
 ## Mẹo an toàn
 
-- Chỉ nạp số tiền nhỏ trước, đừng nạp nhiều.
+- Nếu dùng OpenRouter, chỉ nạp khoản nhỏ để thử và kiểm số dư sau lần dùng đầu.
 - Không chia sẻ thông tin thẻ với bất kỳ ai, kể cả người tự xưng là "hỗ trợ".
 - Luôn thanh toán trên trang chính thức của Nous Research / provider bạn dùng.
 

@@ -7,7 +7,7 @@ import { libraryItems } from "@/lib/content";
 import { HomeQAPanel } from "@/components/HomeQAPanel";
 import { JoinGoogleButton } from "@/components/JoinGoogleButton";
 import { getAllPosts } from "@/lib/posts";
-import { caseStudies } from "@/lib/case-studies";
+import { caseStudies, type CaseStudy } from "@/lib/case-studies";
 
 export const metadata: Metadata = {
   title: "Cộng đồng Hermes Agent Tiếng Việt | Cộng Đồng AI",
@@ -38,6 +38,23 @@ const honestFaqs = [
       "Không, và sẽ luôn như vậy. Mình duy trì trang này bằng tiền túi của bản thân. Những gì mình nhận được từ cộng đồng và mã nguồn mở đều miễn phí, nên mình muốn chia sẻ lại kinh nghiệm mà thôi. Mọi người có thể sử dụng trang này hoàn toàn miễn phí.",
   },
 ];
+
+function CaseStudyPreview({ study }: { study: CaseStudy }) {
+  return (
+    <div className="witem">
+      <div className="th" aria-hidden="true">
+        {study.icon}
+      </div>
+      <div>
+        <h4>{study.title}</h4>
+        <p>{study.teaser}</p>
+        <div className="srcline">
+          <Link href={`/cau-chuyen/${study.slug}`}>Đọc đầy đủ →</Link>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function HomePage() {
   const recentPosts = getAllPosts().slice(0, 5);
@@ -223,18 +240,24 @@ export default function HomePage() {
           </p>
           <div className="world">
             {caseStudies.slice(0, 6).map((w) => (
-              <div className="witem" key={w.slug}>
-                <div className="th">{w.icon}</div>
-                <div>
-                  <h4>{w.title}</h4>
-                  <p>{w.teaser}</p>
-                  <div className="srcline">
-                    <Link href={`/cau-chuyen/${w.slug}`}>Đọc đầy đủ →</Link>
-                  </div>
-                </div>
-              </div>
+              <CaseStudyPreview key={w.slug} study={w} />
             ))}
           </div>
+          {caseStudies.length > 6 && (
+            <details className="case-more">
+              <summary>
+                <span className="case-more-closed">
+                  Xem thêm {caseStudies.length - 6} câu chuyện ↓
+                </span>
+                <span className="case-more-open">Thu gọn câu chuyện ↑</span>
+              </summary>
+              <div className="world" id="case-studies-them">
+                {caseStudies.slice(6).map((w) => (
+                  <CaseStudyPreview key={w.slug} study={w} />
+                ))}
+              </div>
+            </details>
+          )}
         </div>
       </section>
 

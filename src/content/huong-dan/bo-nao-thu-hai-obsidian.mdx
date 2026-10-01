@@ -1,8 +1,8 @@
 ---
-title: "Bộ não thứ hai với Obsidian - để Hermes tự lưu và không quên"
-description: "Vì sao AI hay quên, và cách dùng Obsidian để Hermes tự ghi thông tin và kiến thức ra file bền vững, vượt giới hạn cửa sổ ngữ cảnh."
+title: "Bộ não thứ hai với Obsidian - lưu ghi chú để Hermes đọc lại"
+description: "Nhờ Hermes dựng kho ghi chú Markdown để tìm lại theo nguồn; kiểm file đã ghi và chọn lọc thông tin, không hứa AI tự nhớ mọi thứ."
 datePublished: "2026-09-23"
-dateModified: "2026-09-23"
+dateModified: "2026-09-30"
 authorName: "Cộng Đồng AI"
 tags: ["bộ não thứ hai", "obsidian", "kiến thức"]
 ---
@@ -13,30 +13,37 @@ tags: ["bộ não thứ hai", "obsidian", "kiến thức"]
 
 ## Có Obsidian thì khác thế nào
 
-<TermTip term="Obsidian" /> là app ghi chú lưu file văn bản ngay trên máy bạn. Điểm mấu chốt với Hermes: nó có thể tự động ghi những thông tin, kiến thức hay tài liệu bạn cung cấp vào cái kho này, thành những file bền vững.
+<TermTip term="Obsidian" /> là app ghi chú lưu file văn bản ngay trên máy bạn.
+Điểm mấu chốt với Hermes: khi được bạn cho phép, nó có thể ghi những ghi chú đã
+chọn vào kho này thành file để bạn đọc lại.
 
-Sau này khi cần nhớ lại, Hermes đọc thẳng từ Obsidian, thay vì chỉ dựa vào lịch sử trò chuyện bị rút gọn. Kiến thức nhờ vậy được giữ lâu dài, vượt qua giới hạn của cửa sổ ngữ cảnh.
+Sau này bạn có thể yêu cầu Hermes tìm trong đúng thư mục ghi chú đã chọn rồi dẫn lại file gốc. File còn trên máy không có nghĩa Hermes tự nạp toàn bộ mỗi lần chat; phải chỉ nơi tìm và kiểm nó đã đọc đúng file.
 
 ## Có và không có Obsidian, khác nhau thế nào
 
-|                 | Không có Obsidian                       | Có Obsidian                          |
-| --------------- | --------------------------------------- | ------------------------------------ |
-| Nhớ được bao lâu  | Chỉ trong cửa sổ ngữ cảnh, đầy là rút gọn | Ghi thành file bền vững, cần thì đọc lại |
-| Kiến thức bạn đưa | Dễ bị quên khi chat dài                 | Được Hermes tự lưu, lần sau vẫn dùng |
-| Tài liệu, ghi chú | Chỉ nằm trong cuộc trò chuyện đó        | Được nó tự ghi ra Obsidian           |
+|                | Không có Obsidian                  | Có Obsidian                                                       |
+| -------------- | ---------------------------------- | ----------------------------------------------------------------- |
+| Tài liệu dài   | Có thể bị rút gọn khi chat kéo dài | Giữ trong file Markdown để đọc lại khi được yêu cầu               |
+| Tìm lại        | Dựa vào chat/memory hoặc tìm phiên | Chỉ rõ thư mục và nguồn, kiểm file Hermes thực sự đọc             |
+| Quyền riêng tư | Tùy model và tích hợp bạn dùng     | File nằm trên máy, nhưng nội dung gửi model cloud vẫn ra provider |
 
 ## Cách làm: chỉ cần nói với Hermes
 
-Bạn không cần tự tải Obsidian hay tự tạo thư mục. Mở Hermes rồi gửi một prompt chuẩn như sau:
+Bạn không cần tự tạo cấu trúc thư mục. Mở Hermes đã kết nối model rồi gửi prompt sau; xem đề xuất của nó trước khi cho cài app hay ghi file:
 
 ```
-Hãy giúp mình xây một bộ não thứ hai. Từ nay, mỗi khi mình cung cấp thông tin, kiến thức hay tài liệu, bạn hãy tự động lưu vào Obsidian để mình không quên. Đồng thời hướng dẫn mình cách kiểm tra lại những gì đã lưu.
+Hãy giúp mình tạo kho ghi chú Markdown trong thư mục riêng mà mình chọn.
+Trước khi cài Obsidian hoặc ghi file, hỏi mình nơi lưu và cho xem kế hoạch.
+Chỉ lưu ghi chú mình xác nhận, không tự chép mọi cuộc chat hoặc dữ liệu nhạy cảm.
+Tạo một ghi chú thử có tiêu đề, ngày, nguồn và đường dẫn file. Sau đó mở lại
+đúng file vừa tạo để mình kiểm nội dung. Nếu muốn, hướng dẫn mở thư mục ấy
+trong Obsidian. Khi tra cứu, ghi rõ file nguồn và phần chưa xác minh.
 ```
 
-Hermes tự lo cài đặt và dựng cấu trúc, rồi trao đổi với bạn để chỉnh cho khớp cách làm việc. Sau đó mỗi khi bạn nói "nhớ giúp mình điều này", nó tự ghi vào kho.
+Hermes có thể giúp cài đặt và dựng cấu trúc sau khi bạn đồng ý. Hãy kiểm file thử có thật rồi mới dùng tiếp; nói "nhớ giúp mình" không mặc định là đã ghi vào đúng kho Obsidian.
 
 ## Tóm lại
 
-Chatbot thường quên vì bị giới hạn bởi cửa sổ ngữ cảnh, đầy là phải rút gọn. Obsidian cho Hermes một chỗ ghi kiến thức ra file bền vững để đọc lại khi cần, vượt cái giới hạn đó. Bạn chỉ cần đưa một prompt chuẩn rồi trao đổi, phần tự động Hermes lo.
+Obsidian là nơi giữ file bạn có thể đọc, sửa, sao lưu. Hermes dùng kho đó khi được giao đúng thư mục, nhưng bạn vẫn phải kiểm nội dung, nguồn và quyền truy cập. Nếu dùng model cloud, đoạn tài liệu gửi đi để xử lý vẫn có thể tới provider.
 
 Muốn xem người thật đã làm thế nào, mở mục [Chia sẻ kinh nghiệm](/cau-chuyen). Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap).

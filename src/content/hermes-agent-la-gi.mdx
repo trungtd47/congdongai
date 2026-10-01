@@ -1,8 +1,8 @@
 ---
 title: "Hermes Agent là gì? Trợ lý AI tự làm việc cho bạn, giải thích cho người mới"
-description: "Hermes Agent là khung trợ lý AI mã nguồn mở của Nous Research - bạn tự dựng trợ lý cho riêng mình, nó tự nhớ việc, tự học kỹ năng và tự chạy tác vụ theo lịch. Bài này giải thích nó là gì, khác gì ChatGPT, và tại sao người không biết code cũng dùng được."
+description: "Hermes Agent là khung agent mã nguồn mở của Nous Research: dùng công cụ, memory, skill và lịch khi được cấu hình. Giải thích cho người mới và so sánh công bằng với chatbot."
 datePublished: "2026-09-22"
-dateModified: "2026-09-22"
+dateModified: "2026-09-30"
 authorName: "Cộng Đồng AI"
 tags: ["khái niệm", "người mới"]
 ---
@@ -13,41 +13,41 @@ Nếu bạn từng ước "giá như có ai đó thay mình làm mấy việc l�
 
 Nói đơn giản, Hermes Agent là một **bộ khung mã nguồn mở để bạn tự dựng trợ lý AI của riêng mình**, chạy ngay trên máy tính của bạn. Nó do Nous Research - một tổ chức nghiên cứu AI mã nguồn mở có tiếng - phát triển. Điểm khác biệt lớn nhất so với ChatGPT hay Gemini: thay vì là một trợ lý đóng hộp để bạn hỏi, nó cho bạn bộ khung để tạo ra trợ lý **chủ động làm việc** theo ý mình.
 
-Khi bạn nói "mỗi sáng 7 giờ tóm tắt tin tức công nghệ gửi cho tôi", Hermes không chỉ trả lời "được" rồi quên. Nó ghi nhớ, tự đặt lịch, và sáng hôm sau tự chạy: lấy tin từ hàng chục nguồn, đọc, tóm tắt, rồi đưa kết quả cho bạn - mà bạn không phải nhắc lại lần nào nữa.
+Khi bạn muốn nhận bản tin vào buổi sáng, Hermes có thể giúp dựng quy trình và đặt lịch. Nhưng hãy xem lịch đã được tạo chưa, nguồn tin có đọc được không, model còn quyền dùng không và kết quả có tới đúng kênh không. Một câu "được" trong chat chưa phải là lịch chạy thật.
 
 ## Chatbot chỉ biết nói - Agent biết làm
 
 Đây là điểm khác biệt thật sự, chứ không phải khác nhau ở giao diện:
 
-- **Chatbot** (ChatGPT, Gemini) chỉ có "miệng": bạn hỏi, nó trả lời trong ô chat, trả lời xong là hết. Nó không có tay chân để tự chạm vào máy tính hay mọi thứ quanh bạn.
-- **AI agent** (Hermes) có cả "tay chân": ngoài trả lời, nó còn **tự thực thi** - đọc và sửa file, chạy lệnh, mở ứng dụng, lướt web, gọi API, điều khiển thiết bị nhà thông minh. Bạn giao một mục tiêu, nó thao tác trên máy để hoàn thành rồi quay lại báo cáo.
+- **Chatbot** thường bắt đầu từ câu hỏi và câu trả lời; một số dịch vụ hiện cũng có công cụ, bộ nhớ hoặc lịch hẹn riêng.
+- **Hermes** là khung agent cho phép giao việc qua nhiều bước và **dùng công cụ** trên môi trường bạn cấu hình - đọc/sửa file, chạy lệnh, duyệt web. Các tích hợp khác phụ thuộc cấu hình và quyền bạn cấp; phải kiểm hành động thật thay vì chỉ tin câu trả lời.
 
-Chính vì biết làm, Hermes mới "lớn cùng bạn": mỗi việc nó học được cách xử lý là một việc bạn không phải đụng tay lần sau.
+Điểm đáng thử là cách giữ lại quy trình đã kiểm dưới dạng skill hoặc file ghi chú. Lần sau agent có thể đọc lại, nhưng vẫn cần bạn kiểm đầu ra.
 
 ## Ba khả năng làm nó khác hẳn
 
-**1. Tự nhớ việc.** Hermes có bộ nhớ dài hạn riêng. Nó nhớ bạn là ai, thích gì, đang làm dự án gì. Lần sau không cần giải thích lại từ đầu.
+**1. Ghi nhớ có chọn lọc.** Memory giữ một số điều đáng nhớ xuyên phiên, không phải kho vô hạn chứa mọi tài liệu. Kiểm lại điều nó nhớ khi giao việc quan trọng.
 
-**2. Tự học kỹ năng mới.** Hermes có khái niệm <TermTip term="skill">skill</TermTip> - những gói kiến thức cài thêm bằng một câu lệnh đơn giản. Muốn nó đọc tin tức, dịch thuật, nhắc việc? Cài skill tương ứng là xong.
+**2. Tái sử dụng kỹ năng.** <TermTip term="skill">Skill</TermTip> là hướng dẫn theo việc. Hermes có thể tạo hoặc dùng skill sau khi bạn kiểm quy trình; không phải cứ cài skill là kết quả đúng.
 
-**3. Tự chạy tác vụ theo lịch.** Đây là thứ ChatGPT không làm được. Hermes có thể chạy nền, đến giờ tự thức dậy làm việc rồi báo cáo - đúng nghĩa "trợ lý", không phải "công cụ chat".
+**3. Chạy tác vụ theo lịch.** Hermes hỗ trợ cron để chạy việc định kỳ khi môi trường và lịch đã được cấu hình. Chọn kênh nhận, kiểm lần chạy đầu và theo dõi lỗi; không so sánh tuyệt đối rằng dịch vụ khác không có lịch.
 
 ## Khác gì ChatGPT?
 
-| Tiêu chí | ChatGPT | Hermes Agent |
-| --- | --- | --- |
-| Cách dùng | Mở web, gõ câu hỏi | Cài app, giao việc dài hạn |
-| Nhớ ngữ cảnh | Trong 1 đoạn chat | Nhớ lâu dài giữa các phiên |
-| Tự chạy theo lịch | Không | Có |
-| Tự thao tác trên máy | Không | Có - đọc/ghi file, chạy lệnh, lướt web |
+| Tiêu chí                           | ChatGPT                                        | Hermes Agent                                                     |
+| ---------------------------------- | ---------------------------------------------- | ---------------------------------------------------------------- |
+| Trọng tâm ở bài này                | Hỏi đáp và các tính năng trong dịch vụ ChatGPT | Khung agent để tự cấu hình model, công cụ và môi trường làm việc |
+| Làm việc với file trên máy của bạn | Tùy sản phẩm/tính năng được cấp                | Hermes có công cụ đọc/ghi file, tùy quyền và cấu hình            |
+| Chạy theo lịch                     | Tùy gói/tính năng của dịch vụ                  | Có cron, cần cấu hình và kiểm lịch chạy                          |
+| Quy trình tái sử dụng              | Tùy tính năng dịch vụ                          | Skill và file ghi chú do bạn kiểm, sửa và giữ                    |
 
-Tóm lại, ChatGPT là chatbot bạn "hỏi" - nó chỉ biết nói. Hermes là agent bạn "giao việc" - nó tự thao tác trên máy để làm xong việc.
+Tóm lại, hãy chọn theo việc cần làm và quyền truy cập bạn muốn cấp. Không phải mọi chatbot đều chỉ biết trả lời và không phải mọi việc Hermes nhận đều tự thành công.
 
 ## Có miễn phí không?
 
 **Phần mềm thì miễn phí hoàn toàn.** Hermes là mã nguồn mở, ai cũng tải và dùng được.
 
-Chi phí duy nhất là tiền cho <TermTip term="model">AI model</TermTip> mà Hermes dùng để "suy nghĩ", tính theo số <TermTip term="token">token</TermTip> đã dùng. Dùng ít thì trả ít, dùng nhiều thì trả nhiều, không gói tháng cố định. Bài "Thanh toán từ Việt Nam" sẽ hướng dẫn bạn nạp và trả bằng thẻ Việt Nam.
+Nguồn <TermTip term="model">AI model</TermTip> có cơ chế khác nhau: OpenRouter tính theo <TermTip term="token">token</TermTip>, Nous Portal theo gói, còn Codex OAuth dựa vào quyền của tài khoản ChatGPT. Model local cần máy phù hợp; dịch vụ tích hợp khác có thể có phí. Xem [hướng dẫn chọn một nguồn trước](/bat-dau/chon-nha-cung-cap-api).
 
 ## Người không biết code có dùng được không?
 
@@ -58,7 +58,7 @@ Toàn bộ hướng dẫn trên trang này viết riêng cho người không chu
 ## Bắt đầu từ đâu?
 
 1. Đọc tiếp bài **Cài Hermes Desktop** cho hệ điều hành của bạn.
-2. Đăng ký tài khoản **Nous Portal** để có AI model.
-3. Thử một việc đơn giản đầu tiên, ví dụ "tóm tắt tin sáng nay".
+2. Chọn **một** model theo [lộ trình tài khoản sẵn có](/bat-dau/chon-nha-cung-cap-api), chưa cần mua thêm gói.
+3. Thử việc nhỏ và đọc lại kết quả, ví dụ tóm tắt một bài công khai có URL nguồn.
 
 Chưa cần hiểu hết mọi thứ. Cứ cài xong, dùng thử một việc thật, phần còn lại sẽ dần quen.

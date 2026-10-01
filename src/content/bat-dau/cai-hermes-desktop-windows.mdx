@@ -1,8 +1,8 @@
 ---
 title: "Cài Hermes Desktop trên Windows - từng bước cho người mới"
-description: "Hướng dẫn cài Hermes Desktop trên Windows: tải về, chạy file, xử lý cảnh báo SmartScreen, mở app lần đầu. Không cần biết code, khoảng 10 phút."
+description: "Tải Hermes Desktop cho Windows từ trang chính thức, cài bằng App Installer, kết nối model rồi kiểm tra câu trả lời đầu tiên."
 datePublished: "2026-09-21"
-dateModified: "2026-09-25"
+dateModified: "2026-09-30"
 authorName: "Cộng Đồng AI"
 tags: ["cài đặt", "windows"]
 ---
@@ -11,27 +11,22 @@ Hermes Agent có một bản **Desktop** - cài như mọi phần mềm thườn
 
 ## Bước 1: Tải Hermes Desktop về máy
 
-1. Bấm link tải chính thức của Nous Research: **[Tải Hermes Desktop cho Windows (.exe)](https://hermes-assets.nousresearch.com/Hermes-Setup.exe)** - bấm là file tự động tải về.
+1. Mở **[trang tải Hermes Desktop chính thức](https://hermes-agent.nousresearch.com/desktop)**, chọn bản Windows theo hướng dẫn trên trang. Tài liệu cài đặt hiện tại của Hermes khuyên dùng gói `.appinstaller` (App Installer của Windows), không phải file `Hermes-Setup.exe` đời cũ dùng để tải mã nguồn và dựng app.
 2. Chờ file tải xong - file thường nằm trong thư mục **Downloads** (Tải xuống).
 
-> Quan trọng: link trên trỏ thẳng tới `hermes-assets.nousresearch.com` - máy chủ phát hành chính thức của Nous Research, luôn là bản mới nhất. Đừng tải từ trang khác hay từ link người lạ gửi trong nhóm chat.
+> Quan trọng: kiểm địa chỉ `hermes-agent.nousresearch.com` trước khi tải. Không mở file cài đặt từ link người lạ. Nếu máy cơ quan có chính sách cài phần mềm, hỏi bộ phận IT trước.
 
-Bạn quen dùng terminal? Có thể cài bằng một lệnh trong PowerShell: `iex (irm https://hermes-agent.nousresearch.com/install.ps1)`. Còn với người mới, file .exe ở trên là cách dễ nhất.
+Bạn quen dùng terminal? Có thể chọn cách cài mã nguồn bằng PowerShell theo [tài liệu chính thức](https://hermes-agent.nousresearch.com/docs/getting-started/installation). Người mới nên dùng gói Desktop trên trang tải.
 
 ## Bước 2: Chạy file cài đặt
 
-Bấm đúp vào file vừa tải (tên thường bắt đầu bằng `Hermes` và kết thúc bằng `.exe`). Có thể máy hỏi "Bạn có muốn cho phép app này thay đổi thiết bị không" - bấm **Yes** (Có).
+Bấm đúp file `.appinstaller` vừa tải và làm theo Windows App Installer. Xem tên ứng dụng, nhà phát hành và quyền được yêu cầu trước khi xác nhận. Nếu trang tải chính thức đưa định dạng khác, làm theo hướng dẫn cập nhật trên chính trang đó, không tự đổi đuôi file.
 
 ## Bước 3: Xử lý cảnh báo SmartScreen
 
-Ở bước này, nhiều bạn gặp màn hình xanh báo **"Windows protected your PC"** và sợ là virus. Đừng lo - đây chỉ là cảnh báo của Windows vì Hermes chưa mua chữ ký số trả phí, không phải file độc.
+Nếu thấy **"Windows protected your PC"**, đừng mặc định đó là cảnh báo vô hại. Kiểm lại file có tải đúng từ trang chính thức và tên nhà phát hành; với máy do cơ quan quản lý, liên hệ IT thay vì tự vượt chặn.
 
-Cách vượt qua:
-
-1. Bấm chữ **More info** (Thông tin thêm).
-2. Sẽ hiện thêm nút **Run anyway** (Vẫn chạy) - bấm vào đó.
-
-Là xong, app sẽ chạy bình thường.
+Nếu còn nghi ngờ, dừng cài và hỏi ở [Hỏi & Đáp](/hoi-dap) hoặc tra [hướng dẫn cài đặt chính thức](https://hermes-agent.nousresearch.com/docs/getting-started/installation); đừng gửi ảnh có thông tin riêng tư.
 
 ## Bước 4: Mở Hermes Desktop lần đầu
 
@@ -53,12 +48,12 @@ Nó trả lời được là bạn đã cài thành công.
 - [ ] Mở được cửa sổ chat của Hermes.
 - [ ] Gõ câu hỏi thấy nó trả lời tiếng Việt.
 
-Cả hai đều đạt là xong. Giờ bạn đã có một trợ lý AI của riêng mình, chạy ngay trên máy của bạn.
+Cả hai đều đạt là bạn đã cài và kết nối model thành công. App chạy trên máy; nếu chọn model cloud thì nội dung gửi model vẫn đi tới dịch vụ cung cấp model.
 
 ## Hay gặp lỗi
 
-- **Không thấy nút "Run anyway"?** Thử bấm đúp lại file, hoặc tải lại file từ trang chính thức.
+- **Windows không mở `.appinstaller`?** Kiểm tra App Installer và chính sách máy với IT; không đổi sang file cài từ nguồn lạ để lách chặn.
 - **App không mở sau khi cài?** Khởi động lại máy rồi tìm "Hermes" trong menu Start.
-- **Máy báo thiếu gì đó?** Đa phần laptop Windows 10/11 hiện tại đều chạy được, không cần cài thêm.
+- **Máy báo thiếu thành phần?** Chụp lại thông báo (che thông tin cá nhân), đối chiếu [hướng dẫn Windows chính thức](https://hermes-agent.nousresearch.com/docs/user-guide/windows-native) trước khi cài thêm phần mềm.
 
 Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap), mình và mọi người sẽ trả lời.

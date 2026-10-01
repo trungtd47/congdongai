@@ -1,0 +1,66 @@
+---
+title: "Nghiên cứu token với Hermes và lưu bộ não thứ hai"
+description: "Một cách thử nghiên cứu token theo 12 điểm, kiểm nguồn và lưu luận điểm vào file Markdown để đọc lại; Hermes không thay bạn quyết định giao dịch."
+datePublished: "2026-10-01"
+dateModified: "2026-10-01"
+authorName: "Cộng Đồng AI"
+tags: ["Hermes", "tài chính", "nghiên cứu token", "Obsidian"]
+---
+
+## Vấn đề
+
+Hỏi AI "token này có đáng mua không?" thường cho ra một đoạn nghe hợp lý, nhưng thiếu địa chỉ hợp đồng, ngày lấy dữ liệu và lý do phải đổi ý. Mình dùng Hermes để chuẩn bị phần nghiên cứu, giữ file ghi chú có nguồn và tự kiểm trước mọi quyết định. [Đọc câu chuyện mình đã dùng Hermes theo cách này](/cau-chuyen/hermes-nghien-cuu-token-bo-nao-thu-hai).
+
+![Sơ đồ từ nguồn công khai tới bản phân tích 12 bước, bước người đọc duyệt và file ghi chú có lịch sử cập nhật. Đây là minh họa, không phải ảnh chụp Hermes.](/case-study/hermes-token-research.svg)
+
+## Cần gì trước
+
+- Hermes đã cài, kết nối được một model và có quyền đọc nguồn công khai. Nếu model không truy cập được nguồn, bạn cung cấp URL hoặc dữ liệu có nguồn; đừng để nó đoán giá hiện tại.
+- Một token với **chain và contract address** (địa chỉ hợp đồng) xác nhận từ kênh chính thức. Cùng ticker có thể là nhiều token khác nhau. Không đưa seed phrase, khóa ví, mật khẩu hay khóa API giao dịch vào chat.
+- Một thư mục riêng cho file Markdown nếu bạn muốn giữ kết quả. Có thể mở bằng Obsidian, nhưng không bắt buộc cài Obsidian trước.
+
+## Cách làm
+
+### 1. Giao một bản nghiên cứu có thể phản biện
+
+Đây là **mẫu 12 điểm để bắt đầu**, không phải bản sao nguyên checklist cá nhân của admin. Một lượt kiểm gồm: (1) định danh và chain; (2) giá và vốn hóa tại thời điểm lấy; (3) biến động nhiều khung; (4) thanh khoản và khối lượng; (5) cung lưu hành, pha loãng, lịch mở khóa; (6) công dụng của token và cơ chế nhận giá trị; (7) đội ngũ, tài trợ, quản trị; (8) hoạt động người dùng/on-chain có ý nghĩa; (9) chất xúc tác kèm thời hạn; (10) đối thủ và khác biệt; (11) nguồn lợi suất cùng rủi ro nếu có; (12) luận điểm tăng/giảm, điều kiện làm luận điểm sai và điều chưa xác minh. Với mỗi số, ghi rõ nguồn, thời điểm, đơn vị và phạm vi đo. Không ép đủ 12 ô bằng dữ liệu bịa.
+
+```text
+Hãy nghiên cứu [TÊN TOKEN], chain [CHAIN], contract [ĐỊA CHỈ] theo 12 điểm
+trong hướng dẫn này. Chỉ dùng nguồn công khai bạn đọc được thật; đối chiếu
+contract với trang chính thức trước khi lấy dữ liệu thị trường. Mỗi con số cần
+URL gốc, thời điểm, đơn vị, phạm vi; nguồn dự án tự công bố thì ghi rõ.
+Tách dữ kiện khỏi suy luận. Viết bull case, bear case, điều gì khiến luận điểm
+sai và danh sách chỗ chưa xác minh. Nếu không truy cập được nguồn, dừng ở
+mục đó và hỏi mình. Không đặt lệnh, không kết nối ví, không tự ghi file.
+```
+
+### 2. Kiểm lại các điểm dễ sai
+
+Mở link nguồn cho hợp đồng, cung token và hai dữ kiện quyết định luận điểm. Nhìn một ví lớn chưa đủ kết luận "cá voi": đó có thể là staking contract, quỹ dự trữ hoặc pool. Doanh thu dự án không tự động thành lợi ích cho người giữ token. Số liệu có phạm vi khác nhau (một chain so với đa chain, phí so với doanh thu) không thể cộng hoặc so sánh trực tiếp. Nếu thiếu nguồn độc lập, cứ giữ nhãn "chưa xác minh".
+
+### 3. Lưu ghi chú có duyệt, rồi thử đọc lại
+
+Khi bản nháp đã được bạn kiểm, mới yêu cầu Hermes đề xuất đường dẫn file, hiện nội dung và cho bạn duyệt trước khi lưu. File nên có định danh/contract, ngày và URL nguồn, luận điểm tăng/giảm, rủi ro, câu hỏi mở, mốc cần kiểm lại và **Analysis Log** (nhật ký phân tích). Không ghi đè kết luận cũ: thêm mục mới nói điều gì đổi và vì sao. Index dẫn tới file token; memory ngắn của Hermes chỉ cần biết _kho ở đâu và quy tắc tra cứu_, không chứa nguyên mọi bản phân tích.
+
+```text
+Bản nháp này mình đã duyệt phần [NÊU PHẦN ĐÃ KIỂM]. Hãy đề xuất một file
+Markdown trong thư mục [THƯ MỤC CỦA MÌNH], trình bày đường dẫn và nội dung
+trước khi ghi. Giữ nhận định cũ trong Analysis Log, thêm ngày/nguồn/điều
+đã thay đổi, đánh dấu mục chưa kiểm. Chỉ ghi sau khi mình xác nhận; sau đó
+mở lại đúng file và trích phần vừa thêm để mình đối chiếu. Không lưu
+thông tin nhạy cảm hay quyền giao dịch.
+```
+
+## Kết quả: kiểm một lần đọc lại
+
+Sau khi lưu, mở file bằng Obsidian hoặc trình soạn thảo thường, kiểm ngày và link nguồn. Mở cuộc chat khác và yêu cầu "Tìm ghi chú về token này trong thư mục mình đã chọn, cho biết luận điểm cũ, ngày kiểm gần nhất và đường dẫn file, chưa cần lấy giá mới". Nếu Hermes không mở đúng file thì chưa thể nói bộ não thứ hai đã hoạt động. File cũ không tự cập nhật theo thị trường; khi hỏi giá hoặc pháp lý hôm nay, phải truy nguồn mới.
+
+## Mẹo thêm: từ một token tới việc tài chính khác
+
+- So hai token cùng lĩnh vực bằng **cùng kỳ dữ liệu** và một bảng tiêu chí, không xếp hạng chỉ theo % tăng giá.
+- Theo dõi mở khóa, thanh khoản hay phí thực tế theo lịch/cảnh báo _sau khi chạy thử_, chỉ nhắn khi điều kiện bạn đặt xảy ra, kèm URL gốc; kiểm lịch và một lần chạy thật trước khi dựa vào thông báo.
+- Ghi nhật ký "mình đã nghĩ gì lúc đó" để sau này đối chiếu thay vì chỉ lưu kết luận mới nhất. Với cổ phiếu hay vĩ mô, giữ cách kiểm nguồn - ngày - giả định, nhưng thay 12 tiêu chí token bằng chỉ tiêu phù hợp.
+- Nếu dùng model đám mây, đoạn ghi chú gửi cho model để xử lý vẫn có thể rời máy. Chỉ cấp quyền đọc nguồn, duyệt trước khi ghi file; không giao quyền ví hay quyền giao dịch.
+
+Đây là công cụ hỗ trợ nghiên cứu, không phải tư vấn đầu tư. Muốn dựng kho file từ đầu, xem [bộ não thứ hai với Obsidian](/huong-dan/bo-nao-thu-hai-obsidian). Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap).

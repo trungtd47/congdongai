@@ -1,8 +1,8 @@
 ---
 title: "Cài Hermes Desktop trên Mac - từng bước cho người mới"
-description: "Hướng dẫn cài Hermes Desktop trên macOS: tải về, mở khóa Gatekeeper, kéo vào Applications. Không cần biết code, khoảng 10 phút."
+description: "Tải Hermes Desktop cho Mac Apple Silicon từ trang chính thức, kéo vào Applications, kết nối model và thử câu hỏi đầu tiên."
 datePublished: "2026-09-21"
-dateModified: "2026-09-25"
+dateModified: "2026-09-30"
 authorName: "Cộng Đồng AI"
 tags: ["cài đặt", "mac"]
 ---
@@ -11,9 +11,9 @@ Hermes Agent có bản **Desktop** dành riêng cho Mac, cài bằng cách kéo 
 
 ## Bước 1: Tải Hermes Desktop
 
-1. Bấm link tải chính thức của Nous Research: **[Tải Hermes Desktop cho Mac (.dmg)](https://hermes-assets.nousresearch.com/Hermes-Setup.dmg)** - bấm là file tự động tải về (thường nằm trong thư mục **Downloads**).
+1. Mở **[trang tải Hermes Desktop chính thức](https://hermes-agent.nousresearch.com/desktop)**, chọn gói Mac `.dmg` được trang đó giới thiệu. File thường ở thư mục **Downloads**. `Hermes-Setup.dmg` là dạng bootstrap khác với gói Desktop dựng sẵn; đừng nhầm hai cách cài.
 
-> Hai lưu ý quan trọng: bản Mac chỉ hỗ trợ chip **Apple Silicon** (M1, M2, M3, M4...), Mac chip Intel chưa được nhà phát hành hỗ trợ. Và chỉ tải từ link trên - `hermes-assets.nousresearch.com` là máy chủ phát hành chính thức của Nous Research, luôn là bản mới nhất; đừng tải từ link lạ.
+> Hai lưu ý quan trọng: bản Mac chỉ hỗ trợ chip **Apple Silicon** (M1 trở lên), Mac chip Intel chưa được nhà phát hành hỗ trợ. Chỉ tải từ trang chính thức, đừng tải từ link lạ.
 
 Bạn quen dùng terminal? Có thể cài bằng lệnh: `curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash`
 
@@ -23,14 +23,14 @@ Bấm đúp vào file vừa tải (thường là file `.dmg`), sẽ mở ra mộ
 
 ## Bước 3: Mở khóa Gatekeeper
 
-Lần đầu mở, Mac có thể chặn và báo **"Hermes can't be opened because Apple cannot check it for malicious software"**. Đây là lớp bảo vệ mặc định của Mac, không phải file độc.
+Lần đầu mở, Mac có thể báo **"Hermes can't be opened because Apple cannot check it for malicious software"**. Đừng mặc định cảnh báo đó vô hại: trước tiên kiểm lại nguồn tải và gói cài.
 
 Cách mở khóa (làm một lần):
 
 1. Vào **System Settings** (Cài đặt hệ thống) → **Privacy & Security** (Quyền riêng tư & Bảo mật).
 2. Kéo xuống, tìm dòng báo về Hermes, bấm **Open Anyway** (Vẫn mở).
 
-Hoặc cách nhanh: giữ phím **Control** khi bấm đúp vào app, chọn **Open** (Mở).
+Nếu dùng máy do cơ quan quản lý hoặc không chắc về nguồn tải, hỏi IT thay vì tự bỏ qua cảnh báo.
 
 ## Bước 4: Mở Hermes lần đầu
 

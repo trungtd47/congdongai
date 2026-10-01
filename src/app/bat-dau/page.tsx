@@ -32,22 +32,22 @@ export default function BatDauPage() {
       <div id="tai-hermes" className="card mb-8 scroll-mt-24 p-6">
         <h2 className="mb-1 text-[20px] font-extrabold">⬇ Tải Hermes về máy</h2>
         <p className="mb-4 max-w-2xl text-sm text-ink-soft">
-          Link tải trực tiếp từ máy chủ phát hành chính thức của Nous Research -
-          bấm là tải ngay, luôn là bản mới nhất. Đừng tải Hermes từ bất kỳ trang
-          nào khác.
+          Mở trang Desktop chính thức của Nous Research rồi chọn gói đúng hệ
+          điều hành. Windows dùng .appinstaller, Mac Apple Silicon dùng DMG dựng
+          sẵn; các file Hermes-Setup là cách cài bootstrap khác.
         </p>
         <div className="mb-4 flex flex-wrap gap-3">
           <a
             className="btn btn-primary"
-            href="https://hermes-assets.nousresearch.com/Hermes-Setup.exe"
+            href="https://hermes-agent.nousresearch.com/desktop"
           >
-            🪟 Tải cho Windows (.exe)
+            🪟 Xem bản Windows (.appinstaller)
           </a>
           <a
             className="btn btn-ghost"
-            href="https://hermes-assets.nousresearch.com/Hermes-Setup.dmg"
+            href="https://hermes-agent.nousresearch.com/desktop"
           >
-            🍎 Tải cho Mac (.dmg)
+            🍎 Xem bản Mac (DMG)
           </a>
         </div>
         <div className="rounded-lg border border-line bg-stone-50 p-4 text-[13px] leading-relaxed text-ink-soft">

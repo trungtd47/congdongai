@@ -1,15 +1,15 @@
 ---
 title: "Bản tin buổi sáng tự động"
-description: "Giao cho Hermes tổng hợp tin tức bạn quan tâm mỗi sáng, đọc trong 2 phút thay vì 20. Kèm prompt copy-paste được ngay."
+description: "Thử bản tin sáng với URL nguồn, kiểm ngày đăng và tin trùng; chỉ đặt lịch sau khi xem bản thử và xác nhận kênh nhận."
 datePublished: "2026-09-22"
-dateModified: "2026-09-22"
+dateModified: "2026-09-30"
 authorName: "Cộng Đồng AI"
 tags: ["tin tức", "tự động"]
 ---
 
 ## Vấn đề
 
-Mỗi sáng bạn mất 10 - 20 phút lướt qua vài trang báo để biết hôm nay có gì đáng đọc. Việc này Hermes làm thay bạn được.
+Bạn muốn nắm vài tin đáng đọc buổi sáng mà không mở nhiều trang. Hermes có thể giúp lập bản nháp, nhưng phải kiểm URL, thời điểm đăng và việc có đọc được nguồn hay không.
 
 ## Cần gì trước
 
@@ -21,20 +21,22 @@ Mỗi sáng bạn mất 10 - 20 phút lướt qua vài trang báo để biết h
 Copy prompt này dán vào ô chat của Hermes:
 
 ```
-Mỗi sáng hãy tổng hợp cho tôi bản tin ngắn gọn gồm:
+Hãy làm thử một bản tin, chưa đặt lịch. Chỉ dùng các trang công khai sau:
+[DÁN 2-3 URL NGUỒN BẠN MUỐN THEO DÕI]
+Tổng hợp cho mình bản tin ngắn gọn gồm:
 - 5 tin công nghệ quan trọng nhất hôm nay
 - 3 tin tài chính / chứng khoán Việt Nam
 - 1 tin thể thao
-Mỗi tin chỉ 2 - 3 câu, ghi rõ nguồn.
-Cuối cùng thêm 1 dòng dự báo thời tiết Hà Nội hôm nay.
-Viết bằng tiếng Việt, gọi tôi là "bạn".
+Mỗi tin 2 - 3 câu, ghi URL bài gốc và ngày đăng nếu thấy trong nguồn.
+Nếu nguồn không mở được, thiếu tin hoặc ngày không rõ, ghi "chưa xác minh";
+không tự thêm tin từ trí nhớ. Chưa gửi đi đâu và chưa tạo lịch.
 ```
 
-Hermes sẽ ghi nhớ yêu cầu này. Lần sau bạn chỉ cần mở app và gõ **"bản tin hôm nay"** là nó làm lại y hệt, không cần dán lại prompt dài.
+Mở từng URL để kiểm và sửa tiêu chí trước. Khi bản thử ổn, nhờ Hermes đề xuất skill/lịch chạy lúc bạn muốn, **xem lịch và kênh nhận trước khi xác nhận**. Kiểm lần chạy đầu có tin thật; một câu "đã nhớ" không đồng nghĩa đã tạo lịch.
 
 ## Kết quả
 
-Bạn nhận bản tin gọn, đọc trong 2 phút thay vì 20 phút lướt báo.
+Bạn có bản tin mẫu có đường dẫn để đối chiếu. Nếu bật lịch, kiểm thời gian, kênh và lỗi truy cập sau lần chạy đầu; chưa kiểm thì chưa coi là bản tin tự động.
 
 ## Mẹo thêm
 

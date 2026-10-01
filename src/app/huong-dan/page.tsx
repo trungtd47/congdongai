@@ -12,7 +12,8 @@ export const metadata: Metadata = {
 
 export default function HuongDanPage() {
   const congVuItems = huongDanItems.filter((c) => c.group === "cong-vu");
-  const otherItems = huongDanItems.filter((c) => c.group !== "cong-vu");
+  const taiChinhItems = huongDanItems.filter((c) => c.group === "tai-chinh");
+  const otherItems = huongDanItems.filter((c) => !c.group);
 
   return (
     <div className="wrap py-12">
@@ -29,6 +30,42 @@ export default function HuongDanPage() {
         việc công vụ. Chọn một việc đang cần làm, thử prompt trong bài hướng dẫn
         rồi kiểm tra đầu ra trước khi dùng.
       </p>
+      <section className="mb-12" aria-labelledby="tai-chinh-heading">
+        <h2
+          id="tai-chinh-heading"
+          className="mb-2 text-[18px] font-bold tracking-[-0.3px]"
+        >
+          Nghiên cứu tài chính
+        </h2>
+        <p className="mb-5 max-w-2xl text-[14px] text-ink-soft">
+          Bắt đầu với một token có địa chỉ hợp đồng rõ ràng. Hermes giúp gom
+          nguồn, kiểm luận điểm và lưu ghi chú; bạn kiểm dữ liệu và tự quyết
+          định. Đọc thêm{" "}
+          <Link
+            href="/cau-chuyen/hermes-nghien-cuu-token-bo-nao-thu-hai"
+            className="font-semibold text-teal-dark underline decoration-[var(--gold)] underline-offset-2"
+          >
+            câu chuyện dùng Hermes nghiên cứu token
+          </Link>
+          .
+        </p>
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+          {taiChinhItems.map((c) => (
+            <Link
+              key={c.slug}
+              href={`/huong-dan/${c.slug}`}
+              className="card card-hover block p-5"
+            >
+              <div className="mb-2.5 text-[26px]">{c.icon}</div>
+              <h3 className="mb-1 text-[15.5px] font-bold">{c.title}</h3>
+              <p className="text-[13.5px] text-ink-soft">{c.description}</p>
+              <div className="mt-3 text-[13px] font-semibold text-teal-dark">
+                Xem hướng dẫn →
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
       <section className="mb-12" aria-labelledby="cong-vu-heading">
         <h2
           id="cong-vu-heading"

@@ -1,8 +1,8 @@
 ---
 title: "Vòng lặp tự cải thiện - để Hermes càng dùng càng giỏi"
-description: "5 prompt copy-paste biến Hermes thành đồng nghiệp tự tiến bộ: tự nhớ gu của bạn, tự tạo kỹ năng sau mỗi việc khó, tự rút kinh nghiệm mỗi tối. Không cần biết code."
+description: "5 prompt thử memory, SOUL.md và skill của Hermes theo từng bước; xem lại nội dung trước khi lưu hoặc đặt lịch, không tự động ghi mọi cuộc chat."
 datePublished: "2026-09-24"
-dateModified: "2026-09-24"
+dateModified: "2026-09-30"
 authorName: "Cộng Đồng AI"
 tags: ["kinh nghiệm", "sử dụng", "memory", "skill"]
 ---
@@ -11,13 +11,13 @@ tags: ["kinh nghiệm", "sử dụng", "memory", "skill"]
 
 ## Vấn đề: vì sao dùng mãi mà nó vẫn "lạ"
 
-Nếu bạn dùng Hermes được vài tuần mà mỗi lần giao việc vẫn phải nhắc lại giọng văn, quy trình, những điều bạn không thích... thì không phải AI kém. Lý do là ba tầng "học" của nó chưa được kích hoạt:
+Nếu mỗi lần giao việc bạn vẫn phải nhắc lại giọng văn hoặc quy trình, hãy kiểm thông tin nào nên lưu lại. Không phải mọi điều nói trong chat đều tự chuyển thành bộ nhớ hoặc skill:
 
 - **Memory (trí nhớ)**: những gì nó ghi lại về bạn, giữ qua các phiên chat. Bộ nhớ này có giới hạn dung lượng, nên nó buộc phải chắt lọc thứ quan trọng thay vì nhớ lan man.
 - **<TermTip term="skill" /> (kỹ năng)**: các bước làm việc đã được đúc kết. Lần sau gặp việc tương tự, nó lấy ra áp dụng ngay thay vì mày mò lại.
 - **SOUL.md**: file "tính cách" bạn viết cho nó - cách xưng hô, giọng văn, quy tắc cứng.
 
-Vòng lặp sẽ chạy như sau: bạn giao việc → nó ghi nhận điều học được → đúc kết thành skill và memory → lần sau làm tốt hơn → bạn chỉ cần chỉnh, không cần dạy lại. Năm prompt dưới đây nhóm lửa cho từng mắt xích.
+Một vòng lặp có kiểm là: giao việc → đọc kết quả → chỉ rõ chỗ sai/đúng → duyệt điều cần lưu → thử lại. Năm prompt dưới đây giúp bạn làm từng bước, không bật tự động ghi mọi thứ.
 
 ## Cần gì trước
 
@@ -55,24 +55,30 @@ Việc vừa rồi bạn làm tốt. Hãy đúc kết các bước làm, những
 ### 4. Cho nó tự ngẫm mỗi tối
 
 ```
-Mỗi tối lúc 22h, hãy xem lại các cuộc trò chuyện trong ngày của chúng ta: trích ra quyết định đã chốt, việc đang làm dở, và sai lầm cần tránh. Ghi bản tóm tắt vào memory để sáng mai làm tiếp không phải kể lại từ đầu.
+Hãy đề xuất một bản tóm tắt các quyết định và bài học từ phiên hiện tại.
+Chỉ đọc những phiên mình chỉ định; đừng tự xem mọi cuộc chat.
+Cho mình duyệt nội dung trước khi ghi vào memory hoặc file.
+Nếu muốn đặt lịch hàng ngày, trước tiên cho xem múi giờ, quyền đọc,
+kênh nhận và cách báo lỗi; chưa tạo lịch cho tới khi mình đồng ý.
 ```
 
-Nghe quen không? Trong cộng đồng có người cho Hermes làm đúng việc này lúc 3 giờ sáng, và gọi đó là job "Dreaming" - bạn có thể [đọc câu chuyện đó](/cau-chuyen/holmebengt-dreaming-3am). Ban ngày bạn dùng, ban đêm nó tự ngẫm lại một ngày: vòng lặp khép kín mà bạn không phải thức khuya dạy nó.
+Một người dùng đã kể về lịch "Dreaming" lúc 3 giờ sáng; đó là [kinh nghiệm cá nhân của họ](/cau-chuyen/holmebengt-dreaming-3am), không phải lịch mặc định của Hermes. Hãy thử tóm tắt thủ công một lần và kiểm trước khi bật tự động.
 
 ### 5. "Khám sức khỏe" định kỳ
 
 ```
-Mỗi tối Chủ nhật, hãy rà soát lại memory và các skill của bạn: gộp những thứ trùng lặp, bỏ những thứ đã lỗi thời, và kể mình nghe 3 điều bạn mới học được về mình trong tuần qua.
+Hãy liệt kê mục memory và skill nào có vẻ trùng, lỗi thời hoặc sai nguồn.
+Đề xuất sửa từng mục và cho mình xem trước; chưa xóa hoặc gộp khi
+mình chưa đồng ý. Nếu muốn đặt lịch rà soát, hỏi lại múi giờ và kênh nhận.
 ```
 
 Bước này giữ hai thứ: bộ nhớ không phình to vì rác, và bạn luôn thấy nó đang "hiểu" mình tới đâu để chỉnh ngay khi hiểu sai.
 
 ## Kết quả
 
-- Sau khoảng một tuần: bạn thấy rõ mình ít phải nhắc lại hơn.
-- Sau khoảng một tháng: nó thuộc gu - bản nháp ra đã gần đúng ý, bạn chỉ chỉnh nhẹ.
-- Về lâu dài: thay vì một công cụ phải dạy lại mỗi lần, bạn có một đồng nghiệp lớn dần cùng mình.
+- Kiểm SOUL.md, memory và skill có ghi đúng nơi, đúng điều bạn đã duyệt.
+- Tạo phiên chat mới, thử lại một việc tương tự rồi so với lần đầu; nếu vẫn sai, sửa quy trình.
+- Nếu đã bật lịch, kiểm danh sách lịch và lần chạy đầu. Không có mốc thời gian nào bảo đảm agent sẽ "thuộc gu".
 
 Những <TermTip term="agent" /> đang vận hành chính website này cũng chạy đúng vòng lặp đó: ban ngày nhận việc, tối đúc kết bài học, hằng tuần có một con khác rà soát lại toàn bộ. Việc chạy ngày càng nhanh và ít lỗi hơn không phải vì model mới, mà vì vòng lặp này.
 

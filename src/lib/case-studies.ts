@@ -11,6 +11,7 @@ export interface CaseStudy {
   title: string;
   teaser: string;
   image?: string;
+  datePublished?: string;
   sourceLabel: string;
   sourceUrl: string;
   body: CaseBlock[];
@@ -18,6 +19,54 @@ export interface CaseStudy {
 }
 
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: "hermes-nghien-cuu-token-bo-nao-thu-hai",
+    icon: "📊",
+    type: "long",
+    title:
+      "Mình dùng Hermes nghiên cứu token theo 12 bước và giữ lại điều đã học",
+    teaser:
+      "Từ một câu hỏi về token đến bản phân tích có nguồn, luận điểm phản biện và ghi chú đọc lại được. Đây là cách mình dùng Hermes để nghiên cứu, không giao nó quyết định mua bán.",
+    image: "/case-study/hermes-token-research.svg",
+    datePublished: "2026-10-01",
+    sourceLabel: "Admin congdongai.org - kinh nghiệm cá nhân",
+    sourceUrl: "https://congdongai.org",
+    body: [
+      {
+        p: "Mình theo dõi nhiều token. Vấn đề không chỉ là hỏi hôm nay giá bao nhiêu, mà là vài tuần sau còn nhớ vì sao mình từng thấy dự án đáng xem, điều gì khiến nhận định ấy sai, và nguồn nào đã dùng. Để tránh mỗi cuộc chat lại bắt đầu từ số không, mình giao Hermes làm việc theo một khung nghiên cứu 12 bước, rồi giữ kết quả đã kiểm trong kho ghi chú Markdown mở bằng Obsidian.",
+      },
+      { h: "Một câu hỏi, nhiều lượt kiểm" },
+      {
+        p: "Mình bắt đầu bằng tên token, chain và địa chỉ hợp đồng (contract address), không chỉ bằng mã viết tắt dễ trùng. Hermes thu thập nguồn công khai và tách việc kiểm định danh, giá và thanh khoản, cung lưu hành và lịch mở khóa, cách token nhận giá trị từ sản phẩm, đội ngũ, hoạt động thực tế, đối thủ, chất xúc tác và các rủi ro. Khung 12 bước buộc bản phân tích trả lời cả câu hỏi 'tại sao không nên mua', chứ không chỉ kể câu chuyện tăng giá. Số liệu luôn cần thời điểm, đơn vị, phạm vi và đường dẫn để mình mở lại; thiếu dữ liệu thì ghi chưa xác minh.",
+      },
+      {
+        p: "Có lúc một câu trả lời ban đầu sai vì nhìn ví lớn nhất như một cá voi cá nhân. Khi kiểm lại on-chain, đó là hợp đồng staking, nên nhận định về mức tập trung phải sửa. Một lần khác, ghi chú cũ về LINK dùng những câu quá tuyệt đối như 'không có đối thủ' hay 'không có pha loãng'; lượt nghiên cứu sau đối chiếu nguồn cung và đối thủ đã ghi rõ phần nào cần thay thế. Mình giữ cả dấu vết sửa sai, không âm thầm coi kết luận đầu là chân lý.",
+      },
+      { h: "Bộ não thứ hai không nằm trong một ô nhớ vô hạn" },
+      {
+        p: "Mỗi token có một file: định danh, luận điểm tăng/giảm, nguồn và ngày kiểm, các dấu hiệu cần theo dõi, rồi nhật ký phân tích mới nối tiếp bên dưới. Một trang chỉ mục dẫn tới từng file; mình có thể hỏi Hermes tìm lại một token, đọc đúng ghi chú gốc rồi so với dữ liệu mới. File dài nằm trong kho riêng, không nhồi hết vào memory ngắn của agent. Obsidian là giao diện đọc và nối ghi chú; Markdown vẫn mở được bằng trình soạn thảo thường.",
+      },
+      {
+        p: "Khi viết lại kết luận, mình muốn thấy điều gì là dữ liệu, điều gì là nhận định và điều gì đã đổi so với lần trước. Nếu nhận định cũ sai, ghi thời điểm và lý do sửa thay vì xóa lịch sử. Cách này giúp câu hỏi tiếp theo đi xa hơn: thesis nào còn đứng vững, catalyst đã xảy ra chưa, dữ liệu nào cũ đến mức phải lấy lại?",
+      },
+      { h: "Tối ưu theo mức độ quan trọng, không tự động hóa mọi thứ" },
+      {
+        ul: [
+          "Câu hỏi nhanh: đọc vài nguồn công khai và trả lời ngắn, không mở cả quy trình 12 bước.",
+          "Token đáng đào sâu: chạy checklist, kiểm chéo nguồn và viết cả kịch bản xấu; chỉ lưu vào vault sau khi mình đọc và duyệt.",
+          "Theo dõi tiếp: nếu có nguồn dữ liệu ổn định, đặt cảnh báo cho sự kiện có ý nghĩa với luận điểm, kèm link và mốc thời gian; không nhắn liên tục theo mỗi dao động giá.",
+          "Ranh giới: không đưa khóa ví, seed phrase, API key giao dịch hoặc quyền đặt lệnh cho agent; mình là người quyết định và tự thực hiện giao dịch.",
+        ],
+      },
+      { h: "Từ một token, có thể mở ra những việc nào?" },
+      {
+        p: "Cùng cách làm có thể dùng để so hai dự án cùng ngành trên cùng kỳ số liệu, rà lịch mở khóa và tác động pha loãng, theo dõi thay đổi trong phí sử dụng hay thanh khoản, đối chiếu bản tin dự án với giao dịch on-chain, hoặc viết nhật ký quyết định để vài tháng sau tự kiểm lại. Với cổ phiếu và vĩ mô, khung nguồn - thời điểm - giả định - phản biện - cập nhật vẫn hữu ích, nhưng chỉ tiêu và nguồn phải thay cho phù hợp, không bê nguyên checklist crypto sang.",
+      },
+      {
+        p: "Đây là quy trình nghiên cứu cá nhân, không phải hệ thống dự báo lợi nhuận hay lời khuyên đầu tư. Bản ghi có thể chứa nhận định cũ; giá, thanh khoản và pháp lý đổi liên tục. Trước khi dùng một ý nào để ra quyết định, mình vẫn mở nguồn gốc và kiểm lại dữ liệu hiện tại. Nếu muốn thử từ một token với quyền chỉ đọc, xem hướng dẫn thực hành ở mục 'Nghiên cứu token và lưu ghi chú' trên trang Hướng dẫn.",
+      },
+    ],
+  },
   {
     slug: "kinh-nghiem-ban-tin-6h30",
     icon: "🌅",

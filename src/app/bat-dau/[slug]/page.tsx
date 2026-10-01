@@ -9,6 +9,7 @@ import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { canonicalUrl } from "@/lib/site";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { TermTip } from "@/components/TermTip";
+import { ArticleDiagram } from "@/components/ArticleDiagram";
 import { CommentsSection } from "@/components/CommentsSection";
 import { batDauItems } from "@/lib/content";
 
@@ -80,6 +81,8 @@ export default async function BatDauArticlePage({ params }: Props) {
       <h1 className="mb-3 text-[32px] font-extrabold leading-[1.2] tracking-[-0.5px]">
         {post.title}
       </h1>
+
+      <ArticleDiagram slug={slug} />
 
       {toc.length > 0 && (
         <div className="toc-box card mb-8 p-5">

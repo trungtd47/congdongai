@@ -3,6 +3,9 @@
 Repo hiện chưa có `AGENTS.md`; dùng skill `congdongai-site` và các entry ở đây. Nội dung gốc/nguồn sự thật nằm trong `src/content/` và các route `src/app/`.
 
 ## Gần nhất
+- [2026-10-01: Hermes nghiên cứu token và bộ não thứ hai](2026-10-01/hermes-nghien-cuu-token.md)
+- [2026-09-30: Rà soát 25 bài MDX, docs Hermes và sơ đồ mobile](2026-09-30/ra-soat-bai-viet-huong-dan.md)
+- [2026-09-30: AI công vụ và SEO theo nguồn đối chiếu](2026-09-30/cong-vu-seo-nguon-ben-ngoai.md)
 - [2026-09-30: Session summary](2026-09-30/session-summary.md)
 - [2026-09-30: Thư viện Hermes theo lộ trình và nguồn thực tế](2026-09-30/thu-vien-theo-lo-trinh.md)
 - [2026-09-29: Thay case mô phỏng bằng gợi ý công vụ và kho văn bản pháp lý](2026-09-29/giai-phap-cong-vu-bo-nao-phap-ly.md)
