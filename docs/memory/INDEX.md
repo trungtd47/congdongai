@@ -3,6 +3,7 @@
 Repo hiện chưa có `AGENTS.md`; dùng skill `congdongai-site` và các entry ở đây. Nội dung gốc/nguồn sự thật nằm trong `src/content/` và các route `src/app/`.
 
 ## Gần nhất
+- [2026-10-03: Pilot case crypto token, phân loại và visual mobile](2026-10-03/case-crypto-token-visual-topic.md)
 - [2026-10-01: Hermes nghiên cứu token và bộ não thứ hai](2026-10-01/hermes-nghien-cuu-token.md)
 - [2026-09-30: Rà soát 25 bài MDX, docs Hermes và sơ đồ mobile](2026-09-30/ra-soat-bai-viet-huong-dan.md)
 - [2026-09-30: AI công vụ và SEO theo nguồn đối chiếu](2026-09-30/cong-vu-seo-nguon-ben-ngoai.md)

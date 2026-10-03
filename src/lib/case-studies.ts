@@ -3,7 +3,16 @@ export interface CaseBlock {
   p?: string;
   ol?: string[];
   ul?: string[];
+  image?: { src: string; mobileSrc?: string; alt: string; caption: string };
 }
+
+export const caseTopics = {
+  "tai-chinh": "Tài chính",
+  "kinh-doanh": "Kinh doanh",
+  "cong-nghe": "Công nghệ",
+  "doi-song": "Đời sống",
+} as const;
+export type CaseTopic = keyof typeof caseTopics;
 
 export interface CaseStudy {
   slug: string;
@@ -11,7 +20,11 @@ export interface CaseStudy {
   title: string;
   teaser: string;
   image?: string;
+  mobileImage?: string;
+  topic?: CaseTopic;
+  tags?: string[];
   datePublished?: string;
+  dateModified?: string;
   sourceLabel: string;
   sourceUrl: string;
   body: CaseBlock[];
@@ -23,21 +36,34 @@ export const caseStudies: CaseStudy[] = [
     slug: "hermes-nghien-cuu-token-bo-nao-thu-hai",
     icon: "📊",
     type: "long",
+    topic: "tai-chinh",
+    tags: ["Crypto", "Nghiên cứu dự án", "Bộ não thứ hai"],
     title:
-      "Mình dùng Hermes nghiên cứu token theo 12 bước và giữ lại điều đã học",
+      "Mình dùng Hermes nghiên cứu token của các dự án crypto và giữ lại điều đã học",
     teaser:
-      "Từ một câu hỏi về token đến bản phân tích có nguồn, luận điểm phản biện và ghi chú đọc lại được. Đây là cách mình dùng Hermes để nghiên cứu, không giao nó quyết định mua bán.",
-    image: "/case-study/hermes-token-research.svg",
+      "Mình tìm hiểu token của dự án crypto: đúng hợp đồng nào, cung và thanh khoản ra sao, sản phẩm có tạo giá trị cho token không. Hermes gom nguồn, mình kiểm và lưu ghi chú để lần sau đọc lại.",
+    image: "/case-study/crypto-token-research-flow.png",
+    mobileImage: "/case-study/crypto-token-research-flow-mobile.png",
     datePublished: "2026-10-01",
+    dateModified: "2026-10-03",
     sourceLabel: "Admin congdongai.org - kinh nghiệm cá nhân",
     sourceUrl: "https://congdongai.org",
     body: [
       {
-        p: "Mình theo dõi nhiều token. Vấn đề không chỉ là hỏi hôm nay giá bao nhiêu, mà là vài tuần sau còn nhớ vì sao mình từng thấy dự án đáng xem, điều gì khiến nhận định ấy sai, và nguồn nào đã dùng. Để tránh mỗi cuộc chat lại bắt đầu từ số không, mình giao Hermes làm việc theo một khung nghiên cứu 12 bước, rồi giữ kết quả đã kiểm trong kho ghi chú Markdown mở bằng Obsidian.",
+        p: "Ở đây, token là tài sản mã hóa gắn với một dự án crypto, không phải token dùng để tính phí khi gọi mô hình AI. Mình theo dõi nhiều dự án. Vấn đề không chỉ là hỏi hôm nay giá bao nhiêu, mà là vài tuần sau còn nhớ vì sao mình từng thấy dự án đáng xem, điều gì khiến nhận định ấy sai, và nguồn nào đã dùng. Để tránh mỗi cuộc chat lại bắt đầu từ số không, mình giao Hermes làm việc theo một khung nghiên cứu 12 bước, rồi giữ kết quả đã kiểm trong kho ghi chú Markdown mở bằng Obsidian.",
       },
       { h: "Một câu hỏi, nhiều lượt kiểm" },
       {
-        p: "Mình bắt đầu bằng tên token, chain và địa chỉ hợp đồng (contract address), không chỉ bằng mã viết tắt dễ trùng. Hermes thu thập nguồn công khai và tách việc kiểm định danh, giá và thanh khoản, cung lưu hành và lịch mở khóa, cách token nhận giá trị từ sản phẩm, đội ngũ, hoạt động thực tế, đối thủ, chất xúc tác và các rủi ro. Khung 12 bước buộc bản phân tích trả lời cả câu hỏi 'tại sao không nên mua', chứ không chỉ kể câu chuyện tăng giá. Số liệu luôn cần thời điểm, đơn vị, phạm vi và đường dẫn để mình mở lại; thiếu dữ liệu thì ghi chưa xác minh.",
+        p: "Mình bắt đầu bằng tên dự án crypto, blockchain nơi token hoạt động (chain) và địa chỉ hợp đồng (contract address), không chỉ bằng mã viết tắt dễ trùng. Hermes thu thập nguồn công khai để mình kiểm sản phẩm dự án có người dùng hay chưa, token dùng làm gì, liệu hoạt động của sản phẩm có mang lại lợi ích gì cho người giữ token không; sau đó mới xem giá, thanh khoản, cung lưu hành, lịch mở khóa, đội ngũ, đối thủ và rủi ro. Khung 12 bước buộc bản phân tích trả lời cả câu hỏi 'tại sao không nên mua', chứ không chỉ kể câu chuyện tăng giá. Số liệu cần thời điểm, đơn vị, phạm vi và đường dẫn để mở lại; thiếu dữ liệu thì ghi chưa xác minh.",
+      },
+      {
+        image: {
+          src: "/case-study/crypto-token-checks.png",
+          mobileSrc: "/case-study/crypto-token-checks-mobile.png",
+          alt: "Bốn nhóm câu hỏi khi nghiên cứu token dự án crypto: xác nhận đúng token và hợp đồng; kiểm sản phẩm và cách token nhận giá trị; kiểm cung, mở khóa và thanh khoản; ghi luận điểm phản biện cùng nguồn. Mỗi nhóm đều cần người đọc đối chiếu nguồn.",
+          caption:
+            "Minh họa biên tập các câu hỏi cần kiểm, không phải dữ liệu thị trường hay ảnh chụp Hermes.",
+        },
       },
       {
         p: "Có lúc một câu trả lời ban đầu sai vì nhìn ví lớn nhất như một cá voi cá nhân. Khi kiểm lại on-chain, đó là hợp đồng staking, nên nhận định về mức tập trung phải sửa. Một lần khác, ghi chú cũ về LINK dùng những câu quá tuyệt đối như 'không có đối thủ' hay 'không có pha loãng'; lượt nghiên cứu sau đối chiếu nguồn cung và đối thủ đã ghi rõ phần nào cần thay thế. Mình giữ cả dấu vết sửa sai, không âm thầm coi kết luận đầu là chân lý.",

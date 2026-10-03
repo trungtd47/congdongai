@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { caseStudies, type CaseBlock } from "@/lib/case-studies";
+import { caseStudies, caseTopics, type CaseBlock } from "@/lib/case-studies";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CommentsSection } from "@/components/CommentsSection";
 import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
@@ -16,6 +16,29 @@ export function generateStaticParams() {
 }
 
 function caseBlock(block: CaseBlock, i: number) {
+  if (block.image)
+    return (
+      <figure
+        key={i}
+        className="my-4 overflow-hidden rounded-xl border border-[var(--line)] bg-white"
+      >
+        <picture>
+          {block.image.mobileSrc && (
+            <source media="(max-width: 640px)" srcSet={block.image.mobileSrc} />
+          )}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={block.image.src}
+            alt={block.image.alt}
+            loading="lazy"
+            className="h-auto w-full"
+          />
+        </picture>
+        <figcaption className="px-4 py-3 text-sm text-ink-soft">
+          {block.image.caption}
+        </figcaption>
+      </figure>
+    );
   if (block.h)
     return (
       <h3 key={i} className="pt-1 font-bold text-ink">
@@ -56,6 +79,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: c.teaser,
       url: canonicalUrl(`/cau-chuyen/${slug}`),
     },
+    keywords: c.tags,
   };
 }
 
@@ -76,7 +100,7 @@ export default async function CauChuyenDetailPage({ params }: Props) {
           description: c.teaser,
           path: `/cau-chuyen/${c.slug}`,
           datePublished: c.datePublished ?? "2026-09-22",
-          dateModified: c.datePublished ?? "2026-09-22",
+          dateModified: c.dateModified ?? c.datePublished ?? "2026-09-22",
           authorName: "Cộng Đồng AI",
         })}
       />
@@ -102,14 +126,45 @@ export default async function CauChuyenDetailPage({ params }: Props) {
       <h1 className="mb-3 text-[32px] font-extrabold leading-[1.2] tracking-[-0.5px]">
         {c.title}
       </h1>
+      {(c.topic || c.tags?.length) && (
+        <div className="mb-5 flex flex-wrap items-center gap-2 text-sm">
+          {c.topic && (
+            <Link
+              href={`/cau-chuyen?chu-de=${c.topic}`}
+              className="rounded-full bg-[var(--teal-soft)] px-3 py-1 font-semibold text-teal-dark"
+            >
+              {caseTopics[c.topic]}
+            </Link>
+          )}
+          {c.tags?.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-[var(--line)] px-3 py-1 text-ink-soft"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
 
       {c.image && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={c.image}
-          alt={c.title}
-          className="mb-6 w-full rounded-lg border border-[var(--line)]"
-        />
+        <picture>
+          {c.mobileImage && (
+            <source media="(max-width: 640px)" srcSet={c.mobileImage} />
+          )}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={c.image}
+            alt={c.title}
+            className="mb-2 h-auto w-full rounded-lg border border-[var(--line)]"
+          />
+        </picture>
+      )}
+      {c.image && c.topic && (
+        <p className="mb-6 text-sm text-ink-soft">
+          Minh họa quy trình biên tập, không phải ảnh chụp Hermes hay dữ liệu
+          thị trường.
+        </p>
       )}
 
       <div className="flex flex-col gap-3 text-[15px] leading-relaxed text-ink-soft">

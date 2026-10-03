@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { caseStudies, caseStudyAggregator } from "@/lib/case-studies";
+import {
+  caseStudies,
+  caseStudyAggregator,
+  caseTopics,
+  type CaseTopic,
+} from "@/lib/case-studies";
 
 export const metadata: Metadata = {
   title: "Người thật chuyện thật - họ đã dùng Hermes thế nào",
@@ -10,7 +15,19 @@ export const metadata: Metadata = {
   alternates: { canonical: "/cau-chuyen" },
 };
 
-export default function CauChuyenPage() {
+interface Props {
+  searchParams: Promise<{ "chu-de"?: string }>;
+}
+
+export default async function CauChuyenPage({ searchParams }: Props) {
+  const selected = (await searchParams)["chu-de"];
+  const available = (Object.keys(caseTopics) as CaseTopic[]).filter((topic) =>
+    caseStudies.some((c) => c.topic === topic),
+  );
+  const topic = available.find((value) => value === selected);
+  const visible = topic
+    ? caseStudies.filter((c) => c.topic === topic)
+    : caseStudies;
   return (
     <div className="wrap py-12">
       <Breadcrumb items={[{ name: "Câu chuyện thật" }]} />
@@ -34,8 +51,30 @@ export default function CauChuyenPage() {
           Chọn một vấn đề gần với mình, đọc cách người khác đã xử lý rồi thử ở
           quy mô nhỏ.
         </p>
+        <nav
+          aria-label="Lọc câu chuyện theo chủ đề"
+          className="mb-5 flex flex-wrap gap-2 text-sm"
+        >
+          <Link
+            href="/cau-chuyen"
+            aria-current={!topic ? "page" : undefined}
+            className={`rounded-full border px-4 py-2 ${!topic ? "border-teal-dark bg-[var(--teal-soft)] font-semibold text-teal-dark" : "border-[var(--line)]"}`}
+          >
+            Tất cả
+          </Link>
+          {available.map((value) => (
+            <Link
+              key={value}
+              href={`/cau-chuyen?chu-de=${value}`}
+              aria-current={topic === value ? "page" : undefined}
+              className={`rounded-full border px-4 py-2 ${topic === value ? "border-teal-dark bg-[var(--teal-soft)] font-semibold text-teal-dark" : "border-[var(--line)]"}`}
+            >
+              {caseTopics[value]}
+            </Link>
+          ))}
+        </nav>
         <div className="flex flex-col gap-4">
-          {caseStudies.map((c) => (
+          {visible.map((c) => (
             <Link
               key={c.slug}
               href={`/cau-chuyen/${c.slug}`}
@@ -48,6 +87,11 @@ export default function CauChuyenPage() {
                     {c.title}
                   </h3>
                   <p className="mt-1 text-sm text-ink-soft">{c.teaser}</p>
+                  {c.topic && (
+                    <span className="mt-2 inline-block rounded-full bg-[var(--teal-soft)] px-2.5 py-1 text-xs font-semibold text-teal-dark">
+                      {caseTopics[c.topic]}
+                    </span>
+                  )}
                   <span className="mt-2 inline-block text-[13px] font-semibold text-teal-dark">
                     Đọc câu chuyện →
                   </span>
