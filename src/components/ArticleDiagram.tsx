@@ -125,6 +125,11 @@ const diagrams: Record<string, [string, string, string]> = {
     "Đọc file trước khi lưu",
     "Mở chat mới để kiểm",
   ],
+  "4-cach-giup-ai-giai-thich-de-hieu": [
+    "Đọc lời đơn giản trước",
+    "Nhờ vẽ sơ đồ hoặc trang web",
+    "Dựng video khi cần",
+  ],
 };
 
 interface Props {
