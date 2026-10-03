@@ -95,6 +95,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "kinh-nghiem-ban-tin-6h30",
+    dateModified: "2026-10-03",
     icon: "🌅",
     type: "long",
     title: "Mỗi sáng 6h30 có sẵn bản tin thị trường để đọc cùng cà phê",
@@ -124,6 +125,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "kinh-nghiem-bo-nao-thu-hai",
+    dateModified: "2026-10-03",
     icon: "🧠",
     type: "long",
     title: "Ghi ý tưởng vào Obsidian, để Hermes nối lại khi cần làm việc",
@@ -150,6 +152,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "reddit-3-months-hermes",
+    dateModified: "2026-10-03",
     icon: "📱",
     type: "long",
     title: "Ba tháng dùng Hermes - những gì mình ước hiểu sớm hơn",
@@ -160,7 +163,7 @@ export const caseStudies: CaseStudy[] = [
       "https://www.reddit.com/r/hermesagent/comments/1u8fm0t/three_months_with_hermes_agent_what_i_wish_i_had/",
     body: [
       {
-        p: `Tác giả vừa chạm mốc ba tháng dùng Hermes hằng ngày - và ba tháng sống trong cộng đồng r/hermesagent. Anh bắt đầu trên một chiếc điện thoại Samsung cũ, vào thời "hầu như chưa ai tin tưởng cái gọi là agent mới" này; vài ngày sau thấy nó quá thú vị nên mua riêng phần cứng chỉ để chạy nó. Khoảng bốn tuần, anh ngừng gọi Hermes là "công cụ". Bài tổng kết ba tháng của anh nhận 406 điểm và 83 bình luận.`,
+        p: `Tác giả vừa chạm mốc ba tháng dùng Hermes hằng ngày - và ba tháng sống trong cộng đồng r/hermesagent. Anh bắt đầu trên một chiếc điện thoại Samsung cũ, vào thời "hầu như chưa ai tin tưởng cái gọi là agent mới" này; vài ngày sau thấy nó quá thú vị nên mua riêng phần cứng chỉ để chạy nó. Khoảng bốn tuần, anh ngừng gọi Hermes là "công cụ".`,
       },
       { h: "Con voi trong phòng: trí nhớ" },
       {
@@ -190,7 +193,7 @@ export const caseStudies: CaseStudy[] = [
         ul: [
           "Đừng chờ agent tự khôn một cách mù mờ - nó tốt lên đúng bằng cấu trúc bạn dựng cho nó.",
           "Bộ nhớ có sẵn (USER/MEMORY/SOUL) là đủ để bắt đầu; đừng vội cài plugin trí nhớ ngoài khi chưa hiểu bộ có sẵn.",
-          "Hơn 4 profile là thừa - mỗi profile phải là một đồng nghiệp có vai trò rõ, không phải một ngăn tủ.",
+          "Tác giả rút bớt profile để mỗi vai có việc rõ ràng; số phù hợp tùy nhu cầu, không có quy tắc mọi người phải dưới bốn.",
           "Agent không nhớ, agent đọc: muốn nó nhớ gì, hãy cho nó thứ đáng đọc, đặt đúng chỗ.",
         ],
       },
@@ -201,6 +204,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "hn-homelab-sysadmin",
+    dateModified: "2026-10-03",
     icon: "🖥️",
     type: "long",
     title: "Giao Hermes trực homelab, nhưng chỉ cho sửa lỗi sau khi duyệt",
@@ -227,6 +231,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "networkchuck",
+    dateModified: "2026-10-03",
     icon: "🎥",
     type: "long",
     title: "NetworkChuck giao một agent trông studio, một agent giúp việc nhà",
@@ -256,75 +261,8 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: "devto-7-agents",
-    icon: "🍓",
-    type: "long",
-    title:
-      "Doanh nghiệp 1 người chạy bằng 7 agent trên chiếc Raspberry Pi 35 USD",
-    teaser:
-      'Một người làm kinh doanh solo tự động hóa gần như toàn bộ để 7 agent lo: thu thập, sản xuất nội dung, duyệt tuân thủ, trả lời bình luận, phân tích và một "CEO" viết memo mỗi đêm.',
-    sourceLabel:
-      'Dev.to - "I Automated My One-Person Business With 7 AI Agents"',
-    sourceUrl:
-      "https://dev.to/ulnit/i-automated-my-one-person-business-with-7-ai-agents-heres-the-exact-setup-including-the-parts-1gai",
-    body: [
-      {
-        p: `Ai cũng nói về AI agent như chuyện của tương lai. Tôi thì đã chạy mấy con này trên một chiếc Raspberry Pi giá 35 đô suốt một tháng qua rồi, và đúng, có một con từng khiến tài khoản của tôi bị giới hạn. Đây là bản kể thật, không tô vẽ.`,
-      },
-      { h: "Bộ công cụ (cố tình nhàm chán)" },
-      {
-        ul: [
-          "Cron scheduler (Hermes Agent), kích hoạt mọi thứ.",
-          "Python script đơn thuần, không framework, không LangChain, không kéo theo 47 dependency.",
-          "SQLite lưu trạng thái cho mọi thứ. Một file, khỏi phải bảo trì gì cả.",
-          "Một CLI cho mỗi nền tảng, cái nào không có CLI thì tôi không tự động hóa.",
-        ],
-      },
-      {
-        p: `Mất hai tuần mới thấm được bài học này: framework là để dành cho đội nhóm. Người làm một mình cần những script mà lúc hai giờ sáng có thứ hỏng vẫn đọc hiểu được ngay.`,
-      },
-      { h: "Bảy agent" },
-      {
-        ol: [
-          "Knowledge collector (mỗi 6 giờ), cào HackerNews, Reddit và arXiv vào SQLite có full-text search. Agent nội dung sẽ truy vấn kho này thay vì tự bịa ra xu hướng.",
-          "Content generator (2 lần mỗi ngày), chọn đề tài từ kho kiến thức, soạn bài kèm ảnh, chạy kiểm tra tuân thủ rồi mới đăng.",
-          "Compliance reviewer, ra đời từ một lần thất bại (kể ở dưới). Nó kiểm tra nội dung theo quy tắc nền tảng trước khi đăng.",
-          "Auto-reply (mỗi 30 phút), theo dõi bình luận, trả lời có ngữ cảnh, biến một bài đăng hay thành cuộc trò chuyện thật.",
-          "Analytics tracker (hằng ngày), kéo số liệu vào SQLite, so tuần này với tuần trước.",
-          "CEO reviewer (22:00 hằng ngày), gom dữ liệu mọi kênh, viết một bản ghi nhớ chiến lược dài một trang. Đúng vậy, tôi tạo hẳn một agent để duyệt việc các agent khác của mình làm.",
-          "Watchdog (mỗi 5 phút), khởi động lại bất cứ thứ gì bị chết. Thời gian hoạt động nhờ vậy tăng từ khoảng 90% lên 99,5%.",
-        ],
-      },
-      { h: "Thất bại tôi không giấu" },
-      {
-        p: `Agent số 2 từng đăng nội dung nhắc tên một sản phẩm bên thứ ba. Nền tảng gắn cờ đó là quảng cáo ngoài và giới hạn tài khoản tôi mấy ngày. Rút ra được hai bài học:`,
-      },
-      {
-        ol: [
-          "AI agent sẽ làm đúng những gì bạn bảo, kể cả phần khiến bạn bị cấm. Tuân thủ phải là một cổng cứng trong quy trình, không thể chỉ hy vọng nó tự ổn.",
-          "Cách sửa là dựng một agent duyệt có blacklist cộng phát hiện tự động. Giờ mọi bài đều phải qua cổng đó, và một loại vi phạm coi như không thể đăng được nữa.",
-        ],
-      },
-      { h: "Sự thật nhàm chán về thu nhập từ agent" },
-      {
-        p: `Agent không trực tiếp kiếm tiền. Việc của chúng là xây tài sản, lượng người theo dõi, khối lượng nội dung, sự đều đặn, để đến lúc mình mở lời bán hàng thì mọi thứ đã sẵn sàng. Mạch hiện tại của tôi là: nội dung hằng ngày, dẫn về trang cá nhân, rồi tới trang sản phẩm, rồi mới tới thanh toán.`,
-      },
-      { h: "Lời khuyên cho người mới bắt đầu" },
-      {
-        ul: [
-          "Bắt đầu với một agent giúp bạn tiết kiệm 1 giờ mỗi ngày. Chọn agent nội dung trước, đừng chọn watchdog.",
-          "SQLite cộng cron cộng script vẫn hơn mọi framework, cho tới khi bạn chạm ngưỡng quy mô thật (mà làm một mình thì khó chạm tới lắm).",
-          "Đặt cổng tuân thủ trước mọi nội dung được đăng. Bạn của tương lai sẽ cảm ơn bạn vì việc đó.",
-          "Theo dõi mọi thứ trong một database. Nếu không trả lời được thứ Ba tuần trước đã xảy ra gì, là bạn đang bay mù rồi.",
-        ],
-      },
-      {
-        p: `Toàn bộ hệ thống này chạy trên phần cứng rẻ hơn một bữa trưa. Phần khó không nằm ở công nghệ, mà ở việc quyết định thứ gì thật sự đáng để tự động hóa.`,
-      },
-    ],
-  },
-  {
     slug: "pacmanpill",
+    dateModified: "2026-10-03",
     type: "long",
     icon: "💼",
     title: "Bán dịch vụ cài Hermes cho doanh nghiệp nhỏ: phần khó là bảo trì",
@@ -351,6 +289,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "godzillaton",
+    dateModified: "2026-10-03",
     icon: "🏗️",
     type: "long",
     title: "11 nhóm WhatsApp công trường, 82 tin nhắn rút còn 3 dòng",
@@ -360,7 +299,7 @@ export const caseStudies: CaseStudy[] = [
     sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1uhyift/",
     body: [
       {
-        p: `Anh là kỹ sư công trường ở Malaysia - tự trào trong phần bình luận là "chỉ là một củ khoai (site engineer)". Anh chạy OpenWA (bộ API WhatsApp tự host ngay trên laptop cá nhân) nối vào Hermes qua REST API, thêm cron job cho tin nhắn hẹn giờ, và dùng Telegram làm bảng điều khiển. Bài chia sẻ nhận 104 điểm và 36 bình luận.`,
+        p: `Anh là kỹ sư công trường ở Malaysia - tự trào trong phần bình luận là "chỉ là một củ khoai (site engineer)". Anh chạy OpenWA (bộ API WhatsApp tự host ngay trên laptop cá nhân) nối vào Hermes qua REST API, thêm cron job cho tin nhắn hẹn giờ, và dùng Telegram làm bảng điều khiển.`,
       },
       { h: "11 nhóm chat, 82 tin nhắn, 3 dòng" },
       {
@@ -368,7 +307,7 @@ export const caseStudies: CaseStudy[] = [
       },
       { h: "Nó gửi tin nhắn thay anh, và hiểu cả tiếng bồi" },
       {
-        p: `Chiều ngược lại cũng chạy: anh dặn nó 7h50 sáng mai nhắn thợ uốn thép kiểm tra số thép còn lại, 8h30 thì hối xưởng sơn thân xe về bộ hồ sơ bảo hiểm chiếc Honda - tất cả lên lịch và tự chạy. Phần anh thích nhất: anh nói chuyện với nó bằng... tiếng Anh pha Mã Lai (Manglish) trên Telegram, kiểu "Check L970 groups ada apa update hari ni" (xem mấy nhóm L970 hôm nay có gì), và nó hiểu chính xác ý anh. Không khóa nhà cung cấp, không phí SaaS hằng tháng, không phụ thuộc cloud - tất cả chạy trên một chiếc laptop 8GB RAM.`,
+        p: `Chiều ngược lại cũng chạy: anh dặn nó 7h50 sáng mai nhắn thợ uốn thép kiểm tra số thép còn lại, 8h30 thì hối xưởng sơn thân xe về bộ hồ sơ bảo hiểm chiếc Honda - tất cả lên lịch và tự chạy. Phần anh thích nhất: anh nói chuyện với nó bằng... tiếng Anh pha Mã Lai (Manglish) trên Telegram, kiểu "Check L970 groups ada apa update hari ni" (xem mấy nhóm L970 hôm nay có gì), và nó hiểu chính xác ý anh. Phần điều phối chạy trên laptop 8GB RAM theo lời anh kể. Tự host OpenWA và Hermes không đủ chứng minh model, Telegram hay dịch vụ khác không dùng cloud; cần kiểm từng luồng dữ liệu và phí riêng.`,
       },
       { h: "Câu hỏi rủi ro - và câu trả lời không né tránh" },
       {
@@ -387,12 +326,13 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        p: `Bài học rút ra: giá trị của hệ này không phải thay thế phần mềm quản lý công trường, mà là hai thứ rất người: không bỏ sót thông tin và không phải cuộn 11 nhóm chat mỗi sáng. Bắt đầu nhỏ, luật cứng, một profile chuyên biệt - đúng như cách một kỹ sư hiện trường tự làm trên chiếc laptop 8GB.`,
+        p: `Bài học rút ra: giá trị của hệ này không phải thay thế phần mềm quản lý công trường, mà là hai thứ rất người: không bỏ sót thông tin và không phải cuộn 11 nhóm chat mỗi sáng. Nếu thử, bắt đầu bằng bản tóm tắt chỉ đọc, xin quyền xử lý chat và giữ người kiểm trước mọi tin gửi đi. Không dùng bản tóm tắt AI làm lệnh vận hành hay quyết định an toàn công trường. Profile riêng và luật prompt không tự tạo cô lập kỹ thuật.`,
       },
     ],
   },
   {
     slug: "rodgezee",
+    dateModified: "2026-10-03",
     icon: "🧠",
     type: "long",
     title: 'Bỏ bảng Excel, dựng một "Twin AI" ngay trong SOUL.md',
@@ -410,7 +350,7 @@ export const caseStudies: CaseStudy[] = [
       },
       { h: "Cả cuộc đời nằm trong các file .md" },
       {
-        p: `Không database, không phần mềm ghi chú chuyên dụng - mọi thứ là markdown thuần mà agent tự đọc tự ghi giữa các phiên: SOUL.md là bộ não (danh tính, mục tiêu, ranh giới, phong cách giao tiếp); một file hồ sơ cá nhân (anh là ai, liên hệ, bối cảnh); mỗi mảng đời một file riêng - sức khỏe, tài chính, ý tưởng, thói quen, ngôn ngữ, cảm xúc, và cả... độ nhiệt huyết; SUBAGENTS.md định nghĩa các vai được ủy quyền; và SECRETS.md - file chỉ mình bản sao được đọc, không bao giờ rò sang subagent hay bất kỳ ai. Vì chỉ là .md: anh sửa tay được, đặt version được, backup đi đâu cũng được.`,
+        p: `Không database, không phần mềm ghi chú chuyên dụng - mọi thứ là markdown thuần mà agent tự đọc tự ghi giữa các phiên: SOUL.md là bộ não (danh tính, mục tiêu, ranh giới, phong cách giao tiếp); một file hồ sơ cá nhân (anh là ai, liên hệ, bối cảnh); mỗi mảng đời một file riêng - sức khỏe, tài chính, ý tưởng, thói quen, ngôn ngữ, cảm xúc, và cả... độ nhiệt huyết; SUBAGENTS.md định nghĩa các vai được ủy quyền; và SECRETS.md mà tác giả đặt quy tắc chỉ agent chính được đọc. Đây là quy ước anh mô tả, không phải bằng chứng file đã được cô lập khỏi subagent, terminal hay model cloud. Vì chỉ là .md: anh sửa tay được, đặt version được, backup đi đâu cũng được.`,
       },
       { h: 'Sáu "nhân viên" làm việc theo chế độ cần-mới-biết' },
       {
@@ -424,7 +364,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        p: `Luật sắt: subagent không được chạm vào SECRETS.md, chỉ nhận thông tin theo nhu cầu công việc (need-to-know), và bản sao là người điều phối toàn bộ.`,
+        p: `Tác giả đặt luật subagent chỉ nhận thông tin cần cho công việc, không đọc SECRETS.md; agent chính điều phối. Nếu muốn áp dụng, dùng kho credential và phân quyền thực tế, không cất mật khẩu/key vào file Markdown để agent đọc. Lời dặn trong prompt không thay hàng rào quyền truy cập.`,
       },
       { h: "Bước ngoặt thật sự: bỏ Excel, chuyển sang đọc chính tả" },
       {
@@ -440,12 +380,13 @@ export const caseStudies: CaseStudy[] = [
       },
       { h: "Phần thật thà" },
       {
-        p: `Không có phép màu: agent chỉ tốt đúng bằng những file .md bạn chịu khó chăm; hai ngày đầu ngập việc setup; và phải quyết định ranh giới thật rõ, không là nó "dễ dãi" dần. Nhưng khi SOUL.md và các file lõi đã vững, chi phí vận hành mỗi ngày gần như bằng không. Lời khuyên của anh cho người đang copy-paste vào spreadsheet: đừng làm tất cả một lúc - hãy thay đúng MỘT tracker bằng một file .md cộng thói quen đọc chính tả. "Phần ma sát bạn gỡ được là lãi kép."`,
+        p: `Không có phép màu: agent chỉ tốt đúng bằng những file .md bạn chịu khó chăm; hai ngày đầu ngập việc setup; và phải quyết định ranh giới thật rõ, không là nó "dễ dãi" dần. Tác giả thấy việc ghi chép hằng ngày ít tốn công hơn, nhưng bài không có phép đo độc lập về chi phí. Phí model, công cụ và thời gian kiểm/sửa vẫn phải tính riêng. Lời khuyên của anh cho người đang copy-paste vào spreadsheet: đừng làm tất cả một lúc - hãy thay đúng MỘT tracker bằng một file .md cộng thói quen đọc chính tả. "Phần ma sát bạn gỡ được là lãi kép."`,
       },
     ],
   },
   {
     slug: "kenmazaika",
+    dateModified: "2026-10-03",
     icon: "📬",
     type: "long",
     title:
@@ -478,7 +419,7 @@ export const caseStudies: CaseStudy[] = [
           "Dạy nó làm một việc đúng một lần.",
           "Lưu việc đó thành skill hoặc cron.",
           "Cho nó chạy theo lịch.",
-          "Ngừng nghĩ về việc đó.",
+          "Theo lời tác giả, bớt phải nhớ làm việc đó; vẫn cần kiểm lỗi, nguồn và lần chạy khi hệ thống thay đổi.",
         ],
       },
       {
@@ -492,6 +433,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "jarvis-for-kid",
+    dateModified: "2026-10-03",
     icon: "🧒",
     type: "long",
     title:
@@ -555,6 +497,7 @@ export const caseStudies: CaseStudy[] = [
 
   {
     slug: "holmebengt-dreaming-3am",
+    dateModified: "2026-10-03",
     icon: "🌙",
     type: "long",
     title: '28 cron job, 30+ skill, và job "Dreaming" tự ngẫm lúc 3 giờ sáng',
@@ -564,7 +507,7 @@ export const caseStudies: CaseStudy[] = [
     sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1udesr1/",
     body: [
       {
-        p: `Một sinh viên sống ở Đức - vì bị hỏi quá nhiều lần "Hermes của anh thực sự làm được gì", anh ngồi viết một mạch kể hết, không giấu chi tiết nào. Bài viết nhận 358 điểm và 117 bình luận trên r/hermesagent. Bức tranh đầy đủ: 28 cron job và hơn 30 skill tùy biến - cái nào cũng được xây cùng Hermes, không cái nào tải về.`,
+        p: `Một sinh viên sống ở Đức - vì bị hỏi quá nhiều lần "Hermes của anh thực sự làm được gì", anh ngồi viết một mạch kể hết, không giấu chi tiết nào. Bức tranh đầy đủ: 28 cron job và hơn 30 skill tùy biến - cái nào cũng được xây cùng Hermes, không cái nào tải về.`,
       },
       { h: '"Dreaming": cú hack trí nhớ lúc 3 giờ sáng' },
       {
@@ -578,7 +521,7 @@ export const caseStudies: CaseStudy[] = [
         p: `Bốn hộp thư đến của anh đều đi qua một "quan tòa cục bộ" - model AI nhỏ chạy hoàn toàn trên Mac Mini qua Ollama. Mỗi email tới được phân loại an toàn hay chặn: mã 2FA, xác nhận đăng nhập, đặt lại mật khẩu, giao dịch ngân hàng, spam - tất cả bị cách ly vào một thư mục riêng. Email an toàn thì hiện vào một topic Telegram để anh thấy ngay là thư đã lọt qua.`,
       },
       {
-        p: `Điểm an toàn anh tâm đắc nhất: cả hệ thống không có bất kỳ endpoint "gửi" nào - Hermes đọc được, soạn thảo được, nhưng không một email nào có thể rời khỏi máy về mặt vật lý, và dữ liệu thư cũng không bao giờ chạm vào API bên ngoài. Mỗi tối còn một job "watchdog" đọc lại các email đã chặn để bắt lỗi nhận diện nhầm.`,
+        p: `Theo tác giả, tích hợp email của anh chỉ có đọc/soạn nháp, không có endpoint gửi, và bước phân loại dùng model cục bộ. Điều đó không tự chứng minh dữ liệu không thể ra mạng qua các công cụ khác; mình chưa kiểm toán cấu hình này. Không có quyền gửi email khác với không có đường truyền dữ liệu ra ngoài. Mỗi tối còn một job "watchdog" đọc lại các email đã chặn để bắt lỗi nhận diện nhầm.`,
       },
       { h: "Huấn luyện viên sức khỏe, thư ký học tập, kế toán mỗi Chủ nhật" },
       {
@@ -612,24 +555,25 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        p: `Anh kết luận bằng cách gọi cả hệ thống là "một hệ thần kinh số hoàn chỉnh" cho đời sinh viên, công việc, sức khỏe và tài chính của mình. Bạn không cần tới 28 cron job để bắt đầu - chỉ một job "tự ngẫm cuối ngày" là đã tái hiện được phần đáng giá nhất của câu chuyện này. Cách dựng từng bước nằm trong bài "Vòng lặp tự cải thiện" ở mục Hướng dẫn của site này.`,
+        p: `Anh kết luận bằng cách gọi cả hệ thống là "một hệ thần kinh số hoàn chỉnh" cho đời sinh viên, công việc, sức khỏe và tài chính của mình. Bạn không cần tới 28 cron job: thử tóm tắt thủ công một phiên đã chọn, duyệt ghi chú rồi kiểm ở phiên mới trước khi bật lịch. Phần theo dõi dinh dưỡng là mục tiêu cá nhân tác giả kể, không phải tư vấn sức khỏe hay chế độ ăn cho người đọc. Cách dựng từng bước nằm trong bài "Vòng lặp tự cải thiện" ở mục Hướng dẫn của site này.`,
       },
     ],
   },
 
   {
     slug: "riceinmybelly-job-site",
+    dateModified: "2026-10-03",
     icon: "👷",
     type: "long",
     title:
-      'Bài "Hermes setup của tôi, cứ chê đi" 517 điểm: công ty phần mềm một người, tổ chức như công ty thật',
+      "Một người dựng app công trường: tách agent làm việc và agent kiểm thử",
     teaser:
       "Một mình dựng app quản lý công trường: Hermes tự ghi task, viết code, chạy QA, deploy, tự giữ tài liệu. Anh chỉ duyệt qua Telegram. Toàn bộ kiến trúc 4 profile agent, 10 cron giám sát, bộ nhớ 3 tầng được anh công khai chi tiết.",
     sourceLabel: "Reddit - u/riceinmybelly",
     sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1u9fa2w/",
     body: [
       {
-        p: `Anh đăng bài với tựa "My Hermes setup, roast me" (cứ chê đi) và nhận lại 517 điểm cùng 116 bình luận. Hệ thống chạy trên một chiếc Mac Apple Silicon nhiều RAM. Sản phẩm là app quản lý công trường: frontend Next.js, API NestJS, postgres, redis, pgbouncer, nginx kèm brotli. Anh dựng nó một mình, Hermes đảm nhận phần lớn việc hiện thực: tự ghi task cho chính nó, viết code, chạy QA, deploy, và tự giữ tài liệu của nó luôn mới. Việc của anh phần lớn là duyệt qua Telegram.`,
+        p: `Anh đăng bài với tựa "My Hermes setup, roast me" (cứ chê đi) để chia sẻ cấu hình của mình. Hệ thống chạy trên một chiếc Mac Apple Silicon nhiều RAM. Sản phẩm là app quản lý công trường: frontend Next.js, API NestJS, postgres, redis, pgbouncer, nginx kèm brotli. Anh dựng nó một mình, Hermes đảm nhận phần lớn việc hiện thực: tự ghi task cho chính nó, viết code, chạy QA, deploy, và tự giữ tài liệu của nó luôn mới. Việc của anh phần lớn là duyệt qua Telegram.`,
       },
       { h: '"Công ty" bốn agent' },
       {
@@ -670,9 +614,10 @@ export const caseStudies: CaseStudy[] = [
 
   {
     slug: "jonathan-rivera-obsidian-memory",
+    dateModified: "2026-10-03",
     icon: "🗂️",
     type: "long",
-    title: "Sơ đồ Obsidian làm bộ nhớ dài hạn cho Hermes được 794 điểm",
+    title: "Kho Obsidian ba tầng: giữ file dài, đọc lại khi cần",
     teaser:
       "Bộ nhớ 3 tầng, bản tin 6h50 sáng tự gom Todoist + Google Calendar, báo cáo tài chính 9 giờ, và kỷ luật lưu trữ file khiến vault Obsidian thành trí nhớ dài hạn mà cả người lẫn agent cùng đọc.",
     sourceLabel: "Reddit - u/Jonathan_Rivera",
@@ -680,7 +625,7 @@ export const caseStudies: CaseStudy[] = [
       "https://www.reddit.com/r/hermesagent/comments/1stz6gd/how_i_use_obsidian_as_the_longterm_memory/",
     body: [
       {
-        p: `Anh chạy trợ lý AI cá nhân được hơn một tháng thì viết bài chia sẻ trọn bộ kiến trúc (và thú nhận luôn: chính Hermes giúp anh viết bài này, vì anh chỉ quyết định viết trước đó vài giờ). Xuất phát điểm là Apple Notes, nhưng Apple Script quá hạn chế - Hermes thêm/xóa ghi chú rất chật vật. Obsidian là câu trả lời: "không phải một quyển sổ AI bóng bẩy, mà là một cơ sở tri thức có cấu trúc để trợ lý tự đọc và tự viết". Bài nhận 794 điểm trên r/hermesagent.`,
+        p: `Anh chạy trợ lý AI cá nhân được hơn một tháng thì viết bài chia sẻ trọn bộ kiến trúc (và thú nhận luôn: chính Hermes giúp anh viết bài này, vì anh chỉ quyết định viết trước đó vài giờ). Xuất phát điểm là Apple Notes, nhưng Apple Script quá hạn chế - Hermes thêm/xóa ghi chú rất chật vật. Obsidian là câu trả lời: "không phải một quyển sổ AI bóng bẩy, mà là một cơ sở tri thức có cấu trúc để trợ lý tự đọc và tự viết".`,
       },
       { h: "Hệ thống bộ nhớ 3 tầng" },
       {
@@ -720,6 +665,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "kenmazaika-dictate-y-tuong",
+    dateModified: "2026-10-03",
     type: "long",
     icon: "🎙️",
     title:
@@ -747,6 +693,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "squishydata-20-tin-hieu",
+    dateModified: "2026-10-03",
     type: "long",
     icon: "📡",
     title:

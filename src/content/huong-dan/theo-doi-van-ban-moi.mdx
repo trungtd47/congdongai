@@ -2,7 +2,7 @@
 title: "Theo dõi văn bản mới từ cổng thông tin chính phủ"
 description: "Nhờ Hermes kiểm tra định kỳ các trang công bố văn bản công khai; nhận bảng có tên, ký hiệu, URL gốc và đánh dấu phần chưa xác minh."
 datePublished: "2026-09-30"
-dateModified: "2026-09-30"
+dateModified: "2026-10-03"
 authorName: "Đức Trung"
 tags: ["cong-vu", "văn bản pháp lý", "cron", "Hermes Agent"]
 ---
@@ -48,7 +48,9 @@ Với mỗi mục:
   hoặc đường dẫn.
 - Nếu không truy cập được trang, báo lỗi, không bịa nội dung.
 
-Chỉ đọc trang được chỉ định, không mở trang khác hoặc file khác.
+Chỉ đọc trang nguồn và các trang chi tiết công khai trên cùng cổng
+được dẫn trực tiếp từ đó để đối chiếu. Không mở file trên máy,
+không đăng nhập hoặc tự thêm cổng nguồn khác.
 Không gửi kết quả đi đâu. Không tự kết luận văn bản nào thay thế
 văn bản nào.
 ```
@@ -56,6 +58,7 @@ văn bản nào.
 ### Bước 3: Kiểm kết quả
 
 Mở từng URL gốc mà Hermes trả về. Đối chiếu:
+
 - Tên và số văn bản có khớp không?
 - Ngày đăng có đúng không?
 - Có văn bản nào bị bỏ sót không?
@@ -99,9 +102,10 @@ Sau khi lịch được tạo, kiểm tra lần chạy đầu tiên có thực s
 ## Kết quả
 
 Sau khi làm theo các bước trên, bạn có:
+
 - Một bảng văn bản mới theo lịch, có URL gốc để kiểm tra.
 - Quy trình rõ ràng: nguồn nào, tiêu chí nào, ai kiểm, lỗi thì báo ai.
-- Không có dữ liệu nội bộ hoặc tài liệu mật nào được gửi qua model.
+- Chỉ xử lý nguồn công khai đã chọn. Đây là phạm vi bạn phải giữ, không phải bảo đảm agent tự chặn mọi dữ liệu nhạy cảm. Nếu dùng model cloud, nội dung gửi xử lý vẫn tới provider.
 
 ## Mẹo thêm
 

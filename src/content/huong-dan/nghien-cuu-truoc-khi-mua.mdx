@@ -1,41 +1,55 @@
 ---
-title: "Nghiên cứu trước khi mua"
-description: "Trước khi bấm mua bất cứ thứ gì, nhờ Hermes so giá, đọc review, tóm tắt ưu nhược để bạn không mua hớ."
+title: "Nghiên cứu trước khi mua, kiểm giá và nguồn review"
+description: "Dùng Hermes lập bảng so sánh theo nhu cầu, nguồn thông số và giá có thời điểm; tự kiểm bảo hành, phí và người bán trước khi mua."
 datePublished: "2026-09-22"
-dateModified: "2026-09-22"
+dateModified: "2026-10-03"
 authorName: "Cộng Đồng AI"
 tags: ["mua sắm", "so sánh"]
 ---
 
 ## Vấn đề
 
-Mua đồ gì cũng phải mở 5 - 6 tab: trang bán, review, so giá. Ngợp và dễ bị "thao túng" bởi quảng cáo.
+Ba máy giặt cùng tầm giá chưa chắc đáp ứng cùng nhu cầu. Bài quảng cáo có thể gọi một máy là bền hoặc bán chạy mà không có bằng chứng. Hermes hữu ích ở việc gom nguồn để so sánh; quyết định mua vẫn cần bạn kiểm đúng model và điều kiện bán.
 
 ## Cần gì trước
 
-Đã cài Hermes và cho phép nó truy cập web để đọc thông tin mới.
+- [Hermes đã kết nối model](/bat-dau/chon-nha-cung-cap-api), có công cụ đọc nguồn web công khai.
+- Nhu cầu cụ thể: số người, kích thước chỗ đặt, tính năng cần và ngân sách **gồm giao/lắp**.
+- Có thể đưa 2-3 link sản phẩm bạn đang cân nhắc. Không cần đăng nhập sàn hoặc đưa địa chỉ nhà, thẻ hay tài khoản cho agent.
 
 ## Cách làm
 
-Copy dán vào ô chat:
+### 1. So sánh bằng cùng tiêu chí
 
-```
-Mình định mua một chiếc máy giặt cửa ngang dưới 12 triệu đồng.
-So sánh 3 model bán chạy: giá, công nghệ, mức tiêu thụ điện, độ bền, dịch vụ hậu mãi.
-Đọc review người dùng Việt rồi tóm tắt ưu nhược từng model.
-Cuối cùng ghi rõ: nên mua con nào, vì sao - bằng tiếng Việt.
+```text
+Mình tìm máy giặt cửa ngang cho gia đình 4 người, ngân sách
+12 triệu đồng gồm giao và lắp. Chỗ đặt rộng [KÍCH THƯỚC].
+Ưu tiên [NHU CẦU]. Xem các lựa chọn: [2-3 URL SẢN PHẨM].
+
+Lập bảng: model chính xác / kích thước, tải trọng / thông số
+điện theo cùng đơn vị / giá và điều kiện áp dụng / phí giao-lắp /
+bảo hành, đơn vị chịu trách nhiệm / URL và thời điểm kiểm.
+Thông số ưu tiên nguồn hãng; giá lấy từ nơi bán đọc được thật.
+Review ghi rõ nguồn, ngày nếu có và số đánh giá đã đọc; đừng
+nhận là khảo sát mọi người dùng hoặc kết luận độ bền từ vài review.
+Không gọi bán chạy nếu thiếu dữ liệu bán hàng.
+Tách thông số đã xác nhận, nhận xét người dùng và suy luận của bạn.
+Thiếu nguồn ghi [CHƯA XÁC MINH]. Nêu lựa chọn hợp nhu cầu và
+một lý do có thể khiến mình không nên chọn nó. Không tự mua.
 ```
 
-Hermes tổng hợp thành bảng so sánh rồi đưa gợi ý cuối cùng kèm lý do.
+### 2. Mở lại nguồn quyết định lựa chọn
+
+Kiểm hậu tố mã máy, kích thước và thông số trên trang hãng, tránh gộp hai phiên bản. Mở đúng người bán để xem giá cuối cùng, điều kiện voucher, vận chuyển, đổi trả và bảo hành. Nếu một review chỉ nói máy êm trong tuần đầu, đừng biến nó thành bằng chứng bền nhiều năm.
+
+Nếu Hermes không truy cập được trang, bạn có thể tự cung cấp đoạn thông số công khai kèm URL. Không để agent tự điền cho đủ bảng hoặc gọi giá chưa kiểm là giá hiện tại.
 
 ## Kết quả
 
-Bạn có cái nhìn tổng quan trong vài phút, mua vừa ý, ít hối hận.
+Bạn có bảng giúp thu hẹp lựa chọn và thấy phần còn thiếu, **không phải bảo đảm mua được món tốt nhất**. Chưa xác nhận đúng model, giá cuối cùng và bảo hành thì chưa chốt mua.
 
 ## Mẹo thêm
 
-- Ghi rõ ngân sách và nhu cầu để đáp án sát thật: "máy giặt cho gia đình 4 người, ưu tiên tiết kiệm điện".
-- Hỏi ngược để tránh bị dắt: "nhược điểm ít ai nói của model này là gì?"
-- Trước khi đặt, nhờ nó kiểm: "giá hiện tại trên Shopee vs Lazada chỗ nào rẻ hơn?"
-
-Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap).
+- So hai lựa chọn cùng nhu cầu thường hữu ích hơn một danh sách dài sản phẩm.
+- Hỏi: "Điều nào trong bảng có thể làm lựa chọn này không hợp với mình? Nguồn nào chứng minh?"
+- Cần hỏi ở [Hỏi & Đáp](/hoi-dap), gửi link công khai và nhu cầu; che thông tin đơn hàng/tài khoản.

@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { caseStudies, caseTopics, type CaseBlock } from "@/lib/case-studies";
+import {
+  caseStudies,
+  caseTopics,
+  type CaseBlock,
+  type CaseStudy,
+} from "@/lib/case-studies";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CommentsSection } from "@/components/CommentsSection";
 import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
@@ -13,6 +18,13 @@ interface Props {
 
 export function generateStaticParams() {
   return caseStudies.map((c) => ({ slug: c.slug }));
+}
+
+function sourceNote(study: CaseStudy) {
+  if (study.sourceUrl === "https://congdongai.org") {
+    return "Đây là kinh nghiệm cá nhân của admin, không phải số liệu được kiểm chứng độc lập hay cam kết kết quả cho người khác.";
+  }
+  return "Bài được biên tập từ lời kể của tác giả trong nguồn gốc. Mình chưa kiểm toán hệ thống hoặc xác minh độc lập các số liệu; cấu hình, giá và phiên bản có thể đã thay đổi. Phần rút ra cho người đọc là gợi ý áp dụng, không phải tính năng mặc định của Hermes.";
 }
 
 function caseBlock(block: CaseBlock, i: number) {
@@ -192,6 +204,7 @@ export default async function CauChuyenDetailPage({ params }: Props) {
         >
           {c.sourceLabel}
         </a>
+        <p className="mt-3">{sourceNote(c)}</p>
       </div>
 
       <div className="mt-10">

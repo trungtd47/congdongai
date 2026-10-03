@@ -4,8 +4,10 @@
 
 ## 1. Cài Desktop từ nguồn chính thức
 
-- [ ] Windows: https://hermes-assets.nousresearch.com/Hermes-Setup.exe
-- [ ] Mac Apple Silicon (M1 trở lên): https://hermes-assets.nousresearch.com/Hermes-Setup.dmg. Desktop chưa hỗ trợ Mac Intel.
+- [ ] Mở trang Desktop chính thức: https://hermes-agent.nousresearch.com/desktop
+- [ ] Windows: chọn gói `.appinstaller`, mở bằng Windows App Installer theo hướng dẫn trên trang.
+- [ ] Mac Apple Silicon (M1 trở lên): chọn DMG bundled, mở rồi chép Hermes.app vào Applications. Desktop chưa hỗ trợ Mac Intel.
+- [ ] Đừng nhầm Hermes-Setup bootstrap (tải source và build) với package Desktop dựng sẵn. Nếu định dạng trên trang đổi, đối chiếu hướng dẫn chính thức: https://hermes-agent.nousresearch.com/docs/getting-started/installation
 - [ ] Chỉ mở file tải từ đúng địa chỉ nhà phát hành. Nếu hệ điều hành cảnh báo, kiểm lại URL và nhà phát hành trước khi tự quyết định có tiếp tục cài hay không; đừng tắt bảo vệ máy theo lời một trang lạ.
 - [ ] Mở Hermes Desktop. Nếu chưa có model thì chat sẽ chưa trả lời: sang bước 2.
 

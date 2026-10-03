@@ -22,7 +22,7 @@ export const batDauItems: HubItem[] = [
     slug: "cai-hermes-desktop-windows",
     title: "Cài Hermes Desktop trên Windows",
     description:
-      "Tải và cài bản Desktop cho Windows, kèm ảnh từng màn hình và cách xử lý cảnh báo.",
+      "Tải package chính thức cho Windows, kết nối model và kiểm câu trả lời đầu; không bỏ qua cảnh báo khi chưa kiểm nguồn.",
     time: "~5 phút",
     icon: "🪟",
   },
@@ -73,63 +73,63 @@ export const huongDanItems: HubItem[] = [
     slug: "tom-tat-tin-tuc-moi-sang",
     title: "Bản tin buổi sáng",
     description:
-      "Tự tổng hợp tin tức bạn quan tâm mỗi sáng lúc 7 giờ, gửi thẳng vào máy.",
+      "Chạy thử bản tin có URL và ngày nguồn, rồi kiểm lịch, kênh nhận và lỗi trước khi bật định kỳ.",
     icon: "🗞️",
   },
   {
     slug: "tro-ly-email",
     title: "Trợ lý email",
     description:
-      "Đọc, tóm tắt và soạn trả lời email - bạn chỉ việc duyệt trước khi gửi.",
+      "Thử email giả lập, kiểm hạn và cam kết trong bản nháp; bạn tự duyệt và gửi.",
     icon: "📧",
   },
   {
     slug: "nhac-viec-va-lich",
     title: "Nhắc việc & lịch",
     description:
-      "Nhắc uống nước, họp, đón con, deadline - bằng tiếng Việt, đúng giờ, không sót.",
+      "Đề xuất lịch, kiểm múi giờ/kênh và nhận thông báo thử; giữ lịch chính cho việc quan trọng.",
     icon: "⏰",
   },
   {
     slug: "hoc-tieng-anh",
     title: "Luyện tiếng Anh",
     description:
-      "Bạn nói - nó nghe, sửa phát âm, giải thích ngữ pháp như gia sư riêng 24/7.",
+      "Luyện viết và hội thoại; dùng giọng nói khi đã cấu hình, không coi sửa bản chép lời là chấm phát âm.",
     icon: "🗣️",
   },
   {
     slug: "len-ke-hoach-du-lich",
     title: "Lên kế hoạch du lịch",
     description:
-      '"Đà Lạt 3 ngày 2 đêm, ngân sách 5 triệu" → lịch trình chi tiết kèm link đặt.',
+      "Dựng lịch trình nháp theo ngày và ngân sách; tự kiểm nguồn giá, giờ mở cửa và điều kiện đặt.",
     icon: "🧳",
   },
   {
     slug: "nghien-cuu-truoc-khi-mua",
     title: "Nghiên cứu trước khi mua",
     description:
-      "So sánh giá, đọc review, tóm tắt ưu nhược - trước khi bạn bấm mua bất cứ gì.",
+      "So đúng model, nguồn thông số, giá có thời điểm và bảo hành; không suy độ bền từ vài review.",
     icon: "🛒",
   },
   {
     slug: "bao-mat-hermes-thong-tin-ca-nhan",
     title: "Bảo mật thông tin cá nhân",
     description:
-      "Vì sao yên tâm khi cài Hermes trên máy: dữ liệu đi đâu, lớp bảo vệ nào có sẵn, thói quen cần nhớ.",
+      "Kiểm dữ liệu đi đâu, quyền công cụ và giới hạn lớp bảo vệ; cài local không tự giữ mọi xử lý tại máy.",
     icon: "🔒",
   },
   {
     slug: "bo-nao-thu-hai-obsidian",
     title: "Bộ não thứ hai với Obsidian",
     description:
-      "Ghi mọi thứ đáng nhớ vào Obsidian rồi để Hermes đọc và chắt lọc giúp. Ghi chú biến thành sức mạnh.",
+      "Giữ ghi chú đã chọn trong file có nguồn; giao Hermes tìm đúng phần và thử đọc lại ở phiên khác.",
     icon: "🧠",
   },
   {
     slug: "vong-lap-tu-cai-thien",
     title: "Vòng lặp tự cải thiện",
     description:
-      "5 prompt copy-paste để Hermes tự nhớ gu của bạn, tự tạo kỹ năng sau mỗi việc khó, tự rút kinh nghiệm mỗi tối - càng dùng càng giỏi.",
+      "Năm prompt đề xuất điều cần giữ, duyệt memory/skill và thử lại; không tự lưu mọi chat hay bảo đảm càng dùng càng giỏi.",
     icon: "🌱",
   },
   {
@@ -281,7 +281,7 @@ export const homeFaqs: Faq[] = [
   {
     question: "Hermes Agent có miễn phí không?",
     answer:
-      "Phần mềm miễn phí 100%. Bạn chỉ trả tiền cho AI model mình dùng, tính theo số token đã dùng - dùng ít thì rẻ hơn.",
+      "Phần mềm Hermes miễn phí. OpenRouter thường tính theo token; Nous Portal theo gói; ChatGPT/Codex tùy quyền và hạn mức tài khoản. Dịch vụ tích hợp có thể tính phí riêng.",
   },
   {
     question: "Không biết code có dùng được không?",
@@ -296,7 +296,7 @@ export const homeFaqs: Faq[] = [
   {
     question: "Thanh toán từ Việt Nam thế nào?",
     answer:
-      "Cần thẻ Visa/Mastercard. Hướng dẫn từng bước + các lỗi thẻ hay gặp có trong bài riêng.",
+      "Nếu dùng nguồn cần thanh toán, kiểm phương thức trên trang provider. Không phải ai dùng Hermes cũng cần nạp OpenRouter; xem bài chọn model trước.",
   },
   {
     question: "Đã có ChatGPT trả phí thì cần OpenRouter nữa không?",

@@ -1,8 +1,8 @@
 ---
-title: "Nhắc việc & lịch không sót một việc"
-description: "Giao cho Hermes nhắc uống nước, họp, đón con, deadline. Nó nhớ và nhắc đúng giờ bằng tiếng Việt."
+title: "Nhắc việc với Hermes: tạo lịch và kiểm thông báo"
+description: "Đề xuất lịch nhắc bằng tiếng Việt, kiểm múi giờ, kênh nhận và một lần chạy thật; giữ lịch chính cho việc quan trọng."
 datePublished: "2026-09-22"
-dateModified: "2026-09-30"
+dateModified: "2026-10-03"
 authorName: "Cộng Đồng AI"
 tags: ["nhắc việc", "năng suất"]
 ---
@@ -13,19 +13,22 @@ Việc nhỏ nhưng nhiều: uống nước, họp 10 giờ, đón con 4 giờ 3
 
 ## Cần gì trước
 
-Đã cài Hermes và chọn được model. Đặt lịch nhắc định kỳ là tính năng của Hermes - bạn chỉ cần nói bằng lời.
+Đã cài Hermes, kết nối model và chọn kênh nhận thông báo hoạt động. Scheduler/app hoặc gateway phù hợp phải chạy, máy không ngủ khi tới giờ. [Tài liệu lịch chính thức](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron/) giúp kiểm cấu hình; lời nhắc trong chat chưa phải lịch thật.
 
 ## Cách làm
 
 Copy dán vào ô chat:
 
 ```
-Từ giờ hãy là người nhắc việc cho tôi:
+Đề xuất các lịch sau theo múi giờ [MÚI GIỜ] và kênh [KÊNH ĐÃ THỬ]:
 - Mỗi 90 phút: nhắc tôi đứng dậy và uống nước
 - 9 giờ 50 các ngày trong tuần: nhắc họp nhóm
 - 16 giờ 25 các ngày trong tuần: nhắc đón con ở trường
 - Mỗi thứ Sáu sáng: nhắc nộp báo cáo tuần
-Nhắc bằng tiếng Việt, ngắn gọn một câu, không cần giải thích.
+Cho mình xem giờ, kênh, lần chạy kế tiếp và cách báo lỗi trước khi tạo.
+Chưa tạo lịch khi mình chưa duyệt. Sau khi được phép, tạo một lịch
+thử gần để mình kiểm thông báo, rồi mới bật các lịch lặp lại.
+Nhắc bằng tiếng Việt, ngắn gọn một câu.
 ```
 
 Yêu cầu Hermes **hiện danh sách lịch đã tạo, múi giờ, kênh nhận và lần chạy kế tiếp**. Chỉ khi thấy lịch thật trong mục Scheduled jobs/cron và nhận thông báo thử thì mới coi là xong. Nếu máy/gateway không chạy hoặc kênh chưa kết nối, nhắc việc có thể không đến.

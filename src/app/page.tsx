@@ -30,7 +30,7 @@ const honestFaqs = [
   {
     question: "Nếu dùng OpenRouter, nên nạp bao nhiêu?",
     answer:
-      "Nạp ít thử trước - hỏi vài câu mỗi ngày cho việc cá nhân thì một khoản nhỏ dùng được rất lâu. Trong app luôn thấy rõ đã dùng bao nhiêu.",
+      "Nếu cần số dư, nạp ít để thử một việc nhỏ rồi kiểm lịch sử dùng trên OpenRouter. Chi phí tùy model và lượng token; xem cả cài đặt nạp tự động trước khi tăng mức dùng.",
   },
   {
     question: "Còn trang này thu phí gì không?",
@@ -179,8 +179,8 @@ export default function HomePage() {
           <div className="path">
             <h2>Con đường cho người mới 🧭</h2>
             <p className="sub">
-              Đọc lần lượt hay nhảy cóc đều được - bài nào cũng có ảnh chụp màn
-              hình và câu lệnh mẫu copy-paste.
+              Đọc lần lượt hay chọn việc đang cần - các bài có bước thực hành và
+              cách kiểm. Sơ đồ minh họa không phải ảnh chụp ứng dụng.
             </p>
             <p className="sub">
               Cộng Đồng AI là cộng đồng Hermes Agent Tiếng Việt: bắt đầu từ cách
@@ -306,10 +306,10 @@ export default function HomePage() {
                   color: "#6B5518",
                 }}
               >
-                🤖 <b>AI trực cộng đồng 24/7:</b> câu hỏi mới luôn được trợ lý
-                AI (đã đọc toàn bộ hướng dẫn của trang) trả lời trong vài phút -
-                thành viên có kinh nghiệm sẽ bổ sung và xác nhận sau. Không câu
-                hỏi nào bị bỏ rơi.
+                💬 <b>Hỏi bằng một việc cụ thể:</b> ghi rõ bạn đang làm bước
+                nào, thông báo lỗi và điều đã thử; che thông tin riêng tư. Cộng
+                đồng cùng kiểm nguồn và kết quả, không chỉ dựa vào câu trả lời
+                AI.
               </div>
             </div>
           </div>
@@ -398,9 +398,9 @@ export default function HomePage() {
             <div className="hq">
               <h5>Nếu dùng OpenRouter, nên nạp bao nhiêu?</h5>
               <p>
-                Nạp ít thử trước - hỏi vài câu mỗi ngày cho việc cá nhân thì một
-                khoản nhỏ dùng được rất lâu. Trong app luôn thấy rõ đã dùng bao
-                nhiêu. Chi tiết từng bước:{" "}
+                Nếu cần số dư, nạp ít để thử một việc nhỏ rồi kiểm lịch sử dùng
+                trên OpenRouter. Chi phí tùy model và lượng token; xem cả cài
+                đặt nạp tự động trước khi tăng mức dùng. Chi tiết từng bước:{" "}
                 <Link href="/bat-dau/vi-sao-dung-openrouter">
                   bài hướng dẫn nạp credit vào OpenRouter
                 </Link>

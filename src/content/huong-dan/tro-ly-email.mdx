@@ -1,50 +1,64 @@
 ---
-title: "Trợ lý email: đọc, tóm tắt, soạn trả lời"
-description: "Chép một email dài cho Hermes, nó tóm gọn còn vài dòng và soạn sẵn câu trả lời. Bạn chỉ việc duyệt rồi gửi."
+title: "Trợ lý email: tóm tắt và soạn nháp có bước kiểm"
+description: "Thử Hermes với email giả lập hoặc nội dung được phép xử lý: tách yêu cầu, hạn và cam kết; tự duyệt người nhận và nội dung trước khi gửi."
 datePublished: "2026-09-22"
-dateModified: "2026-09-22"
+dateModified: "2026-10-03"
 authorName: "Cộng Đồng AI"
 tags: ["email", "công việc"]
 ---
 
 ## Vấn đề
 
-Hộp thư đầy email dài dòng: khách hỏi giá, đối tác báo tiến độ, sếp giao việc lòng vòng. Đọc từng cái tốn rất nhiều thời gian.
+Email dài dễ khiến mình bỏ sót một yêu cầu hoặc trả lời với cam kết chưa được xác nhận. Hermes có thể tóm tắt và soạn nháp, nhưng câu chữ lịch sự chưa có nghĩa đã hiểu đúng nội dung.
 
 ## Cần gì trước
 
-Đã cài Hermes và chọn được model. Không cần kết nối tài khoản email - bạn chỉ cần copy đoạn email dán vào cho nó đọc.
+- [Hermes đã kết nối model](/bat-dau/chon-nha-cung-cap-api). Bài này không cần nối hộp thư.
+- Chạy thử bằng email tự dựng bên dưới. Với email khách hàng/cơ quan, kiểm quyền xử lý trước; không dán hồ sơ, tài liệu nội bộ hay dữ liệu cá nhân vào model cloud khi chưa được phép. Xóa tên chưa chắc đã loại hết dữ liệu nhạy cảm.
+- Người gửi vẫn là bạn: chưa cấp cho agent quyền gửi, tự hứa giá, lịch giao hay thay đổi đơn hàng.
 
 ## Cách làm
 
-### 1. Tóm tắt email
+### 1. Tóm tắt một email giả lập
 
-Dán nội dung email vào, kèm dòng:
+Đây là dữ liệu tập do mình tự dựng, không phải email hay kết quả thực tế của khách hàng:
 
-```
-Tóm tắt email dưới đây còn 3 gạch đầu dòng, ghi rõ người gửi muốn gì và tôi cần làm gì:
-[copy nội dung email vào đây]
-```
+```text
+Email giả lập để tập:
+"Chào bạn, mình muốn xem bản nháp giới thiệu sản phẩm trong tuần này.
+Bạn có thể gửi bản xem trước không? Ngân sách và ngày phát hành
+mình chưa chốt. Khi nhận bản nháp mình sẽ phản hồi."
 
-### 2. Soạn trả lời
-
-Rồi dán tiếp:
-
-```
-Giúp mình soạn email trả lời bằng tiếng Việt, lịch sự, gọn trong 80 từ.
-Nội dung: [nêu ý bạn muốn trả lời]
+Từ đúng nội dung trên, lập bảng: người gửi muốn gì / hạn đã nêu /
+điều chưa xác nhận / câu gốc để đối chiếu. Nếu không có ngày cụ thể,
+ghi CHƯA CHỐT, không tự chọn thứ hay ngày.
+Chỉ xử lý phần chữ này, không đọc file, không mở hộp thư hoặc gửi.
 ```
 
-Hermes soạn sẵn. Bạn đọc lại, chỉnh tông giọng nếu cần, rồi dán vào hộp thư gửi đi.
+Kiểm ngay hai điểm: "trong tuần này" không phải một ngày cụ thể; ngân sách và ngày phát hành chưa chốt. Nếu Hermes tự thêm hạn hoặc giá, bỏ phần đó và yêu cầu sửa theo câu gốc.
+
+### 2. Soạn nháp từ điều bạn thực sự muốn nói
+
+```text
+Soạn email nháp khoảng 80 từ từ các ý mình xác nhận:
+- Mình đã nhận yêu cầu.
+- Mình sẽ kiểm thời gian rồi trả lời lịch gửi bản xem trước.
+- Hỏi nội dung nào cần ưu tiên trong bản nháp.
+Không hứa ngày, giá hay thời gian hoàn thành chưa được mình duyệt.
+Sau bản nháp, chỉ ra câu nào là dữ kiện và câu nào là lời đề nghị.
+Không kết nối hộp thư, không gửi.
+```
+
+### 3. Duyệt trước khi tự gửi
+
+So bản tóm tắt với email gốc; kiểm người nhận, ngày, giá, tệp đính kèm và mọi câu cam kết. Bạn tự chỉnh rồi gửi trong hộp thư. Đừng gửi chỉ vì văn phong nghe chuyên nghiệp hoặc agent nói đã hiểu.
 
 ## Kết quả
 
-Email dài 2 trang còn 3 dòng tóm tắt, câu trả lời soạn sẵn. Bạn chỉ dành thời gian cho phần "duyệt", không phải phần "gõ".
+Đầu ra đạt là **bản nháp không thêm cam kết ngoài ý đã duyệt**, kèm chỗ còn phải hỏi. Nếu còn thiếu dữ kiện, giữ bản nháp lại; không ép AI viết như đã chốt mọi thứ.
 
 ## Mẹo thêm
 
-- Đặt sẵn tông giọng của bạn: "trả lời thân thiện, kiệm chữ" hoặc "trang trọng, đầy đủ" - Hermes nhớ để lần sau dùng lại.
-- Email tiếng Anh thì bảo "dịch email này sang tiếng Việt rồi tóm tắt" - tiện cho ai hay nhận mail nước ngoài.
-- Đừng dán thông tin nhạy cảm (mật khẩu, số thẻ) vào chat.
-
-Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap).
+- Với tiếng Anh, yêu cầu giữ nguyên số và điều kiện khi dịch, rồi so với bản gốc.
+- Nếu muốn giữ tông giọng cho lần sau, nhờ Hermes đề xuất một thói quen ngắn để lưu; kiểm ở phiên mới, không mặc định đã nhớ.
+- Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap) bằng email giả lập, không đăng thư riêng của người khác.

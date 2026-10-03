@@ -1,41 +1,56 @@
 ---
-title: "Lên kế hoạch du lịch chi tiết"
-description: "Nói 'Đà Lạt 3 ngày 2 đêm, ngân sách 5 triệu' - Hermes cho lịch trình từng ngày kèm gợi ý ăn gì, ở đâu, đi sao cho tiết kiệm."
+title: "Lên kế hoạch du lịch, có nguồn để kiểm trước khi đặt"
+description: "Nhờ Hermes dựng lịch trình theo ngày, ngân sách và nhu cầu gia đình; kiểm giá, giờ mở cửa và chi phí trước khi tự đặt dịch vụ."
 datePublished: "2026-09-22"
-dateModified: "2026-09-22"
+dateModified: "2026-10-03"
 authorName: "Cộng Đồng AI"
 tags: ["du lịch", "gợi ý"]
 ---
 
 ## Vấn đề
 
-Lên kế hoạch đi chơi tốn cả buổi: tìm điểm đến, xếp lịch, so giá, đọc review. Muốn xong trong 10 phút.
+Một lịch trình nghe hợp lý vẫn có thể dẫn bạn tới chỗ đã đóng cửa, khách sạn hết phòng hoặc vượt ngân sách vì thiếu tiền di chuyển. Mình dùng Hermes để gom lựa chọn thành bản nháp, không lấy lịch trình AI viết làm xác nhận đặt chỗ.
 
 ## Cần gì trước
 
-Đã cài Hermes và cho phép nó truy cập web để tìm thông tin mới nhất.
+- [Hermes đã kết nối một model](/bat-dau/chon-nha-cung-cap-api) và có công cụ đọc web. Nếu nguồn không mở được, agent phải nói rõ.
+- Ngày đi/về cụ thể, nơi xuất phát, số người và nhu cầu như trẻ nhỏ, ăn chay hoặc hạn chế đi bộ.
+- Ngân sách tính cho **cả chuyến**, gồm di chuyển tới nơi, phòng, ăn, vé và dự phòng. Không đưa hộ chiếu, thông tin thẻ hay danh tính trẻ em vào prompt.
 
 ## Cách làm
 
-Copy dán vào ô chat:
+### 1. Giao lịch trình nháp, chưa đặt dịch vụ
 
-```
-Lên cho tôi lịch trình đi Đà Lạt 3 ngày 2 đêm, đi 2 người lớn 1 trẻ nhỏ.
-Ngân sách tổng khoảng 5 triệu đồng, đi tự túc cuối tuần.
-Ghi rõ: đi buổi sáng - chiều - tối; ăn gì; ngủ khách sạn tầm trung; phương tiện di chuyển.
-Ưu tiên chỗ hợp trẻ nhỏ. Viết bằng tiếng Việt, gọn thành bảng theo ngày.
+Thay các phần trong ngoặc trước khi gửi:
+
+```text
+Lập bản nháp chuyến đi Đà Lạt từ [NGÀY ĐI] tới [NGÀY VỀ],
+xuất phát từ [THÀNH PHỐ], cho 2 người lớn và 1 trẻ nhỏ.
+Ngân sách cả chuyến khoảng 5 triệu đồng, gồm đi lại, phòng,
+ăn uống, vé và dự phòng. Ưu tiên ít đi bộ, có thời gian nghỉ.
+
+Lập bảng theo ngày: hoạt động / thời gian di chuyển dự kiến /
+chi phí / URL nguồn / thời điểm kiểm / điều cần xác nhận.
+Chỉ dùng giá và giờ mở cửa từ trang bạn đọc được thật.
+Phân biệt giá niêm yết với giá cho đúng ngày và số người của mình;
+phần ước tính ghi rõ là ước tính. Không đủ dữ liệu thì ghi
+[CHƯA XÁC MINH], không bịa khách sạn, review hay đường dẫn.
+Nếu không thể nằm trong ngân sách, chỉ rõ mục vượt và đề xuất
+cắt bớt. Không đăng nhập, không giữ phòng, không mua vé.
 ```
 
-Hermes trả về lịch trình từng ngày. Bạn xem, chỉnh chỗ nào chưa ưng (đổi khách sạn, thêm bớt điểm), nó sửa theo.
+### 2. Kiểm ba thứ trước khi chọn
+
+Mở trang chính thức của điểm đến, nơi lưu trú và đơn vị vận chuyển. Chọn đúng ngày/số người để kiểm phòng, giá cuối cùng, phụ phí và chính sách hủy. Giờ mở cửa có thể khác vào ngày lễ; khoảng cách gần trên bản đồ chưa có nghĩa di chuyển nhanh.
+
+Đối chiếu tổng ngân sách với các dòng chi phí, tránh cộng giá mỗi người như giá cả nhóm. Nhờ Hermes xếp lại một ngày nếu di chuyển quá nhiều, nhưng bạn vẫn tự xác nhận lịch và dịch vụ.
 
 ## Kết quả
 
-Lịch trình chi tiết kèm gợi ý ăn - ngủ - đi trong vài phút, thay cho cả buổi tự tìm.
+Đầu ra đạt là **lịch trình nháp có nguồn và danh sách việc cần xác nhận**, không phải chuyến đi đã được đặt. Nếu bảng toàn gợi ý mà thiếu giá/ngày/URL kiểm được, chưa nên dùng để thanh toán.
 
 ## Mẹo thêm
 
-- Thêm ràng buộc để gần nhu cầu: "không đi bộ nhiều vì có người già", "ăn chay", "thích chụp ảnh"...
-- Hỏi thêm: "thời tiết Đà Lạt cuối tuần này thế nào, cần mang gì?"
-- Nhờ nó so sánh: "so sánh Đà Lạt với Đà Nẵng cho chuyến gia đình 3 ngày".
-
-Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap).
+- Bắt đầu bằng một ngày để kiểm mức chi và nhịp di chuyển, rồi mới mở rộng cả chuyến.
+- Tra thời tiết gần ngày đi; không xem dự báo xa là chắc chắn.
+- Khi hỏi ở [Hỏi & Đáp](/hoi-dap), chỉ nêu nhu cầu chung, không đăng thông tin đặt chỗ hay lịch vắng nhà chi tiết.
