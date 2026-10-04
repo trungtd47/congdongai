@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import {
@@ -8,12 +9,12 @@ import {
   type CaseTopic,
 } from "@/lib/case-studies";
 
-export const metadata: Metadata = {
-  title: "Người thật chuyện thật - họ đã dùng Hermes thế nào",
+export const metadata: Metadata = pageMetadata({
+  title: "Kinh nghiệm Hermes Agent từ người dùng có nguồn",
   description:
     "Những câu chuyện dùng Hermes vào việc thật: theo dõi công việc, ghi chép, quản lý hệ thống và hỗ trợ gia đình. Mỗi bài dẫn về nguồn để bạn tự kiểm chứng.",
-  alternates: { canonical: "/cau-chuyen" },
-};
+  path: "/cau-chuyen",
+});
 
 interface Props {
   searchParams: Promise<{ "chu-de"?: string }>;

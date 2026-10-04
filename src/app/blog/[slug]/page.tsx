@@ -4,8 +4,12 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import { getAllPostSlugs, getPostBySlug, extractToc } from "@/lib/posts";
-import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
-import { canonicalUrl } from "@/lib/site";
+import {
+  JsonLd,
+  articleJsonLd,
+  breadcrumbJsonLd,
+  pageMetadata,
+} from "@/lib/seo";
 import { CommentsSection } from "@/components/CommentsSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { TermTip } from "@/components/TermTip";
@@ -24,19 +28,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(slug);
   if (!post) return {};
 
-  return {
+  return pageMetadata({
     title: post.title,
     description: post.description,
-    alternates: { canonical: `/blog/${slug}` },
-    openGraph: {
-      type: "article",
-      title: post.title,
-      description: post.description,
-      url: canonicalUrl(`/blog/${slug}`),
-      publishedTime: post.datePublished,
-      modifiedTime: post.dateModified ?? post.datePublished,
-    },
-  };
+    path: `/blog/${slug}`,
+    type: "article",
+    publishedTime: post.datePublished,
+    modifiedTime: post.dateModified,
+  });
 }
 
 export default async function ArticlePage({ params }: Props) {

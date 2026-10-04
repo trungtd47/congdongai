@@ -1,14 +1,15 @@
-import type { Metadata } from 'next';
-import { JsonLd, faqJsonLd } from '@/lib/seo';
-import { QuestionList } from '@/components/QuestionList';
-import { Breadcrumb } from '@/components/Breadcrumb';
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+import { JsonLd, faqJsonLd } from "@/lib/seo";
+import { QuestionList } from "@/components/QuestionList";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
-export const metadata: Metadata = {
-  title: 'Hỏi đáp cộng đồng',
+export const metadata: Metadata = pageMetadata({
+  title: "Hỏi đáp Hermes Agent Tiếng Việt",
   description:
-    'Đặt câu hỏi và cùng nhau giải đáp khi kẹt với Hermes Agent. Cộng đồng tiếng Việt, thân thiện với người mới.',
-  alternates: { canonical: '/hoi-dap' },
-};
+    "Đặt câu hỏi và cùng nhau giải đáp khi kẹt với Hermes Agent. Cộng đồng tiếng Việt, thân thiện với người mới.",
+  path: "/hoi-dap",
+});
 
 export default function HoiDapPage() {
   return (
@@ -16,17 +17,18 @@ export default function HoiDapPage() {
       <JsonLd
         data={faqJsonLd([
           {
-            question: 'Hermes Agent có miễn phí không?',
-            answer: 'Phần mềm miễn phí 100%, chỉ trả tiền AI model theo mức dùng.',
+            question: "Hermes Agent có miễn phí không?",
+            answer:
+              "Phần mềm miễn phí 100%, chỉ trả tiền AI model theo mức dùng.",
           },
           {
-            question: 'Không biết code có đặt câu hỏi được không?',
-            answer: 'Được. Cộng đồng viết riêng cho người không chuyên.',
+            question: "Không biết code có đặt câu hỏi được không?",
+            answer: "Được. Cộng đồng viết riêng cho người không chuyên.",
           },
         ])}
       />
 
-      <Breadcrumb items={[{ name: 'Hỏi đáp' }]} />
+      <Breadcrumb items={[{ name: "Hỏi đáp" }]} />
 
       <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
         <div>

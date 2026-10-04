@@ -9,8 +9,12 @@ import {
 } from "@/lib/case-studies";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CommentsSection } from "@/components/CommentsSection";
-import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
-import { canonicalUrl } from "@/lib/site";
+import {
+  JsonLd,
+  articleJsonLd,
+  breadcrumbJsonLd,
+  pageMetadata,
+} from "@/lib/seo";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -81,18 +85,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const c = caseStudies.find((x) => x.slug === slug);
   if (!c) return {};
-  return {
+
+  return pageMetadata({
     title: c.title,
     description: c.teaser,
-    alternates: { canonical: `/cau-chuyen/${slug}` },
-    openGraph: {
-      type: "article",
-      title: c.title,
-      description: c.teaser,
-      url: canonicalUrl(`/cau-chuyen/${slug}`),
-    },
-    keywords: c.tags,
-  };
+    path: `/cau-chuyen/${slug}`,
+    type: "article",
+    publishedTime: c.datePublished,
+    modifiedTime: c.dateModified,
+  });
 }
 
 export default async function CauChuyenDetailPage({ params }: Props) {
@@ -111,8 +112,8 @@ export default async function CauChuyenDetailPage({ params }: Props) {
           headline: c.title,
           description: c.teaser,
           path: `/cau-chuyen/${c.slug}`,
-          datePublished: c.datePublished ?? "2026-09-22",
-          dateModified: c.dateModified ?? c.datePublished ?? "2026-09-22",
+          datePublished: c.datePublished ?? c.dateModified,
+          dateModified: c.dateModified ?? c.datePublished,
           authorName: "Cộng Đồng AI",
         })}
       />

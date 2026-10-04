@@ -3,14 +3,14 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { TermTip } from "@/components/TermTip";
 import { CompareClosedVsOpen } from "@/components/CompareClosedVsOpen";
-import { JsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
+import { JsonLd, breadcrumbJsonLd, faqJsonLd, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Vì sao dùng OpenRouter - trả tiền theo đúng mức dùng",
   description:
     "OpenRouter: một tài khoản tiếp cận hàng trăm model, tính phí theo token đã dùng, không phí tháng cố định. Giải thích cho người mới kèm các bước bắt đầu.",
-  alternates: { canonical: "/bat-dau/vi-sao-dung-openrouter" },
-};
+  path: "/bat-dau/vi-sao-dung-openrouter",
+});
 
 const faqs = [
   {

@@ -9,8 +9,12 @@ import {
   getHuongDanSlugs,
   extractToc,
 } from "@/lib/posts";
-import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
-import { canonicalUrl } from "@/lib/site";
+import {
+  JsonLd,
+  articleJsonLd,
+  breadcrumbJsonLd,
+  pageMetadata,
+} from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { TermTip } from "@/components/TermTip";
 import { ArticleDiagram } from "@/components/ArticleDiagram";
@@ -29,19 +33,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getHuongDanPostBySlug(slug);
   if (!post) return {};
 
-  return {
+  return pageMetadata({
     title: post.title,
     description: post.description,
-    alternates: { canonical: `/huong-dan/${slug}` },
-    openGraph: {
-      type: "article",
-      title: post.title,
-      description: post.description,
-      url: canonicalUrl(`/huong-dan/${slug}`),
-      publishedTime: post.datePublished,
-      modifiedTime: post.dateModified ?? post.datePublished,
-    },
-  };
+    path: `/huong-dan/${slug}`,
+    type: "article",
+    publishedTime: post.datePublished,
+    modifiedTime: post.dateModified,
+  });
 }
 
 export default async function HuongDanArticlePage({ params }: Props) {

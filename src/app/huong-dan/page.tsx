@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { huongDanItems } from "@/lib/content";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Cách dùng Hermes Agent cho việc thật mỗi ngày",
+export const metadata: Metadata = pageMetadata({
+  title: "Cách dùng Hermes Agent: prompt và ứng dụng thực tế",
   description:
-    "Hướng dẫn sử dụng Hermes Agent vào việc cụ thể: bản tin buổi sáng, email, nhắc lịch, nghiên cứu, ghi chú và công việc công vụ. Có prompt mẫu để bạn thử và tự kiểm tra kết quả.",
-  alternates: { canonical: "/huong-dan" },
-};
+    "Cách sử dụng Hermes Agent cho email, bản tin, nhắc việc, nghiên cứu và bộ não thứ hai. Có prompt mẫu, nguồn và bước kiểm đầu ra trước khi dùng.",
+  path: "/huong-dan",
+});
 
 export default function HuongDanPage() {
   const congVuItems = huongDanItems.filter((c) => c.group === "cong-vu");
@@ -22,7 +23,7 @@ export default function HuongDanPage() {
         Hướng dẫn theo việc
       </p>
       <h1 className="mb-2 text-[32px] font-extrabold tracking-[-0.5px]">
-        Dùng Hermes Agent vào việc gì?
+        Cách dùng Hermes Agent vào việc hằng ngày
       </h1>
       <p className="mb-8 max-w-2xl text-[16px] text-ink-soft">
         Hermes Agent có thể giúp tổng hợp tin, soạn email để bạn duyệt, nhắc

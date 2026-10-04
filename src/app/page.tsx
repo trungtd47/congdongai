@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { JsonLd, faqJsonLd } from "@/lib/seo";
+import { JsonLd, faqJsonLd, pageMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
 import { TermTip } from "@/components/TermTip";
 import { pathSteps } from "@/lib/demo-data";
 import { libraryItems } from "@/lib/content";
@@ -9,12 +10,12 @@ import { JoinGoogleButton } from "@/components/JoinGoogleButton";
 import { getAllPosts } from "@/lib/posts";
 import { caseStudies, type CaseStudy } from "@/lib/case-studies";
 
-export const metadata: Metadata = {
-  title: "Cộng đồng Hermes Agent Tiếng Việt | Cộng Đồng AI",
-  description:
-    "Cộng đồng Hermes Agent Tiếng Việt: bắt đầu từ cách cài, giao việc thật đến kinh nghiệm người dùng. Hướng dẫn miễn phí, có nơi hỏi đáp khi bạn gặp khó.",
-  alternates: { canonical: "/" },
-};
+export const metadata: Metadata = pageMetadata({
+  title: siteConfig.title,
+  description: siteConfig.description,
+  path: "/",
+  absoluteTitle: true,
+});
 
 const honestFaqs = [
   {
@@ -177,16 +178,17 @@ export default function HomePage() {
       <section style={{ paddingTop: "8px" }}>
         <div className="wrap">
           <div className="path">
-            <h2>Con đường cho người mới 🧭</h2>
+            <h2>Cộng đồng Hermes Agent Tiếng Việt 🧭</h2>
             <p className="sub">
               Đọc lần lượt hay chọn việc đang cần - các bài có bước thực hành và
               cách kiểm. Sơ đồ minh họa không phải ảnh chụp ứng dụng.
             </p>
             <p className="sub">
-              Cộng Đồng AI là cộng đồng Hermes Agent Tiếng Việt: bắt đầu từ cách
-              cài, thử giao một việc thật, rồi hỏi đáp và đối chiếu kinh nghiệm
-              với người dùng khác. Đây là cộng đồng người dùng, không phải trang
-              chính thức của Nous Research.
+              Cộng Đồng AI.org là cộng đồng Hermes Agent Tiếng Việt. Ở đây, bạn
+              tìm hướng dẫn dùng Hermes AI Agent: từ cài Desktop và chọn model
+              đến giao việc, kiểm nguồn và giữ kho ghi chú. Hermes Agent là dự
+              án của Nous Research; trang này là cộng đồng độc lập, không phải
+              tài liệu chính thức.
             </p>
             {pathSteps.map((s, i) => (
               <div

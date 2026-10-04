@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { huongDanItems } from "@/lib/content";
 import { Breadcrumb } from "@/components/Breadcrumb";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "AI cho cán bộ, công chức: dùng Hermes trong hành chính công",
   description:
     "AI cho cán bộ, công chức trong hành chính công: thử Hermes với văn bản công khai, soạn báo cáo nháp và theo dõi văn bản mới. Có hướng dẫn, kiểm nguồn và lưu ý dữ liệu.",
-  alternates: { canonical: "/cong-vu" },
-};
+  path: "/cong-vu",
+});
 
 export default function CongVuPage() {
   const congVuItems = huongDanItems.filter((c) => c.group === "cong-vu");

@@ -5,8 +5,12 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import { getBatDauPostBySlug, getBatDauSlugs, extractToc } from "@/lib/posts";
-import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
-import { canonicalUrl } from "@/lib/site";
+import {
+  JsonLd,
+  articleJsonLd,
+  breadcrumbJsonLd,
+  pageMetadata,
+} from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { TermTip } from "@/components/TermTip";
 import { ArticleDiagram } from "@/components/ArticleDiagram";
@@ -26,19 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getBatDauPostBySlug(slug);
   if (!post) return {};
 
-  return {
+  return pageMetadata({
     title: post.title,
     description: post.description,
-    alternates: { canonical: `/bat-dau/${slug}` },
-    openGraph: {
-      type: "article",
-      title: post.title,
-      description: post.description,
-      url: canonicalUrl(`/bat-dau/${slug}`),
-      publishedTime: post.datePublished,
-      modifiedTime: post.dateModified ?? post.datePublished,
-    },
-  };
+    path: `/bat-dau/${slug}`,
+    type: "article",
+    publishedTime: post.datePublished,
+    modifiedTime: post.dateModified,
+  });
 }
 
 export default async function BatDauArticlePage({ params }: Props) {

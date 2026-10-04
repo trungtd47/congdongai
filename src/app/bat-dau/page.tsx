@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { batDauItems } from "@/lib/content";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Hướng dẫn cài Hermes Agent cho người mới",
+export const metadata: Metadata = pageMetadata({
+  title: "Cài Hermes Agent trên Windows và Mac cho người mới",
   description:
-    "Cách cài Hermes Agent trên Windows hoặc Mac cho người mới: tải bản Desktop chính thức, chọn nhà cung cấp model và thử giao việc đầu tiên. Không cần biết code.",
-  alternates: { canonical: "/bat-dau" },
-};
+    "Hướng dẫn cài Hermes Agent: tải Desktop chính thức, kết nối một nguồn model, thử giao việc và kiểm kết quả. Có bài riêng cho Windows và Mac Apple Silicon.",
+  path: "/bat-dau",
+});
 
 export default function BatDauPage() {
   return (
@@ -18,7 +19,7 @@ export default function BatDauPage() {
         Bắt đầu
       </p>
       <h1 className="mb-2 text-[32px] font-extrabold tracking-[-0.5px]">
-        Cài Hermes Agent - từ số 0
+        Cài Hermes Agent trên Windows và Mac
       </h1>
       <h2 className="mb-2 text-[18px] font-bold">
         Cài Hermes Agent như thế nào?

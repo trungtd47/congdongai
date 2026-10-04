@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { libraryItems, type LibraryGroup } from "@/lib/content";
 import { LibraryForm } from "@/components/LibraryForm";
@@ -27,12 +28,12 @@ const groups: { name: LibraryGroup; description: string }[] = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Thư viện Hermes Agent - tài liệu theo lộ trình",
   description:
     "Tài liệu Markdown miễn phí: cài và chọn model Hermes, SOUL.md, memory, skill, mẫu giao việc và kinh nghiệm người dùng có nguồn từ cộng đồng/X.",
-  alternates: { canonical: "/thu-vien" },
-};
+  path: "/thu-vien",
+});
 
 export default function ThuVienPage() {
   return (

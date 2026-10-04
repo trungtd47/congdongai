@@ -3,6 +3,7 @@
 Repo hiện chưa có `AGENTS.md`; dùng skill `congdongai-site` và các entry ở đây. Nội dung gốc/nguồn sự thật nằm trong `src/content/` và các route `src/app/`.
 
 ## Gần nhất
+- [2026-10-04: SEO Hermes AI Agent, sitemap/metadata và giới hạn GSC](2026-10-04/seo-hermes-agent.md)
 - [2026-10-03: Biên tập chất lượng, bỏ 2 nội dung và sửa 13 bài](2026-10-03/editorial-quality-cleanup.md)
 - [2026-10-03: Audit chất lượng nội dung và Friday - chưa operational](2026-10-03/content-friday-quality-audit.md)
 - [2026-10-03: Pilot case crypto token, phân loại và visual mobile](2026-10-03/case-crypto-token-visual-topic.md)

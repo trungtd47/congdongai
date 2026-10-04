@@ -1,14 +1,15 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { batDauItems, huongDanItems } from '@/lib/content';
-import { Breadcrumb } from '@/components/Breadcrumb';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { batDauItems, huongDanItems } from "@/lib/content";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: 'Học Hermes Agent từ số 0 - Lộ trình thực hành',
+export const metadata: Metadata = pageMetadata({
+  title: "Học Hermes Agent từ số 0 - Lộ trình thực hành",
   description:
-    'Học Hermes Agent theo lộ trình 3 bước: hiểu và cài, giao việc thật, rồi tham khảo kinh nghiệm người dùng có nguồn. Dành cho người mới, không cần biết code.',
-  alternates: { canonical: '/lo-trinh' },
-};
+    "Học Hermes Agent theo lộ trình 3 bước: hiểu và cài, giao việc thật, rồi tham khảo kinh nghiệm người dùng có nguồn. Dành cho người mới, không cần biết code.",
+  path: "/lo-trinh",
+});
 
 function LevelTag({ level, className }: { level: string; className: string }) {
   return (
@@ -23,7 +24,7 @@ function LevelTag({ level, className }: { level: string; className: string }) {
 export default function LoTrinhPage() {
   return (
     <div className="wrap py-12">
-      <Breadcrumb items={[{ name: 'Lộ trình' }]} />
+      <Breadcrumb items={[{ name: "Lộ trình" }]} />
       <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
         Lộ trình
       </p>
@@ -34,21 +35,21 @@ export default function LoTrinhPage() {
         Học Hermes Agent bắt đầu từ đâu?
       </h2>
       <p className="mb-10 max-w-2xl text-[16px] text-ink-soft">
-        Bắt đầu bằng việc{' '}
+        Bắt đầu bằng việc{" "}
         <Link
           href="/bat-dau/hermes-agent-la-gi"
           className="text-teal-dark underline"
         >
           hiểu Hermes Agent là gì
-        </Link>{' '}
-        và cài bản Desktop. Sau đó thử một việc thật trong mục{' '}
+        </Link>{" "}
+        và cài bản Desktop. Sau đó thử một việc thật trong mục{" "}
         <Link href="/huong-dan" className="text-teal-dark underline">
           Hướng dẫn
         </Link>
-        ; khi đã quen, đọc{' '}
+        ; khi đã quen, đọc{" "}
         <Link href="/cau-chuyen" className="text-teal-dark underline">
           câu chuyện có nguồn
-        </Link>{' '}
+        </Link>{" "}
         để xem người khác vận hành ra sao. Không cần biết code trước.
       </p>
 
