@@ -33,7 +33,7 @@ Chưa đọc được Search Console: browser real profile đang bị Chrome gi�
 - Trạng thái Google-selected canonical, URL index reason, impressions/clicks, Manual Actions/Security Issues chỉ có thể chốt bằng Search Console. Không nói site chắc chưa index hoặc bị phạt dựa trên SERP đơn lẻ/báo cáo thuật toán bên thứ ba.
 - www.congdongai.org hiện trả 404 từ tầng domain/hosting, DNS trỏ cùng IP. Cần kiểm custom-domain mapping/redirect trong Firebase App Hosting và DNS bằng tài khoản owner; Next metadata không sửa được lớp routing này. Domain chính vẫn hoạt động. Chưa đổi DNS/domain vì chưa có quyền console.
 - Chưa submit sitemap/request indexing cho Google trong phiên này. Sau có quyền property, submit https://congdongai.org/sitemap.xml rồi URL Inspection homepage/definition/hubs, kiểm Live Test và Request Indexing nếu eligible. Không request lặp vô ích hay hứa lên top/ngày index.
-- Push và readback production sẽ ghi riêng khi đạt; local build không chứng minh deploy.
+- Commit `5f2666a` đã push; production probe sau rollout cho title mới, sitemap55 và PNG200; verify-seo production55/55, errors []. GSC retry sau deploy vẫn bị khóa Chrome profile, không truy cập hay submit/request indexing.
 
 ## Nguồn chính thức đã đọc ngày 2026-10-04
 - https://developers.google.com/search/docs/fundamentals/seo-starter-guide (meta keywords không dùng, không keyword stuffing).

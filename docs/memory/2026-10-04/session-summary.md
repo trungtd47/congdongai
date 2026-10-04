@@ -4,7 +4,7 @@
 - SEO intent/metadata/schema/OG; sitemap bỏ demo và dùng ngày thật; build 83/83, local verify55/55.
 
 ## In Progress
-- Chờ push/readback production. Không claim Google index/rank đã đổi.
+- Không còn code SEO đang dở: `5f2666a` đã live, production55/55 không lỗi. Google index/rank chưa xác nhận vì GSC chưa truy cập được.
 
 ## Next Steps
 - Sau có quyền: Search Console URL Inspection/Pages/Manual Actions/Security Issues, submit sitemap và request indexing eligible.
