@@ -14,6 +14,7 @@ import { CommentsSection } from "@/components/CommentsSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { TermTip } from "@/components/TermTip";
 import { ArticleDiagram } from "@/components/ArticleDiagram";
+import { TagLinks } from "@/components/TagLinks";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -69,13 +70,7 @@ export default async function ArticlePage({ params }: Props) {
         items={[{ name: "Blog", href: "/blog" }, { name: post.title }]}
       />
 
-      <div className="mb-3 flex flex-wrap gap-2">
-        {post.tags.map((t) => (
-          <span key={t} className="tag-pill">
-            {t}
-          </span>
-        ))}
-      </div>
+      <TagLinks tags={post.tags} />
 
       <h1 className="mb-3 text-[32px] font-extrabold leading-[1.2] tracking-[-0.5px]">
         {post.title}

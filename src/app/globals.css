@@ -384,6 +384,18 @@ footer.site-footer { border-top: 1px solid var(--color-line); padding: 34px 0; c
   border-radius: 999px;
 }
 
+a.tag-pill-link {
+  text-decoration: none;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+  border: 1px solid transparent;
+}
+a.tag-pill-link:hover,
+a.tag-pill-link:focus-visible {
+  background: var(--color-teal);
+  color: #fff;
+  border-color: var(--color-teal-dark);
+}
+
 .toc-box a { display: block; color: var(--color-ink-soft); text-decoration: none; transition: color 0.12s; }
 .toc-box a:hover { color: var(--color-teal-dark); }
 .toc-box a[data-level='3'] { padding-left: 16px; font-size: 13px; }

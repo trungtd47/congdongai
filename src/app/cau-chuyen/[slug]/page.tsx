@@ -9,6 +9,7 @@ import {
 } from "@/lib/case-studies";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CommentsSection } from "@/components/CommentsSection";
+import { tagHref } from "@/lib/tags";
 import {
   JsonLd,
   articleJsonLd,
@@ -114,7 +115,7 @@ export default async function CauChuyenDetailPage({ params }: Props) {
           path: `/cau-chuyen/${c.slug}`,
           datePublished: c.datePublished ?? c.dateModified,
           dateModified: c.dateModified ?? c.datePublished,
-          authorName: "Cộng Đồng AI",
+          authorName: c.authorName ?? "Cộng Đồng AI",
         })}
       />
       <JsonLd
@@ -139,6 +140,11 @@ export default async function CauChuyenDetailPage({ params }: Props) {
       <h1 className="mb-3 text-[32px] font-extrabold leading-[1.2] tracking-[-0.5px]">
         {c.title}
       </h1>
+      {c.authorName && (
+        <p className="mb-4 text-sm text-ink-soft">
+          Chia sẻ bởi <span className="font-semibold text-ink">{c.authorName}</span>
+        </p>
+      )}
       {(c.topic || c.tags?.length) && (
         <div className="mb-5 flex flex-wrap items-center gap-2 text-sm">
           {c.topic && (
@@ -150,12 +156,13 @@ export default async function CauChuyenDetailPage({ params }: Props) {
             </Link>
           )}
           {c.tags?.map((tag) => (
-            <span
+            <Link
               key={tag}
-              className="rounded-full border border-[var(--line)] px-3 py-1 text-ink-soft"
+              href={tagHref(tag)}
+              className="rounded-full border border-[var(--line)] px-3 py-1 text-ink-soft hover:text-teal-dark focus-visible:underline"
             >
               {tag}
-            </span>
+            </Link>
           ))}
         </div>
       )}

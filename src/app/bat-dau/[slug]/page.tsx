@@ -16,6 +16,7 @@ import { TermTip } from "@/components/TermTip";
 import { ArticleDiagram } from "@/components/ArticleDiagram";
 import { CommentsSection } from "@/components/CommentsSection";
 import { batDauItems } from "@/lib/content";
+import { TagLinks } from "@/components/TagLinks";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -80,6 +81,20 @@ export default async function BatDauArticlePage({ params }: Props) {
       <h1 className="mb-3 text-[32px] font-extrabold leading-[1.2] tracking-[-0.5px]">
         {post.title}
       </h1>
+
+      <TagLinks tags={post.tags} />
+
+      <div className="mb-4 flex items-center gap-3 text-[13.5px] text-ink-soft">
+        <span>{post.authorName}</span>
+        <span>·</span>
+        <time dateTime={post.datePublished}>
+          {new Date(post.datePublished).toLocaleDateString("vi-VN", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </time>
+      </div>
 
       <ArticleDiagram slug={slug} />
 

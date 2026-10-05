@@ -49,6 +49,11 @@ function CaseStudyPreview({ study }: { study: CaseStudy }) {
       <div>
         <h4>{study.title}</h4>
         <p>{study.teaser}</p>
+        {study.authorName && (
+          <p className="text-xs font-semibold text-teal-dark">
+            Chia sẻ bởi {study.authorName}
+          </p>
+        )}
         <div className="srcline">
           <Link href={`/cau-chuyen/${study.slug}`}>Đọc đầy đủ →</Link>
         </div>

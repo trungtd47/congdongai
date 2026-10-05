@@ -88,6 +88,11 @@ export default async function CauChuyenPage({ searchParams }: Props) {
                     {c.title}
                   </h3>
                   <p className="mt-1 text-sm text-ink-soft">{c.teaser}</p>
+                  {c.authorName && (
+                    <p className="mt-2 text-xs font-semibold text-teal-dark">
+                      Chia sẻ bởi {c.authorName}
+                    </p>
+                  )}
                   {c.topic && (
                     <span className="mt-2 inline-block rounded-full bg-[var(--teal-soft)] px-2.5 py-1 text-xs font-semibold text-teal-dark">
                       {caseTopics[c.topic]}

@@ -16,6 +16,7 @@ export type CaseTopic = keyof typeof caseTopics;
 
 export interface CaseStudy {
   slug: string;
+  authorName?: string;
   icon: string;
   title: string;
   teaser: string;
@@ -34,6 +35,7 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "hermes-nghien-cuu-token-bo-nao-thu-hai",
+    authorName: "Đức Trung",
     icon: "📊",
     type: "long",
     topic: "tai-chinh",
@@ -46,7 +48,7 @@ export const caseStudies: CaseStudy[] = [
     mobileImage: "/case-study/crypto-token-research-flow-mobile.png",
     datePublished: "2026-10-01",
     dateModified: "2026-10-03",
-    sourceLabel: "Admin congdongai.org - kinh nghiệm cá nhân",
+    sourceLabel: "Đức Trung - kinh nghiệm cá nhân",
     sourceUrl: "https://congdongai.org",
     body: [
       {
@@ -95,13 +97,14 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "kinh-nghiem-ban-tin-6h30",
+    authorName: "Đức Trung",
     dateModified: "2026-10-03",
     icon: "🌅",
     type: "long",
     title: "Mỗi sáng 6h30 có sẵn bản tin thị trường để đọc cùng cà phê",
     teaser:
       "Thay vì tự lướt nhiều nguồn tin, mình giao Hermes gom và lọc thành một bản đọc buổi sáng. Phần quan trọng không phải đọc thật nhiều, mà là biết mình cần xem gì.",
-    sourceLabel: "Admin congdongai.org",
+    sourceLabel: "Đức Trung - kinh nghiệm cá nhân",
     sourceUrl: "https://congdongai.org",
     body: [
       {
@@ -125,13 +128,14 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "kinh-nghiem-bo-nao-thu-hai",
+    authorName: "Đức Trung",
     dateModified: "2026-10-03",
     icon: "🧠",
     type: "long",
     title: "Ghi ý tưởng vào Obsidian, để Hermes nối lại khi cần làm việc",
     teaser:
       "Mình giữ ghi chú trong file trên máy; Hermes đọc đúng phần liên quan khi cần tóm tắt, nối ý và soạn bài. Kho ghi chú có ích vì nó quay lại đúng lúc cần, không phải vì nó được sắp xếp thật đẹp.",
-    sourceLabel: "Admin congdongai.org",
+    sourceLabel: "Đức Trung - kinh nghiệm cá nhân",
     sourceUrl: "https://congdongai.org",
     body: [
       {

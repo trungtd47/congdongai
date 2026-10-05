@@ -8,6 +8,7 @@ import {
   getHuongDanPostBySlug,
 } from "@/lib/posts";
 import { caseStudies } from "@/lib/case-studies";
+import { getTags, tagHref } from "@/lib/tags";
 
 export const dynamic = "force-static";
 
@@ -80,5 +81,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: canonicalUrl(`/${openRouterRoute}`),
   };
 
-  return [...base, openRouter, ...batDau, ...huongDan, ...blog, ...cauChuyen];
+  const tags = getTags().map(({ tag }) => ({
+    url: canonicalUrl(tagHref(tag)),
+  }));
+
+  return [...base, openRouter, ...batDau, ...huongDan, ...blog, ...cauChuyen, ...tags];
 }

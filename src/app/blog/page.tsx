@@ -3,6 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { TagLinks } from "@/components/TagLinks";
 
 export const metadata: Metadata = pageMetadata({
   title: "Blog Hermes Agent: kinh nghiệm và mẹo thực hành",
@@ -30,27 +31,26 @@ export default function BlogPage() {
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {posts.map((p) => (
-          <Link
-            key={p.slug}
-            href={`/blog/${p.slug}`}
-            className="card card-hover block p-6"
-          >
-            <div className="mb-2 flex flex-wrap gap-2">
-              {p.tags.map((t) => (
-                <span key={t} className="tag-pill">
-                  {t}
-                </span>
-              ))}
-            </div>
-            <h2 className="mb-1.5 text-[18px] font-bold leading-snug">
-              {p.title}
-            </h2>
-            <p className="mb-3 text-sm text-ink-soft">{p.description}</p>
+          <div key={p.slug} className="card card-hover block p-6">
+            <TagLinks tags={p.tags} />
+            <Link href={`/blog/${p.slug}`} className="block">
+              <h2 className="mb-1.5 text-[18px] font-bold leading-snug">
+                {p.title}
+              </h2>
+              <p className="mb-3 text-sm text-ink-soft">{p.description}</p>
+            </Link>
             <div className="flex items-center gap-3 text-[13px] text-ink-soft">
+              <span>{p.authorName}</span>
+              <span>·</span>
               <span>{p.datePublished}</span>
-              <span className="font-semibold text-teal-dark">Đọc bài →</span>
+              <Link
+                href={`/blog/${p.slug}`}
+                className="font-semibold text-teal-dark hover:underline"
+              >
+                Đọc bài →
+              </Link>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>
