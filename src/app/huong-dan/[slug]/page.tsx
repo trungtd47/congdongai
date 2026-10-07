@@ -52,7 +52,7 @@ export default async function HuongDanArticlePage({ params }: Props) {
   const toc = extractToc(post.content);
 
   return (
-    <article className="wrap max-w-3xl py-12">
+    <article className="reader">
       <JsonLd
         data={articleJsonLd({
           headline: post.title,
@@ -78,18 +78,15 @@ export default async function HuongDanArticlePage({ params }: Props) {
         ]}
       />
 
-      <p className="mb-2 text-[13px] font-bold uppercase tracking-[1.5px] text-teal-dark">
-        Hướng dẫn theo việc
-      </p>
-      <h1 className="mb-3 text-[32px] font-extrabold leading-[1.2] tracking-[-0.5px]">
-        {post.title}
-      </h1>
+      <div className="eyebrow">Hướng dẫn theo việc</div>
+      <h1>{post.title}</h1>
 
-      <TagLinks tags={post.tags} />
-
-      <div className="mb-4 flex items-center gap-3 text-[13.5px] text-ink-soft">
-        <span>{post.authorName}</span>
-        <span>·</span>
+      <div className="byline">
+        <span className="avatar" aria-hidden="true">
+          {(post.authorName || "C").charAt(0).toUpperCase()}
+        </span>
+        <strong>{post.authorName}</strong>
+        <span aria-hidden="true">·</span>
         <time dateTime={post.datePublished}>
           {new Date(post.datePublished).toLocaleDateString("vi-VN", {
             year: "numeric",
@@ -99,24 +96,27 @@ export default async function HuongDanArticlePage({ params }: Props) {
         </time>
       </div>
 
+      <p className="lede">{post.description}</p>
+
+      <TagLinks tags={post.tags} />
+
       <ArticleDiagram slug={slug} />
 
       {toc.length > 0 && (
-        <div className="toc-box card mb-8 p-5">
-          <p className="mb-2 text-[12px] font-bold uppercase tracking-[1px] text-teal-dark">
-            Mục lục
-          </p>
+        <div className="toc-box">
+          <p className="toc-title">Mục lục</p>
           <nav>
-            {toc.map((item) => (
+            {toc.map((item) => {
+ return (
               <a
                 key={item.slug}
                 href={`#${item.slug}`}
                 data-level={item.level}
-                className="py-1 text-[14px]"
               >
                 {item.text}
               </a>
-            ))}
+            );
+})}
           </nav>
         </div>
       )}
@@ -134,12 +134,12 @@ export default async function HuongDanArticlePage({ params }: Props) {
         />
       </div>
 
-      <div className="card mt-10 p-6">
-        <p className="mb-3 text-sm text-ink-soft">
+      <div className="card mt-8 p-5">
+        <p className="mb-3 text-sm text-muted">
           Làm xong việc này rồi? Xem thêm hướng dẫn khác hoặc quay lại danh
           sách.
         </p>
-        <div className="flex flex-wrap gap-3">
+        <div className="prev-next">
           <Link href="/huong-dan" className="btn btn-primary">
             Về danh sách Hướng dẫn →
           </Link>

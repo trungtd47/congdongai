@@ -4,14 +4,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { listPosts, type PostSummary } from "@/lib/firestore-ops";
 
-const COLORS = [
-  "var(--color-teal)",
-  "var(--color-clay)",
-  "var(--color-gold)",
-  "#7C3AED",
-  "#0F766E",
-];
-
 export function HomeQAPanel() {
   const [posts, setPosts] = useState<PostSummary[] | null>(null);
   const [error, setError] = useState(false);
@@ -32,45 +24,51 @@ export function HomeQAPanel() {
 
   if (error) {
     return (
-      <p role="alert" className="py-4 text-sm text-ink-soft">
+      <p role="alert" className="ed-qa-error">
         Chưa tải được câu hỏi từ cộng đồng.
       </p>
     );
   }
 
   if (posts === null) {
-    return <p className="py-4 text-sm text-ink-soft">Đang tải...</p>;
+    return <p className="ed-qa-loading">Đang tải...</p>;
+  }
+
+  if (posts.length === 0) {
+    return (
+      <div className="ed-qa-empty">
+        <p>
+          Chưa có câu hỏi nào. Hãy là người đầu tiên nêu một việc đang vướng để
+          cộng đồng cùng gỡ.
+        </p>
+        <p style={{ marginTop: "8px" }}>
+          <Link className="ed-text-link" href="/hoi-dap/tao">
+            Đặt câu hỏi ↗
+          </Link>
+        </p>
+      </div>
+    );
   }
 
   return (
-    <>
-      {posts.map((p, i) => (
-        <Link
-          className="titem"
-          key={p.id}
-          href={`/hoi-dap/${p.id}`}
-          style={
-            i === posts.length - 1
-              ? { borderBottom: "1px dashed var(--color-line)" }
-              : undefined
-          }
-        >
-          <div className="av" style={{ background: COLORS[i % COLORS.length] }}>
-            {p.authorName.charAt(0).toUpperCase()}
-          </div>
-          <div className="tb">
-            <h5>{p.title}</h5>
-            <div className="meta">
-              {p.tags[0] && <span className="badge tag">{p.tags[0]}</span>}
+    <div className="ed-qa-list">
+      {posts.map((p) => {
+        return (
+          <div className="ed-qitem" key={p.id}>
+            <Link className="ed-qtitle" href={`/hoi-dap/${p.id}`}>
+              {p.title}
+            </Link>
+            <div className="ed-qmeta">
+              {p.tags[0] ? <span className="ed-badge tag">{p.tags[0]}</span> : null}
               {p.solvedAnswerId ? (
-                <span className="badge solved">✓ Đã giải quyết</span>
+                <span className="ed-badge solved">✓ Đã giải quyết</span>
               ) : p.answerCount > 0 ? (
-                <span className="badge ai">💬 {p.answerCount} trả lời</span>
+                <span className="ed-badge answ">💬 {p.answerCount} trả lời</span>
               ) : null}
             </div>
           </div>
-        </Link>
-      ))}
-    </>
+        );
+      })}
+    </div>
   );
 }

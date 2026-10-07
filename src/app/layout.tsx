@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Be_Vietnam_Pro, Lora } from "next/font/google";
+import { Noto_Sans, Noto_Serif } from "next/font/google";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { DemoBanner } from "@/components/DemoBanner";
@@ -7,18 +7,18 @@ import { JsonLd, websiteJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
-const beVietnam = Be_Vietnam_Pro({
+const notoSans = Noto_Sans({
   subsets: ["latin", "vietnamese"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-bvp",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-noto-sans",
   display: "swap",
 });
 
-const lora = Lora({
+const notoSerif = Noto_Serif({
   subsets: ["latin", "vietnamese"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
-  variable: "--font-lora",
+  variable: "--font-noto-serif",
   display: "swap",
 });
 
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#0E7C71",
+  themeColor: "#F8F5EF",
   width: "device-width",
   initialScale: 1,
 };
@@ -72,7 +72,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="vi" className={`${beVietnam.variable} ${lora.variable}`}>
+    <html
+      lang="vi"
+      className={`${notoSerif.variable} ${notoSans.variable}`}
+    >
       <body className="font-sans">
         <JsonLd data={websiteJsonLd()} />
         <DemoBanner />

@@ -47,7 +47,7 @@ export default async function ArticlePage({ params }: Props) {
   const toc = extractToc(post.content);
 
   return (
-    <article className="wrap max-w-3xl py-12">
+    <article className="reader">
       <JsonLd
         data={articleJsonLd({
           headline: post.title,
@@ -70,15 +70,15 @@ export default async function ArticlePage({ params }: Props) {
         items={[{ name: "Blog", href: "/blog" }, { name: post.title }]}
       />
 
-      <TagLinks tags={post.tags} />
+      <div className="eyebrow">Bài biên tập có nguồn</div>
+      <h1>{post.title}</h1>
 
-      <h1 className="mb-3 text-[32px] font-extrabold leading-[1.2] tracking-[-0.5px]">
-        {post.title}
-      </h1>
-
-      <div className="mb-8 flex items-center gap-3 text-[13.5px] text-ink-soft">
-        <span>{post.authorName}</span>
-        <span>·</span>
+      <div className="byline">
+        <span className="avatar" aria-hidden="true">
+          {(post.authorName || "C").charAt(0).toUpperCase()}
+        </span>
+        <strong>{post.authorName}</strong>
+        <span aria-hidden="true">·</span>
         <time dateTime={post.datePublished}>
           {new Date(post.datePublished).toLocaleDateString("vi-VN", {
             year: "numeric",
@@ -88,28 +88,27 @@ export default async function ArticlePage({ params }: Props) {
         </time>
       </div>
 
+      <p className="lede">{post.description}</p>
+
+      <TagLinks tags={post.tags} />
+
       <ArticleDiagram slug={slug} />
 
       {toc.length > 0 && (
-        <div className="toc-box card mb-8 p-5">
-          <p className="mb-2 text-[12px] font-bold uppercase tracking-[1px] text-teal-dark">
-            Mục lục
-          </p>
-          <div className="mb-3 text-[12.5px] text-ink-soft">
-            Bài này dành cho người mới - không cần biết code, đọc từ trên xuống
-            là đủ.
-          </div>
+        <div className="toc-box">
+          <p className="toc-title">Mục lục</p>
           <nav>
-            {toc.map((item) => (
+            {toc.map((item) => {
+ return (
               <a
                 key={item.slug}
                 href={`#${item.slug}`}
                 data-level={item.level}
-                className="py-1 text-[14px]"
               >
                 {item.text}
               </a>
-            ))}
+            );
+})}
           </nav>
         </div>
       )}
@@ -127,7 +126,7 @@ export default async function ArticlePage({ params }: Props) {
         />
       </div>
 
-      <div className="mt-12 border-t border-line pt-8">
+      <div className="mt-10 border-t border-line pt-6">
         <CommentsSection slug={post.slug} />
       </div>
     </article>

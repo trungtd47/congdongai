@@ -1,41 +1,48 @@
 import Link from "next/link";
 
+const secondaryLinks = [
+  { href: "/blog", label: "Blog" },
+  { href: "/lo-trinh", label: "Lộ trình" },
+  { href: "/bat-dau#tai-hermes", label: "Tải Hermes" },
+  { href: "/cau-chuyen", label: "Kinh nghiệm" },
+  { href: "/hoi-dap", label: "Hỏi & Đáp" },
+  { href: "/thu-vien", label: "Thư viện" },
+];
+
 export function Footer() {
   return (
     <footer className="site-footer">
-      <div className="wrap foot">
+      <div className="wrap footer-inner">
         <div>
-          <div className="flex items-center gap-2">
+          <div className="footer-brand">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/hermes-logo.svg"
               alt="Hermes"
-              width={20}
-              height={20}
-              className="rounded"
+              width={22}
+              height={22}
+              className="brand-mark"
             />
-            <span>
-              Giới thiệu{" "}
-              <a
-                href="https://hermes-agent.nousresearch.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-ink"
-              >
-                Hermes Agent
-              </a>{" "}
-              - khung trợ lý AI mã nguồn mở của Nous Research
-            </span>
+            Cộng Đồng AI.org
           </div>
-          <div className="mt-1.5">
-            © 2026 CongDongAI.org - cộng đồng miễn phí, xây bằng tinh thần
-            &quot;cho đi&quot; của mã nguồn mở
+          <p>
+            Học cách dùng Hermes từ hướng dẫn, trải nghiệm và câu hỏi của nhau.
+            Cộng đồng độc lập, không phải website chính thức của Nous Research.
+          </p>
+          <div className="footer-links">
+            {secondaryLinks.map((l) => (
+              <Link key={l.href + l.label} href={l.href}>
+                {l.label}
+              </Link>
+            ))}
           </div>
         </div>
         <div>
-          Admin congdongai.org ·{" "}
-          <Link href="/quy-tac-cong-dong">Quy tắc cộng đồng</Link> ·{" "}
-          <Link href="/quy-tac-cong-dong">Liên hệ</Link>
+          <small>Admin congdongai.org</small>
+          <div className="footer-links">
+            <Link href="/quy-tac-cong-dong">Quy tắc cộng đồng</Link>
+            <Link href="/quy-tac-cong-dong">Liên hệ</Link>
+          </div>
         </div>
       </div>
     </footer>
