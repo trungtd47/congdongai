@@ -135,27 +135,36 @@ export default function HomePage() {
         <div className="ed-wrap">
           <div className="ed-mast"><strong>HERMES · KINH NGHIỆM · CÙNG NHAU HỌC</strong><span>Không cần rành công nghệ để bắt đầu.</span></div>
           <section className="ed-hero">
-            <div className="ed-eyebrow">Một cộng đồng, những cách dùng thật</div>
-            <h1>
-              Một chỗ để hỏi.
-              <br />
-              Một nơi để <em className="ed-em">chia sẻ.</em>
-            </h1>
-            <p className="ed-intro">
-              Bắt đầu với Hermes, thử một việc nhỏ, rồi chia sẻ điều bạn đã làm
-              được và cả chỗ chưa ổn. Mình cùng học từ những kinh nghiệm đó.
-            </p>
-            <div className="ed-hero-actions">
-              <Link className="ed-btn" href="/bat-dau">
-                Bắt đầu dùng Hermes <span aria-hidden="true">↗</span>
-              </Link>
-              <Link className="ed-text-link" href="/hoi-dap">
-                Hỏi cộng đồng ↗
-              </Link>
+            <div className="ed-hero-copy">
+              <div className="ed-eyebrow">Một cộng đồng, những cách dùng thật</div>
+              <h1>
+                Một chỗ để hỏi.
+                <br />
+                Một nơi để <em className="ed-em">chia sẻ.</em>
+              </h1>
+              <p className="ed-intro">
+                Bắt đầu với Hermes, thử một việc nhỏ, rồi chia sẻ điều bạn đã làm
+                được và cả chỗ chưa ổn. Mình cùng học từ những kinh nghiệm đó.
+              </p>
+              <div className="ed-hero-actions">
+                <Link className="ed-btn" href="/bat-dau">
+                  Bắt đầu dùng Hermes <span aria-hidden="true">↗</span>
+                </Link>
+                <Link className="ed-text-link" href="/hoi-dap">
+                  Hỏi cộng đồng ↗
+                </Link>
+              </div>
+              <p className="ed-fine">
+                Hướng dẫn mở · Kinh nghiệm có nguồn
+              </p>
             </div>
-            <p className="ed-fine">
-              Hướng dẫn mở · Kinh nghiệm có nguồn
-            </p>
+            <img
+              className="ed-hero-art"
+              src="/illustrations/community-learning.svg"
+              width="420"
+              height="320"
+              alt="Minh họa cộng đồng đang học cùng nhau quanh một bàn, không phải ảnh chụp thành viên"
+            />
           </section>
 
           {/* HỎI & ĐÁP TRỰC TIẾP */}

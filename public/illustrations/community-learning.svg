@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 320" role="img" aria-labelledby="title">
+<title id="title">Minh họa ba người cùng học quanh bàn, với laptop và sổ ghi chú</title>
+<g stroke="#38513B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<!-- Shared conversation, not a screenshot or actual members. -->
+<path d="M157 34h67a11 11 0 0 1 11 11v25a11 11 0 0 1-11 11h-27l-13 12 2-12h-29a11 11 0 0 1-11-11V45a11 11 0 0 1 11-11Z" fill="#ECE3CF" stroke="#A2AA94"/>
+<path d="M162 50h56m-56 12h39" stroke="#88967C"/>
+<!-- Middle learner -->
+<path d="M171 172v-43q0-22 26-23h26q23 2 25 25l3 41Z" fill="#A2AE92"/>
+<path d="M200 104v12q10 8 18 0v-15" fill="#ECE3CF"/>
+<ellipse cx="209" cy="85" rx="22" ry="27" fill="#ECE3CF"/>
+<path d="M187 86V72q5-25 27-15 18 3 16 25l-8-3-4-15q-11 17-31 16Z" fill="#38513B"/>
+<path d="M198 88h2m15 0h2m-14 12q6 4 11-1" stroke-width="1.5"/>
+<!-- Left learner -->
+<path d="M50 244v-66q-1-30 26-38l30 8q17 12 23 40l7 52Z" fill="#ECE3CF"/>
+<path d="M73 138v15q10 8 22-1v-18" fill="#ECE3CF"/>
+<path d="M69 99q4-20 23-17 20 3 22 25l-1 20q-5 21-25 17-17-4-20-24Z" fill="#ECE3CF"/>
+<path d="M67 122q-15-31 7-42 25-13 39 14l-11-1q-3-9-8-9-1 23-26 24Z" fill="#8B5E3C" stroke="#8B5E3C"/>
+<path d="M94 111h2m10 1h2m-13 15q6 4 11-1" stroke-width="1.5"/>
+<path d="M51 230v50m69-50v50" stroke="#A2AA94" stroke-width="5"/>
+<!-- Right learner -->
+<path d="M291 240q4-48 15-79 9-19 30-20 30 3 34 37v66Z" fill="#38513B"/>
+<path d="M321 135v16q9 9 20-1v-15" fill="#ECE3CF"/>
+<ellipse cx="331" cy="113" rx="23" ry="28" fill="#ECE3CF"/>
+<path d="M308 115q-9-35 17-41 29-5 32 28l-12-5-8-12q-8 15-28 17Z" fill="#8B5E3C" stroke="#8B5E3C"/>
+<path d="M316 111h2m12 0h2m-13 16q7 4 12-1" stroke-width="1.5"/>
+<path d="M302 237v43m65-43v43" stroke="#A2AA94" stroke-width="5"/>
+<!-- Table and legs -->
+<path d="M139 222l-8 64m151-64 8 64" stroke-width="5"/>
+<path d="M90 185q120-38 241 0v22q-124 39-241 0Z" fill="#D8C9A8"/>
+<ellipse cx="210" cy="185" rx="121" ry="37" fill="#ECE3CF"/>
+<!-- Arms resting on the table -->
+<path d="M73 172q4 26 49 19l25-11 6 10q-27 24-58 22-27-1-32-27" fill="#ECE3CF"/>
+<path d="M149 179q14-5 19 2l-2 9-13 1" fill="#ECE3CF"/>
+<path d="M348 174q-3 27-42 27l-32-13-4 10q30 22 55 21 28-1 31-30" fill="#A2AE92"/>
+<path d="M275 187q-12-7-20-1l2 10 14 3" fill="#ECE3CF"/>
+<path d="M179 136l-11 30 23 7m48-37 12 28-20 10" fill="none" stroke-width="8" stroke="#A2AE92"/>
+<!-- Notebook and pen -->
+<path d="m251 166 36 7-9 19-34-8Z" fill="#FFFDF8"/>
+<path d="m262 174 15 3m-18 3 13 3" stroke="#A2AA94" stroke-width="1.5"/>
+<path d="m289 171-12 17" stroke="#8B5E3C" stroke-width="3"/>
+<!-- Laptop -->
+<path d="m163 158 61 4 7 39-61-3Z" fill="#FFFDF8"/>
+<path d="m170 165 47 3 4 22-47-2Z" fill="#E4E8DA" stroke="#A2AA94" stroke-width="1"/>
+<path d="m182 177 5-4m-5 4 6 4m11-6 5 4-4 3" stroke="#88967C" stroke-width="1.5"/>
+<path d="m170 198 61 3 12 10-65-3Z" fill="#D8C9A8"/>
+<!-- A cup and quiet baseline -->
+<path d="M116 166v13q8 6 15 0v-13Z" fill="#FFFDF8"/>
+<path d="M132 168q12-2 7 8l-7 1" fill="none"/>
+<path d="M119 154q-3-4 0-7m8 9q-3-4 0-7" stroke="#A2AA94" stroke-width="1.5"/>
+<path d="M37 287h348" stroke="#D7D4C9" stroke-width="1.5"/>
+</g>
+</svg>
