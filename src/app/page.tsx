@@ -366,7 +366,7 @@ export default function HomePage() {
           <section className="ed-letter">
             <details>
               <summary>
-                <span>Một lời chào từ Đức Trung</span>
+                <span>Một lời chào từ Admin</span>
                 <span className="ed-letter-toggle">Đọc thư ngỏ +</span>
               </summary>
               <div className="ed-letter-body">
