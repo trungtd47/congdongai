@@ -1,0 +1,153 @@
+---
+title: "Cách mình dùng Claude Pro, ChatGPT Pro và OpenRouter trong Hermes"
+description: "Kinh nghiệm Đức Trung: kết hợp gói Pro với DeepSeek, Qwen và subagent code; tạo ảnh qua ChatGPT để giảm phí API, nhưng vẫn kiểm hạn mức và chất lượng."
+datePublished: "2026-10-09"
+dateModified: "2026-10-09"
+authorName: "Đức Trung"
+tags: ["kinh nghiệm", "chọn model", "chi phí", "Hermes"]
+---
+
+Mình không dùng một model cho tất cả mọi việc. Cách mình đang sử dụng Hermes là phối hợp **Claude Pro, ChatGPT Pro và OpenRouter**: tận dụng các gói đã đăng ký, có thêm lựa chọn khi cần, và giao một phần việc code cho model có chi phí thấp hơn.
+
+Qua OpenRouter, mình sử dụng các model Trung Quốc như **DeepSeek V4 Pro, Qwen 3.8 Max**; với các subagent code, mình dùng **DeepSeek V4 Flash**. Subagent là agent phụ được giao một phần việc riêng, thay vì bắt agent chính tự làm toàn bộ.
+
+Mình cũng dùng **ChatGPT Pro trên Hermes để tạo ảnh**, thay vì mặc định gọi API qua OpenRouter. Với nhu cầu của mình, đây là cách tận dụng gói đang có và giảm khoản trả riêng cho API.
+
+Đây là chia sẻ về cách dùng của mình, không phải bảng xếp hạng model hay lời khuyên ai cũng nên mua cả hai gói Pro. Mình chưa đưa ra số tiền hoặc tỷ lệ tiết kiệm vì chưa có bảng đo đầy đủ để công bố. Phần kết nối dưới đây được đối chiếu với tài liệu chính thức ngày **09/10/2026**; quyền sử dụng và hạn mức có thể thay đổi.
+
+## Điều mình thấy đáng giá: linh động, không chỉ rẻ
+
+Khi có nhiều nguồn model trong Hermes, mình không phải gắn mọi nhu cầu với một nhà cung cấp. Gói thuê bao phục vụ những việc phù hợp với quyền dùng đã có; OpenRouter cho thêm lựa chọn theo từng tác vụ.
+
+Nhưng mình muốn nói rõ hai điều:
+
+- **Đã trả tiền gói tháng không có nghĩa mọi lần gọi đều miễn phí.** Cần biết tác vụ đi qua tài khoản thuê bao hay qua API tính riêng.
+- **Model có giá token thấp không tự làm cả công việc rẻ hơn.** Nếu phải chạy lại nhiều lần, đưa quá nhiều tài liệu hoặc sửa lại đầu ra, lợi thế ban đầu có thể mất.
+
+Vì vậy, câu hỏi hữu ích hơn là: *việc này nên giao cho model nào, cần gửi những gì, và mình sẽ kiểm kết quả bằng cách nào?*
+
+## Hermes có thể dùng Claude Pro, nhưng phải đúng đường kết nối
+
+Catalog chính thức của Hermes có plugin **Claude Subscription DirectSDK (Experimental)**, dùng Claude Pro/Max thông qua **Claude Code CLI chính thức**. Đây là nhánh thử nghiệm, không phải API key Anthropic. [1]
+
+Đừng nhầm với **Anthropic OAuth native** trong Hermes: tài liệu hiện mô tả nhánh đó cần Claude Max cùng extra usage, không dùng hạn mức cơ bản của Pro. [2]
+
+Nếu muốn thử plugin, cần **Hermes 0.21.4 trở lên**, Claude Code CLI đã cài và đăng nhập; cập nhật CLI nếu model yêu cầu. Đây là điều kiện theo tài liệu ngày đối chiếu, không phải mọi bản Desktop đều đã có sẵn. Sau đó làm theo hướng dẫn chính thức:
+
+```bash
+hermes plugins install claude-subscription-directsdk
+claude auth login
+hermes --provider claude-subscription-directsdk-experimental -m sonnet
+```
+
+Thông tin đăng nhập do Claude Code quản lý. Không gửi mật khẩu hay token vào chat. Plugin vẫn giữ vòng lặp và công cụ của Hermes; quyền dùng và extra usage phụ thuộc tài khoản. [1]
+
+Thử một việc nhỏ trước: tạo một file ghi chú trong thư mục thử, rồi mở lại kiểm nội dung. Kiểm đúng provider đang chọn và trang Usage của Claude; một câu trả lời thành công chưa đủ chứng minh cách tính phí.
+
+Claude Pro có Claude Code, nhưng vẫn có hạn mức dùng chung. Kiểm extra usage nếu không muốn phát sinh phí. Anthropic cũng cảnh báo biến `ANTHROPIC_API_KEY` có thể khiến Claude Code đi theo API; plugin có cơ chế từ chối cấu hình xung đột, đừng tìm cách bỏ qua cảnh báo. [1][3]
+
+Đối chiếu thêm chính sách Agent SDK hiện hành trước khi dùng lâu dài. Bản cập nhật **07/10/2026** của Anthropic vẫn cho dùng SDK, `claude -p` và ứng dụng bên thứ ba trong hạn mức thuê bao; catalog plugin gọi phần tiêu thụ là Agent SDK allowance. Kiểm hạn mức thực trên tài khoản, không suy là được dùng không giới hạn. Hỗ trợ của plugin không phải cam kết điều kiện sẽ giữ nguyên. [1][4]
+
+## ChatGPT Pro cho công việc và tạo ảnh: hai lựa chọn cần kiểm riêng
+
+Với ChatGPT, Hermes có kết nối **ChatGPT/Codex subscription** qua đăng nhập OAuth - đăng nhập bằng tài khoản thay vì dán API key. OpenAI xác nhận Codex có thể dùng quyền trong gói ChatGPT, với hạn mức tùy gói. Đây không phải việc biến gói Pro thành tín dụng API. [2][5][6]
+
+Phần tạo ảnh cần chọn **nguồn tạo ảnh riêng**. Đổi model chat sang ChatGPT không tự đổi công cụ ảnh. Tài liệu Hermes có backend **OpenAI (Codex auth)**, dùng đăng nhập ChatGPT/Codex, khác với backend OpenAI dùng API key. [7]
+
+Đó là điểm mình tận dụng: ưu tiên tạo ảnh qua tài khoản ChatGPT Pro đã có, thay vì mỗi lần cần minh họa lại trả riêng qua OpenRouter. Tuy vậy, đây là kinh nghiệm với tài khoản của mình, không bảo đảm mọi tài khoản Pro đều có quyền tương tự.
+
+Nếu bạn muốn làm theo, hãy kiểm lựa chọn tạo ảnh trong Hermes, thử một ảnh nhỏ và đọc lại kết quả cùng hạn mức tài khoản. Nếu bị từ chối hoặc hết hạn mức, dừng để kiểm, không tự bật nguồn API trả phí.
+
+Một giới hạn đáng chú ý: backend Codex có thể trả kích thước hoặc chất lượng khác yêu cầu, và tên model được gửi lên không chứng minh engine thực sự tạo ảnh. Kiểm file ảnh nhận được; nếu cần kiểm soát đầu ra chặt hơn, cân nhắc một backend khác và duyệt chi phí trước. [7]
+
+**Giảm phí API phát sinh không có nghĩa tổng chi phí bằng không:** mình vẫn trả phí thuê bao ChatGPT Pro. Billing API OpenAI là hệ riêng. [6]
+
+## OpenRouter: thêm lựa chọn, không chọn chỉ vì tên model
+
+OpenRouter là phần bổ sung trong cách dùng của mình, không phải thứ mọi người đều cần mua thêm. Mình dùng DeepSeek V4 Pro và Qwen 3.8 Max để có thêm lựa chọn; DeepSeek V4 Flash cho subagent code khi phù hợp.
+
+Tên hiển thị và mã model cụ thể cần phân biệt. Danh mục OpenRouter được kiểm ngày 09/10/2026 có, chẳng hạn:
+
+- `deepseek/deepseek-v4-pro`
+- `qwen/qwen3.8-max-0902`
+- `deepseek/deepseek-v4-flash-0731`
+
+Đây là ví dụ mã có trong catalog, không phải tuyên bố mọi phiên mình đều dùng đúng ba mã này, hoặc đây là các bản mới nhất. Chọn mã thực tế trong tài khoản và kiểm giá trước khi chạy. [8]
+
+Mình không xem xuất xứ model là bằng chứng chất lượng. Muốn biết model hợp việc của bạn hay không, nên thử trên cùng một yêu cầu nhỏ, cùng tiêu chí kiểm và ghi lại cả lỗi lẫn chi phí. Đừng chỉ so một câu trả lời trông có vẻ hay.
+
+## Giao code cho subagent rẻ hơn, nhưng giữ bước kiểm cuối
+
+Phần dưới là **gợi ý phân công để cách dùng này chặt hơn**, không phải nhật ký một lần chạy hay số liệu mình đã đo:
+
+- **Agent chính:** hiểu yêu cầu, khóa phạm vi, quyết định cách làm và duyệt kết quả.
+- **Subagent dùng DeepSeek V4 Flash:** nhận việc nhỏ như sửa một hàm, thêm một test hoặc kiểm một file với tiêu chí rõ ràng.
+- **Người dùng và agent chính:** đọc diff, chạy build/test, kiểm hành vi thật trước khi đưa vào sử dụng.
+
+Không nên giao cho model rẻ một câu quá rộng như “làm lại cả ứng dụng”. Cũng không nên nâng mọi việc lên model đắt ngay từ đầu. Thử phạm vi nhỏ; nếu kết quả không đạt, thu hẹp hoặc đổi model, thay vì chạy lặp vô hạn.
+
+Một mẫu giao việc có thể dùng:
+
+> Chỉ sửa hàm xử lý ngày trong file đã chỉ định. Giữ nguyên API và các file khác. Thêm test cho đầu vào rỗng, sai định dạng và đổi ngày theo múi giờ. Trả lại diff, lệnh test cùng kết quả thật. Nếu thiếu thông tin thì báo, không tự mở rộng phạm vi.
+
+Khi có nhiều agent, nên tránh để hai agent cùng sửa một file. Giao đầu ra có thể kiểm được, không chỉ yêu cầu “báo đã xong”. Đừng đưa quyền deploy hay bí mật sản xuất vào một tác vụ phụ chỉ để nó làm nhanh hơn.
+
+Quan trọng nữa: **cấu hình riêng provider/model cho subagent**. Đừng suy rằng agent chính đang dùng gói Pro thì agent phụ cũng dùng gói đó, hoặc agent phụ sẽ tự chọn model rẻ nhất. Đối chiếu cấu hình delegation của phiên bản Hermes bạn đang chạy. [9]
+
+## Những điểm nên bổ sung để tiết kiệm thực chất
+
+Có thêm model giúp linh động, nhưng cũng thêm thứ phải quản lý. Đây là những cách mình đề xuất áp dụng để không biến tiết kiệm thành một hệ thống khó kiểm soát.
+
+### Theo dõi tổng chi phí, không chỉ số dư OpenRouter
+
+Ghi riêng phí thuê bao Claude, ChatGPT, phí API và các công cụ ngoài. Với mỗi tác vụ mẫu, ghi model, kết quả đạt/chưa đạt, số lần làm lại và chi phí thực nếu provider có báo.
+
+**Đừng coi mức giảm OpenRouter là mức tiết kiệm toàn bộ.** Nếu phải mua thêm gói tháng mà ít dùng, tổng chi có thể tăng. Ngược lại, nếu đã cần gói đó cho công việc khác, tận dụng quyền đang có là một lựa chọn đáng thử.
+
+### Kiểm cả nguồn phụ và dự phòng
+
+Chat, tạo ảnh, đọc ảnh, tóm tắt ngữ cảnh và subagent có thể là những đường cấu hình khác nhau trong Hermes. Lập danh sách nguồn đang dùng và kiểm từng đường trước khi giao việc lớn. [7][9]
+
+Nguồn dự phòng - fallback - nên là một lựa chọn đã duyệt, không phải cơ chế “cứ lỗi là gọi model khác”. Nếu dự phòng đi qua API, bạn cần biết trước khoản phí có thể phát sinh. Không dùng nó để cố vượt hạn mức hay điều kiện tài khoản.
+
+### Gửi đủ ngữ cảnh, không gửi toàn bộ kho
+
+Với một sửa lỗi nhỏ, gửi đúng file, lỗi và tiêu chí kiểm. Với việc cần tra tài liệu, chọn phần có liên quan. Không bắt mỗi agent phụ đọc lại mọi tài liệu chỉ vì chúng có sẵn.
+
+Giữ quy trình đã kiểm thành skill, quyết định kỹ thuật trong repo và ghi chú dài ở kho tài liệu. Cách tổ chức này nên giúp tìm đúng phần cần dùng, không thành lý do nhồi toàn bộ kho vào mỗi lượt gọi.
+
+### Có giới hạn dừng
+
+Đặt phạm vi, giới hạn số agent chạy đồng thời và điều kiện phải báo lại. Khi tác vụ lặp cùng một lỗi hoặc bắt đầu sửa ngoài yêu cầu, dừng để xem nguyên nhân. Model mạnh hơn là một lựa chọn, không thay việc tìm đúng lỗi.
+
+Với tạo ảnh, duyệt một mẫu và yêu cầu trước khi làm nhiều biến thể. Khi hết hạn mức thuê bao, hỏi trước khi chuyển sang API trả phí.
+
+### Quyền dữ liệu quan trọng hơn giá model
+
+Trước khi đổi provider, xem dữ liệu nào sẽ được gửi. Không dùng hồ sơ nhạy cảm hoặc bí mật của khách hàng chỉ để thử một model rẻ. Cài Hermes trên máy không tự bảo đảm nội dung gửi vào model cloud ở lại máy; xem thêm [bài bảo mật](/huong-dan/bao-mat-hermes-thong-tin-ca-nhan).
+
+## Nếu mới bắt đầu, đừng mua cả bộ giống mình
+
+Hãy bắt đầu bằng **một nguồn bạn đã có quyền dùng**. Đọc [bài chọn model](/bat-dau/chon-nha-cung-cap-api), kết nối rồi thử một việc thật có đầu ra kiểm được.
+
+Chỉ thêm nguồn thứ hai khi bạn biết rõ mình cần gì: một model khác phù hợp hơn, công cụ ảnh, hoặc phương án dự phòng đã kiểm chi phí. Chưa có nhu cầu rõ thì chưa cần mua thêm Claude Pro, ChatGPT Pro hay nạp OpenRouter chỉ để có đủ tên trong danh sách.
+
+Điều mình muốn chia sẻ không phải “mua nhiều gói sẽ rẻ”. Đó là **tận dụng đúng quyền đang có, chọn model theo việc và giữ bước kiểm kết quả**. Hermes là nơi mình phối hợp những lựa chọn đó; chất lượng cuối cùng vẫn cần người dùng duyệt.
+
+Bạn đang dùng một gói thuê bao, API hay kết hợp cả hai? Nếu vướng phần kết nối hoặc không rõ phí đi đâu, hỏi ở [Hỏi & Đáp](/hoi-dap). Chia sẻ tên provider, phiên bản và thông báo lỗi đã che thông tin nhạy cảm; đừng gửi khóa, token hoặc mật khẩu.
+
+## Nguồn và phạm vi đối chiếu
+
+Cách dùng cá nhân trong bài do Đức Trung chia sẻ. Hướng dẫn kết nối và giới hạn được đối chiếu ngày **09/10/2026**; chưa phải benchmark hay báo cáo kiểm toán chi phí. Các bước mẫu cần thử trên tài khoản của bạn.
+
+1. [Hermes: Claude Subscription DirectSDK (Experimental)](https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk) và [repository chính thức của plugin](https://github.com/NousResearch/hermes-plugin-claude-subscription-directsdk): điều kiện, cài đặt, đường đăng nhập và giới hạn.
+2. [Hermes: LLM and Model Providers](https://hermes-agent.nousresearch.com/docs/integrations/providers): phân biệt Anthropic native với kết nối ChatGPT/Codex.
+3. [Anthropic: Use Claude Code with your Pro or Max plan](https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan): quyền Claude Code, hạn mức và cảnh báo API key.
+4. [Anthropic: Use the Claude Agent SDK with your Claude plan](https://support.claude.com/en/articles/15036540-use-the-claude-agent-sdk-with-your-claude-plan): chính sách hiện hành cho SDK, CLI và ứng dụng bên thứ ba.
+5. [OpenAI: Using Codex with your ChatGPT plan](https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan): đăng nhập và hạn mức theo gói.
+6. [OpenAI: Managing billing for ChatGPT and the API platform](https://help.openai.com/en/articles/9039756): thuê bao và API có billing riêng.
+7. [Hermes: Image Generation](https://hermes-agent.nousresearch.com/docs/user-guide/features/image-generation): backend OpenAI (Codex auth), nguồn tạo ảnh riêng và giới hạn đầu ra.
+8. [OpenRouter: danh mục model live](https://openrouter.ai/api/v1/models): đối chiếu mã model, không pin giá vào bài.
+9. [Hermes: Configuration](https://hermes-agent.nousresearch.com/docs/user-guide/configuration/): cấu hình nguồn phụ và delegation; kiểm tài liệu tương ứng với phiên bản đang dùng.
+
+- Đức Trung · congdongai.org
