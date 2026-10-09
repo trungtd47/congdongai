@@ -1,6 +1,6 @@
 ---
 title: "Cách mình dùng Claude Pro, ChatGPT Pro và OpenRouter trong Hermes"
-description: "Kinh nghiệm Đức Trung: kết hợp gói Pro với DeepSeek, Qwen và subagent code; tạo ảnh qua ChatGPT để giảm phí API, nhưng vẫn kiểm hạn mức và chất lượng."
+description: "Mình dùng Claude Pro, ChatGPT Pro và OpenRouter trong Hermes, chọn model theo từng việc và tận dụng gói ChatGPT để tạo ảnh thay vì trả thêm phí API."
 datePublished: "2026-10-09"
 dateModified: "2026-10-09"
 authorName: "Đức Trung"
@@ -13,7 +13,7 @@ Qua OpenRouter, mình sử dụng các model Trung Quốc như **DeepSeek V4 Pro
 
 Mình cũng dùng **ChatGPT Pro trên Hermes để tạo ảnh**, thay vì mặc định gọi API qua OpenRouter. Với nhu cầu của mình, đây là cách tận dụng gói đang có và giảm khoản trả riêng cho API.
 
-Đây là chia sẻ về cách dùng của mình, không phải bảng xếp hạng model hay lời khuyên ai cũng nên mua cả hai gói Pro. Mình chưa đưa ra số tiền hoặc tỷ lệ tiết kiệm vì chưa có bảng đo đầy đủ để công bố. Phần kết nối dưới đây được đối chiếu với tài liệu chính thức ngày **09/10/2026**; quyền sử dụng và hạn mức có thể thay đổi.
+Bạn không cần mua cả hai gói Pro để dùng Hermes. Nếu đã có một tài khoản trả phí, hãy thử tận dụng nó trước, rồi chỉ thêm nguồn khác khi có việc cần đến.
 
 ## Điều mình thấy đáng giá: linh động, không chỉ rẻ
 
@@ -72,13 +72,13 @@ Tên hiển thị và mã model cụ thể cần phân biệt. Danh mục OpenRo
 - `qwen/qwen3.8-max-0902`
 - `deepseek/deepseek-v4-flash-0731`
 
-Đây là ví dụ mã có trong catalog, không phải tuyên bố mọi phiên mình đều dùng đúng ba mã này, hoặc đây là các bản mới nhất. Chọn mã thực tế trong tài khoản và kiểm giá trước khi chạy. [8]
+Một model có thể có nhiều phiên bản với mã khác nhau. Khi chọn trong Hermes, hãy xem đúng mã và giá của phiên bản bạn muốn dùng. [8]
 
 Mình không xem xuất xứ model là bằng chứng chất lượng. Muốn biết model hợp việc của bạn hay không, nên thử trên cùng một yêu cầu nhỏ, cùng tiêu chí kiểm và ghi lại cả lỗi lẫn chi phí. Đừng chỉ so một câu trả lời trông có vẻ hay.
 
 ## Giao code cho subagent rẻ hơn, nhưng giữ bước kiểm cuối
 
-Phần dưới là **gợi ý phân công để cách dùng này chặt hơn**, không phải nhật ký một lần chạy hay số liệu mình đã đo:
+Với việc code, bạn có thể chia công việc như sau:
 
 - **Agent chính:** hiểu yêu cầu, khóa phạm vi, quyết định cách làm và duyệt kết quả.
 - **Subagent dùng DeepSeek V4 Flash:** nhận việc nhỏ như sửa một hàm, thêm một test hoặc kiểm một file với tiêu chí rõ ràng.
@@ -94,7 +94,7 @@ Khi có nhiều agent, nên tránh để hai agent cùng sửa một file. Giao 
 
 Quan trọng nữa: **cấu hình riêng provider/model cho subagent**. Đừng suy rằng agent chính đang dùng gói Pro thì agent phụ cũng dùng gói đó, hoặc agent phụ sẽ tự chọn model rẻ nhất. Đối chiếu cấu hình delegation của phiên bản Hermes bạn đang chạy. [9]
 
-## Những điểm nên bổ sung để tiết kiệm thực chất
+## Vài cách giữ chi phí trong tầm kiểm soát
 
 Có thêm model giúp linh động, nhưng cũng thêm thứ phải quản lý. Đây là những cách mình đề xuất áp dụng để không biến tiết kiệm thành một hệ thống khó kiểm soát.
 
@@ -136,9 +136,9 @@ Chỉ thêm nguồn thứ hai khi bạn biết rõ mình cần gì: một model 
 
 Bạn đang dùng một gói thuê bao, API hay kết hợp cả hai? Nếu vướng phần kết nối hoặc không rõ phí đi đâu, hỏi ở [Hỏi & Đáp](/hoi-dap). Chia sẻ tên provider, phiên bản và thông báo lỗi đã che thông tin nhạy cảm; đừng gửi khóa, token hoặc mật khẩu.
 
-## Nguồn và phạm vi đối chiếu
+## Tài liệu tham khảo
 
-Cách dùng cá nhân trong bài do Đức Trung chia sẻ. Hướng dẫn kết nối và giới hạn được đối chiếu ngày **09/10/2026**; chưa phải benchmark hay báo cáo kiểm toán chi phí. Các bước mẫu cần thử trên tài khoản của bạn.
+Tài liệu về kết nối và hạn mức được tham khảo ngày **09/10/2026**. Khi cài đặt, bạn nên mở lại hướng dẫn để xem có thay đổi nào không.
 
 1. [Hermes: Claude Subscription DirectSDK (Experimental)](https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk) và [repository chính thức của plugin](https://github.com/NousResearch/hermes-plugin-claude-subscription-directsdk): điều kiện, cài đặt, đường đăng nhập và giới hạn.
 2. [Hermes: LLM and Model Providers](https://hermes-agent.nousresearch.com/docs/integrations/providers): phân biệt Anthropic native với kết nối ChatGPT/Codex.
@@ -147,7 +147,7 @@ Cách dùng cá nhân trong bài do Đức Trung chia sẻ. Hướng dẫn kết
 5. [OpenAI: Using Codex with your ChatGPT plan](https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan): đăng nhập và hạn mức theo gói.
 6. [OpenAI: Managing billing for ChatGPT and the API platform](https://help.openai.com/en/articles/9039756): thuê bao và API có billing riêng.
 7. [Hermes: Image Generation](https://hermes-agent.nousresearch.com/docs/user-guide/features/image-generation): backend OpenAI (Codex auth), nguồn tạo ảnh riêng và giới hạn đầu ra.
-8. [OpenRouter: danh mục model live](https://openrouter.ai/api/v1/models): đối chiếu mã model, không pin giá vào bài.
+8. [OpenRouter: danh mục model](https://openrouter.ai/api/v1/models): các mã model đang được cung cấp.
 9. [Hermes: Configuration](https://hermes-agent.nousresearch.com/docs/user-guide/configuration/): cấu hình nguồn phụ và delegation; kiểm tài liệu tương ứng với phiên bản đang dùng.
 
 - Đức Trung · congdongai.org
