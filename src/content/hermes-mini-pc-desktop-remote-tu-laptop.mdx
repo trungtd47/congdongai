@@ -1,0 +1,209 @@
+---
+title: "Mình chạy Hermes trên mini PC và dùng Desktop từ laptop như thế nào"
+description: "Mình để Hermes chạy trên một mini PC, nối bằng Tailscale và dùng app Desktop trên laptop như cửa sổ điều khiển. Có các bước dựng, lưu ý bảo mật và những lựa chọn khác như SSH, VPS, Hermes Cloud."
+datePublished: "2026-10-11"
+dateModified: "2026-10-11"
+authorName: "Đức Trung"
+tags: ["kinh nghiệm", "mini PC", "Tailscale", "Hermes Desktop", "tự host"]
+---
+
+Mình muốn Hermes chạy liên tục để nhận lịch tự động và tin nhắn, nhưng vẫn muốn dùng app Desktop quen tay trên laptop, đóng nắp mang đi đâu cũng được. Cách mình đang làm là để **Hermes chạy trên một mini PC ở nhà**, còn laptop chỉ là cửa sổ để trò chuyện với nó.
+
+Bài này kể lại cách mình dựng, những chỗ cần cẩn thận, rồi so với vài cách khác để bạn chọn cái hợp với mình.
+
+## Ý tưởng: tách "bộ não" và "cửa sổ"
+
+Hermes Desktop không bắt buộc chạy Hermes ngay trên máy bạn đang ngồi. Nó có thể nối vào một backend chạy ở máy khác. Backend ở đây là tiến trình `hermes serve`, nơi mọi thứ thật sự diễn ra. App Desktop trên laptop chỉ hiển thị và gửi yêu cầu.
+
+```
+Laptop (app Hermes Desktop)
+        |
+        |  mạng riêng Tailscale
+        v
+Mini PC (hermes serve)  --->  nhà cung cấp model
+   - phiên chat, bộ nhớ, skill
+   - file dự án, lịch tự động
+   - lệnh terminal chạy ở đây
+```
+
+_Đây là sơ đồ minh họa, không phải ảnh chụp màn hình._
+
+Điều này kéo theo vài hệ quả mà mình thấy nên biết trước:
+
+- Phiên chat, bộ nhớ, skill và lịch tự động nằm trên máy có backend, không nằm trên laptop. Tài liệu Hermes mô tả đúng như vậy: mỗi phiên mở ra là chạy trên gateway sở hữu nó.
+- Lệnh terminal mà Hermes chạy sẽ chạy **trên mini PC**, với quyền của tài khoản chạy dịch vụ. File bạn muốn Hermes đọc phải nằm trên mini PC, không phải trên laptop.
+- Nội dung bạn gửi cho model cloud vẫn đi từ mini PC ra nhà cung cấp model. Tự host không làm dữ liệu "ở lại nhà" nếu bạn dùng model cloud.
+
+## Vì sao mình chọn mini PC
+
+- Lịch tự động và bot nhắn tin chạy được khi laptop đã tắt hoặc đang ngủ.
+- Không phải thuê máy chủ riêng; file dự án và công cụ để sẵn trên một máy.
+- Mình dùng model qua nhà cung cấp, không chạy model local, nên máy không cần mạnh. Nếu bạn muốn chạy model local thì phải tính cấu hình khác hẳn.
+
+Đổi lại, mình tự lo phần vận hành: điện, mạng nhà, cập nhật và bảo mật. Máy của mình là một mini PC Minisforum UM870 chạy Ubuntu Desktop.
+
+Trước đây mình cũng từng chạy Hermes trên Windows. Với mình, chạy trên Ubuntu mượt hơn, đỡ tốn RAM và ít gặp lỗi hơn nên mình chuyển hẳn sang Ubuntu. Đó là trải nghiệm trên máy của mình, bạn đang quen hệ điều hành nào thì cứ dùng hệ điều hành đó cho đỡ bỡ ngỡ. Phần systemd bên dưới là của Linux.
+
+## Cách mình dựng, từng bước
+
+Các bước dưới đây theo tài liệu chính thức của Hermes Desktop, cộng với cách mình đặt dịch vụ chạy nền. Bản mình dùng khi viết là Hermes 0.21.6; nếu app của bạn khác phiên bản, tên mục trong Settings có thể hơi khác.
+
+### Bước 1: Cài và thử Hermes ngay trên mini PC
+
+Cài Hermes trên mini PC, kết nối một model và hỏi thử một việc nhỏ ngay trong terminal của máy đó. Nếu chưa chạy được ở đây thì chưa nên nối từ xa. Phần cài đặt xem ở [Hermes Agent là gì](/bat-dau/hermes-agent-la-gi) và [chọn model](/bat-dau/chon-nha-cung-cap-api).
+
+### Bước 2: Cài Tailscale trên cả hai máy
+
+[Tailscale](https://tailscale.com/) là dịch vụ tạo một mạng riêng giữa các thiết bị của bạn. Cài trên mini PC và laptop, đăng nhập cùng một tài khoản. Mỗi máy sẽ có một địa chỉ riêng trong mạng này. Trên mini PC, xem địa chỉ bằng:
+
+```bash
+tailscale ip -4
+```
+
+Mình chọn Tailscale vì không phải mở cổng trên router nhà. Theo tài liệu của Tailscale, kết nối giữa các thiết bị trong mạng được mã hóa đầu cuối bằng WireGuard, kể cả khi đi qua máy trung chuyển.
+
+### Bước 3: Đặt tên đăng nhập và mật khẩu cho backend
+
+Backend của Hermes đọc và ghi được file `.env` chứa khóa, và có thể chạy lệnh thay bạn. Vì vậy nó luôn đòi đăng nhập khi mở ra ngoài máy. Mình dùng cách đơn giản nhất mà tài liệu hướng dẫn cho mạng tin cậy: tên đăng nhập và mật khẩu, đặt trong `~/.hermes/.env`:
+
+```bash
+HERMES_DASHBOARD_BASIC_AUTH_USERNAME=ten-dang-nhap-cua-ban
+HERMES_DASHBOARD_BASIC_AUTH_PASSWORD=mat-khau-dai-va-khac-biet
+HERMES_DASHBOARD_BASIC_AUTH_SECRET=chuoi-ngau-nhien-dai
+```
+
+Vài điều đi kèm:
+
+- Tự gõ vào file trên máy mini PC, **đừng dán mật khẩu vào cuộc trò chuyện** với Hermes hay bất kỳ chat nào.
+- Chạy `chmod 600 ~/.hermes/.env` để chỉ tài khoản của bạn đọc được.
+- `SECRET` giúp phiên đăng nhập sống qua các lần khởi động lại. Thiếu nó, mỗi lần backend khởi động bạn sẽ bị đăng xuất. Tạo chuỗi ngẫu nhiên bằng `openssl rand -base64 32`.
+- Nếu không muốn để mật khẩu dạng chữ thường trong file, tài liệu có cách dùng bản băm (`HERMES_DASHBOARD_BASIC_AUTH_PASSWORD_HASH`).
+
+### Bước 4: Chạy backend, chỉ gắn vào địa chỉ Tailscale
+
+Chạy tay một lần để xem có chạy được không, thay `<ip-tailscale>` bằng địa chỉ ở bước 2:
+
+```bash
+hermes serve --host <ip-tailscale> --port 9119
+```
+
+Mình **không** dùng `0.0.0.0` (mọi giao diện mạng), mà gắn đúng vào địa chỉ Tailscale. Như vậy chỉ thiết bị trong mạng Tailscale của mình chạm được vào cổng này, thiết bị khác trong mạng nhà cũng không vào được. Đây cũng là cách tài liệu Hermes gợi ý khi dùng Tailscale.
+
+Kiểm tra từ chính mini PC (hoặc từ laptop khi đã có Tailscale):
+
+```bash
+curl -s http://<ip-tailscale>:9119/api/status
+```
+
+Kết quả phải có `auth_required` là `true` và `auth_providers` có `basic`. Trên máy mình, lệnh này trả đúng như thế. Nếu `auth_providers` không có `basic`, backend chưa đọc được tên đăng nhập và mật khẩu trong `.env`.
+
+### Bước 5: Cho backend tự chạy nền bằng systemd
+
+Chạy tay thì đóng terminal là mất, nên mình đặt thành dịch vụ systemd cấp người dùng. Tạo file `~/.config/systemd/user/hermes-serve.service`:
+
+```ini
+[Unit]
+Description=Hermes Serve cho Desktop remote
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/duong/dan/toi/hermes serve --host <ip-tailscale> --port 9119 --skip-build
+Environment=HERMES_HOME=%h/.hermes
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
+```
+
+- Tìm đường dẫn thật của lệnh bằng `command -v hermes`.
+- `--skip-build` bỏ bước build giao diện web, hợp với dịch vụ chạy không tương tác. Hãy chạy tay một lần như bước 4 trước khi thêm cờ này.
+- `Restart=always` để dịch vụ tự thử lại khi lỗi, ví dụ lúc khởi động mà Tailscale chưa sẵn sàng nên chưa có địa chỉ để gắn vào.
+- Trên máy mình, dịch vụ đọc tên đăng nhập từ `~/.hermes/.env` thông qua `HERMES_HOME`. Nếu dịch vụ của bạn báo không thấy, thêm dòng `EnvironmentFile=%h/.hermes/.env` như tài liệu hướng dẫn.
+
+Bật dịch vụ và cho phép nó chạy cả khi bạn chưa đăng nhập vào mini PC:
+
+```bash
+systemctl --user daemon-reload
+systemctl --user enable --now hermes-serve
+loginctl enable-linger "$USER"
+journalctl --user -u hermes-serve -n 30
+```
+
+Lệnh `enable-linger` quan trọng: thiếu nó, dịch vụ cấp người dùng chỉ chạy khi có phiên đăng nhập. Máy mình bật linger và cả hai dịch vụ `hermes-serve` và `hermes-gateway` đều ở trạng thái enabled.
+
+Chú ý: `hermes serve` là thứ app Desktop kết nối vào. **Gateway nhắn tin** (Telegram, Discord và các kênh khác) là một tiến trình riêng. Nếu bạn dùng cả hai, hãy chạy hai dịch vụ riêng như mình.
+
+### Bước 6: Nối từ app Desktop trên laptop
+
+Trên laptop đã cài Hermes Desktop (xem [cài trên Mac](/bat-dau/cai-hermes-desktop-mac) hoặc [cài trên Windows](/bat-dau/cai-hermes-desktop-windows)) và đã bật Tailscale:
+
+1. Mở **Settings → Gateways**, chọn **Remote gateway**.
+2. Ở **Remote URL**, nhập `http://<ip-tailscale>:9119`. Dùng đúng địa chỉ mà backend đã gắn vào; tài liệu nói tên miền nhập vào phải khớp với địa chỉ backend lắng nghe.
+3. Bấm **Sign in**, nhập tên đăng nhập và mật khẩu ở bước 3.
+4. Bấm **Save and reconnect**.
+
+Nếu muốn lưu thành một mục có tên, vào phần **Registered gateways**, chọn **Add connection**, đặt tên (mình đặt tên theo tên máy) rồi bấm **Test**. Nút Test kiểm cả kết nối HTTP lẫn WebSocket nên đáng tin hơn việc chỉ ping được máy. Khi hiện **Reachable** là chat sẽ chạy.
+
+### Bước 7: Kiểm xem đang chạy ở máy nào
+
+Mở một phiên mới và nhờ Hermes chạy lệnh `hostname`. Kết quả phải là tên **mini PC**, không phải tên laptop. Nếu hiện tên laptop nghĩa là app đang dùng backend cục bộ; quay lại **Settings → Gateways** kiểm gateway đang chọn.
+
+## Những chỗ mình thấy dễ vấp
+
+- **Mini PC tắt hoặc mất mạng thì Desktop không nối được.** App Desktop không tự bật backend hộ bạn với kiểu Remote gateway. Máy laptop vẫn giữ một gateway "This device" riêng nên bạn vẫn có thể chuyển về dùng Hermes cục bộ khi cần.
+- **Chỉ thấy "ready" chưa chắc chat được.** Kiểm tra trạng thái chỉ chạm một đường công khai, còn chat dùng WebSocket riêng. Hãy tin nút Test, hoặc gửi thử một tin nhắn thật.
+- **File phải ở đúng máy.** Tài liệu để trên laptop thì Hermes trên mini PC không thấy. Mình chuyển file sang mini PC (git, scp hoặc công cụ đồng bộ bạn quen) trước khi nhờ Hermes làm việc với nó.
+- **Cập nhật cả hai phía.** Tài liệu có nút **Update all instances** để cập nhật backend từ xa, và app cũng cảnh báo nếu bản Desktop cũ hơn backend. Cập nhật backend xong thì kiểm lại bản app.
+- **Bật điện lại sau khi mất điện.** Nhiều mini PC có tùy chọn trong BIOS để tự bật khi có điện trở lại, và nên tắt chế độ ngủ của hệ điều hành. Tên mục tùy từng hãng, bạn tự kiểm trên máy của mình.
+
+## Lưu ý an toàn
+
+Backend này điều khiển được agent có quyền chạy lệnh trên mini PC và đọc được `.env` chứa khóa của bạn. Vì vậy:
+
+- Không đưa nó ra internet chỉ bằng tên đăng nhập và mật khẩu. Tài liệu Hermes nói rõ cách này chỉ dành cho mạng tin cậy hoặc VPN; muốn truy cập qua internet công khai thì dùng đăng nhập OAuth qua Nous Portal.
+- Dùng mật khẩu dài và riêng cho backend này.
+- Tài khoản chạy dịch vụ nên chỉ có quyền cần thiết. Quy tắc trong SOUL.md không phải hàng rào kỹ thuật; quyền thật là quyền của tài khoản đó.
+- Xem thêm [bài bảo mật](/huong-dan/bao-mat-hermes-thong-tin-ca-nhan) về việc dữ liệu nào rời máy khi dùng model cloud.
+
+## Các lựa chọn khác
+
+Cách của mình không phải cách duy nhất. Dưới đây là những đường mà tài liệu Hermes hiện mô tả, kèm lúc nên cân nhắc.
+
+| Lựa chọn                                           | Hợp khi                                                            | Cần lưu ý                                                                                                                                  |
+| -------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Chạy ngay trên laptop (mặc định của Desktop)       | Mới bắt đầu, chưa cần chạy nền                                     | Laptop ngủ hoặc tắt thì lịch tự động và bot nhắn tin dừng theo                                                                             |
+| Mini PC hoặc máy ở nhà + Tailscale (cách của mình) | Có sẵn máy, muốn chạy liên tục mà không thuê dịch vụ               | Tự lo điện, mạng, cập nhật; file phải nằm trên mini PC                                                                                     |
+| Kết nối SSH trong Desktop                          | Đã SSH vào được một máy khác và muốn bớt việc cấu hình             | App tự mở đường hầm và bật backend khi cần, nên không phải giữ `hermes serve` chạy sẵn. Hermes phải cài sẵn trên máy kia, cần khóa SSH     |
+| VPS thuê ngoài + đăng nhập OAuth                   | Cần truy cập từ nhiều nơi, không muốn phụ thuộc mạng nhà           | Máy truy cập được từ internet, nên cần đăng nhập OAuth (`hermes dashboard register`) và tự theo dõi bảo mật; chi phí theo nhà cung cấp VPS |
+| Hermes Cloud                                       | Không muốn tự vận hành máy                                         | Đăng nhập tài khoản Hermes Cloud rồi chọn agent trong app, không phải nhập URL. Điều kiện và gói xem ở trang chính thức                    |
+| Chỉ dùng kênh nhắn tin (Telegram, Discord...)      | Chỉ cần ra lệnh nhanh từ điện thoại                                | Cần gateway nhắn tin chạy ở đâu đó; không có giao diện đầy đủ như Desktop                                                                  |
+| Plugin cộng đồng Hermes SSH                        | Muốn agent ở laptop làm việc với terminal và file của một máy khác | Là plugin của cộng đồng, không phải tính năng lõi. Agent vẫn ở laptop, khác với cách trên. Đọc mã trước khi cài                            |
+
+Một điểm hay: app Desktop cho đăng ký **nhiều gateway** cùng lúc, mỗi gateway đặt một tên. Bạn có thể giữ gateway cục bộ trên laptop để thử nghiệm và thêm mini PC làm nơi chạy chính, rồi chuyển qua lại ngay ở thanh bên **Sessions**.
+
+## Nên chọn cách nào
+
+- Mới dùng Hermes: ở lại với bản chạy trên laptop. Chưa có nhu cầu chạy nền thì chưa cần máy thứ hai.
+- Có sẵn một máy luôn bật ở nhà: thử cách trong bài, nhớ dùng Tailscale hoặc VPN, đừng mở cổng ra internet.
+- Đã quen SSH tới một máy: thử kết nối SSH trong Desktop trước, ít bước hơn.
+- Không muốn bảo trì máy nào: xem Hermes Cloud, hoặc VPS nếu bạn thoải mái với việc tự quản lý.
+
+Mỗi bước nên thử một việc nhỏ rồi mới chuyển bước sau: nối được, `hostname` đúng, lịch thử chạy đúng giờ. Đừng dựng cả bộ rồi mới tìm xem hỏng ở đâu.
+
+Bạn đang dùng cách nào, hoặc vướng ở bước nào? Hỏi ở [Hỏi & Đáp](/hoi-dap). Khi đăng nhớ che địa chỉ, tên đăng nhập, mật khẩu và token; chỉ cần nêu hệ điều hành, phiên bản Hermes và thông báo lỗi.
+
+## Tài liệu tham khảo
+
+Các tài liệu dưới đây được mở lại ngày **11/10/2026**. Giao diện và lệnh có thể thay đổi, nên mở lại hướng dẫn chính thức khi bạn làm.
+
+1. [Hermes Desktop: Connecting to a remote backend](https://hermes-agent.nousresearch.com/docs/user-guide/desktop#connecting-to-a-remote-backend): mô hình `hermes serve`, đăng nhập, cách gắn vào địa chỉ Tailscale và khắc phục sự cố.
+2. [Connecting Desktop to Many Hermes Instances](https://hermes-agent.nousresearch.com/docs/user-guide/multi-connection-desktop): các loại kết nối (Remote gateway, SSH, Hermes Cloud), nút Test, cập nhật nhiều máy.
+3. [Hermes Web Dashboard](https://hermes-agent.nousresearch.com/docs/user-guide/features/web-dashboard): cấu hình đăng nhập tên/mật khẩu và OAuth cho backend từ xa.
+4. [Tailscale: How it works](https://tailscale.com/blog/how-tailscale-works) và [Tailscale encryption](https://tailscale.com/docs/concepts/tailscale-encryption): mạng riêng và mã hóa đầu cuối giữa các thiết bị.
+5. [Hermes SSH (plugin cộng đồng)](https://hermes-agent.nousresearch.com/docs/plugins/hermes-ssh): lưu máy SSH và nhờ Hermes làm việc trên máy đó.
+
+- Đức Trung · congdongai.org
