@@ -207,14 +207,23 @@ export default async function CauChuyenDetailPage({ params }: Props) {
         {c.body.map(caseBlock)}
       </div>
 
-      {c.slug === "hermes-nghien-cuu-token-bo-nao-thu-hai" && (
+      {c.related && c.related.length > 0 && (
         <div className="card mt-6 p-4">
-          <Link
-            href="/huong-dan/nghien-cuu-token-voi-hermes"
-            className="font-medium text-green underline decoration-muted underline-offset-2"
-          >
-            Thử nghiên cứu một token theo hướng dẫn có mẫu giao việc →
-          </Link>
+          <p className="mb-2 text-[13px] font-semibold text-ink-soft">Đọc tiếp</p>
+          <ul className="space-y-1">
+            {c.related.map((r) => {
+              return (
+                <li key={r.href}>
+                  <Link
+                    href={r.href}
+                    className="font-medium text-green underline decoration-muted underline-offset-2"
+                  >
+                    {r.label} →
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       )}
 

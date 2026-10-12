@@ -61,13 +61,13 @@ export default async function ArticlePage({ params }: Props) {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Trang chủ", path: "/" },
-          { name: "Blog", path: "/blog" },
+          { name: "Bài viết", path: "/bai-viet" },
           { name: post.title, path: `/blog/${slug}` },
         ])}
       />
 
       <Breadcrumb
-        items={[{ name: "Blog", href: "/blog" }, { name: post.title }]}
+        items={[{ name: "Bài viết", href: "/bai-viet" }, { name: post.title }]}
       />
 
       <div className="eyebrow">Bài biên tập có nguồn</div>

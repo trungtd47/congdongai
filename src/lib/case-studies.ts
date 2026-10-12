@@ -23,6 +23,8 @@ export interface CaseStudy {
   image?: string;
   mobileImage?: string;
   topic?: CaseTopic;
+  // Bài nên đọc tiếp (hướng dẫn hoặc câu chuyện cùng chủ đề).
+  related?: { href: string; label: string }[];
   tags?: string[];
   datePublished?: string;
   dateModified?: string;
@@ -35,6 +37,9 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "hermes-nghien-cuu-token-bo-nao-thu-hai",
+    related: [
+      { href: "/huong-dan/nghien-cuu-token-voi-hermes", label: "Thử nghiên cứu một token theo hướng dẫn có mẫu giao việc" },
+    ],
     authorName: "Đức Trung",
     icon: "📊",
     type: "long",
@@ -97,6 +102,10 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "kinh-nghiem-ban-tin-6h30",
+    related: [
+      { href: "/huong-dan/tom-tat-tin-tuc-moi-sang", label: "Tự làm một bản tin buổi sáng, từng bước" },
+      { href: "/cau-chuyen/kenmazaika", label: "Một chiếc máy cũ chạy 24/7 gửi email mỗi sáng" },
+    ],
     authorName: "Đức Trung",
     dateModified: "2026-10-03",
     icon: "🌅",
@@ -128,6 +137,10 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "kinh-nghiem-bo-nao-thu-hai",
+    related: [
+      { href: "/huong-dan/bo-nao-thu-hai-obsidian", label: "Dựng kho ghi chú Obsidian theo từng bước" },
+      { href: "/cau-chuyen/jonathan-rivera-obsidian-memory", label: "Một kho Obsidian ba tầng của người dùng khác" },
+    ],
     authorName: "Đức Trung",
     dateModified: "2026-10-03",
     icon: "🧠",
@@ -265,33 +278,6 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: "pacmanpill",
-    dateModified: "2026-10-03",
-    type: "long",
-    icon: "💼",
-    title: "Bán dịch vụ cài Hermes cho doanh nghiệp nhỏ: phần khó là bảo trì",
-    teaser:
-      "Một freelancer ở Pháp thu phí lắp đặt rồi tính phí duy trì, còn khách trả trực tiếp tiền model. Giá trị anh bán là quy trình chạy được và có người chịu trách nhiệm khi nó trục trặc.",
-    sourceLabel: "Reddit - u/pacmanpill",
-    sourceUrl: "https://www.reddit.com/r/hermesagent/comments/1u4l0dj/",
-    body: [
-      {
-        p: "Một người dùng Reddit ở Pháp thử làm dịch vụ lắp Hermes cho các doanh nghiệp nhỏ. Anh công bố một tháng thu về khoảng 2.700 euro; đó là số anh tự báo, không phải mức thu nhập mẫu ai cũng đạt được. Điều thực tế hơn con số ấy là cách anh chia trách nhiệm giữa mình và khách hàng.",
-      },
-      { h: "Không bán một bản cài đặt rồi biến mất" },
-      {
-        p: "Anh thu phí ban đầu để cài và cấu hình, sau đó tính khoảng 200 euro mỗi tháng cho hosting, giám sát, cập nhật, chỉnh nhẹ quy trình và hỗ trợ. Khách tự trả tiền sử dụng model/API vào tài khoản của họ, nên anh không phải đoán trước hay gánh hộ lượng token phát sinh. Đổi lại, khoản thu hằng tháng gắn với công việc bảo trì thật, không phải thu nhập thụ động.",
-      },
-      {
-        p: "Để một công ty dùng được, anh không chỉ cài chương trình: còn nối vào Telegram hoặc Slack, dựng tự động hóa phù hợp, viết prompt và skill theo việc nhân viên đang làm. Với người không rành kỹ thuật, câu hỏi quyết định là “sáng mai có dùng được không, ai sửa khi hỏng?”, không phải agent có bao nhiêu tính năng.",
-      },
-      { h: "Một cách đọc thận trọng" },
-      {
-        p: "Nếu muốn thử mô hình này, hãy chọn một quy trình nhỏ mà khách đang phải lặp lại, xác định ai duyệt đầu ra và ai chịu trách nhiệm khi hệ thống lỗi, rồi mới bàn phí bảo trì. Phần bình luận dưới bài cho thấy nhiều freelancer quan tâm hợp tác, nhưng chưa phải bằng chứng rằng nhu cầu thị trường ở nơi khác sẽ giống ở Pháp.",
-      },
-    ],
-  },
-  {
     slug: "godzillaton",
     dateModified: "2026-10-03",
     icon: "🏗️",
@@ -390,6 +376,10 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "kenmazaika",
+    related: [
+      { href: "/cau-chuyen/kinh-nghiem-ban-tin-6h30", label: "Bản tin thị trường lúc 6h30 của Đức Trung" },
+      { href: "/huong-dan/tom-tat-tin-tuc-moi-sang", label: "Tự làm một bản tin buổi sáng, từng bước" },
+    ],
     dateModified: "2026-10-03",
     icon: "📬",
     type: "long",
@@ -618,6 +608,10 @@ export const caseStudies: CaseStudy[] = [
 
   {
     slug: "jonathan-rivera-obsidian-memory",
+    related: [
+      { href: "/huong-dan/bo-nao-thu-hai-obsidian", label: "Dựng kho ghi chú Obsidian theo từng bước" },
+      { href: "/cau-chuyen/kinh-nghiem-bo-nao-thu-hai", label: "Cách Đức Trung ghi ý tưởng vào Obsidian" },
+    ],
     dateModified: "2026-10-03",
     icon: "🗂️",
     type: "long",

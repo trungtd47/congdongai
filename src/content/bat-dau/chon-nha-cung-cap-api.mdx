@@ -2,7 +2,7 @@
 title: "Chọn model cho Hermes: OpenRouter, tài khoản Codex hay Nous Portal?"
 description: "Dùng Hermes với OpenRouter theo token, kết nối thêm tài khoản ChatGPT/Codex qua OAuth, hoặc chọn Nous Portal. Cách dùng hai nguồn linh hoạt mà vẫn theo dõi chi phí."
 datePublished: "2026-09-22"
-dateModified: "2026-09-25"
+dateModified: "2026-10-12"
 authorName: "Cộng Đồng AI"
 tags: ["model", "openrouter", "codex", "chi phí"]
 ---
@@ -40,6 +40,8 @@ Sau khi kết nối nguồn đầu tiên, nhờ Hermes tóm tắt một tài li�
 ## Bước 3: Nếu cần linh hoạt hơn, thêm OpenRouter bên cạnh Codex
 
 Khi đã quen một nguồn, bạn có thể kết nối nguồn còn lại: OpenRouter để thử nhiều model và trả theo mức dùng; Codex để dùng các model Codex qua tài khoản ChatGPT nếu tài khoản được phép. Mình dùng model vừa đủ trên OpenRouter cho việc thường, và **chủ động chuyển** sang Codex khi làm việc code hoặc việc hợp với model đó. Cách này có thể tận dụng gói đã trả tiền, nhưng **không đảm bảo rẻ hơn**: hãy xem lượng dùng và kết quả thực tế của chính bạn.
+
+Nếu bạn còn có gói Claude, lưu ý theo tài liệu Hermes: đường đăng nhập Anthropic (OAuth) trực tiếp chỉ dùng được với Claude Max kèm extra usage, gói Pro không dùng được đường đó. Muốn xem một cách phối hợp Claude Pro, ChatGPT Pro và OpenRouter trong thực tế, đọc [bài kinh nghiệm này](/blog/hermes-claude-pro-chatgpt-openrouter-tiet-kiem).
 
 Trong phiên chat Hermes, `/model` chuyển giữa những nguồn **đã cấu hình**. Nếu chưa thấy nguồn muốn dùng, `hermes model` trong terminal là trình thiết lập provider và đăng nhập. Sau khi thêm nguồn mới, thử lại một yêu cầu ngắn để chắc mình đang dùng đúng model. Bạn không cần cài Codex CLI chỉ để thêm provider Codex cho Hermes.
 

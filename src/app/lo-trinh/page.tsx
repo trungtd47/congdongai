@@ -133,10 +133,10 @@ export default function LoTrinhPage() {
               để tự kiểm chứng ở cuối từng bài.
             </p>
           </Link>
-          <Link href="/blog" className="card card-hover p-6">
+          <Link href="/bai-viet" className="card card-hover p-6">
             <div className="mb-2 text-2xl">📝</div>
             <h2 className="mb-1 text-[17px] font-bold">
-              Blog kinh nghiệm &amp; tâm sự
+              Bài viết kinh nghiệm &amp; hướng dẫn
             </h2>
             <p className="text-sm text-ink-soft">
               Hành trình thật, bài học đúc kết sau thời gian dùng - không chém

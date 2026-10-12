@@ -1488,16 +1488,6 @@ export const demoCommentsBySlug: Record<string, DemoComment[]> = {
       isAI: false,
     },
   ],
-  pacmanpill: [
-    {
-      id: "c1",
-      authorUid: "u-huong",
-      authorName: "Phạm Ngọc Hương",
-      body: 'Ý "giá trị nằm ở việc chỉnh agent cho khớp quy trình thật của từng công ty" đúng với cả thị trường Việt Nam. Ai rành nghiệp vụ ngành nào thì làm dịch vụ cài agent cho ngành đó.',
-      createdAt: "2026-09-22",
-      isAI: false,
-    },
-  ],
   godzillaton: [
     {
       id: "c1",
@@ -1755,13 +1745,6 @@ export const worldCases: WorldCase[] = [
       'Dev.to - "I Automated My One-Person Business With 7 AI Agents"',
     sourceUrl:
       "https://dev.to/ulnit/i-automated-my-one-person-business-with-7-ai-agents-heres-the-exact-setup-including-the-parts-1gai",
-  },
-  {
-    icon: "💼",
-    title: "Thu nhập €2.700/tháng nhờ cài Hermes cho doanh nghiệp nhỏ",
-    desc: 'Một người ở Pháp thử dịch vụ đơn giản: cài Hermes cho các doanh nghiệp nhỏ và chỉnh cho khớp đúng quy trình làm việc của từng công ty. Tháng gần nhất thu về khoảng €2.700. Điểm mấu chốt không phải "cài một con AI" - mà là điều chỉnh nó theo công việc thật của từng nơi.',
-    sourceLabel: "Reddit - u/pacmanpill",
-    sourceUrl: "https://hermes-agent.nousresearch.com/docs/user-stories",
   },
   {
     icon: "🏗️",
