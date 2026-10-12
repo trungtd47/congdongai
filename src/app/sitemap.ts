@@ -15,7 +15,6 @@ export const dynamic = "force-static";
 const staticRoutes = [
   "",
   "bat-dau",
-  "huong-dan",
   "thu-vien",
   "hoi-dap",
   "bai-viet",

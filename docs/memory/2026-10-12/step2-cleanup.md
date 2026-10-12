@@ -17,3 +17,7 @@ Audit 28 MDX + 17 câu chuyện: không bài nào kém chất lượng đến m�
 
 ## Lesson
 Khi gom nhiều kho bài vào một trang tổng, trang danh sách cũ trở thành bản trùng; gỡ trang danh sách nhưng giữ URL bài để không mất bài đã index.
+
+## Bổ sung: gỡ /huong-dan
+- Gỡ trang danh sách `src/app/huong-dan/page.tsx` (lặp mục "Hướng dẫn việc cụ thể" của /bai-viet). `/huong-dan/` 404, không redirect; mọi `/huong-dan/<slug>` giữ nguyên.
+- Breadcrumb/JSON-LD và nút cuối bài hướng dẫn trỏ /bai-viet; sitemap, /lo-trinh, bài 5-viec, file tải checklist-cai-dat.md cập nhật link. Xóa dòng "Xem theo từng kho" ở /bai-viet. Build 142 trang, không link gãy.

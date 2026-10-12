@@ -66,14 +66,14 @@ export default async function HuongDanArticlePage({ params }: Props) {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Trang chủ", path: "/" },
-          { name: "Hướng dẫn", path: "/huong-dan" },
+          { name: "Bài viết", path: "/bai-viet" },
           { name: post.title, path: `/huong-dan/${slug}` },
         ])}
       />
 
       <Breadcrumb
         items={[
-          { name: "Hướng dẫn", href: "/huong-dan" },
+          { name: "Bài viết", href: "/bai-viet" },
           { name: post.title },
         ]}
       />
@@ -140,8 +140,8 @@ export default async function HuongDanArticlePage({ params }: Props) {
           sách.
         </p>
         <div className="prev-next">
-          <Link href="/huong-dan" className="btn btn-primary">
-            Về danh sách Hướng dẫn →
+          <Link href="/bai-viet#huong-dan" className="btn btn-primary">
+            Về danh sách bài viết →
           </Link>
           <Link href="/hoi-dap" className="btn btn-ghost">
             Bí chỗ nào? Hỏi ở Hỏi & Đáp

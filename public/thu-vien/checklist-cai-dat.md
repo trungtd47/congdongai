@@ -42,7 +42,7 @@ Không đọc file khác, không tự gửi hay đăng. Không mở được tra
 ## Đọc tiếp
 
 - Chọn model: https://congdongai.org/bat-dau/chon-nha-cung-cap-api/
-- Giao việc có kiểm: https://congdongai.org/huong-dan/
+- Giao việc có kiểm: https://congdongai.org/bai-viet/
 - Hỏi khi kẹt: https://congdongai.org/hoi-dap/ (che thông tin nhạy cảm)
 
 Nguồn thao tác model: https://hermes-agent.nousresearch.com/docs/user-guide/configuring-models và https://hermes-agent.nousresearch.com/docs/integrations/providers/

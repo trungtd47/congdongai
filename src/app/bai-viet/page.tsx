@@ -216,17 +216,6 @@ export default function BaiVietPage() {
           </span>
         </Link>
       </section>
-
-      <p className="border-t border-[var(--line)] pt-5 text-[13px] text-ink-soft">
-        Xem theo từng kho:{" "}
-        <Link href="/huong-dan" className="underline underline-offset-2">
-          Hướng dẫn
-        </Link>
-        {" · "}
-        <Link href="/cau-chuyen" className="underline underline-offset-2">
-          Câu chuyện
-        </Link>
-      </p>
     </div>
   );
 }

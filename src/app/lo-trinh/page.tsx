@@ -43,8 +43,8 @@ export default function LoTrinhPage() {
           hiểu Hermes Agent là gì
         </Link>{" "}
         và cài bản Desktop. Sau đó thử một việc thật trong mục{" "}
-        <Link href="/huong-dan" className="text-teal-dark underline">
-          Hướng dẫn
+        <Link href="/bai-viet#huong-dan" className="text-teal-dark underline">
+          Bài viết
         </Link>
         ; khi đã quen, đọc{" "}
         <Link href="/cau-chuyen" className="text-teal-dark underline">
