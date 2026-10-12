@@ -3,6 +3,11 @@
 Repo hiện chưa có `AGENTS.md`; dùng skill `congdongai-site` và các entry ở đây. Nội dung gốc/nguồn sự thật nằm trong `src/content/` và các route `src/app/`.
 
 ## Gần nhất
+- [2026-10-12: Footer liên kết chéo TheMoneyBrew.org](2026-10-12/footer-themoneybrew-link.md)
+- [2026-10-09: Bỏ lời biên tập nội bộ khỏi bài cá nhân, e8b3cb1 live](2026-10-09/public-voice-correction.md)
+- [2026-10-09: Bài cá nhân về Claude Pro, ChatGPT Pro và OpenRouter](2026-10-09/provider-cost-article.md)
+- [2026-10-07: Hero minh họa đã live 63b4fc8](2026-10-07/hero-illustration.md)
+- [2026-10-07: Editorial B đã live e93c43c - 109 URLs và mobile verified](2026-10-07/editorial-b-release.md)
 - [2026-10-04: SEO Hermes AI Agent, sitemap/metadata và giới hạn GSC](2026-10-04/seo-hermes-agent.md)
 - [2026-10-03: Biên tập chất lượng, bỏ 2 nội dung và sửa 13 bài](2026-10-03/editorial-quality-cleanup.md)
 - [2026-10-03: Audit chất lượng nội dung và Friday - chưa operational](2026-10-03/content-friday-quality-audit.md)
