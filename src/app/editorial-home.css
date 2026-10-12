@@ -126,3 +126,16 @@
 .ed-shelf{grid-template-columns:1fr}.ed-faq-card h3{font-size:23px}.ed-note-art>div{font-size:14px;padding:14px;width:41%}.ed-letter summary{flex-wrap:wrap;gap:4px}
 }
 @media(max-width:370px){.ed-wrap{padding:0 16px}.ed-hero h1{font-size:40px}.ed-hero-actions .ed-btn{width:100%}.ed-hero-actions{gap:8px}.ed-cta-actions{flex-direction:column;align-items:stretch}}
+
+.ed-latest{padding:12px 0 8px}
+.ed-picks{padding:36px 0 12px}
+.ed-tile-grid{display:grid;column-gap:36px}
+.ed-tile-grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ed-tile-grid-3{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:30px}
+.ed-tile{min-width:0;padding:4px 0 22px;border-bottom:1px solid var(--color-line);margin-bottom:22px}
+.ed-tile-meta{display:block;font-size:10px;color:var(--color-green);letter-spacing:.3px}
+.ed-tile h3{font-size:23px;font-weight:400;line-height:1.3;margin:9px 0 8px}
+.ed-tile h3 a:hover{color:var(--color-green)}
+.ed-tile p{font-size:12px;color:var(--color-muted);line-height:1.8;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+@media(max-width:900px){.ed-tile-grid-3{grid-template-columns:1fr}}
+@media(max-width:760px){.ed-tile-grid-2{grid-template-columns:1fr}.ed-tile h3{font-size:22px}}

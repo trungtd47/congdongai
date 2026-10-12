@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 const secondaryLinks = [
-  { href: "/blog", label: "Blog" },
+  { href: "/bai-viet", label: "Bài viết" },
+  { href: "/cong-vu", label: "Công vụ" },
   { href: "/lo-trinh", label: "Lộ trình" },
   { href: "/bat-dau#tai-hermes", label: "Tải Hermes" },
-  { href: "/cau-chuyen", label: "Kinh nghiệm" },
   { href: "/hoi-dap", label: "Hỏi & Đáp" },
   { href: "/thu-vien", label: "Thư viện" },
 ];

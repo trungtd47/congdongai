@@ -18,6 +18,7 @@ const staticRoutes = [
   "huong-dan",
   "thu-vien",
   "hoi-dap",
+  "bai-viet",
   "blog",
   "cau-chuyen",
   "cong-vu",

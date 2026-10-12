@@ -9,14 +9,14 @@ import { isDemoMode } from "@/lib/firebase";
 // Trang chính trên header, ít chật, kiểu B.
 const primaryLinks = [
   { href: "/bat-dau", label: "Bắt đầu" },
-  { href: "/cau-chuyen", label: "Kinh nghiệm" },
+  { href: "/bai-viet", label: "Bài viết" },
   { href: "/hoi-dap", label: "Hỏi & Đáp" },
   { href: "/thu-vien", label: "Thư viện" },
 ];
 
 // Các tuyến còn lại giữ qua menu mobile và footer.
 const secondaryLinks = [
-  { href: "/blog", label: "Blog" },
+  { href: "/cong-vu", label: "Công vụ" },
   { href: "/lo-trinh", label: "Lộ trình" },
   { href: "/bat-dau#tai-hermes", label: "Tải Hermes" },
 ];
