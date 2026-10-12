@@ -15,3 +15,8 @@ Thêm `src/content/hermes-mini-pc-desktop-remote-tu-laptop.mdx` (byline Đức T
 
 ## Lesson
 Khi mô tả setup cá nhân của sếp, đọc cấu hình thật (systemctl --user cat, /api/status) rồi sanitize, thay vì viết theo docs chung.
+
+## Rollout cfcb04d thất bại (cloud build)
+- App Hosting build failed ở `next build` trên cloud (Node 24.19, Next 15.5.25): `TypeError: Cannot read properties of null (reading '1')` trong `next/font/google/loader.js`, dòng `/\.(woff|woff2|eot|ttf|otf)$/.exec(fontUrl)[1]`. Nghĩa là CSS Google Fonts trả về URL font không có đuôi file quen thuộc lúc build; build sạch trên máy (Node 22 và 26) vẫn xanh nên không phải lỗi bài. Rollout trước (e8b3cb1) vẫn thành công với cùng code font.
+- Commit rỗng không kích rollout mới; cần commit có thay đổi file hoặc tạo rollout tay trong Console.
+- Hướng bền vững (chưa làm, cần sếp duyệt): self-host font hoặc dùng next/font/local để build không phụ thuộc Google Fonts lúc build.
