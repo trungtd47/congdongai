@@ -235,10 +235,6 @@ footer.site-footer small { font-size: 11px; color: var(--color-muted); }
 footer.site-footer a { color: var(--color-green); font-weight: 600; }
 footer.site-footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 10px 18px; font-size: 12px; margin-top: 10px; }
-.footer-sister { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--color-line); max-width: 300px; }
-.footer-sister small { display: block; }
-.footer-sister-link { display: inline-block; margin-top: 4px; font-family: var(--font-serif); font-size: 17px; }
-.footer-sister p { max-width: none; }
 
 /* ============================================================
    READER — bài chi tiết (4 template)

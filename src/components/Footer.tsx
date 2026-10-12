@@ -39,25 +39,15 @@ export function Footer() {
           </div>
         </div>
         <div>
-          <small>Admin congdongai.org</small>
+          <small>
+            Vận hành bởi{" "}
+            <a href={siteConfig.madeBy.url} target="_blank" rel="noopener">
+              {siteConfig.madeBy.name}
+            </a>
+          </small>
           <div className="footer-links">
             <Link href="/quy-tac-cong-dong">Quy tắc cộng đồng</Link>
             <Link href="/quy-tac-cong-dong">Liên hệ</Link>
-          </div>
-          <div className="footer-sister">
-            <small>Website cùng Admin</small>
-            <a
-              href={siteConfig.madeBy.url}
-              target="_blank"
-              rel="noopener"
-              className="footer-sister-link"
-            >
-              TheMoneyBrew.org
-            </a>
-            <p>
-              Góc nhìn cá nhân về tiền và đầu tư, cùng công cụ để nhìn lại danh
-              mục và kế hoạch tài chính.
-            </p>
           </div>
         </div>
       </div>

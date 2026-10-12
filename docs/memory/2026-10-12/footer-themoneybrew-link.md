@@ -14,3 +14,6 @@ Thêm khối "Website cùng Admin" + link TheMoneyBrew.org (kèm một câu mô 
 
 ## Lesson
 Headless Chrome trên máy này treo khi chụp (Runtime.evaluate không trả); kiểm footer bằng HTML build + CSS, không có screenshot.
+
+## Cập nhật cùng ngày
+Sếp không muốn khối "Website cùng Admin". Đã bỏ khối đó và CSS `.footer-sister`; thay chữ "Admin congdongai.org" bằng "Vận hành bởi TheMoneyBrew" (TheMoneyBrew là link tới themoneybrew.org). Quy tắc cũ "không dùng vận hành bởi" được sếp ghi đè riêng cho dấu footer này.
