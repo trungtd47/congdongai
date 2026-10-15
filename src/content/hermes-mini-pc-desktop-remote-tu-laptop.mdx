@@ -2,7 +2,7 @@
 title: "Mình chạy Hermes trên mini PC và dùng Desktop từ laptop như thế nào"
 description: "Mình để Hermes chạy trên một mini PC, nối bằng Tailscale và dùng app Desktop trên laptop như cửa sổ điều khiển. Có các bước dựng, lưu ý bảo mật và những lựa chọn khác như SSH, VPS, Hermes Cloud."
 datePublished: "2026-10-11"
-dateModified: "2026-10-11"
+dateModified: "2026-10-15"
 authorName: "Đức Trung"
 tags: ["kinh nghiệm", "mini PC", "Tailscale", "Hermes Desktop", "tự host"]
 ---
@@ -46,7 +46,7 @@ Trước đây mình cũng từng chạy Hermes trên Windows. Với mình, ch�
 
 ## Cách mình dựng, từng bước
 
-Các bước dưới đây theo tài liệu chính thức của Hermes Desktop, cộng với cách mình đặt dịch vụ chạy nền. Bản mình dùng khi viết là Hermes 0.21.6; nếu app của bạn khác phiên bản, tên mục trong Settings có thể hơi khác.
+Các bước dưới đây theo tài liệu chính thức của Hermes Desktop, cộng với cách mình đặt dịch vụ chạy nền. Bản mình dùng khi viết là Hermes 0.21.6; nếu app của bạn khác phiên bản, tên mục trong Settings có thể hơi khác. Sau đó mini PC của mình lên Hermes 0.22.0: hai dịch vụ ở bước 5 vẫn chạy và lệnh kiểm ở bước 4 vẫn trả `auth_required` là `true`. Phần cuối mục "Những chỗ mình thấy dễ vấp" ghi những thay đổi của 0.22.0 đáng biết nếu bạn chạy backend lâu dài.
 
 ### Bước 1: Cài và thử Hermes ngay trên mini PC
 
@@ -160,6 +160,15 @@ Mở một phiên mới và nhờ Hermes chạy lệnh `hostname`. Kết quả p
 - **Cập nhật cả hai phía.** Tài liệu có nút **Update all instances** để cập nhật backend từ xa, và app cũng cảnh báo nếu bản Desktop cũ hơn backend. Cập nhật backend xong thì kiểm lại bản app.
 - **Bật điện lại sau khi mất điện.** Nhiều mini PC có tùy chọn trong BIOS để tự bật khi có điện trở lại, và nên tắt chế độ ngủ của hệ điều hành. Tên mục tùy từng hãng, bạn tự kiểm trên máy của mình.
 
+### Nếu backend của bạn chạy Hermes 0.22.0 trở lên
+
+Mấy điểm dưới đây theo tài liệu và ghi chú phát hành 0.22.0 (13/10/2026), ảnh hưởng tới người để backend chạy lâu:
+
+- **Phiên cũ có thể tự bị xóa.** Tài liệu 0.22 ghi `sessions.auto_prune` mặc định bật: phiên đã kết thúc và không hoạt động quá 90 ngày sẽ bị xóa khi Hermes khởi động, phiên đang mở thì không bị đụng tới. Bạn cần giữ lâu hơn thì chỉnh `retention_days`, hoặc đặt `auto_prune: false` trong mục `sessions` của `config.yaml`. Kiểm lại trước khi để Hermes chạy hàng tháng.
+- **Chat không còn tự reset theo giờ nhàn rỗi hay theo ngày.** Cấu hình `session_reset` kiểu cũ bị bỏ qua; muốn bắt đầu phiên mới thì gõ `/new` hoặc `/reset`.
+- **Một gateway nhắn tin chung cho mọi profile.** Nếu bạn có nhiều profile, Hermes mặc định chạy một gateway phục vụ tất cả, và `hermes update` tự gộp các gateway riêng khi không bị xung đột. `hermes gateway status` cho biết máy bạn đang ở kiểu nào. `hermes serve` cho Desktop vẫn là một tiến trình riêng như trong bài.
+- **Bản cài từ mã nguồn theo kênh stable.** `hermes update` giờ chỉ nhảy từ bản phát hành này sang bản phát hành kế tiếp, không chạy theo từng commit. Muốn theo nhánh `main` thì dùng `hermes update --set-channel main`. Nếu cập nhật backend từ xa, nút **Update all instances** vẫn nằm ở Settings → Gateways.
+
 ## Lưu ý an toàn
 
 Backend này điều khiển được agent có quyền chạy lệnh trên mini PC và đọc được `.env` chứa khóa của bạn. Vì vậy:
@@ -198,12 +207,14 @@ Bạn đang dùng cách nào, hoặc vướng ở bước nào? Hỏi ở [Hỏi
 
 ## Tài liệu tham khảo
 
-Các tài liệu dưới đây được mở lại ngày **11/10/2026**. Giao diện và lệnh có thể thay đổi, nên mở lại hướng dẫn chính thức khi bạn làm.
+Các tài liệu dưới đây được mở lại ngày **15/10/2026**. Giao diện và lệnh có thể thay đổi, nên mở lại hướng dẫn chính thức khi bạn làm.
 
 1. [Hermes Desktop: Connecting to a remote backend](https://hermes-agent.nousresearch.com/docs/user-guide/desktop#connecting-to-a-remote-backend): mô hình `hermes serve`, đăng nhập, cách gắn vào địa chỉ Tailscale và khắc phục sự cố.
 2. [Connecting Desktop to Many Hermes Instances](https://hermes-agent.nousresearch.com/docs/user-guide/multi-connection-desktop): các loại kết nối (Remote gateway, SSH, Hermes Cloud), nút Test, cập nhật nhiều máy.
 3. [Hermes Web Dashboard](https://hermes-agent.nousresearch.com/docs/user-guide/features/web-dashboard): cấu hình đăng nhập tên/mật khẩu và OAuth cho backend từ xa.
 4. [Tailscale: How it works](https://tailscale.com/blog/how-tailscale-works) và [Tailscale encryption](https://tailscale.com/docs/concepts/tailscale-encryption): mạng riêng và mã hóa đầu cuối giữa các thiết bị.
 5. [Hermes SSH (plugin cộng đồng)](https://hermes-agent.nousresearch.com/docs/plugins/hermes-ssh): lưu máy SSH và nhờ Hermes làm việc trên máy đó.
+6. [Hermes: Updating](https://hermes-agent.nousresearch.com/docs/getting-started/updating), [Sessions](https://hermes-agent.nousresearch.com/docs/user-guide/sessions) và [Running Many Gateways at Once](https://hermes-agent.nousresearch.com/docs/user-guide/multi-profile-gateways): kênh stable, tự dọn phiên cũ, một gateway chung cho nhiều profile.
+7. [Ghi chú phát hành Hermes Agent v0.22.0](https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.0).
 
 - Đức Trung · congdongai.org
