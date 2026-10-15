@@ -10,10 +10,10 @@
 - Thêm hai visual PNG desktop/mobile, alt/caption; build 85/85 và kiểm HTTP local.
 
 ## In Progress
-- Nội dung đã sửa và kiểm local; chờ push/readback production. Worker Friday còn nguyên, chưa sửa/bật.
+- Không còn việc biên tập đang dở; commit `f509643` đã live và readback 56 tài nguyên đạt. Worker Friday còn nguyên, chưa sửa/bật.
 
 ## Next Steps
-- Ưu tiên bỏ hứa AI trực 24/7, đồng bộ glossary/checklist, biên tập tutorial mỏng và case tự báo cáo; nối corpus public thực vào model và đóng các blocker quota/citation/pagination.
+- Việc nội dung ưu tiên đã hoàn tất; tiếp theo nếu sếp giao: nối corpus public thực vào model và đóng các blocker quota/citation/pagination, bổ sung tests workflow.
 - Pilot Friday draft-only sau tests và UAT authenticated; không tự bật lịch hoặc auto-publish.
 - Phân loại/visual case cũ theo từng nguồn sau duyệt, giữ thay đổi nhỏ.
 

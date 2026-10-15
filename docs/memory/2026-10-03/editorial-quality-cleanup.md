@@ -12,7 +12,7 @@ Bỏ case `devto-7-agents` (mô hình sản xuất/auto-reply hàng loạt, ngu�
 - Sửa glossary dùng chung, checklist sang package Desktop chính thức, metadata hub và pathSteps; bỏ lời hứa cộng đồng 24/7/đọc toàn bộ/trả lời vài phút. Đồng bộ design ở đúng khối được sửa, KHÔNG sửa thư ngỏ/layout/seeded comments.
 - Subagent chỉ làm wiring ở demo-data và case detail bằng text parent đã viết; parent tự biên tập nội dung. Không sửa workers/auth/rules, không bật lịch Friday.
 - `npm run build` 83/83; kiểm 42 bài/case HTML (26 MDX +16 case), 1 H1/canonical/sitemap/source note và liên kết không tới URL đã xóa. Local HTTP 200 trang giữ; hai URL bỏ 404, không redirect; scoped diff check sạch.
-- Chờ push và readback production; giữ thay đổi local không liên quan. Giá phần cứng/chi phí trong case còn là lời kể lịch sử, không giá sản phẩm hiện hành; không có số đo hiệu quả end-user mới.
+- Đã push `f509643`, remote SHA khớp; sau rollout kiểm 42 bài/case khớp build +10 tài liệu khớp source, homepage/sitemap đúng mới, 2 URL xóa 404 không redirect. Kiểm đầu tiên còn bản cũ, readback sau rollout đạt. Giữ thay đổi local không liên quan. Giá phần cứng/chi phí trong case còn là lời kể lịch sử, không giá sản phẩm hiện hành; không có số đo hiệu quả end-user mới.
 
 ## Lesson
 Không cần viết lại cả site để nâng chất lượng: bỏ bài lệch/trùng, sửa prompt thiếu phép kiểm và nguồn dùng chung, đồng thời phân biệt lời kể tác giả với bảo đảm kỹ thuật.

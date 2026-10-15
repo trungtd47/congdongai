@@ -11,6 +11,9 @@
 - Case khác: nhãn nguồn self-report hay admin, bỏ score-as-proof và không thêm số đo kết quả giả. Không xóa mọi chuyện nguồn ngắn: có workflow cụ thể vẫn đáng giữ.
 - Shared glossary/hub/onboarding/checklist/homepage: cùng nguồn sự thật, không để tooltip/meta hứa hơn body. Thư ngỏ và seeded comments không đổi.
 
+## Production đã xác minh
+Commit `f509643` đã live. GET 56 tài nguyên: 42 bài/case nội dung/metadata khớp build, 10 file tải khớp source, homepage và sitemap đúng mới; 2 URL bỏ 404 không redirect. Không ghi nhận lỗi trong lượt kiểm sau rollout.
+
 ## Xác minh trước deploy
 Build 83/83, 26 MDX +16 case còn lại (42 trang) đủ H1/canonical/sitemap, source note case. Local GET bài giữ 200, URL bỏ 404 không redirect. Không thử mọi workflow Hermes trên tài khoản người mới, không nhận là kiểm toán tất cả hệ thống case.
 
