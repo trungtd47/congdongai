@@ -16,6 +16,7 @@ import {
   breadcrumbJsonLd,
   pageMetadata,
 } from "@/lib/seo";
+import { AuthorAvatar } from "@/components/AuthorAvatar";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -143,9 +144,7 @@ export default async function CauChuyenDetailPage({ params }: Props) {
       <h1>{c.title}</h1>
 
       <div className="byline">
-        <span className="avatar" aria-hidden="true">
-          {(c.authorName ?? "C").charAt(0).toUpperCase()}
-        </span>
+        <AuthorAvatar name={c.authorName ?? "Cộng Đồng AI"} className="avatar" />
         <strong>{c.authorName ?? "Cộng Đồng AI"}</strong>
         <span aria-hidden="true">·</span>
         <span>Chia sẻ từ cách dùng Hermes</span>

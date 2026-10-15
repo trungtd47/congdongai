@@ -3,6 +3,7 @@
 Repo hiện chưa có `AGENTS.md`; dùng skill `congdongai-site` và các entry ở đây. Nội dung gốc/nguồn sự thật nằm trong `src/content/` và các route `src/app/`.
 
 ## Gần nhất
+- [2026-10-15: Avatar ảnh thật cho admin Đức Trung (byline, bình luận, Q&A, Nav)](2026-10-15/admin-avatar.md)
 - [2026-10-15: Báo tương tác (câu hỏi/trả lời/bình luận/thành viên) về Discord #bao-cao-hang-ngay](2026-10-15/community-alerts-discord.md)
 - [2026-10-15: Cập nhật nội dung theo Hermes v0.22.0 (Windows/Mac, local models, /learn, cron)](2026-10-15/hermes-0-22-content-update.md)
 - [2026-10-12: Footer liên kết chéo TheMoneyBrew.org](2026-10-12/footer-themoneybrew-link.md)

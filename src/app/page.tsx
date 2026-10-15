@@ -13,6 +13,7 @@ import { TermTip } from "@/components/TermTip";
 import { HomeQAPanel } from "@/components/HomeQAPanel";
 import { JoinGoogleButton } from "@/components/JoinGoogleButton";
 import "./editorial-home.css";
+import { AuthorAvatar } from "@/components/AuthorAvatar";
 
 export const metadata: Metadata = pageMetadata({
   title: siteConfig.title,
@@ -69,9 +70,7 @@ function ArticleTile({ a }: { a: ArticleItem }) {
       </h3>
       <p>{a.teaser}</p>
       <div className="ed-byline">
-        <span className="ed-avatar" aria-hidden="true">
-          {a.authorName.charAt(0)}
-        </span>
+        <AuthorAvatar name={a.authorName} className="ed-avatar" />
         <span className="ed-name">{a.authorName}</span>
       </div>
     </article>
@@ -340,7 +339,7 @@ export default function HomePage() {
                   đến gần hơn với mọi người
                 </h2>
                 <div className="ed-from">
-                  <span className="ed-avatar">T</span>
+                  <AuthorAvatar name="Đức Trung" className="ed-avatar" />
                   <div>
                     <b>Đức Trung</b>
                     Người ngày nào cũng đang dùng Hermes

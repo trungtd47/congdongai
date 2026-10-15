@@ -15,6 +15,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { TermTip } from "@/components/TermTip";
 import { ArticleDiagram } from "@/components/ArticleDiagram";
 import { TagLinks } from "@/components/TagLinks";
+import { AuthorAvatar } from "@/components/AuthorAvatar";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -74,9 +75,7 @@ export default async function ArticlePage({ params }: Props) {
       <h1>{post.title}</h1>
 
       <div className="byline">
-        <span className="avatar" aria-hidden="true">
-          {(post.authorName || "C").charAt(0).toUpperCase()}
-        </span>
+        <AuthorAvatar name={post.authorName || "Cộng Đồng AI"} className="avatar" />
         <strong>{post.authorName}</strong>
         <span aria-hidden="true">·</span>
         <time dateTime={post.datePublished}>

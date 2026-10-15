@@ -10,17 +10,34 @@ import {
   type ArticleComment,
 } from "@/lib/firestore-ops";
 import { ImageUpload } from "@/components/ImageUpload";
+import { ADMIN_AVATAR, ADMIN_PUBLIC_UID } from "@/lib/site";
 
 function CommentAvatar({
   name,
   photoURL,
   sampleKey,
+  authorUid,
 }: {
   name: string;
   photoURL: string;
   sampleKey?: string;
+  authorUid?: string;
 }) {
   const [broken, setBroken] = useState(false);
+  if (authorUid && authorUid === ADMIN_PUBLIC_UID) {
+    return (
+      // Ảnh đại diện của admin (Đức Trung), nhận theo UID chứ không theo tên hiển thị.
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={ADMIN_AVATAR}
+        alt=""
+        width={36}
+        height={36}
+        loading="lazy"
+        className="h-9 w-9 shrink-0 rounded-full border border-line object-cover"
+      />
+    );
+  }
   let googlePhoto: string | null = null;
   try {
     const url = new URL(photoURL);
@@ -142,6 +159,7 @@ function CommentCard({
         <CommentAvatar
           name={c.authorName}
           photoURL={c.photoURL}
+          authorUid={c.authorUid}
           sampleKey={c.isSample && !c.isAI ? c.authorUid : undefined}
         />
         <span className="min-w-0 break-words text-sm font-semibold text-ink">
@@ -400,7 +418,11 @@ export function CommentsSection({ slug }: { slug: string }) {
       ) : user ? (
         <form onSubmit={submit} className="card flex flex-col gap-3 p-5">
           <div className="flex items-center gap-2 text-sm text-ink-soft">
-            <CommentAvatar name={displayName} photoURL={user.photoURL ?? ""} />
+            <CommentAvatar
+              name={displayName}
+              photoURL={user.photoURL ?? ""}
+              authorUid={user.uid}
+            />
             <span>
               Đang bình luận với tên <b className="text-ink">{displayName}</b>
             </span>

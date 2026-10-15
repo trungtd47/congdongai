@@ -15,6 +15,30 @@ import { isDemoMode } from "@/lib/firebase";
 import { useAuth } from "@/hooks/useAuth";
 import { signInWithGoogle } from "@/lib/auth";
 import { avatarColor } from "@/lib/avatar";
+import { ADMIN_AVATAR, ADMIN_PUBLIC_UID } from "@/lib/site";
+
+function PersonAvatar({ name, uid }: { name: string; uid: string }) {
+  if (uid === ADMIN_PUBLIC_UID) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={ADMIN_AVATAR}
+        alt=""
+        width={28}
+        height={28}
+        className="h-7 w-7 rounded-full object-cover"
+      />
+    );
+  }
+  return (
+    <span
+      className="flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold text-white"
+      style={{ background: avatarColor(name) }}
+    >
+      {name.charAt(0)}
+    </span>
+  );
+}
 import { ImageUpload } from "@/components/ImageUpload";
 
 const DEMO_UID = "demo-user";
@@ -192,12 +216,10 @@ export function QuestionDetail({ postId }: { postId: string }) {
         )}
         <div className="flex items-center gap-4 text-[13px] text-ink-soft">
           <span className="flex items-center gap-1.5">
-            <span
-              className="flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold text-white"
-              style={{ background: avatarColor(post.authorName) }}
-            >
-              {post.authorName.charAt(0)}
-            </span>
+            <PersonAvatar
+              name={post.authorName}
+              uid={post.authorUid}
+            />
             {post.authorName}
           </span>
           <span>{post.createdAt}</span>
@@ -227,12 +249,7 @@ export function QuestionDetail({ postId }: { postId: string }) {
             className={`card p-5 ${a.isAccepted ? "border-teal" : ""}`}
           >
             <div className="mb-2 flex items-center gap-2">
-              <span
-                className="flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold text-white"
-                style={{ background: avatarColor(a.authorName) }}
-              >
-                {a.authorName.charAt(0)}
-              </span>
+              <PersonAvatar name={a.authorName} uid={a.authorUid} />
               <span className="text-sm font-semibold">{a.authorName}</span>
               {a.isAI && (
                 <span className="inline-flex items-center gap-1 rounded-full bg-teal-soft px-2 py-0.5 text-[11px] font-semibold text-teal-dark">

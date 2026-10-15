@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { signInWithGoogle, signOutUser } from "@/lib/auth";
 import { isDemoMode } from "@/lib/firebase";
+import { ADMIN_AVATAR, ADMIN_PUBLIC_UID } from "@/lib/site";
 
 // Trang chính trên header, ít chật, kiểu B.
 const primaryLinks = [
@@ -81,10 +82,10 @@ export function Nav() {
                 aria-expanded={accountOpen}
                 aria-label="Menu tài khoản"
               >
-                {user.photoURL ? (
+                {user.photoURL || user.uid === ADMIN_PUBLIC_UID ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={user.photoURL}
+                    src={user.uid === ADMIN_PUBLIC_UID ? ADMIN_AVATAR : user.photoURL ?? ""}
                     alt=""
                     referrerPolicy="no-referrer"
                     className="h-7 w-7 rounded-full border border-line object-cover"
@@ -112,10 +113,10 @@ export function Nav() {
                     className="absolute right-0 top-full z-20 mt-2 w-64 overflow-hidden rounded-sm border border-line bg-card p-2"
                   >
                     <div className="flex items-center gap-3 border-b border-line px-3 py-2.5">
-                      {user.photoURL ? (
+                      {user.photoURL || user.uid === ADMIN_PUBLIC_UID ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
-                          src={user.photoURL}
+                          src={user.uid === ADMIN_PUBLIC_UID ? ADMIN_AVATAR : user.photoURL ?? ""}
                           alt=""
                           referrerPolicy="no-referrer"
                           className="h-10 w-10 shrink-0 rounded-full object-cover"
