@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { canonicalUrl, isSampleUid } from "@/lib/site";
+import { canonicalUrl } from "@/lib/site";
 import { getServerPosts } from "@/lib/server/community-data";
 import {
   getAllPosts,
@@ -86,16 +86,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: canonicalUrl(tagHref(tag)),
   }));
 
-  // Chỉ câu hỏi thật; câu hỏi mẫu (uid u-*) không đưa vào sitemap.
+  // Mọi câu hỏi đang hiển thị trên site (kể cả câu hỏi mẫu sếp giữ như nội dung bình thường).
   const questions = await getServerPosts(200);
   const hoiDap =
     questions.status === "ok"
-      ? questions.data
-          .filter((p) => !isSampleUid(p.authorUid))
-          .map((p) => ({
-            url: canonicalUrl(`/hoi-dap/${p.id}`),
-            lastModified: p.createdAt || undefined,
-          }))
+      ? questions.data.map((p) => ({
+          url: canonicalUrl(`/hoi-dap/${p.id}`),
+          lastModified: p.createdAt || undefined,
+        }))
       : [];
 
   return [...base, openRouter, ...batDau, ...huongDan, ...blog, ...cauChuyen, ...tags, ...hoiDap];

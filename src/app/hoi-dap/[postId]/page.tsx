@@ -5,7 +5,7 @@ import { JsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { QuestionDetail } from "@/components/QuestionDetail";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { getServerPost } from "@/lib/server/community-data";
-import { canonicalUrl, isSampleUid } from "@/lib/site";
+import { canonicalUrl } from "@/lib/site";
 
 interface Props {
   params: Promise<{ postId: string }>;
@@ -34,8 +34,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: p.title,
     description: p.body.replace(/\s+/g, " ").slice(0, 160),
     alternates: { canonical: `/hoi-dap/${postId}` },
-    // Câu hỏi mẫu vẫn xem được nhưng không đưa lên công cụ tìm kiếm.
-    robots: isSampleUid(p.authorUid) ? { index: false, follow: true } : undefined,
   };
 }
 
@@ -46,7 +44,7 @@ export default async function HoiDapDetailPage({ params }: Props) {
   const post = r.status === "ok" ? r.data : undefined;
 
   const qaJsonLd =
-    post && !isSampleUid(post.authorUid)
+    post
       ? {
           "@context": "https://schema.org",
           "@type": "QAPage",
