@@ -22,7 +22,7 @@ export const batDauItems: HubItem[] = [
     slug: "cai-hermes-desktop-windows",
     title: "Cài Hermes Desktop trên Windows",
     description:
-      "Tải package chính thức cho Windows, kết nối model và kiểm câu trả lời đầu; không bỏ qua cảnh báo khi chưa kiểm nguồn.",
+      "Kiểm Windows 11, tải package chính thức, đi qua chat thiết lập lần đầu và kiểm câu trả lời đầu; không bỏ qua cảnh báo khi chưa kiểm nguồn.",
     time: "~5 phút",
     icon: "🪟",
   },
@@ -30,7 +30,7 @@ export const batDauItems: HubItem[] = [
     slug: "cai-hermes-desktop-mac",
     title: "Cài Hermes Desktop trên Mac",
     description:
-      "Hướng dẫn cài trên macOS, mở Gatekeeper và lần chạy đầu tiên.",
+      "Hướng dẫn cài trên Mac Apple Silicon, xử lý cảnh báo bảo mật nếu có và lần chạy đầu tiên.",
     time: "~5 phút",
     icon: "🍎",
   },
@@ -38,7 +38,7 @@ export const batDauItems: HubItem[] = [
     slug: "chon-nha-cung-cap-api",
     title: "Chọn model: ChatGPT/Codex hay OpenRouter?",
     description:
-      "Đã có gói ChatGPT thì thử Codex trước; chưa có thì dùng OpenRouter. Khi cần, kết nối cả hai để chọn theo việc.",
+      "Đã có gói ChatGPT thì thử Codex trước; chưa có thì dùng OpenRouter, hoặc thử model chạy ngay trên máy. Khi cần, kết nối cả hai để chọn theo việc.",
     time: "~5 phút",
     icon: "🔌",
   },

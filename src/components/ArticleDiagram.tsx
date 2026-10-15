@@ -16,14 +16,14 @@ const diagrams: Record<string, [string, string, string]> = {
     "Lưu quy trình đã kiểm",
   ],
   "cai-hermes-desktop-windows": [
-    "Tải từ trang Hermes",
-    "Cài bằng App Installer",
-    "Kết nối model, thử chat",
+    "Kiểm Windows 11 22H2+",
+    "Tải và cài bằng App Installer",
+    "Thiết lập lần đầu, thử chat",
   ],
   "cai-hermes-desktop-mac": [
     "Kiểm chip Apple Silicon",
     "Tải DMG, chép vào Apps",
-    "Kết nối model, thử chat",
+    "Thiết lập lần đầu, thử chat",
   ],
   "chon-nha-cung-cap-api": [
     "Xem tài khoản đang có",

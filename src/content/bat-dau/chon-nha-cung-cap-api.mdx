@@ -1,13 +1,15 @@
 ---
 title: "Chọn model cho Hermes: OpenRouter, tài khoản Codex hay Nous Portal?"
-description: "Dùng Hermes với OpenRouter theo token, kết nối thêm tài khoản ChatGPT/Codex qua OAuth, hoặc chọn Nous Portal. Cách dùng hai nguồn linh hoạt mà vẫn theo dõi chi phí."
+description: "Dùng Hermes với OpenRouter theo token, kết nối thêm tài khoản ChatGPT/Codex qua OAuth, chọn Nous Portal hoặc chạy model ngay trên máy. Cách dùng hai nguồn linh hoạt mà vẫn theo dõi chi phí."
 datePublished: "2026-09-22"
-dateModified: "2026-10-12"
+dateModified: "2026-10-15"
 authorName: "Cộng Đồng AI"
 tags: ["model", "openrouter", "codex", "chi phí"]
 ---
 
 Hermes cần một <TermTip term="model">model AI</TermTip> để xử lý yêu cầu. Người mới không cần mua nhiều dịch vụ cùng lúc: **cài Hermes trước, chọn một nguồn để thử, rồi chỉ thêm nguồn thứ hai khi thấy cần**. Mình dùng cả OpenRouter lẫn tài khoản ChatGPT/Codex, nhưng đó là cách mình vận hành sau khi đã biết việc nào hợp với nguồn nào.
+
+Vừa cài Hermes Desktop trên máy mới? Chat thiết lập lần đầu chạy bằng một model dùng thử miễn phí của Nous, nên bạn chưa cần nguồn nào để làm quen. Model đó chỉ để thử, vì vậy khi muốn dùng đều đặn, hãy chọn một nguồn bên dưới. Chi tiết ở bài cài [Windows](/bat-dau/cai-hermes-desktop-windows) hoặc [Mac](/bat-dau/cai-hermes-desktop-mac).
 
 ## Bước 1: Bạn đã có gói ChatGPT trả phí chưa?
 
@@ -47,8 +49,34 @@ Trong phiên chat Hermes, `/model` chuyển giữa những nguồn **đã cấu 
 
 Nếu muốn Hermes tự chuyển khi một nguồn **lỗi hoặc chạm hạn mức**, có thể cấu hình `hermes fallback` sau khi cả hai nguồn đã hoạt động. Đây là **dự phòng khi lỗi**, không phải tính năng tự chọn model rẻ nhất cho mỗi câu hỏi. Nguồn được chuyển tới có thể tính phí riêng, nên kiểm tra chuỗi dự phòng trước khi bật.
 
+<div id="chay-tren-may" className="scroll-mt-24" />
+
+## Cách khác: chạy model ngay trên máy của bạn
+
+Từ Hermes 0.22.0 (13/10/2026), Hermes có thể tự cài bộ chạy model mã nguồn mở llama.cpp, tự chọn bản model hợp với phần cứng và quản lý bộ nhớ giúp bạn. Theo tài liệu chính thức, cách này không cần tài khoản hay API key, và sau khi tải model xong thì model đó chạy không cần mạng.
+
+**Cách làm trong Desktop:**
+
+1. Mở **Settings → Providers → Local Models**. Nếu máy đủ sức chạy model, sau khi xong chat thiết lập lần đầu Hermes cũng có thể hiện thẻ "This computer can run a model locally" để bạn bấm **Set it up**.
+2. Bấm **Install runtime**. Hermes tải bộ chạy phù hợp với máy (vài trăm MB), kiểm tra rồi cài.
+3. Chọn một model trong danh mục và bấm **Download**. Tải có thể tạm dừng và tiếp tục.
+4. Bấm **Use**. Các chat mới sẽ chạy bằng model này; quay lại nguồn cloud chỉ cần chọn lại trong phần chọn model.
+
+Dùng terminal thì chạy `hermes model` rồi chọn **Local models**, các bước tương tự.
+
+**Hermes báo máy bạn hợp model nào:** mỗi model trong danh mục có nhãn xanh (chạy hết trong bộ nhớ card đồ họa), vàng (phải dùng thêm RAM hệ thống, chạy được nhưng chậm hơn) hoặc đỏ (quá lớn cho máy này). Tài liệu ghi card đồ họa từ 8 GB trở lên chạy được các model nhỏ trong danh mục, còn từ 16 GB trở lên mới chạy thoải mái model cỡ 27 đến 35 tỷ tham số. Máy không có card rời vẫn có thể chạy, nhưng chậm hơn. Danh mục gồm các model mở như Qwen và DeepSeek V4 Flash, và bạn tìm thêm được file GGUF từ Hugging Face; danh sách thay đổi theo từng bản Hermes nên hãy xem danh mục trên máy mình.
+
+**Nên cân nhắc:**
+
+- Model chạy trên máy thường nhỏ hơn và kém hơn model cloud lớn ở việc nhiều bước hoặc cần suy luận dài. Thử một việc nhỏ có kết quả kiểm được trước khi giao việc quan trọng.
+- Chạy model trên máy dùng nhiều tài nguyên của máy và ổ đĩa. Mỗi dòng trong danh mục ghi dung lượng tải, xem trước khi bấm Download.
+- Model chạy trên máy không có nghĩa mọi thứ đều ở lại máy. Nếu bạn bật tìm kiếm web hoặc kết nối app như Gmail, dữ liệu đi qua các công cụ đó vẫn ra ngoài. Đọc thêm [bảo mật Hermes và thông tin cá nhân](/huong-dan/bao-mat-hermes-thong-tin-ca-nhan).
+- Giao diện Local Models còn mới. Nếu bản Desktop của bạn khác bài, làm theo [tài liệu Local Models chính thức](https://hermes-agent.nousresearch.com/docs/user-guide/local-models).
+
 ## Bạn nên chọn gì ngay bây giờ?
 
+- **Chỉ muốn làm quen:** dùng chat thiết lập lần đầu với model dùng thử, rồi chọn một nguồn bên dưới.
+- **Có card đồ họa đủ mạnh hoặc cần giữ việc ở máy mình:** thử model chạy trên máy với một việc nhỏ.
 - **Đã trả tiền gói ChatGPT:** thử Codex trong Hermes trước, nếu tài khoản của bạn được phép. Dùng được rồi mới cân nhắc thêm OpenRouter cho những model hoặc việc Codex không phù hợp.
 - **Chưa có gói ChatGPT:** bắt đầu với OpenRouter, chọn một model vừa đủ và nạp ít để thử. Không cần mua thêm một gói chỉ vì muốn dùng Hermes.
 - **Muốn gọn và hợp với gói của Nous:** tìm hiểu Nous Portal, kiểm tra điều kiện gói trước khi quyết định.
@@ -67,6 +95,6 @@ chính thức, không gửi những thông tin đó trong chat. Chưa bật fall
 hay đổi model mặc định khi mình chưa đồng ý.
 ```
 
-Khi dùng OpenRouter, tạo key trong tài khoản của **chính bạn** và nhập vào giao diện cấu hình của Hermes; không đăng key lên diễn đàn hay gửi cho người lạ. Nếu cần tìm hiểu thêm, đọc [tài liệu provider chính thức của Hermes](https://hermes-agent.nousresearch.com/docs/integrations/providers/), [fallback](https://hermes-agent.nousresearch.com/docs/user-guide/features/fallback-providers/) và [phân biệt hóa đơn ChatGPT với API](https://help.openai.com/en/articles/9039756-managing-billing-for-chatgpt-and-the-api-platform).
+Khi dùng OpenRouter, tạo key trong tài khoản của **chính bạn** và nhập vào giao diện cấu hình của Hermes; không đăng key lên diễn đàn hay gửi cho người lạ. Nếu cần tìm hiểu thêm, đọc [tài liệu provider chính thức của Hermes](https://hermes-agent.nousresearch.com/docs/integrations/providers/), [fallback](https://hermes-agent.nousresearch.com/docs/user-guide/features/fallback-providers/) và [phân biệt hóa đơn ChatGPT với API](https://help.openai.com/en/articles/9039756-managing-billing-for-chatgpt-and-the-api-platform). Phần model chạy trên máy dựa theo [tài liệu Local Models](https://hermes-agent.nousresearch.com/docs/user-guide/local-models) và [ghi chú phát hành v0.22.0](https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.0); tên nút và bước đối chiếu thêm với mã nguồn bản 0.22.0.
 
 Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap), nhớ che thông tin đăng nhập và số dư.

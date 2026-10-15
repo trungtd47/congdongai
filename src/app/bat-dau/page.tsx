@@ -26,8 +26,10 @@ export default function BatDauPage() {
       </h2>
       <p className="mb-8 max-w-2xl text-[16px] text-ink-soft">
         Tải bản Desktop chính thức cho Windows hoặc Mac bên dưới, cài trên máy,
-        rồi chọn dịch vụ cung cấp model AI để Hermes xử lý yêu cầu. Các bài ở
-        cuối trang dẫn bạn qua từng bước; không cần biết code hay dùng terminal.
+        rồi chọn dịch vụ cung cấp model AI để Hermes xử lý yêu cầu. Trên máy mới,
+        lần mở đầu tiên là một chat thiết lập chạy bằng model dùng thử, nên bạn
+        làm quen được ngay. Các bài ở cuối trang dẫn bạn qua từng bước; không
+        cần biết code hay dùng terminal.
       </p>
 
       <div id="tai-hermes" className="card mb-8 scroll-mt-24 p-6">
@@ -35,7 +37,8 @@ export default function BatDauPage() {
         <p className="mb-4 max-w-2xl text-sm text-ink-soft">
           Mở trang Desktop chính thức của Nous Research rồi chọn gói đúng hệ
           điều hành. Windows dùng .appinstaller, Mac Apple Silicon dùng DMG dựng
-          sẵn; các file Hermes-Setup là cách cài bootstrap khác.
+          sẵn; các file Hermes-Setup là cách cài bootstrap khác. Gói Windows cần
+          Windows 11 phiên bản 22H2 trở lên.
         </p>
         <div className="mb-4 flex flex-wrap gap-3">
           <a
@@ -85,8 +88,9 @@ export default function BatDauPage() {
           Cài xong, chọn model theo thứ bạn đã có
         </h2>
         <p className="mb-4 max-w-2xl text-sm text-ink-soft">
-          Không cần trả tiền cho hai nơi ngay từ đầu. Chọn một đường, thử một
-          việc nhỏ rồi mới thêm nguồn thứ hai nếu cần.
+          Model dùng thử trong chat thiết lập chỉ để làm quen. Muốn dùng đều đặn,
+          chọn một đường, thử một việc nhỏ rồi mới thêm nguồn thứ hai nếu cần;
+          không cần trả tiền cho hai nơi ngay từ đầu.
         </p>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Link
@@ -118,7 +122,15 @@ export default function BatDauPage() {
         </div>
         <p className="mt-3 text-sm text-ink-soft">
           Gói ChatGPT và số dư OpenRouter tính riêng; Codex có hạn mức và còn
-          tùy quyền dùng của tài khoản.
+          tùy quyền dùng của tài khoản. Máy có card đồ họa đủ mạnh thì cũng
+          có thể thử{" "}
+          <Link
+            href="/bat-dau/chon-nha-cung-cap-api#chay-tren-may"
+            className="text-teal-dark underline decoration-[var(--gold)] underline-offset-2"
+          >
+            model chạy ngay trên máy
+          </Link>
+          .
         </p>
       </section>
 

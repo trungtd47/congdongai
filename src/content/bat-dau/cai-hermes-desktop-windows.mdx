@@ -1,26 +1,39 @@
 ---
 title: "Cài Hermes Desktop trên Windows - từng bước cho người mới"
-description: "Tải Hermes Desktop cho Windows từ trang chính thức, cài bằng App Installer, kết nối model rồi kiểm tra câu trả lời đầu tiên."
+description: "Tải Hermes Desktop cho Windows 11 từ trang chính thức, cài bằng App Installer, đi qua chat thiết lập lần đầu rồi kiểm tra câu trả lời đầu tiên."
 datePublished: "2026-09-21"
-dateModified: "2026-10-03"
+dateModified: "2026-10-15"
 authorName: "Cộng Đồng AI"
 tags: ["cài đặt", "windows"]
 ---
 
-Hermes Agent có bản **Desktop** với giao diện cho Windows. Bài này đi từ tải package chính thức tới kết nối model và thử câu đầu tiên; thời gian tùy máy, mạng và tài khoản.
+Hermes Agent có bản **Desktop** với giao diện cho Windows. Bài này đi từ kiểm máy, tải package chính thức, cài đặt, tới lần mở đầu tiên và câu hỏi đầu tiên; thời gian tùy máy, mạng và tài khoản.
+
+Các bước dưới đây đối chiếu với tài liệu và ghi chú phát hành Hermes 0.22.0 (13/10/2026). Nếu bản bạn tải về có màn hình khác bài, hãy tin màn hình và [tài liệu cài đặt chính thức](https://hermes-agent.nousresearch.com/docs/getting-started/installation).
+
+## Trước khi tải: kiểm phiên bản Windows
+
+Gói Desktop cho Windows hiện chỉ có dạng **MSIX**, và cần **Windows 11 phiên bản 22H2 trở lên**. Tài liệu Hermes ghi rõ: Windows 10 chạy được Hermes bản dòng lệnh, nhưng gói MSIX Desktop thì không hỗ trợ Windows 10.
+
+Cách kiểm: bấm **Start**, gõ `winver`, nhấn Enter. Cửa sổ hiện ra cho biết Windows 10 hay 11 và số phiên bản.
+
+- **Windows 11, 22H2 trở lên:** làm tiếp bài này.
+- **Windows 10 hoặc Windows 11 bản cũ hơn:** cập nhật Windows nếu máy cho phép, hoặc dùng bản dòng lệnh theo [hướng dẫn Windows chính thức](https://hermes-agent.nousresearch.com/docs/user-guide/windows-native). Máy cơ quan thì hỏi bộ phận IT trước khi đổi gì.
 
 ## Bước 1: Tải Hermes Desktop về máy
 
-1. Mở **[trang tải Hermes Desktop chính thức](https://hermes-agent.nousresearch.com/desktop)**, chọn bản Windows theo hướng dẫn trên trang. Tài liệu cài đặt hiện tại của Hermes khuyên dùng gói `.appinstaller` (App Installer của Windows), không phải file `Hermes-Setup.exe` đời cũ dùng để tải mã nguồn và dựng app.
+1. Mở **[trang tải Hermes Desktop chính thức](https://hermes-agent.nousresearch.com/desktop)**, chọn bản Windows theo hướng dẫn trên trang. Tài liệu cài đặt hiện tại của Hermes dùng gói `.appinstaller` (App Installer của Windows). Đây không phải file `Hermes-Setup.exe` đời cũ, loại file đó tải mã nguồn về rồi dựng app.
 2. Chờ file tải xong - file thường nằm trong thư mục **Downloads** (Tải xuống).
 
 > Quan trọng: kiểm địa chỉ `hermes-agent.nousresearch.com` trước khi tải. Không mở file cài đặt từ link người lạ. Nếu máy cơ quan có chính sách cài phần mềm, hỏi bộ phận IT trước.
 
-Bạn quen dùng terminal? Có thể chọn cách cài mã nguồn bằng PowerShell theo [tài liệu chính thức](https://hermes-agent.nousresearch.com/docs/getting-started/installation). Người mới nên dùng gói Desktop trên trang tải.
+Gói này đã gồm sẵn Python, Node và các thành phần cần thiết, nên lần mở đầu tiên không phải dựng gì thêm. Nếu trang tải chính thức có bản trên **Microsoft Store**, đó là một đường cài khác: bản Store do Store quản lý và cập nhật, không dùng chung cơ chế cập nhật với bản `.appinstaller`.
+
+Bạn quen dùng terminal? Có thể chọn cách cài bằng PowerShell theo [tài liệu chính thức](https://hermes-agent.nousresearch.com/docs/getting-started/installation). Người mới nên dùng gói Desktop trên trang tải.
 
 ## Bước 2: Chạy file cài đặt
 
-Bấm đúp file `.appinstaller` vừa tải và làm theo Windows App Installer. Xem tên ứng dụng, nhà phát hành và quyền được yêu cầu trước khi xác nhận. Nếu trang tải chính thức đưa định dạng khác, làm theo hướng dẫn cập nhật trên chính trang đó, không tự đổi đuôi file.
+Bấm đúp file `.appinstaller` vừa tải và làm theo Windows App Installer. Xem tên ứng dụng, nhà phát hành và quyền được yêu cầu trước khi xác nhận. Nếu trang tải chính thức đưa định dạng khác, làm theo hướng dẫn trên chính trang đó, không tự đổi đuôi file.
 
 ## Bước 3: Xử lý cảnh báo SmartScreen
 
@@ -30,11 +43,31 @@ Nếu còn nghi ngờ, dừng cài và hỏi ở [Hỏi & Đáp](/hoi-dap) hoặ
 
 ## Bước 4: Mở Hermes Desktop lần đầu
 
-Sau khi mở Hermes Desktop, làm theo phần thiết lập model/provider của phiên bản đang dùng. Mở được app chưa có nghĩa đã kết nối được model.
+Trên máy chưa từng dùng Hermes, app mở thẳng vào một **chat thiết lập** thay vì màn hình cài đặt. Hermes hỏi lần lượt từng thẻ:
 
-Điều duy nhất cần làm lúc này: **chọn model AI** để Hermes "có não". [Xem cách bắt đầu theo tài khoản bạn đã có](/bat-dau/chon-nha-cung-cap-api): nếu đã trả tiền cho ChatGPT, thử đăng nhập Codex trong Hermes trước; nếu chưa có, bắt đầu bằng OpenRouter và chỉ trả theo số token đã dùng. Chạy ổn một nguồn rồi mới cân nhắc thêm nguồn thứ hai.
+1. Tên bạn.
+2. Màu nhấn của giao diện.
+3. Kiểu bố cục (Basic hoặc Elite). Basic bắt đầu ở chế độ gọn, Elite ở chế độ đầy đủ.
+4. Có muốn kết nối app nào không.
+5. Có muốn cài plugin nào không.
+6. Một chuyến tham quan ngắn (Quick tour), hoặc bỏ qua.
+7. Việc đầu tiên bạn muốn thử.
 
-## Bước 5: Hỏi câu đầu tiên
+Chat thiết lập này chạy bằng một **model dùng thử miễn phí của Nous** (`nous/welcome`), nên bạn nói chuyện được với Hermes ngay mà chưa cần API key. Vài điều nên biết:
+
+- **Đây là model dùng thử để làm quen.** Tài liệu mình đọc không nêu hạn mức, nên đừng dựa vào nó cho việc lâu dài. Làm quen xong thì kết nối nguồn model riêng của bạn ở bước 5.
+- **Không bắt buộc làm hết.** Bấm **Skip setup** ở khung soạn tin để kết thúc chat thiết lập và mở một chat mới. Muốn làm lại sau thì vào **Settings → Run onboarding again**.
+- **Chỉ tự hiện trên bản cài mới.** Máy đã dùng Hermes từ trước, hoặc Desktop nối tới Hermes ở máy khác, sẽ không tự có chat thiết lập này.
+- **Nội dung chat vẫn đi qua dịch vụ cloud.** Model dùng thử không chạy trên máy bạn, nên đừng gõ dữ liệu cá nhân hay tài liệu nhạy cảm vào lúc làm quen.
+- **Ở thẻ kết nối app (Gmail, Notion, Linear...),** chỉ nối khi bạn thật sự cần; chưa nối cũng không sao. Đăng nhập diễn ra trên trình duyệt, ở trang đăng nhập chính thức của dịch vụ. Không gõ mật khẩu hay mã xác minh vào khung chat.
+
+## Bước 5: Chọn nguồn model của riêng bạn
+
+Chat thiết lập chỉ để làm quen. Để dùng đều đặn, bạn cần một nguồn model: [xem cách chọn theo tài khoản bạn đã có](/bat-dau/chon-nha-cung-cap-api). Nếu đã trả tiền cho ChatGPT, thử đăng nhập Codex trong Hermes trước; nếu chưa có, bắt đầu bằng OpenRouter và chỉ trả theo số token đã dùng. Máy đủ mạnh thì có thể thử [model chạy ngay trên máy](/bat-dau/chon-nha-cung-cap-api#chay-tren-may). Chạy ổn một nguồn rồi mới cân nhắc thêm nguồn thứ hai.
+
+Nếu bạn bấm **Skip setup**, hoặc cài Desktop trên máy đã có Hermes, màn hình đầu tiên sẽ là cửa sổ chat thường. Việc cần làm vẫn là chọn model AI để Hermes "có não".
+
+## Bước 6: Hỏi câu đầu tiên
 
 Chọn model xong, bạn chỉ cần gõ vào ô chat, ví dụ:
 
@@ -45,15 +78,24 @@ Nó trả lời được là bạn đã cài thành công.
 
 ## Kiểm tra đã chạy chưa
 
+- [ ] `winver` cho thấy Windows 11, phiên bản 22H2 trở lên.
 - [ ] Mở được cửa sổ chat của Hermes.
 - [ ] Gõ câu hỏi thấy nó trả lời tiếng Việt.
+- [ ] Biết model đang dùng là model dùng thử hay nguồn model của chính bạn (xem ở phần chọn model).
 
-Cả hai đều đạt là bạn đã cài và kết nối model thành công. App chạy trên máy; nếu chọn model cloud thì nội dung gửi model vẫn đi tới dịch vụ cung cấp model.
+Đạt hết là bạn đã cài và kết nối model thành công. App chạy trên máy; nếu chọn model cloud (kể cả model dùng thử) thì nội dung gửi model vẫn đi tới dịch vụ cung cấp model.
 
 ## Hay gặp lỗi
 
-- **Windows không mở `.appinstaller`?** Kiểm tra App Installer và chính sách máy với IT; không đổi sang file cài từ nguồn lạ để lách chặn.
+- **Windows không mở `.appinstaller`?** Kiểm tra App Installer và chính sách máy với IT; không đổi sang file cài từ nguồn lạ để lách chặn. Máy Windows 10 sẽ không cài được gói này, xem phần kiểm phiên bản ở đầu bài.
 - **App không mở sau khi cài?** Khởi động lại máy rồi tìm "Hermes" trong menu Start.
+- **Không thấy chat thiết lập?** Có thể máy đã từng dùng Hermes, hoặc bạn đã bấm Skip. Vào **Settings → Run onboarding again** để mở lại.
 - **Máy báo thiếu thành phần?** Chụp lại thông báo (che thông tin cá nhân), đối chiếu [hướng dẫn Windows chính thức](https://hermes-agent.nousresearch.com/docs/user-guide/windows-native) trước khi cài thêm phần mềm.
 
 Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap), mình và mọi người sẽ trả lời.
+
+## Nguồn
+
+1. [Hermes: Installation](https://hermes-agent.nousresearch.com/docs/getting-started/installation) - gói Desktop trên Windows và macOS, khác biệt với bộ cài `Hermes-Setup`.
+2. [Hermes: Windows (Native) Guide](https://hermes-agent.nousresearch.com/docs/user-guide/windows-native) - MSIX/App Installer, yêu cầu Windows 11 22H2 trở lên.
+3. [Ghi chú phát hành Hermes Agent v0.22.0](https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.0) - chat thiết lập lần đầu và model dùng thử. Các thẻ hỏi và tên nút Skip setup, Run onboarding again đối chiếu thêm với mã nguồn bản 0.22.0.

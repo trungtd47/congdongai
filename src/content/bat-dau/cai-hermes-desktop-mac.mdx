@@ -1,13 +1,15 @@
 ---
 title: "Cài Hermes Desktop trên Mac - từng bước cho người mới"
-description: "Tải Hermes Desktop cho Mac Apple Silicon từ trang chính thức, kéo vào Applications, kết nối model và thử câu hỏi đầu tiên."
+description: "Tải Hermes Desktop cho Mac Apple Silicon từ trang chính thức, kéo vào Applications, đi qua chat thiết lập lần đầu và thử câu hỏi đầu tiên."
 datePublished: "2026-09-21"
-dateModified: "2026-09-30"
+dateModified: "2026-10-15"
 authorName: "Cộng Đồng AI"
 tags: ["cài đặt", "mac"]
 ---
 
-Hermes Agent có bản **Desktop** dành riêng cho Mac, cài bằng cách kéo thả quen thuộc. Bài này dắt bạn cài từng bước.
+Hermes Agent có bản **Desktop** dành riêng cho Mac, cài bằng cách kéo thả quen thuộc. Bài này dắt bạn cài từng bước, từ tải file tới câu hỏi đầu tiên.
+
+Các bước dưới đây đối chiếu với tài liệu và ghi chú phát hành Hermes 0.22.0 (13/10/2026). Nếu bản bạn tải về có màn hình khác bài, hãy tin màn hình và [tài liệu cài đặt chính thức](https://hermes-agent.nousresearch.com/docs/getting-started/installation).
 
 ## Bước 1: Tải Hermes Desktop
 
@@ -15,17 +17,19 @@ Hermes Agent có bản **Desktop** dành riêng cho Mac, cài bằng cách kéo 
 
 > Hai lưu ý quan trọng: bản Mac chỉ hỗ trợ chip **Apple Silicon** (M1 trở lên), Mac chip Intel chưa được nhà phát hành hỗ trợ. Chỉ tải từ trang chính thức, đừng tải từ link lạ.
 
+Không chắc Mac của mình dùng chip nào? Bấm biểu tượng quả táo ở góc trên bên trái, chọn **About This Mac** (Giới thiệu về máy Mac). Dòng **Chip** ghi Apple M1, M2, M3... là Apple Silicon; nếu ghi Intel thì không cài được bản Desktop.
+
 Bạn quen dùng terminal? Có thể cài bằng lệnh: `curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash`
 
 ## Bước 2: Mở file và kéo vào Applications
 
 Bấm đúp vào file vừa tải (thường là file `.dmg`), sẽ mở ra một cửa sổ nhỏ. Kéo biểu tượng Hermes thả vào thư mục **Applications** là xong.
 
-## Bước 3: Mở khóa Gatekeeper
+## Bước 3: Nếu Mac báo cảnh báo bảo mật
 
-Lần đầu mở, Mac có thể báo **"Hermes can't be opened because Apple cannot check it for malicious software"**. Đừng mặc định cảnh báo đó vô hại: trước tiên kiểm lại nguồn tải và gói cài.
+Theo ghi chú phát hành 0.22.0, gói Mac hiện là bản được ký và notarize (Apple đã kiểm tra), nên nhiều máy sẽ mở thẳng được. Nếu bạn mở được rồi thì bỏ qua bước này. Mình chưa thử trên máy Mac thật, nên không khẳng định mọi máy đều không còn cảnh báo.
 
-Cách mở khóa (làm một lần):
+Nếu Mac vẫn báo kiểu **"Hermes can't be opened because Apple cannot check it for malicious software"**, đừng mặc định đó vô hại: trước tiên kiểm lại file có tải đúng từ trang chính thức không. Chỉ khi chắc về nguồn tải mới mở khóa, làm một lần:
 
 1. Vào **System Settings** (Cài đặt hệ thống) → **Privacy & Security** (Quyền riêng tư & Bảo mật).
 2. Kéo xuống, tìm dòng báo về Hermes, bấm **Open Anyway** (Vẫn mở).
@@ -34,7 +38,19 @@ Nếu dùng máy do cơ quan quản lý hoặc không chắc về nguồn tải,
 
 ## Bước 4: Mở Hermes lần đầu
 
-Hermes Desktop mở lên là cửa sổ chat. Việc cần làm: **chọn model AI** để Hermes "có não". [Xem cách bắt đầu theo tài khoản bạn đã có](/bat-dau/chon-nha-cung-cap-api): đã có gói ChatGPT trả phí thì thử đăng nhập Codex; chưa có thì bắt đầu với OpenRouter, tính phí theo token. Không cần kết nối cả hai ngay.
+Trên máy chưa từng dùng Hermes, app mở thẳng vào một **chat thiết lập** thay vì màn hình cài đặt. Hermes hỏi lần lượt từng thẻ: tên bạn, màu nhấn, kiểu bố cục (Basic gọn hơn, Elite đầy đủ hơn), có muốn kết nối app nào không, có muốn cài plugin nào không, một chuyến tham quan ngắn và việc đầu tiên bạn muốn thử.
+
+Chat thiết lập này chạy bằng một **model dùng thử miễn phí của Nous** (`nous/welcome`), nên bạn nói chuyện được với Hermes ngay mà chưa cần API key. Vài điều nên biết:
+
+- **Đây là model dùng thử để làm quen.** Tài liệu mình đọc không nêu hạn mức, nên đừng dựa vào nó cho việc lâu dài.
+- **Không bắt buộc làm hết.** Bấm **Skip setup** ở khung soạn tin để kết thúc và mở một chat mới. Muốn làm lại sau thì vào **Settings → Run onboarding again**.
+- **Chỉ tự hiện trên bản cài mới.** Máy đã dùng Hermes từ trước, hoặc Desktop nối tới Hermes ở máy khác, sẽ không tự có chat thiết lập này.
+- **Nội dung chat vẫn đi qua dịch vụ cloud.** Đừng gõ dữ liệu cá nhân hay tài liệu nhạy cảm khi mới làm quen.
+- **Ở thẻ kết nối app (Gmail, Notion, Linear...),** chỉ nối khi bạn thật sự cần. Đăng nhập diễn ra trên trình duyệt, ở trang đăng nhập chính thức của dịch vụ. Không gõ mật khẩu hay mã xác minh vào khung chat.
+
+Để dùng đều đặn, bạn cần một nguồn model của riêng mình: [xem cách bắt đầu theo tài khoản bạn đã có](/bat-dau/chon-nha-cung-cap-api). Đã có gói ChatGPT trả phí thì thử đăng nhập Codex; chưa có thì bắt đầu với OpenRouter, tính phí theo token. Mac Apple Silicon cũng có thể thử [model chạy ngay trên máy](/bat-dau/chon-nha-cung-cap-api#chay-tren-may). Không cần kết nối nhiều nguồn cùng lúc.
+
+Nếu bạn bấm Skip setup, hoặc cài trên máy đã có Hermes, màn hình đầu tiên là cửa sổ chat thường; việc cần làm vẫn là chọn model AI để Hermes "có não".
 
 ## Bước 5: Hỏi câu đầu tiên
 
@@ -42,12 +58,20 @@ Gõ vào ô chat, ví dụ "Chào bạn, giới thiệu về bản thân bằng 
 
 ## Kiểm tra đã chạy chưa
 
+- [ ] Mac dùng chip Apple Silicon.
 - [ ] Mở được cửa sổ chat.
 - [ ] Gõ câu hỏi thấy trả lời tiếng Việt.
+- [ ] Biết model đang dùng là model dùng thử hay nguồn model của chính bạn (xem ở phần chọn model).
 
 ## Hay gặp lỗi
 
 - **Vẫn bị chặn sau khi mở khóa?** Thử kéo lại app vào Applications rồi mở lại.
 - **App không mở?** Vào Applications, bấm đúp biểu tượng Hermes.
+- **Không thấy chat thiết lập?** Có thể máy đã từng dùng Hermes, hoặc bạn đã bấm Skip. Vào **Settings → Run onboarding again** để mở lại.
 
 Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap).
+
+## Nguồn
+
+1. [Hermes: Installation](https://hermes-agent.nousresearch.com/docs/getting-started/installation) - gói Desktop trên macOS, chỉ Apple Silicon, khác biệt với bộ cài `Hermes-Setup`.
+2. [Ghi chú phát hành Hermes Agent v0.22.0](https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.0) - gói macOS đã ký và notarize, chat thiết lập lần đầu và model dùng thử. Các thẻ hỏi và tên nút Skip setup, Run onboarding again đối chiếu thêm với mã nguồn bản 0.22.0.
