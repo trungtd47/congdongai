@@ -47,7 +47,7 @@ export function MiniPcHero() {
       label="Minh họa: laptop ở bất kỳ đâu nối về mini PC ở nhà qua mạng riêng"
       caption={
         <>
-          Minh họa, không phải ảnh chụp màn hình: laptop chỉ là cửa sổ, mini PC ở nhà mới là nơi Hermes chạy. Hai máy nối với nhau bằng mạng riêng, còn mini PC gọi model của nhà cung cấp.
+          Laptop chỉ là cửa sổ, mini PC ở nhà mới là nơi Hermes chạy. Hai máy nối với nhau bằng mạng riêng, còn mini PC gọi model của nhà cung cấp.
         </>
       }
     >
@@ -139,7 +139,7 @@ export function MiniPcArchitecture() {
       label="Sơ đồ: laptop nối qua Tailscale tới mini PC, mini PC gọi model của nhà cung cấp"
       caption={
         <>
-          Sơ đồ minh họa, không phải ảnh chụp màn hình. App Desktop trên laptop chỉ hiển thị và gửi yêu cầu. Phiên chat, bộ nhớ, skill, file và lệnh terminal đều nằm trên mini PC, và nội dung gửi model cloud vẫn đi từ mini PC ra nhà cung cấp.
+          App Desktop trên laptop chỉ hiển thị và gửi yêu cầu. Phiên chat, bộ nhớ, skill, file và lệnh terminal đều nằm trên mini PC, và nội dung gửi model cloud vẫn đi từ mini PC ra nhà cung cấp.
         </>
       }
     >

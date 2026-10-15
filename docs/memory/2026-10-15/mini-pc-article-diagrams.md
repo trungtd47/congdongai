@@ -15,3 +15,6 @@ Học cách TMB làm sơ đồ động (`ArticleDiagram`, `Lesson103DiagramMotio
 
 ## Lesson
 Sơ đồ động trong bài phải là HTML/CSS có trạng thái tĩnh đầy đủ; SVG chỉ dùng cho cảnh minh họa không chữ, và mọi CSS của khối nhúng phải thắng đặc hiệu của lớp `prose`.
+
+## Chỉnh theo sếp (cùng ngày)
+Bỏ câu "Sơ đồ minh họa, không phải ảnh chụp màn hình" khỏi chú thích các sơ đồ động của bài này ("ai cũng biết"), và bỏ nút "Tắt chuyển động / Xem lại" (đã có prefers-reduced-motion hiện bản tĩnh, chuyển động tự dừng khi ngoài màn hình). Các chú thích cùng loại ở bài khác (ArticleDiagram, /cau-chuyen, ảnh trong 4-cach..., nghien-cuu-token) chưa đổi, chờ sếp quyết.

@@ -4,9 +4,6 @@
 .dg * { box-sizing: border-box; }
 .dg figcaption { margin-top: 16px; color: #62645B; font-size: 14px; line-height: 1.7; }
 .dg-svg { display: block; width: 100%; height: auto; }
-.dg-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-.dg-controls button { min-height: 44px; padding: 0 14px; border: 1px solid #D7D4C9; background: #FFFDF8; color: #38513B; border-radius: 3px; font: inherit; font-size: 13px; cursor: pointer; }
-.dg-controls button:hover { border-color: #38513B; }
 
 /* vào cảnh */
 .dg .dg-pop { opacity: 1; transform: none; transition: opacity .55s ease, transform .55s ease; transition-delay: calc(var(--i, 0) * 120ms); }
