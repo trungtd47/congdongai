@@ -10,35 +10,10 @@ const diagrams: Record<string, [string, string, string]> = {
     "Giao rõ đầu vào và đầu ra",
     "Đọc lại trước khi dùng",
   ],
-  "7-ngay-dau-voi-hermes": [
-    "Cài app và kết nối model",
-    "Thử việc thật, xem kết quả",
-    "Lưu quy trình đã kiểm",
-  ],
-  "cai-hermes-desktop-windows": [
-    "Kiểm Windows 11 22H2+",
-    "Tải và cài bằng App Installer",
-    "Thiết lập lần đầu, thử chat",
-  ],
-  "cai-hermes-desktop-mac": [
-    "Kiểm chip Apple Silicon",
-    "Tải DMG, chép vào Apps",
-    "Thiết lập lần đầu, thử chat",
-  ],
-  "chon-nha-cung-cap-api": [
-    "Xem tài khoản đang có",
-    "Kết nối một nguồn model",
-    "Thử việc rồi mới thêm nguồn",
-  ],
   "dang-ky-nous-portal": [
     "Xem điều kiện gói",
     "Đăng nhập Portal",
     "Chọn model và thử chat",
-  ],
-  "hermes-agent-la-gi": [
-    "Hiểu agent có thể thao tác",
-    "Chọn model để bắt đầu",
-    "Giao việc nhỏ và kiểm",
   ],
   "thanh-toan-tu-viet-nam": [
     "Chọn nguồn model trước",

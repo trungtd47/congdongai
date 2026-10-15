@@ -20,6 +20,8 @@ import { TagLinks } from "@/components/TagLinks";
 import { AuthorAvatar } from "@/components/AuthorAvatar";
 import { AuthorBadge } from "@/components/OfficialBadge";
 import { ArticleEngage } from "@/components/ArticleEngage";
+import { TocBox } from "@/components/TocBox";
+import { batDauDiagramComponents } from "@/components/diagrams/BatDauDiagrams";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -101,29 +103,12 @@ export default async function BatDauArticlePage({ params }: Props) {
 
       <ArticleDiagram slug={slug} />
 
-      {toc.length > 0 && (
-        <div className="toc-box">
-          <p className="toc-title">Mục lục</p>
-          <nav>
-            {toc.map((item) => {
- return (
-              <a
-                key={item.slug}
-                href={`#${item.slug}`}
-                data-level={item.level}
-              >
-                {item.text}
-              </a>
-            );
-})}
-          </nav>
-        </div>
-      )}
+      <TocBox items={toc} />
 
       <div className="prose-article">
         <MDXRemote
           source={post.content}
-          components={{ TermTip }}
+          components={{ TermTip, ...batDauDiagramComponents }}
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm],

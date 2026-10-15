@@ -7,65 +7,73 @@ authorName: "Cộng Đồng AI"
 tags: ["cài đặt", "mac"]
 ---
 
-Hermes Agent có bản **Desktop** dành riêng cho Mac, cài bằng cách kéo thả quen thuộc. Bài này dắt bạn cài từng bước, từ tải file tới câu hỏi đầu tiên.
+Hermes Agent có bản **Desktop** cho Mac, cài bằng cách kéo thả quen thuộc. Bài này dắt bạn đi từ tải file đến câu hỏi đầu tiên.
 
-Các bước dưới đây đối chiếu với tài liệu và ghi chú phát hành Hermes 0.22.0 (13/10/2026). Nếu bản bạn tải về có màn hình khác bài, hãy tin màn hình và [tài liệu cài đặt chính thức](https://hermes-agent.nousresearch.com/docs/getting-started/installation).
+<MacFlow />
+
+Các bước dưới đây đối chiếu với tài liệu và ghi chú phát hành Hermes 0.22.0 (13/10/2026). Nếu màn hình bạn thấy khác bài, hãy tin màn hình và [tài liệu cài đặt chính thức](https://hermes-agent.nousresearch.com/docs/getting-started/installation).
+
+## Trước khi tải: Mac của bạn dùng chip nào?
+
+Bản Desktop chỉ hỗ trợ chip **Apple Silicon** (M1 trở lên). Mac chip Intel chưa được nhà phát hành hỗ trợ.
+
+<MacChipCheck />
 
 ## Bước 1: Tải Hermes Desktop
 
-1. Mở **[trang tải Hermes Desktop chính thức](https://hermes-agent.nousresearch.com/desktop)**, chọn gói Mac `.dmg` được trang đó giới thiệu. File thường ở thư mục **Downloads**. `Hermes-Setup.dmg` là dạng bootstrap khác với gói Desktop dựng sẵn; đừng nhầm hai cách cài.
+Mở **[trang tải Hermes Desktop chính thức](https://hermes-agent.nousresearch.com/desktop)** và chọn gói Mac `.dmg` mà trang đó giới thiệu. File thường nằm trong thư mục **Downloads**.
 
-> Hai lưu ý quan trọng: bản Mac chỉ hỗ trợ chip **Apple Silicon** (M1 trở lên), Mac chip Intel chưa được nhà phát hành hỗ trợ. Chỉ tải từ trang chính thức, đừng tải từ link lạ.
+- Chỉ tải từ trang chính thức, đừng tải từ link lạ.
+- `Hermes-Setup.dmg` là cách cài bootstrap khác với gói Desktop dựng sẵn, đừng nhầm hai loại.
+- Quen dùng terminal thì có thể cài bằng lệnh `curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash`.
 
-Không chắc Mac của mình dùng chip nào? Bấm biểu tượng quả táo ở góc trên bên trái, chọn **About This Mac** (Giới thiệu về máy Mac). Dòng **Chip** ghi Apple M1, M2, M3... là Apple Silicon; nếu ghi Intel thì không cài được bản Desktop.
+## Bước 2: Kéo vào Applications
 
-Bạn quen dùng terminal? Có thể cài bằng lệnh: `curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash`
+Bấm đúp file `.dmg` vừa tải, một cửa sổ nhỏ sẽ mở ra. Kéo biểu tượng Hermes thả vào thư mục **Applications** là xong.
 
-## Bước 2: Mở file và kéo vào Applications
+## Bước 3: Mở lần đầu, xử lý cảnh báo nếu có
 
-Bấm đúp vào file vừa tải (thường là file `.dmg`), sẽ mở ra một cửa sổ nhỏ. Kéo biểu tượng Hermes thả vào thư mục **Applications** là xong.
+Theo ghi chú phát hành 0.22.0, gói Mac hiện được ký và notarize (Apple đã kiểm tra), nên nhiều máy mở thẳng được. Bạn mở được rồi thì bỏ qua bước này. Mình chưa thử trên máy Mac thật nên không chắc mọi máy đều hết cảnh báo.
 
-## Bước 3: Nếu Mac báo cảnh báo bảo mật
+Nếu Mac báo **"Hermes can't be opened because Apple cannot check it for malicious software"**, đừng coi đó là vô hại. Hãy kiểm lại file có tải đúng từ trang chính thức không. Chỉ khi chắc về nguồn tải mới mở khóa, làm một lần:
 
-Theo ghi chú phát hành 0.22.0, gói Mac hiện là bản được ký và notarize (Apple đã kiểm tra), nên nhiều máy sẽ mở thẳng được. Nếu bạn mở được rồi thì bỏ qua bước này. Mình chưa thử trên máy Mac thật, nên không khẳng định mọi máy đều không còn cảnh báo.
+1. Vào **System Settings** (Cài đặt hệ thống), chọn **Privacy & Security** (Quyền riêng tư & Bảo mật).
+2. Kéo xuống, tìm dòng báo về Hermes và bấm **Open Anyway** (Vẫn mở).
 
-Nếu Mac vẫn báo kiểu **"Hermes can't be opened because Apple cannot check it for malicious software"**, đừng mặc định đó vô hại: trước tiên kiểm lại file có tải đúng từ trang chính thức không. Chỉ khi chắc về nguồn tải mới mở khóa, làm một lần:
+Máy do cơ quan quản lý hoặc bạn không chắc nguồn tải thì hỏi bộ phận IT, đừng tự bỏ qua cảnh báo.
 
-1. Vào **System Settings** (Cài đặt hệ thống) → **Privacy & Security** (Quyền riêng tư & Bảo mật).
-2. Kéo xuống, tìm dòng báo về Hermes, bấm **Open Anyway** (Vẫn mở).
+## Bước 4: Làm quen với chat thiết lập
 
-Nếu dùng máy do cơ quan quản lý hoặc không chắc về nguồn tải, hỏi IT thay vì tự bỏ qua cảnh báo.
+Trên máy chưa từng dùng Hermes, app mở thẳng vào một **chat thiết lập** thay vì màn hình cài đặt. Hermes hỏi lần lượt từng thẻ:
 
-## Bước 4: Mở Hermes lần đầu
+<SetupChat />
 
-Trên máy chưa từng dùng Hermes, app mở thẳng vào một **chat thiết lập** thay vì màn hình cài đặt. Hermes hỏi lần lượt từng thẻ: tên bạn, màu nhấn, kiểu bố cục (Basic gọn hơn, Elite đầy đủ hơn), có muốn kết nối app nào không, có muốn cài plugin nào không, một chuyến tham quan ngắn và việc đầu tiên bạn muốn thử.
+Chat này chạy bằng một **model dùng thử miễn phí của Nous** (`nous/welcome`), nên bạn trò chuyện được ngay mà chưa cần API key. Vài điều nên biết:
 
-Chat thiết lập này chạy bằng một **model dùng thử miễn phí của Nous** (`nous/welcome`), nên bạn nói chuyện được với Hermes ngay mà chưa cần API key. Vài điều nên biết:
-
-- **Đây là model dùng thử để làm quen.** Tài liệu mình đọc không nêu hạn mức, nên đừng dựa vào nó cho việc lâu dài.
-- **Không bắt buộc làm hết.** Bấm **Skip setup** ở khung soạn tin để kết thúc và mở một chat mới. Muốn làm lại sau thì vào **Settings → Run onboarding again**.
-- **Chỉ tự hiện trên bản cài mới.** Máy đã dùng Hermes từ trước, hoặc Desktop nối tới Hermes ở máy khác, sẽ không tự có chat thiết lập này.
+- **Đây là model để làm quen.** Tài liệu mình đọc không nêu hạn mức, nên đừng dựa vào nó cho việc lâu dài.
+- **Không bắt buộc làm hết.** Bấm **Skip setup** ở khung soạn tin để kết thúc và mở một chat mới. Muốn làm lại thì vào **Settings → Run onboarding again**.
+- **Chỉ tự hiện trên bản cài mới.** Máy đã dùng Hermes từ trước, hoặc Desktop nối tới Hermes ở máy khác, sẽ không có chat này.
 - **Nội dung chat vẫn đi qua dịch vụ cloud.** Đừng gõ dữ liệu cá nhân hay tài liệu nhạy cảm khi mới làm quen.
-- **Ở thẻ kết nối app (Gmail, Notion, Linear...),** chỉ nối khi bạn thật sự cần. Đăng nhập diễn ra trên trình duyệt, ở trang đăng nhập chính thức của dịch vụ. Không gõ mật khẩu hay mã xác minh vào khung chat.
+- **Thẻ kết nối app (Gmail, Notion, Linear...)** chỉ nối khi bạn thật sự cần. Đăng nhập diễn ra trên trình duyệt, ở trang chính thức của dịch vụ. Không gõ mật khẩu hay mã xác minh vào khung chat.
 
-Để dùng đều đặn, bạn cần một nguồn model của riêng mình: [xem cách bắt đầu theo tài khoản bạn đã có](/bat-dau/chon-nha-cung-cap-api). Đã có gói ChatGPT trả phí thì thử đăng nhập Codex; chưa có thì bắt đầu với OpenRouter, tính phí theo token. Mac Apple Silicon cũng có thể thử [model chạy ngay trên máy](/bat-dau/chon-nha-cung-cap-api#chay-tren-may). Không cần kết nối nhiều nguồn cùng lúc.
+Để dùng đều đặn, bạn cần một nguồn model của riêng mình: [xem cách chọn theo tài khoản bạn đang có](/bat-dau/chon-nha-cung-cap-api). Đã có gói ChatGPT trả phí thì thử đăng nhập Codex; chưa có thì bắt đầu với OpenRouter, tính phí theo token. Mac Apple Silicon cũng có thể thử [model chạy ngay trên máy](/bat-dau/chon-nha-cung-cap-api#chay-tren-may). Không cần nối nhiều nguồn cùng lúc.
 
-Nếu bạn bấm Skip setup, hoặc cài trên máy đã có Hermes, màn hình đầu tiên là cửa sổ chat thường; việc cần làm vẫn là chọn model AI để Hermes "có não".
+Nếu bạn bấm Skip setup, hoặc cài trên máy đã có Hermes, màn hình đầu tiên là cửa sổ chat thường. Việc cần làm vẫn là chọn model để Hermes "có não".
 
 ## Bước 5: Hỏi câu đầu tiên
 
 Gõ vào ô chat, ví dụ "Chào bạn, giới thiệu về bản thân bằng tiếng Việt". Nó trả lời được là thành công.
 
-## Kiểm tra đã chạy chưa
+## Kiểm nhanh
 
 - [ ] Mac dùng chip Apple Silicon.
 - [ ] Mở được cửa sổ chat.
 - [ ] Gõ câu hỏi thấy trả lời tiếng Việt.
-- [ ] Biết model đang dùng là model dùng thử hay nguồn model của chính bạn (xem ở phần chọn model).
+- [ ] Biết model đang dùng là model dùng thử hay nguồn model của chính bạn.
 
 ## Hay gặp lỗi
 
-- **Vẫn bị chặn sau khi mở khóa?** Thử kéo lại app vào Applications rồi mở lại.
+- **Vẫn bị chặn sau khi mở khóa?** Kéo lại app vào Applications rồi mở lại.
 - **App không mở?** Vào Applications, bấm đúp biểu tượng Hermes.
 - **Không thấy chat thiết lập?** Có thể máy đã từng dùng Hermes, hoặc bạn đã bấm Skip. Vào **Settings → Run onboarding again** để mở lại.
 

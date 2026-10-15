@@ -9,77 +9,94 @@ tags: ["model", "openrouter", "codex", "chi phí"]
 
 Hermes cần một <TermTip term="model">model AI</TermTip> để xử lý yêu cầu. Người mới không cần mua nhiều dịch vụ cùng lúc: **cài Hermes trước, chọn một nguồn để thử, rồi chỉ thêm nguồn thứ hai khi thấy cần**. Mình dùng cả OpenRouter lẫn tài khoản ChatGPT/Codex, nhưng đó là cách mình vận hành sau khi đã biết việc nào hợp với nguồn nào.
 
-Vừa cài Hermes Desktop trên máy mới? Chat thiết lập lần đầu chạy bằng một model dùng thử miễn phí của Nous, nên bạn chưa cần nguồn nào để làm quen. Model đó chỉ để thử, vì vậy khi muốn dùng đều đặn, hãy chọn một nguồn bên dưới. Chi tiết ở bài cài [Windows](/bat-dau/cai-hermes-desktop-windows) hoặc [Mac](/bat-dau/cai-hermes-desktop-mac).
+Vừa cài Hermes Desktop trên máy mới? Chat thiết lập lần đầu chạy bằng một model dùng thử miễn phí của Nous, nên bạn chưa cần nguồn nào để làm quen. Model đó chỉ để thử. Muốn dùng đều đặn thì chọn một nguồn bên dưới. Chi tiết ở bài cài [Windows](/bat-dau/cai-hermes-desktop-windows) hoặc [Mac](/bat-dau/cai-hermes-desktop-mac).
 
-## Bước 1: Bạn đã có gói ChatGPT trả phí chưa?
+## Bạn đang có gì trong tay?
+
+<ModelChoose />
+
+<ModelFlow />
+
+## Bước 1: Chọn một nguồn đầu tiên
 
 <div id="da-co-chatgpt" className="scroll-mt-24" />
 
 ### Đã có tài khoản ChatGPT trả phí
 
-Mở mục chọn model trong Hermes Desktop, tìm **ChatGPT or Codex Subscription**; nếu không thấy, mở terminal và chạy `hermes model` để vào trình thiết lập rồi chọn mục đó. Hermes sẽ đưa đường dẫn và mã đăng nhập thiết bị; **bạn tự mở trang OpenAI chính thức và nhập mã tại đó**, không gửi mã cho người khác. Chọn một model Codex rồi thử một việc nhỏ. Nếu tài khoản dùng được, bắt đầu bằng thứ đã có thay vì vội nạp thêm tiền ở nơi khác. Đây là đăng nhập bằng tài khoản ChatGPT qua OAuth, không phải dán mật khẩu hay API key.
+1. Mở mục chọn model trong Hermes Desktop và tìm **ChatGPT or Codex Subscription**. Không thấy thì mở terminal, chạy `hermes model` rồi chọn mục đó.
+2. Hermes đưa đường dẫn và mã đăng nhập thiết bị. **Bạn tự mở trang OpenAI chính thức và nhập mã tại đó**, không gửi mã cho người khác.
+3. Chọn một model Codex rồi thử một việc nhỏ.
+
+Đây là đăng nhập bằng tài khoản ChatGPT qua OAuth, không phải dán mật khẩu hay API key. Nếu tài khoản dùng được, hãy bắt đầu bằng thứ đã có thay vì vội nạp thêm tiền ở nơi khác.
 
 <div id="bat-dau-openrouter" className="scroll-mt-24" />
 
-### Chưa có hoặc Codex không dùng được
+### Chưa có hoặc Codex không dùng được: OpenRouter
 
-Bắt đầu với <TermTip term="OpenRouter">OpenRouter</TermTip>:
+<TermTip term="OpenRouter">OpenRouter</TermTip> cho bạn thử nhiều model và trả theo mức dùng:
 
-1. Vào [OpenRouter](https://openrouter.ai/), tạo tài khoản của bạn.
-2. Vào [mục API keys](https://openrouter.ai/keys) để tạo key. Mở mục chọn model trong Hermes Desktop và chọn OpenRouter để kết nối; nếu giao diện không hiện phần thêm nhà cung cấp, chạy `hermes model` trong terminal. Nhập key **vào phần thiết lập Hermes**, không gửi trong chat.
-3. Chọn một model vừa đủ, xem mức tính phí theo <TermTip term="token">token</TermTip> trên OpenRouter. Nếu model cần số dư, vào [Credits](https://openrouter.ai/credits) để nạp một khoản nhỏ, rồi thử một yêu cầu ngắn. Xem số dư và lịch sử dùng sau khi thử.
+1. Vào [OpenRouter](https://openrouter.ai/) và tạo tài khoản của bạn.
+2. Vào [mục API keys](https://openrouter.ai/keys) để tạo key. Rồi mở mục chọn model trong Hermes Desktop, chọn OpenRouter và nhập key **vào phần thiết lập Hermes**, không gửi trong chat. Giao diện không hiện phần thêm nhà cung cấp thì chạy `hermes model` trong terminal.
+3. Chọn một model vừa đủ và xem mức tính phí theo <TermTip term="token">token</TermTip>. Nếu model cần số dư, vào [Credits](https://openrouter.ai/credits) để nạp một khoản nhỏ, rồi thử một yêu cầu ngắn. Xem số dư và lịch sử dùng sau khi thử.
 
-Bạn cũng có thể dùng lệnh `hermes auth add openrouter --type oauth` để đăng nhập OpenRouter qua trình duyệt thay vì tạo rồi dán key thủ công; cách này phù hợp khi đã quen dùng terminal. Đọc thêm [Vì sao dùng OpenRouter](/bat-dau/vi-sao-dung-openrouter). Không cần mua gói ChatGPT chỉ để cài Hermes.
+Quen dùng terminal thì có thể chạy `hermes auth add openrouter --type oauth` để đăng nhập OpenRouter qua trình duyệt, khỏi tạo rồi dán key. Đọc thêm [Vì sao dùng OpenRouter](/bat-dau/vi-sao-dung-openrouter). Bạn không cần mua gói ChatGPT chỉ để cài Hermes.
 
-**Muốn một tài khoản do chính Nous Research cung cấp:** <TermTip term="Nous Portal">Nous Portal</TermTip> là một lựa chọn khác, có nhiều model và công cụ đi kèm, đăng nhập bằng tài khoản thay vì dán API key. Theo [tài liệu Hermes](https://hermes-agent.nousresearch.com/docs/integrations/providers/), Portal hiện là dịch vụ **theo gói đăng ký**, không phải số dư OpenRouter tính theo token. Xem [cách dùng Nous Portal](/bat-dau/dang-ky-nous-portal) và điều kiện gói chính thức trước khi quyết định.
+### Muốn một tài khoản do Nous Research cung cấp: Nous Portal
 
-## Bước 2: Chạy thử một việc thật trước khi thêm nguồn thứ hai
+<TermTip term="Nous Portal">Nous Portal</TermTip> có nhiều model và công cụ đi kèm, đăng nhập bằng tài khoản thay vì dán API key. Theo [tài liệu Hermes](https://hermes-agent.nousresearch.com/docs/integrations/providers/), Portal hiện là dịch vụ **theo gói đăng ký**, không phải số dư OpenRouter tính theo token. Xem [cách dùng Nous Portal](/bat-dau/dang-ky-nous-portal) và điều kiện gói chính thức trước khi quyết định.
 
-Sau khi kết nối nguồn đầu tiên, nhờ Hermes tóm tắt một tài liệu ngắn hoặc soạn một email nháp rồi tự kiểm tra kết quả. Đăng nhập thành công chưa có nghĩa là model đã chạy được hoặc hạn mức gói còn đủ. Nếu bị từ chối, xem thông báo lỗi và tình trạng tài khoản trước khi thử đường khác.
+## Bước 2: Chạy thử một việc thật
 
-**Tài khoản ChatGPT trả phí không phải credit API OpenAI và cũng không trả hộ OpenRouter.** OpenRouter vẫn tính phí riêng mỗi khi bạn chọn model qua OpenRouter. Tài liệu Hermes hiện chưa xác nhận đầy đủ gói ChatGPT nào đủ điều kiện và mức dùng trong Hermes sẽ trừ vào hạn mức Codex như thế nào; đừng hứa rằng một gói cụ thể sẽ dùng không giới hạn.
+Sau khi kết nối nguồn đầu tiên, nhờ Hermes tóm tắt một tài liệu ngắn hoặc soạn một email nháp, rồi tự kiểm kết quả. Đăng nhập thành công chưa có nghĩa là model đã chạy được hoặc hạn mức gói còn đủ. Nếu bị từ chối, xem thông báo lỗi và tình trạng tài khoản trước khi thử đường khác.
 
-## Bước 3: Nếu cần linh hoạt hơn, thêm OpenRouter bên cạnh Codex
+**Tài khoản ChatGPT trả phí không phải credit API OpenAI và cũng không trả hộ OpenRouter.** OpenRouter vẫn tính phí riêng mỗi khi bạn chọn model qua OpenRouter. Tài liệu Hermes hiện chưa xác nhận đầy đủ gói ChatGPT nào đủ điều kiện, và mức dùng trong Hermes trừ vào hạn mức Codex ra sao. Vì vậy đừng mặc định một gói cụ thể sẽ dùng không giới hạn.
 
-Khi đã quen một nguồn, bạn có thể kết nối nguồn còn lại: OpenRouter để thử nhiều model và trả theo mức dùng; Codex để dùng các model Codex qua tài khoản ChatGPT nếu tài khoản được phép. Mình dùng model vừa đủ trên OpenRouter cho việc thường, và **chủ động chuyển** sang Codex khi làm việc code hoặc việc hợp với model đó. Cách này có thể tận dụng gói đã trả tiền, nhưng **không đảm bảo rẻ hơn**: hãy xem lượng dùng và kết quả thực tế của chính bạn.
+## Bước 3: Cần linh hoạt hơn thì thêm nguồn thứ hai
 
-Nếu bạn còn có gói Claude, lưu ý theo tài liệu Hermes: đường đăng nhập Anthropic (OAuth) trực tiếp chỉ dùng được với Claude Max kèm extra usage, gói Pro không dùng được đường đó. Muốn xem một cách phối hợp Claude Pro, ChatGPT Pro và OpenRouter trong thực tế, đọc [bài kinh nghiệm này](/blog/hermes-claude-pro-chatgpt-openrouter-tiet-kiem).
+Khi đã quen một nguồn, bạn có thể nối nguồn còn lại: OpenRouter để thử nhiều model và trả theo mức dùng, Codex để dùng các model Codex qua tài khoản ChatGPT nếu tài khoản được phép. Mình dùng model vừa đủ trên OpenRouter cho việc thường, và **chủ động chuyển** sang Codex khi làm việc code hoặc việc hợp với model đó. Cách này có thể tận dụng gói đã trả tiền, nhưng **không đảm bảo rẻ hơn**. Hãy xem lượng dùng và kết quả thực tế của chính bạn.
 
-Trong phiên chat Hermes, `/model` chuyển giữa những nguồn **đã cấu hình**. Nếu chưa thấy nguồn muốn dùng, `hermes model` trong terminal là trình thiết lập provider và đăng nhập. Sau khi thêm nguồn mới, thử lại một yêu cầu ngắn để chắc mình đang dùng đúng model. Bạn không cần cài Codex CLI chỉ để thêm provider Codex cho Hermes.
+Nếu bạn còn có gói Claude, theo tài liệu Hermes, đường đăng nhập Anthropic (OAuth) trực tiếp chỉ dùng được với Claude Max kèm extra usage, gói Pro không dùng được đường đó. Muốn xem một cách phối hợp Claude Pro, ChatGPT Pro và OpenRouter trong thực tế, đọc [bài kinh nghiệm này](/blog/hermes-claude-pro-chatgpt-openrouter-tiet-kiem).
 
-Nếu muốn Hermes tự chuyển khi một nguồn **lỗi hoặc chạm hạn mức**, có thể cấu hình `hermes fallback` sau khi cả hai nguồn đã hoạt động. Đây là **dự phòng khi lỗi**, không phải tính năng tự chọn model rẻ nhất cho mỗi câu hỏi. Nguồn được chuyển tới có thể tính phí riêng, nên kiểm tra chuỗi dự phòng trước khi bật.
+Vài lệnh hữu ích:
+
+- Trong phiên chat, `/model` chuyển giữa những nguồn **đã cấu hình**.
+- Chưa thấy nguồn muốn dùng thì `hermes model` trong terminal là trình thiết lập nhà cung cấp và đăng nhập.
+- Thêm nguồn mới xong, thử lại một yêu cầu ngắn để chắc mình đang dùng đúng model.
+- Bạn không cần cài Codex CLI chỉ để thêm Codex cho Hermes.
+
+Muốn Hermes tự chuyển khi một nguồn **lỗi hoặc chạm hạn mức**, cấu hình `hermes fallback` sau khi cả hai nguồn đã chạy ổn. Đây là **dự phòng khi lỗi**, không phải tính năng tự chọn model rẻ nhất cho mỗi câu hỏi. Nguồn được chuyển tới có thể tính phí riêng, nên kiểm chuỗi dự phòng trước khi bật.
 
 <div id="chay-tren-may" className="scroll-mt-24" />
 
 ## Cách khác: chạy model ngay trên máy của bạn
 
-Từ Hermes 0.22.0 (13/10/2026), Hermes có thể tự cài bộ chạy model mã nguồn mở llama.cpp, tự chọn bản model hợp với phần cứng và quản lý bộ nhớ giúp bạn. Theo tài liệu chính thức, cách này không cần tài khoản hay API key, và sau khi tải model xong thì model đó chạy không cần mạng.
+Từ Hermes 0.22.0 (13/10/2026), Hermes có thể tự cài bộ chạy model mã nguồn mở llama.cpp, chọn bản model hợp với phần cứng và quản lý bộ nhớ giúp bạn. Theo tài liệu chính thức, cách này không cần tài khoản hay API key, và tải model xong thì chạy không cần mạng.
+
+<LocalModelFlow />
 
 **Cách làm trong Desktop:**
 
 1. Mở **Settings → Providers → Local Models**. Nếu máy đủ sức chạy model, sau khi xong chat thiết lập lần đầu Hermes cũng có thể hiện thẻ "This computer can run a model locally" để bạn bấm **Set it up**.
 2. Bấm **Install runtime**. Hermes tải bộ chạy phù hợp với máy (vài trăm MB), kiểm tra rồi cài.
 3. Chọn một model trong danh mục và bấm **Download**. Tải có thể tạm dừng và tiếp tục.
-4. Bấm **Use**. Các chat mới sẽ chạy bằng model này; quay lại nguồn cloud chỉ cần chọn lại trong phần chọn model.
+4. Bấm **Use**. Các chat mới sẽ chạy bằng model này. Muốn quay lại nguồn cloud, chọn lại trong phần chọn model.
 
 Dùng terminal thì chạy `hermes model` rồi chọn **Local models**, các bước tương tự.
 
-**Hermes báo máy bạn hợp model nào:** mỗi model trong danh mục có nhãn xanh (chạy hết trong bộ nhớ card đồ họa), vàng (phải dùng thêm RAM hệ thống, chạy được nhưng chậm hơn) hoặc đỏ (quá lớn cho máy này). Tài liệu ghi card đồ họa từ 8 GB trở lên chạy được các model nhỏ trong danh mục, còn từ 16 GB trở lên mới chạy thoải mái model cỡ 27 đến 35 tỷ tham số. Máy không có card rời vẫn có thể chạy, nhưng chậm hơn. Danh mục gồm các model mở như Qwen và DeepSeek V4 Flash, và bạn tìm thêm được file GGUF từ Hugging Face; danh sách thay đổi theo từng bản Hermes nên hãy xem danh mục trên máy mình.
+**Hermes báo máy bạn hợp model nào:** mỗi model trong danh mục có một nhãn màu.
+
+- **Xanh:** chạy hết trong bộ nhớ card đồ họa.
+- **Vàng:** phải dùng thêm RAM hệ thống, chạy được nhưng chậm hơn.
+- **Đỏ:** quá lớn cho máy này.
+
+Tài liệu ghi card đồ họa từ 8 GB trở lên chạy được các model nhỏ trong danh mục, còn từ 16 GB trở lên mới chạy thoải mái model cỡ 27 đến 35 tỷ tham số. Máy không có card rời vẫn có thể chạy, nhưng chậm hơn. Danh mục gồm các model mở như Qwen và DeepSeek V4 Flash, và bạn tìm thêm được file GGUF từ Hugging Face. Danh sách thay đổi theo từng bản Hermes nên hãy xem danh mục trên máy mình.
 
 **Nên cân nhắc:**
 
-- Model chạy trên máy thường nhỏ hơn và kém hơn model cloud lớn ở việc nhiều bước hoặc cần suy luận dài. Thử một việc nhỏ có kết quả kiểm được trước khi giao việc quan trọng.
+- Model chạy trên máy thường nhỏ hơn và kém hơn model cloud lớn ở việc nhiều bước hoặc cần suy luận dài. Hãy thử một việc nhỏ có kết quả kiểm được trước khi giao việc quan trọng.
 - Chạy model trên máy dùng nhiều tài nguyên của máy và ổ đĩa. Mỗi dòng trong danh mục ghi dung lượng tải, xem trước khi bấm Download.
 - Model chạy trên máy không có nghĩa mọi thứ đều ở lại máy. Nếu bạn bật tìm kiếm web hoặc kết nối app như Gmail, dữ liệu đi qua các công cụ đó vẫn ra ngoài. Đọc thêm [bảo mật Hermes và thông tin cá nhân](/huong-dan/bao-mat-hermes-thong-tin-ca-nhan).
 - Giao diện Local Models còn mới. Nếu bản Desktop của bạn khác bài, làm theo [tài liệu Local Models chính thức](https://hermes-agent.nousresearch.com/docs/user-guide/local-models).
-
-## Bạn nên chọn gì ngay bây giờ?
-
-- **Chỉ muốn làm quen:** dùng chat thiết lập lần đầu với model dùng thử, rồi chọn một nguồn bên dưới.
-- **Có card đồ họa đủ mạnh hoặc cần giữ việc ở máy mình:** thử model chạy trên máy với một việc nhỏ.
-- **Đã trả tiền gói ChatGPT:** thử Codex trong Hermes trước, nếu tài khoản của bạn được phép. Dùng được rồi mới cân nhắc thêm OpenRouter cho những model hoặc việc Codex không phù hợp.
-- **Chưa có gói ChatGPT:** bắt đầu với OpenRouter, chọn một model vừa đủ và nạp ít để thử. Không cần mua thêm một gói chỉ vì muốn dùng Hermes.
-- **Muốn gọn và hợp với gói của Nous:** tìm hiểu Nous Portal, kiểm tra điều kiện gói trước khi quyết định.
 
 ## Model đổi nhanh: kiểm lại model bạn đang chọn
 
@@ -90,18 +107,18 @@ Nếu bạn dùng Claude qua API, nên rà mọi nơi mình từng chỉ định
 - Model chính (mở `/model` hoặc `hermes model` để xem đang chọn gì).
 - Model dành cho subagent.
 - Model dự phòng khi nguồn chính lỗi hoặc hết hạn mức.
-- Từng lịch tự động có ghim model riêng (`hermes cron list`); theo tài liệu, lịch ghim model không tự chuyển sang nguồn dự phòng chung, nên khi model đó ngừng thì lần chạy sẽ lỗi.
+- Từng lịch tự động có ghim model riêng (`hermes cron list`). Theo tài liệu, lịch ghim model không tự chuyển sang nguồn dự phòng chung, nên khi model đó ngừng thì lần chạy sẽ lỗi.
 
-Một vài lưu ý khi đổi hoặc thử model mới:
+Vài lưu ý khi đổi hoặc thử model mới:
 
-- **Model xuất hiện trong bộ chọn chưa chắc tài khoản của bạn dùng được.** Mỗi hãng và mỗi gói có quyền truy cập, hạn mức riêng. Thử một yêu cầu ngắn trước khi chuyển việc thật sang.
-- **Danh sách trong Hermes cập nhật theo từng bản.** Ví dụ, trong bản 0.22.0, danh mục OpenRouter đã có `anthropic/claude-sonnet-5.5`, còn danh sách Anthropic đóng gói sẵn chưa thấy mã này. Không thấy model bạn cần thì cập nhật Hermes rồi kiểm lại, đừng đoán mã.
-- **Đổi model là đổi hành vi.** Thử lại 2 đến 3 việc quen thuộc của bạn và so với lần trước: kết quả đúng hơn hay kém hơn, số lần phải sửa, thời gian chờ, chi phí thật trên trang dùng của nhà cung cấp. Bảng xếp hạng chung không thay được phép thử này.
-- **Mức suy luận (reasoning effort) cao thường tốn thêm token.** Model rẻ hơn trên bảng giá nhưng chạy ở mức suy luận cao hơn vẫn có thể tốn hơn cho mỗi việc. Kiểm số liệu dùng thật trước khi kết luận.
+- **Model có trong bộ chọn chưa chắc tài khoản của bạn dùng được.** Mỗi hãng và mỗi gói có quyền truy cập, hạn mức riêng. Thử một yêu cầu ngắn trước khi chuyển việc thật sang.
+- **Danh sách trong Hermes cập nhật theo từng bản.** Ví dụ, trong bản 0.22.0, danh mục OpenRouter đã có `anthropic/claude-sonnet-5.5`, còn danh sách Anthropic đóng gói sẵn chưa thấy mã này. Không thấy model cần thì cập nhật Hermes rồi kiểm lại, đừng đoán mã.
+- **Đổi model là đổi hành vi.** Thử lại 2 đến 3 việc quen thuộc và so với lần trước: đúng hơn hay kém hơn, số lần phải sửa, thời gian chờ, chi phí thật trên trang dùng của nhà cung cấp. Bảng xếp hạng chung không thay được phép thử này.
+- **Mức suy luận (reasoning effort) cao thường tốn thêm token.** Model rẻ hơn trên bảng giá nhưng chạy ở mức suy luận cao hơn vẫn có thể tốn hơn cho mỗi việc. Hãy kiểm số liệu dùng thật trước khi kết luận.
 
-## Khi nguồn đầu tiên đã chạy, nhờ Hermes hướng dẫn thêm nguồn thứ hai
+## Nguồn đầu đã chạy: nhờ Hermes chỉ cách thêm nguồn thứ hai
 
-**Đừng gửi prompt này khi chưa kết nối được model nào:** Hermes cần một nguồn đang hoạt động để trả lời bạn. Sau khi chạy thử thành công, bạn có thể hỏi Hermes cách thêm nguồn còn lại; **bạn tự xác nhận đăng nhập OAuth** khi màn hình chính thức hiện ra:
+**Đừng gửi prompt này khi chưa kết nối được model nào**, vì Hermes cần một nguồn đang hoạt động để trả lời bạn. Sau khi chạy thử thành công, bạn có thể hỏi Hermes cách thêm nguồn còn lại. **Bạn tự xác nhận đăng nhập OAuth** khi màn hình chính thức hiện ra:
 
 ```text
 Mình đã kết nối một model và thử chat thành công. Hãy kiểm tra model/provider
@@ -113,6 +130,10 @@ chính thức, không gửi những thông tin đó trong chat. Chưa bật fall
 hay đổi model mặc định khi mình chưa đồng ý.
 ```
 
-Khi dùng OpenRouter, tạo key trong tài khoản của **chính bạn** và nhập vào giao diện cấu hình của Hermes; không đăng key lên diễn đàn hay gửi cho người lạ. Nếu cần tìm hiểu thêm, đọc [tài liệu provider chính thức của Hermes](https://hermes-agent.nousresearch.com/docs/integrations/providers/), [fallback](https://hermes-agent.nousresearch.com/docs/user-guide/features/fallback-providers/) và [phân biệt hóa đơn ChatGPT với API](https://help.openai.com/en/articles/9039756-managing-billing-for-chatgpt-and-the-api-platform). Phần model chạy trên máy dựa theo [tài liệu Local Models](https://hermes-agent.nousresearch.com/docs/user-guide/local-models) và [ghi chú phát hành v0.22.0](https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.0); tên nút và bước đối chiếu thêm với mã nguồn bản 0.22.0.
+Khi dùng OpenRouter, tạo key trong tài khoản của **chính bạn** và nhập vào giao diện cấu hình của Hermes. Đừng đăng key lên diễn đàn hay gửi cho người lạ.
+
+## Nguồn tham khảo
+
+Đọc thêm [tài liệu provider chính thức của Hermes](https://hermes-agent.nousresearch.com/docs/integrations/providers/), [fallback](https://hermes-agent.nousresearch.com/docs/user-guide/features/fallback-providers/) và [phân biệt hóa đơn ChatGPT với API](https://help.openai.com/en/articles/9039756-managing-billing-for-chatgpt-and-the-api-platform). Phần model chạy trên máy dựa theo [tài liệu Local Models](https://hermes-agent.nousresearch.com/docs/user-guide/local-models) và [ghi chú phát hành v0.22.0](https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.0). Tên nút và các bước đối chiếu thêm với mã nguồn bản 0.22.0.
 
 Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap), nhớ che thông tin đăng nhập và số dư.

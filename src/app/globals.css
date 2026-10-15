@@ -349,7 +349,16 @@ footer.site-footer a:hover { text-decoration: underline; text-underline-offset: 
   padding: 20px;
   margin: 0 0 26px;
 }
+.reader .toc-box { padding: 0; }
+.reader .toc-box summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; padding: 0 20px; cursor: pointer; list-style: none; }
+.reader .toc-box summary::-webkit-details-marker { display: none; }
+.reader .toc-box summary::after { content: ""; flex: 0 0 auto; width: 8px; height: 8px; border-right: 2px solid var(--color-green); border-bottom: 2px solid var(--color-green); transform: rotate(45deg) translateY(-2px); transition: transform .2s ease; }
+.reader .toc-box[open] summary::after { transform: rotate(-135deg); }
+.reader .toc-box summary:focus-visible { outline: 3px solid var(--color-green); outline-offset: -3px; }
+.reader .toc-box .toc-count { margin-left: auto; font-size: 12px; color: var(--color-muted); }
+.reader .toc-box nav { padding: 0 20px 14px; border-top: 1px solid var(--color-line); padding-top: 8px; }
 .reader .toc-box .toc-title {
+  margin-bottom: 0 !important;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 1.5px;

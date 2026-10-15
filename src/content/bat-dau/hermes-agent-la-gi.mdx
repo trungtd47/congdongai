@@ -2,38 +2,54 @@
 title: "Hermes AI Agent là gì? Hiểu Hermes Agent trước khi cài"
 description: "Hermes Agent là khung trợ lý AI mã nguồn mở của Nous Research. Hiểu model, công cụ, memory, skill và chi phí trước khi cài Hermes AI Agent."
 datePublished: "2026-09-20"
-dateModified: "2026-10-04"
+dateModified: "2026-10-15"
 authorName: "Cộng Đồng AI"
 tags: ["khái niệm", "người mới"]
 ---
 
-Nếu bạn từng ước "giá có ai đó thay mình làm mấy việc lặt vặt trên máy mỗi ngày" thì Hermes Agent chính là thứ đó. Bài này viết cho người hoàn toàn mới, không một dòng code.
+Bạn có từng nghĩ "giá có ai làm giúp mấy việc lặt vặt trên máy mỗi ngày"? Hermes Agent là một cách để có người trợ lý như vậy. Bài này viết cho người chưa biết code, đọc khoảng 5 phút.
+
+<HermesHub />
 
 ## Hermes Agent là gì?
 
-Hermes Agent là một **bộ khung mã nguồn mở để bạn tự dựng trợ lý AI của riêng mình**, do Nous Research phát triển. Trong bài này, "Hermes AI Agent" chỉ khung Hermes Agent, không phải tên một model AI riêng. Phần mềm có thể chạy trên máy bạn; nơi model xử lý yêu cầu tùy nguồn bạn kết nối.
+Hermes Agent là **bộ khung mã nguồn mở để bạn tự dựng trợ lý AI của riêng mình**, do Nous Research phát triển. "Hermes AI Agent" trong bài này là tên phần mềm, không phải tên một model AI.
 
-Khác biệt ở đây là Hermes có thể dùng công cụ để **thao tác trên máy tính**: đọc và sửa file, chạy lệnh, mở ứng dụng, lướt web. Nhiều chatbot hiện nay cũng có công cụ và lịch hẹn ở mức độ khác nhau; đừng hiểu là chỉ Hermes mới làm được. Với Hermes, bạn có thể yêu cầu dựng một bản tin sáng, xem và xác nhận lịch chạy rồi kiểm kết quả của lần đầu tiên. Lịch cần máy/gateway hoạt động, model còn quyền dùng và kênh nhận phù hợp.
+Cách hiểu dễ nhất là tách làm hai phần:
 
-## Những khả năng đáng thử
+- **Model** là "bộ não": nơi đọc yêu cầu và nghĩ ra câu trả lời. Bạn tự chọn nguồn model.
+- **Hermes** là "người điều phối": nhận việc từ bạn, dùng công cụ, nhớ ghi chú và chạy lịch.
 
-1. **Dùng công cụ trong môi trường bạn cấu hình.** Hermes có thể đọc/sửa file, chạy lệnh và duyệt web tùy công cụ, quyền và model. Một số dịch vụ chat cũng có công cụ; hãy so theo việc cần làm, không chỉ tên sản phẩm. Kiểm kết quả thao tác thay vì chỉ tin lời agent báo xong.
-2. **Giữ những ghi chú quan trọng qua phiên.** Memory có giới hạn và cần kiểm lại; tài liệu dài nên để trong file để đọc khi cần.
-3. **Tái sử dụng cách làm.** <TermTip term="skill">Skill</TermTip> là hướng dẫn cho việc lặp lại, không phải cài một file là kết quả luôn đúng.
-4. **Chạy việc đã đặt lịch.** Tạo lịch, xem cấu hình và kiểm lần chạy đầu, không nhầm lời hứa trong chat với một lịch đã hoạt động.
+Phần mềm Hermes có thể chạy ngay trên máy bạn. Còn nội dung được xử lý ở đâu thì tùy nguồn model bạn kết nối.
+
+Điểm khác với một cuộc trò chuyện thông thường là Hermes có thể **dùng công cụ để thao tác trên máy**: đọc và sửa file, chạy lệnh, lướt web, tùy công cụ, quyền và model bạn cấu hình. Nhiều dịch vụ chat khác cũng có công cụ, nên đừng hiểu là chỉ Hermes mới làm được.
+
+## Bốn việc đáng thử
+
+1. **Dùng công cụ.** Giao việc như tìm thông tin, sắp xếp file hay soạn nháp, rồi tự kiểm kết quả thay vì chỉ tin lời "đã xong".
+2. **Nhớ ghi chú qua các lần chat.** Bộ nhớ có giới hạn và cần xem lại. Tài liệu dài nên để trong file để đọc khi cần.
+3. **Tái sử dụng cách làm.** <TermTip term="skill">Skill</TermTip> là bản hướng dẫn cho việc hay lặp lại. Có skill không có nghĩa kết quả luôn đúng, nên vẫn cần kiểm.
+4. **Chạy việc theo lịch**, ví dụ một bản tin mỗi sáng. Hãy xem lịch đã được tạo thật chưa và kiểm lần chạy đầu tiên, vì lời hứa trong khung chat chưa phải một lịch đang chạy. Lịch cần máy hoặc gateway hoạt động, model còn quyền dùng và kênh nhận phù hợp.
 
 ## Có miễn phí không?
 
-**Phần mềm mã nguồn mở và miễn phí.** Nguồn model có cơ chế riêng: OpenRouter thường tính theo <TermTip term="token">token</TermTip>, Nous Portal theo gói, còn đăng nhập ChatGPT/Codex phụ thuộc quyền dùng của tài khoản. Model chạy trên máy cần tài nguyên phần cứng; các dịch vụ bổ sung cũng có thể có phí. [Xem cách chọn model](/bat-dau/chon-nha-cung-cap-api).
+**Phần mềm là mã nguồn mở và miễn phí.** Chi phí nằm ở nguồn model bạn chọn:
+
+| Nguồn model | Cách tính |
+| --- | --- |
+| OpenRouter | Thường theo <TermTip term="token">token</TermTip> đã dùng |
+| Nous Portal | Theo gói đăng ký |
+| Đăng nhập ChatGPT/Codex | Tùy quyền dùng của tài khoản |
+| Model chạy trên máy | Không có phí nhà cung cấp, nhưng cần máy đủ mạnh |
+
+Các dịch vụ bổ sung bạn nối thêm cũng có thể có phí riêng. Xem [cách chọn model](/bat-dau/chon-nha-cung-cap-api).
 
 ## Người không biết code dùng được không?
 
-**Có thể bắt đầu mà không biết code.** Desktop có giao diện để kết nối model và chat. Một số tích hợp hay lỗi cấu hình vẫn cần thêm bước hoặc trợ giúp kỹ thuật; bắt đầu bằng một việc nhỏ trước.
+**Có thể bắt đầu mà không biết code.** Bản Desktop có giao diện để kết nối model và trò chuyện. Một số tích hợp vẫn cần thêm bước hoặc nhờ người rành kỹ thuật, nên hãy bắt đầu bằng một việc nhỏ.
 
 ## Bắt đầu từ đâu?
 
-1. Cài bản Desktop cho hệ điều hành của bạn: [Windows](/bat-dau/cai-hermes-desktop-windows) hoặc [Mac](/bat-dau/cai-hermes-desktop-mac).
-2. [Chọn một nguồn model](/bat-dau/chon-nha-cung-cap-api) theo tài khoản bạn đã có, chưa cần mua thêm gói.
-3. Hỏi một việc đơn giản, kiểm xem model đã trả lời được chưa.
+<HermesStart />
 
-Chưa cần hiểu hết. Cứ cài xong, dùng thử một việc thật, phần còn lại sẽ dần quen.
+Chưa cần hiểu hết. Cứ cài xong, thử một việc thật, phần còn lại sẽ quen dần. Thắc mắc gì thì hỏi ở [Hỏi & Đáp](/hoi-dap).
