@@ -11,22 +11,13 @@ Mình muốn Hermes chạy liên tục để nhận lịch tự động và tin 
 
 Bài này kể lại cách mình dựng, những chỗ cần cẩn thận, rồi so với vài cách khác để bạn chọn cái hợp với mình.
 
+<MiniPcHero />
+
 ## Ý tưởng: tách "bộ não" và "cửa sổ"
 
 Hermes Desktop không bắt buộc chạy Hermes ngay trên máy bạn đang ngồi. Nó có thể nối vào một backend chạy ở máy khác. Backend ở đây là tiến trình `hermes serve`, nơi mọi thứ thật sự diễn ra. App Desktop trên laptop chỉ hiển thị và gửi yêu cầu.
 
-```
-Laptop (app Hermes Desktop)
-        |
-        |  mạng riêng Tailscale
-        v
-Mini PC (hermes serve)  --->  nhà cung cấp model
-   - phiên chat, bộ nhớ, skill
-   - file dự án, lịch tự động
-   - lệnh terminal chạy ở đây
-```
-
-_Đây là sơ đồ minh họa, không phải ảnh chụp màn hình._
+<MiniPcArchitecture />
 
 Điều này kéo theo vài hệ quả mà mình thấy nên biết trước:
 
@@ -47,6 +38,8 @@ Trước đây mình cũng từng chạy Hermes trên Windows. Với mình, ch�
 ## Cách mình dựng, từng bước
 
 Các bước dưới đây theo tài liệu chính thức của Hermes Desktop, cộng với cách mình đặt dịch vụ chạy nền. Bản mình dùng khi viết là Hermes 0.21.6; nếu app của bạn khác phiên bản, tên mục trong Settings có thể hơi khác. Sau đó mini PC của mình lên Hermes 0.22.0: hai dịch vụ ở bước 5 vẫn chạy và lệnh kiểm ở bước 4 vẫn trả `auth_required` là `true`. Phần cuối mục "Những chỗ mình thấy dễ vấp" ghi những thay đổi của 0.22.0 đáng biết nếu bạn chạy backend lâu dài.
+
+<MiniPcSteps />
 
 ### Bước 1: Cài và thử Hermes ngay trên mini PC
 
@@ -88,6 +81,8 @@ hermes serve --host <ip-tailscale> --port 9119
 ```
 
 Mình **không** dùng `0.0.0.0` (mọi giao diện mạng), mà gắn đúng vào địa chỉ Tailscale. Như vậy chỉ thiết bị trong mạng Tailscale của mình chạm được vào cổng này, thiết bị khác trong mạng nhà cũng không vào được. Đây cũng là cách tài liệu Hermes gợi ý khi dùng Tailscale.
+
+<MiniPcBinding />
 
 Kiểm tra từ chính mini PC (hoặc từ laptop khi đã có Tailscale):
 
@@ -200,6 +195,8 @@ Một điểm hay: app Desktop cho đăng ký **nhiều gateway** cùng lúc, m�
 - Có sẵn một máy luôn bật ở nhà: thử cách trong bài, nhớ dùng Tailscale hoặc VPN, đừng mở cổng ra internet.
 - Đã quen SSH tới một máy: thử kết nối SSH trong Desktop trước, ít bước hơn.
 - Không muốn bảo trì máy nào: xem Hermes Cloud, hoặc VPS nếu bạn thoải mái với việc tự quản lý.
+
+<MiniPcChoose />
 
 Mỗi bước nên thử một việc nhỏ rồi mới chuyển bước sau: nối được, `hostname` đúng, lịch thử chạy đúng giờ. Đừng dựng cả bộ rồi mới tìm xem hỏng ở đâu.
 

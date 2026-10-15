@@ -15,6 +15,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { TermTip } from "@/components/TermTip";
 import { ArticleDiagram } from "@/components/ArticleDiagram";
 import { TagLinks } from "@/components/TagLinks";
+import { miniPcDiagramComponents } from "@/components/diagrams/MiniPcDiagrams";
 import { AuthorAvatar } from "@/components/AuthorAvatar";
 import { AuthorBadge } from "@/components/OfficialBadge";
 import { ArticleEngage } from "@/components/ArticleEngage";
@@ -118,7 +119,7 @@ export default async function ArticlePage({ params }: Props) {
       <div className="prose-article">
         <MDXRemote
           source={post.content}
-          components={{ TermTip }}
+          components={{ TermTip, ...miniPcDiagramComponents }}
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm],

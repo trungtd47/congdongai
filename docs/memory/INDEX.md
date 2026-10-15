@@ -3,6 +3,7 @@
 Repo hiện chưa có `AGENTS.md`; dùng skill `congdongai-site` và các entry ở đây. Nội dung gốc/nguồn sự thật nằm trong `src/content/` và các route `src/app/`.
 
 ## Gần nhất
+- [2026-10-15: Bài mini PC: hình minh họa + 4 sơ đồ động kiểu TMB](2026-10-15/mini-pc-article-diagrams.md)
 - [2026-10-15: Tương tác - form hỏi từ bài, SSR Hỏi & Đáp, RSS, PWA + Web Push](2026-10-15/engagement-pwa-push.md)
 - [2026-10-15: Avatar ảnh thật cho admin Đức Trung (byline, bình luận, Q&A, Nav)](2026-10-15/admin-avatar.md)
 - [2026-10-15: Báo tương tác (câu hỏi/trả lời/bình luận/thành viên) về Discord #bao-cao-hang-ngay](2026-10-15/community-alerts-discord.md)
