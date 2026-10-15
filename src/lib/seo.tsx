@@ -149,7 +149,10 @@ export function pageMetadata(input: PageMetadataInput): Metadata {
   return {
     title: { absolute: resolvedTitle },
     description: input.description,
-    alternates: { canonical: canonicalUrl(input.path) },
+    alternates: {
+      canonical: canonicalUrl(input.path),
+      types: { "application/rss+xml": "/feed.xml" },
+    },
     openGraph: {
       type: input.type ?? "website",
       locale: siteConfig.locale,
