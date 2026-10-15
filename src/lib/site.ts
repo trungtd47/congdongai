@@ -35,3 +35,8 @@ export function officialBadgeLabel(name: string | null | undefined): string | nu
   if (n === "Cộng Đồng AI") return "Chính thức";
   return null;
 }
+
+// Câu hỏi/bình luận mẫu có uid u-* hoặc ai-*; người dùng thật dùng UID Firebase Auth.
+export function isSampleUid(uid: string | null | undefined): boolean {
+  return !uid || /^(u|ai)-/.test(uid);
+}

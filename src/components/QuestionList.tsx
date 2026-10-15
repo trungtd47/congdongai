@@ -14,22 +14,27 @@ const sortOptions: { key: PostSort; label: string }[] = [
   { key: "unanswered", label: "Chưa trả lời" },
 ];
 
-export function QuestionList() {
+export function QuestionList({
+  initialPosts,
+}: {
+  initialPosts?: PostSummary[];
+}) {
   const [sort, setSort] = useState<PostSort>("new");
-  const [posts, setPosts] = useState<PostSummary[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState<PostSummary[]>(initialPosts ?? []);
+  const [loading, setLoading] = useState(!initialPosts);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     let active = true;
-    setLoading(true);
+    // Lần đầu đã có dữ liệu từ server: đồng bộ ngầm, không nháy "Đang tải".
+    if (!(initialPosts && sort === "new")) setLoading(true);
     setError(false);
     listPosts(sort)
       .then((arr) => {
         if (active) setPosts(arr);
       })
       .catch(() => {
-        if (active) setError(true);
+        if (active && !(initialPosts && sort === "new")) setError(true);
       })
       .finally(() => {
         if (active) setLoading(false);
@@ -37,6 +42,7 @@ export function QuestionList() {
     return () => {
       active = false;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sort]);
 
   return (

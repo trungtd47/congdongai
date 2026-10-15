@@ -104,7 +104,7 @@ function firestoreDate(value: unknown): string {
   return "";
 }
 
-function firestorePost(id: string, data: DocumentData): PostSummary {
+export function firestorePost(id: string, data: DocumentData): PostSummary {
   return {
     id,
     title: data.title ?? "",
@@ -122,7 +122,7 @@ function firestorePost(id: string, data: DocumentData): PostSummary {
   };
 }
 
-function firestoreAnswer(id: string, data: DocumentData): Answer {
+export function firestoreAnswer(id: string, data: DocumentData): Answer {
   return {
     id,
     body: data.body ?? "",
@@ -316,10 +316,10 @@ export async function createAnswer(
     authorUid: string;
     authorName: string;
   },
-): Promise<void> {
+): Promise<string | null> {
   if (isDemoMode()) {
     const p = demoStore.find((x) => x.id === postId);
-    if (!p) return;
+    if (!p) return null;
     p.answers.push({
       id: `a-${Date.now()}`,
       body: input.body,
@@ -334,7 +334,7 @@ export async function createAnswer(
       flagged: false,
     });
     p.answerCount = p.answers.length;
-    return;
+    return null;
   }
 
   const db = getDbInstance()!;
@@ -354,6 +354,7 @@ export async function createAnswer(
   });
   batch.update(doc(db, "posts", postId), { answerCount: increment(1), lastAnswerId: ref.id });
   await batch.commit();
+  return ref.id;
 }
 
 export async function acceptAnswer(

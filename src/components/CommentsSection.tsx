@@ -11,6 +11,7 @@ import {
 } from "@/lib/firestore-ops";
 import { ImageUpload } from "@/components/ImageUpload";
 import { OfficialBadge } from "@/components/OfficialBadge";
+import { notifyRecipient } from "@/lib/push-client";
 import { ADMIN_AVATAR, ADMIN_PUBLIC_UID } from "@/lib/site";
 
 function CommentAvatar({
@@ -279,6 +280,13 @@ export function CommentsSection({ slug }: { slug: string }) {
         parentId,
         photoURL: demo ? "" : (user?.photoURL ?? ""),
       });
+      if (!demo && user && typeof window !== "undefined")
+        notifyRecipient(user, {
+          type: "reply",
+          slug,
+          commentId: c.id,
+          path: window.location.pathname,
+        });
       setComments((prev) => [...prev, c]);
       setReplyBody("");
       setReplyImage("");

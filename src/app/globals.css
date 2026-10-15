@@ -523,3 +523,7 @@ a.tag-pill-link:hover, a.tag-pill-link:focus-visible {
   .reader .prose-article pre { font-size: 0.8rem; }
   .reader .prose-article table { font-size: 13px; }
 }
+.article-engage { margin: 40px 0 8px; padding: 22px 24px; border: 1px solid var(--color-line); background: var(--color-white); border-radius: 4px; }
+.article-engage h2 { margin: 0 0 6px; font-size: 20px; }
+.article-engage p { margin: 0 0 14px; color: var(--color-muted); font-size: 15px; line-height: 1.7; }
+.article-engage-actions { display: flex; flex-wrap: wrap; gap: 10px; }

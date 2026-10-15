@@ -17,6 +17,8 @@ import { signInWithGoogle } from "@/lib/auth";
 import { avatarColor } from "@/lib/avatar";
 import { ADMIN_AVATAR, ADMIN_PUBLIC_UID } from "@/lib/site";
 import { OfficialBadge } from "@/components/OfficialBadge";
+import { PushToggle } from "@/components/PushToggle";
+import { notifyRecipient } from "@/lib/push-client";
 
 function PersonAvatar({ name, uid }: { name: string; uid: string }) {
   if (uid === ADMIN_PUBLIC_UID) {
@@ -44,12 +46,18 @@ import { ImageUpload } from "@/components/ImageUpload";
 
 const DEMO_UID = "demo-user";
 
-export function QuestionDetail({ postId }: { postId: string }) {
+export function QuestionDetail({
+  postId,
+  initialPost,
+}: {
+  postId: string;
+  initialPost?: PostDetail;
+}) {
   const { user, loading: authLoading } = useAuth();
   const demo = isDemoMode();
   const uid = demo ? DEMO_UID : user?.uid;
-  const [post, setPost] = useState<PostDetail | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [post, setPost] = useState<PostDetail | null>(initialPost ?? null);
+  const [loading, setLoading] = useState(!initialPost);
   const [notFound, setNotFound] = useState(false);
   const [loadError, setLoadError] = useState(false);
   const [answerBody, setAnswerBody] = useState("");
@@ -59,7 +67,7 @@ export function QuestionDetail({ postId }: { postId: string }) {
 
   useEffect(() => {
     let active = true;
-    setLoading(true);
+    if (!initialPost) setLoading(true);
     setLoadError(false);
     getPost(postId)
       .then((p) => {
@@ -68,7 +76,7 @@ export function QuestionDetail({ postId }: { postId: string }) {
         setNotFound(!p);
       })
       .catch(() => {
-        if (active) setLoadError(true);
+        if (active && !initialPost) setLoadError(true);
       })
       .finally(() => {
         if (active) setLoading(false);
@@ -76,6 +84,7 @@ export function QuestionDetail({ postId }: { postId: string }) {
     return () => {
       active = false;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postId]);
 
   if (loading) {
@@ -143,7 +152,7 @@ export function QuestionDetail({ postId }: { postId: string }) {
     setBusy(true);
     setFlash("");
     try {
-      await createAnswer(postId, {
+      const newAnswerId = await createAnswer(postId, {
         body: answerBody.trim(),
         imageURL: answerImage,
         authorUid: uid,
@@ -151,6 +160,8 @@ export function QuestionDetail({ postId }: { postId: string }) {
           ? "Bạn"
           : (user?.displayName ?? user?.email?.split("@")[0] ?? "Thành viên"),
       });
+      if (user && newAnswerId)
+        notifyRecipient(user, { type: "answer", postId, answerId: newAnswerId });
       setAnswerBody("");
       setAnswerImage("");
       setPost(await getPost(postId));
@@ -241,6 +252,15 @@ export function QuestionDetail({ postId }: { postId: string }) {
           </button>
         </div>
       </div>
+
+      {isAuthor && !demo && (
+        <div className="card mb-4 p-3">
+          <p className="px-3 pb-1 text-sm text-ink-soft">
+            Muốn biết ngay khi có người trả lời câu hỏi này?
+          </p>
+          <PushToggle />
+        </div>
+      )}
 
       {/* Trả lời */}
       <h2 className="mb-3 text-[18px] font-bold">

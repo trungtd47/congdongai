@@ -4,8 +4,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { listPosts, type PostSummary } from "@/lib/firestore-ops";
 
-export function HomeQAPanel() {
-  const [posts, setPosts] = useState<PostSummary[] | null>(null);
+export function HomeQAPanel({
+  initialPosts,
+}: {
+  initialPosts?: PostSummary[];
+}) {
+  const [posts, setPosts] = useState<PostSummary[] | null>(
+    initialPosts ? initialPosts.slice(0, 5) : null,
+  );
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -15,11 +21,12 @@ export function HomeQAPanel() {
         if (active) setPosts(arr.slice(0, 5));
       })
       .catch(() => {
-        if (active) setError(true);
+        if (active && !initialPosts) setError(true);
       });
     return () => {
       active = false;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (error) {

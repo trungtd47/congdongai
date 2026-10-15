@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { canonicalUrl } from "@/lib/site";
+import { canonicalUrl, isSampleUid } from "@/lib/site";
+import { getServerPosts } from "@/lib/server/community-data";
 import {
   getAllPosts,
   getBatDauSlugs,
@@ -10,7 +11,8 @@ import {
 import { caseStudies } from "@/lib/case-studies";
 import { getTags, tagHref } from "@/lib/tags";
 
-export const dynamic = "force-static";
+// Dựng lại mỗi giờ để có câu hỏi thật mới; lỗi đọc câu hỏi thì sitemap vẫn đủ phần bài viết.
+export const revalidate = 3600;
 
 const staticRoutes = [
   "",
@@ -32,7 +34,7 @@ function lastModifiedOf(dateModified?: string, datePublished?: string) {
   return dateModified ?? datePublished;
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Trang hub/tĩnh không có ngày sửa thật đáng tin -> bỏ lastModified
   // thay vì đóng băng một mốc giả hoặc new Date() mỗi build.
   const base = staticRoutes.map((path) => ({
@@ -84,5 +86,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: canonicalUrl(tagHref(tag)),
   }));
 
-  return [...base, openRouter, ...batDau, ...huongDan, ...blog, ...cauChuyen, ...tags];
+  // Chỉ câu hỏi thật; câu hỏi mẫu (uid u-*) không đưa vào sitemap.
+  const questions = await getServerPosts(200);
+  const hoiDap =
+    questions.status === "ok"
+      ? questions.data
+          .filter((p) => !isSampleUid(p.authorUid))
+          .map((p) => ({
+            url: canonicalUrl(`/hoi-dap/${p.id}`),
+            lastModified: p.createdAt || undefined,
+          }))
+      : [];
+
+  return [...base, openRouter, ...batDau, ...huongDan, ...blog, ...cauChuyen, ...tags, ...hoiDap];
 }

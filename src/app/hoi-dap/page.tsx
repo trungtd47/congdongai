@@ -3,6 +3,10 @@ import { pageMetadata } from "@/lib/seo";
 import { JsonLd, faqJsonLd } from "@/lib/seo";
 import { QuestionList } from "@/components/QuestionList";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { getServerPosts } from "@/lib/server/community-data";
+
+// Dựng lại tối đa mỗi 2 phút để câu hỏi mới có trong HTML.
+export const revalidate = 120;
 
 export const metadata: Metadata = pageMetadata({
   title: "Hỏi đáp Hermes Agent Tiếng Việt",
@@ -11,7 +15,8 @@ export const metadata: Metadata = pageMetadata({
   path: "/hoi-dap",
 });
 
-export default function HoiDapPage() {
+export default async function HoiDapPage() {
+  const initial = await getServerPosts();
   return (
     <div className="wrap py-12">
       <JsonLd
@@ -44,7 +49,7 @@ export default function HoiDapPage() {
         </a>
       </div>
 
-      <QuestionList />
+      <QuestionList initialPosts={initial.status === "ok" ? initial.data : undefined} />
     </div>
   );
 }

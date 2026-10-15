@@ -18,6 +18,7 @@ import {
 } from "@/lib/seo";
 import { AuthorAvatar } from "@/components/AuthorAvatar";
 import { AuthorBadge } from "@/components/OfficialBadge";
+import { ArticleEngage } from "@/components/ArticleEngage";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -241,6 +242,7 @@ export default async function CauChuyenDetailPage({ params }: Props) {
         <p className="mt-3 font-sans text-[12.5px]">{sourceNote(c)}</p>
       </div>
 
+      <ArticleEngage title={c.title} path={`/cau-chuyen/${c.slug}`} tag={c.tags?.[0]} />
       <div className="mt-10 border-t border-line pt-6">
         <CommentsSection slug={c.slug} />
       </div>

@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createPost } from "@/lib/firestore-ops";
 import { isDemoMode } from "@/lib/firebase";
 import { useAuth } from "@/hooks/useAuth";
 import { signInWithGoogle } from "@/lib/auth";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ImageUpload } from "@/components/ImageUpload";
+import { PushToggle } from "@/components/PushToggle";
 
 const DEMO_UID = "demo-user";
 
@@ -21,6 +22,22 @@ export default function TaoCauHoiPage() {
   const [postId, setPostId] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+
+  // Mở từ cuối bài: ?t=<tên bài>&p=<đường dẫn bài>&tag=<chủ đề>. Chỉ điền sẵn khi form còn trống.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    const t = (q.get("t") ?? "").slice(0, 120);
+    const p = q.get("p") ?? "";
+    if (!t || !/^\/[a-z0-9\-\/]{1,120}$/.test(p)) return;
+    setTitle((cur) => cur || `Mình đã thử bài "${t}"`);
+    setBody(
+      (cur) =>
+        cur ||
+        `Bài mình đọc: https://congdongai.org${p}\n\nMình đã làm đến bước:\n\nKết quả mình thấy:\n\nChỗ đang vướng (nếu có):\n`,
+    );
+    const tag = (q.get("tag") ?? "").slice(0, 30);
+    if (tag) setTags((cur) => cur || tag);
+  }, []);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -64,6 +81,14 @@ export default function TaoCauHoiPage() {
           <Link href={`/hoi-dap/${postId}`} className="btn btn-primary">
             Xem câu hỏi vừa đăng
           </Link>
+          {!demo && (
+            <div className="mt-5 text-left">
+              <p className="px-3 pb-1 text-sm text-ink-soft">
+                Muốn biết ngay khi có người trả lời?
+              </p>
+              <PushToggle />
+            </div>
+          )}
         </div>
       </div>
     );

@@ -27,7 +27,8 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "rehype-slug": "^6.0.0",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "web-push": "^3.6.7"
   },
   "devDependencies": {
     "@firebase/rules-unit-testing": "^4.0.1",
@@ -35,6 +36,7 @@
     "@types/node": "^22.14.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
+    "@types/web-push": "^3.6.4",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3"
   }

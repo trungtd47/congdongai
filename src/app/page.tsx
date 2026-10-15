@@ -11,6 +11,7 @@ import {
 } from "@/lib/articles";
 import { TermTip } from "@/components/TermTip";
 import { HomeQAPanel } from "@/components/HomeQAPanel";
+import { getServerPosts } from "@/lib/server/community-data";
 import { JoinGoogleButton } from "@/components/JoinGoogleButton";
 import "./editorial-home.css";
 import { AuthorAvatar } from "@/components/AuthorAvatar";
@@ -79,7 +80,11 @@ function ArticleTile({ a }: { a: ArticleItem }) {
   );
 }
 
-export default function HomePage() {
+// Dựng lại tối đa mỗi 5 phút để khối Hỏi & Đáp có câu hỏi mới trong HTML.
+export const revalidate = 300;
+
+export default async function HomePage() {
+  const qa = await getServerPosts(5);
   const picks: ArticleItem[] = [];
   for (const href of PICK_HREFS) {
     const found = getArticleByHref(href);
@@ -219,7 +224,7 @@ export default function HomePage() {
               </Link>
             </div>
             <div>
-              <HomeQAPanel />
+              <HomeQAPanel initialPosts={qa.status === "ok" ? qa.data : undefined} />
             </div>
           </section>
 

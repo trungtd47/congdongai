@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { signInWithGoogle, signOutUser } from "@/lib/auth";
 import { isDemoMode } from "@/lib/firebase";
 import { ADMIN_AVATAR, ADMIN_PUBLIC_UID } from "@/lib/site";
+import { PushToggle } from "@/components/PushToggle";
+import { syncPush } from "@/lib/push-client";
 
 // Trang chính trên header, ít chật, kiểu B.
 const primaryLinks = [
@@ -27,6 +29,11 @@ export function Nav() {
   const [busy, setBusy] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
   const { user } = useAuth();
+
+  // Đã bật thông báo ở lần trước: gắn lại đăng ký cho tài khoản đang đăng nhập.
+  useEffect(() => {
+    if (user) void syncPush(user);
+  }, [user]);
   const demo = isDemoMode();
 
   const handleLogin = async () => {
@@ -137,6 +144,7 @@ export function Nav() {
                         )}
                       </div>
                     </div>
+                    <PushToggle className="mt-1" />
                     <button
                       type="button"
                       onClick={handleLogout}

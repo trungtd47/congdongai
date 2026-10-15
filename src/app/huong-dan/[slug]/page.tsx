@@ -22,6 +22,7 @@ import { CommentsSection } from "@/components/CommentsSection";
 import { TagLinks } from "@/components/TagLinks";
 import { AuthorAvatar } from "@/components/AuthorAvatar";
 import { AuthorBadge } from "@/components/OfficialBadge";
+import { ArticleEngage } from "@/components/ArticleEngage";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -150,6 +151,7 @@ export default async function HuongDanArticlePage({ params }: Props) {
         </div>
       </div>
 
+      <ArticleEngage title={post.title} path={`/huong-dan/${post.slug}`} tag={post.tags?.[0]} />
       <div className="mt-10">
         <CommentsSection slug={`huongdan-${post.slug}`} />
       </div>

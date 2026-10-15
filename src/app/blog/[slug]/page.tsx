@@ -17,6 +17,7 @@ import { ArticleDiagram } from "@/components/ArticleDiagram";
 import { TagLinks } from "@/components/TagLinks";
 import { AuthorAvatar } from "@/components/AuthorAvatar";
 import { AuthorBadge } from "@/components/OfficialBadge";
+import { ArticleEngage } from "@/components/ArticleEngage";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -127,6 +128,7 @@ export default async function ArticlePage({ params }: Props) {
         />
       </div>
 
+      <ArticleEngage title={post.title} path={`/blog/${post.slug}`} tag={post.tags?.[0]} />
       <div className="mt-10 border-t border-line pt-6">
         <CommentsSection slug={post.slug} />
       </div>
