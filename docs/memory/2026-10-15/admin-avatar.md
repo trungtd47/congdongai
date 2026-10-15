@@ -16,3 +16,6 @@ Avatar đặc quyền phải gắn theo UID ở nơi dữ liệu do người dù
 
 ## Nhãn nguồn chính thống (cùng ngày)
 Thêm nhãn xanh `#38513B` cạnh tên: **Admin** (Đức Trung / Admin) và **Chính thức** (tài khoản Cộng Đồng AI). Server pages so theo tên tác giả (`officialBadgeLabel` trong `src/lib/site.ts`, component `src/components/OfficialBadge.tsx`); bình luận, câu hỏi, câu trả lời so theo UID admin. Người dùng thường không thể tự có nhãn. Đã xem screenshot desktop + mobile local (headless_shell của Playwright, nhớ copy `.next/static` và `public` vào `.next/standalone` trước khi chụp).
+
+## Chỉnh theo sếp (cùng ngày)
+Tài khoản **Cộng Đồng AI** giữ avatar chữ cái mặc định; chỉ tài khoản cá nhân **Đức Trung** (byline + UID admin trong bình luận/Q&A/menu) dùng ảnh thật. Nhãn "Chính thức" cho Cộng Đồng AI vẫn giữ. `ADMIN_AUTHOR_NAMES` trong `src/lib/site.ts` chỉ còn "Đức Trung".

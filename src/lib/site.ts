@@ -22,8 +22,8 @@ export function canonicalUrl(path: string): string {
 export const ADMIN_AVATAR = "/avatar-duc-trung.jpg";
 // UID công khai của tài khoản admin (cùng giá trị CONGDONG_ADMIN_UIDS, không phải bí mật).
 export const ADMIN_PUBLIC_UID = "PSgMcPSnABa4HRE6ZOJv7fHKDZH3";
-// Tên tác giả bài viết thuộc admin/site: frontmatter do mình kiểm soát nên so khớp theo tên là an toàn.
-const ADMIN_AUTHOR_NAMES = ["Đức Trung", "Cộng Đồng AI", "Admin"];
+// Chỉ tài khoản cá nhân Đức Trung dùng ảnh thật; tài khoản Cộng Đồng AI giữ avatar chữ cái mặc định.
+const ADMIN_AUTHOR_NAMES = ["Đức Trung"];
 export function isAdminAuthorName(name: string | null | undefined): boolean {
   return !!name && ADMIN_AUTHOR_NAMES.includes(name.trim());
 }
