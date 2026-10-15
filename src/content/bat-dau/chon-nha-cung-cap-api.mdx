@@ -81,6 +81,24 @@ Dùng terminal thì chạy `hermes model` rồi chọn **Local models**, các b�
 - **Chưa có gói ChatGPT:** bắt đầu với OpenRouter, chọn một model vừa đủ và nạp ít để thử. Không cần mua thêm một gói chỉ vì muốn dùng Hermes.
 - **Muốn gọn và hợp với gói của Nous:** tìm hiểu Nous Portal, kiểm tra điều kiện gói trước khi quyết định.
 
+## Model đổi nhanh: kiểm lại model bạn đang chọn
+
+Các hãng ra model mới và ngừng model cũ liên tục. Một ví dụ có ngày cụ thể: theo [trang model deprecations của Anthropic](https://platform.claude.com/docs/en/about-claude/model-deprecations), Anthropic đã thông báo ngày 30/9/2026 rằng `claude-sonnet-4-5-20250929` sẽ ngừng trên Claude API vào **30/11/2026**, và khuyến nghị chuyển sang `claude-sonnet-5-5`. Sau ngày đó, yêu cầu gọi model cũ sẽ lỗi.
+
+Nếu bạn dùng Claude qua API, nên rà mọi nơi mình từng chỉ định model:
+
+- Model chính (mở `/model` hoặc `hermes model` để xem đang chọn gì).
+- Model dành cho subagent.
+- Model dự phòng khi nguồn chính lỗi hoặc hết hạn mức.
+- Từng lịch tự động có ghim model riêng (`hermes cron list`); theo tài liệu, lịch ghim model không tự chuyển sang nguồn dự phòng chung, nên khi model đó ngừng thì lần chạy sẽ lỗi.
+
+Một vài lưu ý khi đổi hoặc thử model mới:
+
+- **Model xuất hiện trong bộ chọn chưa chắc tài khoản của bạn dùng được.** Mỗi hãng và mỗi gói có quyền truy cập, hạn mức riêng. Thử một yêu cầu ngắn trước khi chuyển việc thật sang.
+- **Danh sách trong Hermes cập nhật theo từng bản.** Ví dụ, trong bản 0.22.0, danh mục OpenRouter đã có `anthropic/claude-sonnet-5.5`, còn danh sách Anthropic đóng gói sẵn chưa thấy mã này. Không thấy model bạn cần thì cập nhật Hermes rồi kiểm lại, đừng đoán mã.
+- **Đổi model là đổi hành vi.** Thử lại 2 đến 3 việc quen thuộc của bạn và so với lần trước: kết quả đúng hơn hay kém hơn, số lần phải sửa, thời gian chờ, chi phí thật trên trang dùng của nhà cung cấp. Bảng xếp hạng chung không thay được phép thử này.
+- **Mức suy luận (reasoning effort) cao thường tốn thêm token.** Model rẻ hơn trên bảng giá nhưng chạy ở mức suy luận cao hơn vẫn có thể tốn hơn cho mỗi việc. Kiểm số liệu dùng thật trước khi kết luận.
+
 ## Khi nguồn đầu tiên đã chạy, nhờ Hermes hướng dẫn thêm nguồn thứ hai
 
 **Đừng gửi prompt này khi chưa kết nối được model nào:** Hermes cần một nguồn đang hoạt động để trả lời bạn. Sau khi chạy thử thành công, bạn có thể hỏi Hermes cách thêm nguồn còn lại; **bạn tự xác nhận đăng nhập OAuth** khi màn hình chính thức hiện ra:

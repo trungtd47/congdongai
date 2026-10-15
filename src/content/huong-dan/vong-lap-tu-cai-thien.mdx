@@ -1,8 +1,8 @@
 ---
 title: "Vòng lặp tự cải thiện - để Hermes càng dùng càng giỏi"
-description: "5 prompt thử memory, SOUL.md và skill của Hermes theo từng bước; xem lại nội dung trước khi lưu hoặc đặt lịch, không tự động ghi mọi cuộc chat."
+description: "5 prompt thử memory, SOUL.md và skill của Hermes theo từng bước, cùng lệnh /learn, /journey và Curator để xem lại, dọn dẹp; xem nội dung trước khi lưu hoặc đặt lịch, không tự động ghi mọi cuộc chat."
 datePublished: "2026-09-24"
-dateModified: "2026-10-03"
+dateModified: "2026-10-15"
 authorName: "Cộng Đồng AI"
 tags: ["kinh nghiệm", "sử dụng", "memory", "skill"]
 ---
@@ -61,6 +61,14 @@ Cho mình duyệt trước khi tạo, rồi thử lại một đầu vào tươn
 
 Skill hữu ích khi giữ được cách làm đã thử và bước kiểm. Có thể tự dựng hoặc tham khảo skill bên ngoài sau khi xem quyền/phụ thuộc; không lấy số skill làm thước đo chất lượng.
 
+**Cách nhanh hơn: lệnh `/learn`.** Hermes có lệnh `/learn <nguồn>` để đúc một skill từ thứ bạn mô tả: một thư mục, một trang web, quy trình vừa làm trong cuộc chat, hoặc ghi chú bạn dán vào. Ví dụ:
+
+```
+/learn cách mình nộp báo cáo tuần: mở cổng nội bộ, chọn mẫu, đính kèm file, gửi
+```
+
+Hermes tự đọc nguồn bằng công cụ của nó rồi viết file `SKILL.md`. Theo tài liệu, lệnh này chạy được trong CLI, gateway nhắn tin, TUI và trang Skills của dashboard; nếu chưa thấy trong giao diện của bạn, dùng prompt phía trên. Vẫn giữ nguyên thói quen: mở lại skill vừa tạo, đọc, thử một đầu vào tương tự, và đừng đưa nguồn chứa khóa hay dữ liệu riêng.
+
 ### 4. Cho nó tự ngẫm mỗi tối
 
 ```
@@ -83,6 +91,15 @@ mình chưa đồng ý. Nếu muốn đặt lịch rà soát, hỏi lại múi g
 
 Bước này giữ hai thứ: bộ nhớ không phình to vì rác, và bạn luôn thấy nó đang "hiểu" mình tới đâu để chỉnh ngay khi hiểu sai.
 
+### Xem và dọn bằng lệnh có sẵn: `/journey` và Curator
+
+Hai công cụ này giúp bước "khám sức khỏe" bớt thủ công. Cả hai theo tài liệu Hermes 0.22.0.
+
+- **`/journey`** mở dòng thời gian những gì Hermes đã học: skill và các mục memory xếp theo ngày. Trong Desktop nó mở bảng Star Map, trong terminal dùng `hermes journey`. Bạn xem được từng mục, sửa hoặc xóa ngay: `hermes journey list`, `hermes journey edit <id>`, `hermes journey delete <id>`. Xóa một skill là đưa vào kho lưu trữ nên khôi phục được; xóa một mục memory là mất hẳn. Lệnh này không có trên các nền tảng nhắn tin.
+- **Curator** là bước bảo trì chạy nền cho các skill do chính Hermes tạo. Mặc định nó chỉ dọn theo thời gian, không gọi model: skill 14 ngày không dùng bị đánh dấu "stale", 30 ngày không dùng thì chuyển vào thư mục lưu trữ `~/.hermes/skills/.archive/`. Skill do bạn ghim và skill đang được một lịch tự động dùng thì không bị đụng tới. Việc gộp các skill trùng bằng model là tùy chọn, mặc định tắt. Curator chỉ chạy khi máy đã rảnh một lúc, và lần đầu sau khi cài hoặc cập nhật nó chưa chạy ngay mà đợi đủ một chu kỳ, để bạn kịp rà thư viện skill.
+
+Muốn xem Curator định làm gì mà chưa thay đổi gì, chạy `hermes curator run --dry-run`. Thấy skill nào quan trọng thì ghim lại (`/curator pin`), và `hermes curator status` cho biết lần chạy gần nhất. Nếu lỡ dọn nhầm, `hermes curator rollback` khôi phục từ bản sao gần nhất.
+
 ## Kết quả
 
 - Kiểm SOUL.md, memory và skill có ghi đúng nơi, đúng điều bạn đã duyệt.
@@ -99,3 +116,10 @@ Bước này giữ hai thứ: bộ nhớ không phình to vì rác, và bạn lu
 - Sao lưu: nhờ Hermes đề xuất phạm vi và nơi lưu trước. Không đưa khóa đăng nhập vào bản chia sẻ; mở lại bản sao và thử khôi phục trong chỗ riêng, không chỉ tin lời báo xong.
 
 Bí chỗ nào, hoặc muốn khoe "vòng lặp" riêng của bạn? Đăng vào [Hỏi & Đáp](/hoi-dap) nhé.
+
+## Nguồn
+
+1. [Hermes: Skills - Learning a skill from sources (`/learn`)](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills)
+2. [Hermes: Memory - Learning Journey (`/journey`)](https://hermes-agent.nousresearch.com/docs/user-guide/features/memory)
+3. [Hermes: Curator](https://hermes-agent.nousresearch.com/docs/user-guide/features/curator)
+4. [Ghi chú phát hành Hermes Agent v0.22.0](https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.0). Tên lệnh và tùy chọn đối chiếu thêm với `hermes --help` của bản 0.22.0.

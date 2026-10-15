@@ -1,8 +1,8 @@
 ---
 title: "Nhắc việc với Hermes: tạo lịch và kiểm thông báo"
-description: "Đề xuất lịch nhắc bằng tiếng Việt, kiểm múi giờ, kênh nhận và một lần chạy thật; giữ lịch chính cho việc quan trọng."
+description: "Đề xuất lịch nhắc bằng tiếng Việt, kiểm múi giờ, kênh nhận và một lần chạy thật; thêm cách cho lịch lặp lại nhớ lần chạy trước và tạo lịch tạm dừng để duyệt."
 datePublished: "2026-09-22"
-dateModified: "2026-10-03"
+dateModified: "2026-10-15"
 authorName: "Cộng Đồng AI"
 tags: ["nhắc việc", "năng suất"]
 ---
@@ -33,6 +33,26 @@ Nhắc bằng tiếng Việt, ngắn gọn một câu.
 
 Yêu cầu Hermes **hiện danh sách lịch đã tạo, múi giờ, kênh nhận và lần chạy kế tiếp**. Chỉ khi thấy lịch thật trong mục Scheduled jobs/cron và nhận thông báo thử thì mới coi là xong. Nếu máy/gateway không chạy hoặc kênh chưa kết nối, nhắc việc có thể không đến.
 
+## Lịch lặp lại: cho nó nhớ lần chạy trước
+
+Nhắc giờ cố định thì không cần nhớ gì. Nhưng nếu lịch là kiểu "mỗi sáng tìm tin mới về chủ đề X" hoặc "mỗi 6 giờ kiểm tình trạng Y", mỗi lần chạy mặc định bắt đầu từ trắng nên rất dễ báo lại đúng tin hôm qua. Hermes có tùy chọn `continuity` (liên tục) để lịch đọc lại **kết quả lần chạy trước của chính nó** và chỉ báo thứ mới:
+
+```
+hermes cron create "every 6h" "Tìm tin mới về [CHỦ ĐỀ]. Chỉ báo mục chưa có trong kết quả lần chạy trước." --continuity
+```
+
+Muốn bật hoặc tắt cho lịch đã có: `hermes cron edit <mã-lịch> --continuity` hoặc `--no-continuity`. Trong Desktop, tùy chọn này nằm ở hộp thoại chỉnh lịch của Bot Mode. Vài điểm theo tài liệu: lần chạy đầu chưa có gì để đọc lại; những lần chạy im lặng (không có gì thay đổi) bị bỏ qua khi chọn kết quả để nhớ, nên một quãng yên không làm mất kết quả đáng kể gần nhất. Vẫn nên mở kết quả vài lần đầu để kiểm nó có thật sự bỏ tin cũ.
+
+## Tạo lịch ở trạng thái tạm dừng để duyệt trước
+
+Nếu muốn xem lịch trước khi nó chạy thật, tạo kèm `--paused`:
+
+```
+hermes cron create "every 1h" "Tóm tắt thư mới" --paused --paused-reason "Chờ mình duyệt"
+```
+
+Lịch được lưu nhưng chưa chạy lần nào. Kiểm trong danh sách rồi bật bằng `hermes cron resume <mã-lịch>`. Cách này hợp với nguyên tắc chưa bật khi chưa duyệt ở trên.
+
 ## Kết quả
 
 Bạn có danh sách lịch kiểm được, nhưng vẫn nên giữ nhắc việc quan trọng trong lịch/điện thoại chính của mình cho tới khi đã xác minh vài lần chạy.
@@ -44,3 +64,8 @@ Bạn có danh sách lịch kiểm được, nhưng vẫn nên giữ nhắc vi�
 - Xem lại danh sách nhắc: hỏi "tôi đang có những lịch nhắc nào?".
 
 Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap).
+
+## Nguồn
+
+1. [Hermes: Scheduled Tasks (Cron)](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron) - mục continuity và tạo lịch tạm dừng với `--paused`.
+2. [Ghi chú phát hành Hermes Agent v0.22.0](https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.0). Cờ `--continuity`, `--paused`, `--paused-reason` đối chiếu thêm với `hermes cron create --help` của bản 0.22.0.
