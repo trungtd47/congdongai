@@ -14,7 +14,9 @@
     "friday:qa-execute": "node scripts/friday/cli.mjs qa --execute",
     "friday:audit": "node scripts/friday/cli.mjs audit --dry-run",
     "friday:notify": "node scripts/friday/cli.mjs notify --dry-run",
-    "friday:prepare": "node scripts/friday/cli.mjs prepare --dry-run"
+    "friday:prepare": "node scripts/friday/cli.mjs prepare --dry-run",
+    "alerts:test": "node --test scripts/community-alerts.test.mjs",
+    "alerts:dry-run": "node scripts/community-alerts.mjs --dry-run"
   },
   "dependencies": {
     "firebase": "^11.4.0",
