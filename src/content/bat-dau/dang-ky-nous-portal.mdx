@@ -1,41 +1,58 @@
 ---
 title: "Đăng ký Nous Portal - một tài khoản, hàng trăm model AI"
-description: "Nous Portal là lựa chọn theo gói của Nous Research: đăng nhập để dùng nhiều model và công cụ. Kiểm tra điều kiện gói trước khi kết nối Hermes."
+description: "Nous Portal là lựa chọn theo gói của Nous Research: đăng nhập một lần để dùng nhiều model và công cụ. Kiểm tra điều kiện gói trước khi kết nối Hermes."
 datePublished: "2026-09-21"
-dateModified: "2026-10-03"
+dateModified: "2026-10-15"
 authorName: "Cộng Đồng AI"
 tags: ["tài khoản", "model"]
 ---
 
-Hermes muốn "suy nghĩ" thì cần một <TermTip term="model">model AI</TermTip> (bộ não), và model đến từ một **nhà cung cấp**. Nous Portal là một lựa chọn theo gói của Nous Research; nếu bạn **đã có gói ChatGPT trả phí**, hãy xem [cách thử Codex trước khi đăng ký thêm dịch vụ](/bat-dau/chon-nha-cung-cap-api). Nếu muốn nhiều model và công cụ trong hệ Nous, đọc tiếp.
+Hermes muốn "suy nghĩ" thì cần một <TermTip term="model">model AI</TermTip> (bộ não), và model đến từ một **nguồn** bạn chọn. Nous Portal là một nguồn như vậy, do chính Nous Research, nhà làm ra Hermes, vận hành.
 
-Nous Portal là tài khoản chính thức của Nous Research: nếu có gói phù hợp, bạn có thể chọn trong danh sách model của Portal mà không phải tự dán <TermTip term="API key">API key</TermTip> riêng cho từng hãng.
+Bạn đã có gói ChatGPT hay Claude trả phí? Hãy [thử dùng gói đó trước](/bat-dau/chon-nha-cung-cap-api) rồi hẵng đăng ký thêm. Còn muốn một tài khoản gọn, nhiều model và có sẵn công cụ đi kèm thì đọc tiếp.
+
+<NousIncludes />
 
 ## Nous Portal là gì?
 
-Nói đơn giản, nó như "tổng đài model" của chính nhà làm ra Hermes. Bạn chỉ cần một tài khoản, bên trong đã có sẵn rất nhiều model để chọn - mạnh có, nhẹ có. Hermes sẽ tự kết nối vào tài khoản này.
+Hiểu đơn giản, đây là "tổng đài model" của nhà làm ra Hermes. Bạn đăng nhập một lần, bên trong có nhiều model của nhiều hãng để chọn, mạnh có nhẹ có. Bạn không phải tự dán <TermTip term="API key">API key</TermTip> riêng cho từng hãng.
 
-## Bước 1: Tạo tài khoản
+Theo [tài liệu Hermes](https://hermes-agent.nousresearch.com/docs/integrations/nous-portal), Portal là dịch vụ **theo gói đăng ký**. Gói trả phí còn có thêm **Tool Gateway**: tìm web, tạo ảnh, đọc thành tiếng và trình duyệt chạy trên cloud, không cần tự đăng ký từng dịch vụ.
 
-1. Mở [Nous Portal chính thức](https://portal.nousresearch.com), theo đường dẫn được [docs provider của Hermes](https://hermes-agent.nousresearch.com/docs/integrations/providers/) giới thiệu. Kiểm đúng tên miền trước khi đăng nhập.
-2. Chọn đăng ký hoặc đăng nhập theo các lựa chọn đang hiển thị trên Portal. Bạn tự nhập thông tin tại trang chính thức, không gửi mật khẩu/mã xác minh trong chat.
+Đừng nhầm gói này với OpenRouter (tính theo token) hay tài khoản ChatGPT/Claude. Mỗi nơi có hóa đơn riêng.
 
-## Bước 2: Kiểm tra gói trước khi dùng
+<NousFlow />
 
-Nous Portal hiện là dịch vụ **theo gói đăng ký** theo [tài liệu chính thức của Hermes](https://hermes-agent.nousresearch.com/docs/integrations/providers/). Xem quyền dùng, giới hạn và điều kiện thanh toán trên trang Portal trước khi xác nhận. Đừng nhầm gói này với OpenRouter tính phí theo token hoặc tài khoản ChatGPT/Codex: ba nơi có hóa đơn riêng.
+## Bước 1: Tạo tài khoản và xem gói
 
-> Nếu bạn muốn trả theo token và nạp ít để thử trước, đọc [cách bắt đầu với OpenRouter](/bat-dau/vi-sao-dung-openrouter). Cách thanh toán từ Việt Nam xem ở bài [Thanh toán từ Việt Nam](/bat-dau/thanh-toan-tu-viet-nam).
+1. Mở [Nous Portal chính thức](https://portal.nousresearch.com), đường dẫn được [tài liệu provider của Hermes](https://hermes-agent.nousresearch.com/docs/integrations/providers/) giới thiệu. Kiểm đúng tên miền trước khi đăng nhập.
+2. Đăng ký hoặc đăng nhập theo các lựa chọn đang hiển thị. Bạn tự nhập thông tin tại trang chính thức, không gửi mật khẩu hay mã xác minh trong chat.
+3. Xem quyền dùng, giới hạn và điều kiện thanh toán của gói trước khi xác nhận. Tài liệu Hermes không ghi giá, nên hãy đọc ngay trên trang Portal.
 
-## Bước 3: Kết nối vào Hermes Desktop
+Muốn trả theo token và nạp ít để thử thì đọc [cách bắt đầu với OpenRouter](/bat-dau/vi-sao-dung-openrouter). Cách thanh toán từ Việt Nam xem ở bài [Thanh toán từ Việt Nam](/bat-dau/thanh-toan-tu-viet-nam).
 
-Mở Hermes Desktop, khi tới bước chọn model, chọn tài khoản **Nous Portal** vừa đăng ký. Hermes tự nhận danh sách model - bạn chỉ việc chọn một cái trong danh sách thả xuống.
+## Bước 2: Kết nối vào Hermes
 
-## Chọn model nào cho người mới?
+- **Trong Hermes Desktop:** tới phần chọn model, chọn tài khoản **Nous Portal** và đăng nhập trên trình duyệt.
+- **Máy mới, dùng terminal:** chạy `hermes setup --portal`. Theo tài liệu, lệnh này mở trình duyệt để đăng nhập, cho bạn chọn một model Nous, đặt Nous làm nguồn model và bật Tool Gateway.
+- **Đã có nguồn khác rồi:** chạy `hermes model` và chọn **Nous Portal**. Các nguồn cũ vẫn giữ nguyên, bạn chuyển qua lại bằng `/model`.
 
-Chọn một model phù hợp với việc bạn làm, thử yêu cầu ngắn và xem quyền dùng của gói mình đang có. Khi cần, bạn có thể đổi model đã được gói cho phép; đừng mặc định mọi model đều không giới hạn.
+## Bước 3: Chọn model và thử một việc nhỏ
+
+Hermes lấy danh sách model của gói bạn, bạn chọn một cái trong danh sách. Hãy chọn model hợp với việc bạn làm, thử một yêu cầu ngắn và xem quyền dùng của gói. Đừng mặc định mọi model đều không giới hạn. Muốn đổi, gõ `/model` trong lúc chat.
+
+Một lưu ý từ chính tài liệu của Nous: dòng model **Hermes 4** (Hermes-4-70B, Hermes-4-405B) giỏi trò chuyện và suy luận, nhưng **không được khuyên dùng bên trong Hermes Agent**, vì Agent cần model quen việc gọi công cụ liên tục. Cho việc agent, hãy chọn một model dành cho agent trong danh mục.
 
 ## Kiểm tra đã kết nối chưa
 
-Gõ câu hỏi vào Hermes, thấy nó trả lời là đã kết nối thành công. Không cần hiểu sâu về model - cứ dùng thử là quen.
+Gõ một câu hỏi vào Hermes và thấy nó trả lời là đã kết nối. Muốn xem chi tiết, chạy:
 
-Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap).
+- `hermes portal info` để xem đã đăng nhập chưa, gói và công cụ nào đang đi qua Portal.
+- `hermes portal open` để mở trang quản lý gói trên trình duyệt.
+
+Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap), nhớ che thông tin đăng nhập.
+
+## Nguồn
+
+1. [Hermes: Nous Portal](https://hermes-agent.nousresearch.com/docs/integrations/nous-portal) - gói đăng ký, Tool Gateway, `hermes setup --portal`, `hermes portal`, lưu ý về Hermes 4.
+2. [Hermes: LLM and Model Providers](https://hermes-agent.nousresearch.com/docs/integrations/providers/) - phân biệt các nguồn model và cách tính phí. Đối chiếu ngày 15/10/2026.

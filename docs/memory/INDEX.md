@@ -3,6 +3,7 @@
 Repo hiện chưa có `AGENTS.md`; dùng skill `congdongai-site` và các entry ở đây. Nội dung gốc/nguồn sự thật nằm trong `src/content/` và các route `src/app/`.
 
 ## Gần nhất
+- [2026-10-15: Thêm Claude Pro, làm lại Nous Portal/Thanh toán/khối /bat-dau](2026-10-15/claude-pro-option-and-nous-payment.md)
 - [2026-10-15: Viết lại 5 bài nền, sơ đồ động và mục lục thu gọn](2026-10-15/basic-articles-rewrite-toc.md)
 - [2026-10-15: Bài mini PC: hình minh họa + 4 sơ đồ động kiểu TMB](2026-10-15/mini-pc-article-diagrams.md)
 - [2026-10-15: Tương tác - form hỏi từ bài, SSR Hỏi & Đáp, RSS, PWA + Web Push](2026-10-15/engagement-pwa-push.md)

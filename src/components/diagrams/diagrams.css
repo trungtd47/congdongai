@@ -176,6 +176,7 @@
 .dg .dg-opt-go { margin: 10px 0 0; font-size: 13.5px; }
 .dg .dg-opt-go a { font-weight: 600; color: #38513B; text-decoration: underline; text-underline-offset: 2px; }
 @media (max-width: 700px) { .dg .dg-step-links { justify-content: flex-start; } }
+.dg-stem-top { max-width: 360px; margin: 0 auto; }
 @media (prefers-reduced-motion: reduce) {
   .dg *, .dg *::before, .dg *::after { animation: none !important; transition: none !important; }
 }

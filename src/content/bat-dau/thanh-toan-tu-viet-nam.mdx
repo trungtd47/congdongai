@@ -2,33 +2,37 @@
 title: "Thanh toán từ Việt Nam - thẻ gì, lỗi gì, xử lý ra sao"
 description: "Nếu chọn OpenRouter, xem cách kiểm tra phương thức thanh toán, số dư và lỗi thẻ. Hermes cũng có các nguồn model không đòi nạp tiền trước."
 datePublished: "2026-09-21"
-dateModified: "2026-09-30"
+dateModified: "2026-10-15"
 authorName: "Cộng Đồng AI"
 tags: ["thanh toán", "chi phí"]
 ---
 
-Hermes miễn phí phần mềm, còn nguồn <TermTip term="model">model AI</TermTip> có cách thanh toán khác nhau. **Bài này chỉ dành cho bạn nếu chọn OpenRouter và model yêu cầu số dư.** Nếu đã có quyền dùng ChatGPT/Codex thì thử [đăng nhập nguồn đó](/bat-dau/chon-nha-cung-cap-api) trước; Nous Portal có điều kiện gói riêng. Không phải ai dùng Hermes cũng cần thẻ quốc tế.
+Hermes miễn phí phần mềm, còn nguồn <TermTip term="model">model AI</TermTip> có cách thanh toán khác nhau. **Bài này dành cho bạn nếu chọn OpenRouter và model yêu cầu số dư.**
+
+Nếu bạn đã có gói ChatGPT hoặc Claude trả phí thì thử [dùng gói đó](/bat-dau/chon-nha-cung-cap-api) trước. Nous Portal có điều kiện gói riêng, xem [bài Nous Portal](/bat-dau/dang-ky-nous-portal). Không phải ai dùng Hermes cũng cần thẻ quốc tế.
+
+<PayFlow />
 
 ## Cần thẻ gì?
 
 - **Visa** hoặc **Mastercard** quốc tế thường được chấp nhận, nhưng còn tùy ngân hàng và trang thanh toán.
-- **Thẻ debit quốc tế** (thẻ ghi nợ, trừ thẳng tiền trong tài khoản) vẫn dùng được - không bắt buộc thẻ tín dụng.
-- Quan trọng nhất: thẻ phải **bật thanh toán online quốc tế** (giao dịch online / giao dịch nước ngoài).
+- **Thẻ debit quốc tế** (thẻ ghi nợ, trừ thẳng tiền trong tài khoản) vẫn dùng được. Không bắt buộc thẻ tín dụng.
+- Quan trọng nhất: thẻ phải **bật thanh toán online quốc tế** (giao dịch online hoặc giao dịch nước ngoài).
 
-Nếu chưa bật, mở app ngân hàng tìm mục "thanh toán online" hoặc gọi tổng đài ngân hàng để mở - mất vài phút.
+Chưa bật thì mở app ngân hàng tìm mục "thanh toán online", hoặc gọi tổng đài ngân hàng để mở. Thường mất vài phút.
 
 ## Nạp bao nhiêu là đủ?
 
-Nếu chọn OpenRouter, kiểm [trang Credits và điều kiện thanh toán chính thức](https://openrouter.ai/credits), rồi thử với khoản nhỏ. Model có mức tính theo <TermTip term="token">token</TermTip> khác nhau; kiểm lịch sử dùng và thiết lập nạp tự động nếu có trước khi xác nhận, không mặc định rằng số dư hết là mọi khoản phí đều tự dừng.
+Nếu chọn OpenRouter, kiểm [trang Credits và điều kiện thanh toán chính thức](https://openrouter.ai/credits) rồi thử với khoản nhỏ. Mỗi model có mức tính theo <TermTip term="token">token</TermTip> khác nhau. Hãy xem lịch sử dùng và thiết lập nạp tự động (nếu có) trước khi xác nhận. Đừng mặc định rằng hết số dư là mọi khoản phí đều tự dừng.
 
 ## Các lỗi thường gặp và cách xử lý
 
-**1. "Giao dịch không thành công" - thử vài lần vẫn lỗi**
+**1. "Giao dịch không thành công", thử vài lần vẫn lỗi**
 
-Nguyên nhân hay gặp nhất: thẻ chưa bật thanh toán online quốc tế, hoặc ngân hàng chặn giao dịch nước ngoài. Cách xử lý:
+Nguyên nhân hay gặp nhất là thẻ chưa bật thanh toán online quốc tế, hoặc ngân hàng chặn giao dịch nước ngoài. Cách xử lý:
 
-1. Mở app ngân hàng, bật "thanh toán online" / "giao dịch quốc tế".
-2. Nếu vẫn lỗi, gọi tổng đài ngân hàng xác nhận đã mở.
+1. Mở app ngân hàng, bật "thanh toán online" hoặc "giao dịch quốc tế".
+2. Vẫn lỗi thì gọi tổng đài ngân hàng xác nhận đã mở.
 3. Nạp lại.
 
 **2. "Thẻ bị từ chối"**
@@ -43,6 +47,6 @@ Có thể do hết hạn mức, hoặc ngân hàng nghi ngờ giao dịch lạ. 
 
 - Nếu dùng OpenRouter, chỉ nạp khoản nhỏ để thử và kiểm số dư sau lần dùng đầu.
 - Không chia sẻ thông tin thẻ với bất kỳ ai, kể cả người tự xưng là "hỗ trợ".
-- Luôn thanh toán trên trang chính thức của Nous Research / provider bạn dùng.
+- Luôn thanh toán trên trang chính thức của nhà cung cấp bạn dùng (OpenRouter, Nous Research, OpenAI, Anthropic...).
 
-Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap), mình và mọi người sẽ trả lời.
+Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap), mình và mọi người sẽ trả lời. Nhớ che thông tin thẻ và số dư.

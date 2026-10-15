@@ -1,13 +1,13 @@
 ---
-title: "Chọn model cho Hermes: OpenRouter, tài khoản Codex hay Nous Portal?"
-description: "Dùng Hermes với OpenRouter theo token, kết nối thêm tài khoản ChatGPT/Codex qua OAuth, chọn Nous Portal hoặc chạy model ngay trên máy. Cách dùng hai nguồn linh hoạt mà vẫn theo dõi chi phí."
+title: "Chọn model cho Hermes: Claude Pro, ChatGPT/Codex, OpenRouter hay Nous Portal?"
+description: "Chọn nguồn model cho Hermes theo thứ bạn đang có: gói Claude Pro, gói ChatGPT/Codex, OpenRouter theo token, Nous Portal hoặc model chạy ngay trên máy. Cách dùng hai nguồn linh hoạt mà vẫn theo dõi chi phí."
 datePublished: "2026-09-22"
 dateModified: "2026-10-15"
 authorName: "Cộng Đồng AI"
-tags: ["model", "openrouter", "codex", "chi phí"]
+tags: ["model", "claude", "openrouter", "codex", "chi phí"]
 ---
 
-Hermes cần một <TermTip term="model">model AI</TermTip> để xử lý yêu cầu. Người mới không cần mua nhiều dịch vụ cùng lúc: **cài Hermes trước, chọn một nguồn để thử, rồi chỉ thêm nguồn thứ hai khi thấy cần**. Mình dùng cả OpenRouter lẫn tài khoản ChatGPT/Codex, nhưng đó là cách mình vận hành sau khi đã biết việc nào hợp với nguồn nào.
+Hermes cần một <TermTip term="model">model AI</TermTip> để xử lý yêu cầu. Người mới không cần mua nhiều dịch vụ cùng lúc: **cài Hermes trước, chọn một nguồn để thử, rồi chỉ thêm nguồn thứ hai khi thấy cần**. Có người dùng cả OpenRouter, Claude lẫn ChatGPT/Codex, nhưng đó là cách vận hành sau khi đã biết việc nào hợp với nguồn nào.
 
 Vừa cài Hermes Desktop trên máy mới? Chat thiết lập lần đầu chạy bằng một model dùng thử miễn phí của Nous, nên bạn chưa cần nguồn nào để làm quen. Model đó chỉ để thử. Muốn dùng đều đặn thì chọn một nguồn bên dưới. Chi tiết ở bài cài [Windows](/bat-dau/cai-hermes-desktop-windows) hoặc [Mac](/bat-dau/cai-hermes-desktop-mac).
 
@@ -29,9 +29,42 @@ Vừa cài Hermes Desktop trên máy mới? Chat thiết lập lần đầu ch�
 
 Đây là đăng nhập bằng tài khoản ChatGPT qua OAuth, không phải dán mật khẩu hay API key. Nếu tài khoản dùng được, hãy bắt đầu bằng thứ đã có thay vì vội nạp thêm tiền ở nơi khác.
 
+<div id="da-co-claude-pro" className="scroll-mt-24" />
+
+### Đã có gói Claude Pro
+
+Gói Claude Pro dùng được trong Hermes mà **không cần nâng lên Max**, nhưng phải đi đúng đường. Hermes có plugin chính thức **Claude Subscription DirectSDK (Experimental)**. Plugin này gọi Claude Code CLI chính thức bằng tài khoản Claude bạn đã đăng nhập, còn vòng lặp, công cụ và bước duyệt quyền vẫn là của Hermes.
+
+<ClaudePath />
+
+Hai điều cần biết trước:
+
+- **Đây là plugin thử nghiệm.** Tài liệu của plugin ghi rõ đây là bản để review, chưa phải cam kết sẵn sàng cho việc quan trọng.
+- **Đừng nhầm với đường đăng nhập Anthropic (OAuth) có sẵn trong Hermes.** Tài liệu Hermes ghi đường đó chỉ dùng được với Claude Max kèm extra usage, còn gói Pro không dùng được.
+
+Cần có Hermes 0.21.4 trở lên (bản Desktop 0.22 đã đủ), cộng với Claude Code CLI đã cài và đăng nhập.
+
+<ClaudeFlow />
+
+**Cách làm:**
+
+1. Cài Claude Code theo hướng dẫn chính thức của Anthropic. Tài liệu plugin ví dụ bằng lệnh `npm install -g @anthropic-ai/claude-code`.
+2. Chạy `claude auth login` và **tự đăng nhập trên trình duyệt**. Đừng gửi mã hay mật khẩu cho ai, kể cả trong chat với Hermes.
+3. Cài plugin: `hermes plugins install claude-subscription-directsdk`.
+4. Chạy `hermes model`, chọn **Claude Subscription DirectSDK (Experimental)** rồi chọn Sonnet 5.5. Thử một việc nhỏ có kết quả kiểm được, ví dụ tạo một file ghi chú trong thư mục thử rồi mở lại xem.
+
+**Những điều nên biết khi dùng gói Pro:**
+
+- **Model mới cần Claude Code đủ mới.** Theo tài liệu plugin, Sonnet 5.5 cần Claude Code 2.1.284 trở lên. Nếu báo `does not support this model`, chạy `claude update` rồi thử lại.
+- **Việc dùng tính vào hạn mức của gói Claude.** Anthropic ghi (cập nhật 07/10/2026) rằng Agent SDK, `claude -p` và ứng dụng bên thứ ba vẫn tính vào hạn mức thuê bao. Tác giả plugin đo trên gói Pro ngày 09/09/2026: cùng một hạn mức, dùng qua Hermes hao nhanh hơn Claude Code chạy tương tác khoảng 1,7 lần. Bạn nên tính là mỗi cửa sổ 5 giờ làm được ít việc hơn khi dùng Claude Code trực tiếp.
+- **Extra usage thuộc về tài khoản của bạn.** Không muốn phát sinh phí thì tắt extra usage trong tài khoản Claude. Con số "list price" Hermes hiện ra chỉ là ước tính, không phải hóa đơn.
+- **Chọn Sonnet 5.5 cho việc thường.** Theo Anthropic, trên gói Pro các model Fable 5.1 tính vào usage credits ngay từ yêu cầu đầu. Bộ chọn của Claude Code cũng ghi nhãn tính usage credits cho Opus bản 1M trên Pro. Hãy đọc nhãn trong bộ chọn trước khi chọn.
+- **Đừng để sẵn `ANTHROPIC_API_KEY` hay địa chỉ API tùy chỉnh trong môi trường.** Plugin từ chối cấu hình xung đột, vì khi đó Claude Code có thể đi theo API tính phí riêng. Đừng tìm cách bỏ qua cảnh báo này.
+- **Plugin không tự đổi sang nguồn khác.** Muốn nguồn phụ hay dự phòng cũng dùng gói Claude, bạn tự cấu hình riêng.
+
 <div id="bat-dau-openrouter" className="scroll-mt-24" />
 
-### Chưa có hoặc Codex không dùng được: OpenRouter
+### Chưa có gói nào, hoặc muốn nhiều model: OpenRouter
 
 <TermTip term="OpenRouter">OpenRouter</TermTip> cho bạn thử nhiều model và trả theo mức dùng:
 
@@ -39,7 +72,7 @@ Vừa cài Hermes Desktop trên máy mới? Chat thiết lập lần đầu ch�
 2. Vào [mục API keys](https://openrouter.ai/keys) để tạo key. Rồi mở mục chọn model trong Hermes Desktop, chọn OpenRouter và nhập key **vào phần thiết lập Hermes**, không gửi trong chat. Giao diện không hiện phần thêm nhà cung cấp thì chạy `hermes model` trong terminal.
 3. Chọn một model vừa đủ và xem mức tính phí theo <TermTip term="token">token</TermTip>. Nếu model cần số dư, vào [Credits](https://openrouter.ai/credits) để nạp một khoản nhỏ, rồi thử một yêu cầu ngắn. Xem số dư và lịch sử dùng sau khi thử.
 
-Quen dùng terminal thì có thể chạy `hermes auth add openrouter --type oauth` để đăng nhập OpenRouter qua trình duyệt, khỏi tạo rồi dán key. Đọc thêm [Vì sao dùng OpenRouter](/bat-dau/vi-sao-dung-openrouter). Bạn không cần mua gói ChatGPT chỉ để cài Hermes.
+Quen dùng terminal thì có thể chạy `hermes auth add openrouter --type oauth` để đăng nhập OpenRouter qua trình duyệt, khỏi tạo rồi dán key. Đọc thêm [Vì sao dùng OpenRouter](/bat-dau/vi-sao-dung-openrouter). Bạn không cần mua gói ChatGPT hay Claude chỉ để cài Hermes.
 
 ### Muốn một tài khoản do Nous Research cung cấp: Nous Portal
 
@@ -49,13 +82,13 @@ Quen dùng terminal thì có thể chạy `hermes auth add openrouter --type oau
 
 Sau khi kết nối nguồn đầu tiên, nhờ Hermes tóm tắt một tài liệu ngắn hoặc soạn một email nháp, rồi tự kiểm kết quả. Đăng nhập thành công chưa có nghĩa là model đã chạy được hoặc hạn mức gói còn đủ. Nếu bị từ chối, xem thông báo lỗi và tình trạng tài khoản trước khi thử đường khác.
 
-**Tài khoản ChatGPT trả phí không phải credit API OpenAI và cũng không trả hộ OpenRouter.** OpenRouter vẫn tính phí riêng mỗi khi bạn chọn model qua OpenRouter. Tài liệu Hermes hiện chưa xác nhận đầy đủ gói ChatGPT nào đủ điều kiện, và mức dùng trong Hermes trừ vào hạn mức Codex ra sao. Vì vậy đừng mặc định một gói cụ thể sẽ dùng không giới hạn.
+**Gói ChatGPT hay Claude trả phí không phải credit API và cũng không trả hộ OpenRouter.** OpenRouter vẫn tính phí riêng mỗi khi bạn chọn model qua OpenRouter. Tài liệu Hermes hiện chưa xác nhận đầy đủ gói ChatGPT nào đủ điều kiện, và mức dùng trong Hermes trừ vào hạn mức Codex ra sao. Vì vậy đừng mặc định một gói cụ thể sẽ dùng không giới hạn.
 
 ## Bước 3: Cần linh hoạt hơn thì thêm nguồn thứ hai
 
-Khi đã quen một nguồn, bạn có thể nối nguồn còn lại: OpenRouter để thử nhiều model và trả theo mức dùng, Codex để dùng các model Codex qua tài khoản ChatGPT nếu tài khoản được phép. Mình dùng model vừa đủ trên OpenRouter cho việc thường, và **chủ động chuyển** sang Codex khi làm việc code hoặc việc hợp với model đó. Cách này có thể tận dụng gói đã trả tiền, nhưng **không đảm bảo rẻ hơn**. Hãy xem lượng dùng và kết quả thực tế của chính bạn.
+Khi đã quen một nguồn, bạn có thể nối thêm nguồn khác: OpenRouter để thử nhiều model và trả theo mức dùng, Codex để dùng model Codex qua tài khoản ChatGPT nếu tài khoản được phép, hoặc Claude Pro qua plugin. Cách thường gặp là dùng một nguồn cho việc hằng ngày và **chủ động chuyển** sang nguồn khác khi việc hợp với model đó. Cách này có thể tận dụng gói đã trả tiền, nhưng **không đảm bảo rẻ hơn**. Hãy xem lượng dùng và kết quả thực tế của chính bạn.
 
-Nếu bạn còn có gói Claude, theo tài liệu Hermes, đường đăng nhập Anthropic (OAuth) trực tiếp chỉ dùng được với Claude Max kèm extra usage, gói Pro không dùng được đường đó. Muốn xem một cách phối hợp Claude Pro, ChatGPT Pro và OpenRouter trong thực tế, đọc [bài kinh nghiệm này](/blog/hermes-claude-pro-chatgpt-openrouter-tiet-kiem).
+Claude Pro cũng nối được theo cách ở trên (plugin Claude Subscription), nên có thể kết hợp Claude, Codex và OpenRouter. Muốn xem một cách phối hợp thực tế, đọc [bài kinh nghiệm này](/blog/hermes-claude-pro-chatgpt-openrouter-tiet-kiem).
 
 Vài lệnh hữu ích:
 
@@ -65,6 +98,20 @@ Vài lệnh hữu ích:
 - Bạn không cần cài Codex CLI chỉ để thêm Codex cho Hermes.
 
 Muốn Hermes tự chuyển khi một nguồn **lỗi hoặc chạm hạn mức**, cấu hình `hermes fallback` sau khi cả hai nguồn đã chạy ổn. Đây là **dự phòng khi lỗi**, không phải tính năng tự chọn model rẻ nhất cho mỗi câu hỏi. Nguồn được chuyển tới có thể tính phí riêng, nên kiểm chuỗi dự phòng trước khi bật.
+
+## Claude hay GPT cho việc hằng ngày?
+
+Không có câu trả lời chung cho mọi người, vì tốc độ và độ ổn định của từng dịch vụ đổi theo thời điểm, giờ dùng và tài khoản. Dưới đây là một trải nghiệm thật để bạn tham khảo:
+
+<AdminNote date="15/10/2026">
+
+Mình đang dùng Claude với Sonnet 5.5 cho phần lớn việc hằng ngày và thấy nó xử lý tốt: đọc thông tin và làm việc đều nhanh. Cùng thời gian này, GPT 6 và GPT 6.1 của mình chạy rất chậm và thường xuyên bị nghẽn.
+
+Đây là cảm nhận trên tài khoản và giờ dùng của riêng mình, chưa đo bằng số. Bạn nên thử cùng một việc nhỏ trên cả hai nguồn rồi tự so sánh.
+
+</AdminNote>
+
+Cách thử công bằng: chọn 2 đến 3 việc quen thuộc, chạy trên từng nguồn vào cùng khung giờ, ghi lại thời gian chờ, số lần phải sửa và có bị báo lỗi hay nghẽn không. Một lần chậm chưa nói lên gì, nên thử vài lần ở các giờ khác nhau.
 
 <div id="chay-tren-may" className="scroll-mt-24" />
 
@@ -124,7 +171,8 @@ Vài lưu ý khi đổi hoặc thử model mới:
 Mình đã kết nối một model và thử chat thành công. Hãy kiểm tra model/provider
 hiện có, rồi chỉ mình cách thêm nguồn còn lại: nếu Codex dùng được với
 tài khoản ChatGPT của mình thì hướng dẫn đăng nhập OAuth chính thức;
-nếu chưa có OpenRouter thì chỉ mình mở tài khoản, kết nối và chọn model
+nếu mình có gói Claude Pro thì chỉ cách cài plugin Claude Subscription
+DirectSDK và Claude Code theo tài liệu chính thức; nếu chưa có OpenRouter thì chỉ mình mở tài khoản, kết nối và chọn model
 vừa đủ. Mình sẽ tự nhập mật khẩu, mã đăng nhập hoặc API key tại màn hình
 chính thức, không gửi những thông tin đó trong chat. Chưa bật fallback
 hay đổi model mặc định khi mình chưa đồng ý.
@@ -134,6 +182,6 @@ Khi dùng OpenRouter, tạo key trong tài khoản của **chính bạn** và nh
 
 ## Nguồn tham khảo
 
-Đọc thêm [tài liệu provider chính thức của Hermes](https://hermes-agent.nousresearch.com/docs/integrations/providers/), [fallback](https://hermes-agent.nousresearch.com/docs/user-guide/features/fallback-providers/) và [phân biệt hóa đơn ChatGPT với API](https://help.openai.com/en/articles/9039756-managing-billing-for-chatgpt-and-the-api-platform). Phần model chạy trên máy dựa theo [tài liệu Local Models](https://hermes-agent.nousresearch.com/docs/user-guide/local-models) và [ghi chú phát hành v0.22.0](https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.0). Tên nút và các bước đối chiếu thêm với mã nguồn bản 0.22.0.
+Phần Claude Pro dựa theo [plugin Claude Subscription DirectSDK](https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk), [chính sách Agent SDK của Anthropic](https://support.claude.com/en/articles/15036540-use-the-claude-agent-sdk-with-your-claude-plan) và [Claude Code với gói Pro hoặc Max](https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan), đối chiếu ngày 15/10/2026. Đọc thêm [tài liệu provider chính thức của Hermes](https://hermes-agent.nousresearch.com/docs/integrations/providers/), [fallback](https://hermes-agent.nousresearch.com/docs/user-guide/features/fallback-providers/) và [phân biệt hóa đơn ChatGPT với API](https://help.openai.com/en/articles/9039756-managing-billing-for-chatgpt-and-the-api-platform). Phần model chạy trên máy dựa theo [tài liệu Local Models](https://hermes-agent.nousresearch.com/docs/user-guide/local-models) và [ghi chú phát hành v0.22.0](https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.0). Tên nút và các bước đối chiếu thêm với mã nguồn bản 0.22.0.
 
 Bí chỗ nào thì đăng vào [Hỏi & Đáp](/hoi-dap), nhớ che thông tin đăng nhập và số dư.

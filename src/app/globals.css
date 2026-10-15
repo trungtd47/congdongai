@@ -536,3 +536,11 @@ a.tag-pill-link:hover, a.tag-pill-link:focus-visible {
 .article-engage h2 { margin: 0 0 6px; font-size: 20px; }
 .article-engage p { margin: 0 0 14px; color: var(--color-muted); font-size: 15px; line-height: 1.7; }
 .article-engage-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.admin-note { margin: 26px 0; padding: 18px 20px; border: 1px solid var(--color-line); border-left: 4px solid #8B5E3C; background: var(--color-white); border-radius: 3px; }
+.admin-note-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.admin-note-head img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--color-line); }
+.admin-note-head strong { font-family: var(--font-sans); font-size: 15px; color: var(--color-ink); }
+.admin-note-date { display: block; font-size: 12px; color: var(--color-muted); }
+.admin-note-body p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.8; }
+.admin-note-body p:last-child { margin-bottom: 0; }

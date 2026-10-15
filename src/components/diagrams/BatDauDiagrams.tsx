@@ -38,6 +38,20 @@ const IconModel = () => (
   </Svg>
 );
 
+const IconTerminal = () => (
+  <Svg>
+    <rect x="6" y="9" width="28" height="22" rx="4" fill="#FFFDF8" />
+    <path d="M12 17l5 4-5 4M20 26h8" />
+  </Svg>
+);
+const IconPlan = () => (
+  <Svg>
+    <rect x="6" y="11" width="28" height="19" rx="4" fill="#E4E9DA" />
+    <path d="M6 17h28" />
+    <circle cx="14" cy="24" r="2.2" fill={GOLD} />
+  </Svg>
+);
+
 /* ---------- khối dùng chung ---------- */
 interface FlowItem {
   title: string;
@@ -319,7 +333,8 @@ export function SetupChat() {
 const MODEL_CHOICES: { when: string; pick: string; note: string; cost: string; href?: string; link?: string }[] = [
   { when: "Chỉ muốn làm quen", pick: "Dùng model dùng thử trong chat thiết lập", note: "Khi muốn dùng đều đặn thì chọn một nguồn bên dưới.", cost: "Miễn phí để làm quen, đừng dựa vào cho việc lâu dài." },
   { when: "Đã trả tiền gói ChatGPT", pick: "Thử Codex trong Hermes trước", note: "Nếu tài khoản của bạn được phép. Dùng được rồi mới cân nhắc thêm OpenRouter.", cost: "Tùy quyền và hạn mức của tài khoản ChatGPT.", href: "#da-co-chatgpt", link: "Xem cách kết nối" },
-  { when: "Chưa có gói ChatGPT", pick: "Bắt đầu với OpenRouter", note: "Chọn model vừa đủ và nạp ít để thử. Không cần mua gói nào chỉ để dùng Hermes.", cost: "Theo token đã dùng, số dư riêng.", href: "#bat-dau-openrouter", link: "Xem cách bắt đầu" },
+  { when: "Đã trả tiền gói Claude Pro", pick: "Thử Claude Pro qua plugin Claude Subscription", note: "Đường thử nghiệm, cần cài Claude Code. Không cần gói Max.", cost: "Tính vào hạn mức của gói Claude, theo từng cửa sổ 5 giờ.", href: "#da-co-claude-pro", link: "Xem cách kết nối" },
+  { when: "Chưa có gói ChatGPT hay Claude", pick: "Bắt đầu với OpenRouter", note: "Chọn model vừa đủ và nạp ít để thử. Không cần mua gói nào chỉ để dùng Hermes.", cost: "Theo token đã dùng, số dư riêng.", href: "#bat-dau-openrouter", link: "Xem cách bắt đầu" },
   { when: "Muốn gọn, hợp với gói của Nous", pick: "Tìm hiểu Nous Portal", note: "Kiểm tra điều kiện gói trước khi quyết định.", cost: "Theo gói đăng ký.", href: "/bat-dau/dang-ky-nous-portal", link: "Xem Nous Portal" },
   { when: "Có card đồ họa đủ mạnh, hoặc cần giữ việc ở máy mình", pick: "Thử model chạy ngay trên máy", note: "Bắt đầu bằng một việc nhỏ có kết quả kiểm được.", cost: "Không cần tài khoản hay API key, nhưng dùng nhiều tài nguyên của máy.", href: "#chay-tren-may", link: "Xem cách làm" },
 ];
@@ -401,6 +416,104 @@ export function WeekFlow() {
   );
 }
 
+
+/* ---------- Claude Pro ---------- */
+export function ClaudePath() {
+  return (
+    <MotionFigure
+      label="Đường dùng Claude Pro trong Hermes: Hermes gọi Claude Code đã đăng nhập, Claude Code dùng gói Claude"
+      caption="Plugin gọi Claude Code CLI chính thức, đã đăng nhập bằng tài khoản Claude của bạn. Việc dùng được tính vào hạn mức của gói."
+    >
+      <div className="dg-arch">
+        <Node icon={<IconHermes />} title="Hermes" text="Vẫn là vòng lặp, công cụ và duyệt quyền của Hermes" delay={0} />
+        <Link2 label="Plugin gọi" delay={1} />
+        <Node icon={<IconTerminal />} title="Claude Code CLI" text="Bản chính thức, bạn tự đăng nhập" main delay={2} />
+        <Link2 label="Dùng gói" dim delay={3} />
+        <Node icon={<IconPlan />} title="Gói Claude Pro" text="Hạn mức theo cửa sổ 5 giờ" delay={4} />
+      </div>
+    </MotionFigure>
+  );
+}
+
+export function ClaudeFlow() {
+  return (
+    <FlowSteps
+      label="Bốn bước dùng Claude Pro trong Hermes"
+      caption="Bốn bước. Plugin còn thử nghiệm, nên làm từng bước và thử một việc nhỏ trước khi giao việc thật."
+      items={[
+        { title: "Cài Claude Code", note: "Bản CLI chính thức" },
+        { title: "Đăng nhập", note: "claude auth login" },
+        { title: "Cài plugin", note: "hermes plugins install" },
+        { title: "Chọn model", note: "Sonnet 5.5, thử việc nhỏ" },
+      ]}
+    />
+  );
+}
+
+/* ---------- Nous Portal ---------- */
+export function NousIncludes() {
+  return (
+    <MotionFigure
+      label="Một tài khoản Nous Portal gồm model và các công cụ đi kèm"
+      caption="Theo tài liệu Hermes, một lần đăng nhập Portal dùng được nhiều model, và gói trả phí còn có Tool Gateway cho các công cụ bên dưới. Danh sách model và công cụ thay đổi theo thời gian."
+    >
+      <div className="dg-stem-top">
+        <Node icon={<IconPlan />} title="Một tài khoản Nous Portal" text="Đăng nhập một lần, thanh toán theo gói" main delay={0} />
+      </div>
+      <div className="dg-stem dg-pop" style={i(1)} aria-hidden="true">
+        <span />
+      </div>
+      <div className="dg-chips">
+        <div className="dg-chip dg-pop" style={i(2)}>
+          <b>Model</b>
+          <span>Hơn 300 model từ nhiều hãng, chọn bằng /model</span>
+        </div>
+        <div className="dg-chip dg-pop" style={i(3)}>
+          <b>Tìm web</b>
+          <span>Tìm kiếm và đọc trang, khỏi tự đăng ký dịch vụ riêng</span>
+        </div>
+        <div className="dg-chip dg-pop" style={i(4)}>
+          <b>Tạo ảnh</b>
+          <span>Nhiều model tạo ảnh qua một cổng</span>
+        </div>
+        <div className="dg-chip dg-pop" style={i(5)}>
+          <b>Giọng nói, trình duyệt</b>
+          <span>Đọc thành tiếng và trình duyệt chạy trên cloud</span>
+        </div>
+      </div>
+    </MotionFigure>
+  );
+}
+
+export function NousFlow() {
+  return (
+    <FlowSteps
+      label="Ba bước dùng Nous Portal với Hermes"
+      caption="Ba bước. Kiểm điều kiện gói trên trang Portal trước khi trả tiền."
+      items={[
+        { title: "Tạo tài khoản, xem gói", note: "Trên trang Portal chính thức", href: "#bước-1-tạo-tài-khoản-và-xem-gói" },
+        { title: "Kết nối vào Hermes", note: "Desktop hoặc hermes setup --portal", href: "#bước-2-kết-nối-vào-hermes" },
+        { title: "Chọn model, thử việc nhỏ", note: "Dùng /model để đổi", href: "#bước-3-chọn-model-và-thử-một-việc-nhỏ" },
+      ]}
+    />
+  );
+}
+
+/* ---------- Thanh toán ---------- */
+export function PayFlow() {
+  return (
+    <FlowSteps
+      label="Ba bước xử lý khi thanh toán thẻ bị lỗi"
+      caption="Phần lớn lỗi nằm ở thẻ chưa bật thanh toán quốc tế. Làm lần lượt ba bước, đừng gửi thông tin thẻ cho ai."
+      items={[
+        { title: "Bật thanh toán online quốc tế", note: "Trong app ngân hàng", href: "#cần-thẻ-gì" },
+        { title: "Gọi tổng đài xác nhận", note: "Hỏi đã mở giao dịch nước ngoài chưa", href: "#các-lỗi-thường-gặp-và-cách-xử-lý" },
+        { title: "Thử lại hoặc đổi thẻ", note: "Thẻ quốc tế khác hoặc thẻ ảo", href: "#các-lỗi-thường-gặp-và-cách-xử-lý" },
+      ]}
+    />
+  );
+}
+
 export const batDauDiagramComponents = {
   HermesHub,
   HermesStart,
@@ -413,4 +526,9 @@ export const batDauDiagramComponents = {
   ModelFlow,
   LocalModelFlow,
   WeekFlow,
+  ClaudePath,
+  ClaudeFlow,
+  NousIncludes,
+  NousFlow,
+  PayFlow,
 };

@@ -20,6 +20,7 @@ import { AuthorAvatar } from "@/components/AuthorAvatar";
 import { AuthorBadge } from "@/components/OfficialBadge";
 import { ArticleEngage } from "@/components/ArticleEngage";
 import { TocBox } from "@/components/TocBox";
+import { AdminNote } from "@/components/AdminNote";
 import { batDauDiagramComponents } from "@/components/diagrams/BatDauDiagrams";
 
 interface Props {
@@ -104,7 +105,7 @@ export default async function ArticlePage({ params }: Props) {
       <div className="prose-article">
         <MDXRemote
           source={post.content}
-          components={{ TermTip, ...miniPcDiagramComponents, ...batDauDiagramComponents }}
+          components={{ TermTip, ...miniPcDiagramComponents, ...batDauDiagramComponents, AdminNote }}
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm],
