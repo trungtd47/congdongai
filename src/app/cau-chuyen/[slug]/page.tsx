@@ -17,6 +17,7 @@ import {
   pageMetadata,
 } from "@/lib/seo";
 import { AuthorAvatar } from "@/components/AuthorAvatar";
+import { AuthorBadge } from "@/components/OfficialBadge";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -146,6 +147,7 @@ export default async function CauChuyenDetailPage({ params }: Props) {
       <div className="byline">
         <AuthorAvatar name={c.authorName ?? "Cộng Đồng AI"} className="avatar" />
         <strong>{c.authorName ?? "Cộng Đồng AI"}</strong>
+        <AuthorBadge name={c.authorName ?? "Cộng Đồng AI"} />
         <span aria-hidden="true">·</span>
         <span>Chia sẻ từ cách dùng Hermes</span>
       </div>

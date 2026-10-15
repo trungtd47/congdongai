@@ -27,3 +27,11 @@ const ADMIN_AUTHOR_NAMES = ["Đức Trung", "Cộng Đồng AI", "Admin"];
 export function isAdminAuthorName(name: string | null | undefined): boolean {
   return !!name && ADMIN_AUTHOR_NAMES.includes(name.trim());
 }
+
+// Nhãn nguồn chính thống hiển thị cạnh tên: Admin = Đức Trung, Chính thức = tài khoản Cộng Đồng AI.
+export function officialBadgeLabel(name: string | null | undefined): string | null {
+  const n = (name ?? "").trim();
+  if (n === "Đức Trung" || n === "Admin") return "Admin";
+  if (n === "Cộng Đồng AI") return "Chính thức";
+  return null;
+}

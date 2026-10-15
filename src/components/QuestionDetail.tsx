@@ -16,6 +16,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { signInWithGoogle } from "@/lib/auth";
 import { avatarColor } from "@/lib/avatar";
 import { ADMIN_AVATAR, ADMIN_PUBLIC_UID } from "@/lib/site";
+import { OfficialBadge } from "@/components/OfficialBadge";
 
 function PersonAvatar({ name, uid }: { name: string; uid: string }) {
   if (uid === ADMIN_PUBLIC_UID) {
@@ -221,6 +222,9 @@ export function QuestionDetail({ postId }: { postId: string }) {
               uid={post.authorUid}
             />
             {post.authorName}
+            {post.authorUid === ADMIN_PUBLIC_UID && (
+              <OfficialBadge label="Admin" />
+            )}
           </span>
           <span>{post.createdAt}</span>
           <button
@@ -251,6 +255,9 @@ export function QuestionDetail({ postId }: { postId: string }) {
             <div className="mb-2 flex items-center gap-2">
               <PersonAvatar name={a.authorName} uid={a.authorUid} />
               <span className="text-sm font-semibold">{a.authorName}</span>
+              {a.authorUid === ADMIN_PUBLIC_UID && (
+                <OfficialBadge label="Admin" />
+              )}
               {a.isAI && (
                 <span className="inline-flex items-center gap-1 rounded-full bg-teal-soft px-2 py-0.5 text-[11px] font-semibold text-teal-dark">
                   🤖 AI trả lời

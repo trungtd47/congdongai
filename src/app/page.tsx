@@ -14,6 +14,7 @@ import { HomeQAPanel } from "@/components/HomeQAPanel";
 import { JoinGoogleButton } from "@/components/JoinGoogleButton";
 import "./editorial-home.css";
 import { AuthorAvatar } from "@/components/AuthorAvatar";
+import { AuthorBadge } from "@/components/OfficialBadge";
 
 export const metadata: Metadata = pageMetadata({
   title: siteConfig.title,
@@ -72,6 +73,7 @@ function ArticleTile({ a }: { a: ArticleItem }) {
       <div className="ed-byline">
         <AuthorAvatar name={a.authorName} className="ed-avatar" />
         <span className="ed-name">{a.authorName}</span>
+        <AuthorBadge name={a.authorName} />
       </div>
     </article>
   );
@@ -341,7 +343,9 @@ export default function HomePage() {
                 <div className="ed-from">
                   <AuthorAvatar name="Đức Trung" className="ed-avatar" />
                   <div>
-                    <b>Đức Trung</b>
+                    <b>
+                      Đức Trung <AuthorBadge name="Đức Trung" />
+                    </b>
                     Người ngày nào cũng đang dùng Hermes
                   </div>
                 </div>

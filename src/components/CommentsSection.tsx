@@ -10,6 +10,7 @@ import {
   type ArticleComment,
 } from "@/lib/firestore-ops";
 import { ImageUpload } from "@/components/ImageUpload";
+import { OfficialBadge } from "@/components/OfficialBadge";
 import { ADMIN_AVATAR, ADMIN_PUBLIC_UID } from "@/lib/site";
 
 function CommentAvatar({
@@ -165,6 +166,7 @@ function CommentCard({
         <span className="min-w-0 break-words text-sm font-semibold text-ink">
           {c.authorName}
         </span>
+        {c.authorUid === ADMIN_PUBLIC_UID && <OfficialBadge label="Admin" />}
         {c.isAI && (
           <span className="inline-flex items-center gap-1 rounded-full bg-teal-soft px-2 py-0.5 text-[11px] font-semibold text-teal-dark">
             🤖 AI trả lời

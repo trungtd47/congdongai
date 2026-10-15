@@ -13,3 +13,6 @@ Byline bài, thẻ bài trang chủ, khối thư ngỏ, bình luận/trả lời
 
 ## Lesson
 Avatar đặc quyền phải gắn theo UID ở nơi dữ liệu do người dùng nhập; theo tên chỉ an toàn ở nội dung do mình viết.
+
+## Nhãn nguồn chính thống (cùng ngày)
+Thêm nhãn xanh `#38513B` cạnh tên: **Admin** (Đức Trung / Admin) và **Chính thức** (tài khoản Cộng Đồng AI). Server pages so theo tên tác giả (`officialBadgeLabel` trong `src/lib/site.ts`, component `src/components/OfficialBadge.tsx`); bình luận, câu hỏi, câu trả lời so theo UID admin. Người dùng thường không thể tự có nhãn. Đã xem screenshot desktop + mobile local (headless_shell của Playwright, nhớ copy `.next/static` và `public` vào `.next/standalone` trước khi chụp).

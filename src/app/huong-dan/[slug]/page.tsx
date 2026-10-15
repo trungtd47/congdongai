@@ -21,6 +21,7 @@ import { ArticleDiagram } from "@/components/ArticleDiagram";
 import { CommentsSection } from "@/components/CommentsSection";
 import { TagLinks } from "@/components/TagLinks";
 import { AuthorAvatar } from "@/components/AuthorAvatar";
+import { AuthorBadge } from "@/components/OfficialBadge";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -85,6 +86,7 @@ export default async function HuongDanArticlePage({ params }: Props) {
       <div className="byline">
         <AuthorAvatar name={post.authorName || "Cộng Đồng AI"} className="avatar" />
         <strong>{post.authorName}</strong>
+        <AuthorBadge name={post.authorName} />
         <span aria-hidden="true">·</span>
         <time dateTime={post.datePublished}>
           {new Date(post.datePublished).toLocaleDateString("vi-VN", {
