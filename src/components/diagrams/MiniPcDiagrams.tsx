@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { MotionFigure } from "./MotionFigure";
 
-// Sơ đồ cho bài "Cách mình chạy Hermes AI Agent trên mini PC và dùng app Desktop từ laptop".
+// Sơ đồ cho bài "Cách mình chạy Hermes AI Agent trên mini PC và dùng Hermes Desktop từ laptop".
 // Không phải ảnh chụp màn hình. Chữ nằm trong HTML thật (kể cả figcaption) để đọc/tìm kiếm được.
 
 const INK = "#292C25";
