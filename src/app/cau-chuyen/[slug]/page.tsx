@@ -99,6 +99,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: c.teaser,
     path: `/cau-chuyen/${slug}`,
     type: "article",
+    ogImage: false,
     publishedTime: c.datePublished,
     modifiedTime: c.dateModified,
   });

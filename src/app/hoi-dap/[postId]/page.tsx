@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { cache } from "react";
 import { notFound } from "next/navigation";
-import { JsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { JsonLd, breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { QuestionDetail } from "@/components/QuestionDetail";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { getServerPost } from "@/lib/server/community-data";
@@ -30,11 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
   const p = r.data;
-  return {
+  return pageMetadata({
     title: p.title,
     description: p.body.replace(/\s+/g, " ").slice(0, 160),
-    alternates: { canonical: `/hoi-dap/${postId}` },
-  };
+    path: `/hoi-dap/${postId}`,
+    type: "article",
+    ogImage: false,
+    publishedTime: p.createdAt,
+  });
 }
 
 export default async function HoiDapDetailPage({ params }: Props) {

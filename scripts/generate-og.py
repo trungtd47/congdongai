@@ -28,17 +28,17 @@ def draw_text(draw: ImageDraw.ImageDraw, xy: tuple[int, int], text: str,
 
 
 def main() -> None:
-    canvas = Image.new('RGB', (1200, 630), '#FBF7F0')
+    canvas = Image.new('RGB', (1200, 630), '#F8F5EF')
     draw = ImageDraw.Draw(canvas)
     draw.rounded_rectangle((40, 38, 1160, 592), radius=24,
-                           fill='#FFFFFF', outline='#E9E1D5', width=2)
-    draw.rounded_rectangle((72, 75, 80, 553), radius=4, fill='#0E7C71')
+                           fill='#FFFDF8', outline='#D7D4C9', width=2)
+    draw.rounded_rectangle((72, 75, 80, 553), radius=4, fill='#38513B')
     draw_text(draw, (108, 76), 'Cộng Đồng AI.org', 32, '#8B5E3C', True)
-    draw_text(draw, (108, 150), 'Hermes AI Agent', 66, '#2B241D', True)
-    draw_text(draw, (108, 232), 'Tiếng Việt', 62, '#0E7C71', True)
-    draw.line((108, 335, 1090, 335), fill='#E9E1D5', width=2)
-    draw_text(draw, (108, 369), 'Cài, giao việc, kiểm kết quả', 38, '#2B241D')
-    draw_text(draw, (108, 435), 'Hướng dẫn và kinh nghiệm có nguồn', 28, '#6F6558')
+    draw_text(draw, (108, 150), 'Hermes AI Agent', 66, '#292C25', True)
+    draw_text(draw, (108, 232), 'Tiếng Việt', 62, '#38513B', True)
+    draw.line((108, 335, 1090, 335), fill='#D7D4C9', width=2)
+    draw_text(draw, (108, 369), 'Cài, giao việc, kiểm kết quả', 38, '#292C25')
+    draw_text(draw, (108, 435), 'Hướng dẫn và kinh nghiệm có nguồn', 28, '#62645B')
     draw_text(draw, (108, 515), 'congdongai.org', 26, '#8B5E3C', True)
     target = ROOT / 'public' / 'og.png'
     canvas.save(target, format='PNG', optimize=True)

@@ -136,6 +136,8 @@ export interface PageMetadataInput {
   publishedTime?: string;
   modifiedTime?: string;
   absoluteTitle?: boolean;
+  // false = để route tự cấp ảnh chia sẻ riêng (file opengraph-image).
+  ogImage?: false;
 }
 
 // Metadata thống nhất cho mọi trang: title tự thêm thương hiệu (trừ khi
@@ -166,20 +168,24 @@ export function pageMetadata(input: PageMetadataInput): Metadata {
             modifiedTime: input.modifiedTime ?? input.publishedTime,
           }
         : {}),
-      images: [
-        {
-          url: siteConfig.ogImage,
-          width: 1200,
-          height: 630,
-          alt: siteConfig.name,
-        },
-      ],
+      ...(input.ogImage === false
+        ? {}
+        : {
+            images: [
+              {
+                url: siteConfig.ogImage,
+                width: 1200,
+                height: 630,
+                alt: siteConfig.name,
+              },
+            ],
+          }),
     },
     twitter: {
       card: "summary_large_image",
       title: resolvedTitle,
       description: input.description,
-      images: [siteConfig.ogImage],
+      ...(input.ogImage === false ? {} : { images: [siteConfig.ogImage] }),
     },
   };
 }
