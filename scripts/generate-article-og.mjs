@@ -1,3 +1,4 @@
+// Mọi ảnh đều đóng watermark congdongai.org (góc phải dưới).
 // Ảnh chia sẻ = ảnh thật hoặc cảnh minh họa SVG đầu tiên của bài (sơ đồ khối/bước/thẻ trông như chụp màn hình nên bỏ, dùng bìa tiêu đề), phủ kín 1200x630 (không khung, không nền mờ, không chú thích).
 // Ghi vào public/og/<tuyến>-<slug>.png. Dev-only: cần bản build đang chạy (standalone) + Chrome bật CDP.
 // Dùng: node scripts/generate-article-og.mjs <baseUrl> <cdpPort> [tuyến/slug ...]
@@ -17,6 +18,20 @@ for (const s of ["blog", "bat-dau", "huong-dan", "cau-chuyen"]) {
   for (const f of fs.readdirSync(dir)) if (f.endsWith(".html")) targets.push(`${s}/${f.slice(0, -5)}`);
 }
 const list = only.length ? only : targets;
+
+// ---- watermark congdongai.org (sếp yêu cầu: mọi ảnh chia sẻ của bài đều có), góc phải dưới
+async function watermark(file) {
+  const label = "congdongai.org";
+  const fs_ = 22, h = 38, w = 206, margin = 16; // nhỏ, sát góc để không đè chú thích cuối ảnh
+  const svg = Buffer.from(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="${w}" height="${h}" rx="${h / 2}" fill="#38513B" fill-opacity="0.88"/><text x="${w / 2}" y="${h / 2 + 7.5}" text-anchor="middle" font-family="Noto Sans, DejaVu Sans, sans-serif" font-weight="700" font-size="${fs_}" fill="#F8F5EF">${label}</text></svg>`,
+  );
+  const base = await sharp(file).toBuffer();
+  await sharp(base)
+    .composite([{ input: svg, left: W - w - margin, top: H - h - margin }])
+    .png({ compressionLevel: 9 })
+    .toFile(file);
+}
 
 // ---- ảnh có sẵn (png/jpg/svg trong public): phủ kín khung, lệch tỉ lệ thì kéo dãn viền bằng chính điểm ảnh biên
 async function fromFile(file, out) {
@@ -122,6 +137,7 @@ for (const key of list) {
   if (r.kind === "img") {
     const p = path.join(ROOT, "public", r.src.replace(/^\//, ""));
     await fromFile(p, file);
+    await watermark(file);
     report.push(`${key}: ảnh ${r.src} -> ${path.relative(ROOT, file)}`);
     continue;
   }
@@ -137,6 +153,7 @@ for (const key of list) {
     await new Promise((r2) => setTimeout(r2, 600));
     const shot = await send("Page.captureScreenshot", { format: "png", clip: { x: 0, y: 0, width: W, height: H, scale: 1 } });
     await sharp(Buffer.from(shot.result.data, "base64")).flatten({ background: CREAM }).png({ compressionLevel: 9 }).toFile(file);
+    await watermark(file);
     report.push(`${key}: sơ đồ #${c} ${info.scene ? "cảnh" : "khối"} x${info.s.toFixed(2)} lấp ${(info.fill * 100).toFixed(0)}% -> ${path.relative(ROOT, file)}`);
     done = true;
   }

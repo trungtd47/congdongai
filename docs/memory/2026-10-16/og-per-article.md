@@ -18,3 +18,6 @@ Sếp không muốn ảnh chia sẻ chỉ là chữ tiêu đề khi bài đã c�
 
 ## Lesson
 Chia sẻ social cần ảnh riêng theo bài, và Facebook/Zalo giữ cache link cũ: sau deploy phải bấm "Scrape Again" ở Sharing Debugger cho link đã từng chia sẻ.
+
+## Watermark
+Sếp yêu cầu ảnh chia sẻ của bài đều có watermark `congdongai.org`. `scripts/generate-article-og.mjs` đóng pill xanh `#38513B` (chữ kem, 22px, góc phải dưới, cách mép 16px) lên 6 ảnh làm từ hình/cảnh minh họa; bản 30px đè lên chú thích cuối ảnh token nên đã thu nhỏ. Bìa tiêu đề (`og-card.tsx`) đã có chữ congdongai.org. Script sinh lại ảnh từ nguồn mỗi lần nên không bị chồng watermark.
