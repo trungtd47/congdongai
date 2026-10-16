@@ -18,3 +18,6 @@ Thư viện còn ghi theo bản cũ (thiếu Claude Pro, chat thiết lập, Win
 
 ## Lesson
 Mọi form thu thông tin phải có backend thật; form "demo" hứa gửi email là lời hứa sai với người đọc. Khi chọn nội dung mới, lấy tín hiệu nhu cầu từ thread nhiều bình luận thật (arctic-shift theo ngày), rồi ưu tiên sửa tài liệu sẵn có trước khi thêm bài.
+
+## Rollout
+- `05797ee`: App Hosting check-run "Build failed" (không có log qua API; SA thiếu quyền `firebaseapphosting.builds.list`). Clone sạch + `npm ci && npm run build` trên máy PASS, nên coi là lỗi môi trường cloud; đẩy commit memory này để kích build lại một lần.
