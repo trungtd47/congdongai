@@ -16,6 +16,7 @@ import { TermTip } from "@/components/TermTip";
 import { ArticleDiagram } from "@/components/ArticleDiagram";
 import { TagLinks } from "@/components/TagLinks";
 import { miniPcDiagramComponents } from "@/components/diagrams/MiniPcDiagrams";
+import { isAdminAuthorName } from "@/lib/site";
 import { AuthorAvatar } from "@/components/AuthorAvatar";
 import { AuthorBadge } from "@/components/OfficialBadge";
 import { ArticleEngage } from "@/components/ArticleEngage";
@@ -78,7 +79,9 @@ export default async function ArticlePage({ params }: Props) {
         items={[{ name: "Bài viết", href: "/bai-viet" }, { name: post.title }]}
       />
 
-      <div className="eyebrow">Bài biên tập có nguồn</div>
+      <div className="eyebrow">
+        {isAdminAuthorName(post.authorName) ? "Kinh nghiệm" : "Bài viết"}
+      </div>
       <h1>{post.title}</h1>
 
       <div className="byline">
