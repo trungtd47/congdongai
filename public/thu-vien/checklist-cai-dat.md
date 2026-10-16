@@ -1,48 +1,54 @@
 # Bắt đầu với Hermes - checklist một việc thật
 
-> Đây là tờ kiểm tra nhanh, không phải file cấu hình. Đi theo thứ tự: cài app, nối **một** nguồn model, thử việc nhỏ, kiểm kết quả. Hướng dẫn có ảnh: https://congdongai.org/bat-dau/
+> Tờ kiểm tra nhanh theo Hermes Desktop 0.22. Đi đúng thứ tự: cài app, nối **một** nguồn model, thử một việc nhỏ, kiểm kết quả. Bản có hình: https://congdongai.org/bat-dau/
 
-## 1. Cài Desktop từ nguồn chính thức
+## 1. Cài Desktop từ trang chính thức
 
-- [ ] Mở trang Desktop chính thức: https://hermes-agent.nousresearch.com/desktop
-- [ ] Windows: chọn gói `.appinstaller`, mở bằng Windows App Installer theo hướng dẫn trên trang.
-- [ ] Mac Apple Silicon (M1 trở lên): chọn DMG bundled, mở rồi chép Hermes.app vào Applications. Desktop chưa hỗ trợ Mac Intel.
-- [ ] Đừng nhầm Hermes-Setup bootstrap (tải source và build) với package Desktop dựng sẵn. Nếu định dạng trên trang đổi, đối chiếu hướng dẫn chính thức: https://hermes-agent.nousresearch.com/docs/getting-started/installation
-- [ ] Chỉ mở file tải từ đúng địa chỉ nhà phát hành. Nếu hệ điều hành cảnh báo, kiểm lại URL và nhà phát hành trước khi tự quyết định có tiếp tục cài hay không; đừng tắt bảo vệ máy theo lời một trang lạ.
-- [ ] Mở Hermes Desktop. Nếu chưa có model thì chat sẽ chưa trả lời: sang bước 2.
+- [ ] Mở trang tải: https://hermes-agent.nousresearch.com/desktop (kiểm đúng tên miền trước khi tải).
+- [ ] **Windows:** cần Windows 11 22H2 trở lên (gõ `winver` để xem). Tải file `.appinstaller`, bấm đúp để Windows App Installer cài gói đã ký. Máy Windows 10 không cài được gói này.
+- [ ] **Mac:** chỉ máy Apple Silicon (M1 trở lên). Mở file DMG, kéo Hermes vào Applications. Desktop chưa có bản cho Mac Intel.
+- [ ] Gói Desktop đã kèm sẵn những gì cần để chạy, không phải cài Python hay Node riêng.
+- [ ] Gặp cảnh báo của hệ điều hành thì kiểm lại nguồn tải và tên nhà phát hành. Máy cơ quan thì hỏi bộ phận IT, đừng tự vượt chặn.
 
-## 2. Chọn một nguồn model để chạy thử
+## 2. Chat thiết lập lần đầu
 
-Model là phần tạo câu trả lời; Hermes là khung để giao việc và gọi công cụ. Bạn không cần mua hoặc kết nối nhiều nguồn ngay.
+- [ ] Bản cài mới mở thẳng vào một chat thiết lập, chạy bằng model dùng thử của Nous (`nous/welcome`). Nó hỏi tên, màu, bố cục, app muốn nối... Không bắt buộc làm hết: bấm **Skip setup** để bỏ qua, muốn làm lại thì vào **Settings → Run onboarding again**.
+- [ ] Model dùng thử chỉ để làm quen, không thay cho bước chọn nguồn model của riêng bạn. Đừng gõ dữ liệu cá nhân vào đây.
 
-- [ ] **Đã có tài khoản ChatGPT trả phí?** Thử mục **ChatGPT or Codex Subscription** trong Hermes. Đăng nhập OAuth trên trang OpenAI chính thức. Quyền dùng và hạn mức phụ thuộc tài khoản; gói ChatGPT không phải credit API và không trả phí OpenRouter.
-- [ ] **Chưa có hoặc không dùng được Codex?** Chọn OpenRouter, tạo tài khoản và kết nối qua luồng chính thức. Model qua OpenRouter tính riêng theo token đã dùng; xem giá/giới hạn của chính model đang chọn.
-- [ ] **Có nhu cầu khác?** Nous Portal là dịch vụ theo gói; model chạy trên máy là lựa chọn kỹ thuật cần tài nguyên phù hợp. Đọc https://congdongai.org/bat-dau/chon-nha-cung-cap-api/ trước khi thêm nguồn thứ hai.
-- [ ] Không nhập mật khẩu, mã OAuth, API key vào chat, bình luận hoặc file tải về. Nhập/xác nhận trên màn hình chính thức của nhà cung cấp và Hermes.
+## 3. Nối một nguồn model
 
-## 3. Kiểm kết nối rồi mới giao việc
+Model là phần trả lời; Hermes là khung để giao việc và gọi công cụ. Một nguồn là đủ để bắt đầu.
 
-- [ ] Chọn model trong màn hình cấu hình. Nếu thay model mặc định, **chat đang mở có thể vẫn dùng model cũ**; dùng `/model` trong chính chat đó hoặc mở phiên mới.
-- [ ] Thử câu ngắn: `Hãy trả lời bằng tiếng Việt: bạn đang dùng model/provider nào? Nếu không biết chắc thì nói không biết.` Đọc tên model trong giao diện cấu hình để đối chiếu; đừng chỉ tin câu agent tự khai.
-- [ ] Nếu lỗi: kiểm tài khoản, quyền truy cập/hạn mức, credit của nguồn đã chọn và thông báo lỗi. Không vội cấu hình fallback hay bật thêm dịch vụ tính phí.
+- [ ] **Có ChatGPT trả phí:** thử **ChatGPT or Codex Subscription**, đăng nhập trên trang OpenAI. Quyền dùng và hạn mức tùy gói.
+- [ ] **Có Claude Pro:** dùng plugin Claude Subscription DirectSDK qua Claude Code CLI. Các bước: https://congdongai.org/bat-dau/chon-nha-cung-cap-api/#da-co-claude-pro
+- [ ] **Chưa có gói nào:** OpenRouter, trả theo token đã dùng. Xem giá của chính model bạn chọn.
+- [ ] **Muốn chạy trên máy:** Settings → Providers → Local Models. Cần máy đủ RAM; lần đầu vẫn cần mạng để tải model.
+- [ ] Mật khẩu, mã OAuth, API key chỉ nhập ở màn hình chính thức, không dán vào khung chat.
 
-## 4. Việc thật đầu tiên, có bước kiểm
+## 4. Kiểm kết nối
 
-Copy vào Hermes sau khi nguồn model đã trả lời được:
+- [ ] Đổi model mặc định có thể chỉ áp dụng cho chat mới. Muốn đổi ngay chat đang mở thì gõ `/model` trong chat đó.
+- [ ] Gõ `/status` để xem model và provider đang chạy, đừng chỉ tin câu agent tự khai.
+- [ ] Lỗi thì đọc thông báo lỗi trước: tài khoản, hạn mức, số dư. Chưa cần cấu hình nguồn dự phòng.
+
+## 5. Việc thật đầu tiên
+
+Copy vào Hermes:
 
 ```text
-Hãy đọc trang công khai này: [URL BÀI BÁO HOẶC TÀI LIỆU CÔNG KHAI].
-Tóm tắt 3 ý có thể kiểm lại. Với mỗi ý, ghi URL và câu/đoạn nguồn.
-Không đọc file khác, không tự gửi hay đăng. Không mở được trang thì báo lỗi.
+Đọc trang này: [URL BÀI BÁO HOẶC TÀI LIỆU CÔNG KHAI].
+Tóm tắt 3 ý chính. Mỗi ý kèm đoạn trích ngắn và URL.
+Không mở được trang thì báo lỗi, đừng trả lời theo trí nhớ.
 ```
 
-- [ ] Mở trang gốc đối chiếu từng ý. Nếu sai, nói Hermes sửa và ghi rõ điều gì không được suy đoán.
-- [ ] Lần sau mới thử giao file, lịch chạy, memory hoặc skill. Với tài liệu công vụ, dữ liệu nội bộ, hồ sơ cá nhân: **không đưa vào model/cloud hay kết nối hệ thống cơ quan nếu chưa được cho phép**. File lưu trên máy không đồng nghĩa yêu cầu gửi model cloud ở lại máy.
+- [ ] Mở trang gốc, đối chiếu từng ý. Sai chỗ nào thì nói rõ để Hermes sửa.
+- [ ] Ổn rồi mới thử tới file trên máy, việc theo lịch, memory hay skill, mỗi lần một thứ.
+- [ ] Tài liệu cơ quan, hồ sơ cá nhân: chưa đưa vào khi chưa được phép. File nằm trên máy, nhưng nội dung gửi cho model cloud vẫn rời máy.
 
 ## Đọc tiếp
 
-- Chọn model: https://congdongai.org/bat-dau/chon-nha-cung-cap-api/
-- Giao việc có kiểm: https://congdongai.org/bai-viet/
-- Hỏi khi kẹt: https://congdongai.org/hoi-dap/ (che thông tin nhạy cảm)
+- Chọn model kỹ hơn: https://congdongai.org/bat-dau/chon-nha-cung-cap-api/
+- 7 ngày đầu với Hermes: https://congdongai.org/blog/7-ngay-dau-voi-hermes/
+- Kẹt chỗ nào thì hỏi: https://congdongai.org/hoi-dap/ (che thông tin riêng trước khi dán ảnh)
 
-Nguồn thao tác model: https://hermes-agent.nousresearch.com/docs/user-guide/configuring-models và https://hermes-agent.nousresearch.com/docs/integrations/providers/
+Nguồn: https://hermes-agent.nousresearch.com/docs/getting-started/installation và https://hermes-agent.nousresearch.com/docs/user-guide/configuring-models

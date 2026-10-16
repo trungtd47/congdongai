@@ -8,8 +8,8 @@ export interface CaseBlock {
 
 export const caseTopics = {
   "tai-chinh": "Tài chính",
-  "kinh-doanh": "Kinh doanh",
-  "cong-nghe": "Công nghệ",
+  "kinh-doanh": "Công việc",
+  "cong-nghe": "Kỹ thuật",
   "doi-song": "Đời sống",
 } as const;
 export type CaseTopic = keyof typeof caseTopics;
@@ -38,7 +38,10 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "hermes-nghien-cuu-token-bo-nao-thu-hai",
     related: [
-      { href: "/huong-dan/nghien-cuu-token-voi-hermes", label: "Thử nghiên cứu một token theo hướng dẫn có mẫu giao việc" },
+      {
+        href: "/huong-dan/nghien-cuu-token-voi-hermes",
+        label: "Thử nghiên cứu một token theo hướng dẫn có mẫu giao việc",
+      },
     ],
     authorName: "Đức Trung",
     icon: "📊",
@@ -102,9 +105,16 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "kinh-nghiem-ban-tin-6h30",
+    topic: "tai-chinh",
     related: [
-      { href: "/huong-dan/tom-tat-tin-tuc-moi-sang", label: "Tự làm một bản tin buổi sáng, từng bước" },
-      { href: "/cau-chuyen/kenmazaika", label: "Một chiếc máy cũ chạy 24/7 gửi email mỗi sáng" },
+      {
+        href: "/huong-dan/tom-tat-tin-tuc-moi-sang",
+        label: "Tự làm một bản tin buổi sáng, từng bước",
+      },
+      {
+        href: "/cau-chuyen/kenmazaika",
+        label: "Một chiếc máy cũ chạy 24/7 gửi email mỗi sáng",
+      },
     ],
     authorName: "Đức Trung",
     dateModified: "2026-10-03",
@@ -137,9 +147,16 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "kinh-nghiem-bo-nao-thu-hai",
+    topic: "kinh-doanh",
     related: [
-      { href: "/huong-dan/bo-nao-thu-hai-obsidian", label: "Dựng kho ghi chú Obsidian theo từng bước" },
-      { href: "/cau-chuyen/jonathan-rivera-obsidian-memory", label: "Một kho Obsidian ba tầng của người dùng khác" },
+      {
+        href: "/huong-dan/bo-nao-thu-hai-obsidian",
+        label: "Dựng kho ghi chú Obsidian theo từng bước",
+      },
+      {
+        href: "/cau-chuyen/jonathan-rivera-obsidian-memory",
+        label: "Một kho Obsidian ba tầng của người dùng khác",
+      },
     ],
     authorName: "Đức Trung",
     dateModified: "2026-10-03",
@@ -168,7 +185,81 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
+    slug: "tat-agent-argus-khi-bao-tri-nhieu-hon-dung",
+    topic: "doi-song",
+    related: [
+      {
+        href: "/thu-vien#giu-hermes-chay-on",
+        label:
+          "Tờ kiểm định kỳ trong Thư viện: đỡ tốn token, cập nhật không vỡ, biết lúc nên thu hẹp",
+      },
+      {
+        href: "/cau-chuyen/kenmazaika",
+        label:
+          "Một người chỉ giao Hermes đúng 5 việc mỗi ngày, kèm việc đã thử và thất bại",
+      },
+      {
+        href: "/cau-chuyen/reddit-3-months-hermes",
+        label: "Ba tháng dùng Hermes: cắt 6 profile còn 3",
+      },
+    ],
+    icon: "🔌",
+    type: "long",
+    tags: ["kinh nghiệm", "chi phí"],
+    datePublished: "2026-10-16",
+    dateModified: "2026-10-16",
+    title: "Tắt agent ARGUS: khi bảo trì trợ lý tốn công hơn được nó giúp",
+    teaser:
+      "Một người dùng dựng ARGUS trên laptop riêng, mong có một JARVIS, rồi tắt nó vì thấy mình thành người quản trị hệ thống cho chính trợ lý. Anh vẫn giữ một agent khác cho vài việc cụ thể, và phần bình luận cho thấy cả hai phía của chuyện tự dựng trợ lý.",
+    sourceLabel: "Reddit - u/Lucimous",
+    sourceUrl:
+      "https://www.reddit.com/r/hermesagent/comments/1x4binq/i_shut_down_my_hermes_agent/",
+    body: [
+      {
+        p: 'Tác giả dựng một agent Hermes tên ARGUS trên chiếc laptop dành riêng, nối với Discord, rồi bỏ nhiều thời gian vào bộ nhớ, skill và các kết nối. Mục tiêu là một trợ lý kiểu JARVIS trong phim Iron Man: nhớ anh là ai, hiểu cuộc sống của anh, chủ động, giúp anh suy nghĩ và làm xong việc. Gần đây anh tắt ARGUS, và thừa nhận việc đó "hơi buồn".',
+      },
+      { h: "Thành người quản trị hệ thống của chính trợ lý" },
+      {
+        p: '"Tôi thấy mình dành nhiều thời gian bảo trì và cải tiến nó hơn là được nó giúp. Tôi giống người quản trị hệ thống của nó hơn là người dùng." Trong phần bình luận, anh kể thêm: anh chạy Hermes bằng gói ChatGPT của mình, và phần lớn hạn mức đi vào việc chẩn đoán, sửa chính Hermes, rốt cuộc không thành kết quả gì. Anh thích mày mò, thích tìm lỗi, nhưng việc đó tốn thời gian mà không có đầu ra rõ ràng.',
+      },
+      {
+        p: "Anh không bỏ hẳn Hermes. Một agent khác tên Ari vẫn chạy vài việc tự động trong công việc, những việc thật sự tiết kiệm thời gian cho anh. Thứ anh bỏ là giấc mơ một trợ lý cá nhân thông minh, luôn bật, hiểu hết mọi chuyện.",
+      },
+      { h: "Cộng đồng trả lời ở cả hai phía" },
+      {
+        ul: [
+          "Như nuôi tamagotchi: một người 40 tuổi ví Hermes với con thú ảo thời thiếu niên, phải cho ăn, dạy dỗ, chăm sóc.",
+          "Học được nhiều, nhưng không phải thứ không thay được: một bình luận được nhiều người đồng tình kể ba tháng qua anh dựng nhiều thứ hơn ba mươi năm trước cộng lại, phần lớn là hạ tầng không có mục đích rõ ở quy mô gia đình, và không có gì Codex hay Claude không làm được. Thứ anh nhận lại là hiểu sâu cách mọi thứ vận hành.",
+          "Coi như thực tập sinh: một người khuyên kiên nhẫn vài tháng đầu, dạy thật rõ ở lần đầu, theo dõi và sửa khi nó làm sai, giống một người mới vào công ty.",
+          'Một kho kiến thức chung: một người khác nhờ Hermes dựng "The Brain", bộ file .md chia theo chủ đề mà agent tự cập nhật, nên anh hiếm khi phải nhắc lại dịch vụ nào chạy ở đâu, truy cập thế nào.',
+          "Đừng bắt Hermes thành JARVIS ngay: một ý ngắn gọn là dùng Hermes để dựng JARVIS của riêng mình, từng phần một.",
+        ],
+      },
+      { h: "Điều có thể áp dụng" },
+      {
+        ul: [
+          'Bắt đầu từ một việc có đầu ra cụ thể bạn đang làm tay mỗi ngày, không từ mục tiêu "trợ lý hiểu hết đời mình".',
+          "Thỉnh thoảng so hai thứ: thời gian và hạn mức bỏ ra để sửa, cấu hình Hermes, với những việc nó thật sự đã làm thay bạn. Nghiêng hẳn về phía sửa thì thu hẹp lại.",
+          "Giữ phần có ích, tắt phần không, như cách tác giả giữ Ari cho vài việc trong công việc.",
+          "Tách mày mò để học khỏi việc cần kết quả. Mày mò có giá trị riêng, chỉ cần biết mình đang làm việc nào.",
+          "Ghi những gì đã dạy vào file (memory ngắn, skill, kho ghi chú) để lần sau không phải dạy lại.",
+        ],
+      },
+      {
+        p: "Bài là trải nghiệm của tác giả và ý kiến trong phần bình luận. Tác giả không nêu model, số giờ đã bỏ ra hay chi phí cụ thể, nên đây không phải phép đo về Hermes. Nếu bạn đang thấy mình ở tình huống tương tự, tờ kiểm định kỳ trong Thư viện có các bước xem token đi đâu, dọn memory và skill thừa, và cập nhật không làm hỏng việc đang chạy.",
+      },
+    ],
+  },
+  {
     slug: "reddit-3-months-hermes",
+    topic: "cong-nghe",
+    related: [
+      {
+        href: "/cau-chuyen/tat-agent-argus-khi-bao-tri-nhieu-hon-dung",
+        label:
+          "Một người khác tắt agent của mình vì bảo trì tốn công hơn được giúp",
+      },
+    ],
     dateModified: "2026-10-03",
     icon: "📱",
     type: "long",
@@ -221,6 +312,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "hn-homelab-sysadmin",
+    topic: "cong-nghe",
     dateModified: "2026-10-03",
     icon: "🖥️",
     type: "long",
@@ -248,6 +340,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "networkchuck",
+    topic: "doi-song",
     dateModified: "2026-10-03",
     icon: "🎥",
     type: "long",
@@ -279,6 +372,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "godzillaton",
+    topic: "kinh-doanh",
     dateModified: "2026-10-03",
     icon: "🏗️",
     type: "long",
@@ -322,6 +416,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "rodgezee",
+    topic: "kinh-doanh",
     dateModified: "2026-10-03",
     icon: "🧠",
     type: "long",
@@ -376,9 +471,16 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "kenmazaika",
+    topic: "kinh-doanh",
     related: [
-      { href: "/cau-chuyen/kinh-nghiem-ban-tin-6h30", label: "Bản tin thị trường lúc 6h30 của Đức Trung" },
-      { href: "/huong-dan/tom-tat-tin-tuc-moi-sang", label: "Tự làm một bản tin buổi sáng, từng bước" },
+      {
+        href: "/cau-chuyen/kinh-nghiem-ban-tin-6h30",
+        label: "Bản tin thị trường lúc 6h30 của Đức Trung",
+      },
+      {
+        href: "/huong-dan/tom-tat-tin-tuc-moi-sang",
+        label: "Tự làm một bản tin buổi sáng, từng bước",
+      },
     ],
     dateModified: "2026-10-03",
     icon: "📬",
@@ -427,6 +529,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "jarvis-for-kid",
+    topic: "doi-song",
     dateModified: "2026-10-03",
     icon: "🧒",
     type: "long",
@@ -491,6 +594,7 @@ export const caseStudies: CaseStudy[] = [
 
   {
     slug: "holmebengt-dreaming-3am",
+    topic: "doi-song",
     dateModified: "2026-10-03",
     icon: "🌙",
     type: "long",
@@ -556,6 +660,7 @@ export const caseStudies: CaseStudy[] = [
 
   {
     slug: "riceinmybelly-job-site",
+    topic: "cong-nghe",
     dateModified: "2026-10-03",
     icon: "👷",
     type: "long",
@@ -608,9 +713,16 @@ export const caseStudies: CaseStudy[] = [
 
   {
     slug: "jonathan-rivera-obsidian-memory",
+    topic: "kinh-doanh",
     related: [
-      { href: "/huong-dan/bo-nao-thu-hai-obsidian", label: "Dựng kho ghi chú Obsidian theo từng bước" },
-      { href: "/cau-chuyen/kinh-nghiem-bo-nao-thu-hai", label: "Cách Đức Trung ghi ý tưởng vào Obsidian" },
+      {
+        href: "/huong-dan/bo-nao-thu-hai-obsidian",
+        label: "Dựng kho ghi chú Obsidian theo từng bước",
+      },
+      {
+        href: "/cau-chuyen/kinh-nghiem-bo-nao-thu-hai",
+        label: "Cách Đức Trung ghi ý tưởng vào Obsidian",
+      },
     ],
     dateModified: "2026-10-03",
     icon: "🗂️",
@@ -663,6 +775,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "kenmazaika-dictate-y-tuong",
+    topic: "kinh-doanh",
     dateModified: "2026-10-03",
     type: "long",
     icon: "🎙️",
@@ -691,6 +804,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "squishydata-20-tin-hieu",
+    topic: "cong-nghe",
     dateModified: "2026-10-03",
     type: "long",
     icon: "📡",

@@ -1,49 +1,79 @@
-# Học cách dùng Hermes và AI Agent từ người thật
+# Bài học từ người dùng Hermes thật
 
-> Bản đọc tuyển chọn theo **nguồn gốc và mức kiểm chứng**, không phải bảng xếp hạng người nổi tiếng hay danh sách tính năng Hermes. Một ví dụ trên X/video là kinh nghiệm người kể, không bảo đảm bạn sẽ tái hiện được, nhất là khi model, quyền công cụ và môi trường khác nhau. Cập nhật: 29/09/2026.
+> Bảy cách làm lặp lại nhiều lần trong các câu chuyện có nguồn trên congdongai.org. Mỗi mục kèm câu chuyện gốc để bạn đọc cụ thể họ làm gì, và một việc nhỏ để thử. Đây là trải nghiệm người kể, không phải phép đo; model, máy và quyền của bạn khác họ. Cập nhật 16/10/2026.
 
-## 1. Người dùng Hermes - học workflow, không bắt chước cấu hình
+## 1. Bắt đầu từ một thứ bạn đọc mỗi ngày
 
-### Admin congdongai.org: bản tin buổi sáng và kho ghi chú
+Những setup bền nhất thường bắt đầu từ một đầu ra cụ thể: bản tin buổi sáng, danh sách nhà thuê, tóm tắt nhóm chat. Không bắt đầu từ "trợ lý biết hết".
 
-- **Đã chia sẻ trên site:** mình giao Hermes lọc tin theo nguồn mình chọn thành bản tin 6h30, rồi tự mở link quan trọng để kiểm; với Obsidian, ghi chú ở thư mục trên máy và nhờ Hermes tìm đúng phần liên quan khi soạn dàn ý.
-- **Bài học:** bắt đầu từ một đầu ra phải đọc mỗi ngày và một kho có nguồn. Memory ngắn không chứa thay cả kho tài liệu. File ở máy có thể được gửi từng phần cho provider nếu đang dùng model cloud.
-- **Đọc câu chuyện:** [Bản tin 6h30](https://congdongai.org/cau-chuyen/kinh-nghiem-ban-tin-6h30/) và [Kho ghi chú, bộ não thứ hai](https://congdongai.org/cau-chuyen/kinh-nghiem-bo-nao-thu-hai/). Đây là kinh nghiệm cá nhân do admin tự kể, **không có số đo tiết kiệm thời gian độc lập**.
+- Bản tin thị trường 6h30: https://congdongai.org/cau-chuyen/kinh-nghiem-ban-tin-6h30/
+- Máy cũ 175 USD, đúng 5 việc mỗi ngày, kèm việc đã thử và thất bại: https://congdongai.org/cau-chuyen/kenmazaika/
+- Bản tin 6h50 gom việc và lịch: https://congdongai.org/cau-chuyen/jonathan-rivera-obsidian-memory/
 
-### NetworkChuck: tách agent studio và gia đình
+**Thử:** chọn một thứ bạn đang tự lướt mỗi sáng, chạy thử một lần với 2-3 nguồn, đọc kỹ rồi mới đặt lịch. Quy trình: tải "Bản tin theo lịch" trong Thư viện.
 
-- **Nguồn video:** [NetworkChuck nói về hai Hermes agent Ron và Honey](https://www.youtube.com/watch?v=QQEgIo4Juxg); [bài biên tập trên site](https://congdongai.org/cau-chuyen/networkchuck/).
-- **Cách dùng anh ấy mô tả:** Ron phục vụ việc IT/studio và thiết bị; Honey giúp kế hoạch học và sinh hoạt gia đình. Hai môi trường khác nhau không nên dùng chung một bộ quyền.
-- **Lấy gì để thử:** tách trước vai trò và quyền tối thiểu; việc kết nối mạng nhà/thông tin trẻ em cần tự cân nhắc kỹ hơn. Đây là lời kể trong video, **không phải kiểm toán bảo mật**.
+## 2. Cho đọc rộng, cho sửa có duyệt
 
-### Cộng đồng X: từ một agent chung tới workflow có chuyên môn
+Người giao Hermes trông hệ thống hay nhóm chat công việc đều tách hai quyền: đọc trạng thái thì thoải mái, còn sửa, gửi tin hay deploy thì phải qua người duyệt và có đường quay lại.
 
-- **Nguồn:** [bài X của Shann Holmberg về Hermes làm điều phối](https://x.com/shannholmberg/status/2059197811275841561) (26/05/2026).
-- **Ý tác giả:** Hermes nhận yêu cầu, chuyển phần việc phù hợp cho agent chuyên môn; việc còn mơ hồ giữ tương tác qua lại, việc lặp lại mới đóng thành quy trình có đầu ra và tiêu chuẩn hoàn thành. Tác giả nêu ví dụ nghiên cứu, QA landing page và báo cáo định kỳ.
-- **Giới hạn:** đây là sơ đồ làm việc người dùng **đề xuất**, không chứng minh mọi agent đã vận hành tự động hay Hermes tự gán quyền an toàn. Với người mới, một việc rõ nguồn và bước kiểm thường tốt hơn cả "đội agent".
+- Trực homelab, sửa qua SSH chỉ sau khi duyệt: https://congdongai.org/cau-chuyen/hn-homelab-sysadmin/
+- 11 nhóm WhatsApp công trường, và câu hỏi "lỡ nó gửi sai thì sao": https://congdongai.org/cau-chuyen/godzillaton/
+- Tách agent làm việc và agent kiểm thử: https://congdongai.org/cau-chuyen/riceinmybelly-job-site/
 
-## 2. Người làm AI nổi tiếng - nguyên tắc, không gán nhầm là người dùng Hermes
+**Thử:** với việc đầu tiên có gửi đi đâu đó, bảo Hermes soạn nháp và chờ bạn duyệt, đừng cho gửi thẳng.
 
-### Andrej Karpathy: giao việc có thể kiểm và duyệt kết quả
+## 3. Agent không nhớ, agent đọc
 
-- **Nguồn X:** [Karpathy mô tả cách anh giao dự án cho coding agent](https://x.com/karpathy/status/2026731645169185220) (25/02/2026). Anh nêu ví dụ một agent làm dashboard video trong môi trường của mình, rồi nói rõ cần chỉ đạo cấp cao, xét đoán, giám sát và chia việc có thể kiểm/test. **Bài đăng không nói anh dùng Hermes.**
-- **Áp dụng:** khi giao Hermes làm file hoặc báo cáo, yêu cầu phạm vi, đầu ra và bằng chứng kiểm; người có trách nhiệm vẫn duyệt. Không sao chép việc chia sẻ thông tin đăng nhập từ ví dụ cá nhân của anh vào prompt của mình.
+Câu này của một người dùng ba tháng tóm đúng điều nhiều người khác rút ra: Hermes "nhớ" tốt khi những gì đáng nhớ nằm trong file đúng chỗ. Memory có sẵn ngắn và đủ cho sự thật quan trọng; tài liệu dài nằm trong kho ghi chú; vài người thêm một bước tổng hợp ban đêm để rút ra điều mới từ nhật ký trong ngày.
 
-### Simon Willison: viết ra tiêu chí kiểm trước
+- Ba tháng, thử mọi plugin trí nhớ rồi tắt hết: https://congdongai.org/cau-chuyen/reddit-3-months-hermes/
+- Ghi ý tưởng vào Obsidian, Hermes nối lại khi cần: https://congdongai.org/cau-chuyen/kinh-nghiem-bo-nao-thu-hai/
+- Job "Dreaming" lúc 3 giờ sáng: https://congdongai.org/cau-chuyen/holmebengt-dreaming-3am/
+- Một người dùng chép cách tổ chức bộ nhớ của app Muse (nhật ký theo ngày, ghi chú tổng hợp theo chủ đề, bước tổng hợp ban đêm) và thấy các bản nhìn lại hằng tuần sâu hơn: https://www.reddit.com/r/hermesagent/comments/1wxu98g/
 
-- **Nguồn gốc:** [Simon giới thiệu Agentic Engineering Patterns](https://simonwillison.net/2026/Feb/23/agentic-engineering-patterns/) (23/02/2026), trong đó ông đề cập test-first/red-green TDD để coding agent tạo code gọn và đáng tin hơn. **Đây là nguyên tắc dùng coding agents nói chung, không phải hướng dẫn riêng về Hermes.**
-- **Áp dụng ngoài coding:** viết trước một mẫu đầu ra có thể đối chiếu (URL gốc, số liệu, ngày hiệu lực, danh sách việc chưa rõ). Nếu thiếu nguồn thì để trống hoặc báo lỗi thay vì bịa cho đủ ô.
+**Thử:** tải "Ghi nhớ đúng chỗ" trong Thư viện, xem memory hiện có bằng `/journey`.
 
-## 3. Mẫu thử an toàn từ những bài học trên
+## 4. Ít vai, mỗi vai rõ việc
 
-Sau khi đã kết nối model, dùng với tài liệu công khai hoặc dữ liệu giả lập:
+Nhiều người tạo nhiều profile rồi cắt bớt. Thứ còn lại là vài vai tách bạch: một cho việc nhà, một cho hệ thống, mỗi vai một bộ quyền.
 
-```text
-Mình muốn thử [MỘT VIỆC]. Chỉ dùng [2-3 URL CÔNG KHAI].
-Đầu ra phải có [BẢNG / FILE NHÁP] và trích URL cho từng ý.
-Không đọc thư mục khác, không kết nối tài khoản, không gửi hay đăng.
-Nếu nguồn lỗi hoặc thiếu dữ liệu, dừng và nói điều cần mình xác nhận.
-Chạy một lần để mình đối chiếu rồi mới bàn tới skill hay lịch tự động.
-```
+- Ron trông studio, Honey giúp việc nhà: https://congdongai.org/cau-chuyen/networkchuck/
+- Sáu profile rút còn ba: https://congdongai.org/cau-chuyen/reddit-3-months-hermes/
 
-**Nếu áp dụng trong cơ quan nhà nước:** không dùng hồ sơ cá nhân, tài liệu nội bộ hay bí mật nhà nước cho một bản thử qua model cloud; thực hiện theo chính sách đơn vị và [ranh giới công vụ](https://congdongai.org/huong-dan/hermes-cong-vu-an-toan/). Xem [quy trình bản tin](/thu-vien/skill-ban-tin-sang.md) và [cách chọn model](/thu-vien/chon-model-hermes.md) trước khi đặt lịch. Nguồn X/video có thể bị sửa hoặc gỡ; đối chiếu bài gốc trước khi chia sẻ lại.
+**Thử:** chưa cần profile thứ hai cho tới khi một việc cần quyền hoặc giọng khác hẳn việc đang làm.
+
+## 5. Sự thật do hệ thống giữ, không do model đoán
+
+Ở những setup cẩn thận nhất, model được nói chuyện và gợi ý, nhưng việc "đã xong chưa", "đúng hay sai", "có gì đáng báo" do dữ liệu hoặc một bước lọc riêng quyết định.
+
+- JARVIS cho con trai 7 tuổi: AI không được tự chấm đúng sai hay tự thăng cấp: https://congdongai.org/cau-chuyen/jarvis-for-kid/
+- Nhiều luồng theo dõi, lọc trước rồi mới làm phiền người dùng: https://congdongai.org/cau-chuyen/squishydata-20-tin-hieu/
+- Nghiên cứu token có phần "vì sao không nên mua" và nhật ký sửa sai: https://congdongai.org/cau-chuyen/hermes-nghien-cuu-token-bo-nao-thu-hai/
+
+**Thử:** trong yêu cầu, ghi rõ chỗ nào thiếu nguồn thì để trống hoặc ghi "chưa xác minh", không điền cho đủ.
+
+## 6. Nói thay vì gõ
+
+Hai người bỏ bảng tính hoặc trang trắng bằng cách đọc ý tưởng vào điện thoại, để Hermes sắp xếp, rồi mới duyệt.
+
+- Bỏ Excel, ghi chép bằng giọng nói qua Discord: https://congdongai.org/cau-chuyen/rodgezee/
+- Nói ý lộn xộn, xử lý hai lượt rồi mới viết tài liệu: https://congdongai.org/cau-chuyen/kenmazaika-dictate-y-tuong/
+
+**Thử:** thay đúng một bảng theo dõi bằng một file ghi chú và thói quen đọc cho Hermes ghi.
+
+## 7. Biết lúc nên thu hẹp
+
+Có người tắt hẳn agent "JARVIS" vì thấy mình thành người quản trị hệ thống cho nó, nhưng vẫn giữ một agent khác cho vài việc thật sự có ích.
+
+- Tắt agent ARGUS: https://congdongai.org/cau-chuyen/tat-agent-argus-khi-bao-tri-nhieu-hon-dung/
+
+**Thử:** tải "Giữ Hermes chạy ổn" trong Thư viện, xem token đang đi đâu và giữ lại 1-2 việc có ích nhất.
+
+## Nguyên tắc chung từ người làm AI
+
+Hai người dưới đây nói về coding agent nói chung, không phải về Hermes, nhưng nguyên tắc dùng được:
+
+- Andrej Karpathy: giao việc chia nhỏ được, kiểm được, và người giao vẫn giám sát. https://x.com/karpathy/status/2026731645169185220
+- Simon Willison: viết trước tiêu chí kiểm (với code là test) rồi mới để agent làm. https://simonwillison.net/2026/Feb/23/agentic-engineering-patterns/
+
+Toàn bộ câu chuyện: https://congdongai.org/cau-chuyen/

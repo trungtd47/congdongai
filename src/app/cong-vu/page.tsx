@@ -148,7 +148,7 @@ export default function CongVuPage() {
             },
             {
               title: "Chọn nguồn và model",
-              desc: "Codex, OpenRouter, Nous Portal hay model tại máy: chọn theo quyền dùng và dữ liệu.",
+              desc: "ChatGPT/Codex, Claude Pro, OpenRouter, Nous Portal hay model trên máy: chọn theo quyền dùng và dữ liệu.",
               href: "/thu-vien/chon-model-hermes.md",
             },
             {
@@ -157,8 +157,8 @@ export default function CongVuPage() {
               href: "/thu-vien/100-prompt-theo-nghe.md",
             },
             {
-              title: "Kinh nghiệm người dùng thật",
-              desc: "Admin, cộng đồng X và chuyên gia về cách dùng AI Agent - có nguồn gốc và giới hạn.",
+              title: "Bài học từ người dùng thật",
+              desc: "Bảy cách làm lặp lại trong câu chuyện của người dùng Hermes, kèm nguồn gốc.",
               href: "/thu-vien/kinh-nghiem-cong-dong-agent.md",
             },
           ].map((doc) => (

@@ -175,7 +175,7 @@ export const huongDanItems: HubItem[] = [
 ];
 
 export type LibraryGroup =
-  "Bắt đầu" | "Cá nhân hóa" | "Giao việc" | "Học từ thực tế";
+  "Bắt đầu" | "Cá nhân hóa" | "Giao việc" | "Dùng lâu dài" | "Học từ thực tế";
 
 export interface LibraryItem {
   id: string;
@@ -193,7 +193,7 @@ export const libraryItems: LibraryItem[] = [
     icon: "✅",
     title: "Cài và thử một việc thật",
     description:
-      "Checklist: cài Desktop, kết nối một model, thử việc nhỏ và kiểm đầu ra.",
+      "Checklist theo Desktop 0.22: cài app, đi qua chat thiết lập, nối một model, thử việc nhỏ và kiểm đầu ra.",
     files: [
       { name: "Checklist cài đặt", href: "/thu-vien/checklist-cai-dat.md" },
     ],
@@ -204,7 +204,7 @@ export const libraryItems: LibraryItem[] = [
     icon: "🔌",
     title: "Chọn nguồn và model",
     description:
-      "Codex, OpenRouter, Nous Portal hay model tại máy: chọn theo quyền dùng, việc và dữ liệu.",
+      "ChatGPT/Codex, Claude Pro, OpenRouter, Nous Portal hay model trên máy: chọn theo thứ bạn đang có, rồi thử bằng một bài kiểm giống nhau.",
     files: [
       { name: "Bản đồ chọn model", href: "/thu-vien/chon-model-hermes.md" },
     ],
@@ -228,7 +228,7 @@ export const libraryItems: LibraryItem[] = [
     icon: "🧠",
     title: "Ghi nhớ và tạo skill",
     description:
-      "Phân biệt SOUL, memory, skill và thư mục tài liệu; chỉ lưu điều đã kiểm và cần dùng lại.",
+      "Memory nhỏ, skill giữ cách làm, tài liệu dài nằm trong thư mục. Dùng /learn để rút skill và /journey để rà lại.",
     files: [
       { name: "Ghi nhớ đúng chỗ", href: "/thu-vien/vong-lap-tu-cai-thien.md" },
       { name: "Skill khi nào cần", href: "/thu-vien/bo-skills-chon-loc.md" },
@@ -240,7 +240,7 @@ export const libraryItems: LibraryItem[] = [
     icon: "📋",
     title: "Mẫu giao việc có bước kiểm",
     description:
-      "Ít prompt nhưng rõ đầu vào, phạm vi, đầu ra, điều kiện dừng và cách đối chiếu.",
+      "Chín mẫu cho việc đọc, soạn nháp và tự động hóa, mỗi mẫu rõ đầu vào, phạm vi, đầu ra và điều kiện dừng.",
     files: [
       { name: "Tải mẫu giao việc", href: "/thu-vien/100-prompt-theo-nghe.md" },
     ],
@@ -251,21 +251,35 @@ export const libraryItems: LibraryItem[] = [
     icon: "⏰",
     title: "Bản tin theo lịch",
     description:
-      "Chạy thử từ nguồn công khai trước, kiểm lỗi và nơi nhận rồi mới đặt lịch.",
+      "Chạy thử một lần, tạo lịch ở trạng thái tạm dừng, xem bản thật rồi mới bật. Kèm lý do hay khiến bản tin không đến.",
     files: [
       { name: "Quy trình bản tin", href: "/thu-vien/skill-ban-tin-sang.md" },
+    ],
+  },
+  {
+    id: "giu-hermes-chay-on",
+    group: "Dùng lâu dài",
+    icon: "🧰",
+    title: "Giữ Hermes chạy ổn",
+    description:
+      "Xem token đi đâu, nhờ Hermes tự kiểm cấu hình ở chế độ chỉ đọc, cập nhật không làm hỏng việc đang chạy, và biết lúc nên thu hẹp.",
+    files: [
+      {
+        name: "Tờ kiểm định kỳ",
+        href: "/thu-vien/giu-hermes-gon-va-cap-nhat.md",
+      },
     ],
   },
   {
     id: "nguoi-dung-that",
     group: "Học từ thực tế",
     icon: "🔎",
-    title: "Người dùng thật và cách nghĩ về agent",
+    title: "Bài học từ người dùng thật",
     description:
-      "Kinh nghiệm của admin, cộng đồng X, NetworkChuck, Karpathy và Simon Willison - có nguồn gốc và giới hạn áp dụng.",
+      "Bảy cách làm lặp lại trong các câu chuyện có nguồn trên site, mỗi cách kèm câu chuyện gốc và một việc nhỏ để thử.",
     files: [
       {
-        name: "Bản đọc có nguồn",
+        name: "Bảy bài học",
         href: "/thu-vien/kinh-nghiem-cong-dong-agent.md",
       },
     ],

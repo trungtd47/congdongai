@@ -1,48 +1,59 @@
-# Bản tin theo lịch - thử một lần trước khi hẹn giờ
+# Bản tin theo lịch - chạy thử một lần trước khi hẹn giờ
 
-> Đây là **quy trình mẫu**, không phải skill đã được cài. Hermes có công cụ đặt lịch; bạn không cần tải plugin "bản tin" để thử việc này. Nguồn: https://hermes-agent.nousresearch.com/docs/user-guide/features/cron/
+> Quy trình mẫu để dựng một bản tin tự động. Hermes có sẵn công cụ đặt lịch (cron), không cần cài plugin "bản tin". Nguồn: https://hermes-agent.nousresearch.com/docs/user-guide/features/cron/
 
-## 1. Chọn nguồn, phạm vi và người duyệt
+## 1. Chọn nguồn và đầu ra
 
-- Nguồn: 2-3 trang công khai mà bạn đã kiểm, không phải "mọi tin trên mạng".
-- Đầu ra: vài ý mới, URL gốc, thời điểm đăng nếu nguồn có, mục còn chưa xác minh.
-- Lần đầu: chạy **một lần** cho bạn duyệt. Không gửi email, đăng bài hay cập nhật hệ thống khác.
+- Nguồn: 2-3 trang bạn đã biết là đáng đọc, không phải "mọi tin trên mạng".
+- Đầu ra: vài tin mới, mỗi tin có tóm tắt ngắn, URL gốc và giờ đăng nếu nguồn có.
+- Lần đầu chỉ chạy **một lần** để bạn đọc. Chưa gửi đi đâu.
 
-Sau khi đã kết nối model, gửi:
+Gửi Hermes:
 
 ```text
 Chạy thử một bản tin về [CHỦ ĐỀ], chỉ từ các URL này:
-[DANH SÁCH URL CÔNG KHAI].
-Chọn những nội dung mới trong [KHOẢNG THỜI GIAN]. Mỗi mục có tiêu đề,
-tóm tắt 2 câu, link nguồn và thời điểm đăng nếu có. Bỏ tin trùng;
-không đoán ngày hoặc số liệu. Không đọc tài khoản/file khác, không
-đặt lịch, không gửi ra kênh ngoài. Nếu trang lỗi thì báo tên nguồn lỗi.
+[DANH SÁCH URL].
+Lấy tin mới trong [KHOẢNG THỜI GIAN]. Mỗi tin: tiêu đề, tóm tắt 2 câu,
+link gốc, giờ đăng nếu có. Bỏ tin trùng, không đoán ngày hay số liệu.
+Trang nào lỗi thì ghi tên trang lỗi. Chưa đặt lịch, chưa gửi đi.
 ```
 
-Kiểm lại: có đọc được nguồn không, link dẫn đúng bài không, tin mới hay tin cũ bị lặp, có mục nào model bịa. Nếu nguồn không có ngày đăng, đánh dấu chưa xác minh chứ không gọi là tin mới.
+Đọc kỹ bản thử: link có dẫn đúng bài không, có tin cũ bị đưa vào như tin mới không, có câu nào không thấy trong bài gốc không.
 
-## 2. Định lịch sau khi bản thử đạt
+## 2. Đặt lịch nhưng để tạm dừng, chạy thử thật rồi mới bật
 
 ```text
-Bản tin vừa rồi đã được mình xem. Đề xuất lịch chạy mỗi [NGÀY / THỨ],
-lúc [GIỜ] theo múi giờ [MÚI GIỜ], và cách báo lỗi nếu nguồn không đọc
-được, máy không chạy hoặc model chạm hạn mức. Chỉ gửi kết quả tới
-[MỤC NHẬN ĐÃ CẤU HÌNH]; trước khi tạo lịch, cho mình xem toàn bộ cấu
-hình để duyệt. Không tự kết nối email/Discord hoặc bật kênh mới.
+Bản tin vừa rồi ổn. Tạo lịch chạy [MỖI NGÀY / THỨ], lúc [GIỜ] theo múi
+giờ [MÚI GIỜ], gửi tới [NƠI NHẬN ĐÃ CẤU HÌNH]. Tạo ở trạng thái tạm
+dừng (paused), cho mình xem cấu hình: nguồn, model, nơi nhận, nơi báo
+khi lỗi. Sau đó kích hoạt chạy một lần để mình xem bản thật.
 ```
 
-Nếu dùng Desktop trên máy cá nhân, kiểm lịch có thực sự chạy khi app/dịch vụ nền hoạt động và máy không ngủ; hỏi Hermes chỉ ra trạng thái công việc sau khi tạo. Một câu "đã đặt lịch" **không chứng minh** có bản tin đến: tự thử kích hoạt và xem kết quả, điều kiện lỗi, nơi nhận. Model chạy qua provider có thể phát sinh chi phí/hạn mức cho mỗi lần chạy.
+Thấy bản thật đến đúng nơi rồi mới bảo Hermes bật lịch. Câu "đã đặt lịch" chưa chứng minh bản tin sẽ đến.
 
-## 3. Sửa có kiểm, không chỉ nói "nhớ gu"
+Nếu bạn quen terminal, các lệnh tương ứng (kiểm bằng `hermes cron create --help` trên máy bạn):
+
+- `hermes cron create "0 7 * * *" "..." --paused`: tạo lịch ở trạng thái tạm dừng. Thêm `--model` để dùng model riêng cho lịch, `--failure-deliver` để chọn nơi nhận báo lỗi.
+- `hermes cron run <id>`: chạy ngay ở lượt kế tiếp. `hermes cron resume <id>`: bật lịch.
+- `hermes cron runs`: xem các lần đã chạy. `hermes cron doctor`: kiểm lịch có vấn đề gì không.
+
+## 3. Những thứ hay làm bản tin không đến
+
+- **Máy ngủ hoặc app tắt.** Lịch chạy trên máy đang chạy Hermes. Laptop gập màn hình là lịch không chạy.
+- **Model hết hạn mức hoặc hết tiền.** Mỗi lần chạy đều tốn token. Việc lọc tin đơn giản thường không cần model mạnh nhất.
+- **Trang nguồn chặn hoặc đổi cấu trúc.** Yêu cầu bản tin ghi rõ trang nào lỗi thay vì lặng lẽ bỏ qua.
+
+## 4. Sửa dần cho đúng gu
 
 ```text
-Bản tin thử sai ở [ĐIỂM CỤ THỂ]. Hãy đề xuất sửa đúng tiêu chí [TIÊU CHÍ],
-giữ các nguồn đã chọn. Cho mình so sánh đầu ra cũ/mới. Chưa sửa lịch
-đang chạy hoặc thêm nguồn trước khi mình duyệt.
+Bản tin sai ở [ĐIỂM CỤ THỂ]. Đề xuất sửa theo tiêu chí [TIÊU CHÍ], giữ
+nguồn cũ. Cho mình so bản cũ và bản mới trước khi đổi lịch đang chạy.
 ```
 
-Nếu tiêu chí trở thành quy trình ổn định, hãy nhờ Hermes **đề xuất skill**, cho xem nội dung trước khi lưu; không nhồi từng bản tin vào memory cá nhân.
+Khi tiêu chí đã ổn định, nhờ Hermes lưu thành skill (`/learn`) để lần sau không phải dặn lại. Đừng nhồi từng bản tin vào memory.
 
-## Dùng cho công vụ?
+## Dùng cho công vụ
 
-Chỉ theo dõi trang **văn bản công khai** và phát danh sách để người phụ trách tự kiểm ngày công bố, ngày hiệu lực, sửa đổi/thay thế. Không đặt lịch quét hồ sơ người dân hay phát hành thông báo cơ quan từ máy cá nhân. Đọc https://congdongai.org/huong-dan/bo-nao-van-ban-phap-ly/ và chính sách đơn vị trước khi dùng vào việc thật.
+Chỉ theo dõi trang **văn bản công khai**, để người phụ trách tự kiểm ngày ban hành, ngày hiệu lực, văn bản sửa đổi/thay thế. Không đặt lịch quét hồ sơ người dân hay phát hành thông báo từ máy cá nhân. Xem https://congdongai.org/huong-dan/theo-doi-van-ban-moi/
+
+Câu chuyện thật: https://congdongai.org/cau-chuyen/kinh-nghiem-ban-tin-6h30/ và https://congdongai.org/cau-chuyen/kenmazaika/

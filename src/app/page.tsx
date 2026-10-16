@@ -91,9 +91,7 @@ export default async function HomePage() {
     if (found) picks.push(found);
   }
   const latest = getLatestArticles(4, [...PICK_HREFS, ...PICK_DUPLICATES]);
-  const library = libraryItems.filter(
-    (item) => item.group !== "Học từ thực tế",
-  );
+  const library = libraryItems;
 
   return (
     <>
@@ -224,7 +222,9 @@ export default async function HomePage() {
               </Link>
             </div>
             <div>
-              <HomeQAPanel initialPosts={qa.status === "ok" ? qa.data : undefined} />
+              <HomeQAPanel
+                initialPosts={qa.status === "ok" ? qa.data : undefined}
+              />
             </div>
           </section>
 
@@ -258,7 +258,8 @@ export default async function HomePage() {
             <h2>Thư viện của chúng ta 📚</h2>
             <p className="ed-library-sub">
               Tài liệu theo lộ trình: cài và chọn model, chỉnh cách Hermes làm
-              việc, rồi giao việc có bước kiểm. Tải về, đọc mẫu rồi mới dùng.
+              việc, giao việc có bước kiểm, rồi giữ nó chạy ổn. Tải về, đọc mẫu
+              rồi mới dùng.
             </p>
             <div className="ed-shelf">
               {library.map((item, index) => {

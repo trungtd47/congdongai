@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { libraryItems, type LibraryGroup } from "@/lib/content";
-import { LibraryForm } from "@/components/LibraryForm";
 import { Breadcrumb } from "@/components/Breadcrumb";
 
 const groups: { name: LibraryGroup; description: string }[] = [
@@ -22,16 +21,21 @@ const groups: { name: LibraryGroup; description: string }[] = [
       "Giao phạm vi rõ, duyệt đầu ra và chạy thử trước khi tự động hóa.",
   },
   {
+    name: "Dùng lâu dài",
+    description:
+      "Sau vài tuần: kiểm token, dọn memory và skill thừa, cập nhật an toàn.",
+  },
+  {
     name: "Học từ thực tế",
     description:
-      "Đọc kinh nghiệm có nguồn từ người dùng Hermes, cộng đồng X và người làm AI; biết giới hạn trước khi áp dụng.",
+      "Những cách làm lặp lại trong câu chuyện của người dùng Hermes, kèm nguồn gốc.",
   },
 ];
 
 export const metadata: Metadata = pageMetadata({
   title: "Thư viện Hermes Agent - tài liệu theo lộ trình",
   description:
-    "Tài liệu Markdown miễn phí: cài và chọn model Hermes, SOUL.md, memory, skill, mẫu giao việc và kinh nghiệm người dùng có nguồn từ cộng đồng/X.",
+    "Tài liệu Markdown miễn phí theo Hermes 0.22: cài và chọn model, SOUL.md, memory, skill, mẫu giao việc, bản tin theo lịch, kiểm token và cập nhật an toàn, bài học từ người dùng thật.",
   path: "/thu-vien",
 });
 
@@ -47,10 +51,9 @@ export default function ThuVienPage() {
       </h1>
       <p className="mb-8 max-w-2xl text-[16px] text-ink-soft">
         Tải file Markdown miễn phí, không cần để lại email. Đi từ cài và chọn
-        model, chỉnh cách Hermes làm việc tới giao việc có bước kiểm. Phần cuối
-        tuyển chọn kinh nghiệm người dùng và chuyên gia có dẫn nguồn, phân biệt
-        việc đã làm với gợi ý để thử. Đọc mẫu trước khi áp dụng, đừng ghi đè cấu
-        hình đang dùng.
+        model, chỉnh cách Hermes làm việc, giao việc có bước kiểm, tới giữ nó
+        chạy ổn sau vài tuần. Cập nhật theo Hermes 0.22. Đọc mẫu trước khi áp
+        dụng, đừng ghi đè cấu hình đang dùng.
       </p>
 
       {groups.map((group) => (
@@ -97,44 +100,6 @@ export default function ThuVienPage() {
         </section>
       ))}
 
-      <aside
-        className="card mb-10 max-w-3xl p-5"
-        aria-label="Ví dụ thực tế có nguồn"
-      >
-        <h2 className="mb-2 text-[18px] font-bold">Bắt đầu từ nguồn thật</h2>
-        <p className="mb-3 text-sm text-ink-soft">
-          Mình dùng Hermes để chuẩn bị bản tin buổi sáng và tra lại kho ghi chú.
-          Cộng đồng X chia sẻ cách giao việc cho agent chuyên môn; Karpathy và
-          Simon Willison nói về việc cần kiểm kết quả của coding agent, không
-          phải họ đang dùng Hermes. Bản đọc phía trên ghi rõ nguồn và giới hạn
-          của từng ví dụ.
-        </p>
-        <div className="flex flex-wrap gap-4 text-sm">
-          <Link
-            href="/cau-chuyen/kinh-nghiem-ban-tin-6h30"
-            className="text-teal-dark underline"
-          >
-            Kinh nghiệm của mình
-          </Link>
-          <a
-            href="https://x.com/shannholmberg/status/2059197811275841561"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-teal-dark underline"
-          >
-            Chia sẻ trên X
-          </a>
-          <a
-            href="https://x.com/karpathy/status/2026731645169185220"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-teal-dark underline"
-          >
-            Góc nhìn Karpathy
-          </a>
-        </div>
-      </aside>
-
       <p className="mb-10 max-w-2xl text-sm text-ink-soft">
         Với văn bản công vụ, chỉ dùng tài liệu công khai hoặc dữ liệu giả lập
         khi chưa được đơn vị cho phép xử lý dữ liệu thật. File lưu trên máy
@@ -149,11 +114,19 @@ export default function ThuVienPage() {
       </p>
 
       <div className="card max-w-xl p-6">
-        <h2 className="mb-1 text-[18px] font-bold">Nhận mẹo hằng tuần</h2>
-        <p className="mb-4 text-sm text-ink-soft">
-          Để lại email, mỗi tuần 1 email: mẹo Hermes + tin hệ sinh thái.
+        <h2 className="mb-1 text-[18px] font-bold">Theo dõi khi có bài mới</h2>
+        <p className="text-sm text-ink-soft">
+          Thư viện được sửa khi Hermes đổi bản. Theo dõi bài mới qua{" "}
+          <a href="/feed.xml" className="text-teal-dark underline">
+            RSS
+          </a>
+          , hoặc đăng nhập rồi bật thông báo trong menu tài khoản. Kẹt chỗ nào
+          thì hỏi ở{" "}
+          <Link href="/hoi-dap" className="text-teal-dark underline">
+            Hỏi &amp; Đáp
+          </Link>
+          .
         </p>
-        <LibraryForm />
       </div>
     </div>
   );

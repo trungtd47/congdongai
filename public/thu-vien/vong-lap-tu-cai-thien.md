@@ -1,58 +1,56 @@
 # Ghi nhớ đúng chỗ - vòng lặp cải thiện Hermes
 
-> Hermes không tự "học mãi mãi" chỉ nhờ trò chuyện. Bộ nhớ USER.md/MEMORY.md mặc định **ngắn và có giới hạn**. Sau mỗi việc, hãy chọn đúng thứ đáng giữ và kiểm lại. Nguồn: https://hermes-agent.nousresearch.com/docs/user-guide/features/memory/
+> Hermes không giỏi lên chỉ nhờ trò chuyện nhiều. Nó giỏi lên khi điều đáng giữ được đặt đúng chỗ, và bạn kiểm lại định kỳ. Theo Hermes 0.22. Nguồn: https://hermes-agent.nousresearch.com/docs/user-guide/features/memory/
 
 ## Bốn nơi lưu, bốn việc khác nhau
 
 | Muốn giữ | Nơi phù hợp | Ví dụ |
 | --- | --- | --- |
-| Cách Hermes nói và giới hạn hành vi | SOUL.md | Trả lời tiếng Việt, hỏi trước khi đăng |
-| Vài thói quen ổn định của bạn và môi trường | USER.md / MEMORY.md | Thích báo cáo có nguồn, dùng múi giờ nào |
-| Quy trình lặp lại có bước kiểm | Skill | Cách tạo bản tin nguồn công khai |
-| Nhiều văn bản, ghi chú, bảng biểu | Thư mục file riêng trên máy | Kho văn bản pháp lý công khai có URL và ngày tra |
+| Cách Hermes nói và giới hạn hành vi | SOUL.md | Trả lời tiếng Việt, hỏi trước khi gửi hay đăng |
+| Vài sự thật ngắn về bạn và môi trường | USER.md / MEMORY.md | Thích báo cáo có nguồn, dùng múi giờ nào |
+| Quy trình lặp lại có bước kiểm | Skill | Cách làm bản tin sáng từ nguồn đã chọn |
+| Nhiều văn bản, ghi chú, bảng biểu | Thư mục file trên máy | Kho ghi chú Obsidian, kho văn bản công khai |
 
-Memory mặc định **không** chứa cả luật, toàn bộ lịch sử chat hay hàng nghìn trang PDF. File ở máy thuộc quyền kiểm soát của bạn, nhưng nếu chọn model cloud thì nội dung được đưa cho model vẫn có thể ra ngoài.
+Memory rất nhỏ: MEMORY.md khoảng 2.200 ký tự, USER.md khoảng 1.375 ký tự. Đầy là không ghi thêm được, nên đừng dùng memory để chứa quy trình dài hay tài liệu. Câu nhắc thoáng qua trong chat cũng không tự thành memory nếu bạn không nhờ lưu.
 
-## 1. Lưu thói quen ngắn, không lưu dữ liệu nhạy cảm
-
-Chỉ gửi sau khi Hermes đã kết nối model:
+## 1. Lưu một thói quen ngắn
 
 ```text
-Hãy nhớ rằng mình muốn các bản tổng hợp bằng tiếng Việt, kèm URL nguồn
-và đánh dấu phần chưa xác minh. Chỉ lưu điều này nếu memory còn chỗ;
-cho mình xem chính xác nội dung sẽ lưu, không ghi dữ liệu cá nhân.
+Hãy nhớ: mình muốn các bản tổng hợp bằng tiếng Việt, có URL nguồn và
+đánh dấu phần chưa xác minh. Cho mình xem đúng câu sẽ lưu.
 ```
 
-Kiểm lại ở phiên mới: hỏi "Bạn đang ghi nhớ những thói quen nào của mình?". Nếu sai hoặc lỗi thời, yêu cầu sửa đúng một mục. Không xem câu trả lời của agent là bằng chứng file đã ghi: khi quan trọng, nhờ nó chỉ ra nơi lưu và xác nhận nội dung trên máy.
+Mở chat mới, hỏi "Bạn đang nhớ gì về cách mình làm việc?". Sai thì nhờ sửa đúng mục đó.
 
-## 2. Từ một việc thật, mới tạo skill
+## 2. Làm xong việc khó thì rút thành skill
 
-Sau khi làm thử, sửa lỗi và biết bước kiểm cuối, gửi:
+Sau khi đã làm thử, sửa lỗi và biết bước kiểm cuối:
 
 ```text
-Quy trình bản tin vừa rồi đã làm thử. Hãy đề xuất một skill gồm:
-nguồn công khai được phép đọc, đầu vào, các bước, lỗi thường gặp và
-cách kiểm đầu ra. Cho mình xem bản nháp trước, chưa tạo/sửa file skill
-khi mình chưa duyệt. Không đưa token, mật khẩu hoặc dữ liệu riêng vào skill.
+/learn quy trình vừa làm. Skill gồm: khi nào dùng, nguồn được phép
+đọc, các bước, lỗi thường gặp, cách kiểm đầu ra. Không đưa mật khẩu
+hay dữ liệu riêng vào skill. Cho mình xem trước khi lưu.
 ```
 
-Skill là tài liệu hướng dẫn nạp khi cần, **không phải ứng dụng cài thêm**; một số skill có kèm công cụ hoặc yêu cầu dependency/quyền truy cập. Không cần cài hàng loạt skill thời tiết, dịch thuật, nhắc việc khi Hermes đã có công cụ đáp ứng. Tự tạo một skill đúng việc của mình thường hữu ích hơn. Xem https://hermes-agent.nousresearch.com/docs/user-guide/features/skills/
+Skill là bản hướng dẫn Hermes nạp khi cần, không phải ứng dụng cài thêm. Một skill tự viết đúng việc của bạn thường có ích hơn cả chục skill tải về.
 
-## 3. Rà lại sau vài lần chạy
+## 3. Rà định kỳ: xem nó đang "hiểu" bạn tới đâu
+
+- **`/journey`** mở dòng thời gian skill và memory Hermes đã học (trong Desktop là bảng Star Map). Xem, sửa hoặc xóa từng mục ngay ở đó.
+- **Curator** tự dọn skill do Hermes tạo: 14 ngày không dùng thì đánh dấu cũ, 30 ngày thì chuyển vào kho lưu trữ (khôi phục được). Skill bạn ghim và skill đang được lịch tự động dùng thì không bị đụng. Muốn xem trước nó định làm gì: `hermes curator run --dry-run`.
+- Mỗi tháng một lần, gửi:
 
 ```text
-Hãy liệt kê memory và các skill liên quan tới [VIỆC]. Chỉ ra mục
-trùng/lỗi thời, đề xuất sửa từng mục kèm lý do và ảnh hưởng. Chưa
-xóa hoặc ghi đè gì. Sau khi mình duyệt, sửa từng mục và báo kết quả.
+Liệt kê memory và skill có vẻ trùng, lỗi thời hoặc sai. Đề xuất sửa
+từng mục kèm lý do. Chưa xóa gì khi mình chưa đồng ý.
 ```
-
-Không yêu cầu cron tự đọc toàn bộ cuộc trò chuyện mỗi tối rồi nhồi vào memory. Việc lặp lại nếu cần lịch hãy thiết kế theo **nguồn, đầu ra, điều kiện lỗi và nơi nhận** riêng; chạy thử một lần trước. Không đưa lịch tự động ra kênh ngoài khi chưa hiểu quyền truy cập và chi phí model.
 
 ## Tự kiểm
 
-- [ ] SOUL.md ngắn, không chứa hồ sơ cá nhân.
-- [ ] Memory chứa thói quen bền, không phải bản sao tài liệu hay log tạm.
-- [ ] Skill có bước kiểm, ghi rõ khi nào phải hỏi con người.
-- [ ] Tài liệu dài nằm ở thư mục được kiểm soát, có nguồn và cách sao lưu.
+- [ ] SOUL.md ngắn, không chứa hồ sơ cá nhân hay mật khẩu.
+- [ ] Memory chỉ có vài sự thật bền, không có quy trình dài.
+- [ ] Mỗi skill có bước kiểm và nói rõ khi nào phải hỏi bạn.
+- [ ] Tài liệu dài nằm trong thư mục có sao lưu.
 
-Hướng dẫn dựng kho file văn bản công khai: https://congdongai.org/huong-dan/bo-nao-van-ban-phap-ly/
+Bản có hình và 5 prompt đầy đủ: https://congdongai.org/huong-dan/vong-lap-tu-cai-thien/
+Kho ghi chú trên máy: https://congdongai.org/huong-dan/bo-nao-thu-hai-obsidian/

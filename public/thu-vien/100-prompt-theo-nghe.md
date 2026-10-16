@@ -1,6 +1,6 @@
 # Mẫu giao việc cho Hermes - ít prompt, có cách kiểm
 
-> Đường dẫn tải này từng là bộ "100 prompt theo nghề". Mình đã thay bằng bộ mẫu ngắn hơn vì Hermes **biết làm trên máy**: một yêu cầu có đầu vào, phạm vi, đầu ra, điều kiện dừng và bước kiểm hữu ích hơn hàng trăm câu "viết giúp tôi". Chỉ dùng sau khi đã kết nối một model. Thay phần `[TRONG NGOẶC]` bằng nguồn **được phép sử dụng**.
+> Hermes làm được việc trên máy, nên một yêu cầu rõ đầu vào, phạm vi, đầu ra, điều kiện dừng và cách kiểm có ích hơn hàng trăm câu "viết giúp tôi". Dùng sau khi đã nối một model. Thay phần `[TRONG NGOẶC]` bằng nguồn bạn **được phép sử dụng**.
 
 ## Công thức chung
 
@@ -77,21 +77,24 @@ Lọc tin trùng, ghi URL và giờ/ngày đăng nếu thấy. Chạy thử MỘ
 chưa đặt lịch và chưa gửi. Mục thiếu nguồn ghi [CHƯA XÁC MINH].
 ```
 
-### 8. Đề xuất lịch sau khi đã chạy thử
+### 8. Đặt lịch sau khi đã chạy thử
 
 ```text
-Bản tin chạy thử đã được mình duyệt. Đề xuất một lịch [GIỜ + MÚI GIỜ]
-với nguồn, nơi nhận, cách báo lỗi và chi phí model cần lưu ý. Chưa
-tạo lịch, chưa gửi ra kênh ngoài khi mình chưa đồng ý.
+Bản tin chạy thử đã được mình duyệt. Tạo lịch [GIỜ + MÚI GIỜ] nhưng để
+ở trạng thái tạm dừng (paused). Cho mình xem nguồn, nơi nhận, model
+dùng cho lịch và nơi báo khi lỗi. Kích hoạt chạy một lần để mình xem
+kết quả thật, rồi mình mới bảo bật lịch. Chưa gửi ra kênh ngoài.
 ```
 
 ### 9. Tạo skill từ quy trình đã ổn
 
 ```text
-Từ việc vừa làm, viết bản nháp skill gồm điều kiện sử dụng, nguồn được
-phép đọc, bước kiểm và các lỗi phải dừng. Đừng lưu mật khẩu/dữ liệu
-riêng. Cho mình duyệt trước khi tạo file skill.
+/learn quy trình vừa làm. Skill cần có: khi nào dùng, nguồn được phép
+đọc, các bước, bước kiểm và các lỗi phải dừng. Đừng lưu mật khẩu hay
+dữ liệu riêng. Cho mình xem nội dung trước khi lưu.
 ```
+
+`/learn` là lệnh có trong Hermes 0.22, dùng để rút một skill từ việc vừa làm, một thư mục, một URL hoặc ghi chú bạn dán vào. Nếu bản bạn đang dùng chưa có lệnh này, viết thường: "Từ việc vừa làm, viết bản nháp skill gồm...".
 
 ## Kiểm mẫu trước khi dùng
 
