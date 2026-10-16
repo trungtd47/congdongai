@@ -1,15 +1,20 @@
-# Bài mini PC: thêm prompt nhờ Hermes cài hộ
+# Bài mini PC: dựng bằng chính Hermes, chỉ làm tay phần cần thiết
 
 **Date:** 2026-10-16
-**Session:** Sếp muốn bài mini PC dùng prompt yêu cầu Hermes cài thay vì tự gõ lệnh thủ công.
+**Session:** Sếp muốn phần "Cách mình dựng, từng bước" của bài mini PC thay bằng cách nhờ Hermes cài; bước nào bắt buộc thủ công mới làm; người mới đọc cũng set up được.
 
 ## What happened
-Bước 2 (Tailscale), 4 (chạy thử backend) và 5 (dịch vụ systemd) có thêm prompt dán cho Hermes trên mini PC; lệnh gốc giữ trong `<details>` "Muốn tự gõ lệnh". Bước 3 (mật khẩu, SECRET trong `.env`) vẫn làm tay và ghi lý do. Mục mới "Cách làm nhanh" trước bước 1 nêu điều kiện (Hermes chạy được trên mini PC, duyệt lệnh, việc chỉ người dùng làm được: đăng nhập Tailscale, sudo, mật khẩu). Khối ```text xuống dòng thay vì cuộn ngang (`globals.css`, `.prose-article pre code.language-text`).
+Viết lại section thành "Cách dựng: nhờ chính Hermes cài, bạn chỉ làm phần cần tay", 6 bước, mỗi bước ghi ai làm:
+1. Cài Hermes (bạn) 2. Tailscale (Hermes cài trên mini PC, bạn đăng nhập + tự cài trên laptop) 3. Tên đăng nhập/mật khẩu (bạn gõ vào `.env` bằng nano; lý do: mật khẩu không đi qua chat) 4. Một prompt gộp chạy thử + systemd + linger + kiểm (Hermes) 5. Nối từ Desktop (bạn bấm) 6. Kiểm `hostname` (nhờ Hermes trong Desktop).
+Thêm giải thích Terminal/Backend/Tailscale, mục "Cách dùng prompt", lệnh gốc gom vào một `<details>` ở bước 4. `MiniPcSteps` đổi 7 -> 6 bước, note ghi "Bạn tự làm"/"Hermes làm"; anchor đối chiếu bằng code, không gãy.
+
+## Discovery
+`.prose-article` reset `list-style: none` (Tailwind preflight): danh sách đánh số trong bài không hiện số. Thêm `.prose-article > ol, .prose-article li > ol { list-style: decimal }` (không đụng sơ đồ `.dg`/mục lục; bullet `ul` giữ nguyên vì là quyết định thiết kế chưa hỏi sếp). Khối ```text xuống dòng (`pre code.language-text`).
 
 ## Lưu ý
-- `hermes serve --stop` dừng MỌI tiến trình hermes serve, nên prompt dặn tắt đúng tiến trình thử.
-- Prompt chưa chạy end-to-end trên máy khác; chỉ đối chiếu cờ `hermes serve --help` và unit thật trên máy chủ. Bài không khẳng định sếp đã dùng prompt này.
-- Commit local, chưa push, chờ sếp duyệt (bài kinh nghiệm cá nhân).
+- `hermes serve --stop` dừng MỌI tiến trình hermes serve; prompt dặn tắt đúng tiến trình thử.
+- Prompt chưa chạy end-to-end; chỉ đối chiếu `hermes serve --help` và unit thật. Bài không khẳng định tác giả đã dùng prompt này.
+- Commit local, chờ sếp duyệt rồi mới push (bài kinh nghiệm cá nhân).
 
 ## Lesson
-Bước có bí mật (mật khẩu) giữ thủ công; mọi prompt giao việc cho agent phải dặn dừng ở chỗ cần sudo/đăng nhập và cấm in file `.env`.
+Bước có bí mật giữ thủ công; prompt giao việc cho agent phải cấm in `.env`, dặn dừng ở sudo/đăng nhập. Xem lại computed `list-style` khi bài có danh sách đánh số.

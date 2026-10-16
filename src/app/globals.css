@@ -331,6 +331,8 @@ footer.site-footer a:hover { text-decoration: underline; text-underline-offset: 
   font-size: 17px; line-height: 1.9;
 }
 .prose-article li { margin: 6px 0; }
+/* Danh sách đánh số trong bài phải hiện số (reset của Tailwind đang ẩn); chỉ áp cho danh sách của thân bài, không đụng sơ đồ. */
+.prose-article > ol, .prose-article li > ol { list-style: decimal; }
 .prose-article code { background: var(--color-cream); color: var(--color-ink); padding: 2px 6px; border-radius: 3px; font-size: 0.88em; overflow-wrap: break-word; }
 .prose-article pre { background: var(--color-ink); color: var(--color-paper); padding: 16px 18px; border-radius: 4px; overflow-x: auto; margin: 18px 0; font-size: 0.88rem; line-height: 1.65; }
 .prose-article pre code { background: transparent; color: inherit; padding: 0; }
