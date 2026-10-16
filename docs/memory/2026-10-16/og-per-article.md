@@ -13,5 +13,8 @@ Mọi trang (kể cả từng bài) đều trỏ `og:image` và `twitter:image` 
 - Font/ảnh đặt ở `src/assets/` đọc bằng `fs.readFile(process.cwd()/src/assets)`; `next.config.mjs` thêm `outputFileTracingIncludes` cho route hoi-dap để standalone mang theo. `fetch(new URL(..., import.meta.url))` chỉ chạy trong chính file opengraph-image, đặt trong lib thì build lỗi "Failed to parse URL".
 - `public/og.png` (ảnh mặc định cho trang chủ, hub, tag) tạo lại bằng `scripts/generate-og.py` với màu xanh trầm `#38513B`.
 
+## Cập nhật theo góp ý của sếp: bài có ảnh thì dùng ảnh trong bài
+Sếp không muốn ảnh chia sẻ chỉ là chữ tiêu đề khi bài đã có hình. `scripts/generate-article-og.mjs` (dev-only, cần build đang chạy + Chrome CDP) tìm ảnh hoặc sơ đồ `.dg` đầu tiên trong thân bài (bỏ logo/avatar, ưu tiên dạng ngang, ẩn thanh nav dính), chụp phần tử rồi ghép lên nền mờ 1200x630 bằng sharp -> `public/og/<tuyến>-<slug>.png` (13 bài). `renderArticleOg` trong `og-card.tsx` trả đúng file đó nếu tồn tại, không thì thẻ tiêu đề. Bài mới có ảnh/sơ đồ: chạy lại script rồi commit PNG. Thử `generateImageMetadata` để alt theo tiêu đề thì đổi URL thành `/opengraph-image/og` và 404 trên standalone nên đã bỏ; alt vẫn là chữ chung.
+
 ## Lesson
 Chia sẻ social cần ảnh riêng theo bài, và Facebook/Zalo giữ cache link cũ: sau deploy phải bấm "Scrape Again" ở Sharing Debugger cho link đã từng chia sẻ.

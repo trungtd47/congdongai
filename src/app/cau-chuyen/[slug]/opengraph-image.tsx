@@ -1,5 +1,5 @@
 import { caseStudies } from "@/lib/case-studies";
-import { OG_CONTENT_TYPE, OG_SIZE, renderOgCard } from "@/lib/og-card";
+import { OG_CONTENT_TYPE, OG_SIZE, renderArticleOg } from "@/lib/og-card";
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
@@ -12,7 +12,7 @@ export function generateStaticParams() {
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const c = caseStudies.find((x) => x.slug === slug);
-  return renderOgCard({
+  return renderArticleOg("cau-chuyen", slug, {
     label: "Câu chuyện",
     title: c?.title ?? "Cộng Đồng AI.org",
     authorName: c?.authorName,

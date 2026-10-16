@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { ImageResponse } from "next/og";
@@ -159,4 +160,16 @@ export async function renderOgCard({ label, title, authorName }: OgCardInput) {
       ],
     },
   );
+}
+
+// Bài có ảnh/sơ đồ trong thân bài dùng đúng ảnh đó làm ảnh chia sẻ (public/og/<tuyến>-<slug>.png,
+// tạo bằng scripts/generate-article-og.mjs). Bài không có ảnh thì dùng thẻ tiêu đề.
+export async function renderArticleOg(section: string, slug: string, input: OgCardInput) {
+  const file = path.join(process.cwd(), "public", "og", `${section}-${slug}.png`);
+  if (existsSync(file)) {
+    return new Response(new Uint8Array(await readFile(file)), {
+      headers: { "content-type": OG_CONTENT_TYPE, "cache-control": "public, max-age=3600" },
+    });
+  }
+  return renderOgCard(input);
 }
