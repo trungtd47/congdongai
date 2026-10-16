@@ -9,9 +9,7 @@ export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_CONTENT_TYPE = "image/png";
 
 const GREEN = "#38513B";
-const BROWN = "#8B5E3C";
-const INK = "#292C25";
-const MUTED = "#62645B";
+const GOLD = "#D9B04A";
 
 // File nằm ở src/assets; next.config có outputFileTracingIncludes để bản standalone mang theo.
 async function asset(rel: string): Promise<Buffer> {
@@ -46,13 +44,15 @@ export async function renderOgCard({ label, title, authorName }: OgCardInput) {
     asset("fonts/NotoSerif-Bold.ttf"),
     asset("fonts/NotoSans-Bold.ttf"),
     asset("og-avatar.jpg"),
-    asset("og-logo.svg"),
+    asset("og-logo-light.svg"),
   ]);
 
   const shown = clip(title, 120);
   const admin = isAdminAuthorName(authorName);
   const byline = authorName?.trim();
+  const logoUrl = toDataUrl(logo, "image/svg+xml");
 
+  // Bìa tràn khung (không khung viền, không giống ảnh chụp): nền xanh trầm, logo Hermes mờ lớn, tiêu đề serif.
   return new ImageResponse(
     (
       <div
@@ -60,94 +60,88 @@ export async function renderOgCard({ label, title, authorName }: OgCardInput) {
           width: "100%",
           height: "100%",
           display: "flex",
-          background: "#F8F5EF",
-          padding: 36,
+          position: "relative",
+          background: GREEN,
           fontFamily: "NotoSans",
+          color: "#F8F5EF",
         }}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={logoUrl}
+          width={520}
+          height={520}
+          alt=""
+          style={{ position: "absolute", right: -70, bottom: -90, opacity: 0.1 }}
+        />
+        <div style={{ position: "absolute", left: 0, top: 0, width: 14, height: 630, background: GOLD, display: "flex" }} />
         <div
           style={{
             flex: 1,
             display: "flex",
-            background: "#FFFDF8",
-            border: "2px solid #D7D4C9",
-            borderRadius: 20,
+            flexDirection: "column",
+            justifyContent: "space-between",
+            padding: "56px 72px 52px 84px",
           }}
         >
-          <div style={{ width: 14, background: GREEN, borderRadius: "20px 0 0 20px", display: "flex" }} />
-          <div
-            style={{
-              flex: 1,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              padding: "44px 60px 40px 56px",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <div
-                style={{
-                  display: "flex",
-                  fontSize: 26,
-                  letterSpacing: 2,
-                  textTransform: "uppercase",
-                  color: "#FFFDF8",
-                  background: GREEN,
-                  padding: "8px 22px",
-                  borderRadius: 6,
-                }}
-              >
-                {label}
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 14, color: BROWN, fontSize: 30 }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={toDataUrl(logo, "image/svg+xml")} width={40} height={40} alt="" />
-                Cộng Đồng AI.org
-              </div>
-            </div>
-
+          <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
             <div
               style={{
                 display: "flex",
-                fontFamily: "NotoSerif",
-                fontSize: titleSize(shown.length),
-                lineHeight: 1.22,
-                color: INK,
+                fontSize: 24,
+                letterSpacing: 3,
+                textTransform: "uppercase",
+                color: GREEN,
+                background: GOLD,
+                padding: "8px 20px",
+                borderRadius: 4,
               }}
             >
-              {shown}
+              {label}
             </div>
+            <div style={{ display: "flex", fontSize: 28, color: "#D8DFCF" }}>Cộng Đồng AI.org</div>
+          </div>
 
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 28, color: MUTED }}>
-                {admin && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={toDataUrl(avatar, "image/jpeg")}
-                    width={56}
-                    height={56}
-                    alt=""
-                    style={{ borderRadius: 28, objectFit: "cover" }}
-                  />
-                )}
-                {byline ? <span>{byline}</span> : <span>Hỏi và học Hermes bằng tiếng Việt</span>}
-                {admin && (
-                  <span
-                    style={{
-                      display: "flex",
-                      fontSize: 20,
-                      color: "#FFFDF8",
-                      background: GREEN,
-                      padding: "4px 14px",
-                      borderRadius: 14,
-                    }}
-                  >
-                    Admin
-                  </span>
-                )}
-              </div>
-              <div style={{ display: "flex", fontSize: 26, color: BROWN }}>congdongai.org</div>
-            </div>
+          <div
+            style={{
+              display: "flex",
+              fontFamily: "NotoSerif",
+              fontSize: titleSize(shown.length) + 4,
+              lineHeight: 1.22,
+              color: "#FFFDF8",
+              maxWidth: 980,
+            }}
+          >
+            {shown}
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 28, color: "#D8DFCF" }}>
+            {admin && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={toDataUrl(avatar, "image/jpeg")}
+                width={56}
+                height={56}
+                alt=""
+                style={{ borderRadius: 28, objectFit: "cover" }}
+              />
+            )}
+            <span>{byline || "Hỏi và học Hermes bằng tiếng Việt"}</span>
+            {admin && (
+              <span
+                style={{
+                  display: "flex",
+                  fontSize: 20,
+                  color: GREEN,
+                  background: "#F8F5EF",
+                  padding: "4px 14px",
+                  borderRadius: 14,
+                }}
+              >
+                Admin
+              </span>
+            )}
+            <span style={{ display: "flex", marginLeft: 12, color: GOLD }}>congdongai.org</span>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { getAllPostSlugs, getPostBySlug } from "@/lib/posts";
+import { isAdminAuthorName } from "@/lib/site";
 import { OG_CONTENT_TYPE, OG_SIZE, renderArticleOg } from "@/lib/og-card";
 
 export const size = OG_SIZE;
@@ -13,7 +14,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const { slug } = await params;
   const post = getPostBySlug(slug);
   return renderArticleOg("blog", slug, {
-    label: "Kinh nghiệm",
+    label: isAdminAuthorName(post?.authorName) ? "Kinh nghiệm" : "Bài viết",
     title: post?.title ?? "Cộng Đồng AI.org",
     authorName: post?.authorName,
   });
