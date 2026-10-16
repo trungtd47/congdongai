@@ -19,6 +19,7 @@ import {
 import { AuthorAvatar } from "@/components/AuthorAvatar";
 import { AuthorBadge } from "@/components/OfficialBadge";
 import { ArticleEngage } from "@/components/ArticleEngage";
+import { WmBox } from "@/components/WmImage";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -42,6 +43,7 @@ function caseBlock(block: CaseBlock, i: number) {
         key={i}
         className="my-5 overflow-hidden border border-line bg-white"
       >
+        <WmBox>
         <picture>
           {block.image.mobileSrc && (
             <source media="(max-width: 640px)" srcSet={block.image.mobileSrc} />
@@ -54,6 +56,7 @@ function caseBlock(block: CaseBlock, i: number) {
             className="h-auto w-full"
           />
         </picture>
+        </WmBox>
         <figcaption className="px-4 py-3 text-sm font-serif text-muted">
           {block.image.caption}
         </figcaption>
@@ -182,6 +185,7 @@ export default async function CauChuyenDetailPage({ params }: Props) {
 
       {c.image && (
         <figure>
+          <WmBox>
           <picture>
             {c.mobileImage && (
               <source media="(max-width: 640px)" srcSet={c.mobileImage} />
@@ -189,6 +193,7 @@ export default async function CauChuyenDetailPage({ params }: Props) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={c.image} alt={c.title} loading="lazy" />
           </picture>
+          </WmBox>
           {c.topic && (
             <figcaption>
               Minh họa quy trình biên tập, không phải ảnh chụp Hermes hay dữ
@@ -200,8 +205,10 @@ export default async function CauChuyenDetailPage({ params }: Props) {
 
       {c.slug === "kinh-nghiem-ban-tin-6h30" && !c.image && (
         <figure>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/illustrations/community-morning.svg" alt="Minh họa bàn đọc bản tin buổi sáng, không phải ảnh chụp hệ thống" width={600} height={260} />
+          <WmBox>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/illustrations/community-morning.svg" alt="Minh họa bàn đọc bản tin buổi sáng, không phải ảnh chụp hệ thống" width={600} height={260} />
+          </WmBox>
           <figcaption>Minh họa biên tập, không phải ảnh chụp hệ thống hay kết quả chạy thật.</figcaption>
         </figure>
       )}

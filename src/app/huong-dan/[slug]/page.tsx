@@ -24,6 +24,7 @@ import { AuthorAvatar } from "@/components/AuthorAvatar";
 import { AuthorBadge } from "@/components/OfficialBadge";
 import { ArticleEngage } from "@/components/ArticleEngage";
 import { TocBox } from "@/components/TocBox";
+import { WmImg } from "@/components/WmImage";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -111,7 +112,7 @@ export default async function HuongDanArticlePage({ params }: Props) {
       <div className="prose-article">
         <MDXRemote
           source={post.content}
-          components={{ TermTip }}
+          components={{ TermTip, img: WmImg }}
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm],

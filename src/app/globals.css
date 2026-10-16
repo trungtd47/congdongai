@@ -548,3 +548,22 @@ a.tag-pill-link:hover, a.tag-pill-link:focus-visible {
 .admin-note-date { display: block; font-size: 12px; color: var(--color-muted); }
 .admin-note-body p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.8; }
 .admin-note-body p:last-child { margin-bottom: 0; }
+
+/* Watermark congdongai.org trên mọi hình trong bài: ảnh (bọc .wm-img), sơ đồ động (.dg) và sơ đồ bước cũ (.article-diagram). Dùng pseudo-element để không lọt vào bản sao khi dựng ảnh chia sẻ. */
+.wm-img { position: relative; display: block; width: fit-content; max-width: 100%; line-height: 0; }
+.reader figure .wm-img { width: 100%; }
+.reader .dg, .reader .article-diagram { position: relative; }
+.wm-img::after,
+.reader .dg::after,
+.reader .article-diagram::after {
+  content: "congdongai.org"; position: absolute; right: 10px; bottom: 10px; z-index: 2;
+  padding: 3px 11px; border-radius: 999px; background: rgba(56, 81, 59, 0.88); color: #F8F5EF;
+  font-family: var(--font-sans); font-size: 12px; font-weight: 700; letter-spacing: 0.02em; line-height: 1.5;
+  pointer-events: none; user-select: none;
+}
+/* Sơ đồ có chú thích ở dưới: dòng chú thích chừa chỗ để watermark không đè chữ. */
+.reader .dg figcaption, .reader .article-diagram figcaption { padding-right: 130px; min-height: 1.6em; }
+@media (max-width: 640px) {
+  .wm-img::after, .reader .dg::after, .reader .article-diagram::after { right: 6px; bottom: 6px; font-size: 11px; padding: 2px 9px; }
+  .reader .dg figcaption, .reader .article-diagram figcaption { padding-right: 0; padding-bottom: 28px; }
+}

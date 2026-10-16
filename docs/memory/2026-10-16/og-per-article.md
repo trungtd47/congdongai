@@ -21,3 +21,6 @@ Chia sẻ social cần ảnh riêng theo bài, và Facebook/Zalo giữ cache lin
 
 ## Watermark
 Sếp yêu cầu ảnh chia sẻ của bài đều có watermark `congdongai.org`. `scripts/generate-article-og.mjs` đóng pill xanh `#38513B` (chữ kem, 22px, góc phải dưới, cách mép 16px) lên 6 ảnh làm từ hình/cảnh minh họa; bản 30px đè lên chú thích cuối ảnh token nên đã thu nhỏ. Bìa tiêu đề (`og-card.tsx`) đã có chữ congdongai.org. Script sinh lại ảnh từ nguồn mỗi lần nên không bị chồng watermark.
+
+## Watermark cho hình TRONG bài
+Sếp nói rõ ý là các hình trong bài, không chỉ ảnh chia sẻ. Làm bằng CSS để không sửa file gốc và tự áp cho hình mới: `WmImg`/`WmBox` (`src/components/WmImage.tsx`) bọc `<img>` trong `.wm-img` (MDX `img` override ở blog, bat-dau, huong-dan; hai chỗ figure ở cau-chuyen), pseudo-element `::after` pill xanh `congdongai.org` góc phải dưới; `.reader .dg` (sơ đồ động) và `.reader .article-diagram` (sơ đồ SVG cũ) cũng có `::after`, figcaption chừa `padding-right` (mobile xuống dòng dưới). Scope `.reader` để bản sao dựng ảnh chia sẻ (overlay ngoài `.reader`) không bị đóng watermark đôi. Giới hạn: lưu riêng file ảnh từ trang không kèm watermark (chỉ ảnh chia sẻ OG là có watermark trong file). Bản build: số `.wm-img` khớp số `<img>` trong 5 bài có ảnh.

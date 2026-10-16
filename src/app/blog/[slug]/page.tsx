@@ -21,6 +21,7 @@ import { AuthorAvatar } from "@/components/AuthorAvatar";
 import { AuthorBadge } from "@/components/OfficialBadge";
 import { ArticleEngage } from "@/components/ArticleEngage";
 import { TocBox } from "@/components/TocBox";
+import { WmImg } from "@/components/WmImage";
 import { AdminNote } from "@/components/AdminNote";
 import { batDauDiagramComponents } from "@/components/diagrams/BatDauDiagrams";
 
@@ -109,7 +110,7 @@ export default async function ArticlePage({ params }: Props) {
       <div className="prose-article">
         <MDXRemote
           source={post.content}
-          components={{ TermTip, ...miniPcDiagramComponents, ...batDauDiagramComponents, AdminNote }}
+          components={{ TermTip, ...miniPcDiagramComponents, ...batDauDiagramComponents, AdminNote, img: WmImg }}
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm],
