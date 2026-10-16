@@ -7,7 +7,7 @@ import { signInWithGoogle, signOutUser } from "@/lib/auth";
 import { isDemoMode } from "@/lib/firebase";
 import { ADMIN_AVATAR, ADMIN_PUBLIC_UID } from "@/lib/site";
 import { PushToggle } from "@/components/PushToggle";
-import { syncPush } from "@/lib/push-client";
+import { detachPush, syncPush } from "@/lib/push-client";
 
 // Trang chính trên header, ít chật, kiểu B.
 const primaryLinks = [
@@ -45,6 +45,7 @@ export function Nav() {
 
   const handleLogout = async () => {
     setBusy(true);
+    if (user) await detachPush(user);
     await signOutUser();
     setBusy(false);
   };

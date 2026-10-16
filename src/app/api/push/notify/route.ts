@@ -1,5 +1,5 @@
 import { AdminError, adminErrorResponse, adminHeaders, getAdminDb } from "@/lib/server/admin";
-import { requireUser, sendToUser } from "@/lib/server/push";
+import { requireUser, sendToUser, takePushSlot } from "@/lib/server/push";
 import { isSampleUid } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -91,6 +91,9 @@ export async function POST(request: Request) {
     } catch {
       return Response.json({ ok: true, skipped: "already-sent" }, { headers: adminHeaders });
     }
+    // Không gửi dồn: vượt hạn mức giờ/ngày của người nhận thì bỏ qua (họ vẫn thấy trả lời khi mở trang).
+    if (!(await takePushSlot(recipient)))
+      return Response.json({ ok: true, skipped: "rate-limited" }, { headers: adminHeaders });
     const result = await sendToUser(recipient, message);
     return Response.json({ ok: true, ...result }, { headers: adminHeaders });
   } catch (error) {

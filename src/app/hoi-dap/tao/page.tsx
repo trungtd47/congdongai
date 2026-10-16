@@ -8,7 +8,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { signInWithGoogle } from "@/lib/auth";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ImageUpload } from "@/components/ImageUpload";
-import { PushToggle } from "@/components/PushToggle";
+import { PushPrompt } from "@/components/PushPrompt";
 
 const DEMO_UID = "demo-user";
 
@@ -81,14 +81,7 @@ export default function TaoCauHoiPage() {
           <Link href={`/hoi-dap/${postId}`} className="btn btn-primary">
             Xem câu hỏi vừa đăng
           </Link>
-          {!demo && (
-            <div className="mt-5 text-left">
-              <p className="px-3 pb-1 text-sm text-ink-soft">
-                Muốn biết ngay khi có người trả lời?
-              </p>
-              <PushToggle />
-            </div>
-          )}
+          {!demo && <div className="mt-5 text-left"><PushPrompt user={user} context="question" /></div>}
         </div>
       </div>
     );

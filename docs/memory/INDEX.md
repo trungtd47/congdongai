@@ -3,6 +3,7 @@
 Repo hiện chưa có `AGENTS.md`; dùng skill `congdongai-site` và các entry ở đây. Nội dung gốc/nguồn sự thật nằm trong `src/content/` và các route `src/app/`.
 
 ## Gần nhất
+- [2026-10-16: Web push - audit và tối ưu (mời đúng lúc, trần gửi, im lặng ban đêm)](2026-10-16/web-push-audit-optimize.md)
 - [2026-10-16: Ảnh chia sẻ riêng cho từng bài (og:image)](2026-10-16/og-per-article.md)
 - [2026-10-15: Thêm Claude Pro, làm lại Nous Portal/Thanh toán/khối /bat-dau](2026-10-15/claude-pro-option-and-nous-payment.md)
 - [2026-10-15: Viết lại 5 bài nền, sơ đồ động và mục lục thu gọn](2026-10-15/basic-articles-rewrite-toc.md)

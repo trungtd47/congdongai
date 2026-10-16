@@ -17,6 +17,8 @@ self.addEventListener("push", (event) => {
     badge: "/icons/icon-192.png",
     tag: typeof data.tag === "string" ? data.tag : undefined,
     data: { url: typeof data.url === "string" ? data.url : "/" },
+    // Ban đêm (22h-7h theo giờ máy người nhận) vẫn hiện thông báo nhưng không rung, không chuông.
+    silent: new Date().getHours() >= 22 || new Date().getHours() < 7,
   };
   event.waitUntil(self.registration.showNotification(title, options));
 });

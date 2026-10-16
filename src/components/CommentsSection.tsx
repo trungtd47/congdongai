@@ -12,6 +12,7 @@ import {
 import { ImageUpload } from "@/components/ImageUpload";
 import { OfficialBadge } from "@/components/OfficialBadge";
 import { notifyRecipient } from "@/lib/push-client";
+import { PushPrompt } from "@/components/PushPrompt";
 import { ADMIN_AVATAR, ADMIN_PUBLIC_UID } from "@/lib/site";
 
 function CommentAvatar({
@@ -218,6 +219,7 @@ export function CommentsSection({ slug }: { slug: string }) {
   const [replyBody, setReplyBody] = useState("");
   const [replyImage, setReplyImage] = useState("");
   const [busy, setBusy] = useState(false);
+  const [nudge, setNudge] = useState(false); // vừa bình luận: mời bật thông báo
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -255,6 +257,7 @@ export function CommentsSection({ slug }: { slug: string }) {
         photoURL: demo ? "" : (user?.photoURL ?? ""),
       });
       setComments((prev) => [...prev, c]);
+      if (!demo) setNudge(true);
       setBody("");
       setName("");
       setImageURL("");
@@ -288,6 +291,7 @@ export function CommentsSection({ slug }: { slug: string }) {
           path: window.location.pathname,
         });
       setComments((prev) => [...prev, c]);
+      if (!demo) setNudge(true);
       setReplyBody("");
       setReplyImage("");
       setReplyingTo(null);
@@ -475,6 +479,8 @@ export function CommentsSection({ slug }: { slug: string }) {
           </button>
         </div>
       )}
+
+      {nudge && !demo && <PushPrompt user={user} context="comment" />}
     </section>
   );
 }

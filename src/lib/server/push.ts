@@ -3,6 +3,7 @@
 import crypto from "node:crypto";
 import webpush from "web-push";
 import { getAdminAuth, getAdminDb, AdminError } from "@/lib/server/admin";
+import { nextPushRate } from "@/lib/server/push-rate";
 
 const SUBS = "pushSubscriptions";
 
@@ -92,6 +93,18 @@ export async function removeSubscription(uid: string, endpoint: string) {
   const ref = getAdminDb().collection(SUBS).doc(subId(endpoint));
   const snap = await ref.get();
   if (snap.exists && snap.data()?.uid === uid) await ref.delete();
+}
+
+// Mỗi người nhận tối đa vài thông báo mỗi giờ/ngày; vượt thì bỏ qua (không xếp hàng gửi dồn sau).
+export async function takePushSlot(uid: string): Promise<boolean> {
+  const db = getAdminDb();
+  const ref = db.collection("pushRate").doc(uid);
+  return db.runTransaction(async (t) => {
+    const snap = await t.get(ref);
+    const r = nextPushRate(snap.data(), Date.now());
+    if (r.allowed) t.set(ref, r.state);
+    return r.allowed;
+  });
 }
 
 export interface PushMessage {

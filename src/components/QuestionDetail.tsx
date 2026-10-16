@@ -17,7 +17,7 @@ import { signInWithGoogle } from "@/lib/auth";
 import { avatarColor } from "@/lib/avatar";
 import { ADMIN_AVATAR, ADMIN_PUBLIC_UID } from "@/lib/site";
 import { OfficialBadge } from "@/components/OfficialBadge";
-import { PushToggle } from "@/components/PushToggle";
+import { PushPrompt } from "@/components/PushPrompt";
 import { notifyRecipient } from "@/lib/push-client";
 
 function PersonAvatar({ name, uid }: { name: string; uid: string }) {
@@ -253,14 +253,7 @@ export function QuestionDetail({
         </div>
       </div>
 
-      {isAuthor && !demo && (
-        <div className="card mb-4 p-3">
-          <p className="px-3 pb-1 text-sm text-ink-soft">
-            Muốn biết ngay khi có người trả lời câu hỏi này?
-          </p>
-          <PushToggle />
-        </div>
-      )}
+      {isAuthor && !demo && <PushPrompt user={user} context="question" />}
 
       {/* Trả lời */}
       <h2 className="mb-3 text-[18px] font-bold">
