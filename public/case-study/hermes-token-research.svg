@@ -31,4 +31,4 @@
     <text x="85" y="423" font-size="16" font-weight="700" fill="#2B241D">Mỗi lần hỏi lại: đọc file cũ → lấy dữ liệu mới → so khác biệt → ghi ngày và nguồn.</text>
     <text x="85" y="447" font-size="15" fill="#6F6558">Minh họa quy trình biên tập, không phải ảnh chụp ứng dụng hay tín hiệu mua bán.</text>
   </g>
-</svg>
+<text x="939" y="499" text-anchor="end" font-family="Noto Sans, DejaVu Sans, Arial, sans-serif" font-weight="500" font-size="18" letter-spacing="1.08" fill="#FFFFFF" fill-opacity="0.22" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="3.24" stroke-linejoin="round">congdongai.org</text><text x="939" y="499" text-anchor="end" font-family="Noto Sans, DejaVu Sans, Arial, sans-serif" font-weight="500" font-size="18" letter-spacing="1.08" fill="#292C25" fill-opacity="0.58">congdongai.org</text></svg>

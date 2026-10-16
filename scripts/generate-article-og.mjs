@@ -1,10 +1,11 @@
-// Mọi ảnh đều đóng watermark congdongai.org (góc phải dưới).
+// Mọi ảnh đều đóng watermark congdongai.org (góc phải dưới), lấy ảnh gốc ở assets-src/article-images nếu có.
 // Ảnh chia sẻ = ảnh thật hoặc cảnh minh họa SVG đầu tiên của bài (sơ đồ khối/bước/thẻ trông như chụp màn hình nên bỏ, dùng bìa tiêu đề), phủ kín 1200x630 (không khung, không nền mờ, không chú thích).
 // Ghi vào public/og/<tuyến>-<slug>.png. Dev-only: cần bản build đang chạy (standalone) + Chrome bật CDP.
 // Dùng: node scripts/generate-article-og.mjs <baseUrl> <cdpPort> [tuyến/slug ...]
 import fs from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
+import { applyWatermark } from "./lib/watermark.mjs";
 
 const [, , base, cdpPort, ...only] = process.argv;
 const ROOT = path.resolve(import.meta.dirname, "..");
@@ -19,18 +20,10 @@ for (const s of ["blog", "bat-dau", "huong-dan", "cau-chuyen"]) {
 }
 const list = only.length ? only : targets;
 
-// ---- watermark congdongai.org (sếp yêu cầu: mọi ảnh chia sẻ của bài đều có), góc phải dưới
+// ---- watermark congdongai.org: cùng kiểu chữ tối giản với ảnh trong bài (scripts/lib/watermark.mjs)
 async function watermark(file) {
-  const label = "congdongai.org";
-  const fs_ = 22, h = 38, w = 206, margin = 16; // nhỏ, sát góc để không đè chú thích cuối ảnh
-  const svg = Buffer.from(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="${w}" height="${h}" rx="${h / 2}" fill="#38513B" fill-opacity="0.88"/><text x="${w / 2}" y="${h / 2 + 7.5}" text-anchor="middle" font-family="Noto Sans, DejaVu Sans, sans-serif" font-weight="700" font-size="${fs_}" fill="#F8F5EF">${label}</text></svg>`,
-  );
-  const base = await sharp(file).toBuffer();
-  await sharp(base)
-    .composite([{ input: svg, left: W - w - margin, top: H - h - margin }])
-    .png({ compressionLevel: 9 })
-    .toFile(file);
+  const out = await applyWatermark(fs.readFileSync(file));
+  fs.writeFileSync(file, out);
 }
 
 // ---- ảnh có sẵn (png/jpg/svg trong public): phủ kín khung, lệch tỉ lệ thì kéo dãn viền bằng chính điểm ảnh biên
@@ -135,7 +128,9 @@ for (const key of list) {
     continue;
   }
   if (r.kind === "img") {
-    const p = path.join(ROOT, "public", r.src.replace(/^\//, ""));
+    const rel = r.src.replace(/^\//, "");
+    const orig = path.join(ROOT, "assets-src", "article-images", rel); // bản gốc chưa đóng dấu (ảnh trong public đã có watermark)
+    const p = fs.existsSync(orig) ? orig : path.join(ROOT, "public", rel);
     await fromFile(p, file);
     await watermark(file);
     report.push(`${key}: ảnh ${r.src} -> ${path.relative(ROOT, file)}`);
