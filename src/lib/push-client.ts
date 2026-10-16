@@ -22,14 +22,14 @@ function store(): Storage | null {
 }
 
 // Có nên hiện lời mời bật thông báo không. Sau khi đăng câu hỏi (context "question") nhắc lại mỗi lần
-// đăng; ở chỗ khác ("comment") chỉ nhắc lại sau 7 ngày. Bấm "Để sau" 3 lần thì thôi hẳn.
-export function shouldNudge(context: "question" | "comment"): boolean {
+// đăng; ở chỗ khác ("comment", "article") chỉ nhắc lại sau 7 ngày. Bấm "Để sau" 3 lần thì thôi hẳn.
+export function shouldNudge(context: "question" | "comment" | "article"): boolean {
   const ls = store();
   if (!ls) return false;
   try {
     const v = JSON.parse(ls.getItem(NUDGE_KEY) ?? "{}") as { n?: number; at?: number };
     if ((v.n ?? 0) >= NUDGE_MAX_DISMISS) return false;
-    if (context === "comment" && v.at && Date.now() - v.at < NUDGE_COOLDOWN_MS) return false;
+    if (context !== "question" && v.at && Date.now() - v.at < NUDGE_COOLDOWN_MS) return false;
     return true;
   } catch {
     return true;

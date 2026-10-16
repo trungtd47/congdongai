@@ -11,7 +11,7 @@ const HINT: Partial<Record<PushState, string>> = {
   denied: "Bạn đã chặn thông báo cho trang này. Mở cài đặt trình duyệt để bật lại.",
 };
 
-// Nút bật/tắt thông báo khi có người trả lời câu hỏi hoặc bình luận của bạn.
+// Nút bật/tắt thông báo: bài mới và khi có người trả lời câu hỏi/bình luận của bạn.
 export function PushToggle({ className }: { className?: string }) {
   const { user } = useAuth();
   const [state, setState] = useState<PushState | null>(null);
@@ -56,7 +56,7 @@ export function PushToggle({ className }: { className?: string }) {
           aria-pressed={state === "on"}
           className="flex min-h-[44px] w-full items-center gap-2 rounded-sm px-3 text-left text-sm font-medium text-ink transition-colors hover:bg-cream disabled:opacity-50"
         >
-          {state === "on" ? "Tắt thông báo trên trình duyệt" : "Bật thông báo khi có người trả lời"}
+          {state === "on" ? "Tắt thông báo trên trình duyệt" : "Bật thông báo (bài mới và người trả lời)"}
         </button>
       )}
       {error && (

@@ -12,9 +12,11 @@ import {
 
 const COPY = {
   question:
-    "Mình chỉ báo khi có người trả lời câu hỏi này. Không quảng cáo, không gửi dồn. Tắt lại được bất cứ lúc nào.",
+    "Mình báo khi có người trả lời câu hỏi này, và thỉnh thoảng khi có bài mới. Không quảng cáo, không gửi dồn. Tắt lại được bất cứ lúc nào.",
   comment:
-    "Mình chỉ báo khi có người trả lời bình luận của bạn. Không quảng cáo, không gửi dồn. Tắt lại được bất cứ lúc nào.",
+    "Mình báo khi có người trả lời bình luận của bạn, và thỉnh thoảng khi có bài mới. Không quảng cáo, không gửi dồn. Tắt lại được bất cứ lúc nào.",
+  article:
+    "Mình báo khi có bài mới, và khi có người trả lời bạn. Mỗi thông báo gom lại, không quảng cáo, không gửi dồn. Tắt lại được bất cứ lúc nào.",
 };
 
 // Lời mời bật thông báo, chỉ hiện ngay sau một việc bạn vừa làm (đăng câu hỏi, bình luận), không bao giờ
@@ -24,7 +26,7 @@ export function PushPrompt({
   context,
 }: {
   user: User | null;
-  context: "question" | "comment";
+  context: "question" | "comment" | "article";
 }) {
   const [state, setState] = useState<PushState | null>(null);
   const [visible, setVisible] = useState(false);
@@ -75,7 +77,7 @@ export function PushPrompt({
       <div className="card mt-4 p-4" role="status">
         <p className="text-sm font-semibold text-ink">Đã bật thông báo.</p>
         <p className="mt-1 text-sm text-ink-soft">
-          Mình sẽ báo khi có người trả lời bạn.
+          Mình sẽ báo khi có bài mới hoặc có người trả lời bạn.
         </p>
       </div>
     );
@@ -87,7 +89,7 @@ export function PushPrompt({
       aria-label="Bật thông báo"
     >
       <p className="text-[15px] font-semibold text-ink">
-        Nhận thông báo khi có người trả lời bạn
+        Nhận thông báo từ Cộng Đồng AI
       </p>
       {state === "needs-install" ? (
         <p className="mt-1 text-sm leading-relaxed text-ink-soft">
