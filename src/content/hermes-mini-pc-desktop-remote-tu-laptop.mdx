@@ -2,7 +2,7 @@
 title: "Mình chạy Hermes trên mini PC và dùng Desktop từ laptop như thế nào"
 description: "Mình để Hermes chạy trên một mini PC, nối bằng Tailscale và dùng app Desktop trên laptop như cửa sổ điều khiển. Có các bước dựng, lưu ý bảo mật và những lựa chọn khác như SSH, VPS, Hermes Cloud."
 datePublished: "2026-10-11"
-dateModified: "2026-10-15"
+dateModified: "2026-10-16"
 authorName: "Đức Trung"
 tags: ["kinh nghiệm", "mini PC", "Tailscale", "Hermes Desktop", "tự host"]
 ---
@@ -37,9 +37,18 @@ Trước đây mình cũng từng chạy Hermes trên Windows. Với mình, ch�
 
 ## Cách mình dựng, từng bước
 
-Các bước dưới đây theo tài liệu chính thức của Hermes Desktop, cộng với cách mình đặt dịch vụ chạy nền. Bản mình dùng khi viết là Hermes 0.21.6; nếu app của bạn khác phiên bản, tên mục trong Settings có thể hơi khác. Sau đó mini PC của mình lên Hermes 0.22.0: hai dịch vụ ở bước 5 vẫn chạy và lệnh kiểm ở bước 4 vẫn trả `auth_required` là `true`. Phần cuối mục "Những chỗ mình thấy dễ vấp" ghi những thay đổi của 0.22.0 đáng biết nếu bạn chạy backend lâu dài.
+Các bước dưới đây theo tài liệu chính thức của Hermes Desktop, cộng với cách mình đặt dịch vụ chạy nền. Phần gõ lệnh có sẵn prompt để nhờ Hermes làm hộ. Bản mình dùng khi viết là Hermes 0.21.6; nếu app của bạn khác phiên bản, tên mục trong Settings có thể hơi khác. Sau đó mini PC của mình lên Hermes 0.22.0: hai dịch vụ ở bước 5 vẫn chạy và lệnh kiểm ở bước 4 vẫn trả `auth_required` là `true`. Phần cuối mục "Những chỗ mình thấy dễ vấp" ghi những thay đổi của 0.22.0 đáng biết nếu bạn chạy backend lâu dài.
 
 <MiniPcSteps />
+
+### Cách làm nhanh: dán prompt cho Hermes làm hộ
+
+Phần gõ lệnh (cài Tailscale, chạy backend, đặt dịch vụ chạy nền) bạn có thể giao cho chính Hermes trên mini PC. Ở các bước 2, 4 và 5 bên dưới có sẵn một prompt để dán vào chat. Lệnh gốc vẫn để trong mục thu gọn nếu bạn muốn tự gõ hoặc muốn đối chiếu.
+
+- Mở Hermes **ngay trên mini PC** (gõ `hermes` trong terminal của máy đó, hoặc dùng app Desktop cài trên chính máy đó). Cần xong bước 1 trước, vì Hermes phải chạy được thì mới nhờ được.
+- Tùy chế độ duyệt lệnh bạn đã đặt, Hermes có thể hỏi trước khi chạy từng lệnh. Hãy đọc lệnh rồi mới duyệt, nhất là lệnh dùng `sudo`.
+- Những việc cần chính bạn: đăng nhập Tailscale trên trình duyệt, gõ mật khẩu vào file `.env` (bước 3), và nhập mật khẩu `sudo` khi hệ thống hỏi. Prompt đã dặn Hermes dừng lại ở các chỗ này.
+- Hermes vẫn là AI nên có thể làm sai. Sau mỗi bước, dùng bước kiểm ở dưới (địa chỉ Tailscale, `auth_required`, `hostname`) để chắc kết quả.
 
 ### Bước 1: Cài và thử Hermes ngay trên mini PC
 
@@ -47,15 +56,36 @@ Cài Hermes trên mini PC, kết nối một model và hỏi thử một việc 
 
 ### Bước 2: Cài Tailscale trên cả hai máy
 
-[Tailscale](https://tailscale.com/) là dịch vụ tạo một mạng riêng giữa các thiết bị của bạn. Cài trên mini PC và laptop, đăng nhập cùng một tài khoản. Mỗi máy sẽ có một địa chỉ riêng trong mạng này. Trên mini PC, xem địa chỉ bằng:
+[Tailscale](https://tailscale.com/) là dịch vụ tạo một mạng riêng giữa các thiết bị của bạn. Cài trên mini PC và laptop, đăng nhập cùng một tài khoản.
+
+Mình chọn Tailscale vì không phải mở cổng trên router nhà. Theo tài liệu của Tailscale, kết nối giữa các thiết bị trong mạng được mã hóa đầu cuối bằng WireGuard, kể cả khi đi qua máy trung chuyển.
+
+Trên **mini PC**, dán prompt này cho Hermes:
+
+```text
+Mình đang dựng Hermes chạy trên máy này để dùng Desktop từ xa qua Tailscale. Hãy làm lần lượt:
+1. Kiểm tra Tailscale đã cài chưa (tailscale version). Nếu chưa, cài theo hướng dẫn chính thức trên tailscale.com cho đúng bản Linux của máy này. Cho mình xem lệnh cài trước khi chạy.
+2. Chạy tailscale up. Nếu cần đăng nhập, đưa mình đường link để mình tự mở trình duyệt và đăng nhập. Đừng đăng nhập hộ và đừng hỏi mật khẩu tài khoản của mình.
+3. Xong thì chạy tailscale ip -4 và báo địa chỉ cho mình.
+Nếu cần sudo hoặc mật khẩu, hãy dừng lại và nói mình tự gõ. Đừng đổi gì khác ngoài việc trên.
+```
+
+Việc của bạn: mở đường link đăng nhập (cùng tài khoản với laptop) và gõ mật khẩu `sudo` nếu máy hỏi. Trên **laptop**, cài Tailscale và đăng nhập cùng tài khoản như thường.
+
+<details>
+<summary>Muốn tự gõ lệnh thay vì dùng prompt</summary>
+
+Cài Tailscale trên mini PC theo hướng dẫn chính thức, đăng nhập cùng một tài khoản với laptop. Mỗi máy sẽ có một địa chỉ riêng trong mạng này. Trên mini PC, xem địa chỉ bằng:
 
 ```bash
 tailscale ip -4
 ```
 
-Mình chọn Tailscale vì không phải mở cổng trên router nhà. Theo tài liệu của Tailscale, kết nối giữa các thiết bị trong mạng được mã hóa đầu cuối bằng WireGuard, kể cả khi đi qua máy trung chuyển.
+</details>
 
 ### Bước 3: Đặt tên đăng nhập và mật khẩu cho backend
+
+Bước này mình **tự làm bằng tay, không nhờ Hermes**, vì mật khẩu không nên đi qua cuộc trò chuyện.
 
 Backend của Hermes đọc và ghi được file `.env` chứa khóa, và có thể chạy lệnh thay bạn. Vì vậy nó luôn đòi đăng nhập khi mở ra ngoài máy. Mình dùng cách đơn giản nhất mà tài liệu hướng dẫn cho mạng tin cậy: tên đăng nhập và mật khẩu, đặt trong `~/.hermes/.env`:
 
@@ -74,15 +104,30 @@ Vài điều đi kèm:
 
 ### Bước 4: Chạy backend, chỉ gắn vào địa chỉ Tailscale
 
-Chạy tay một lần để xem có chạy được không, thay `<ip-tailscale>` bằng địa chỉ ở bước 2:
+Chạy thử một lần để xem backend lên được không. Thay `<ip-tailscale>` bằng địa chỉ ở bước 2 rồi dán prompt này cho Hermes trên mini PC:
 
-```bash
-hermes serve --host <ip-tailscale> --port 9119
+```text
+Mình đã tự đặt tên đăng nhập, mật khẩu và SECRET cho backend trong ~/.hermes/.env. Đừng mở, in hay sao chép nội dung file đó.
+Địa chỉ Tailscale của máy này là <ip-tailscale>. Hãy:
+1. Chạy thử hermes serve --host <ip-tailscale> --port 9119 ở chế độ nền (không để nó treo terminal), chờ vài giây cho nó lên.
+2. Chỉ gắn vào đúng địa chỉ Tailscale, không dùng 0.0.0.0.
+3. Chạy curl -s http://<ip-tailscale>:9119/api/status và cho mình biết auth_required có phải true không, auth_providers có basic không.
+4. Xong thì tắt đúng tiến trình thử bạn vừa mở. Đừng dùng hermes serve --stop vì lệnh đó dừng mọi tiến trình hermes serve đang chạy.
+Nếu lỗi, đưa mình thông báo lỗi rồi dừng, đừng tự sửa file cấu hình.
 ```
 
 Mình **không** dùng `0.0.0.0` (mọi giao diện mạng), mà gắn đúng vào địa chỉ Tailscale. Như vậy chỉ thiết bị trong mạng Tailscale của mình chạm được vào cổng này, thiết bị khác trong mạng nhà cũng không vào được. Đây cũng là cách tài liệu Hermes gợi ý khi dùng Tailscale.
 
 <MiniPcBinding />
+
+<details>
+<summary>Muốn tự gõ lệnh thay vì dùng prompt</summary>
+
+Chạy tay một lần, thay `<ip-tailscale>` bằng địa chỉ ở bước 2:
+
+```bash
+hermes serve --host <ip-tailscale> --port 9119
+```
 
 Kiểm tra từ chính mini PC (hoặc từ laptop khi đã có Tailscale):
 
@@ -90,11 +135,35 @@ Kiểm tra từ chính mini PC (hoặc từ laptop khi đã có Tailscale):
 curl -s http://<ip-tailscale>:9119/api/status
 ```
 
-Kết quả phải có `auth_required` là `true` và `auth_providers` có `basic`. Trên máy mình, lệnh này trả đúng như thế. Nếu `auth_providers` không có `basic`, backend chưa đọc được tên đăng nhập và mật khẩu trong `.env`.
+</details>
+
+Dù làm cách nào, kết quả phải có `auth_required` là `true` và `auth_providers` có `basic`. Trên máy mình, lệnh này trả đúng như thế. Nếu `auth_providers` không có `basic`, backend chưa đọc được tên đăng nhập và mật khẩu trong `.env`.
 
 ### Bước 5: Cho backend tự chạy nền bằng systemd
 
-Chạy tay thì đóng terminal là mất, nên mình đặt thành dịch vụ systemd cấp người dùng. Tạo file `~/.config/systemd/user/hermes-serve.service`:
+Chạy thử thì đóng terminal là mất, nên mình đặt thành dịch vụ systemd cấp người dùng. Thay `<ip-tailscale>` rồi dán prompt này cho Hermes trên mini PC:
+
+```text
+Hãy đặt hermes serve thành dịch vụ systemd cấp người dùng trên máy này. Địa chỉ Tailscale là <ip-tailscale>.
+1. Tìm đường dẫn thật của lệnh hermes bằng command -v hermes.
+2. Tạo ~/.config/systemd/user/hermes-serve.service với: Description là Hermes Serve cho Desktop remote; After và Wants là network-online.target; StartLimitIntervalSec=0; Type=simple; ExecStart là đường dẫn hermes vừa tìm, kèm: serve --host <ip-tailscale> --port 9119 --skip-build; Environment=HERMES_HOME=%h/.hermes; Restart=always; RestartSec=5; WantedBy=default.target.
+3. Không đụng tới dịch vụ hermes-gateway (nếu có) và đừng mở hay in nội dung ~/.hermes/.env.
+4. Chạy systemctl --user daemon-reload, rồi systemctl --user enable --now hermes-serve, rồi loginctl enable-linger "$USER".
+5. Cho mình xem 30 dòng cuối của journalctl --user -u hermes-serve, rồi chạy curl -s http://<ip-tailscale>:9119/api/status để xác nhận auth_required là true.
+Nếu có bước nào cần sudo hoặc báo lỗi, dừng lại và nói cho mình biết.
+```
+
+Mấy chỗ trong prompt đều có lý do:
+
+- `--skip-build` bỏ bước build giao diện web, hợp với dịch vụ chạy không tương tác. Vì vậy mình dặn chạy thử ở bước 4 trước.
+- `Restart=always` để dịch vụ tự thử lại khi lỗi, ví dụ lúc khởi động mà Tailscale chưa sẵn sàng nên chưa có địa chỉ để gắn vào.
+- `enable-linger` quan trọng: thiếu nó, dịch vụ cấp người dùng chỉ chạy khi có phiên đăng nhập.
+- Trên máy mình, dịch vụ đọc tên đăng nhập từ `~/.hermes/.env` thông qua `HERMES_HOME`. Nếu dịch vụ của bạn báo không thấy, nhờ Hermes thêm dòng `EnvironmentFile=%h/.hermes/.env` như tài liệu hướng dẫn.
+
+<details>
+<summary>Muốn tự gõ lệnh thay vì dùng prompt</summary>
+
+Tạo file `~/.config/systemd/user/hermes-serve.service`:
 
 ```ini
 [Unit]
@@ -114,12 +183,7 @@ RestartSec=5
 WantedBy=default.target
 ```
 
-- Tìm đường dẫn thật của lệnh bằng `command -v hermes`.
-- `--skip-build` bỏ bước build giao diện web, hợp với dịch vụ chạy không tương tác. Hãy chạy tay một lần như bước 4 trước khi thêm cờ này.
-- `Restart=always` để dịch vụ tự thử lại khi lỗi, ví dụ lúc khởi động mà Tailscale chưa sẵn sàng nên chưa có địa chỉ để gắn vào.
-- Trên máy mình, dịch vụ đọc tên đăng nhập từ `~/.hermes/.env` thông qua `HERMES_HOME`. Nếu dịch vụ của bạn báo không thấy, thêm dòng `EnvironmentFile=%h/.hermes/.env` như tài liệu hướng dẫn.
-
-Bật dịch vụ và cho phép nó chạy cả khi bạn chưa đăng nhập vào mini PC:
+Tìm đường dẫn thật của lệnh bằng `command -v hermes`. Rồi bật dịch vụ và cho phép nó chạy cả khi bạn chưa đăng nhập vào mini PC:
 
 ```bash
 systemctl --user daemon-reload
@@ -128,7 +192,9 @@ loginctl enable-linger "$USER"
 journalctl --user -u hermes-serve -n 30
 ```
 
-Lệnh `enable-linger` quan trọng: thiếu nó, dịch vụ cấp người dùng chỉ chạy khi có phiên đăng nhập. Máy mình bật linger và cả hai dịch vụ `hermes-serve` và `hermes-gateway` đều ở trạng thái enabled.
+</details>
+
+Máy mình bật linger và cả hai dịch vụ `hermes-serve` và `hermes-gateway` đều ở trạng thái enabled.
 
 Chú ý: `hermes serve` là thứ app Desktop kết nối vào. **Gateway nhắn tin** (Telegram, Discord và các kênh khác) là một tiến trình riêng. Nếu bạn dùng cả hai, hãy chạy hai dịch vụ riêng như mình.
 
