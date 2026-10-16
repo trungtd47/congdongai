@@ -3,6 +3,7 @@
 Repo hiện chưa có `AGENTS.md`; dùng skill `congdongai-site` và các entry ở đây. Nội dung gốc/nguồn sự thật nằm trong `src/content/` và các route `src/app/`.
 
 ## Gần nhất
+- [2026-10-16: Bật thông báo bị chặn không hỏi: xin quyền ngay, chỉ cách mở lại](2026-10-16/push-permission-blocked.md)
 - [2026-10-16: Thư viện theo Hermes 0.22, bỏ form email giả, case ARGUS, chủ đề cho mọi case](2026-10-16/thu-vien-case-update.md)
 - [2026-10-16: Web push - audit và tối ưu (mời đúng lúc, trần gửi, im lặng ban đêm)](2026-10-16/web-push-audit-optimize.md)
 - [2026-10-16: Ảnh chia sẻ riêng cho từng bài (og:image)](2026-10-16/og-per-article.md)
