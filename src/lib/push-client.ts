@@ -4,7 +4,9 @@ import type { User } from "firebase/auth";
 export type PushState =
   | "unsupported" // trình duyệt không hỗ trợ
   | "needs-install" // iPhone/iPad: phải thêm vào Màn hình chính trước
+  | "in-app" // đang mở trong trình duyệt của Zalo/Facebook/Instagram: không có thông báo đẩy
   | "denied" // người dùng đã chặn
+  | "blocked" // trình duyệt tự từ chối mà không hiện hộp hỏi (tạm chặn sau nhiều lần tắt, ẩn danh...)
   | "off"
   | "on";
 
@@ -23,13 +25,19 @@ function store(): Storage | null {
 
 // Có nên hiện lời mời bật thông báo không. Sau khi đăng câu hỏi (context "question") nhắc lại mỗi lần
 // đăng; ở chỗ khác ("comment", "article") chỉ nhắc lại sau 7 ngày. Bấm "Để sau" 3 lần thì thôi hẳn.
-export function shouldNudge(context: "question" | "comment" | "article"): boolean {
+export function shouldNudge(
+  context: "question" | "comment" | "article",
+): boolean {
   const ls = store();
   if (!ls) return false;
   try {
-    const v = JSON.parse(ls.getItem(NUDGE_KEY) ?? "{}") as { n?: number; at?: number };
+    const v = JSON.parse(ls.getItem(NUDGE_KEY) ?? "{}") as {
+      n?: number;
+      at?: number;
+    };
     if ((v.n ?? 0) >= NUDGE_MAX_DISMISS) return false;
-    if (context !== "question" && v.at && Date.now() - v.at < NUDGE_COOLDOWN_MS) return false;
+    if (context !== "question" && v.at && Date.now() - v.at < NUDGE_COOLDOWN_MS)
+      return false;
     return true;
   } catch {
     return true;
@@ -41,7 +49,10 @@ export function dismissNudge(): void {
   if (!ls) return;
   try {
     const v = JSON.parse(ls.getItem(NUDGE_KEY) ?? "{}") as { n?: number };
-    ls.setItem(NUDGE_KEY, JSON.stringify({ n: (v.n ?? 0) + 1, at: Date.now() }));
+    ls.setItem(
+      NUDGE_KEY,
+      JSON.stringify({ n: (v.n ?? 0) + 1, at: Date.now() }),
+    );
   } catch {
     /* bỏ qua */
   }
@@ -67,6 +78,26 @@ function isStandalone(): boolean {
   );
 }
 
+function isInAppBrowser(): boolean {
+  return /FBAN|FBAV|FB_IAB|Instagram|Zalo|Line\/|TikTok/i.test(
+    navigator.userAgent,
+  );
+}
+
+const OPEN_SETTINGS =
+  "Bấm biểu tượng bên trái thanh địa chỉ (ổ khóa hoặc nút cài đặt trang), chọn Thông báo → Cho phép, rồi tải lại trang và bấm bật lần nữa.";
+
+// Lời hướng dẫn cho các trạng thái không bật được, dùng chung cho nút trong menu và lời mời cuối bài.
+export const PUSH_HINT: Partial<Record<PushState, string>> = {
+  unsupported: "Trình duyệt này chưa hỗ trợ thông báo đẩy.",
+  "needs-install":
+    'Trên iPhone/iPad: bấm nút Chia sẻ của Safari, chọn "Thêm vào Màn hình chính", rồi mở Cộng Đồng AI từ biểu tượng đó để bật thông báo.',
+  "in-app":
+    "Bạn đang mở trang trong ứng dụng (Zalo, Facebook...), nơi không có thông báo đẩy. Mở trang bằng Chrome hoặc Safari rồi bật lại.",
+  denied: `Trình duyệt đang chặn thông báo của trang này nên không hiện hộp hỏi nữa. ${OPEN_SETTINGS}`,
+  blocked: `Trình duyệt tự chặn mà không hỏi bạn. Hay gặp khi đã tắt hộp hỏi vài lần (Chrome tạm chặn khoảng một tuần), khi đang ở tab ẩn danh, hoặc khi trình duyệt đặt chế độ chặn mọi lời xin gửi thông báo. ${OPEN_SETTINGS}`,
+};
+
 function keyToBytes(base64: string): Uint8Array<ArrayBuffer> {
   const pad = "=".repeat((4 - (base64.length % 4)) % 4);
   const raw = atob((base64 + pad).replace(/-/g, "+").replace(/_/g, "/"));
@@ -89,13 +120,18 @@ async function currentSubscription(): Promise<PushSubscription | null> {
 
 export async function getPushState(): Promise<PushState> {
   if (typeof window === "undefined") return "unsupported";
-  if (!supported()) return isIos() && !isStandalone() ? "needs-install" : "unsupported";
+  if (isInAppBrowser()) return "in-app";
+  if (!supported())
+    return isIos() && !isStandalone() ? "needs-install" : "unsupported";
   if (Notification.permission === "denied") return "denied";
   if (Notification.permission !== "granted") return "off";
   return (await currentSubscription()) ? "on" : "off";
 }
 
-async function postSubscription(user: User, sub: PushSubscription): Promise<boolean> {
+async function postSubscription(
+  user: User,
+  sub: PushSubscription,
+): Promise<boolean> {
   const res = await fetch("/api/push/subscribe", {
     method: "POST",
     headers: await authHeaders(user),
@@ -104,13 +140,25 @@ async function postSubscription(user: User, sub: PushSubscription): Promise<bool
   return res.ok;
 }
 
-// Gọi từ nút bấm của người dùng (trình duyệt yêu cầu thao tác trực tiếp mới hiện hộp xin quyền).
+// Gọi từ nút bấm của người dùng. Hộp xin quyền phải được gọi NGAY trong thao tác bấm, trước mọi
+// await khác, nếu không Safari/Firefox có thể từ chối mà không hiện hộp.
 export async function enablePush(user: User): Promise<PushState> {
-  const state = await getPushState();
-  if (state === "unsupported" || state === "needs-install") return state;
+  if (isInAppBrowser()) return "in-app";
+  if (!supported())
+    return isIos() && !isStandalone() ? "needs-install" : "unsupported";
+  if (Notification.permission === "denied") return "denied";
+  const asked = Notification.permission === "default";
+  const startedAt = Date.now();
+  const perm =
+    Notification.permission === "granted"
+      ? "granted"
+      : await Notification.requestPermission();
   store()?.removeItem(OPTOUT_KEY);
-  const perm = await Notification.requestPermission();
-  if (perm !== "granted") return perm === "denied" ? "denied" : "off";
+  if (perm === "denied") {
+    // Bị từ chối gần như tức thì nghĩa là trình duyệt không hề hiện hộp hỏi cho người dùng.
+    return asked && Date.now() - startedAt < 800 ? "blocked" : "denied";
+  }
+  if (perm !== "granted") return "off";
 
   const reg = await navigator.serviceWorker.register("/sw.js");
   await navigator.serviceWorker.ready;
@@ -193,7 +241,11 @@ type NotifyInput =
 export function notifyRecipient(user: User, input: NotifyInput): void {
   authHeaders(user)
     .then((headers) =>
-      fetch("/api/push/notify", { method: "POST", headers, body: JSON.stringify(input) }),
+      fetch("/api/push/notify", {
+        method: "POST",
+        headers,
+        body: JSON.stringify(input),
+      }),
     )
     .catch(() => {});
 }

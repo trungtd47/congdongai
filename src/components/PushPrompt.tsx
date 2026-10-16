@@ -6,6 +6,7 @@ import {
   dismissNudge,
   enablePush,
   getPushState,
+  PUSH_HINT,
   shouldNudge,
   type PushState,
 } from "@/lib/push-client";
@@ -59,7 +60,6 @@ export function PushPrompt({
       const next = await enablePush(user);
       setState(next);
       if (next === "on") setDone(true);
-      else if (next === "denied") setVisible(false);
     } catch {
       setError("Chưa bật được thông báo. Bạn thử lại sau nhé.");
     } finally {
@@ -82,6 +82,9 @@ export function PushPrompt({
       </div>
     );
 
+  // Không bật được (bị chặn, cần cài app, đang trong Zalo/Facebook): giữ khung lại và chỉ cách xử lý.
+  const hint = PUSH_HINT[state];
+
   return (
     <section
       className="card mt-4 border-l-4 p-4"
@@ -91,11 +94,9 @@ export function PushPrompt({
       <p className="text-[15px] font-semibold text-ink">
         Nhận thông báo từ Cộng Đồng AI
       </p>
-      {state === "needs-install" ? (
-        <p className="mt-1 text-sm leading-relaxed text-ink-soft">
-          Trên iPhone/iPad: bấm nút Chia sẻ của Safari, chọn &quot;Thêm vào Màn
-          hình chính&quot;, rồi mở Cộng Đồng AI từ biểu tượng đó để bật thông
-          báo.
+      {hint ? (
+        <p className="mt-1 text-sm leading-relaxed text-ink-soft" role="status">
+          {hint}
         </p>
       ) : (
         <p className="mt-1 text-sm leading-relaxed text-ink-soft">
@@ -108,7 +109,7 @@ export function PushPrompt({
         </p>
       )}
       <div className="mt-3 flex flex-wrap gap-3">
-        {state !== "needs-install" && (
+        {!hint && (
           <button
             type="button"
             className="btn btn-primary"
