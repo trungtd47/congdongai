@@ -29,6 +29,12 @@ export default async function CauChuyenPage({ searchParams }: Props) {
   const visible = topic
     ? caseStudies.filter((c) => c.topic === topic)
     : caseStudies;
+  // Nguồn ngoài, mỗi nguồn một dòng (bài kinh nghiệm của Admin không cần dẫn ra ngoài).
+  const sources = caseStudies.filter(
+    (c, i, all) =>
+      !c.sourceUrl.startsWith("https://congdongai.org") &&
+      all.findIndex((o) => o.sourceUrl === c.sourceUrl) === i,
+  );
   return (
     <div className="wrap py-12">
       <Breadcrumb items={[{ name: "Câu chuyện thật" }]} />
@@ -74,38 +80,28 @@ export default async function CauChuyenPage({ searchParams }: Props) {
             </Link>
           ))}
         </nav>
-        <div className="flex flex-col gap-4">
-          {visible.map((c) => (
-            <Link
-              key={c.slug}
-              href={`/cau-chuyen/${c.slug}`}
-              className="card card-hover p-5 md:p-6"
-            >
-              <div className="flex items-start gap-3">
-                <span className="text-3xl">{c.icon}</span>
-                <div className="min-w-0">
-                  <h3 className="text-[17px] font-bold leading-snug">
+        <ul className="story-grid">
+          {visible.map((c) => {
+            return (
+              <li key={c.slug} className="card card-hover story-card">
+                {c.topic && (
+                  <span className="story-topic">{caseTopics[c.topic]}</span>
+                )}
+                <h3 className="story-title">
+                  <Link href={`/cau-chuyen/${c.slug}`} className="story-link">
                     {c.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-ink-soft">{c.teaser}</p>
-                  {c.authorName && (
-                    <p className="mt-2 text-xs font-semibold text-teal-dark">
-                      Chia sẻ bởi {c.authorName}
-                    </p>
-                  )}
-                  {c.topic && (
-                    <span className="mt-2 inline-block rounded-full bg-[var(--teal-soft)] px-2.5 py-1 text-xs font-semibold text-teal-dark">
-                      {caseTopics[c.topic]}
-                    </span>
-                  )}
-                  <span className="mt-2 inline-block text-[13px] font-semibold text-teal-dark">
-                    Đọc câu chuyện →
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
+                  </Link>
+                </h3>
+                <p className="story-teaser">{c.teaser}</p>
+                <p className="story-meta">
+                  {c.authorName
+                    ? `Chia sẻ bởi ${c.authorName}`
+                    : c.sourceLabel.split(":")[0]}
+                </p>
+              </li>
+            );
+          })}
+        </ul>
       </section>
 
       {/* NGUỒN */}
@@ -115,9 +111,8 @@ export default async function CauChuyenPage({ searchParams }: Props) {
           {caseStudyAggregator.note}
         </p>
         <ul className="space-y-2 text-sm">
-          {caseStudies.map((c) => (
-            <li key={c.slug} className="flex items-baseline gap-2">
-              <span className="text-ink-soft">{c.icon}</span>
+          {sources.map((c) => (
+            <li key={c.sourceUrl} className="flex items-baseline gap-2">
               <a
                 href={c.sourceUrl}
                 target="_blank"
@@ -129,7 +124,6 @@ export default async function CauChuyenPage({ searchParams }: Props) {
             </li>
           ))}
           <li className="flex items-baseline gap-2">
-            <span className="text-ink-soft">📚</span>
             <a
               href={caseStudyAggregator.url}
               target="_blank"

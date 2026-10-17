@@ -26,10 +26,10 @@ export default function BatDauPage() {
       </h2>
       <p className="mb-8 max-w-2xl text-[16px] text-ink-soft">
         Tải bản Desktop chính thức cho Windows hoặc Mac bên dưới, cài trên máy,
-        rồi chọn dịch vụ cung cấp model AI để Hermes xử lý yêu cầu. Trên máy mới,
-        lần mở đầu tiên là một chat thiết lập chạy bằng model dùng thử, nên bạn
-        làm quen được ngay. Các bài ở cuối trang dẫn bạn qua từng bước; không
-        cần biết code hay dùng terminal.
+        rồi chọn dịch vụ cung cấp model AI để Hermes xử lý yêu cầu. Trên máy
+        mới, lần mở đầu tiên là một chat thiết lập chạy bằng model dùng thử, nên
+        bạn làm quen được ngay. Các bài ở cuối trang dẫn bạn qua từng bước;
+        không cần biết code hay dùng terminal.
       </p>
 
       <div id="tai-hermes" className="mb-8 scroll-mt-24">
@@ -171,30 +171,33 @@ export default function BatDauPage() {
         </p>
       </section>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        {batDauItems.map((item, i) => (
-          <Link
-            key={item.slug}
-            href={`/bat-dau/${item.slug}`}
-            className="card card-hover flex items-start gap-4 p-5"
-          >
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-teal-soft text-lg">
-              {item.icon ?? i + 1}
-            </div>
-            <div className="min-w-0">
-              <div className="flex items-center gap-2">
-                <h2 className="text-[16px] font-bold">{item.title}</h2>
+      <h2 className="mb-4 text-[22px] font-bold">Đọc theo thứ tự</h2>
+      <ol className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        {batDauItems.map((item, i) => {
+          return (
+            <li key={item.slug} className="card card-hover lib-item">
+              <span className="lib-num" aria-hidden="true">
+                {i + 1}
+              </span>
+              <div className="min-w-0">
+                <h3 className="text-[17px] font-bold leading-snug">
+                  <Link href={`/bat-dau/${item.slug}`} className="lib-link">
+                    {item.title}
+                  </Link>
+                </h3>
+                <p className="mt-1 text-[15px] text-ink-soft">
+                  {item.description}
+                </p>
                 {item.time && (
-                  <span className="rounded-full bg-amber-soft px-2 py-0.5 text-xs font-bold text-amber">
-                    {item.time}
-                  </span>
+                  <p className="mt-1 text-[13px] text-ink-soft">
+                    Đọc {item.time.replace("~", "khoảng ")}
+                  </p>
                 )}
               </div>
-              <p className="mt-1 text-sm text-ink-soft">{item.description}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
+            </li>
+          );
+        })}
+      </ol>
     </div>
   );
 }

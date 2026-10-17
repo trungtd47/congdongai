@@ -277,7 +277,7 @@ export default async function HomePage() {
                       <p>{item.description}</p>
                     </div>
                     <Link className="ed-dl" href={`/thu-vien/${item.slug}`}>
-                      Mở
+                      Mở →
                     </Link>
                   </div>
                 );

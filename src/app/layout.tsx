@@ -77,11 +77,11 @@ export default function RootLayout({
       lang="vi"
       className={`${notoSerif.variable} ${notoSans.variable}`}
     >
-      <body className="font-sans">
+      <body className="flex min-h-screen flex-col font-sans">
         <JsonLd data={websiteJsonLd()} />
         <DemoBanner />
         <Nav />
-        <main>{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

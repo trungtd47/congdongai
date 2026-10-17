@@ -88,6 +88,10 @@ h3 { font-size: 1.18rem; }
   margin: 0 auto;
   padding: 0 34px;
 }
+/* .wrap không nằm trong layer nên đè max-w-* của Tailwind; khai báo lại cho trang cột hẹp. */
+.wrap.max-w-xl { max-width: calc(36rem + 68px); }
+.wrap.max-w-2xl { max-width: calc(42rem + 68px); }
+.wrap.max-w-3xl { max-width: calc(48rem + 68px); }
 
 a {
   color: var(--color-ink);
@@ -584,4 +588,31 @@ a.tag-pill-link:hover, a.tag-pill-link:focus-visible {
   .lib-item { grid-template-columns: 28px minmax(0, 1fr); gap: 8px 12px; padding: 16px; }
   .lib-num { width: 28px; height: 28px; font-size: 13px; }
   .lib-dl { grid-column: 2; justify-self: start; }
+}
+
+/* Hỏi & Đáp: danh sách kẻ dòng, cùng kiểu trang chủ */
+.qa-list { list-style: none; margin: 0; padding: 0; max-width: 860px; border-top: 1px solid var(--color-line); }
+.qa-row { padding: 18px 0; border-bottom: 1px solid var(--color-line); }
+.qa-title { display: block; font-family: var(--font-serif); font-size: 20px; line-height: 1.4; color: var(--color-ink); }
+.qa-title:hover { color: var(--color-green); }
+.qa-body { margin-top: 6px; font-size: 15px; line-height: 1.6; color: var(--color-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.qa-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-top: 10px; font-size: 13px; color: var(--color-muted); }
+.qa-solved { color: var(--color-green); font-weight: 600; }
+
+/* Câu chuyện: lưới 2 cột, cả thẻ bấm được */
+.story-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.story-card { position: relative; display: flex; flex-direction: column; padding: 22px; }
+.story-card:focus-within { outline: 2px solid var(--color-green); outline-offset: 2px; }
+.story-topic { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--color-green); }
+.story-title { margin-top: 8px; font-family: var(--font-serif); font-size: 21px; font-weight: 400; line-height: 1.35; }
+.story-link { color: var(--color-ink); }
+.story-link::after { content: ""; position: absolute; inset: 0; }
+.story-link:focus-visible { outline: none; }
+.story-teaser { margin-top: 8px; font-size: 15px; line-height: 1.6; color: var(--color-muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.story-meta { margin-top: auto; padding-top: 14px; font-size: 13px; color: var(--color-muted); }
+@media (max-width: 760px) {
+  .story-grid { grid-template-columns: 1fr; }
+  .story-card { padding: 18px; }
+  .story-title { font-size: 19px; }
+  .qa-title { font-size: 18px; }
 }

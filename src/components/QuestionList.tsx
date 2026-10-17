@@ -77,40 +77,36 @@ export function QuestionList({
           Chưa có câu hỏi nào. Hãy là người đầu tiên đặt câu hỏi!
         </div>
       ) : (
-        <div className="flex flex-col gap-3">
-          {posts.map((p) => (
-            <Link
-              key={p.id}
-              href={`/hoi-dap/${p.id}`}
-              className="card card-hover block p-5"
-            >
-              <div className="mb-2 flex flex-wrap items-center gap-2">
-                {p.tags.map((t) => (
-                  <span key={t} className="tag-pill">
-                    {t}
+        <ul className="qa-list">
+          {posts.map((p) => {
+            return (
+              <li key={p.id} className="qa-row">
+                <Link href={`/hoi-dap/${p.id}`} className="qa-title">
+                  {p.title}
+                </Link>
+                <p className="qa-body">{p.body}</p>
+                <div className="qa-meta">
+                  {p.solvedAnswerId && (
+                    <span className="qa-solved">✓ Đã giải quyết</span>
+                  )}
+                  {p.tags.map((t) => {
+                    return (
+                      <span key={t} className="tag-pill">
+                        {t}
+                      </span>
+                    );
+                  })}
+                  <span>{p.authorName}</span>
+                  <span aria-label={`${p.answerCount} trả lời`}>
+                    💬 {p.answerCount}
                   </span>
-                ))}
-                {p.solvedAnswerId && (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-semibold text-emerald-700">
-                    ✓ Đã giải quyết
-                  </span>
-                )}
-              </div>
-              <h2 className="mb-1 text-[16px] font-bold leading-snug">
-                {p.title}
-              </h2>
-              <p className="mb-3 line-clamp-2 text-sm text-ink-soft">
-                {p.body}
-              </p>
-              <div className="flex items-center gap-4 text-[13px] text-ink-soft">
-                <span>{p.authorName}</span>
-                <span>💬 {p.answerCount}</span>
-                <span>▲ {p.upvotes}</span>
-                <span>{p.createdAt}</span>
-              </div>
-            </Link>
-          ))}
-        </div>
+                  <span aria-label={`${p.upvotes} vote`}>▲ {p.upvotes}</span>
+                  <span>{p.createdAt}</span>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
       )}
     </div>
   );
