@@ -70,7 +70,7 @@ function kindOf(group: ArticleGroup, personal: boolean): string {
   if (group === "lo-trinh") return "Lộ trình người mới";
   if (group === "cong-vu") return "Công vụ";
   if (group === "kinh-nghiem") {
-    if (personal) return "Kinh nghiệm của Đức Trung";
+    if (personal) return "Kinh nghiệm của Admin";
     return "Câu chuyện cộng đồng";
   }
   return "Hướng dẫn";
