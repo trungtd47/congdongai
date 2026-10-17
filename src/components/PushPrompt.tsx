@@ -16,6 +16,8 @@ const COPY = {
     "Mình báo khi có người trả lời câu hỏi này, và thỉnh thoảng khi có bài mới. Không quảng cáo, không gửi dồn. Tắt lại được bất cứ lúc nào.",
   comment:
     "Mình báo khi có người trả lời bình luận của bạn, và thỉnh thoảng khi có bài mới. Không quảng cáo, không gửi dồn. Tắt lại được bất cứ lúc nào.",
+  articleAnon:
+    "Không cần đăng nhập. Mình chỉ báo khi có bài mới, gom lại, không quảng cáo, không gửi dồn. Tắt lại được bất cứ lúc nào.",
   article:
     "Mình báo khi có bài mới, và khi có người trả lời bạn. Mỗi thông báo gom lại, không quảng cáo, không gửi dồn. Tắt lại được bất cứ lúc nào.",
 };
@@ -26,7 +28,7 @@ export function PushPrompt({
   user,
   context,
 }: {
-  user: User | null;
+  user: User | null; // null chỉ hợp lệ với context "article" (khách chưa đăng nhập, chỉ nhận bài mới)
   context: "question" | "comment" | "article";
 }) {
   const [state, setState] = useState<PushState | null>(null);
@@ -50,10 +52,11 @@ export function PushPrompt({
     };
   }, [context]);
 
-  if (!user || !visible || state === null) return null;
+  const anon = context === "article" && !user;
+  if ((!user && !anon) || !visible || state === null) return null;
 
   async function enable() {
-    if (!user || busy) return;
+    if ((!user && !anon) || busy) return;
     setBusy(true);
     setError("");
     try {
@@ -77,7 +80,9 @@ export function PushPrompt({
       <div className="card mt-4 p-4" role="status">
         <p className="text-sm font-semibold text-ink">Đã bật thông báo.</p>
         <p className="mt-1 text-sm text-ink-soft">
-          Mình sẽ báo khi có bài mới hoặc có người trả lời bạn.
+          {anon
+            ? "Mình sẽ báo khi có bài mới."
+            : "Mình sẽ báo khi có bài mới hoặc có người trả lời bạn."}
         </p>
       </div>
     );
@@ -92,7 +97,9 @@ export function PushPrompt({
       aria-label="Bật thông báo"
     >
       <p className="text-[15px] font-semibold text-ink">
-        Nhận thông báo từ Cộng Đồng AI
+        {anon
+          ? "Nhận thông báo khi có bài mới"
+          : "Nhận thông báo từ Cộng Đồng AI"}
       </p>
       {hint ? (
         <p className="mt-1 text-sm leading-relaxed text-ink-soft" role="status">
@@ -100,7 +107,7 @@ export function PushPrompt({
         </p>
       ) : (
         <p className="mt-1 text-sm leading-relaxed text-ink-soft">
-          {COPY[context]}
+          {anon ? COPY.articleAnon : COPY[context]}
         </p>
       )}
       {error && (

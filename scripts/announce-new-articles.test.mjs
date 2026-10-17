@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseFeed, selectNew, gate, buildMessage, vnHour, MAX_NEW, MIN_GAP_MS } from "./announce-new-articles.mjs";
+import { parseFeed, selectNew, gate, buildMessage, vnHour, pickRecipients, MAX_NEW, MIN_GAP_MS } from "./announce-new-articles.mjs";
 
 const xml = `<rss><channel><item><title>A &amp; B</title><link>https://congdongai.org/blog/a/</link></item><item><title>Bài C</title><link>https://congdongai.org/bat-dau/c/</link></item><item><title>Ngoài</title><link>https://example.com/x/</link></item></channel></rss>`;
 
@@ -43,4 +43,14 @@ test("nội dung thông báo: 1 bài và gom nhiều bài", () => {
   assert.equal(many.title, "4 bài mới trên Cộng Đồng AI");
   assert.equal(many.url, "/bai-viet/");
   assert.equal(many.body, "T1 · T2 và 2 bài khác");
+});
+
+const d = (endpoint, uid) => ({ data: () => ({ subscription: { endpoint }, uid }) });
+
+test("chốt chặn bài thử không chạm người dùng thật", () => {
+  const docs = [d("https://fcm.googleapis.com/fcm/send/real", "PSgM"), d("https://127.0.0.1:1/zz-test-a", null), d("https://fcm.googleapis.com/fcm/send/x", "zz-test-user"), d("https://web.push.apple.com/real2", null)];
+  assert.equal(pickRecipients(docs, undefined).length, 4);
+  const only = pickRecipients(docs, "zz-test");
+  assert.equal(only.length, 2);
+  assert.ok(only.every((x) => !String(x.data().subscription.endpoint).includes("/real")));
 });

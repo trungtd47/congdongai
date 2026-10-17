@@ -11,6 +11,7 @@ export type PushState =
   | "on";
 
 const OPTOUT_KEY = "cdai-push-optout"; // người dùng chủ động tắt: không tự đăng ký lại
+const SYNC_KEY = "cdai-push-pubsync"; // lần gần nhất gửi lại đăng ký công khai
 const NUDGE_KEY = "cdai-push-nudge"; // lần nhắc bật thông báo: { n: số lần bấm "Để sau", at: lần gần nhất }
 const NUDGE_MAX_DISMISS = 3;
 const NUDGE_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
@@ -128,6 +129,16 @@ export async function getPushState(): Promise<PushState> {
   return (await currentSubscription()) ? "on" : "off";
 }
 
+// Khách chưa đăng nhập: chỉ nhận thông báo bài mới.
+async function postPublicSubscription(sub: PushSubscription): Promise<boolean> {
+  const res = await fetch("/api/push/subscribe-public", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ subscription: sub.toJSON() }),
+  });
+  return res.ok;
+}
+
 async function postSubscription(
   user: User,
   sub: PushSubscription,
@@ -142,7 +153,7 @@ async function postSubscription(
 
 // Gọi từ nút bấm của người dùng. Hộp xin quyền phải được gọi NGAY trong thao tác bấm, trước mọi
 // await khác, nếu không Safari/Firefox có thể từ chối mà không hiện hộp.
-export async function enablePush(user: User): Promise<PushState> {
+export async function enablePush(user: User | null): Promise<PushState> {
   if (isInAppBrowser()) return "in-app";
   if (!supported())
     return isIos() && !isStandalone() ? "needs-install" : "unsupported";
@@ -173,17 +184,18 @@ export async function enablePush(user: User): Promise<PushState> {
       applicationServerKey: keyToBytes(publicKey),
     });
   }
-  if (!(await postSubscription(user, sub))) throw new Error("push-save");
+  const saved = user ? await postSubscription(user, sub) : await postPublicSubscription(sub);
+  if (!saved) throw new Error("push-save");
   return "on";
 }
 
-export async function disablePush(user: User): Promise<PushState> {
+export async function disablePush(user: User | null): Promise<PushState> {
   store()?.setItem(OPTOUT_KEY, "1");
   const sub = await currentSubscription();
   if (sub) {
-    await fetch("/api/push/subscribe", {
+    await fetch(user ? "/api/push/subscribe" : "/api/push/subscribe-public", {
       method: "DELETE",
-      headers: await authHeaders(user),
+      headers: user ? await authHeaders(user) : { "Content-Type": "application/json" },
       body: JSON.stringify({ endpoint: sub.endpoint }),
     }).catch(() => {});
     await sub.unsubscribe().catch(() => {});
@@ -216,20 +228,35 @@ export async function syncPush(user: User): Promise<void> {
   }
 }
 
-// Đăng xuất: gỡ đăng ký khỏi tài khoản này trên máy chủ (máy dùng chung không nhận thông báo của người cũ).
-// Đăng ký trong trình duyệt vẫn giữ, lần đăng nhập sau syncPush sẽ gắn lại.
+// Đăng xuất: bỏ liên kết thiết bị với tài khoản (máy dùng chung không nhận thông báo "trả lời" của người cũ)
+// nhưng vẫn giữ nhận bài mới, trừ khi người dùng đã chủ động tắt.
 export async function detachPush(user: User): Promise<void> {
-  if (!supported()) return;
+  if (!supported() || store()?.getItem(OPTOUT_KEY)) return;
   try {
     const sub = await currentSubscription();
     if (!sub) return;
     await fetch("/api/push/subscribe", {
       method: "DELETE",
       headers: await authHeaders(user),
-      body: JSON.stringify({ endpoint: sub.endpoint }),
+      body: JSON.stringify({ endpoint: sub.endpoint, keepPublic: true }),
     });
   } catch {
     /* bỏ qua */
+  }
+}
+
+// Khách chưa đăng nhập đã bật trước đó: mỗi ngày gửi lại đăng ký một lần để không bị mất khi máy chủ dọn đăng ký hết hạn.
+export async function syncPublic(): Promise<void> {
+  if (!supported() || Notification.permission !== "granted" || store()?.getItem(OPTOUT_KEY)) return;
+  const ls = store();
+  const last = Number(ls?.getItem(SYNC_KEY) ?? 0);
+  if (Date.now() - last < 24 * 60 * 60 * 1000) return;
+  try {
+    const sub = await currentSubscription();
+    if (!sub) return;
+    if (await postPublicSubscription(sub)) ls?.setItem(SYNC_KEY, String(Date.now()));
+  } catch {
+    /* lần sau thử lại */
   }
 }
 

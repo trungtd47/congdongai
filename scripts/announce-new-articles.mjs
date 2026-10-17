@@ -17,6 +17,7 @@ export const SEND_TO_HOUR = 21; // gửi khi 8 <= giờ < 21
 export const MIN_GAP_MS = 6 * 60 * 60 * 1000;
 export const MAX_NEW = 5;
 const KEEP = 200;
+const BATCH = 25;
 
 const unesc = (s) =>
   s.replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
@@ -35,6 +36,16 @@ export function parseFeed(xml) {
 export function selectNew(items, announced) {
   const seen = new Set(announced);
   return items.filter((i) => i.link.startsWith(`${SITE}/`) && !seen.has(i.link));
+}
+
+// Chốt chặn cho bài thử: ANNOUNCE_ONLY_MATCH=zz-test chỉ gửi tới đăng ký có endpoint/uid chứa chuỗi đó,
+// để chạy thử không bao giờ đẩy thông báo tới người dùng thật. Không đặt biến này = gửi tất cả.
+export function pickRecipients(docs, only) {
+  if (!only) return docs;
+  return docs.filter((d) => {
+    const x = d.data();
+    return String(x.subscription?.endpoint).includes(only) || String(x.uid ?? "").startsWith(only);
+  });
 }
 
 export function vnHour(now = new Date()) {
@@ -95,10 +106,12 @@ async function main() {
 
   const v = (await db.collection("serverConfig").doc("webPush").get()).data();
   if (!v?.publicKey || !v?.privateKey) throw new Error("Chưa cấu hình VAPID");
-  const subs = await db.collection("pushSubscriptions").get();
+  const allSubs = await db.collection("pushSubscriptions").get();
+  const subs = { docs: pickRecipients(allSubs.docs, process.env.ANNOUNCE_ONLY_MATCH) };
+  subs.size = subs.docs.length;
   const payload = JSON.stringify(message);
   let sent = 0, removed = 0, failed = 0;
-  for (const d of subs.docs) {
+  const sendOne = async (d) => {
     try {
       await webpush.sendNotification(d.data().subscription, payload, {
         TTL: 60 * 60 * 24,
@@ -114,7 +127,9 @@ async function main() {
         removed++;
       } else failed++;
     }
-  }
+  };
+  // Gửi song song theo lô để vài nghìn thiết bị vẫn xong trong vài chục giây.
+  for (let i = 0; i < subs.docs.length; i += BATCH) await Promise.all(subs.docs.slice(i, i + BATCH).map(sendOne));
   // Toàn bộ lần gửi đều lỗi tạm thời (không ai nhận): không đánh dấu đã báo, lần sau thử lại.
   if (subs.size > 0 && sent === 0 && removed < subs.size) throw new Error(`Gửi thất bại tới ${failed}/${subs.size} thiết bị; sẽ thử lại lần sau`);
   const announced = [...fresh.map((i) => i.link), ...(st.announced ?? [])].slice(0, KEEP);

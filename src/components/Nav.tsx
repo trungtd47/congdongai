@@ -7,7 +7,7 @@ import { signInWithGoogle, signOutUser } from "@/lib/auth";
 import { isDemoMode } from "@/lib/firebase";
 import { ADMIN_AVATAR, ADMIN_PUBLIC_UID } from "@/lib/site";
 import { PushToggle } from "@/components/PushToggle";
-import { detachPush, syncPush } from "@/lib/push-client";
+import { detachPush, syncPublic, syncPush } from "@/lib/push-client";
 
 // Trang chính trên header, ít chật, kiểu B.
 const primaryLinks = [
@@ -28,12 +28,13 @@ export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [busy, setBusy] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
 
   // Đã bật thông báo ở lần trước: gắn lại đăng ký cho tài khoản đang đăng nhập.
   useEffect(() => {
     if (user) void syncPush(user);
-  }, [user]);
+    else if (!authLoading) void syncPublic();
+  }, [user, authLoading]);
   const demo = isDemoMode();
 
   const handleLogin = async () => {

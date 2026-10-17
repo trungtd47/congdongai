@@ -3,8 +3,9 @@
 import { useAuth } from "@/hooks/useAuth";
 import { PushPrompt } from "@/components/PushPrompt";
 
-// Cuối bài: người đã đăng nhập, chưa bật thông báo thì được mời một lần (có cooldown), không hiện lúc mở trang.
+// Cuối bài: ai cũng được mời nhận bài mới (khách không cần đăng nhập). Có cooldown, không hiện lúc mở trang.
 export function ArticlePushPrompt() {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+  if (loading) return null;
   return <PushPrompt user={user} context="article" />;
 }

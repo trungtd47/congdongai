@@ -28,9 +28,9 @@ export async function POST(request: Request) {
 export async function DELETE(request: Request) {
   try {
     const uid = await requireUser(request);
-    const body = (await readJson(request)) as { endpoint?: unknown };
+    const body = (await readJson(request)) as { endpoint?: unknown; keepPublic?: unknown };
     if (typeof body.endpoint !== "string") throw new AdminError(400, "Dữ liệu không hợp lệ.");
-    await removeSubscription(uid, body.endpoint);
+    await removeSubscription(uid, body.endpoint, body.keepPublic === true);
     return Response.json({ ok: true }, { headers: adminHeaders });
   } catch (error) {
     return adminErrorResponse(error);

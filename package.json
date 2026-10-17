@@ -16,7 +16,7 @@
     "friday:notify": "node scripts/friday/cli.mjs notify --dry-run",
     "friday:prepare": "node scripts/friday/cli.mjs prepare --dry-run",
     "alerts:test": "node --test scripts/community-alerts.test.mjs",
-    "push:test": "node --test tests/push-rate.test.mjs scripts/announce-new-articles.test.mjs",
+    "push:test": "node --test tests/push-rate.test.mjs tests/push-endpoint.test.mjs scripts/announce-new-articles.test.mjs",
     "alerts:dry-run": "node scripts/community-alerts.mjs --dry-run"
   },
   "dependencies": {
