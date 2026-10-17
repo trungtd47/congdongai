@@ -8,6 +8,12 @@ const nextConfig = {
   outputFileTracingIncludes: {
     "/hoi-dap/[postId]/opengraph-image": ["./src/assets/**/*"],
   },
+  // Trang /thu-vien/[slug] chỉ đọc public/thu-vien lúc build (SSG). Không để file public lọt vào
+  // bản standalone: khi đã có thư mục public trong standalone, App Hosting không chép phần còn lại
+  // (logo, avatar, sw.js... 404).
+  outputFileTracingExcludes: {
+    "/thu-vien/[slug]": ["./public/**/*"],
+  },
 };
 
 export default nextConfig;
