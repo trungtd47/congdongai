@@ -563,3 +563,25 @@ a.tag-pill-link:hover, a.tag-pill-link:focus-visible {
   .reader .dg::after, .reader .article-diagram::after { right: 12px; bottom: 8px; font-size: 11px; }
   .reader .dg figcaption, .reader .article-diagram figcaption { padding-right: 0; padding-bottom: 24px; }
 }
+
+/* Thư viện: danh sách gọn và trang đọc có nút sao chép */
+.lib-list { display: grid; gap: 14px; max-width: 760px; list-style: none; padding: 0; margin: 0; }
+.lib-item { position: relative; display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; align-items: start; gap: 16px; padding: 20px; }
+.lib-num { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; background: var(--color-cream); color: var(--color-green); font-weight: 700; font-size: 15px; }
+.lib-link { color: var(--color-ink); }
+.lib-link::after { content: ""; position: absolute; inset: 0; }
+.lib-link:focus-visible { outline: none; }
+.lib-item:focus-within { outline: 2px solid var(--color-green); outline-offset: 2px; }
+.lib-dl { position: relative; z-index: 1; flex-shrink: 0; display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; font-size: 13px; color: var(--color-green); border: 1px solid var(--color-line); border-radius: 3px; background: var(--color-white); }
+.lib-dl:hover { background: var(--color-cream); }
+.reader .lib-when { margin: 6px 0 0; color: var(--color-muted); font-size: 15px; }
+.reader .lib-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 18px 0 8px; font-size: 14px; color: var(--color-muted); }
+.code-copy { position: relative; }
+.code-copy .code-copy-btn { position: absolute; top: 8px; right: 8px; min-height: 32px; padding: 0 10px; font-size: 12px; font-family: var(--font-sans); color: var(--color-ink); background: var(--color-cream); border: 0; border-radius: 3px; cursor: pointer; }
+.code-copy .code-copy-btn:hover { background: var(--color-white); }
+.prose-article .code-copy pre { padding-top: 44px; }
+@media (max-width: 640px) {
+  .lib-item { grid-template-columns: 28px minmax(0, 1fr); gap: 8px 12px; padding: 16px; }
+  .lib-num { width: 28px; height: 28px; font-size: 13px; }
+  .lib-dl { grid-column: 2; justify-self: start; }
+}

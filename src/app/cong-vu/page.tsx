@@ -45,8 +45,8 @@ export default function CongVuPage() {
               step: "1",
               title: "Cài và chọn model an toàn",
               desc: "Cài Desktop từ nguồn chính thức. Chọn model phù hợp với dữ liệu bạn định xử lý: model cloud nhận nội dung bạn gửi, model local cần tài nguyên riêng. Không nối vào mạng cơ quan khi chưa được phép.",
-              href: "/thu-vien/checklist-cai-dat.md",
-              linkLabel: "Checklist cài đặt",
+              href: "/bat-dau",
+              linkLabel: "Bắt đầu cài đặt",
             },
             {
               step: "2",
@@ -137,29 +137,29 @@ export default function CongVuPage() {
           id="tai-lieu-heading"
           className="mb-4 text-[20px] font-bold tracking-[-0.3px]"
         >
-          Tài liệu tải về từ Thư viện
+          Nên đọc trước khi dùng
         </h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {[
             {
-              title: "Checklist cài đặt",
-              desc: "Cài Desktop, kết nối model, thử việc đầu tiên có bước kiểm.",
-              href: "/thu-vien/checklist-cai-dat.md",
-            },
-            {
-              title: "Chọn nguồn và model",
-              desc: "ChatGPT/Codex, Claude Pro, OpenRouter, Nous Portal hay model trên máy: chọn theo quyền dùng và dữ liệu.",
-              href: "/thu-vien/chon-model-hermes.md",
+              title: "Cài và chọn model",
+              desc: "Cài Desktop từ nguồn chính thức, chọn một nguồn model phù hợp với dữ liệu bạn định xử lý.",
+              href: "/bat-dau",
             },
             {
               title: "Mẫu giao việc có bước kiểm",
-              desc: "Prompt mẫu với đầu vào, phạm vi, đầu ra, điều kiện dừng và cách đối chiếu.",
-              href: "/thu-vien/100-prompt-theo-nghe.md",
+              desc: "Mẫu yêu cầu rõ đầu vào, phạm vi, đầu ra và điều kiện dừng, sao chép được ngay.",
+              href: "/thu-vien/mau-giao-viec",
             },
             {
-              title: "Bài học từ người dùng thật",
-              desc: "Bảy cách làm lặp lại trong câu chuyện của người dùng Hermes, kèm nguồn gốc.",
-              href: "/thu-vien/kinh-nghiem-cong-dong-agent.md",
+              title: "Theo dõi văn bản mới",
+              desc: "Nhờ Hermes kiểm trang công bố văn bản công khai theo lịch, kèm URL gốc.",
+              href: "/huong-dan/theo-doi-van-ban-moi",
+            },
+            {
+              title: "Câu chuyện thật",
+              desc: "Người dùng Hermes làm việc gì, giới hạn ở đâu, có nguồn để đối chiếu.",
+              href: "/cau-chuyen",
             },
           ].map((doc) => (
             <Link

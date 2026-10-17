@@ -9,6 +9,7 @@ import {
   getHuongDanPostBySlug,
 } from "@/lib/posts";
 import { caseStudies } from "@/lib/case-studies";
+import { libraryItems } from "@/lib/content";
 import { getTags, tagHref } from "@/lib/tags";
 
 // Dựng lại mỗi giờ để có câu hỏi thật mới; lỗi đọc câu hỏi thì sitemap vẫn đủ phần bài viết.
@@ -96,5 +97,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }))
       : [];
 
-  return [...base, openRouter, ...batDau, ...huongDan, ...blog, ...cauChuyen, ...tags, ...hoiDap];
+  const thuVien = libraryItems.map((item) => ({
+    url: canonicalUrl(`/thu-vien/${item.slug}`),
+  }));
+
+  return [
+    ...base,
+    openRouter,
+    ...batDau,
+    ...huongDan,
+    ...thuVien,
+    ...blog,
+    ...cauChuyen,
+    ...tags,
+    ...hoiDap,
+  ];
 }

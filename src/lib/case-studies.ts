@@ -189,7 +189,7 @@ export const caseStudies: CaseStudy[] = [
     topic: "doi-song",
     related: [
       {
-        href: "/thu-vien#giu-hermes-chay-on",
+        href: "/thu-vien/giu-hermes-chay-on",
         label:
           "Tờ kiểm định kỳ trong Thư viện: đỡ tốn token, cập nhật không vỡ, biết lúc nên thu hẹp",
       },

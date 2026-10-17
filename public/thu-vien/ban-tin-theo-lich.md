@@ -1,6 +1,6 @@
-# Bản tin theo lịch - chạy thử một lần trước khi hẹn giờ
+# Bản tin theo lịch
 
-> Quy trình mẫu để dựng một bản tin tự động. Hermes có sẵn công cụ đặt lịch (cron), không cần cài plugin "bản tin". Nguồn: https://hermes-agent.nousresearch.com/docs/user-guide/features/cron/
+Việc tự động đầu tiên đáng làm: một bản tin mỗi sáng từ vài nguồn bạn chọn. Hermes có sẵn công cụ đặt lịch, không cần cài thêm gì. Chạy thử một lần, xem bản thật, rồi mới hẹn giờ.
 
 ## 1. Chọn nguồn và đầu ra
 
@@ -52,8 +52,8 @@ nguồn cũ. Cho mình so bản cũ và bản mới trước khi đổi lịch �
 
 Khi tiêu chí đã ổn định, nhờ Hermes lưu thành skill (`/learn`) để lần sau không phải dặn lại. Đừng nhồi từng bản tin vào memory.
 
-## Dùng cho công vụ
+Đọc thêm:
 
-Chỉ theo dõi trang **văn bản công khai**, để người phụ trách tự kiểm ngày ban hành, ngày hiệu lực, văn bản sửa đổi/thay thế. Không đặt lịch quét hồ sơ người dân hay phát hành thông báo từ máy cá nhân. Xem https://congdongai.org/huong-dan/theo-doi-van-ban-moi/
-
-Câu chuyện thật: https://congdongai.org/cau-chuyen/kinh-nghiem-ban-tin-6h30/ và https://congdongai.org/cau-chuyen/kenmazaika/
+- Theo dõi văn bản mới cho công vụ: https://congdongai.org/huong-dan/theo-doi-van-ban-moi/
+- Câu chuyện thật: https://congdongai.org/cau-chuyen/kinh-nghiem-ban-tin-6h30/
+- Tài liệu chính thức: https://hermes-agent.nousresearch.com/docs/user-guide/features/cron/

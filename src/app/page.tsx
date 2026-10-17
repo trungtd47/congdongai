@@ -254,17 +254,17 @@ export default async function HomePage() {
 
           {/* THƯ VIỆN */}
           <section className="ed-library">
-            <div className="ed-eyebrow">Tải miễn phí</div>
-            <h2>Thư viện của chúng ta 📚</h2>
+            <div className="ed-eyebrow">Mẫu dùng ngay</div>
+            <h2>Thư viện</h2>
             <p className="ed-library-sub">
-              Tài liệu theo lộ trình: cài và chọn model, chỉnh cách Hermes làm
-              việc, giao việc có bước kiểm, rồi giữ nó chạy ổn. Tải về, đọc mẫu
-              rồi mới dùng.
+              Bốn tài liệu dùng được nhiều nhất: mẫu giao việc, SOUL.md, bản tin
+              theo lịch và cách giữ Hermes chạy ổn. Đọc trên trang, sao chép
+              từng mẫu để dán vào Hermes.
             </p>
             <div className="ed-shelf">
               {library.map((item, index) => {
                 return (
-                  <div className="ed-book" key={item.id}>
+                  <div className="ed-book" key={item.slug}>
                     <span
                       className="ed-fic"
                       style={{ background: libraryColors(index) }}
@@ -276,8 +276,8 @@ export default async function HomePage() {
                       <h5>{item.title}</h5>
                       <p>{item.description}</p>
                     </div>
-                    <Link className="ed-dl" href={`/thu-vien#${item.id}`}>
-                      Xem bộ
+                    <Link className="ed-dl" href={`/thu-vien/${item.slug}`}>
+                      Mở
                     </Link>
                   </div>
                 );
